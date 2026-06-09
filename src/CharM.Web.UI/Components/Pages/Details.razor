@@ -1,0 +1,639 @@
+@page "/details"
+@implements IDisposable
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+
+<PageTitle>Details - CharM</PageTitle>
+
+@if (SessionService.Session is not { } session)
+{
+    <div class="text-center py-12">
+        <span class="material-symbols-outlined text-5xl text-on-surface-variant">description</span>
+        <h1 class="font-headline text-2xl font-bold text-on-surface mt-4">Character Details</h1>
+        <p class="text-sm text-on-surface-variant mt-2">Start or import a character to edit additional details.</p>
+    </div>
+}
+else
+{
+    var rituals = GetRitualAndPracticeRows(session);
+    var spellbook = GetSpellbookRows(session);
+    var companions = GetCompanionRows(session);
+    var freeformRows = GetFreeformRows(session);
+
+    <main class="p-6 lg:p-10 max-w-screen-2xl mx-auto w-full">
+        <section class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+            <div>
+                <span class="font-label text-xs uppercase tracking-[0.2em] text-outline mb-2 block">Character Archive</span>
+                <h1 class="font-headline text-5xl md:text-6xl font-bold text-on-surface tracking-tight leading-none mb-4">@session.Name</h1>
+                <div class="flex flex-wrap gap-3 items-center">
+                    <span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label text-[10px] font-bold uppercase tracking-wider rounded-sm">Level @session.Level</span>
+                    @foreach (var badge in GetIdentityBadges(session))
+                    {
+                        <span class="px-3 py-1 border border-outline-variant/30 font-label text-[10px] font-bold uppercase tracking-wider rounded-sm"
+                              title="@(badge.IsUnresolved ? "Rules element not in your local rules database — preserved for round-trip but not active in calculations." : null)">
+                            @badge.Name@(badge.IsUnresolved ? " ⚠" : "")
+                        </span>
+                    }
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <p class="font-body text-sm text-on-surface-variant leading-relaxed italic border-l-2 border-primary-fixed-dim pl-6 max-w-md">
+                    @GetHeroQuote(session)
+                </p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-8 space-y-8">
+                @if (rituals.Count > 0)
+                {
+                    <DetailsSection Icon="auto_fix_high" Title="Rituals, Alchemy & Martial Practices">
+                        <div class="divide-y divide-outline-variant/10">
+                            @foreach (var row in rituals)
+                            {
+                                <button class="w-full flex justify-between items-center p-4 text-left hover:bg-surface-container-low transition-colors group"
+                                        @onclick="() => OpenDetail(row.Element)">
+                                    <div>
+                                        <p class="font-headline text-lg font-bold text-on-surface">@row.Element.Name</p>
+                                        <p class="font-label text-[10px] uppercase tracking-wide text-outline">@row.Subtitle</p>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        @if (!string.IsNullOrWhiteSpace(row.Detail))
+                                        {
+                                            <span class="text-[10px] font-bold text-on-surface-variant">@row.Detail</span>
+                                        }
+                                        <span class="material-symbols-outlined text-outline-variant opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                                    </div>
+                                </button>
+                            }
+                        </div>
+                    </DetailsSection>
+                }
+
+                @if (spellbook.Count > 0)
+                {
+                    <DetailsSection Icon="menu_book" Title="Spellbook">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
+                            @foreach (var row in spellbook)
+                            {
+                                <button class="p-4 border border-outline-variant/20 hover:border-primary/40 transition-all text-left"
+                                        @onclick="() => OpenDetail(row.Element)">
+                                    <div class="flex justify-between items-start mb-2 gap-3">
+                                        <p class="font-headline text-md font-bold text-on-surface">@row.Element.Name</p>
+                                        <span class="text-[9px] font-bold text-primary uppercase tracking-tighter">@row.Element.Type</span>
+                                    </div>
+                                    <p class="text-[11px] text-on-surface-variant leading-tight">@row.Subtitle</p>
+                                </button>
+                            }
+                        </div>
+                    </DetailsSection>
+                }
+
+                <RetrainingPanel />
+
+                <DetailsSection Icon="notes" Title="Character Notes">
+                    <div class="p-4">
+                        <div class="flex justify-end gap-2 mb-4">
+                            @if (_editingText)
+                            {
+                                <button class="px-3 py-1.5 rounded bg-primary text-on-primary text-[10px] font-label font-bold uppercase tracking-wider"
+                                        @onclick="SaveFreeformEdits">
+                                    Save
+                                </button>
+                                <button class="px-3 py-1.5 rounded bg-surface-container-low text-on-surface text-[10px] font-label font-bold uppercase tracking-wider"
+                                        @onclick="CancelFreeformEdits">
+                                    Cancel
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="px-3 py-1.5 rounded bg-primary text-on-primary text-[10px] font-label font-bold uppercase tracking-wider"
+                                        @onclick="BeginFreeformEdit">
+                                    Edit
+                                </button>
+                            }
+                        </div>
+
+                        @if (_editingText)
+                        {
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                @foreach (var field in _freeformDrafts)
+                                {
+                                    <label class="block @(field.Multiline ? "md:col-span-2" : null)">
+                                        <span class="font-label text-[10px] uppercase font-bold tracking-wider text-outline">@field.Label</span>
+                                        @if (field.Multiline)
+                                        {
+                                            <textarea class="mt-1 w-full min-h-28 rounded border border-outline-variant/30 bg-surface-container-lowest px-3 py-2 text-sm text-on-surface"
+                                                      @bind="field.Value"
+                                                      @bind:event="oninput"></textarea>
+                                        }
+                                        else
+                                        {
+                                            <input class="mt-1 w-full rounded border border-outline-variant/30 bg-surface-container-lowest px-3 py-2 text-sm text-on-surface"
+                                                   @bind="field.Value"
+                                                   @bind:event="oninput" />
+                                        }
+                                    </label>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                @foreach (var row in freeformRows)
+                                {
+                                    <div class="rounded border border-outline-variant/20 bg-surface-container-lowest p-4 @(row.Multiline ? "md:col-span-2" : null)">
+                                        <p class="font-label text-[10px] uppercase font-bold tracking-wider text-outline mb-1">@row.Label</p>
+                                        @if (string.IsNullOrWhiteSpace(row.Value))
+                                        {
+                                            <p class="text-sm text-on-surface-variant italic">Not set</p>
+                                        }
+                                        else
+                                        {
+                                            var unresolved = IsFreeformValueUnresolved(session, row);
+                                            <p class="text-sm text-on-surface whitespace-pre-wrap leading-relaxed"
+                                               title="@(unresolved ? "Rules element not in your local rules database — preserved for round-trip but not active in calculations." : null)">@row.Value@(unresolved ? " ⚠" : "")</p>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </DetailsSection>
+            </div>
+
+            <div class="lg:col-span-4 space-y-8">
+                <DetailsSection Icon="settings" Title="Campaign Settings">
+                    <div class="p-4 space-y-3">
+                        @foreach (var toggle in CampaignToggles)
+                        {
+                            var element = LoadElementDetails(toggle.InternalId);
+                            var enabled = SessionService.IsCampaignToggleEnabled(toggle.InternalId);
+                            <label class="flex items-start justify-between gap-4 rounded border border-outline-variant/20 bg-surface-container-lowest p-3">
+                                <span>
+                                    <span class="block font-headline text-sm font-bold text-on-surface">@toggle.Label</span>
+                                    <span class="block text-xs text-on-surface-variant">@toggle.Description</span>
+                                    @if (element is null)
+                                    {
+                                        <span class="block text-[10px] text-error mt-1">Missing from current rules database</span>
+                                    }
+                                </span>
+                                <input type="checkbox"
+                                       class="mt-1 h-4 w-4 accent-primary"
+                                       checked="@enabled"
+                                       disabled="@(element is null)"
+                                       @onchange="args => ToggleCampaignSetting(toggle.InternalId, args)" />
+                            </label>
+                        }
+                    </div>
+                </DetailsSection>
+
+                <BuildChoicesPanel />
+
+                @if (companions.Count > 0)
+                {
+                    <DetailsSection Icon="pets" Title="Companions & Familiars">
+                        <div class="p-4 space-y-3">
+                            @foreach (var row in companions)
+                            {
+                                <button class="w-full rounded border border-outline-variant/20 bg-surface-container-lowest p-4 text-left hover:border-primary/40 transition-colors"
+                                        @onclick="() => OpenDetail(row.Element)">
+                                    <p class="font-headline text-lg font-bold text-on-surface">@row.Element.Name</p>
+                                    <p class="font-label text-[10px] uppercase tracking-wide text-outline">@row.Subtitle</p>
+                                    @if (!string.IsNullOrWhiteSpace(row.Detail))
+                                    {
+                                        <p class="text-xs text-on-surface-variant mt-2">@row.Detail</p>
+                                    }
+                                </button>
+                            }
+                        </div>
+                    </DetailsSection>
+                }
+
+                @if (session.UnresolvedElements.Count > 0)
+                {
+                    <DetailsSection Icon="warning" Title="Unresolved Rules Elements">
+                        <div class="p-4 space-y-3">
+                            <p class="text-xs text-on-surface-variant leading-relaxed">
+                                This character references rules elements your local rules database
+                                doesn't recognize — usually CBLoader <code class="text-[10px] bg-surface-container-low px-1 rounded">.part</code>
+                                content or houseruled additions from the file's original author.
+                                They round-trip verbatim but contribute no stats or powers.
+                                Wherever the element would have appeared on this page it's marked
+                                with a ⚠.
+                            </p>
+                            <div class="divide-y divide-outline-variant/10">
+                                @foreach (var u in session.UnresolvedElements.OrderBy(u => u.Type).ThenBy(u => u.Name))
+                                {
+                                    <div class="py-2">
+                                        <div class="flex items-baseline justify-between gap-2">
+                                            <p class="font-headline text-sm font-bold text-on-surface">@u.Name <span class="text-amber-600">⚠</span></p>
+                                            <span class="font-label text-[10px] uppercase tracking-wider text-outline">@u.Type</span>
+                                        </div>
+                                        <p class="font-label text-[10px] text-on-surface-variant break-all">@u.InternalId</p>
+                                        <p class="font-label text-[10px] text-outline">
+                                            @FormatUnresolvedLocation(u)
+                                            @if (!string.IsNullOrEmpty(u.Legality) && !string.Equals(u.Legality, "rules-legal", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <span class="ml-2 px-1.5 py-0.5 rounded bg-amber-50 text-amber-800 text-[9px] font-bold">@u.Legality</span>
+                                            }
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </DetailsSection>
+                }
+            </div>
+        </div>
+    </main>
+
+    @if (_detailModalElement is not null)
+    {
+        <ElementDetailModal Element="_detailModalElement"
+                            OnClose="CloseDetailModal"
+                            OnLoadDetails="LoadElementDetails"
+                            OnResolveIds="ResolveElementIds" />
+    }
+}
+
+@code {
+    private static readonly CampaignToggle[] CampaignToggles =
+    [
+        new("ID_INTERNAL_INTERNAL_INHERENT_BONUSES", "Inherent Bonuses", "Use automatic enhancement bonuses instead of relying on item enhancement."),
+        new("ID_INTERNAL_INTERNAL_HARPER", "Harpers", "Mark the character as a member of the Harpers."),
+        new("ID_FMP_PSEUDO_CLASS_216", "Spellscarred", "Enable the Forgotten Realms spellscarred pseudo-class option."),
+        new("ID_INTERNAL_INTERNAL_HOUSE_VADALIS", "House Vadalis", "Mark the character as a member of House Vadalis."),
+    ];
+
+    private static readonly FreeformDefinition[] DetailFields =
+    [
+        new("Player", "Player", false),
+        new("Gender", "Gender", false),
+        new("Age", "Age", false),
+        new("Height", "Height", false),
+        new("Weight", "Weight", false),
+        new("Alignment", "Alignment", false),
+        new("Company", "Company", false),
+        new("Experience", "Experience", false),
+        new("CarriedMoney", "Carried Money", false),
+        new("StoredMoney", "Stored Money", false),
+        new("Traits", "Traits", true),
+        new("Appearance", "Appearance", true),
+        new("Companions", "Companions Text", true),
+        new("Notes", "Notes", true),
+    ];
+
+    private static readonly HashSet<string> SystemTextStrings = new(StringComparer.Ordinal)
+    {
+        "Name",
+        "Size",
+        "Average Height",
+        "Average Weight",
+        "Weight",
+    };
+
+    private static readonly HashSet<string> HiddenTextStrings = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "LAYOUT_DATA",
+        "LAYOUT_DATAPowerCard",
+    };
+
+    private static readonly string[] HiddenTextStringPrefixes =
+    [
+        "Portrait",
+        "USAGE_",
+    ];
+
+    private readonly List<FreeformDraft> _freeformDrafts = [];
+    private bool _editingText;
+    private RulesElement? _detailModalElement;
+
+    protected override void OnInitialized()
+    {
+        SessionService.Changed += HandleSessionChanged;
+    }
+
+    private static IReadOnlyList<IdentityBadge> GetIdentityBadges(CharacterSession session)
+    {
+        var values = new List<IdentityBadge>();
+        var unresolvedIds = new HashSet<string>(
+            session.UnresolvedElements.Select(u => u.InternalId),
+            StringComparer.OrdinalIgnoreCase);
+
+        foreach (var type in new[] { "Race", "Class", "Theme", "Paragon Path", "Epic Destiny" })
+        {
+            if (session.GetSelectedElement(type) is { } element)
+            {
+                bool isUnresolved = !string.IsNullOrEmpty(element.InternalId)
+                    && unresolvedIds.Contains(element.InternalId);
+                values.Add(new IdentityBadge(element.Name, isUnresolved));
+            }
+        }
+
+        return values;
+    }
+
+    private sealed record IdentityBadge(string Name, bool IsUnresolved);
+
+    private static string FormatUnresolvedLocation(UnresolvedElement u)
+    {
+        var loc = u.Location switch
+        {
+            UnresolvedLocation.LevelTree => "Level tree",
+            UnresolvedLocation.Tally => "Tally row",
+            UnresolvedLocation.UserEdit => "UserEdit pick",
+            UnresolvedLocation.Loot => "Loot component",
+            UnresolvedLocation.Grabbag => "Campaign-setting grant",
+            UnresolvedLocation.RetrainTarget => "Retrain target",
+            UnresolvedLocation.DeferredPick => "Deferred pick",
+            _ => u.Location.ToString(),
+        };
+
+        if (u.AtLevel is int lvl)
+            loc += $" — level {lvl}";
+        if (!string.IsNullOrEmpty(u.ParentInternalId))
+            loc += $" — under {u.ParentInternalId}";
+        return loc;
+    }
+
+    /// <summary>
+    /// True when the freeform row's value matches an unresolved rules
+    /// element of the matching kind. Used to append a ⚠ to Alignment and
+    /// any other freeform field whose displayed text refers to content
+    /// the local rules database doesn't recognize (CBLoader .part-file
+    /// content, custom houseruled alignments like "Lawful Evil", etc.).
+    /// </summary>
+    private static bool IsFreeformValueUnresolved(
+        CharacterSession session, FreeformRow row)
+    {
+        if (string.IsNullOrWhiteSpace(row.Value)) return false;
+
+        var typeHint = row.Key switch
+        {
+            "Alignment" => "Alignment",
+            "Gender" => "Gender",
+            _ => null,
+        };
+
+        return session.UnresolvedElements.Any(u =>
+            string.Equals(u.Name, row.Value, StringComparison.OrdinalIgnoreCase)
+            && (typeHint is null
+                || string.Equals(u.Type, typeHint, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    private static string GetHeroQuote(CharacterSession session)
+    {
+        if (session.Details.TryGetValue("Traits", out var traits) && !string.IsNullOrWhiteSpace(traits))
+            return traits;
+        if (session.Details.TryGetValue("Notes", out var notes) && !string.IsNullOrWhiteSpace(notes))
+            return notes;
+        return "Use this archive for campaign options, rituals, companions, and the character details that live outside the combat sheet.";
+    }
+
+    private IReadOnlyList<ElementRow> GetRitualAndPracticeRows(CharacterSession session)
+    {
+        return session.GetRitualPracticeAlchemyEntries()
+            .Select(row => new ElementRow(
+                row.Element,
+                BuildRitualPracticeAlchemySubtitle(row),
+                GetComponentCost(row.Element)))
+            .ToList();
+    }
+
+    private IReadOnlyList<ElementRow> GetSpellbookRows(CharacterSession session)
+    {
+        var rows = new Dictionary<string, ElementRow>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var element in session.GetAllElementsOfType("Class Feature").Where(IsSpellbookElement))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        foreach (var element in session.GetAllElementsOfType("Power").Where(IsSpellbookElement))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        return rows.Values
+            .OrderBy(r => LevelSortKey(r.Element))
+            .ThenBy(r => r.Element.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private IReadOnlyList<ElementRow> GetCompanionRows(CharacterSession session)
+    {
+        var rows = new Dictionary<string, ElementRow>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var element in session.GetAllElementsOfType("Companion"))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        foreach (var element in session.GetAllElementsOfType("Familiar"))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        foreach (var element in session.GetAllElementsOfType("Power").Where(PowerCardFactory.IsFamiliarCardPower))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        foreach (var element in session.GetAllElementsOfType("Class Feature").Where(IsCompanionFeature))
+            rows.TryAdd(element.InternalId, new ElementRow(element, BuildElementSubtitle(element), GetShortDescription(element)));
+
+        return rows.Values
+            .OrderBy(r => r.Element.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private static string BuildRitualPracticeAlchemySubtitle(RitualPracticeAlchemyEntry row)
+    {
+        var parts = new List<string> { FormatRitualPracticeAlchemyKind(row.Kind) };
+        if (row.Quantity > 0)
+            parts.Add($"Quantity {row.Quantity}");
+        if (!row.IsInventoryItem && row.Quantity == 0)
+            parts.Add("Granted");
+        if (row.Element.Fields.TryGetValue("Level", out var level) && !string.IsNullOrWhiteSpace(level))
+            parts.Add($"Level {level}");
+        if (!string.IsNullOrWhiteSpace(row.Element.Source))
+            parts.Add(row.Element.Source);
+        return string.Join(" • ", parts);
+    }
+
+    private static string FormatRitualPracticeAlchemyKind(RitualPracticeAlchemyKind kind)
+        => kind switch
+        {
+            RitualPracticeAlchemyKind.Ritual => "Ritual",
+            RitualPracticeAlchemyKind.RitualScroll => "Ritual Scroll",
+            RitualPracticeAlchemyKind.AlchemicalFormula => "Alchemical Formula",
+            RitualPracticeAlchemyKind.AlchemicalItem => "Alchemical Item",
+            RitualPracticeAlchemyKind.PoisonRecipe => "Poison Recipe",
+            RitualPracticeAlchemyKind.MartialPractice => "Martial Practice",
+            _ => kind.ToString(),
+        };
+
+    private static bool IsSpellbookElement(RulesElement element)
+        => ContainsAny(element.Name, "Spellbook")
+           || element.Categories.Any(c => c.Contains("SPELLBOOK", StringComparison.OrdinalIgnoreCase))
+           || element.Fields.Values.Any(v => ContainsAny(v, "Spellbook"));
+
+    private static bool IsCompanionFeature(RulesElement element)
+        => ContainsAny(element.Name, "Animal Companion", "Beast Companion", "Spirit Companion", "Familiar")
+           || element.Fields.Values.Any(v => ContainsAny(v, "Animal Companion", "Beast Companion", "Spirit Companion", "Familiar"));
+
+    private static bool ContainsAny(string? value, params string[] needles)
+        => !string.IsNullOrWhiteSpace(value)
+           && needles.Any(n => value.Contains(n, StringComparison.OrdinalIgnoreCase));
+
+    private static string BuildElementSubtitle(RulesElement element)
+    {
+        var parts = new List<string> { element.Type };
+        if (element.Fields.TryGetValue("Level", out var level) && !string.IsNullOrWhiteSpace(level))
+            parts.Add($"Level {level}");
+        if (!string.IsNullOrWhiteSpace(element.Source))
+            parts.Add(element.Source);
+        return string.Join(" • ", parts);
+    }
+
+    private static string? GetShortDescription(RulesElement element)
+        => element.Fields.GetValueOrDefault("Short Description")
+           ?? element.Fields.GetValueOrDefault("Description");
+
+    private static string? GetComponentCost(RulesElement element)
+    {
+        if (element.Fields.TryGetValue("Component Cost", out var component) && !string.IsNullOrWhiteSpace(component))
+            return component;
+        if (element.Fields.TryGetValue("Price", out var price) && !string.IsNullOrWhiteSpace(price))
+            return price;
+        return null;
+    }
+
+    private static int LevelSortKey(RulesElement element)
+        => element.Fields.TryGetValue("Level", out var raw)
+           && int.TryParse(raw, out var level)
+            ? level
+            : int.MaxValue;
+
+    private IReadOnlyList<FreeformRow> GetFreeformRows(CharacterSession session)
+    {
+        var rows = new List<FreeformRow>();
+
+        foreach (var field in DetailFields)
+        {
+            session.Details.TryGetValue(field.Key, out var value);
+            rows.Add(new FreeformRow(field.Key, field.Label, value ?? string.Empty, field.Multiline, false));
+        }
+
+        foreach (var (key, value) in GetEditableTextStrings(session))
+            rows.Add(new FreeformRow(key, FriendlyLabel(key), value, IsLongText(value), true));
+
+        return rows;
+    }
+
+    private static IEnumerable<KeyValuePair<string, string>> GetEditableTextStrings(CharacterSession session)
+        => session.TextStrings
+            .Where(kv => IsEditableTextString(kv.Key))
+            .OrderBy(kv => kv.Key, StringComparer.OrdinalIgnoreCase);
+
+    private static bool IsEditableTextString(string key)
+    {
+        if (SystemTextStrings.Contains(key) || HiddenTextStrings.Contains(key))
+            return false;
+        if (key.StartsWith("_", StringComparison.Ordinal))
+            return false;
+        if (HiddenTextStringPrefixes.Any(prefix => key.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)))
+            return false;
+        return !DetailFields.Any(f => f.Key.Equals(key, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static bool IsLongText(string? value)
+        => !string.IsNullOrWhiteSpace(value)
+           && (value.Length > 80 || value.Contains('\n'));
+
+    private static string FriendlyLabel(string key)
+    {
+        if (string.IsNullOrWhiteSpace(key))
+            return key;
+
+        var spaced = System.Text.RegularExpressions.Regex.Replace(key, "([a-z])([A-Z])", "$1 $2");
+        return spaced.Replace('_', ' ');
+    }
+
+    private void BeginFreeformEdit()
+    {
+        if (SessionService.Session is not { } session)
+            return;
+
+        _freeformDrafts.Clear();
+        foreach (var field in DetailFields)
+        {
+            session.Details.TryGetValue(field.Key, out var value);
+            _freeformDrafts.Add(new FreeformDraft(field.Key, field.Label, value ?? string.Empty, field.Multiline, false));
+        }
+
+        foreach (var (key, value) in GetEditableTextStrings(session))
+            _freeformDrafts.Add(new FreeformDraft(key, FriendlyLabel(key), value, IsLongText(value), true));
+
+        _editingText = true;
+    }
+
+    private void SaveFreeformEdits()
+    {
+        var drafts = _freeformDrafts.ToList();
+        _editingText = false;
+        _freeformDrafts.Clear();
+
+        foreach (var field in drafts)
+        {
+            if (field.IsTextString)
+                SessionService.SetTextString(field.Key, field.Value);
+            else
+                SessionService.SetDetailField(field.Key, field.Value);
+        }
+    }
+
+    private void CancelFreeformEdits()
+    {
+        _editingText = false;
+        _freeformDrafts.Clear();
+    }
+
+    private void ToggleCampaignSetting(string internalId, ChangeEventArgs args)
+    {
+        if (args.Value is bool enabled)
+            SessionService.SetCampaignToggle(internalId, enabled);
+        else if (bool.TryParse(args.Value?.ToString(), out var parsed))
+            SessionService.SetCampaignToggle(internalId, parsed);
+    }
+
+    private RulesElement? LoadElementDetails(string internalId)
+        => SessionService.GetElementDetails(internalId);
+
+    private List<ResolvedElement> ResolveElementIds(string ids)
+        => SessionService.ResolveElementIds(ids);
+
+    private void OpenDetail(RulesElement element)
+        => _detailModalElement = element;
+
+    private void CloseDetailModal()
+        => _detailModalElement = null;
+
+    private void HandleSessionChanged()
+    {
+        if (_editingText)
+            BeginFreeformEdit();
+        _ = InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        SessionService.Changed -= HandleSessionChanged;
+    }
+
+    private sealed record CampaignToggle(string InternalId, string Label, string Description);
+    private sealed record FreeformDefinition(string Key, string Label, bool Multiline);
+    private sealed record FreeformRow(string Key, string Label, string Value, bool Multiline, bool IsTextString);
+    private sealed class FreeformDraft(string key, string label, string value, bool multiline, bool isTextString)
+    {
+        public string Key { get; } = key;
+        public string Label { get; } = label;
+        public string Value { get; set; } = value;
+        public bool Multiline { get; } = multiline;
+        public bool IsTextString { get; } = isTextString;
+    }
+    private sealed record ElementRow(RulesElement Element, string Subtitle, string? Detail = null);
+}

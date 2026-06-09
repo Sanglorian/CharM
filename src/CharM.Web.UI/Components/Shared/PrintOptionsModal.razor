@@ -1,0 +1,113 @@
+@using Microsoft.AspNetCore.Components.Web
+
+@if (Show)
+{
+    <div class="fixed inset-0 z-[100] bg-black/40 flex items-center justify-center p-4 no-print" @onclick="HandleBackdropClick">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full overflow-hidden" @onclick:stopPropagation="true">
+            <div class="px-5 py-3 border-b border-outline-variant/20 flex items-center justify-between">
+                <h2 class="font-headline text-lg font-bold text-on-surface">Print Options</h2>
+                <button type="button" @onclick="OnCancel"
+                        class="p-1 rounded hover:bg-surface-container-low text-outline">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+
+            <div class="px-5 py-4 space-y-5">
+                <fieldset>
+                    <legend class="font-label text-[11px] uppercase tracking-widest text-outline mb-2">Color</legend>
+                    <div class="flex gap-2">
+                        @foreach (var (val, label, hint) in _colorOptions)
+                        {
+                            var v = val;
+                            <button type="button" @onclick="() => _color = v"
+                                    class="@OptionButtonClass(_color == v) flex-1"
+                                    title="@hint">
+                                @label
+                            </button>
+                        }
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="font-label text-[11px] uppercase tracking-widest text-outline mb-2">Page Size</legend>
+                    <div class="flex gap-2">
+                        @foreach (var (val, label) in _sizeOptions)
+                        {
+                            var v = val;
+                            <button type="button" @onclick="() => _size = v"
+                                    class="@OptionButtonClass(_size == v) flex-1">
+                                @label
+                            </button>
+                        }
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-2">
+                    <legend class="font-label text-[11px] uppercase tracking-widest text-outline mb-1">Extras</legend>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" @bind="_inventory"
+                               class="w-4 h-4 rounded text-primary focus:ring-primary" />
+                        <span class="text-sm">Include full inventory page</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" @bind="_blanks"
+                               class="w-4 h-4 rounded text-primary focus:ring-primary" />
+                        <span class="text-sm">Handwriting blanks (current HP, surges used, temp HP)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" @bind="_cutMarks"
+                               class="w-4 h-4 rounded text-primary focus:ring-primary" />
+                        <span class="text-sm">Cut marks on power cards (for sleeving)</span>
+                    </label>
+                </fieldset>
+            </div>
+
+            <div class="px-5 py-3 bg-surface-container-low border-t border-outline-variant/20 flex justify-end gap-2">
+                <button type="button" @onclick="OnCancel"
+                        class="px-4 py-1.5 text-sm font-label uppercase tracking-wider hover:bg-surface-container">
+                    Cancel
+                </button>
+                <button type="button" @onclick="HandleConfirm"
+                        class="px-4 py-1.5 text-sm font-label uppercase tracking-wider bg-primary text-on-primary hover:bg-primary/90 rounded-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">print</span>
+                    Open Print View
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool Show { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback<PrintOptions> OnConfirm { get; set; }
+
+    private string _color = "color";
+    private string _size = "letter";
+    private bool _inventory;
+    private bool _blanks = true;
+    private bool _cutMarks = true;
+
+    private static readonly (string Val, string Label, string Hint)[] _colorOptions =
+    [
+        ("color", "Color", "Full color (at-will green, encounter red, daily black)"),
+        ("muted", "Muted", "Lighter fills, dark text for laser/inkjet legibility"),
+        ("bw",    "B&W",   "Black & white only; uses borders and labels to distinguish power types"),
+    ];
+
+    private static readonly (string Val, string Label)[] _sizeOptions =
+    [
+        ("letter", "Letter (8.5×11\")"),
+        ("a4",     "A4 (210×297mm)"),
+    ];
+
+    private static string OptionButtonClass(bool selected)
+        => selected
+            ? "px-3 py-2 text-xs font-label uppercase tracking-wider border-2 border-primary bg-primary text-on-primary rounded-sm transition-colors"
+            : "px-3 py-2 text-xs font-label uppercase tracking-wider border border-outline-variant/30 hover:bg-surface-container-low rounded-sm transition-colors";
+
+    private Task HandleConfirm()
+        => OnConfirm.InvokeAsync(new PrintOptions(_color, _size, _inventory, _blanks, _cutMarks));
+
+    private Task HandleBackdropClick() => OnCancel.InvokeAsync();
+}

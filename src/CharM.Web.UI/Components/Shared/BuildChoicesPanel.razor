@@ -1,0 +1,154 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+
+@if (SessionService.Session is { } session)
+{
+    <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+        <div class="bg-stone-200/50 px-4 py-2 border-b border-outline-variant/20 flex items-center justify-between gap-3">
+            <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-outline">Build Choices</h2>
+            <button class="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary-container text-on-primary-container text-[10px] font-label font-bold uppercase tracking-wider hover:bg-primary-container/80 no-print"
+                    @onclick="OpenHouseruleModal">
+                <span class="material-symbols-outlined text-sm">add_home</span>
+                Houserule
+            </button>
+        </div>
+        <div class="p-3 space-y-1.5">
+            @if (session.ChoiceHistory.Count == 0)
+            {
+                <p class="text-xs text-on-surface-variant">No build choices recorded yet.</p>
+            }
+            else
+            {
+                @foreach (var record in session.ChoiceHistory.OrderByDescending(r => r.SequenceNumber))
+                {
+                    var recordId = record.Element.InternalId;
+                    <div class="group flex items-center justify-between gap-3 border-b border-outline-variant/10 pb-1.5 cursor-pointer hover:bg-surface-container-low/40 -mx-2 px-2 rounded transition-colors"
+                         @onclick="() => OpenDetailModal(recordId)">
+                        <div class="min-w-0">
+                            <div class="text-sm font-bold truncate">
+                                @record.Element.Name
+                                @if (IsHouseruledElement(record.Element.InternalId))
+                                {
+                                    <HouseruleBadge />
+                                }
+                            </div>
+                            <div class="text-[10px] text-outline uppercase tracking-wider">
+                                @record.Element.Type
+                                @{ var slotLabel = record.Slot.DisplayLabel ?? record.Slot.Name; }
+                                @if (!string.IsNullOrWhiteSpace(slotLabel))
+                                {
+                                    <span> - @slotLabel</span>
+                                }
+                            </div>
+                        </div>
+                        <button @onclick="() => BeginReselect(record)"
+                                @onclick:stopPropagation="true"
+                                class="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-error-container/20 text-error no-print"
+                                title="Reselect this choice">
+                            <span class="material-symbols-outlined text-base">edit</span>
+                        </button>
+                    </div>
+                }
+            }
+            <HouseruleGrantList />
+        </div>
+    </section>
+
+    @if (_showModal && _activeChoice is not null)
+    {
+        <SelectionModal Choice="_activeChoice"
+                        Candidates="_modalCandidates"
+                        RecommendedIds="@(SessionService.Session?.GetSuggestedIdsForSlot(_activeChoice.Slot))"
+                        OnSelect="OnElementSelected"
+                        OnClose="CloseModal"
+                        OnLoadDetails="LoadElementDetails"
+                        OnResolveIds="ResolveElementIds" />
+    }
+
+    @if (_detailModalElement is not null)
+    {
+        <ElementDetailModal Element="_detailModalElement"
+                            OnClose="CloseDetailModal"
+                            OnLoadDetails="LoadElementDetails"
+                            OnResolveIds="ResolveElementIds" />
+    }
+
+    @if (_showHouseruleModal)
+    {
+        <HouseruleModal OnClose="CloseHouseruleModal" />
+    }
+}
+
+@code {
+    private bool _showModal;
+    private PendingChoice? _activeChoice;
+    private IReadOnlyList<RulesElement>? _modalCandidates;
+    private RulesElement? _detailModalElement;
+    private bool _showHouseruleModal;
+
+    private void OpenDetailModal(string internalId)
+    {
+        _detailModalElement = SessionService.GetElementDetails(internalId);
+    }
+
+    private void CloseDetailModal()
+    {
+        _detailModalElement = null;
+    }
+
+    private void OpenHouseruleModal()
+    {
+        _showHouseruleModal = true;
+    }
+
+    private void CloseHouseruleModal()
+    {
+        _showHouseruleModal = false;
+    }
+
+    private void OpenSelectionModal(PendingChoice choice)
+    {
+        _activeChoice = choice;
+        _modalCandidates = SessionService.Session!.GetCandidatesForSlot(choice.Slot);
+        _showModal = true;
+    }
+
+    private void OnElementSelected(RulesElement element)
+    {
+        if (_activeChoice is null) return;
+        SessionService.Session!.MakeChoice(_activeChoice.Slot, element);
+        CloseModal();
+    }
+
+    private void CloseModal()
+    {
+        _showModal = false;
+        _activeChoice = null;
+        _modalCandidates = null;
+    }
+
+    private void BeginReselect(ChoiceRecord record)
+    {
+        var session = SessionService.Session;
+        if (session is null) return;
+
+        session.RemoveChoice(record);
+
+        var replacement = SessionService.FindReplacementChoice(record);
+        if (replacement is not null)
+            OpenSelectionModal(replacement);
+        else
+            CloseModal();
+    }
+
+    private bool IsHouseruledElement(string? internalId)
+        => SessionService.Session?.IsHouseruledElement(internalId) == true;
+
+    private RulesElement? LoadElementDetails(string internalId)
+        => SessionService.GetElementDetails(internalId);
+
+    private List<ResolvedElement> ResolveElementIds(string idList)
+        => SessionService.ResolveElementIds(idList);
+}

@@ -1,0 +1,85 @@
+@using CharM.Engine.Evaluation
+@inject CalculationBreakdownService Breakdowns
+
+<span class="relative inline-block">
+    <button type="button"
+            class="@TriggerClass"
+            @onclick="Toggle"
+            title="Show calculation">
+        @ChildContent
+    </button>
+    @if (_open)
+    {
+        var breakdown = Breakdowns.Build(Stats, StatName);
+        <div class="absolute z-[60] mt-2 w-80 rounded-lg bg-surface-container-lowest shadow-xl ghost-border text-left p-3 text-on-surface no-print">
+            <div class="flex items-center justify-between gap-2 border-b border-outline-variant/20 pb-2 mb-2">
+                <div>
+                    <div class="font-label text-[10px] uppercase tracking-widest text-outline">@breakdown.StatName</div>
+                    <div class="font-headline text-lg font-bold">Total @breakdown.FinalValue</div>
+                </div>
+                <button @onclick="Toggle" class="text-outline hover:text-on-surface">
+                    <span class="material-symbols-outlined text-sm">close</span>
+                </button>
+            </div>
+            @if (breakdown.Contributions.Count == 0)
+            {
+                <p class="text-xs text-on-surface-variant">No contribution rows are available for this stat yet.</p>
+            }
+            else
+            {
+                <div class="max-h-72 overflow-y-auto space-y-1">
+                    @foreach (var row in breakdown.Contributions)
+                    {
+                        <div class="grid grid-cols-[3rem_1fr] gap-2 text-xs border-b border-outline-variant/10 pb-1 @(row.Active ? "" : "opacity-60")">
+                            <span class="font-bold text-right">@(row.DisplayOnly ? "text" : FormatSigned(row.Value))</span>
+                            <span>
+                                <span class="font-semibold">@row.Label</span>
+                                @if (!row.Active && !row.DisplayOnly)
+                                {
+                                    <span class="text-outline"> (inactive)</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.SourceElementId))
+                                {
+                                    <span class="block text-[10px] text-outline break-all">@(row.SourceName ?? row.SourceElementId)</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.Condition))
+                                {
+                                    <span class="block text-[10px] text-outline">Condition: @row.Condition</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.Requires))
+                                {
+                                    <span class="block text-[10px] text-outline">Requires: @row.Requires</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.Wearing))
+                                {
+                                    <span class="block text-[10px] text-outline">Wearing: @row.Wearing</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.NotWearing))
+                                {
+                                    <span class="block text-[10px] text-outline">Not wearing: @row.NotWearing</span>
+                                }
+                                @if (!string.IsNullOrEmpty(row.StringPayload))
+                                {
+                                    <span class="block text-[10px] text-outline">@row.StringPayload</span>
+                                }
+                            </span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</span>
+
+@code {
+    [Parameter] public StatBlock? Stats { get; set; }
+    [Parameter, EditorRequired] public string StatName { get; set; } = "";
+    [Parameter] public string TriggerClass { get; set; } = "hover:text-primary transition-colors";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool _open;
+
+    private void Toggle() => _open = !_open;
+
+    private static string FormatSigned(int value) => value >= 0 ? $"+{value}" : value.ToString();
+}

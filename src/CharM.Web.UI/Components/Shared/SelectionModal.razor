@@ -1,0 +1,498 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.CharacterModel
+@using CharM.Engine.Rules
+@using CharM.Engine.Selection
+@using CharM.Web.Components.Shared
+@using CharM.Web.Services
+
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+     @onclick="OnClose">
+    <!-- Modal Card -->
+    <div class="bg-surface-container-lowest rounded-lg shadow-lg @(_compactMode ? "max-w-lg" : "max-w-4xl") w-full max-h-[80vh] flex flex-col ghost-border"
+         @onclick:stopPropagation="true">
+
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">@Choice.Description</h2>
+                    <p class="text-xs font-label text-on-surface-variant mt-0.5">
+                        @Choice.Slot.ElementType
+                        @if (GetChoiceCategorySummary(Choice.Slot) is { Length: > 0 } categorySummary)
+                        {
+                            <span>— @categorySummary</span>
+                        }
+                    </p>
+                </div>
+                <button @onclick="OnClose"
+                        class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="mt-3 relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                <input type="text" @bind="_searchText" @bind:event="oninput"
+                       placeholder="Search..."
+                       class="w-full pl-9 pr-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-1 min-h-0">
+            <!-- Left: Candidate List -->
+            <div class="@(_compactMode ? "w-full" : "w-2/5 border-r border-outline-variant/20") overflow-y-auto">
+                @{
+                    var filteredCandidates = FilteredCandidates;
+                    var displayColumns = GetDisplayFieldColumns(filteredCandidates);
+                    var displayGroups = GetDisplayGroups(filteredCandidates);
+                    var showGroupHeaders = ShouldShowGroupHeaders(displayGroups);
+                    var showSourceColumn = ShouldShowSourceColumn();
+                    var columnCount = 1 + displayColumns.Count + (showSourceColumn ? 1 : 0);
+                }
+                <table class="w-full text-sm">
+                    <thead class="sticky top-0 bg-surface-container-low">
+                        <tr>
+                            <th class="text-left px-4 py-2 text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Name</th>
+                            @foreach (var column in displayColumns)
+                            {
+                                <th class="text-left px-2 py-2 text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">@column.Header</th>
+                            }
+                            @if (showSourceColumn)
+                            {
+                                <th class="text-left px-4 py-2 text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Source</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (filteredCandidates is not null)
+                        {
+                            @foreach (var group in displayGroups)
+                            {
+                                @if (showGroupHeaders)
+                                {
+                                    <tr class="bg-surface-container-low/70">
+                                        <th colspan="@columnCount"
+                                            class="p-0 text-left">
+                                            <button type="button"
+                                                    @onclick="() => ToggleGroupCollapsed(group.Key)"
+                                                    class="w-full px-4 py-1.5 flex items-center gap-1 text-left text-[10px] font-label font-semibold uppercase tracking-wider text-primary hover:bg-surface-container-high transition-colors">
+                                                <span class="material-symbols-outlined text-sm">@GetGroupCollapseIcon(group.Key)</span>
+                                                <span>@group.Name</span>
+                                                <span class="text-on-surface-variant normal-case tracking-normal">(@group.Candidates.Count)</span>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                }
+
+                                @if (!IsGroupCollapsed(group.Key))
+                                {
+                                    @foreach (var candidate in group.Candidates)
+                                    {
+                                        var isSelected = _selectedElement?.InternalId == candidate.InternalId;
+                                        var isRecommended = IsRecommended(candidate);
+                                        <tr @onclick="() => SelectCandidate(candidate)"
+                                            class="@(isSelected ? "bg-primary/5 font-semibold" : isRecommended ? "bg-amber-50/40 hover:bg-amber-50/70" : "hover:bg-surface-container-low") cursor-pointer transition-colors">
+                                            <td class="px-4 py-2 text-on-surface">
+                                                @if (isRecommended)
+                                                {
+                                                    <span class="inline-flex items-center gap-1 mr-1 text-amber-600" title="Recommended for this character">
+                                                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                                                    </span>
+                                                }
+                                                @candidate.Name
+                                            </td>
+                                            @foreach (var column in displayColumns)
+                                            {
+                                                <td class="px-2 py-2 text-on-surface-variant text-xs">@GetFieldDisplayValue(candidate, column.FieldName)</td>
+                                            }
+                                            @if (showSourceColumn)
+                                            {
+                                                <td class="px-4 py-2 text-on-surface-variant text-xs">@(candidate.Source ?? "—")</td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr class="bg-surface-container-lowest">
+                                        <td colspan="@columnCount" class="px-4 py-2 text-xs text-on-surface-variant italic">
+                                            @group.Candidates.Count option@(group.Candidates.Count == 1 ? "" : "s") hidden
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+
+                @if (FilteredCandidates?.Count == 0)
+                {
+                    <div class="px-4 py-8 text-center text-sm text-on-surface-variant">
+                        No matching options found.
+                    </div>
+                }
+            </div>
+
+            <!-- Right: Detail Panel -->
+            @if (!_compactMode)
+            {
+            <div class="w-3/5 p-6 overflow-y-auto">
+                @if (_selectedDetail is not null)
+                {
+                    <ElementDetailView Element="_selectedDetail"
+                                       OnLoadDetails="OnLoadDetails"
+                                       OnResolveIds="OnResolveIds" />
+                }
+                else
+                {
+                    <div class="flex items-center justify-center h-full text-sm text-on-surface-variant">
+                        Select an option to see details
+                    </div>
+                }
+            </div>
+            }
+        </div>
+
+        <!-- Footer -->
+        <div class="px-6 py-3 border-t border-outline-variant/20 flex items-center justify-between">
+            <span class="text-xs text-on-surface-variant">
+                @(FilteredCandidates?.Count ?? 0) options available
+            </span>
+            <div class="flex gap-2">
+                <button @onclick="OnClose"
+                        class="px-4 py-2 text-sm font-label font-semibold text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors scale-98-active">
+                    Cancel
+                </button>
+                <button @onclick="ConfirmSelection" disabled="@(_selectedElement is null)"
+                        class="px-4 py-2 text-sm font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors scale-98-active disabled:opacity-40 disabled:cursor-not-allowed">
+                    @if (_selectedElement is not null)
+                    {
+                        <span>Choose @_selectedElement.Name</span>
+                    }
+                    else
+                    {
+                        <span>Choose</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public PendingChoice Choice { get; set; } = null!;
+    [Parameter, EditorRequired] public IReadOnlyList<RulesElement>? Candidates { get; set; }
+    [Parameter, EditorRequired] public EventCallback<RulesElement> OnSelect { get; set; }
+    [Parameter, EditorRequired] public EventCallback OnClose { get; set; }
+    [Parameter] public Func<string, RulesElement?>? OnLoadDetails { get; set; }
+    [Parameter] public Func<string, List<ResolvedElement>>? OnResolveIds { get; set; }
+    /// <summary>InternalIds of candidates the rules engine flagged as suggested for this slot.</summary>
+    [Parameter] public IReadOnlySet<string>? RecommendedIds { get; set; }
+
+    private string _searchText = "";
+    private RulesElement? _selectedElement;
+    private RulesElement? _selectedDetail;
+    private bool _compactMode;
+    private string? _lastChoiceKey;
+    private readonly Dictionary<string, string?> _categoryNameCache = new(StringComparer.OrdinalIgnoreCase);
+    private readonly HashSet<string> _collapsedGroupKeys = new(StringComparer.OrdinalIgnoreCase);
+
+    protected override void OnParametersSet()
+    {
+        _categoryNameCache.Clear();
+
+        var choiceKey = GetChoiceKey();
+        if (!string.Equals(_lastChoiceKey, choiceKey, StringComparison.Ordinal))
+        {
+            _collapsedGroupKeys.Clear();
+            _lastChoiceKey = choiceKey;
+        }
+
+        // Check if candidates have displayable detail content.
+        // Only go compact if ALL candidates lack content (e.g., Race Ability Bonus).
+        // Sample first candidate — if it has content, use full layout.
+        _compactMode = true;
+        if (Candidates is { Count: > 0 } && OnLoadDetails is not null)
+        {
+            // Check first 3 candidates to avoid false positives
+            foreach (var candidate in Candidates.Take(3))
+            {
+                var detail = OnLoadDetails(candidate.InternalId);
+                if (detail is not null && ElementDetailView.HasDisplayableContent(detail))
+                {
+                    _compactMode = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    private IReadOnlyList<RulesElement>? FilteredCandidates
+    {
+        get
+        {
+            if (Candidates is null || string.IsNullOrWhiteSpace(_searchText))
+                return Candidates;
+
+            return Candidates
+                .Where(CandidateMatchesSearch)
+                .ToList();
+        }
+    }
+
+    private void SelectCandidate(RulesElement element)
+    {
+        _selectedElement = element;
+        _selectedDetail = OnLoadDetails?.Invoke(element.InternalId) ?? element;
+    }
+
+    private async Task ConfirmSelection()
+    {
+        if (_selectedElement is not null)
+            await OnSelect.InvokeAsync(_selectedElement);
+    }
+
+    private bool CandidateMatchesSearch(RulesElement candidate)
+    {
+        return candidate.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
+            || (candidate.Source?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
+            || candidate.Fields.Any(field =>
+                !string.IsNullOrWhiteSpace(field.Value)
+                && field.Value.Contains(_searchText, StringComparison.OrdinalIgnoreCase))
+            || candidate.Categories
+                .Select(ResolveCategoryName)
+                .Any(name => name?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) == true);
+    }
+
+    private IReadOnlyList<RulesElementPickerFieldColumn> GetDisplayFieldColumns(IReadOnlyList<RulesElement>? candidates)
+    {
+        if (candidates is null)
+            return Array.Empty<RulesElementPickerFieldColumn>();
+
+        var excluded = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        if (IsPowerChoice())
+        {
+            excluded.Add("Power Usage");
+            excluded.Add("Keywords");
+        }
+
+        return RulesElementPickerDisplay.GetFieldColumns(candidates, excludedFieldNames: excluded);
+    }
+
+    private IReadOnlyList<RulesElementPickerGroup> GetDisplayGroups(IReadOnlyList<RulesElement>? candidates)
+    {
+        if (candidates is null)
+            return Array.Empty<RulesElementPickerGroup>();
+
+        // Hoist recommended candidates into a leading "Recommended" group
+        // when any are flagged. The same elements are NOT removed from
+        // their normal category groups — the user still sees the full
+        // candidate list, the badge just calls attention to the suggested
+        // pick(s).
+        IReadOnlyList<RulesElementPickerGroup> baseGroups;
+
+        if (IsRaceAbilityBonusChoice() || IsSkillTrainingChoice())
+        {
+            baseGroups =
+            [
+                new RulesElementPickerGroup(
+                    "__no-categories",
+                    "All options",
+                    candidates.OrderBy(candidate => candidate.Name, StringComparer.OrdinalIgnoreCase).ToList(),
+                    IsCategoryBacked: false),
+            ];
+        }
+        else
+        {
+            var excludedCategoryIds = RulesElementPickerDisplay.ExtractExplicitCategoryIds(Choice.Slot.Category);
+            if (IsPowerChoice())
+            {
+                // Power choices: skip category grouping entirely. The category
+                // taxonomy on powers (by class, by usage, by source book, etc.)
+                // doesn't carve the candidate list into useful chunks — users
+                // just want a flat list with the engine's "Recommended" picks
+                // hoisted to the top. Mirror the Race Ability / Skill Training
+                // branch above.
+                baseGroups =
+                [
+                    new RulesElementPickerGroup(
+                        "__no-categories",
+                        "All options",
+                        candidates.OrderBy(candidate => candidate.Name, StringComparer.OrdinalIgnoreCase).ToList(),
+                        IsCategoryBacked: false),
+                ];
+            }
+            else
+            {
+                baseGroups = RulesElementPickerDisplay.GroupByCategory(
+                    candidates,
+                    ResolveCategoryName,
+                    excludedCategoryIds);
+            }
+        }
+
+        if (RecommendedIds is null || RecommendedIds.Count == 0)
+            return baseGroups;
+
+        var recommended = candidates
+            .Where(c => !string.IsNullOrEmpty(c.InternalId) && RecommendedIds.Contains(c.InternalId))
+            .OrderBy(c => c.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        if (recommended.Count == 0)
+            return baseGroups;
+
+        var withRecommended = new List<RulesElementPickerGroup>(baseGroups.Count + 1)
+        {
+            new RulesElementPickerGroup(
+                "__recommended",
+                "★ Recommended",
+                recommended,
+                IsCategoryBacked: false),
+        };
+        withRecommended.AddRange(baseGroups);
+        return withRecommended;
+    }
+
+    public bool IsRecommended(RulesElement candidate)
+        => RecommendedIds is not null
+           && !string.IsNullOrEmpty(candidate.InternalId)
+           && RecommendedIds.Contains(candidate.InternalId);
+
+    private static bool ShouldShowGroupHeaders(IReadOnlyList<RulesElementPickerGroup> groups)
+    {
+        return groups.Count > 1 || groups.Any(group => group.IsCategoryBacked);
+    }
+
+    private bool ShouldShowSourceColumn()
+    {
+        return !IsRaceAbilityBonusChoice();
+    }
+
+    private bool IsPowerChoice()
+    {
+        return Choice.Slot.ElementType.Equals("Power", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsRaceAbilityBonusChoice()
+    {
+        return Choice.Slot.ElementType.Equals("Race Ability Bonus", StringComparison.OrdinalIgnoreCase)
+            || Choice.Description.Equals("Choose Race Ability Bonus", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsSkillTrainingChoice()
+    {
+        return Choice.Slot.ElementType.Equals("Skill Training", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private string GetChoiceKey()
+    {
+        return string.Join('\0',
+            Choice.Description,
+            Choice.Slot.ElementType,
+            Choice.Slot.Category,
+            Choice.Slot.OwnerInternalId,
+            Choice.Slot.DirectiveKey);
+    }
+
+    private void ToggleGroupCollapsed(string key)
+    {
+        if (!_collapsedGroupKeys.Add(key))
+            _collapsedGroupKeys.Remove(key);
+    }
+
+    private bool IsGroupCollapsed(string key)
+    {
+        return _collapsedGroupKeys.Contains(key);
+    }
+
+    private string GetGroupCollapseIcon(string key)
+    {
+        return IsGroupCollapsed(key) ? "chevron_right" : "expand_more";
+    }
+
+    private static string GetFieldDisplayValue(RulesElement candidate, string fieldName)
+    {
+        return candidate.Fields.TryGetValue(fieldName, out var value) && !string.IsNullOrWhiteSpace(value)
+            ? value
+            : "—";
+    }
+
+    private string? ResolveCategoryName(string categoryId)
+    {
+        if (string.IsNullOrWhiteSpace(categoryId))
+            return null;
+
+        if (_categoryNameCache.TryGetValue(categoryId, out var cached))
+            return cached;
+
+        string? name = null;
+        if (categoryId.StartsWith("ID_", StringComparison.OrdinalIgnoreCase))
+            name = OnLoadDetails?.Invoke(categoryId)?.Name;
+
+        if (string.IsNullOrWhiteSpace(name))
+            name = FormatInternalCategoryId(categoryId);
+
+        _categoryNameCache[categoryId] = name;
+        return name;
+    }
+
+    private static string? FormatInternalCategoryId(string categoryId)
+    {
+        const string prefix = "ID_INTERNAL_CATEGORY_";
+        if (!categoryId.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            return null;
+
+        var words = categoryId[prefix.Length..].Replace('_', ' ').Replace('-', ' ');
+        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(words.ToLowerInvariant());
+    }
+
+    private static string? GetChoiceCategorySummary(ChoiceSlot slot)
+    {
+        if (string.IsNullOrWhiteSpace(slot.Category))
+            return null;
+
+        var parts = slot.Category
+            .Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+            .Select(FormatCategoryPart)
+            .Where(part => !string.IsNullOrWhiteSpace(part))
+            .ToList();
+
+        return parts.Count > 0 ? string.Join(", ", parts) : null;
+    }
+
+    private static string? FormatCategoryPart(string term)
+    {
+        if (string.IsNullOrWhiteSpace(term))
+            return null;
+
+        if (term.Contains('|'))
+        {
+            var options = term.Split('|', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(FormatCategoryPart)
+                .Where(part => !string.IsNullOrWhiteSpace(part))
+                .ToList();
+            return options.Count > 0 ? string.Join("/", options) : null;
+        }
+
+        bool negated = term.StartsWith('!');
+        var bare = term.TrimStart('!');
+
+        if (bare.StartsWith("$$CLASS", StringComparison.OrdinalIgnoreCase))
+            return "Class";
+
+        if (bare.StartsWith("ID_", StringComparison.OrdinalIgnoreCase))
+            return null;
+
+        if (int.TryParse(bare, out int level))
+            return $"Level {level}";
+
+        var title = System.Globalization.CultureInfo.CurrentCulture.TextInfo
+            .ToTitleCase(bare.Replace('-', ' ').ToLowerInvariant());
+
+        return negated ? $"Not {title}" : title;
+    }
+}

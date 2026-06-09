@@ -1,0 +1,69 @@
+﻿@inherits LayoutComponentBase
+
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant/20 no-print">
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
+        <div class="flex items-center justify-between h-14">
+            <!-- Left: Logo + Tabs -->
+            <div class="flex items-center gap-6">
+                <a href="/" class="flex items-center gap-2 group">
+                    <span class="material-symbols-outlined text-primary text-2xl">auto_fix_high</span>
+                    <span class="font-headline text-lg font-bold text-on-surface tracking-tight hidden sm:block">
+                        CharM
+                    </span>
+                </a>
+                <RulesDatabaseStatusBadge />
+                <div class="hidden md:flex items-center border-l border-outline-variant/20 pl-6 gap-1">
+                    <NavLink href="/" class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-medium text-on-surface-variant rounded hover:bg-surface-container-low transition-colors"
+                             ActiveClass="bg-surface-container-low text-on-surface font-semibold" Match="NavLinkMatch.All">
+                        <span class="material-symbols-outlined text-lg">person</span>
+                        Stats
+                    </NavLink>
+                    <NavLink href="/powers" class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-medium text-on-surface-variant rounded hover:bg-surface-container-low transition-colors"
+                             ActiveClass="bg-surface-container-low text-on-surface font-semibold">
+                        <span class="material-symbols-outlined text-lg">bolt</span>
+                        Powers
+                    </NavLink>
+                    <NavLink href="/details" class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-medium text-on-surface-variant rounded hover:bg-surface-container-low transition-colors"
+                             ActiveClass="bg-surface-container-low text-on-surface font-semibold">
+                        <span class="material-symbols-outlined text-lg">description</span>
+                        Details
+                    </NavLink>
+                </div>
+            </div>
+
+            <!-- Right: Actions -->
+            <SessionActions />
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="max-w-screen-2xl mx-auto px-4 md:px-8 py-6">
+    <CharacterPersistence />
+    <RestoreOverlay />
+    @Body
+</main>
+
+<DiceRollerModal />
+
+<!-- Mobile Bottom Nav -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant/20 md:hidden z-50 no-print">
+    <div class="flex items-center justify-around py-2">
+        <NavLink href="/" class="flex flex-col items-center gap-0.5 text-xs font-label text-on-surface-variant"
+                 ActiveClass="text-primary font-semibold" Match="NavLinkMatch.All">
+            <span class="material-symbols-outlined text-xl">person</span>
+            Stats
+        </NavLink>
+        <NavLink href="/powers" class="flex flex-col items-center gap-0.5 text-xs font-label text-on-surface-variant"
+                 ActiveClass="text-primary font-semibold">
+            <span class="material-symbols-outlined text-xl">bolt</span>
+            Powers
+        </NavLink>
+        <NavLink href="/details" class="flex flex-col items-center gap-0.5 text-xs font-label text-on-surface-variant"
+                 ActiveClass="text-primary font-semibold">
+            <span class="material-symbols-outlined text-xl">description</span>
+            Details
+        </NavLink>
+    </div>
+</nav>

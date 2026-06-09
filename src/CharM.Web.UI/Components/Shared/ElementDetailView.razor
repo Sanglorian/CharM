@@ -1,0 +1,282 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+
+@if (Element is not null)
+{
+    @if (ShowHeader)
+    {
+        <h3 class="font-headline text-lg font-bold text-on-surface">@Element.Name</h3>
+        <p class="text-xs font-label text-on-surface-variant mt-0.5 uppercase tracking-wider">
+            @Element.Type
+            @if (Element.Source is not null)
+            {
+                <span>— @Element.Source</span>
+            }
+        </p>
+    }
+    @if (HasLoreFields(Element))
+    {
+        <div class="flex gap-1 mt-3 mb-2">
+            <button @onclick="() => _showLore = false"
+                    class="px-2 py-1 text-[10px] font-label font-bold uppercase tracking-wider rounded transition-colors @(!_showLore ? "bg-primary text-on-primary" : "text-outline hover:bg-surface-container-low")">
+                Stats
+            </button>
+            <button @onclick="() => _showLore = true"
+                    class="px-2 py-1 text-[10px] font-label font-bold uppercase tracking-wider rounded transition-colors @(_showLore ? "bg-primary text-on-primary" : "text-outline hover:bg-surface-container-low")">
+                Lore
+            </button>
+        </div>
+    }
+
+    @if (_showLore && HasLoreFields(Element))
+    {
+        @foreach (var field in GetLoreFields(Element))
+        {
+            <div class="mt-3">
+                <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">
+                    @field.Key
+                </span>
+                <p class="text-sm text-on-surface mt-0.5 leading-relaxed">@field.Value</p>
+            </div>
+        }
+    }
+    else if (IsPowerElement(Element))
+    {
+        <div class="mt-3">
+            <PowerCard Card="PowerCardFactory.Build(Element)" />
+        </div>
+
+        @if (ShowPrereqs(Element))
+        {
+            var displayPrereqs = Element.Fields.GetValueOrDefault("print-prereqs") ?? Element.Prereqs;
+            <div class="mt-3">
+                <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Prerequisites</span>
+                <p class="text-sm text-on-surface mt-0.5">@displayPrereqs</p>
+            </div>
+        }
+    }
+    else
+    {
+        @if (Element.Fields.TryGetValue("Short Description", out var shortDesc) && !string.IsNullOrEmpty(shortDesc))
+        {
+            <p class="text-sm text-on-surface mt-3">@shortDesc</p>
+        }
+
+        @if (ShowPrereqs(Element))
+        {
+            var displayPrereqs = Element.Fields.GetValueOrDefault("print-prereqs") ?? Element.Prereqs;
+            <div class="mt-3">
+                <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Prerequisites</span>
+                <p class="text-sm text-on-surface mt-0.5">@displayPrereqs</p>
+            </div>
+        }
+
+        @foreach (var field in GetDisplayFields(Element))
+        {
+            if (CharacterSessionService.ContainsElementIds(field.Value))
+            {
+                var resolved = OnResolveIds?.Invoke(field.Value);
+                if (resolved is { Count: > 0 })
+                {
+                    <div class="mt-3">
+                        <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">
+                            @FriendlyFieldName(field.Key)
+                        </span>
+                        <div class="mt-1 space-y-1.5">
+                            @foreach (var item in resolved)
+                            {
+                                <div class="pl-2 border-l-2 border-outline-variant/30">
+                                    <span class="text-sm font-semibold text-on-surface">@item.Name</span>
+                                    @if (!string.IsNullOrEmpty(item.Description))
+                                    {
+                                        <span class="text-sm text-on-surface-variant">: @item.Description</span>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="mt-3">
+                    <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">
+                        @FriendlyFieldName(field.Key)
+                    </span>
+                    @if (field.Key.Equals("Description", StringComparison.OrdinalIgnoreCase))
+                    {
+                        @foreach (var para in field.Value.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            <p class="text-sm text-on-surface mt-1 leading-relaxed">@para</p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-sm text-on-surface mt-0.5">@field.Value</p>
+                    }
+                </div>
+            }
+        }
+
+        @if (GetDisplayPowerIds(Element) is { Count: > 0 } powerIds)
+        {
+            <div class="mt-4 space-y-3">
+                @foreach (var powerId in powerIds)
+                {
+                    var power = OnLoadDetails?.Invoke(powerId);
+                    if (power is not null)
+                    {
+                        <PowerCard Card="PowerCardFactory.Build(power)" />
+                    }
+                }
+            </div>
+        }
+    }
+}
+
+@code {
+    [Parameter, EditorRequired] public RulesElement? Element { get; set; }
+    [Parameter] public Func<string, RulesElement?>? OnLoadDetails { get; set; }
+    [Parameter] public Func<string, List<ResolvedElement>>? OnResolveIds { get; set; }
+    [Parameter] public bool ShowHeader { get; set; } = true;
+
+    private bool _showLore;
+
+    protected override void OnParametersSet()
+    {
+        // Reset lore toggle when the rendered element changes.
+        _showLore = false;
+    }
+
+    public static bool ShowPrereqs(RulesElement element)
+        => !string.IsNullOrWhiteSpace(element.Prereqs)
+           && !_hidePrereqTypes.Contains(element.Type);
+
+    public static string FriendlyFieldName(string fieldKey) => fieldKey switch
+    {
+        "_PARSED_CHILD_FEATURES" => "Traits",
+        "_PARSED_SUB_FEATURES" => "Options",
+        "_PARSED_CLASS_FEATURE" => "Class Features",
+        _ when fieldKey.StartsWith('_') => fieldKey[1..].Replace('_', ' '),
+        _ => fieldKey,
+    };
+
+    public static bool IsPowerElement(RulesElement element)
+        => string.Equals(element.Type, "Power", StringComparison.OrdinalIgnoreCase);
+
+    public static IReadOnlyList<string> GetDisplayPowerIds(RulesElement element)
+    {
+        if (IsPowerElement(element)) return Array.Empty<string>();
+        if (!element.Fields.TryGetValue("_DisplayPowers", out var raw) || string.IsNullOrWhiteSpace(raw))
+            return Array.Empty<string>();
+
+        var ids = new List<string>();
+        foreach (var token in raw.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+        {
+            int paren = token.IndexOf('(');
+            string id = paren > 0 ? token[..paren].Trim() : token;
+            if (id.StartsWith("ID_", StringComparison.OrdinalIgnoreCase))
+                ids.Add(id);
+        }
+        return ids;
+    }
+
+    public static bool HasLoreFields(RulesElement element)
+    {
+        if (!_loreFieldOrder.TryGetValue(element.Type, out var loreKeys))
+            return false;
+        return loreKeys.Any(k => element.Fields.TryGetValue(k, out var v) && !string.IsNullOrWhiteSpace(v));
+    }
+
+    public static IEnumerable<KeyValuePair<string, string>> GetLoreFields(RulesElement element)
+    {
+        if (!_loreFieldOrder.TryGetValue(element.Type, out var loreKeys))
+            yield break;
+        foreach (var key in loreKeys)
+        {
+            if (element.Fields.TryGetValue(key, out var val) && !string.IsNullOrWhiteSpace(val))
+                yield return new(key, val);
+        }
+    }
+
+    public static IEnumerable<KeyValuePair<string, string>> GetDisplayFields(RulesElement element)
+    {
+        if (_typeFieldOrder.TryGetValue(element.Type, out var ordered))
+        {
+            foreach (var key in ordered)
+            {
+                if (element.Fields.TryGetValue(key, out var val) && !string.IsNullOrWhiteSpace(val))
+                    yield return new(key, val);
+            }
+        }
+        else
+        {
+            foreach (var field in element.Fields)
+            {
+                if (!_hiddenFields.Contains(field.Key) && !string.IsNullOrWhiteSpace(field.Value)
+                    && !field.Key.StartsWith('_'))
+                    yield return field;
+            }
+        }
+    }
+
+    public static bool HasDisplayableContent(RulesElement? element)
+    {
+        if (element is null) return false;
+        if (element.Fields.TryGetValue("Short Description", out var sd) && !string.IsNullOrWhiteSpace(sd))
+            return true;
+        if (element.Fields.TryGetValue("Flavor", out var fl) && !string.IsNullOrWhiteSpace(fl))
+            return true;
+        if (GetDisplayFields(element).Any())
+            return true;
+        if (!string.IsNullOrWhiteSpace(element.Prereqs) && ShowPrereqs(element))
+            return true;
+        foreach (var field in element.Fields)
+        {
+            if (!string.IsNullOrWhiteSpace(field.Value)
+                && CharacterSessionService.ContainsElementIds(field.Value))
+                return true;
+        }
+        return false;
+    }
+
+    private static readonly HashSet<string> _hiddenFields = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Short Description", "Flavor",
+        "_SupportsID", "_RequiresID", "_PARSED_SUB_FEATURES", "_PARSED_CLASS_FEATURE",
+        "_DisplayPowers", "_RoleElement", "_PowerSourceElement", "_SkillPower",
+        "_Associated Feats", "InternalOnly", "Container",
+        "Display", "Power Type", "Class", "Level",
+        "Associated Powers", "Associated Power Info", "Special",
+        "Characteristics", "Physical Qualities", "Playing",
+        "Male Names", "Female Names",
+        "Powers", "_DisplayPowers",
+    };
+
+    private static readonly Dictionary<string, string[]> _typeFieldOrder = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Race"] = ["Ability Scores", "Size", "Speed", "Vision", "Languages",
+                    "Skill Bonuses", "Average Height", "Average Weight", "Racial Traits", "Description"],
+        ["Class"] = ["Role", "Power Source", "Key Abilities", "Hit Points at 1st Level",
+                     "Hit Points per Level Gained", "Healing Surges", "Bonus to Defense",
+                     "Armor Proficiencies", "Weapon Proficiencies", "Trained Skills", "Class Skills", "Description"],
+        ["Feat"] = ["Tier", "Description"],
+        ["Power"] = ["Power Usage", "Action Type", "Attack Type", "Keywords",
+                     "Attack", "Target", "Hit", "Effect", "Requirement", "Sustain"],
+        ["Racial Trait"] = ["_PARSED_CHILD_FEATURES", "Description"],
+        ["Class Feature"] = ["Description"],
+    };
+
+    private static readonly Dictionary<string, string[]> _loreFieldOrder = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Race"] = ["Flavor", "Characteristics", "Physical Qualities", "Playing"],
+        ["Class"] = ["Flavor", "Short Description"],
+    };
+
+    private static readonly HashSet<string> _hidePrereqTypes = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Race", "Class", "Racial Trait", "Class Feature", "Power Source", "Role",
+        "Language", "Proficiency", "Skill Training", "Race Ability Bonus",
+    };
+}

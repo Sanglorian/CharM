@@ -1,0 +1,65 @@
+@* Read-only power card for previewing a power — used in the choice-selection
+   modal. Mirrors the at-will/encounter/daily/utility card layout used on the
+   Powers page (minus interactive controls like the reselect button and
+   used-power checkbox). *@
+
+<div class="power-card bg-surface-container-lowest border border-outline-variant/20 overflow-hidden">
+    <div class="@Card.HeaderClass">
+        <div class="flex items-center gap-3">
+            <h3 class="@Card.TitleClass">
+                @(NameOverride ?? Card.Name)
+                @if (Card.IsHouseruled)
+                {
+                    <HouseruleBadge />
+                }
+            </h3>
+            @if (!string.IsNullOrWhiteSpace(Card.Action))
+            {
+                <span class="@Card.ActionBadgeClass">@Card.Action</span>
+            }
+            @if (Card.ShowHeaderUsage)
+            {
+                <span class="@Card.UsageBadgeClass">@Card.Usage</span>
+            }
+        </div>
+        <span class="material-symbols-outlined @Card.HeaderIconClass">@Card.HeaderIcon</span>
+    </div>
+    <div class="p-5 grid grid-cols-2 md:grid-cols-4 gap-4 bg-white power-card-content">
+        @foreach (var stat in Card.ListStats)
+        {
+            <div class="space-y-1">
+                <span class="font-label text-[10px] uppercase text-outline tracking-wider">@stat.Label</span>
+                <p class="font-body font-bold @(stat.Label == "Hit" ? "text-xs leading-tight" : "text-sm") @(stat.Label == "Keywords" ? "italic" : string.Empty)">
+                    <PowerStatLineValue Line="stat" PowerName="@Card.Name" />
+                </p>
+            </div>
+        }
+        <PowerWeaponStatsTable Card="Card" />
+        <div class="col-span-full pt-2 border-t border-surface-container mt-2">
+            @if (!string.IsNullOrWhiteSpace(Card.Flavor))
+            {
+                <p class="text-sm leading-relaxed text-on-surface-variant italic">@Card.Flavor</p>
+            }
+            @if (Card.Entries.Count > 0)
+            {
+                <div class="space-y-2 @(!string.IsNullOrWhiteSpace(Card.Flavor) ? "mt-2" : string.Empty)">
+                    @foreach (var entry in Card.Entries)
+                    {
+                        <p class="text-sm leading-relaxed">
+                            <strong class="font-bold @entry.LabelClass">@entry.Label:</strong> @entry.Text
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public PowerDisplayCard Card { get; set; } = default!;
+
+    [Parameter] public string? NameOverride { get; set; }
+
+}
+@inject DiceRollerUiService DiceRoller

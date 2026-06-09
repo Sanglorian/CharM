@@ -1,0 +1,31 @@
+@using CharM.Web.Services
+@inject CharacterRestoreState RestoreState
+@implements IDisposable
+
+@if (RestoreState.Phase == RestorePhase.Restoring)
+{
+    <div role="dialog" aria-modal="true" aria-label="Loading character"
+         class="fixed inset-0 z-[100] flex items-center justify-center bg-scrim/60 backdrop-blur-sm no-print">
+        <div class="bg-surface-container-high rounded-lg shadow-xl px-8 py-6 flex flex-col items-center gap-4 min-w-[280px]">
+            <div class="w-10 h-10 border-4 border-outline-variant border-t-primary rounded-full animate-spin" aria-hidden="true"></div>
+            <p class="font-label text-on-surface text-sm font-medium">
+                Restoring your character&hellip;
+            </p>
+        </div>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        RestoreState.Changed += HandleChanged;
+    }
+
+    private void HandleChanged()
+        => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        RestoreState.Changed -= HandleChanged;
+    }
+}

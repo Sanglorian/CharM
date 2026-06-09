@@ -1,0 +1,184 @@
+@inject DiceRoller Roller
+@inject DiceRollerUiService RollerUi
+@inject IJSRuntime JS
+@implements IDisposable
+
+@if (RollerUi.IsOpen)
+{
+    <div class="fixed inset-0 z-[70] bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4 no-print"
+         @onclick="Close">
+        <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-4xl w-full max-h-[86vh] overflow-hidden ghost-border"
+             @onclick:stopPropagation="true">
+            <div class="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between">
+                <div>
+                    <p class="font-label text-[10px] uppercase tracking-[0.2em] text-primary">Dice Roller</p>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">@(_label ?? "Roll dice")</h2>
+                </div>
+                <button @onclick="Close" class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-0">
+                <div class="p-6 space-y-4 border-b lg:border-b-0 lg:border-r border-outline-variant/20">
+                    <label class="block text-xs font-label text-on-surface-variant">
+                        Expression
+                        <input value="@_expression"
+                               @oninput="e => _expression = e.Value?.ToString() ?? string.Empty"
+                               @onkeydown="HandleKeyDown"
+                               class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-on-surface font-body focus:border-primary focus:outline-none"
+                               placeholder="1d20+8, 2d6+4..." />
+                    </label>
+                    <button @onclick="Roll"
+                            class="w-full py-2.5 bg-primary text-on-primary font-label font-semibold rounded hover:bg-primary-dim transition-colors scale-98-active">
+                        Roll
+                    </button>
+
+                    @if (!string.IsNullOrWhiteSpace(_error))
+                    {
+                        <p class="text-sm text-error">@_error</p>
+                    }
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="bg-surface-container-low p-3 rounded">
+                            <span class="block text-[10px] font-label uppercase tracking-widest text-outline">@(_last?.D20Raw is null ? "Dice" : "Raw d20")</span>
+                            <strong class="text-xl">@RawDisplay</strong>
+                        </div>
+                        <div class="bg-surface-container-low p-3 rounded">
+                            <span class="block text-[10px] font-label uppercase tracking-widest text-outline">Total</span>
+                            <strong class="text-xl">@(_last?.Total.ToString() ?? "--")</strong>
+                        </div>
+                        <div class="bg-surface-container-low p-3 rounded">
+                            <span class="block text-[10px] font-label uppercase tracking-widest text-outline">Call</span>
+                            <strong class="text-sm">@StatusText</strong>
+                        </div>
+                    </div>
+
+                    @if (_last is not null)
+                    {
+                        <div class="text-xs text-on-surface-variant space-y-1">
+                            @foreach (var term in _last.Terms)
+                            {
+                                <div>
+                                    <span class="font-bold">@FormatTerm(term.Term):</span>
+                                    @if (term.Rolls.Count > 0)
+                                    {
+                                        <span>@string.Join(", ", term.Rolls)</span>
+                                    }
+                                    <span class="text-outline"> = @term.Total</span>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="p-5 bg-surface-container-low">
+                    <div id="@_rollerId" class="d20-roller-root relative min-h-[320px] rounded-lg overflow-hidden bg-gradient-to-b from-slate-950 to-slate-900 ghost-border">
+                        <div class="d20-ring" aria-hidden="true"></div>
+                        <div class="d20-canvas-wrap">
+                            <div class="d20-viewport" aria-label="Animated twenty-sided die" role="img"></div>
+                        </div>
+                        <div class="d20-result-badge" aria-live="polite">
+                            <small>result</small>
+                            <strong>--</strong>
+                        </div>
+                        <div class="d20-particles" aria-hidden="true"></div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="block text-[10px] font-label uppercase tracking-widest text-outline mb-1">Recent rolls</span>
+                        <div class="flex flex-wrap gap-2 min-h-8">
+                            @foreach (var roll in RollerUi.History.Take(8))
+                            {
+                                <span class="px-2 py-1 rounded-full text-xs font-bold bg-primary-container text-on-primary-container">
+                                    @(roll.Label is { Length: > 0 } ? roll.Label + ": " : "")@roll.Total
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private readonly string _rollerId = "dice-roller-" + Guid.NewGuid().ToString("N");
+    private string _expression = "1d20";
+    private string? _label;
+    private string? _error;
+    private DiceRollResult? _last;
+
+    private string StatusText => _last?.D20Raw switch
+    {
+        20 => "Critical hit",
+        1 => "Critical miss",
+        >= 17 => "Heroic strike",
+        >= 12 => "Solid roll",
+        >= 7 => "Shaky outcome",
+        null when _last is not null => "Rolled",
+        _ => "Awaiting fate",
+    };
+
+    protected override void OnInitialized()
+    {
+        RollerUi.Changed += HandleChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (RollerUi.IsOpen)
+            await JS.InvokeVoidAsync("charm.d20Roller.init", _rollerId);
+    }
+
+    private void HandleChanged()
+    {
+        _expression = RollerUi.Expression;
+        _label = RollerUi.Label;
+        _ = InvokeAsync(StateHasChanged);
+    }
+
+    private async Task Roll()
+    {
+        try
+        {
+            _error = null;
+            _last = Roller.Roll(_expression, _label);
+            RollerUi.Record(_last);
+            if (_last.D20Raw is int d20)
+            {
+                string tier = d20 == 20 ? "crit" : d20 == 1 ? "fumble" : "normal";
+                await JS.InvokeVoidAsync("charm.d20Roller.roll", _rollerId, d20, tier, _last.Modifier);
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("charm.d20Roller.showTotal", _rollerId, _last.Total, "dice");
+            }
+        }
+        catch (DiceExpressionException ex)
+        {
+            _error = ex.Message;
+        }
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+            await Roll();
+    }
+
+    private void Close() => RollerUi.Close();
+
+    private string RawDisplay => _last is null
+        ? "--"
+        : _last.D20Raw?.ToString() ?? string.Join(", ", _last.Terms.SelectMany(t => t.Rolls));
+
+    private static string FormatTerm(DiceTerm term)
+        => term.DieSides is int sides
+            ? $"{(term.Sign < 0 ? "-" : "")}{term.Count}d{sides}"
+            : $"{(term.Sign < 0 ? "-" : "")}{term.Constant}";
+
+    public void Dispose()
+    {
+        RollerUi.Changed -= HandleChanged;
+    }
+}

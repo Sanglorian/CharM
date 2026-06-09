@@ -1,0 +1,349 @@
+@using Microsoft.AspNetCore.Components.Forms
+@using CharM.Web.Services
+@inject RulesDatabaseService RulesDatabase
+@inject NavigationManager Navigation
+@implements IDisposable
+
+<div class="flex items-center justify-center min-h-[70vh]">
+    <div class="bg-surface-container-lowest p-8 rounded-lg ghost-border max-w-3xl w-full">
+        <div class="flex items-start justify-between gap-4 mb-2">
+            <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-primary text-4xl">database</span>
+                <div>
+                    <h1 class="font-headline text-3xl font-bold text-on-surface">
+                        @(IsManageMode ? "Manage rules database" : "Rules Database Required")
+                    </h1>
+                    <p class="text-sm text-on-surface-variant mt-2">
+                        Start with an existing rules.db file, or build one from a merged rules XML file
+                        @if (!IsManageMode)
+                        {
+                            <text> and optional CBLoader .part files.</text>
+                        }
+                        else
+                        {
+                            <text> and optional CBLoader .part files. The currently loaded database stays active until you finish loading a new one.</text>
+                        }
+                    </p>
+                </div>
+            </div>
+            @if (IsManageMode)
+            {
+                <button @onclick="CancelManage"
+                        class="shrink-0 px-3 py-1.5 text-sm font-label text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">
+                    Cancel
+                </button>
+            }
+        </div>
+
+        <p class="text-xs text-on-surface-variant ml-12 mb-6">
+            Will be saved to: <code class="text-on-surface font-mono">@DestinationPath</code>
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- ============================= LEFT: load existing ============================= -->
+            <section class="p-5 bg-surface-container-low rounded ghost-border flex flex-col">
+                <h2 class="font-headline text-xl font-bold text-on-surface mb-2">Use existing database</h2>
+                <p class="text-xs text-on-surface-variant mb-4">Select a previously built SQLite rules database.</p>
+                <InputFile OnChange="OnDatabaseSelected" class="block w-full text-sm text-on-surface" />
+                <div class="flex-1"></div>
+                <button @onclick="LoadSelectedDatabaseAsync"
+                        disabled="@(_selectedDatabase is null || _busy)"
+                        class="mt-4 w-full py-2.5 bg-primary text-on-primary font-label font-semibold rounded hover:bg-primary-dim transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    Load rules.db
+                </button>
+            </section>
+
+            <!-- ============================= RIGHT: build from sources ============================= -->
+            <section class="p-5 bg-surface-container-low rounded ghost-border flex flex-col">
+                <h2 class="font-headline text-xl font-bold text-on-surface mb-2">Build from sources</h2>
+
+                <details class="text-xs text-on-surface-variant mb-3 cursor-pointer">
+                    <summary class="hover:text-on-surface">ⓘ Where do I get these files?</summary>
+                    <ul class="list-disc ml-5 mt-2 space-y-1">
+                        <li><strong>combined.dnd40 / rules XML</strong> — the decrypted and/or merged rules xml export produced by CBLoader.</li>
+                        @if (ExeExtractionSupported)
+                        {
+                            <li><strong>OCB update executable</strong> — the official Wizards of the Coast "Character Builder Update" installer (extension <code>.exe</code>). CharM extracts the rules XML from it automatically.</li>
+                        }
+                        <li><strong>Part files or an Index</strong> (<code>.part</code>, <code>.index</code>) — incremental rule updates produced by CBLoader. Optional but highly recommended.</li>
+                    </ul>
+                </details>
+
+                <!-- source mode radio -->
+                <fieldset class="mb-4">
+                    <legend class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-2">Source</legend>
+                    <label class="flex items-center gap-2 text-sm text-on-surface cursor-pointer mb-1">
+                        <input type="radio" name="source-mode" value="xml" checked="@(_sourceMode == SourceMode.RulesXml)"
+                               @onchange="@(() => SetSourceMode(SourceMode.RulesXml))" />
+                        Rules XML file
+                    </label>
+                    @if (ExeExtractionSupported)
+                    {
+                        <label class="flex items-center gap-2 text-sm text-on-surface cursor-pointer">
+                            <input type="radio" name="source-mode" value="exe" checked="@(_sourceMode == SourceMode.UpdateExecutable)"
+                                   @onchange="@(() => SetSourceMode(SourceMode.UpdateExecutable))" />
+                            Character Builder update executable
+                        </label>
+                    }
+                </fieldset>
+                @if (!ExeExtractionSupported)
+                {
+                    <p class="text-xs text-on-surface-variant mb-4 -mt-2">
+                        Extracting rules from a Character Builder update executable isn't available on this platform.
+                        Build the database on a desktop, then load the resulting <code>rules.db</code> here, or provide a rules XML file.
+                    </p>
+                }
+
+                @if (_sourceMode == SourceMode.RulesXml)
+                {
+                    <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Rules XML</label>
+                    <InputFile OnChange="OnRulesXmlSelected" class="block w-full text-sm text-on-surface mb-4" />
+                }
+                else
+                {
+                    <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Character Builder update executable (.exe)</label>
+                    <InputFile OnChange="OnUpdateExecutableSelected" class="block w-full text-sm text-on-surface mb-4" />
+                }
+
+                <!-- Optional addons -->
+                <details class="text-sm text-on-surface mb-3">
+                    <summary class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant cursor-pointer hover:text-on-surface">
+                        + Optional: part files & index URL
+                    </summary>
+                    <div class="mt-3 space-y-3">
+                        <div>
+                            <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Part files</label>
+                            <InputFile OnChange="OnPartsSelected" multiple class="block w-full text-sm text-on-surface" />
+                            @if (_selectedParts.Count > 0)
+                            {
+                                <p class="text-xs text-on-surface-variant mt-2">@_selectedParts.Count source file(s) selected.</p>
+                            }
+                        </div>
+                        <div>
+                            <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Part index URL</label>
+                            <input type="url" @bind="_partIndexUrl"
+                                   class="w-full px-3 py-2 bg-surface-container-lowest border-b border-outline rounded text-on-surface font-body focus:border-primary focus:outline-none"
+                                   placeholder="https://example.com/WotC.index" />
+                        </div>
+                    </div>
+                </details>
+
+                <div class="flex-1"></div>
+                <button @onclick="BuildDatabaseAsync"
+                        disabled="@(!HasRulesSource || _busy)"
+                        class="mt-2 w-full py-2.5 bg-primary text-on-primary font-label font-semibold rounded hover:bg-primary-dim transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    Build rules.db
+                </button>
+            </section>
+        </div>
+
+        @{
+            var progress = RulesDatabase.CurrentProgress;
+        }
+        @if (progress is not null)
+        {
+            <div class="mt-6 p-4 bg-surface-container-low rounded">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-label font-semibold text-on-surface">@progress.Phase</span>
+                    @if (progress.Current is int curr && progress.Total is int total)
+                    {
+                        <span class="text-xs font-mono text-on-surface-variant">@($"{curr:N0} / {total:N0}")</span>
+                    }
+                    else if (progress.Current is int onlyCurr)
+                    {
+                        <span class="text-xs font-mono text-on-surface-variant">@($"{onlyCurr:N0}")</span>
+                    }
+                </div>
+                @if (progress.Current is int c2 && progress.Total is int t2 && t2 > 0)
+                {
+                    var pct = Math.Min(100, (c2 * 100) / t2);
+                    <div class="w-full h-2 bg-surface-container-highest rounded overflow-hidden">
+                        <div class="h-full bg-primary transition-all" style="width: @pct%"></div>
+                    </div>
+                }
+                else
+                {
+                    <div class="w-full h-2 bg-surface-container-highest rounded overflow-hidden">
+                        <div class="h-full w-1/3 bg-primary animate-pulse"></div>
+                    </div>
+                }
+                @if (!string.IsNullOrWhiteSpace(progress.Detail))
+                {
+                    <p class="text-xs text-on-surface-variant mt-2 font-mono truncate">@progress.Detail</p>
+                }
+            </div>
+        }
+        else if (!string.IsNullOrWhiteSpace(_message))
+        {
+            <div class="mt-6 p-3 rounded text-sm font-label @(_messageIsError ? "bg-error-container text-on-error-container" : "bg-success-container text-on-success-container")">
+                @_message
+            </div>
+        }
+        else if (!string.IsNullOrWhiteSpace(RulesDatabase.StatusMessage))
+        {
+            <div class="mt-6 p-3 rounded text-sm font-label @(RulesDatabase.StatusIsError ? "bg-error-container text-on-error-container" : "bg-success-container text-on-success-container")">
+                @RulesDatabase.StatusMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private enum SourceMode { RulesXml, UpdateExecutable }
+
+    [Parameter] public bool IsManageMode { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    private IBrowserFile? _selectedDatabase;
+    private IBrowserFile? _selectedRulesXml;
+    private IBrowserFile? _selectedUpdateExecutable;
+    private IReadOnlyList<IBrowserFile> _selectedParts = [];
+    private string? _partIndexUrl;
+    private SourceMode _sourceMode = SourceMode.RulesXml;
+    private bool _busy;
+    private string? _message;
+    private bool _messageIsError;
+
+    // OCB update-executable extraction relies on LibArchive.Net's native
+    // libarchive, which ships only for desktop runtimes (Windows/macOS/Linux).
+    // Android and iOS have no compatible native library so the option is
+    // hidden there. NOTE: Mac Catalyst causes OperatingSystem.IsIOS() to
+    // return true, so an `!IsIOS()` exclusion would incorrectly hide the
+    // option on Mac. Use an explicit whitelist of supported platforms.
+    private static bool ExeExtractionSupported =>
+        OperatingSystem.IsWindows()
+        || OperatingSystem.IsMacOS()
+        || OperatingSystem.IsMacCatalyst()
+        || OperatingSystem.IsLinux();
+
+    private bool HasRulesSource => _sourceMode switch
+    {
+        SourceMode.RulesXml          => _selectedRulesXml is not null,
+        SourceMode.UpdateExecutable  => _selectedUpdateExecutable is not null,
+        _                            => false,
+    };
+
+    private string DestinationPath => Path.Combine(
+        RulesDatabasePathResolver.GetDefaultWorkingDirectory(),
+        "rules.db");
+
+    protected override void OnInitialized()
+    {
+        if (!ExeExtractionSupported && _sourceMode == SourceMode.UpdateExecutable)
+            _sourceMode = SourceMode.RulesXml;
+
+        RulesDatabase.Changed += HandleRulesDatabaseChanged;
+    }
+
+    private void SetSourceMode(SourceMode mode)
+    {
+        _sourceMode = mode;
+        _message = null;
+    }
+
+    private void OnDatabaseSelected(InputFileChangeEventArgs args)
+    {
+        _selectedDatabase = args.File;
+        _message = $"Selected {_selectedDatabase.Name}";
+        _messageIsError = false;
+    }
+
+    private void OnRulesXmlSelected(InputFileChangeEventArgs args)
+    {
+        _selectedRulesXml = args.File;
+        _message = $"Selected {_selectedRulesXml.Name}";
+        _messageIsError = false;
+    }
+
+    private void OnUpdateExecutableSelected(InputFileChangeEventArgs args)
+    {
+        _selectedUpdateExecutable = args.File;
+        _message = $"Selected {_selectedUpdateExecutable.Name}";
+        _messageIsError = false;
+    }
+
+    private void OnPartsSelected(InputFileChangeEventArgs args)
+    {
+        _selectedParts = args.GetMultipleFiles(500);
+        _message = _selectedParts.Count == 0
+            ? "No part files selected."
+            : $"Selected {_selectedParts.Count} source file(s).";
+        _messageIsError = false;
+    }
+
+    private async Task LoadSelectedDatabaseAsync()
+    {
+        if (_selectedDatabase is null)
+            return;
+
+        await RunSetupActionAsync(async () =>
+        {
+            await using var stream = _selectedDatabase.OpenReadStream(RulesDatabaseService.MaxUploadBytes);
+            await RulesDatabase.LoadUploadedDatabaseAsync(stream, _selectedDatabase.Name);
+            _message = $"Loaded {_selectedDatabase.Name}";
+            _messageIsError = false;
+        });
+    }
+
+    private async Task BuildDatabaseAsync()
+    {
+        if (!HasRulesSource)
+            return;
+
+        await RunSetupActionAsync(async () =>
+        {
+            var parts = _selectedParts.Select(file =>
+                new UploadedRulesSourceFile(file.Name, file.OpenReadStream(RulesDatabaseService.MaxUploadBytes))).ToList();
+
+            if (_sourceMode == SourceMode.RulesXml && _selectedRulesXml is not null)
+            {
+                await using var rulesStream = _selectedRulesXml.OpenReadStream(RulesDatabaseService.MaxUploadBytes);
+                await RulesDatabase.BuildFromUploadedSourcesAsync(rulesStream, _selectedRulesXml.Name, parts, _partIndexUrl);
+            }
+            else if (_sourceMode == SourceMode.UpdateExecutable && _selectedUpdateExecutable is not null)
+            {
+                await using var exeStream = _selectedUpdateExecutable.OpenReadStream(RulesDatabaseService.MaxUploadBytes);
+                await RulesDatabase.BuildFromUpdateExecutableAsync(exeStream, _selectedUpdateExecutable.Name, parts, _partIndexUrl);
+            }
+
+            _message = "Built and loaded rules.db";
+            _messageIsError = false;
+        });
+    }
+
+    private async Task RunSetupActionAsync(Func<Task> action)
+    {
+        _busy = true;
+        _message = null;
+        try
+        {
+            await action();
+            if (RulesDatabase.IsLoaded)
+                Navigation.NavigateTo("/", forceLoad: false);
+        }
+        catch (Exception ex)
+        {
+            _message = ex.Message;
+            _messageIsError = true;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private async Task CancelManage()
+    {
+        if (OnCancel.HasDelegate)
+            await OnCancel.InvokeAsync();
+    }
+
+    private void HandleRulesDatabaseChanged()
+        => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        RulesDatabase.Changed -= HandleRulesDatabaseChanged;
+    }
+}

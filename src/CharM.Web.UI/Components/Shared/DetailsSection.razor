@@ -1,0 +1,17 @@
+<section class="group overflow-hidden rounded-lg border border-outline-variant/10 bg-surface-container-lowest">
+    <div class="bg-tertiary-container flex justify-between items-center px-6 py-4">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-on-tertiary-container">@Icon</span>
+            <h2 class="font-label text-xs font-extrabold uppercase tracking-[0.15em] text-on-tertiary-container">@Title</h2>
+        </div>
+    </div>
+    <div class="border-t border-outline-variant/10">
+        @ChildContent
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public string Icon { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public RenderFragment? ChildContent { get; set; }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>CharM</title>
+
+    <!-- Locally bundled fonts (no Google Fonts CDN — app must work offline).
+         These CSS files are static web assets from CharM.Web.UI and point
+         at the WOFF2 files under wwwroot/fonts/. -->
+    <link rel="stylesheet" href="_content/CharM.Web.UI/fonts/noto-manrope.css" />
+    <link rel="stylesheet" href="_content/CharM.Web.UI/fonts/noto-serif.css" />
+    <link rel="stylesheet" href="_content/CharM.Web.UI/fonts/material-symbols.css" />
+
+    <!-- Tailwind compiled at build time by the standalone CLI (see
+         CharM.Web.UI.csproj DownloadTailwindCli + BuildTailwindCss targets).
+         Design tokens (colors, fonts, radii) live in tailwind.config.js. -->
+    <link rel="stylesheet" href="_content/CharM.Web.UI/tailwind.css" />
+
+    <link rel="icon" type="image/svg+xml" href="_content/CharM.Web.UI/favicon.svg" />
+    <link rel="icon" type="image/png" href="_content/CharM.Web.UI/favicon.png" />
+</head>
+
+<body class="bg-surface text-on-surface font-body">
+    <div id="app">Loading...</div>
+    <script>
+        window.charm = window.charm || {};
+        window.charm.downloadFileFromBytes = (fileName, base64Data, mimeType) => {
+            const byteCharacters = atob(base64Data);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const blob = new Blob([new Uint8Array(byteNumbers)], { type: mimeType });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(link.href);
+            link.remove();
+        };
+        // Stream-based download for large binaries (e.g. ~50 MB rules.db backup).
+        window.charm.downloadFileFromStream = async (fileName, streamRef) => {
+            const buffer = await streamRef.arrayBuffer();
+            const blob = new Blob([buffer]);
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url);
+            link.remove();
+        };
+        window.charm.clickElementById = (elementId) => {
+            document.getElementById(elementId)?.click();
+        };
+        window.charm.setBodyClass = (className, enabled) => {
+            document.body.classList.toggle(className, !!enabled);
+        };
+    </script>
+    <!-- Three.js-based dice roller. Three.js is downloaded at build time by
+         CharM.Web.UI's DownloadThreeJs target and lives next to this script,
+         so the dynamic import in d20-roller.js resolves offline. -->
+    <script type="module" src="_content/CharM.Web.UI/js/d20-roller.js"></script>
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+</body>
+
+</html>

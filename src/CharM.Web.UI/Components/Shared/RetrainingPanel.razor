@@ -1,0 +1,113 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject RetrainingService RetrainSvc
+
+@if (SessionService.Session is not { } session || session.Level < 2)
+{
+    @* Panel only shown when L2+ *@
+    return;
+}
+
+@{
+    var slots = RetrainSvc.GetRetrainSlots(session);
+}
+
+<DetailsSection Icon="change_circle" Title="Retraining">
+    <div class="divide-y divide-outline-variant/10">
+        <p class="text-[11px] text-on-surface-variant px-4 pt-3 pb-2 leading-relaxed">
+            At each level from 2 onward you may swap one Feat, Trained Skill, or Utility Power
+            for a same-category replacement. L1 picks are eligible to retrain from L2.
+        </p>
+
+        @foreach (var slot in slots)
+        {
+            var pair = slot.ExistingRetrain;
+
+            <div class="flex items-center justify-between gap-3 px-4 py-2.5">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="font-label text-[10px] font-bold text-outline shrink-0 w-8 text-right">L@slot.Level</span>
+
+                    @if (pair is not null)
+                    {
+                        @* Filled slot — show swap summary *@
+                        <div class="flex items-center gap-1.5 min-w-0 flex-wrap">
+                            <span class="font-headline text-sm text-on-surface truncate max-w-[10rem]"
+                                  title="@(pair.OldElement?.Name ?? pair.Replacement.OldInternalId)">
+                                @(pair.OldElement?.Name ?? pair.Replacement.OldInternalId)
+                            </span>
+                            <span class="material-symbols-outlined text-primary text-base shrink-0">arrow_forward</span>
+                            <span class="font-headline text-sm font-bold text-primary truncate max-w-[10rem]"
+                                  title="@(pair.NewElement?.Name ?? pair.Replacement.NewName ?? pair.Replacement.NewInternalId)">
+                                @(pair.NewElement?.Name ?? pair.Replacement.NewName ?? pair.Replacement.NewInternalId)
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        @* Empty slot *@
+                        <span class="text-[11px] text-on-surface-variant italic">No retrain taken</span>
+                    }
+                </div>
+
+                <div class="flex items-center gap-1.5 shrink-0">
+                    @if (pair is not null)
+                    {
+                        <button @onclick="() => OpenModal(slot.Level, isOptional: true)"
+                                class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded
+                                       border border-outline-variant/30 text-on-surface-variant
+                                       hover:bg-surface-container-low transition-colors"
+                                title="Edit retrain at level @slot.Level">
+                            Edit
+                        </button>
+                        <button @onclick="() => ClearSlot(session, slot.Level)"
+                                class="text-[10px] font-label uppercase tracking-wider px-2 py.0.5 rounded
+                                       border border-outline-variant/30 text-error
+                                       hover:bg-error/10 transition-colors"
+                                title="Remove retrain at level @slot.Level">
+                            <span class="material-symbols-outlined text-sm">delete</span>
+                        </button>
+                    }
+                    else
+                    {
+                        <button @onclick="() => OpenModal(slot.Level, isOptional: true)"
+                                class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded
+                                       bg-primary text-on-primary hover:bg-primary/90 transition-colors"
+                                title="Take a retrain at level @slot.Level">
+                            + Retrain
+                        </button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</DetailsSection>
+
+@* --- Modal (mounted here, only rendered when _modalContext != null) --- *@
+<RetrainModal Visible="_modalContext is not null"
+              Context="_modalContext"
+              OnResult="HandleModalResult" />
+
+@code {
+    private RetrainModalContext? _modalContext;
+
+    private void OpenModal(int level, bool isOptional)
+    {
+        _modalContext = new RetrainModalContext(level, IsOptional: isOptional);
+    }
+
+    private async Task HandleModalResult(RetrainResult? result)
+    {
+        // result == null means cancel or skip — either way just close.
+        _modalContext = null;
+        // session.Changed fires from within ApplyRetrain/ClearRetrain,
+        // so the parent layout will re-render automatically.
+        await Task.CompletedTask;
+    }
+
+    private void ClearSlot(CharacterSession session, int level)
+    {
+        RetrainSvc.ClearRetrain(session, level);
+    }
+}

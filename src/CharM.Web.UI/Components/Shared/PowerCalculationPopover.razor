@@ -1,0 +1,46 @@
+<span class="relative inline-block">
+    <button type="button"
+            class="@TriggerClass"
+            @onclick="Toggle"
+            title="Show calculation">
+        @ChildContent
+    </button>
+    @if (_open)
+    {
+        <div class="absolute z-[60] mt-2 w-80 rounded-lg bg-surface-container-lowest shadow-xl ghost-border text-left p-3 text-on-surface no-print">
+            <div class="flex items-center justify-between gap-2 border-b border-outline-variant/20 pb-2 mb-2">
+                <div>
+                    <div class="font-label text-[10px] uppercase tracking-widest text-outline">@Title</div>
+                    @if (!string.IsNullOrWhiteSpace(Value))
+                    {
+                        <div class="font-headline text-lg font-bold">@Value</div>
+                    }
+                </div>
+                <button @onclick="Toggle" class="text-outline hover:text-on-surface">
+                    <span class="material-symbols-outlined text-sm">close</span>
+                </button>
+            </div>
+            <div class="max-h-72 overflow-y-auto space-y-1">
+                @foreach (var line in Lines)
+                {
+                    <div class="text-xs border-b border-outline-variant/10 pb-1">@line</div>
+                }
+            </div>
+        </div>
+    }
+</span>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = "";
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public string? Components { get; set; }
+    [Parameter] public string TriggerClass { get; set; } = "hover:text-primary transition-colors";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool _open;
+
+    private IEnumerable<string> Lines => (Components ?? string.Empty)
+        .Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+    private void Toggle() => _open = !_open;
+}

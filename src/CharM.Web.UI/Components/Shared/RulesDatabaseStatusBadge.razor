@@ -1,0 +1,219 @@
+@using CharM.Web.Services
+@using Microsoft.JSInterop
+@inject RulesDatabaseService RulesDatabase
+@inject CharacterSessionService SessionService
+@inject IJSRuntime JS
+@implements IDisposable
+
+@if (RulesDatabase.IsLoaded && !RulesDatabase.IsManageMode)
+{
+    <div class="relative no-print">
+        <button @onclick="ToggleDropdown"
+                class="flex items-center gap-1.5 px-2.5 py-1 text-xs font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors"
+                title="Rules database details">
+            <span class="material-symbols-outlined text-base text-primary">database</span>
+            <span class="hidden md:inline">@RulesDatabase.Count.ToString("N0") elements</span>
+            <span class="font-mono text-on-surface-variant">@ShortHash</span>
+            <span class="material-symbols-outlined text-base">@(_isOpen ? "expand_less" : "expand_more")</span>
+        </button>
+
+        @if (_isOpen)
+        {
+            <div class="absolute right-0 mt-1 w-80 z-50 bg-surface-container-lowest rounded shadow-lg ghost-border p-4 text-sm">
+                <h3 class="font-headline text-base font-bold text-on-surface mb-2">Rules database</h3>
+                <dl class="space-y-1.5 mb-4">
+                    <div class="flex justify-between">
+                        <dt class="text-on-surface-variant">Elements:</dt>
+                        <dd class="font-mono">@RulesDatabase.Count.ToString("N0")</dd>
+                    </div>
+                    @if (RulesDatabase.SizeBytes is long size)
+                    {
+                        <div class="flex justify-between">
+                            <dt class="text-on-surface-variant">Size:</dt>
+                            <dd class="font-mono">@FormatSize(size)</dd>
+                        </div>
+                    }
+                    @if (RulesDatabase.LoadedAt is DateTime loaded)
+                    {
+                        <div class="flex justify-between">
+                            <dt class="text-on-surface-variant">Loaded:</dt>
+                            <dd class="font-mono">@loaded.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                        </div>
+                    }
+                </dl>
+
+                <div class="mb-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Fingerprint</span>
+                        @if (!string.IsNullOrWhiteSpace(RulesDatabase.ContentHash))
+                        {
+                            <button @onclick="CopyHash"
+                                    class="text-xs text-primary hover:underline flex items-center gap-1"
+                                    title="Copy full hash to clipboard">
+                                <span class="material-symbols-outlined text-sm">content_copy</span>
+                                copy
+                            </button>
+                        }
+                    </div>
+                    @if (RulesDatabase.ContentHashComputing)
+                    {
+                        <p class="text-xs text-on-surface-variant font-mono mt-1">computing...</p>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(RulesDatabase.ContentHash))
+                    {
+                        <p class="text-xs text-on-surface font-mono break-all mt-1">@RulesDatabase.ContentHash</p>
+                    }
+                    else
+                    {
+                        <p class="text-xs text-on-surface-variant mt-1">unavailable</p>
+                    }
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(RulesDatabase.DatabasePath))
+                {
+                    <div class="mb-4">
+                        <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Path</span>
+                        <p class="text-xs text-on-surface font-mono break-all mt-1">@RulesDatabase.DatabasePath</p>
+                    </div>
+                }
+
+                <div class="flex gap-2">
+                    <button @onclick="DownloadBackup"
+                            disabled="@_downloading"
+                            class="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors disabled:opacity-40">
+                        <span class="material-symbols-outlined text-base">download</span>
+                        @(_downloading ? "Preparing..." : "Backup")
+                    </button>
+                    <button @onclick="RequestManage"
+                            class="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors"
+                            title="@(SessionService.HasSession ? "Will close the current character session" : "Open the rules database wizard")">
+                        <span class="material-symbols-outlined text-base">settings</span>
+                        Manage
+                        @if (SessionService.HasSession)
+                        {
+                            <span class="material-symbols-outlined text-sm text-error-container" title="Will close current session">warning</span>
+                        }
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (_showSwapConfirm)
+{
+    <div class="fixed inset-0 z-[60] flex items-center justify-center bg-inverse-surface/60 no-print" @onclick="CancelSwapConfirm">
+        <div class="bg-surface-container-lowest rounded-lg p-6 max-w-md w-full mx-4 ghost-border" @onclick:stopPropagation="true">
+            <div class="flex items-start gap-3 mb-4">
+                <span class="material-symbols-outlined text-3xl text-error">warning</span>
+                <div>
+                    <h3 class="font-headline text-lg font-bold text-on-surface">Close current session?</h3>
+                    <p class="text-sm text-on-surface-variant mt-2">
+                        Swapping rules databases will close the current character session.
+                        Any unsaved changes will be lost.
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2">
+                <button @onclick="CancelSwapConfirm"
+                        class="px-4 py-2 text-sm font-label text-on-surface hover:bg-surface-container-low rounded transition-colors">
+                    Cancel
+                </button>
+                <button @onclick="ConfirmSwap"
+                        class="px-4 py-2 text-sm font-label font-semibold text-on-error bg-error rounded hover:bg-error-dim transition-colors">
+                    Swap database
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool _isOpen;
+    private bool _showSwapConfirm;
+    private bool _downloading;
+
+    private string ShortHash => RulesDatabase.ContentHash is { Length: >= 8 } h
+        ? h[..8].ToLowerInvariant()
+        : (RulesDatabase.ContentHashComputing ? "···" : "—");
+
+    protected override void OnInitialized()
+    {
+        RulesDatabase.Changed += HandleChanged;
+        SessionService.Changed += HandleChanged;
+    }
+
+    private void ToggleDropdown() => _isOpen = !_isOpen;
+    private void CloseDropdown() => _isOpen = false;
+
+    private void RequestManage()
+    {
+        CloseDropdown();
+        if (SessionService.HasSession)
+        {
+            _showSwapConfirm = true;
+        }
+        else
+        {
+            RulesDatabase.RequestManageMode();
+        }
+    }
+
+    private void ConfirmSwap()
+    {
+        _showSwapConfirm = false;
+        SessionService.ClearSession();
+        RulesDatabase.RequestManageMode();
+    }
+
+    private void CancelSwapConfirm() => _showSwapConfirm = false;
+
+    private async Task CopyHash()
+    {
+        if (string.IsNullOrWhiteSpace(RulesDatabase.ContentHash)) return;
+        try
+        {
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", RulesDatabase.ContentHash);
+        }
+        catch
+        {
+            // clipboard API can fail in non-secure contexts; ignore
+        }
+    }
+
+    private async Task DownloadBackup()
+    {
+        if (_downloading) return;
+        _downloading = true;
+        try
+        {
+            await using var stream = RulesDatabase.OpenBackupReadStream();
+            using var streamRef = new DotNetStreamReference(stream);
+            var shortSha = RulesDatabase.ContentHash is { Length: >= 8 } h ? h[..8].ToLowerInvariant() : "backup";
+            var filename = $"charm-rules-{shortSha}.db";
+            await JS.InvokeVoidAsync("charm.downloadFileFromStream", filename, streamRef);
+        }
+        finally
+        {
+            _downloading = false;
+            CloseDropdown();
+        }
+    }
+
+    private static string FormatSize(long bytes)
+    {
+        const long mb = 1024L * 1024L;
+        const long kb = 1024L;
+        if (bytes >= mb) return $"{bytes / (double)mb:F1} MB";
+        if (bytes >= kb) return $"{bytes / (double)kb:F1} KB";
+        return $"{bytes} B";
+    }
+
+    private void HandleChanged() => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        RulesDatabase.Changed -= HandleChanged;
+        SessionService.Changed -= HandleChanged;
+    }
+}

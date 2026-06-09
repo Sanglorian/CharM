@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <ItemGroup>
+    <ProjectReference Include="..\CharM.Engine\CharM.Engine.csproj" />
+    <ProjectReference Include="..\CharM.RulesDb\CharM.RulesDb.csproj" />
+    <ProjectReference Include="..\CharM.Serialization\CharM.Serialization.csproj" />
+    <ProjectReference Include="..\CharM.ImportExport\CharM.ImportExport.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Use a PackageReference rather than <FrameworkReference Include="Microsoft.AspNetCore.App" />.
+      The ASP.NET Core runtime pack does not ship for mobile TFMs
+      (android / ios / maccatalyst). When CharM.Maui publishes for one of
+      those TFMs it walks transitive references from this RCL and tries to
+      resolve a runtime pack that does not exist, producing NETSDK1082.
+
+      Microsoft.AspNetCore.Components.Web is a normal NuGet package — works
+      on every TFM — and transitively brings Components.Forms,
+      Components.Routing, Components.Web.Virtualization, and JSInterop,
+      which is everything we use in Razor components here. CharM.Web (the
+      standalone webserver) still gets the full ASP.NET Core framework via
+      its own Microsoft.NET.Sdk.Web SDK, so it is unaffected.
+    -->
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CharM.Web</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Tailwind CSS build pipeline using the standalone CLI (no Node/npm).
+    Downloads the platform-appropriate single-file binary to a gitignored
+    cache directory on first build, then runs it before Razor compiles
+    so the generated wwwroot/tailwind.css is picked up as a static asset.
+
+    Inputs scanned: see tailwind.config.js `content` array — Razor files
+    in this project AND in CharM.Web (which composes pages from these
+    components). Output: wwwroot/tailwind.css (gitignored, regenerated
+    every build).
+
+    Skipped when SkipTailwindBuild=true (e.g. for unit-test-only builds
+    that don't need styled output, or CI runs that prebuilt the CSS).
+  -->
+  <PropertyGroup>
+    <TailwindVersion>3.4.17</TailwindVersion>
+    <TailwindCacheDir>$(MSBuildThisFileDirectory)../../.tailwind</TailwindCacheDir>
+    <TailwindBinaryName Condition="$([MSBuild]::IsOSPlatform('Windows'))">tailwindcss-windows-x64.exe</TailwindBinaryName>
+    <TailwindBinaryName Condition="$([MSBuild]::IsOSPlatform('Linux'))">tailwindcss-linux-x64</TailwindBinaryName>
+    <TailwindBinaryName Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture)' == 'Arm64'">tailwindcss-macos-arm64</TailwindBinaryName>
+    <TailwindBinaryName Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture)' != 'Arm64'">tailwindcss-macos-x64</TailwindBinaryName>
+    <TailwindBinaryPath>$(TailwindCacheDir)/$(TailwindBinaryName)-$(TailwindVersion)</TailwindBinaryPath>
+    <TailwindDownloadUrl>https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/$(TailwindBinaryName)</TailwindDownloadUrl>
+    <TailwindInput>$(MSBuildThisFileDirectory)Styles/site.css</TailwindInput>
+    <TailwindOutput>$(MSBuildThisFileDirectory)wwwroot/tailwind.css</TailwindOutput>
+    <TailwindConfig>$(MSBuildThisFileDirectory)tailwind.config.js</TailwindConfig>
+  </PropertyGroup>
+
+  <Target Name="DownloadTailwindCli"
+          Condition="'$(SkipTailwindBuild)' != 'true' AND !Exists('$(TailwindBinaryPath)')">
+    <MakeDir Directories="$(TailwindCacheDir)" />
+    <Message Importance="high" Text="Downloading Tailwind CSS $(TailwindVersion) standalone CLI from $(TailwindDownloadUrl)..." />
+    <DownloadFile SourceUrl="$(TailwindDownloadUrl)"
+                  DestinationFolder="$(TailwindCacheDir)"
+                  DestinationFileName="$(TailwindBinaryName)-$(TailwindVersion)" />
+    <!-- chmod +x on non-Windows so the binary is executable -->
+    <Exec Command="chmod +x &quot;$(TailwindBinaryPath)&quot;" Condition="!$([MSBuild]::IsOSPlatform('Windows'))" />
+  </Target>
+
+  <Target Name="BuildTailwindCss"
+          BeforeTargets="ResolveProjectStaticWebAssets"
+          DependsOnTargets="DownloadTailwindCli"
+          Inputs="$(TailwindInput);$(TailwindConfig);@(RazorComponent);@(Content)"
+          Outputs="$(TailwindOutput)"
+          Condition="'$(SkipTailwindBuild)' != 'true'">
+    <Message Importance="high" Text="Building Tailwind CSS: $(TailwindInput) -> $(TailwindOutput)" />
+    <Exec Command="&quot;$(TailwindBinaryPath)&quot; -i &quot;$(TailwindInput)&quot; -o &quot;$(TailwindOutput)&quot; -c &quot;$(TailwindConfig)&quot; --minify"
+          WorkingDirectory="$(MSBuildThisFileDirectory)" />
+  </Target>
+
+  <!--
+    Three.js download pipeline. d20-roller.js imports three.module.js as a
+    relative ES module; we fetch the pinned version from unpkg at build time
+    so the app works offline at runtime. Build-time internet IS required.
+
+    Skipped when SkipThreeJsDownload=true or the file already exists.
+    Bump ThreeVersion when upgrading; delete wwwroot/js/three.module.js to
+    force re-download.
+  -->
+  <PropertyGroup>
+    <ThreeVersion>0.164.1</ThreeVersion>
+    <ThreeOutputPath>$(MSBuildThisFileDirectory)wwwroot/js/three.module.js</ThreeOutputPath>
+    <ThreeDownloadUrl>https://unpkg.com/three@$(ThreeVersion)/build/three.module.js</ThreeDownloadUrl>
+  </PropertyGroup>
+
+  <Target Name="DownloadThreeJs"
+          BeforeTargets="ResolveProjectStaticWebAssets"
+          Condition="'$(SkipThreeJsDownload)' != 'true' AND !Exists('$(ThreeOutputPath)')">
+    <Message Importance="high" Text="Downloading Three.js $(ThreeVersion) from $(ThreeDownloadUrl)..." />
+    <DownloadFile SourceUrl="$(ThreeDownloadUrl)"
+                  DestinationFolder="$(MSBuildThisFileDirectory)wwwroot/js"
+                  DestinationFileName="three.module.js" />
+  </Target>
+
+</Project>
+
+

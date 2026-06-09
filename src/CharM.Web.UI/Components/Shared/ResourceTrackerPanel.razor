@@ -1,0 +1,155 @@
+@inject CharacterSessionService SessionService
+@inject CharacterResourceTracker Resources
+@implements IDisposable
+
+@{
+    var state = Resources.GetState(SessionService);
+}
+
+<div class="col-span-2 lg:col-span-1 space-y-3">
+    <div class="flex justify-between items-end">
+        <span class="font-label text-[10px] uppercase tracking-widest text-outline">Hit Points</span>
+        <div class="flex items-baseline gap-1">
+            <span class="text-3xl font-bold">@state.CurrentHp</span>
+            <span class="text-outline text-sm">/
+                <CalculationPopover Stats="Stats" StatName="Hit Points" TriggerClass="text-inherit">
+                    @state.MaxHp
+                </CalculationPopover>
+            </span>
+        </div>
+    </div>
+    <div class="w-full bg-surface-container-highest h-2">
+        <div class="bg-error h-full" style="width: @(state.MaxHp > 0 ? 100 * state.CurrentHp / state.MaxHp : 0)%;"></div>
+    </div>
+    <div class="flex justify-between text-[9px] font-label uppercase text-outline">
+        <span>Lost @state.LostHp</span>
+        <span>Bloodied @(state.MaxHp / 2)</span>
+        <span>Temp @state.TempHp</span>
+    </div>
+    <div class="grid grid-cols-4 gap-1 no-print">
+        <button class="text-[10px] bg-surface-container-low rounded px-1 py-1 hover:bg-surface-container" @onclick="() => Damage(1)">-1</button>
+        <button class="text-[10px] bg-surface-container-low rounded px-1 py-1 hover:bg-surface-container" @onclick="() => Damage(5)">-5</button>
+        <button class="text-[10px] bg-surface-container-low rounded px-1 py-1 hover:bg-surface-container" @onclick="() => Heal(1)">+1</button>
+        <button class="text-[10px] bg-surface-container-low rounded px-1 py-1 hover:bg-surface-container" @onclick="() => Heal(state.SurgeValue)">+surge</button>
+    </div>
+    <div class="flex gap-1 no-print">
+        <label class="sr-only" for="@_tempHpInputId">Temporary hit points</label>
+        <input type="number" min="0" value="@_tempHpDraft" @onchange="e => SetTemp(e.Value?.ToString())"
+               id="@_tempHpInputId"
+               class="w-full px-2 py-1 text-xs bg-surface-container-low border-b border-outline rounded"
+               placeholder="Set Temp HP"
+               title="Set temporary hit points" />
+    </div>
+</div>
+
+<div class="col-span-1 border-l border-outline-variant/20 pl-4">
+    <span class="font-label text-[10px] uppercase tracking-widest text-outline block mb-1">Healing Surges</span>
+    <div class="flex items-baseline gap-2 mb-2">
+        <span class="text-2xl font-bold">
+            <CalculationPopover Stats="Stats" StatName="Healing Surges" TriggerClass="text-inherit">
+                @state.RemainingSurges
+            </CalculationPopover>
+        </span>
+        <span class="text-outline text-xs">/ @state.MaxSurges</span>
+    </div>
+    <div class="flex items-center gap-2 text-[10px] font-label uppercase text-outline bg-surface-container-low px-2 py-1">
+        <span>Value:</span>
+        <span class="text-on-surface font-bold">
+            <CalculationPopover Stats="Stats" StatName="Hit Points" TriggerClass="text-inherit">
+                @state.SurgeValue HP
+            </CalculationPopover>
+        </span>
+    </div>
+    <div class="flex gap-1 mt-2 no-print">
+        <button class="text-[10px] bg-surface-container-low rounded px-2 py-1 hover:bg-surface-container" @onclick="SpendSurge">Spend</button>
+        <button class="text-[10px] bg-surface-container-low rounded px-2 py-1 hover:bg-surface-container" @onclick="RecoverSurge">Recover</button>
+    </div>
+</div>
+
+<div class="col-span-1 border-l border-outline-variant/20 pl-4">
+    <span class="font-label text-[10px] uppercase tracking-widest text-outline block mb-1">Death Saves</span>
+    <div class="flex gap-1.5 mt-2">
+        @for (int i = 1; i <= 3; i++)
+        {
+            int marker = i;
+            <button class="material-symbols-outlined text-outline text-xl no-print @(state.FailedDeathSaves >= marker ? "text-error" : "")"
+                    style="font-variation-settings: 'FILL' @(state.FailedDeathSaves >= marker ? 1 : 0);"
+                    @onclick="() => MarkDeathSave(marker)">
+                skull
+            </button>
+        }
+    </div>
+    <button class="mt-1 text-[9px] text-outline hover:text-on-surface no-print" @onclick="ClearDeathSaves">clear</button>
+    <div class="mt-3 pt-3 border-t border-outline-variant/20">
+        <span class="font-label text-[10px] uppercase tracking-widest text-outline block mb-1">Action Points</span>
+        @ActionPointContent
+    </div>
+    @if (state.MaxPowerPoints > 0)
+    {
+        <div class="mt-3 pt-3 border-t border-outline-variant/20">
+            <span class="font-label text-[10px] uppercase tracking-widest text-outline block mb-1">Power Points</span>
+            <div class="flex items-center gap-2">
+                <button @onclick="SpendPowerPoint" class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface bg-surface-container-low rounded text-xs no-print">−</button>
+                <span class="text-xl font-bold min-w-[1.5rem] text-center">
+                    <CalculationPopover Stats="Stats" StatName="Power Points" TriggerClass="text-inherit">
+                        @state.RemainingPowerPoints
+                    </CalculationPopover>
+                </span>
+                <span class="text-[10px] text-outline">/ @state.MaxPowerPoints</span>
+                <button @onclick="RecoverPowerPoint" class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface bg-surface-container-low rounded text-xs no-print">+</button>
+            </div>
+        </div>
+    }
+    <div class="flex gap-2 mt-3 no-print">
+        <button class="text-[9px] text-outline hover:text-on-surface" @onclick="ShortRest">short rest</button>
+        <button class="text-[9px] text-outline hover:text-on-surface" @onclick="ExtendedRest">extended rest</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ActionPointContent { get; set; }
+    [Parameter] public CharM.Engine.Evaluation.StatBlock? Stats { get; set; }
+
+    private int _tempHpDraft;
+    private readonly string _tempHpInputId = "temp-hp-" + Guid.NewGuid().ToString("N");
+
+    protected override void OnInitialized()
+    {
+        Resources.Changed += HandleChanged;
+    }
+
+    private void Damage(int amount) => Resources.ApplyDamage(SessionService, amount);
+    private void Heal(int amount) => Resources.Heal(SessionService, amount);
+    private void SpendSurge() => Resources.SpendSurge(SessionService);
+    private void RecoverSurge() => Resources.RecoverSurge(SessionService);
+    private void SpendPowerPoint() => Resources.SpendPowerPoint(SessionService);
+    private void RecoverPowerPoint() => Resources.RecoverPowerPoint(SessionService);
+    private void ShortRest() => Resources.ShortRest(SessionService);
+    private void ExtendedRest() => Resources.ExtendedRest(SessionService);
+    private void ClearDeathSaves() => Resources.ClearDeathSaves(SessionService);
+
+    private void MarkDeathSave(int marker)
+    {
+        var state = Resources.GetState(SessionService);
+        if (state.FailedDeathSaves >= marker)
+            Resources.ClearDeathSaves(SessionService);
+        else
+            Resources.MarkDeathSave(SessionService);
+    }
+
+    private void SetTemp(string? value)
+    {
+        if (int.TryParse(value, out var temp))
+        {
+            _tempHpDraft = Math.Max(0, temp);
+            Resources.SetTempHp(SessionService, _tempHpDraft);
+        }
+    }
+
+    private void HandleChanged() => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        Resources.Changed -= HandleChanged;
+    }
+}

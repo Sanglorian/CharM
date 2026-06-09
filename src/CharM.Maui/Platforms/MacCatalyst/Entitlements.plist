@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <!-- See https://aka.ms/maui-publish-app-store#add-entitlements -->
+    <dict>
+        <!-- App Sandbox is required to distribute through the Mac App Store. -->
+        <key>com.apple.security.app-sandbox</key>
+        <true/>
+        <!-- When App Sandbox is enabled, this is required to make outgoing
+             network connections (e.g. the BlazorWebView fetching static assets,
+             or future HTTP-based features). -->
+        <key>com.apple.security.network.client</key>
+        <true/>
+    </dict>
+</plist>

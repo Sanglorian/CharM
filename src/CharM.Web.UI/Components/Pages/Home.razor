@@ -1,0 +1,2294 @@
+@page "/"
+@using CharM.Engine.Creation
+@using CharM.Engine.CharacterModel
+@using CharM.Engine.Economy
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject CharacterRestoreState RestoreState
+@implements IDisposable
+
+<PageTitle>CharM</PageTitle>
+
+@if (!SessionService.HasSession && RestoreState.Phase == RestorePhase.Idle)
+{
+    <!-- New Character Setup -->
+    <div class="flex items-center justify-center min-h-[60vh]">
+        <div class="bg-surface-container-lowest p-8 rounded-lg ghost-border max-w-md w-full">
+            <h1 class="font-headline text-2xl font-bold text-on-surface mb-6">New Character</h1>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Character Name</label>
+                    <input type="text" @bind="_characterName" class="w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-on-surface font-body focus:border-primary focus:outline-none" placeholder="Enter character name..." />
+                </div>
+                <div>
+                    <label class="block text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant mb-1">Level</label>
+                    <input type="number" @bind="_level" min="1" max="30" class="w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-on-surface font-body focus:border-primary focus:outline-none" />
+                </div>
+                <button @onclick="StartNewCharacter" class="w-full py-2.5 bg-primary text-on-primary font-label font-semibold rounded hover:bg-primary-dim transition-colors scale-98-active">
+                    Create Character
+                </button>
+            </div>
+        </div>
+    </div>
+}
+else if (!SessionService.HasSession)
+{
+    <!-- Restore is pending or in progress — leave the page blank; the
+         RestoreOverlay spinner (mounted in MainLayout) covers the screen
+         until the saved character lands or we confirm none exists. -->
+}
+else
+{
+    var session = SessionService.Session!;
+    var pendingChoices = session.GetAllPendingChoices();
+    var snapshot = session.GetPartialSnapshot();
+
+    var displayPendingChoices = OrderPendingChoices(pendingChoices).ToList();
+
+    <!-- Compact Header -->
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+            <span class="font-label text-[10px] uppercase tracking-[0.2em] text-outline mb-1 block">
+                @if (_editingLevel)
+                {
+                    <input type="number" min="1" max="30" value="@session.Level"
+                           @onchange="e => CommitLevel(e.Value?.ToString())"
+                           @onblur="() => _editingLevel = false"
+                           class="inline-block w-14 px-1 bg-surface-container-low border-b border-primary text-on-surface text-xs"
+                           autofocus />
+                }
+                else
+                {
+                    <button @onclick="() => _editingLevel = true"
+                            class="hover:text-on-surface transition-colors"
+                            title="Edit level">Level @session.Level <span class="material-symbols-outlined text-[10px] align-middle">edit</span></button>
+                }
+                @(session.GetSelectedElement("Race")?.Name ?? "")
+                @(session.GetSelectedElement("Class")?.Name ?? "")
+            </span>
+            @if (_editingName)
+            {
+                <input type="text" value="@session.Name"
+                       @onchange="e => CommitName(e.Value?.ToString())"
+                       @onblur="() => _editingName = false"
+                       class="font-headline text-5xl font-bold text-on-surface tracking-tight bg-transparent border-b border-primary focus:outline-none w-full"
+                       autofocus />
+            }
+            else
+            {
+                <h1 class="font-headline text-5xl font-bold text-on-surface tracking-tight cursor-pointer hover:opacity-80"
+                    @onclick="() => _editingName = true"
+                    title="Click to edit">@session.Name</h1>
+            }
+        </div>
+        <div class="flex flex-col items-end">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="font-label text-[10px] uppercase tracking-widest text-outline">Experience</span>
+                @if (_editingXp)
+                {
+                    <input type="number" min="0" value="@CurrentXp"
+                           @onchange="e => CommitXp(e.Value?.ToString())"
+                           @onblur="() => _editingXp = false"
+                           class="w-24 px-1 bg-surface-container-low border-b border-primary text-sm font-bold text-right"
+                           autofocus />
+                }
+                else
+                {
+                    <button @onclick="() => _editingXp = true"
+                            class="text-sm font-bold hover:text-primary transition-colors"
+                            title="Click to edit XP">@CurrentXp / @XpForNextLevel(session.Level)</button>
+                }
+            </div>
+            <div class="w-48 bg-surface-container-highest h-1.5">
+                <div class="bg-primary h-full" style="width: @(XpProgressPercent(session))%;"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pending Choices Banner -->
+    @if (pendingChoices.Count > 0)
+    {
+        <section class="bg-tertiary-container/50 p-4 rounded ghost-border mb-6">
+            <h2 class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-tertiary-container mb-2">
+                <span class="material-symbols-outlined text-sm align-middle mr-1">pending_actions</span>
+                Choices Needed (@pendingChoices.Count)
+            </h2>
+            <div class="flex flex-wrap gap-2">
+                @foreach (var choice in displayPendingChoices.Take(12))
+                {
+                    bool isSkippable = IsSkippableChoice(choice);
+                    <div class="flex items-center gap-0.5">
+                        <button @onclick="() => OpenSelectionModal(choice)"
+                                class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest rounded-l ghost-border hover:bg-surface-container-low transition-colors text-left scale-98-active text-sm">
+                            <span class="font-label font-semibold text-on-surface">@choice.Description</span>
+                            @if (choice.Slot.Number > 1)
+                            {
+                                <span class="text-xs text-on-surface-variant">(×@choice.Slot.Remaining)</span>
+                            }
+                            <span class="material-symbols-outlined text-primary text-lg">arrow_forward</span>
+                        </button>
+                        @if (isSkippable)
+                        {
+                            <button @onclick="() => SkipChoice(choice)"
+                                    class="px-2 py-1.5 bg-surface-container-lowest rounded-r ghost-border hover:bg-surface-container-low transition-colors text-xs text-outline"
+                                    title="Skip this choice">
+                                <span class="material-symbols-outlined text-sm">close</span>
+                            </button>
+                        }
+                    </div>
+                }
+                @if (displayPendingChoices.Count > 12)
+                {
+                    <span class="text-xs text-on-surface-variant self-center">+@(displayPendingChoices.Count - 12) more...</span>
+                }
+            </div>
+        </section>
+    }
+
+    <!-- Main 3-Column Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6">
+
+        <!-- Column 1: Ability Scores & Skills -->
+        <div class="md:col-span-2 lg:col-span-3 space-y-6">
+            @if (!session.ScoresSet)
+            {
+                <div class="bg-surface-container-lowest ghost-border p-4">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-3">Ability Scores</h2>
+                    <AbilityScoreEntry OnScoresSet="OnAbilityScoresSet" />
+                </div>
+            }
+            else
+            {
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between mb-1">
+                        <h2 class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-outline">Abilities &amp; Skills</h2>
+                        <button @onclick="() => _editingAbilityScores = true"
+                                class="text-[10px] text-on-surface-variant hover:text-primary flex items-center gap-1"
+                                title="Edit ability scores">
+                            <span class="material-symbols-outlined text-xs">edit</span>Edit
+                        </button>
+                    </div>
+                    @if (_editingAbilityScores)
+                    {
+                        <div class="bg-surface-container-lowest ghost-border p-3">
+                            <AbilityScoreEntry OnScoresSet="OnAbilityScoresEdited" />
+                            <button @onclick="() => _editingAbilityScores = false"
+                                    class="mt-2 w-full py-1 text-xs font-label text-on-surface-variant hover:text-on-surface">
+                                Cancel
+                            </button>
+                        </div>
+                    }
+                    @foreach (var (abilityName, abilityKey) in _abilityDefs)
+                    {
+                        int score = snapshot?.GetStat(abilityName) ?? session.AbilityScores![abilityKey];
+                        int mod = (score - 10) / 2;
+                        string modStr = mod >= 0 ? $"+{mod}" : $"{mod}";
+                        bool isPrimary = mod >= 3;
+                        var linkedSkills = _abilityToSkills[abilityName];
+
+                        <div class="bg-surface-container-lowest ghost-border p-2 flex items-center gap-3">
+                            <div class="flex items-center gap-2 shrink-0">
+                                <div class="@(isPrimary ? "bg-primary text-on-primary" : "bg-surface-container-highest text-on-surface") w-9 h-10 flex items-center justify-center font-bold text-lg ability-shield">
+                                    <CalculationPopover Stats="snapshot?.Builder.Stats" StatName="@abilityName" TriggerClass="text-inherit">
+                                        @modStr
+                                    </CalculationPopover>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-label text-[9px] uppercase tracking-tighter leading-none mb-0.5">@abilityName[..3].ToUpper()</div>
+                                    <div class="text-[10px] font-bold border border-outline-variant/30 px-1 inline-block">
+                                        <CalculationPopover Stats="snapshot?.Builder.Stats" StatName="@abilityName" TriggerClass="text-inherit">
+                                            @score
+                                        </CalculationPopover>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow space-y-0.5">
+                                @foreach (var skill in linkedSkills)
+                                {
+                                    int skillVal = snapshot?.GetStat(skill) ?? mod;
+                                    bool trained = snapshot is not null && snapshot.GetStat(skill + " Trained") > 0;
+                                    string skillStr = skillVal >= 0 ? $"+{skillVal}" : $"{skillVal}";
+
+                                    <div class="flex justify-between items-center text-[10px] px-1.5 @(trained ? "py-0.5 bg-surface-container-low font-bold" : "text-outline")">
+                                        <span>@skill</span>
+                                        <span>
+                                            <CalculationPopover Stats="snapshot?.Builder.Stats" StatName="@skill" TriggerClass="text-inherit">
+                                                @skillStr
+                                            </CalculationPopover>
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Money / Economics -->
+            @{
+                var carried = session.CarriedMoney;
+                var stored = session.StoredMoney;
+                var carriedNegative = carried.IsNegative;
+            }
+            <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-stone-200/50 px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface/70">Money</h2>
+                    <button @onclick="ApplyAutoGold"
+                            class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-on-primary hover:bg-primary/90 transition-colors no-print"
+                            title="Set the by-the-book level-appropriate starting gold for this character">
+                        Level Gold
+                    </button>
+                </div>
+                <div class="p-3 space-y-1">
+                    <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-outline uppercase tracking-wider">Carried</span>
+                        <span class="font-bold tabular-nums @(carriedNegative ? "text-error" : "text-on-surface")">@carried.ToString()</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px]">
+                        <span class="text-outline uppercase tracking-wider">Stored</span>
+                        <span class="font-bold tabular-nums text-on-surface">@stored.ToString()</span>
+                    </div>
+                    @if (carriedNegative)
+                    {
+                        <div class="text-[10px] text-error italic pt-1 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[12px]">warning</span>
+                            Carried money is negative — you've overspent.
+                        </div>
+                    }
+                    @if (StartingGoldTable.IsPlaceholder(session.Level))
+                    {
+                        <div class="text-[10px] text-outline italic pt-1 no-print">
+                            Note: level-appropriate gold for level @session.Level is a placeholder pending exact rulebook values.
+                        </div>
+                    }
+                </div>
+            </section>
+
+            <!-- Inventory (non-slot gear: gear, consumables, mundane items) -->
+            <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-stone-200/50 px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface/70">Inventory</h2>
+                    <button @onclick="OpenInventoryBrowser"
+                            class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-on-primary hover:bg-primary/90 transition-colors no-print"
+                            title="Add an item">
+                        + Add
+                    </button>
+                </div>
+                <div class="p-3 space-y-1">
+                    @{
+                        var equippedIds = new HashSet<string>(
+                            _equipSlots.Select(s => session.GetEquippedItem(s)?.InternalId)
+                                       .Where(id => id is not null)!,
+                            StringComparer.OrdinalIgnoreCase);
+                        var inventory = session.GetInventory()
+                            .Where(inv => !RitualPracticeAlchemyClassifier.IsRitualPracticeAlchemyElement(inv.Item.Base))
+                            .Where(inv => inv.Item.Base.InternalId is null || !equippedIds.Contains(inv.Item.Base.InternalId))
+                            .ToList();
+                    }
+                    @if (inventory.Count == 0)
+                    {
+                        <div class="text-[10px] text-outline italic py-2 text-center">No items yet.</div>
+                    }
+                    else
+                    {
+                        @foreach (var inv in inventory)
+                        {
+                            var invId = inv.Item.Base.InternalId;
+                            <div class="flex items-center justify-between gap-2 text-[10px] border-b border-outline-variant/10 pb-1 group cursor-pointer hover:bg-surface-container-low/50 transition-colors -mx-1 px-1 rounded"
+                                 @onclick="() => OpenDetailModal(invId)">
+                                <div class="flex items-center gap-2 min-w-0">
+                                    <button @onclick="() => DecrementInventory(invId, inv.Quantity)"
+                                            @onclick:stopPropagation="true"
+                                            class="text-outline hover:text-on-surface w-4 h-4 leading-none rounded hover:bg-surface-container no-print"
+                                            title="Decrease quantity">−</button>
+                                    <span class="font-bold text-on-surface w-5 text-center">@inv.Quantity</span>
+                                    <button @onclick="() => IncrementInventory(invId)"
+                                            @onclick:stopPropagation="true"
+                                            class="text-outline hover:text-on-surface w-4 h-4 leading-none rounded hover:bg-surface-container no-print"
+                                            title="Increase quantity">+</button>
+                                    <span class="truncate text-on-surface font-semibold">@(inv.Item.CompositeName ?? inv.Item.Base.Name)</span>
+                                </div>
+                                <button @onclick="() => RemoveInventoryEntry(invId)"
+                                        @onclick:stopPropagation="true"
+                                        class="opacity-0 group-hover:opacity-100 transition-opacity text-error shrink-0 no-print"
+                                        title="Remove">
+                                    <span class="material-symbols-outlined text-[12px]">close</span>
+                                </button>
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+
+            @{
+                var ritualPracticeAlchemyRows = session.GetRitualPracticeAlchemyEntries();
+            }
+            <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-stone-200/50 px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface/70">Rituals, Alchemy &amp; Practices</h2>
+                    <button @onclick="OpenRitualPracticeAlchemyBrowser"
+                            class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-on-primary hover:bg-primary/90 transition-colors no-print"
+                            title="Add a ritual, formula, scroll, or alchemical item">
+                        + Add
+                    </button>
+                </div>
+                <div class="p-3 space-y-3">
+                    @if (ritualPracticeAlchemyRows.Count == 0)
+                    {
+                        <div class="text-[10px] text-outline italic py-2 text-center">No rituals, formulae, or practices yet.</div>
+                    }
+                    else
+                    {
+                        @foreach (var group in ritualPracticeAlchemyRows.GroupBy(row => row.Kind).OrderBy(group => RitualPracticeAlchemyClassifier.KindSortKey(group.Key)))
+                        {
+                            <div>
+                                <div class="text-[9px] font-label font-bold uppercase tracking-widest text-outline mb-1">
+                                    @FormatRitualPracticeAlchemyKind(group.Key)
+                                </div>
+                                <div class="space-y-1">
+                                    @foreach (var row in group.OrderBy(r => LevelSortKey(r.Element)).ThenBy(r => r.Element.Name, StringComparer.OrdinalIgnoreCase))
+                                    {
+                                        var elementId = row.Element.InternalId;
+                                        <div class="flex items-center justify-between gap-2 text-[10px] border-b border-outline-variant/10 pb-1 group cursor-pointer hover:bg-surface-container-low/50 transition-colors -mx-1 px-1 rounded"
+                                             @onclick="() => OpenDetailModal(elementId)">
+                                            <div class="min-w-0">
+                                                <span class="truncate text-on-surface font-semibold">@row.Element.Name</span>
+                                                <span class="text-outline ml-1">@RitualPracticeAlchemyMeta(row)</span>
+                                            </div>
+                                            @if (row.IsInventoryItem && elementId is not null)
+                                            {
+                                                <div class="flex items-center gap-1 no-print">
+                                                    <button @onclick="() => DecrementInventory(elementId, row.Quantity)"
+                                                            @onclick:stopPropagation="true"
+                                                            class="text-outline hover:text-on-surface w-4 h-4 leading-none rounded hover:bg-surface-container"
+                                                            title="Decrease quantity">−</button>
+                                                    <span class="font-bold text-on-surface w-5 text-center">@row.Quantity</span>
+                                                    <button @onclick="() => IncrementInventory(elementId)"
+                                                            @onclick:stopPropagation="true"
+                                                            class="text-outline hover:text-on-surface w-4 h-4 leading-none rounded hover:bg-surface-container"
+                                                            title="Increase quantity">+</button>
+                                                    <button @onclick="() => RemoveInventoryEntry(elementId)"
+                                                            @onclick:stopPropagation="true"
+                                                            class="opacity-0 group-hover:opacity-100 transition-opacity text-error shrink-0"
+                                                            title="Remove">
+                                                        <span class="material-symbols-outlined text-[12px]">close</span>
+                                                    </button>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-[9px] text-outline uppercase tracking-wide">Granted</span>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+        </div>
+
+        <!-- Column 2: Vitals, Defenses & Equipment -->
+        <div class="md:col-span-2 lg:col-span-5 space-y-6">
+            <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-tertiary-container px-4 py-2 border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-tertiary-container">Vitality &amp; Defense</h2>
+                </div>
+                <div class="p-4 grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+                    <ResourceTrackerPanel Stats="snapshot?.Builder.Stats">
+                        <ActionPointContent>
+                            <div class="flex items-center gap-2">
+                                <button @onclick="DecrementActionPoints"
+                                        class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface bg-surface-container-low rounded text-xs no-print"
+                                        title="Decrease">−</button>
+                                <span class="text-xl font-bold min-w-[1.5rem] text-center">@_actionPoints</span>
+                                <button @onclick="IncrementActionPoints"
+                                        class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface bg-surface-container-low rounded text-xs no-print"
+                                        title="Increase">+</button>
+                            </div>
+                        </ActionPointContent>
+                    </ResourceTrackerPanel>
+                    <!-- Defense & Tactical Grid -->
+                    <div class="col-span-2 lg:col-span-3 pt-4 border-t border-outline-variant/20">
+                        <div class="flex gap-4">
+                            <div class="grid grid-cols-2 gap-3 shrink-0">
+                                @foreach (var (statName, label, cssClass) in new[] { ("AC", "AC", "defense-ac"), ("Fortitude Defense", "FORT", "defense-fort"), ("Reflex Defense", "REFL", "defense-refl"), ("Will Defense", "WILL", "defense-will") })
+                                {
+                                    int val = snapshot?.GetStat(statName) ?? 10;
+                                    <div class="relative w-16 h-16 flex flex-col items-center justify-center">
+                                        <div class="absolute inset-0 @cssClass"></div>
+                                        <span class="relative z-10 text-lg font-bold leading-none text-white mt-[-2px]">
+                                            <CalculationPopover Stats="snapshot?.Builder.Stats" StatName="@statName" TriggerClass="text-white hover:text-white">
+                                                @val
+                                            </CalculationPopover>
+                                        </span>
+                                        <span class="relative z-10 text-[8px] font-label uppercase leading-none mt-1 text-white/70">@label</span>
+                                    </div>
+                                }
+                            </div>
+                            <div class="flex-grow space-y-2 py-0.5">
+                                @foreach (var (statName, label) in new[] { ("Initiative", "Initiative"), ("Speed", "Speed"), ("Passive Insight", "Passive Insight"), ("Passive Perception", "Passive Perception") })
+                                {
+                                    int val = snapshot?.GetStat(statName) ?? 0;
+                                    <div class="flex justify-between items-center text-[10px] px-3 py-1.5 bg-surface-container-low border border-outline-variant/10">
+                                        <span class="font-label uppercase tracking-widest text-outline">@label</span>
+                                        <span class="font-bold">
+                                            <CalculationPopover Stats="snapshot?.Builder.Stats" StatName="@statName" TriggerClass="text-inherit">
+                                                @FormatTacticalStat(statName, val)
+                                            </CalculationPopover>
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equipped Items (with slot-based layout and detailed formatting) -->
+            <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-stone-200/50 px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface/70">Equipped Items</h2>
+                    <button @onclick="() => OpenMagicItemBuilder(null, null)"
+                            class="text-[10px] font-label uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-on-primary hover:bg-primary/90 transition-colors no-print"
+                            title="Build or add a magic item (enchanted weapon/armor, wondrous item, etc.)">
+                        + Magic
+                    </button>
+                </div>
+                <div class="p-3 space-y-2">
+                    @foreach (var slot in _equipSlots)
+                    {
+                        var equipped = session.GetEquippedItem(slot);
+
+                        // Visual two-handed: if this is the Off-Hand row and
+                        // a 2H weapon is in Main Hand, the off-hand is
+                        // "occupied" by the wielding hand. Storage stays
+                        // Main-Hand-only (matches OCB file format).
+                        var twoHandedFromMain = equipped is null
+                            && string.Equals(slot, "Off-Hand", StringComparison.OrdinalIgnoreCase)
+                            && session.GetEquippedItem("Main Hand") is { } mh
+                            && IsTwoHandedWeapon(mh)
+                            ? mh
+                            : null;
+
+                        @if (twoHandedFromMain is not null)
+                        {
+                            <div class="flex justify-between items-center text-[10px] border-b border-outline-variant/10 pb-1 cursor-pointer hover:bg-surface-container-low/50 transition-colors -mx-1 px-1 rounded group"
+                                 @onclick="() => UnequipSlot(slot)"
+                                 title="Two-handed — unequip @twoHandedFromMain.Name">
+                                <span class="font-bold text-outline uppercase tracking-tighter">@slot</span>
+                                <span class="text-outline italic">
+                                    <span class="material-symbols-outlined text-[11px] align-middle">link</span>
+                                    Two-Handed (@twoHandedFromMain.Name)
+                                </span>
+                            </div>
+                        }
+                        else if (equipped is not null)
+                        {
+                            var detail = SessionService.GetElementDetails(equipped.InternalId);
+                            <div class="border-b border-outline-variant/10 pb-2 group cursor-pointer hover:bg-surface-container-low/50 transition-colors -mx-1 px-1 rounded"
+                                 @onclick="() => OpenEquipmentBrowser(slot)">
+                                <div class="flex items-start justify-between gap-2">
+                                    <div class="min-w-0">
+                                        <span class="text-sm font-bold">@equipped.Name</span>
+                                        <span class="text-[10px] text-outline ml-1">(@slot)</span>
+                                    </div>
+                                    <button @onclick="() => UnequipSlot(slot)" @onclick:stopPropagation="true"
+                                            class="opacity-0 group-hover:opacity-100 transition-opacity text-error shrink-0 no-print mt-0.5"
+                                            title="Unequip">
+                                        <span class="material-symbols-outlined text-[12px]">close</span>
+                                    </button>
+                                </div>
+                                @if (detail?.Fields.TryGetValue("Short Description", out var desc) == true && !string.IsNullOrEmpty(desc))
+                                {
+                                    <p class="text-[11px] text-outline leading-tight mt-0.5">@desc</p>
+                                }
+                                @{
+                                    var itemFields = GetEquipmentSummary(detail ?? equipped);
+                                }
+                                @if (itemFields.Count > 0)
+                                {
+                                    <div class="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
+                                        @foreach (var (fieldName, fieldValue) in itemFields)
+                                        {
+                                            <span class="text-[9px]">
+                                                <span class="text-outline uppercase">@fieldName:</span>
+                                                <span class="font-bold">@fieldValue</span>
+                                            </span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex justify-between items-center text-[10px] border-b border-outline-variant/10 pb-1 cursor-pointer hover:bg-surface-container-low/50 transition-colors -mx-1 px-1 rounded"
+                                 @onclick="() => OpenEquipmentBrowser(slot)">
+                                <span class="font-bold text-outline uppercase tracking-tighter">@slot</span>
+                                <span class="text-outline/50 italic hover:text-primary/70">None</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+        </div>
+
+        <!-- Column 3: Features & Overview -->
+        <div class="md:col-span-4 lg:col-span-4 space-y-6">
+            <!-- Character Overview -->
+            <div class="bg-surface-container-lowest ghost-border overflow-hidden">
+                <div class="bg-stone-200/50 px-4 py-2 border-b border-outline-variant/20">
+                    <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-outline">Character Overview</h2>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div class="flex gap-4">
+                        <div class="flex-1">
+                            <h3 class="font-label text-[9px] font-bold uppercase text-outline mb-1">Alignment</h3>
+                            @if (_editingAlignment)
+                            {
+                                <select @onchange="e => CommitAlignment(e.Value?.ToString())"
+                                        @onblur="() => _editingAlignment = false"
+                                        class="text-xs font-bold px-2 py-0.5 bg-surface-container-low border border-outline-variant/20 focus:border-primary focus:outline-none"
+                                        autofocus>
+                                    @foreach (var a in _alignments)
+                                    {
+                                        <option value="@a" selected="@(a == session.Details.GetValueOrDefault("Alignment", "Unaligned"))">@a</option>
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                <button @onclick="() => _editingAlignment = true"
+                                        class="text-xs font-bold px-2 py-0.5 bg-surface-container-low border border-outline-variant/20 hover:border-primary transition-colors cursor-pointer"
+                                        title="Click to change alignment">
+                                    @(session.Details.GetValueOrDefault("Alignment", "Unaligned"))
+                                </button>
+                            }
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-label text-[9px] font-bold uppercase text-outline mb-1">Languages</h3>
+                            <div class="space-y-1">
+                                @{
+                                    var languages = session.GetAllElementsOfType("Language");
+                                    var langsBySource = languages
+                                        .GroupBy(l => l.Source ?? "Other")
+                                        .OrderBy(g => g.Key, StringComparer.OrdinalIgnoreCase);
+                                }
+                                @if (languages.Count > 0)
+                                {
+                                    @foreach (var group in langsBySource)
+                                    {
+                                        <div>
+                                            <span class="text-[8px] font-label uppercase tracking-wider text-outline/60">@group.Key</span>
+                                            <div class="flex flex-wrap gap-1 mt-0.5">
+                                                @foreach (var lang in group)
+                                                {
+                                                    var choiceRecord = FindChoiceRecord(lang.InternalId);
+                                                    <span class="group inline-flex items-center gap-1 text-[10px] bg-white px-1.5 py-0.5 border border-outline-variant/20">
+                                                        <span>@lang.Name</span>
+                                                        @if (choiceRecord is not null)
+                                                        {
+                                                            <button @onclick="() => BeginReselect(choiceRecord)"
+                                                                    class="opacity-0 group-hover:opacity-100 transition-opacity text-error no-print"
+                                                                    title="Reselect this language">
+                                                                <span class="material-symbols-outlined text-[12px]">edit</span>
+                                                            </button>
+                                                        }
+                                                    </span>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-[10px] text-outline italic">None selected</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class Features -->
+            @{
+                var classFeatures = session.GetAllElementsOfType("Class Feature");
+                var groupedFeatures = GroupClassFeatures(classFeatures);
+            }
+            @if (classFeatures.Count > 0)
+            {
+                <section class="bg-surface-container-lowest ghost-border overflow-hidden">
+                    <div class="bg-tertiary-container px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                        <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-tertiary-container">Class Features</h2>
+                    </div>
+                    <div class="p-3 space-y-1.5">
+                        @foreach (var group in groupedFeatures)
+                        {
+                            @if (group.Children.Count > 0)
+                            {
+                                // Intermediate parent with same-type children: render as header
+                                var headerId = group.Parent.InternalId;
+                                <div class="mt-1.5 first:mt-0">
+                                    <div class="flex items-center gap-1.5 mb-0.5 cursor-pointer" @onclick="() => OpenDetailModal(headerId)">
+                                        <span class="font-label text-[9px] font-bold uppercase tracking-widest text-outline">@group.Parent.Name</span>
+                                    </div>
+                                    <div class="border-l-2 border-outline-variant/30 pl-2 space-y-1">
+                                        @foreach (var child in group.Children)
+                                        {
+                                            var childDetail = SessionService.GetElementDetails(child.InternalId);
+                                            var childRecord = FindChoiceRecord(child.InternalId);
+                                            var childId = child.InternalId;
+                                            <div class="group border-b border-outline-variant/10 pb-1.5 cursor-pointer hover:bg-surface-container-low/40 -mx-2 px-2 rounded transition-colors"
+                                                 @onclick="() => OpenDetailModal(childId)">
+                                                <div class="flex items-start justify-between gap-2">
+                                                    <h3 class="text-sm font-bold">
+                                                        @child.Name
+                                                        @if (IsHouseruledElement(child.InternalId))
+                                                        {
+                                                            <HouseruleBadge />
+                                                        }
+                                                    </h3>
+                                                    @if (childRecord is not null)
+                                                    {
+                                                        <button @onclick="() => BeginReselect(childRecord)"
+                                                                @onclick:stopPropagation="true"
+                                                                class="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-error-container/20 text-error no-print"
+                                                                title="Reselect this choice">
+                                                            <span class="material-symbols-outlined text-base">edit</span>
+                                                        </button>
+                                                    }
+                                                </div>
+                                                @if (childDetail?.Fields.TryGetValue("Short Description", out var childDesc) == true && !string.IsNullOrEmpty(childDesc))
+                                                {
+                                                    <p class="text-[11px] text-outline leading-tight">@childDesc</p>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                // Regular feature or grant-only intermediate
+                                var feature = group.Parent;
+                                var detail = SessionService.GetElementDetails(feature.InternalId);
+                                var choiceRecord = FindChoiceRecord(feature.InternalId);
+                                var featureId = feature.InternalId;
+                                <div class="group border-b border-outline-variant/10 pb-1.5 cursor-pointer hover:bg-surface-container-low/40 -mx-2 px-2 rounded transition-colors"
+                                     @onclick="() => OpenDetailModal(featureId)">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <h3 class="text-sm font-bold">
+                                            @feature.Name
+                                            @if (IsHouseruledElement(feature.InternalId))
+                                            {
+                                                <HouseruleBadge />
+                                            }
+                                        </h3>
+                                        @if (choiceRecord is not null)
+                                        {
+                                            <button @onclick="() => BeginReselect(choiceRecord)"
+                                                    @onclick:stopPropagation="true"
+                                                    class="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-error-container/20 text-error no-print"
+                                                    title="Reselect this choice">
+                                                <span class="material-symbols-outlined text-base">edit</span>
+                                            </button>
+                                        }
+                                    </div>
+                                    @if (group.GrantLinks.Count > 0)
+                                    {
+                                        @foreach (var link in group.GrantLinks)
+                                        {
+                                            var linkId = link.InternalId;
+                                            <p class="text-[11px] text-outline leading-tight hover:text-primary cursor-pointer"
+                                               @onclick="() => OpenDetailModal(linkId)" @onclick:stopPropagation="true"
+                                               title="View details">@link.Label</p>
+                                        }
+                                    }
+                                    else if (detail?.Fields.TryGetValue("Short Description", out var desc) == true && !string.IsNullOrEmpty(desc))
+                                    {
+                                        <p class="text-[11px] text-outline leading-tight">@desc</p>
+                                    }
+                                </div>
+                            }
+                        }
+                    </div>
+                </section>
+            }
+
+            <!-- Feats & Traits -->
+            @{
+                var feats = session.GetSelectedElements("Feat");
+                var racialTraits = session.GetAllElementsOfType("Racial Trait");
+            }
+            @if (feats.Count > 0 || racialTraits.Count > 0)
+            {
+                <div class="bg-surface-container-lowest ghost-border overflow-hidden">
+                    <div class="bg-stone-200/50 px-4 py-2 flex justify-between items-center border-b border-outline-variant/20">
+                        <h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface/70">Feats &amp; Traits</h2>
+                    </div>
+                    <div class="p-3 space-y-1.5">
+                        @foreach (var feat in feats.Concat(racialTraits))
+                        {
+                            var detail = SessionService.GetElementDetails(feat.InternalId);
+                            var choiceRecord = FindChoiceRecord(feat.InternalId);
+                            var featId = feat.InternalId;
+                            <div class="group border-b border-outline-variant/10 pb-1.5 cursor-pointer hover:bg-surface-container-low/40 -mx-2 px-2 rounded transition-colors"
+                                 @onclick="() => OpenDetailModal(featId)">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-sm font-bold">
+                                        @feat.Name
+                                        @if (IsHouseruledElement(feat.InternalId))
+                                        {
+                                            <HouseruleBadge />
+                                        }
+                                    </h3>
+                                    @if (choiceRecord is not null)
+                                    {
+                                        <button @onclick="() => BeginReselect(choiceRecord)"
+                                                @onclick:stopPropagation="true"
+                                                class="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-error-container/20 text-error no-print"
+                                                title="Reselect this choice">
+                                            <span class="material-symbols-outlined text-base">edit</span>
+                                        </button>
+                                    }
+                                </div>
+                                @if (detail?.Fields.TryGetValue("Short Description", out var desc) == true && !string.IsNullOrEmpty(desc))
+                                {
+                                    <p class="text-[11px] text-outline leading-tight">@desc</p>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (session.IsComplete)
+            {
+            }
+        </div>
+    </div>
+
+    @if (_showCompleteToast)
+    {
+        <div class="fixed top-20 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 px-6 py-3 bg-tertiary-container rounded-lg shadow-lg ghost-border no-print">
+            <span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+            <span class="text-sm font-label font-semibold text-on-tertiary-container">Character Complete — ready to export or print</span>
+        </div>
+    }
+
+    <!-- Selection Modal -->
+    @if (_showModal && _activeChoice is not null)
+    {
+        <SelectionModal Choice="_activeChoice"
+                        Candidates="_modalCandidates"
+                        RecommendedIds="@(SessionService.Session?.GetSuggestedIdsForSlot(_activeChoice.Slot))"
+                        OnSelect="OnElementSelected"
+                        OnClose="CloseModal"
+                        OnLoadDetails="LoadElementDetails"
+                        OnResolveIds="ResolveElementIds" />
+    }
+
+    @if (_detailModalElement is not null)
+    {
+        <ElementDetailModal Element="_detailModalElement"
+                            OnClose="CloseDetailModal"
+                            OnLoadDetails="LoadElementDetails"
+                            OnResolveIds="ResolveElementIds" />
+    }
+
+    @if (_showInventoryModal)
+    {
+        <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+             @onclick="CloseInventoryModal">
+            <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-5xl w-full max-h-[80vh] flex flex-col ghost-border"
+                 @onclick:stopPropagation="true">
+                <div class="px-6 py-4 border-b border-outline-variant/20">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-headline text-xl font-bold text-on-surface">Add to Inventory</h2>
+                            <p class="text-xs font-label text-on-surface-variant mt-0.5">Choose an item to add to your gear list</p>
+                        </div>
+                        <button @onclick="CloseInventoryModal"
+                                class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                        </button>
+                    </div>
+                    <div class="mt-3 relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                        <input type="text" @bind="_inventorySearchText" @bind:event="oninput"
+                               placeholder="Search items..."
+                               class="w-full pl-9 pr-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                    </div>
+                </div>
+                <div class="flex-1 overflow-hidden flex">
+                    <!-- Item list (left) -->
+                    <div class="flex-1 overflow-y-auto p-2 @(_selectedInventoryDetail is not null ? "border-r border-outline-variant/20" : "")">
+                        @{ var invFiltered = FilteredInventoryCandidates; }
+                        @if (invFiltered.Count == 0)
+                        {
+                            <div class="p-6 text-center text-sm text-outline italic">No matching items found.</div>
+                        }
+                        else
+                        {
+                            <div class="flex items-center gap-2 px-3 py-1 border-b border-outline-variant/20 text-[9px] font-label font-bold uppercase tracking-widest text-outline">
+                                <span class="flex-1">Item</span>
+                                <span class="shrink-0 w-20 text-right">Cost</span>
+                                <span class="shrink-0 w-5"></span>
+                            </div>
+                            var invGroups = invFiltered
+                                .GroupBy(i => i.Type)
+                                .OrderBy(g => g.Key, StringComparer.OrdinalIgnoreCase);
+                            bool isSearching = !string.IsNullOrWhiteSpace(_inventorySearchText);
+                            @foreach (var typeGroup in invGroups)
+                            {
+                                bool expanded = isSearching || _expandedInventoryTypes.Contains(typeGroup.Key);
+                                <div class="mb-1">
+                                    <button @onclick="() => ToggleInventoryType(typeGroup.Key)"
+                                            class="w-full flex items-center justify-between px-3 py-1.5 bg-surface-container-low/60 hover:bg-surface-container-low transition-colors rounded text-left">
+                                        <span class="font-label text-[10px] font-bold uppercase tracking-widest text-outline">@typeGroup.Key (@typeGroup.Count())</span>
+                                        <span class="material-symbols-outlined text-outline text-sm">@(expanded ? "expand_less" : "expand_more")</span>
+                                    </button>
+                                    @if (expanded)
+                                    {
+                                        <ul class="divide-y divide-outline-variant/10">
+                                            @foreach (var item in typeGroup.Take(200))
+                                            {
+                                                bool isSelected = _selectedInventoryDetail?.InternalId == item.InternalId;
+                                                var costDisplay = FormatItemCost(item);
+                                                <li>
+                                                    <div class="flex items-center gap-2 px-3 py-1.5 @(isSelected ? "bg-surface-container-low" : "hover:bg-surface-container-low/40") transition-colors cursor-pointer"
+                                                         @onclick="() => SelectInventoryItem(item)">
+                                                        <div class="min-w-0 flex-1">
+                                                            <div class="text-sm font-bold text-on-surface truncate">@item.Name</div>
+                                                            <div class="text-[10px] text-outline uppercase tracking-wider">
+                                                                @if (item.Source is not null)
+                                                                {
+                                                                    @item.Source
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="shrink-0 w-20 text-right text-[11px] font-label tabular-nums @(costDisplay is null ? "text-outline/40 italic" : "text-on-surface-variant")">
+                                                            @(costDisplay ?? "—")
+                                                        </div>
+                                                        <button @onclick="() => BuyToInventory(item)" @onclick:stopPropagation="true"
+                                                                class="shrink-0 p-0.5 rounded hover:bg-primary/10 transition-colors disabled:opacity-30"
+                                                                disabled="@(costDisplay is null)"
+                                                                title="Buy (deducts gold)">
+                                                            <span class="material-symbols-outlined text-primary text-lg">paid</span>
+                                                        </button>
+                                                        <button @onclick="() => AddToInventory(item)" @onclick:stopPropagation="true"
+                                                                class="shrink-0 p-0.5 rounded hover:bg-primary/10 transition-colors"
+                                                                title="Add for free (no cost)">
+                                                            <span class="material-symbols-outlined text-primary text-lg">add_circle</span>
+                                                        </button>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                        @if (typeGroup.Count() > 200)
+                                        {
+                                            <div class="px-3 py-1 text-[10px] text-outline italic text-center">
+                                                Showing first 200 of @typeGroup.Count() — refine search to narrow.
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            }
+                        }
+                    </div>
+                    <!-- Detail panel (right) -->
+                    @if (_selectedInventoryDetail is not null)
+                    {
+                        <div class="w-80 overflow-y-auto p-4 space-y-3">
+                            <h3 class="font-headline text-lg font-bold text-on-surface">@_selectedInventoryDetail.Name</h3>
+                            <div class="text-[10px] text-outline uppercase tracking-wider">@_selectedInventoryDetail.Type</div>
+                            @if (_selectedInventoryDetail.Source is not null)
+                            {
+                                <div class="text-[10px] text-outline">@_selectedInventoryDetail.Source</div>
+                            }
+                            @{
+                                var invDetailFields = GetEquipmentSummary(_selectedInventoryDetail);
+                            }
+                            @if (invDetailFields.Count > 0)
+                            {
+                                <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1">
+                                    @foreach (var (fieldName, fieldValue) in invDetailFields)
+                                    {
+                                        <span class="text-[10px]">
+                                            <span class="text-outline uppercase">@fieldName:</span>
+                                            <span class="font-bold">@fieldValue</span>
+                                        </span>
+                                    }
+                                </div>
+                            }
+                            @if (_selectedInventoryDetail.Fields.TryGetValue("Short Description", out var invDesc) && !string.IsNullOrEmpty(invDesc))
+                            {
+                                <p class="text-xs text-on-surface leading-relaxed mt-2">@invDesc</p>
+                            }
+                            else if (_selectedInventoryDetail.Fields.TryGetValue("Description", out var invFullDesc) && !string.IsNullOrEmpty(invFullDesc))
+                            {
+                                <p class="text-xs text-on-surface leading-relaxed mt-2">@invFullDesc</p>
+                            }
+                            @{
+                                var invDetailCost = FormatItemCost(_selectedInventoryDetail);
+                            }
+                            <div class="mt-3 space-y-2">
+                                @if (invDetailCost is not null)
+                                {
+                                    <button @onclick="() => BuyToInventory(_selectedInventoryDetail)"
+                                            class="w-full py-2 bg-primary text-on-primary font-label font-semibold rounded text-sm hover:bg-primary-dim transition-colors flex items-center justify-center gap-1">
+                                        <span class="material-symbols-outlined text-base">paid</span>
+                                        Buy (@invDetailCost)
+                                    </button>
+                                }
+                                <button @onclick="() => AddToInventory(_selectedInventoryDetail)"
+                                        class="w-full py-2 bg-surface-container-low text-on-surface font-label font-semibold rounded text-sm hover:bg-surface-container transition-colors">
+                                    Add for Free
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (_showRitualPracticeAlchemyModal)
+    {
+        <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+             @onclick="CloseRitualPracticeAlchemyModal">
+            <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-3xl w-full max-h-[80vh] flex flex-col ghost-border"
+                 @onclick:stopPropagation="true">
+                <div class="px-6 py-4 border-b border-outline-variant/20">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-headline text-xl font-bold text-on-surface">Add Ritual, Formula, or Alchemical Item</h2>
+                            <p class="text-xs font-label text-on-surface-variant mt-0.5">These are stored as non-equipped loot, matching the Character Builder ritual workflow.</p>
+                        </div>
+                        <button @onclick="CloseRitualPracticeAlchemyModal"
+                                class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                        </button>
+                    </div>
+                    <div class="mt-3 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-2">
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                            <input type="text" @bind="_ritualPracticeAlchemySearchText" @bind:event="oninput"
+                                   placeholder="Search rituals, formulae, scrolls, and alchemical items..."
+                                   class="w-full pl-9 pr-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                        </div>
+                        <select @bind="_ritualPracticeAlchemyKindFilter"
+                                class="px-3 py-2 bg-surface-container-low border-b border-outline rounded text-xs font-label uppercase tracking-wide text-on-surface focus:border-primary focus:outline-none">
+                            <option value="">All</option>
+                            <option value="Ritual">Rituals</option>
+                            <option value="AlchemicalFormula">Formulae</option>
+                            <option value="AlchemicalItem">Alchemical Items</option>
+                            <option value="RitualScroll">Scrolls</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto p-2">
+                    @{ var rpaFiltered = FilteredRitualPracticeAlchemyCandidates; }
+                    @if (rpaFiltered.Count == 0)
+                    {
+                        <div class="p-6 text-center text-sm text-outline italic">No matching entries found.</div>
+                    }
+                    else
+                    {
+                        <div class="flex items-center gap-3 px-3 py-1 border-b border-outline-variant/20 text-[9px] font-label font-bold uppercase tracking-widest text-outline">
+                            <span class="flex-1">Entry</span>
+                            <span class="shrink-0 w-24 text-right">Cost</span>
+                            <span class="shrink-0 w-5"></span>
+                        </div>
+                        <ul class="divide-y divide-outline-variant/10">
+                            @foreach (var item in rpaFiltered.Take(200))
+                            {
+                                var kind = RitualPracticeAlchemyClassifier.GetKind(item)!.Value;
+                                var rpaCost = FormatItemCost(item);
+                                <li>
+                                    <button @onclick="() => AddRitualPracticeAlchemyItem(item)"
+                                            class="w-full text-left px-3 py-2 hover:bg-surface-container-low/60 transition-colors flex items-center justify-between gap-3">
+                                        <div class="min-w-0 flex-1">
+                                            <div class="text-sm font-bold text-on-surface truncate">@item.Name</div>
+                                            <div class="text-[10px] text-outline uppercase tracking-wider">
+                                                @FormatRitualPracticeAlchemyKind(kind)
+                                                @if (item.Fields.TryGetValue("Level", out var level) && !string.IsNullOrWhiteSpace(level))
+                                                {
+                                                    <span> — Level @level</span>
+                                                }
+                                                @if (item.Source is not null)
+                                                {
+                                                    <span> — @item.Source</span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="shrink-0 w-24 text-right text-[11px] font-label tabular-nums @(rpaCost is null ? "text-outline/40 italic" : "text-on-surface-variant")">
+                                            @(rpaCost ?? "—")
+                                        </div>
+                                        <span class="material-symbols-outlined text-primary text-lg">add_circle</span>
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+                        @if (rpaFiltered.Count > 200)
+                        {
+                            <div class="px-3 py-2 text-[10px] text-outline italic text-center">
+                                Showing first 200 of @rpaFiltered.Count results — refine search to narrow.
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Equipment Browser Modal -->
+    @if (_showEquipmentModal && _equipmentCandidates is not null)
+    {
+        <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+             @onclick="CloseEquipmentModal">
+            <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-4xl w-full max-h-[80vh] flex flex-col ghost-border"
+                 @onclick:stopPropagation="true">
+                <!-- Header -->
+                <div class="px-6 py-4 border-b border-outline-variant/20">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-headline text-xl font-bold text-on-surface">Equip: @_activeEquipSlot</h2>
+                            <p class="text-xs font-label text-on-surface-variant mt-0.5">Choose an item for this slot</p>
+                        </div>
+                        <button @onclick="CloseEquipmentModal"
+                                class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                            <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                        </button>
+                    </div>
+                    <div class="mt-3 relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                        <input type="text" @bind="_equipSearchText" @bind:event="oninput"
+                               placeholder="Search equipment..."
+                               class="w-full pl-9 pr-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                    </div>
+                    <div class="mt-2 flex items-center gap-3 text-xs">
+                        <label class="flex items-center gap-1.5 cursor-pointer text-on-surface-variant">
+                            <input type="checkbox" @bind="_equipOnlyProficient" class="accent-primary" />
+                            <span>Only proficient</span>
+                        </label>
+                        <div class="flex items-center gap-1.5 text-on-surface-variant ml-auto">
+                            <span>Sort:</span>
+                            <select @bind="_equipSortMode"
+                                    class="bg-surface-container-low border-b border-outline rounded px-1.5 py-0.5 text-on-surface focus:border-primary focus:outline-none">
+                                <option value="level">Level</option>
+                                <option value="proficiency">Proficient first</option>
+                                <option value="name">Name</option>
+                                <option value="damage">Damage / AC</option>
+                                <option value="price">Price</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+                <div class="flex flex-1 min-h-0">
+                    <!-- Left: Item List -->
+                    <div class="w-2/5 border-r border-outline-variant/20 overflow-y-auto">
+                        <table class="w-full text-sm">
+                            <thead class="sticky top-0 bg-surface-container-low z-10">
+                                <tr>
+                                    <th class="text-left px-3 py-2 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">Name</th>
+                                    <th class="text-left px-2 py-2 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">@PrimaryStatHeader</th>
+                                    <th class="text-left px-2 py-2 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">Group</th>
+                                    <th class="text-center px-1 py-2 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant" title="Proficient">P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in FilteredEquipment)
+                                {
+                                    var isSelected = _selectedEquipItem?.InternalId == item.InternalId;
+                                    var prof = SessionService.IsProficientWith(item);
+                                    var isWeaponOrArmor = string.Equals(item.Type, "Weapon", StringComparison.OrdinalIgnoreCase)
+                                        || string.Equals(item.Type, "Armor", StringComparison.OrdinalIgnoreCase);
+                                    var canEnchant = MagicItemClassifier.IsMundaneBase(item) && isWeaponOrArmor;
+                                    <tr @onclick="() => SelectEquipCandidate(item)"
+                                        class="@(isSelected ? "bg-primary/5 font-semibold" : "hover:bg-surface-container-low") cursor-pointer transition-colors">
+                                        <td class="px-3 py-2 text-on-surface">
+                                            <span>@item.Name</span>
+                                            @if (canEnchant)
+                                            {
+                                                <button @onclick="() => EnchantFromSlotPicker(item)"
+                                                        @onclick:stopPropagation="true"
+                                                        class="ml-1 p-0.5 rounded hover:bg-tertiary-container/40 text-tertiary align-middle"
+                                                        title="Enchant this item">
+                                                    <span class="material-symbols-outlined text-sm align-middle">auto_awesome</span>
+                                                </button>
+                                            }
+                                        </td>
+                                        <td class="px-2 py-2 text-on-surface-variant text-xs">@PrimaryStatValue(item)</td>
+                                        <td class="px-2 py-2 text-on-surface-variant text-xs">@GroupOrType(item)</td>
+                                        <td class="px-1 py-2 text-center">
+                                            @if (!isWeaponOrArmor)
+                                            {
+                                                <span class="text-on-surface-variant/50 text-xs">—</span>
+                                            }
+                                            else if (prof)
+                                            {
+                                                <span class="material-symbols-outlined text-tertiary text-base align-middle" title="Proficient">check_circle</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="material-symbols-outlined text-error text-base align-middle" title="Not proficient">block</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @if (FilteredEquipment.Count == 0)
+                        {
+                            <div class="px-4 py-8 text-center text-sm text-on-surface-variant">
+                                No matching equipment found.
+                            </div>
+                        }
+                    </div>
+                    <!-- Right: Detail Panel -->
+                    <div class="w-3/5 p-6 overflow-y-auto">
+                        @if (_selectedEquipDetail is not null)
+                        {
+                            <h3 class="font-headline text-lg font-bold text-on-surface">@_selectedEquipDetail.Name</h3>
+                            <p class="text-xs font-label text-on-surface-variant mt-0.5 uppercase tracking-wider">
+                                @_selectedEquipDetail.Type
+                                @if (_selectedEquipDetail.Source is not null)
+                                {
+                                    <span>— @_selectedEquipDetail.Source</span>
+                                }
+                            </p>
+                            {
+                                var detailIsWeaponOrArmor = string.Equals(_selectedEquipDetail.Type, "Weapon", StringComparison.OrdinalIgnoreCase)
+                                    || string.Equals(_selectedEquipDetail.Type, "Armor", StringComparison.OrdinalIgnoreCase);
+                                var detailProf = SessionService.IsProficientWith(_selectedEquipDetail);
+                                if (detailIsWeaponOrArmor)
+                                {
+                                    <div class="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-label
+                                                @(detailProf ? "bg-tertiary-container/40 text-on-tertiary-container" : "bg-error-container/40 text-on-error-container")">
+                                        <span class="material-symbols-outlined text-sm">@(detailProf ? "check_circle" : "block")</span>
+                                        <span>@(detailProf ? "Proficient" : "Not proficient — −2 attack")</span>
+                                    </div>
+                                }
+                            }
+                            @if (_selectedEquipDetail.Fields.TryGetValue("Short Description", out var eqDesc) && !string.IsNullOrEmpty(eqDesc))
+                            {
+                                <p class="text-sm text-on-surface mt-3">@eqDesc</p>
+                            }
+                            @foreach (var field in GetEquipmentDetailFields(_selectedEquipDetail))
+                            {
+                                <div class="mt-3">
+                                    <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">@field.Key</span>
+                                    <p class="text-sm text-on-surface mt-0.5">@field.Value</p>
+                                </div>
+                            }
+                            @if (_selectedEquipDetail.Fields.TryGetValue("Property", out var prop) && !string.IsNullOrWhiteSpace(prop))
+                            {
+                                <div class="mt-3">
+                                    <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Property</span>
+                                    <p class="text-sm text-on-surface mt-0.5 whitespace-pre-line">@prop</p>
+                                </div>
+                            }
+                            @if (_selectedEquipDetail.Fields.TryGetValue("Special", out var spc) && !string.IsNullOrWhiteSpace(spc))
+                            {
+                                <div class="mt-3">
+                                    <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant">Special</span>
+                                    <p class="text-sm text-on-surface mt-0.5 whitespace-pre-line">@spc</p>
+                                </div>
+                            }
+                            @foreach (var pwr in PowerCardFactory.BuildItemPowerCards(_selectedEquipDetail))
+                            {
+                                <div class="mt-4">
+                                    <PowerCard Card="pwr" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="flex items-center justify-center h-full text-sm text-on-surface-variant">
+                                Select an item to see details
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="px-6 py-3 border-t border-outline-variant/20 flex items-center justify-between">
+                    <span class="text-xs text-on-surface-variant">
+                        @FilteredEquipment.Count items available
+                    </span>
+                    <div class="flex gap-2">
+                        <button @onclick="CloseEquipmentModal"
+                                class="px-4 py-2 text-sm font-label font-semibold text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors scale-98-active">
+                            Cancel
+                        </button>
+                        <button @onclick="ConfirmEquipment" disabled="@(_selectedEquipItem is null)"
+                                class="px-4 py-2 text-sm font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors scale-98-active disabled:opacity-40 disabled:cursor-not-allowed">
+                            @if (_selectedEquipItem is not null)
+                            {
+                                <span>Equip @_selectedEquipItem.Name</span>
+                            }
+                            else
+                            {
+                                <span>Equip</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Magic Item Builder Modal -->
+    <MagicItemBuilderModal Visible="_showMagicBuilder"
+                           PreselectedBase="_magicBuilderPreselectedBase"
+                           TargetSlot="@_magicBuilderTargetSlot"
+                           AllowStandalonePath="_magicBuilderPreselectedBase is null"
+                           OnConfirm="ConfirmMagicComposite"
+                           OnClose="CloseMagicBuilder" />
+}
+
+@code {
+    private string _characterName = "";
+    private int _level = 1;
+    private bool _showModal;
+    private PendingChoice? _activeChoice;
+    private IReadOnlyList<RulesElement>? _modalCandidates;
+    private int _lastAutoResolveChoiceCount = -1;
+    private int _lastAutoResolvePendingCount = -1;
+    private bool _lastAutoResolveScoresSet;
+    private bool _showCompleteToast;
+    private bool _lastCompleteState;
+    private CancellationTokenSource? _completeToastCts;
+
+    // Inline-edit state for header identity
+    private bool _editingName;
+    private bool _editingLevel;
+    private bool _editingXp;
+    private bool _editingAbilityScores;
+
+    // Gameplay resource tracking
+    private int _actionPoints = 1;
+
+    // Alignment editing
+    private bool _editingAlignment;
+    private static readonly string[] _alignments = ["Lawful Good", "Good", "Unaligned", "Evil", "Chaotic Evil"];
+
+    // Equipment browser state
+    private bool _showEquipmentModal;
+    private string? _activeEquipSlot;
+    private IReadOnlyList<RulesElement>? _equipmentCandidates;
+
+    // Magic Item builder state
+    private bool _showMagicBuilder;
+    private RulesElement? _magicBuilderPreselectedBase;
+    private string? _magicBuilderTargetSlot;
+    private string _equipSearchText = "";
+    private RulesElement? _selectedEquipItem;
+    private RulesElement? _selectedEquipDetail;
+    private bool _equipOnlyProficient;
+    private string _equipSortMode = "level";
+
+    private static readonly string[] _equipSlots =
+        ["Main Hand", "Off-Hand", "Chest", "Head", "Neck", "Arms", "Hands", "Waist", "Feet", "Ring 1", "Ring 2"];
+
+    private static readonly (string Name, Ability Key)[] _abilityDefs =
+    [
+        ("Strength", Ability.Strength),
+        ("Constitution", Ability.Constitution),
+        ("Dexterity", Ability.Dexterity),
+        ("Intelligence", Ability.Intelligence),
+        ("Wisdom", Ability.Wisdom),
+        ("Charisma", Ability.Charisma),
+    ];
+
+    private static readonly Dictionary<string, string[]> _abilityToSkills = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Strength"] = ["Athletics"],
+        ["Constitution"] = ["Endurance"],
+        ["Dexterity"] = ["Acrobatics", "Stealth", "Thievery"],
+        ["Intelligence"] = ["Arcana", "History", "Religion"],
+        ["Wisdom"] = ["Dungeoneering", "Heal", "Insight", "Nature", "Perception"],
+        ["Charisma"] = ["Bluff", "Diplomacy", "Intimidate", "Streetwise"],
+    };
+
+    protected override void OnInitialized()
+    {
+        SessionService.Changed += HandleSessionChanged;
+        RestoreState.Changed += HandleSessionChanged;
+        UpdateCompleteToast(SessionService.Session?.IsComplete == true);
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        var session = SessionService.Session;
+        if (session is null)
+            return Task.CompletedTask;
+
+        var pendingChoices = session.GetAllPendingChoices();
+        EnsureAutoResolved(session, ref pendingChoices);
+        return Task.CompletedTask;
+    }
+
+    private void StartNewCharacter()
+    {
+        var session = SessionService.NewCharacter(_level);
+        session.Name = string.IsNullOrWhiteSpace(_characterName) ? "New Character" : _characterName;
+        // Mirror Name into TextStrings so the exporter emits the OCB-style
+        // <textstring name="Name"> alongside <Details><name>. The exporter
+        // only re-emits Name when it's already in TextStrings (see
+        // Dnd4eExporter.cs notes), so we have to seed it here.
+        SessionService.SetTextString("Name", session.Name);
+        _lastAutoResolveChoiceCount = -1;
+        _lastAutoResolvePendingCount = -1;
+        _lastAutoResolveScoresSet = false;
+        UpdateCompleteToast(false);
+    }
+
+    private void OpenSelectionModal(PendingChoice choice)
+    {
+        // Ability scores don't use the modal — scroll to the score entry instead
+        if (choice.Slot.ElementType.Equals("Ability Scores", StringComparison.OrdinalIgnoreCase))
+            return;
+
+        _activeChoice = choice;
+        _modalCandidates = SessionService.Session!.GetCandidatesForSlot(choice.Slot);
+        _showModal = true;
+    }
+
+    private void OnElementSelected(RulesElement element)
+    {
+        if (_activeChoice is null) return;
+
+        // If this is an Alignment choice, also sync to the Details dictionary
+        if (_activeChoice.Slot.ElementType.Equals("Alignment", StringComparison.OrdinalIgnoreCase))
+        {
+            SessionService.SetDetailField("Alignment", element.Name);
+        }
+
+        SessionService.Session!.MakeChoice(_activeChoice.Slot, element);
+        CloseModal();
+    }
+
+    private void CloseModal()
+    {
+        _showModal = false;
+        _activeChoice = null;
+        _modalCandidates = null;
+    }
+
+    // View-details modal (read-only) for already-selected features/feats/traits/choices
+    private RulesElement? _detailModalElement;
+
+    private void OpenDetailModal(string internalId)
+    {
+        _detailModalElement = SessionService.GetElementDetails(internalId);
+    }
+
+    private bool IsHouseruledElement(string? internalId)
+        => SessionService.Session?.IsHouseruledElement(internalId) == true;
+
+    private void CloseDetailModal()
+    {
+        _detailModalElement = null;
+    }
+
+    private RulesElement? LoadElementDetails(string internalId)
+        => SessionService.GetElementDetails(internalId);
+
+    private List<CharM.Web.Services.ResolvedElement> ResolveElementIds(string idList)
+        => SessionService.ResolveElementIds(idList);
+
+    private void OnAbilityScoresSet(AbilityScoreSet scores)
+    {
+        SessionService.Session!.SetAbilityScores(scores);
+    }
+
+    private void OnAbilityScoresEdited(AbilityScoreSet scores)
+    {
+        SessionService.Session!.SetAbilityScores(scores);
+        _editingAbilityScores = false;
+    }
+
+    private string CurrentXp
+        => SessionService.Session?.Details.GetValueOrDefault("Experience") is { Length: > 0 } v
+            ? v
+            : "0";
+
+    private static int XpForNextLevel(int level)
+    {
+        // 4e XP thresholds (cumulative XP to reach each level, levels 1..30)
+        // Index 0 unused; "next level" returns threshold for level+1, capped at 30.
+        int next = Math.Min(level + 1, 30);
+        return next switch
+        {
+            <= 1 => 0,
+            2 => 1000, 3 => 2250, 4 => 3750, 5 => 5500, 6 => 7500, 7 => 10000,
+            8 => 13000, 9 => 16500, 10 => 20500, 11 => 26000, 12 => 32000,
+            13 => 39000, 14 => 47000, 15 => 57000, 16 => 69000, 17 => 83000,
+            18 => 99000, 19 => 119000, 20 => 143000, 21 => 175000, 22 => 210000,
+            23 => 255000, 24 => 310000, 25 => 375000, 26 => 450000, 27 => 550000,
+            28 => 675000, 29 => 825000, 30 => 1000000,
+            _ => 1000000,
+        };
+    }
+
+    private static int XpProgressPercent(CharacterSession session)
+    {
+        if (!int.TryParse(session.Details.GetValueOrDefault("Experience"), out var xp) || xp <= 0)
+            return 0;
+        var target = XpForNextLevel(session.Level);
+        if (target <= 0) return 100;
+        var pct = (int)Math.Round(100.0 * xp / target);
+        return Math.Clamp(pct, 0, 100);
+    }
+
+    private void CommitName(string? value)
+    {
+        var s = SessionService.Session;
+        if (s is not null && !string.IsNullOrWhiteSpace(value))
+        {
+            s.Name = value.Trim();
+            SessionService.SetTextString("Name", s.Name);
+        }
+        _editingName = false;
+    }
+
+    private void CommitLevel(string? value)
+    {
+        var s = SessionService.Session;
+        if (s is not null && int.TryParse(value, out var lvl))
+        {
+            lvl = Math.Clamp(lvl, 1, 30);
+            if (lvl != s.Level)
+                s.SetLevel(lvl);
+        }
+        _editingLevel = false;
+    }
+
+    private void CommitXp(string? value)
+    {
+        var s = SessionService.Session;
+        if (s is not null)
+        {
+            if (int.TryParse(value, out var xp) && xp >= 0)
+                SessionService.SetDetailField("Experience", xp.ToString());
+            else if (string.IsNullOrWhiteSpace(value))
+                SessionService.SetDetailField("Experience", "0");
+        }
+        _editingXp = false;
+    }
+
+    private void IncrementActionPoints() => _actionPoints++;
+    private void DecrementActionPoints() { if (_actionPoints > 0) _actionPoints--; }
+
+    private static string FormatTacticalStat(string statName, int val)
+    {
+        if (statName == "Speed") return $"{val} sq";
+        if (statName.StartsWith("Passive", StringComparison.Ordinal)) return $"{val}";
+        return val >= 0 ? $"+{val}" : $"{val}";
+    }
+
+    private void CommitAlignment(string? value)
+    {
+        var s = SessionService.Session;
+        if (s is null || string.IsNullOrWhiteSpace(value))
+        {
+            _editingAlignment = false;
+            return;
+        }
+
+        SessionService.SetDetailField("Alignment", value);
+
+        // Also resolve the Alignment choice slot in the wizard
+        var pending = s.GetAllPendingChoices();
+        var alignmentChoice = pending.FirstOrDefault(p =>
+            p.Slot.ElementType.Equals("Alignment", StringComparison.OrdinalIgnoreCase));
+        if (alignmentChoice is not null)
+        {
+            var candidates = s.GetCandidatesForSlot(alignmentChoice.Slot);
+            var match = candidates.FirstOrDefault(c =>
+                c.Name.Equals(value, StringComparison.OrdinalIgnoreCase));
+            if (match is not null)
+                s.MakeChoice(alignmentChoice.Slot, match);
+        }
+
+        _editingAlignment = false;
+    }
+
+    private void AutoResolveSingleOptions(CharacterSession session,
+        ref IReadOnlyList<PendingChoice> pendingChoices)
+    {
+        // Loop because resolving one choice can cascade new single-option choices
+        int maxPasses = 20;
+        while (maxPasses-- > 0)
+        {
+            bool resolved = false;
+            foreach (var choice in pendingChoices)
+            {
+                if (choice.Slot.Optional || IsSkippableType(choice.Slot.ElementType))
+                    continue;
+                if (choice.Slot.ElementType.Equals("Ability Scores", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                var candidates = session.GetCandidatesForSlot(choice.Slot);
+                if (candidates.Count == 1)
+                {
+                    session.MakeChoice(choice.Slot, candidates[0]);
+                    resolved = true;
+                    break; // pendingChoices is stale, re-fetch
+                }
+            }
+
+            if (!resolved) break;
+            pendingChoices = session.GetAllPendingChoices();
+        }
+    }
+
+    private void EnsureAutoResolved(CharacterSession session,
+        ref IReadOnlyList<PendingChoice> pendingChoices)
+    {
+        if (_lastAutoResolveChoiceCount == session.ChoiceHistory.Count
+            && _lastAutoResolvePendingCount == pendingChoices.Count
+            && _lastAutoResolveScoresSet == session.ScoresSet)
+        {
+            return;
+        }
+
+        AutoResolveSingleOptions(session, ref pendingChoices);
+        _lastAutoResolveChoiceCount = session.ChoiceHistory.Count;
+        _lastAutoResolvePendingCount = pendingChoices.Count;
+        _lastAutoResolveScoresSet = session.ScoresSet;
+    }
+
+    private void SkipChoice(PendingChoice choice)
+    {
+        SessionService.Session!.SkipSlot(choice.Slot);
+    }
+
+    private ChoiceRecord? FindChoiceRecord(string internalId)
+        => SessionService.Session?.ChoiceHistory
+            .LastOrDefault(record => string.Equals(record.Element.InternalId, internalId, StringComparison.OrdinalIgnoreCase));
+
+    private void BeginReselect(ChoiceRecord record)
+    {
+        var session = SessionService.Session;
+        if (session is null)
+            return;
+
+        session.RemoveChoice(record);
+
+        var replacement = SessionService.FindReplacementChoice(record);
+        if (replacement is not null)
+        {
+            OpenSelectionModal(replacement);
+        }
+        else
+        {
+            CloseModal();
+        }
+    }
+
+    private static bool IsSkippableType(string elementType) =>
+        elementType.Equals("Background", StringComparison.OrdinalIgnoreCase)
+        || elementType.Equals("Background Choice", StringComparison.OrdinalIgnoreCase)
+        || elementType.Equals("Theme", StringComparison.OrdinalIgnoreCase)
+        || elementType.Equals("Campaign Setting", StringComparison.OrdinalIgnoreCase)
+        || elementType.Equals("Companion", StringComparison.OrdinalIgnoreCase);
+
+    private static bool IsSkippableChoice(PendingChoice choice) =>
+        choice.Slot.Optional
+        || IsSkippableType(choice.Slot.ElementType);
+
+    private static IEnumerable<PendingChoice> OrderPendingChoices(IReadOnlyList<PendingChoice> choices)
+        => choices
+            .Select((choice, index) => new { choice, index })
+            .OrderBy(item => IsSkippableChoice(item.choice) ? 1 : 0)
+            .ThenBy(item => item.index)
+            .Select(item => item.choice);
+
+    // --- Equipment browser methods ---
+
+    private void OpenEquipmentBrowser(string slot)
+    {
+        _activeEquipSlot = slot;
+        _equipmentCandidates = SessionService.GetAvailableEquipment(slot);
+        _equipSearchText = "";
+        _selectedEquipItem = null;
+        _selectedEquipDetail = null;
+        _showEquipmentModal = true;
+    }
+
+    private void CloseEquipmentModal()
+    {
+        _showEquipmentModal = false;
+        _activeEquipSlot = null;
+        _equipmentCandidates = null;
+        _selectedEquipItem = null;
+        _selectedEquipDetail = null;
+    }
+
+    private void SelectEquipCandidate(RulesElement item)
+    {
+        _selectedEquipItem = item;
+        _selectedEquipDetail = SessionService.GetElementDetails(item.InternalId) ?? item;
+    }
+
+    private void ConfirmEquipment()
+    {
+        if (_selectedEquipItem is not null && _activeEquipSlot is not null)
+        {
+            var session = SessionService.Session!;
+
+            // Two-handed weapon rules: a 2H weapon occupies both hand slots
+            // conceptually. The .dnd4e file format stores it as a single loot
+            // in Main Hand (no off-hand entry — confirmed against the OCB
+            // community corpus), so we only mutate the appropriate slot here.
+            if (IsTwoHandedWeapon(_selectedEquipItem))
+            {
+                // 2H always goes into Main Hand and clears Off-Hand.
+                session.UnequipItem("Off-Hand");
+                session.EquipItem("Main Hand", _selectedEquipItem);
+            }
+            else if (string.Equals(_activeEquipSlot, "Off-Hand", StringComparison.OrdinalIgnoreCase)
+                     && session.GetEquippedItem("Main Hand") is { } current
+                     && IsTwoHandedWeapon(current))
+            {
+                // Equipping something into Off-Hand while a 2H weapon is in
+                // Main Hand frees the wielding hand.
+                session.UnequipItem("Main Hand");
+                session.EquipItem(_activeEquipSlot, _selectedEquipItem);
+            }
+            else
+            {
+                session.EquipItem(_activeEquipSlot, _selectedEquipItem);
+            }
+
+            CloseEquipmentModal();
+        }
+    }
+
+    private void UnequipSlot(string slot)
+    {
+        var session = SessionService.Session!;
+
+        // If unequipping Off-Hand while a 2H weapon is in Main Hand, the
+        // user clicked the visual "two-handed occupied" placeholder — clear
+        // the actual storage slot (Main Hand) instead.
+        if (string.Equals(slot, "Off-Hand", StringComparison.OrdinalIgnoreCase)
+            && session.GetEquippedItem("Off-Hand") is null
+            && session.GetEquippedItem("Main Hand") is { } current
+            && IsTwoHandedWeapon(current))
+        {
+            session.UnequipItem("Main Hand");
+            return;
+        }
+
+        session.UnequipItem(slot);
+    }
+
+    // --- Magic Item builder methods ---
+
+    /// <summary>
+    /// Open the Magic Item builder. Pass <paramref name="preselectedBase"/>
+    /// to lock in a base (e.g. when invoked from the slot picker's ✨ icon);
+    /// pass <paramref name="targetSlot"/> to equip the resulting composite
+    /// into that slot on confirm. Both null → free-form build, adds to inventory.
+    /// </summary>
+    private void OpenMagicItemBuilder(RulesElement? preselectedBase, string? targetSlot)
+    {
+        _magicBuilderPreselectedBase = preselectedBase;
+        _magicBuilderTargetSlot = targetSlot;
+        _showMagicBuilder = true;
+    }
+
+    private void CloseMagicBuilder()
+    {
+        _showMagicBuilder = false;
+        _magicBuilderPreselectedBase = null;
+        _magicBuilderTargetSlot = null;
+    }
+
+    /// <summary>
+    /// Invoked when the user clicks the ✨ icon next to a mundane base inside
+    /// the slot picker. Closes the slot picker and hands the base to the
+    /// builder, with the active slot as the target.
+    /// </summary>
+    private void EnchantFromSlotPicker(RulesElement baseItem)
+    {
+        var slot = _activeEquipSlot;
+        CloseEquipmentModal();
+        OpenMagicItemBuilder(baseItem, slot);
+    }
+
+    private void ConfirmMagicComposite(LootItem composite)
+    {
+        var session = SessionService.Session;
+        if (session is null) return;
+
+        if (_magicBuilderTargetSlot is not null)
+        {
+            // Mirror the 2H rules from ConfirmEquipment so the composite path
+            // matches the mundane equip path:
+            //  • A 2H base always goes into Main Hand and clears Off-Hand.
+            //  • Equipping into Off-Hand while a 2H is in Main Hand frees Main Hand.
+            if (IsTwoHandedWeapon(composite.Base))
+            {
+                session.UnequipItem("Off-Hand");
+                session.EquipItem("Main Hand", composite);
+            }
+            else if (string.Equals(_magicBuilderTargetSlot, "Off-Hand", StringComparison.OrdinalIgnoreCase)
+                     && session.GetEquippedItem("Main Hand") is { } current
+                     && IsTwoHandedWeapon(current))
+            {
+                session.UnequipItem("Main Hand");
+                session.EquipItem(_magicBuilderTargetSlot, composite);
+            }
+            else
+            {
+                session.EquipItem(_magicBuilderTargetSlot, composite);
+            }
+        }
+        else
+        {
+            session.AddInventoryItem(composite, 1);
+        }
+    }
+
+    private static bool IsTwoHandedWeapon(RulesElement item)
+    {
+        if (!string.Equals(item.Type, "Weapon", StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        return item.Fields.TryGetValue("Hands Required", out var hands)
+               && !string.IsNullOrWhiteSpace(hands)
+               && hands.Contains("Two-Handed", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsOffHandBlockedByTwoHanded()
+    {
+        var mainHand = SessionService.Session?.GetEquippedItem("Main Hand");
+        return mainHand is not null && IsTwoHandedWeapon(mainHand);
+    }
+
+    // --- Inventory methods (non-slot gear) ---
+
+    private bool _showInventoryModal;
+    private IReadOnlyList<RulesElement>? _inventoryCandidates;
+    private string _inventorySearchText = "";
+    private RulesElement? _selectedInventoryDetail;
+    private readonly HashSet<string> _expandedInventoryTypes = new(StringComparer.OrdinalIgnoreCase);
+    private bool _showRitualPracticeAlchemyModal;
+    private IReadOnlyList<RulesElement>? _ritualPracticeAlchemyCandidates;
+    private string _ritualPracticeAlchemySearchText = "";
+    private string _ritualPracticeAlchemyKindFilter = "";
+
+    private void OpenInventoryBrowser()
+    {
+        _inventoryCandidates = SessionService.GetAvailableInventoryItems();
+        _inventorySearchText = "";
+        _selectedInventoryDetail = null;
+        _expandedInventoryTypes.Clear();
+        _showInventoryModal = true;
+    }
+
+    private void CloseInventoryModal()
+    {
+        _showInventoryModal = false;
+        _inventoryCandidates = null;
+        _inventorySearchText = "";
+        _selectedInventoryDetail = null;
+        _expandedInventoryTypes.Clear();
+    }
+
+    private void AddToInventory(RulesElement item)
+    {
+        SessionService.Session!.AddLoot(item, 1);
+        CloseInventoryModal();
+    }
+
+    private void BuyToInventory(RulesElement item)
+    {
+        SessionService.Session!.BuyLoot(item, 1);
+        CloseInventoryModal();
+    }
+
+    private void ApplyAutoGold()
+    {
+        SessionService.Session!.AutoGold();
+    }
+
+    private void SelectInventoryItem(RulesElement item)
+    {
+        _selectedInventoryDetail = SessionService.GetElementDetails(item.InternalId) ?? item;
+    }
+
+    private void ToggleInventoryType(string type)
+    {
+        if (!_expandedInventoryTypes.Remove(type))
+            _expandedInventoryTypes.Add(type);
+    }
+
+    private void OpenRitualPracticeAlchemyBrowser()
+    {
+        _ritualPracticeAlchemyCandidates = SessionService.GetAvailableRitualPracticeAlchemyItems();
+        _ritualPracticeAlchemySearchText = "";
+        _ritualPracticeAlchemyKindFilter = "";
+        _showRitualPracticeAlchemyModal = true;
+    }
+
+    private void CloseRitualPracticeAlchemyModal()
+    {
+        _showRitualPracticeAlchemyModal = false;
+        _ritualPracticeAlchemyCandidates = null;
+        _ritualPracticeAlchemySearchText = "";
+        _ritualPracticeAlchemyKindFilter = "";
+    }
+
+    private void AddRitualPracticeAlchemyItem(RulesElement item)
+    {
+        SessionService.Session!.AddInventoryItem(item, 1);
+        CloseRitualPracticeAlchemyModal();
+    }
+
+    private void IncrementInventory(string internalId)
+    {
+        var session = SessionService.Session!;
+        var existing = session.GetInventory().FirstOrDefault(i =>
+            string.Equals(i.Item.Base.InternalId, internalId, StringComparison.OrdinalIgnoreCase));
+        if (existing is not null)
+            session.SetInventoryQuantity(internalId, existing.Quantity + 1);
+    }
+
+    private void DecrementInventory(string internalId, int currentQuantity)
+    {
+        if (currentQuantity > 1)
+            SessionService.Session!.SetInventoryQuantity(internalId, currentQuantity - 1);
+    }
+
+    private void RemoveInventoryEntry(string internalId)
+    {
+        SessionService.Session!.RemoveInventoryItem(internalId);
+    }
+
+    private IReadOnlyList<RulesElement> FilteredInventoryCandidates
+    {
+        get
+        {
+            var src = _inventoryCandidates ?? Array.Empty<RulesElement>();
+            if (string.IsNullOrWhiteSpace(_inventorySearchText))
+                return src.OrderBy(c => c.Name, StringComparer.OrdinalIgnoreCase).ToList();
+            return src.Where(c =>
+                c.Name.Contains(_inventorySearchText, StringComparison.OrdinalIgnoreCase) ||
+                c.Type.Contains(_inventorySearchText, StringComparison.OrdinalIgnoreCase) ||
+                (c.Source?.Contains(_inventorySearchText, StringComparison.OrdinalIgnoreCase) ?? false))
+              .OrderBy(c => c.Name, StringComparer.OrdinalIgnoreCase)
+              .ToList();
+        }
+    }
+
+    private IReadOnlyList<RulesElement> FilteredRitualPracticeAlchemyCandidates
+    {
+        get
+        {
+            IEnumerable<RulesElement> q = _ritualPracticeAlchemyCandidates ?? Array.Empty<RulesElement>();
+
+            if (!string.IsNullOrWhiteSpace(_ritualPracticeAlchemyKindFilter)
+                && Enum.TryParse<RitualPracticeAlchemyKind>(_ritualPracticeAlchemyKindFilter, out var selectedKind))
+            {
+                q = q.Where(c => RitualPracticeAlchemyClassifier.GetKind(c) == selectedKind);
+            }
+
+            if (!string.IsNullOrWhiteSpace(_ritualPracticeAlchemySearchText))
+            {
+                q = q.Where(c =>
+                    c.Name.Contains(_ritualPracticeAlchemySearchText, StringComparison.OrdinalIgnoreCase) ||
+                    c.Type.Contains(_ritualPracticeAlchemySearchText, StringComparison.OrdinalIgnoreCase) ||
+                    FormatRitualPracticeAlchemyKind(RitualPracticeAlchemyClassifier.GetKind(c)!.Value)
+                        .Contains(_ritualPracticeAlchemySearchText, StringComparison.OrdinalIgnoreCase) ||
+                    (c.Source?.Contains(_ritualPracticeAlchemySearchText, StringComparison.OrdinalIgnoreCase) ?? false));
+            }
+
+            return q
+                .OrderBy(c => RitualPracticeAlchemyClassifier.KindSortKey(RitualPracticeAlchemyClassifier.GetKind(c)!.Value))
+                .ThenBy(c => LevelSortKey(c))
+                .ThenBy(c => c.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+        }
+    }
+
+    private IReadOnlyList<RulesElement> FilteredEquipment
+    {
+        get
+        {
+            var src = _equipmentCandidates ?? Array.Empty<RulesElement>();
+            IEnumerable<RulesElement> q = src;
+
+            if (!string.IsNullOrWhiteSpace(_equipSearchText))
+            {
+                q = q.Where(c =>
+                    c.Name.Contains(_equipSearchText, StringComparison.OrdinalIgnoreCase) ||
+                    c.Type.Contains(_equipSearchText, StringComparison.OrdinalIgnoreCase) ||
+                    GroupOrType(c).Contains(_equipSearchText, StringComparison.OrdinalIgnoreCase) ||
+                    (c.Source?.Contains(_equipSearchText, StringComparison.OrdinalIgnoreCase) ?? false));
+            }
+
+            if (_equipOnlyProficient)
+                q = q.Where(c => SessionService.IsProficientWith(c));
+
+            // Two-handed weapons can't go into the Off-Hand slot — they're
+            // wielded with both hands, by the Main Hand entry. Filtering
+            // here prevents the user from picking a 2H weapon for Off-Hand
+            // and matches the OCB equip behavior.
+            if (string.Equals(_activeEquipSlot, "Off-Hand", StringComparison.OrdinalIgnoreCase))
+                q = q.Where(c => !IsTwoHandedWeapon(c));
+
+            q = _equipSortMode switch
+            {
+                "name"     => q.OrderBy(c => c.Name, StringComparer.OrdinalIgnoreCase),
+                "damage"   => q.OrderByDescending(c => DamageOrAcSortKey(c))
+                               .ThenBy(c => c.Name, StringComparer.OrdinalIgnoreCase),
+                "price"    => q.OrderBy(c => ParseGoldPrice(c))
+                               .ThenBy(c => c.Name, StringComparer.OrdinalIgnoreCase),
+                "level"    => q.OrderBy(c => LevelSortKey(c))
+                               .ThenBy(c => c.Name, StringComparer.OrdinalIgnoreCase),
+                _          => q.OrderByDescending(c => SessionService.IsProficientWith(c))
+                               .ThenBy(c => c.Name, StringComparer.OrdinalIgnoreCase),
+            };
+
+            return q.ToList();
+        }
+    }
+
+    private string PrimaryStatHeader
+    {
+        get
+        {
+            // Heuristic: weapons → Damage; armor → AC; gear → Slot.
+            var sample = (_equipmentCandidates ?? Array.Empty<RulesElement>()).FirstOrDefault();
+            if (sample is null) return "Stat";
+            if (string.Equals(sample.Type, "Weapon", StringComparison.OrdinalIgnoreCase)) return "Damage";
+            if (string.Equals(sample.Type, "Armor", StringComparison.OrdinalIgnoreCase)) return "AC";
+            return "Slot";
+        }
+    }
+
+    private static string PrimaryStatValue(RulesElement item)
+    {
+        if (string.Equals(item.Type, "Weapon", StringComparison.OrdinalIgnoreCase)
+            && item.Fields.TryGetValue("Damage", out var d) && !string.IsNullOrWhiteSpace(d))
+            return d;
+        if (string.Equals(item.Type, "Armor", StringComparison.OrdinalIgnoreCase)
+            && item.Fields.TryGetValue("Armor Bonus", out var ab) && !string.IsNullOrWhiteSpace(ab))
+            return $"+{ab}";
+        if (item.Fields.TryGetValue("Item Slot", out var slot) && !string.IsNullOrWhiteSpace(slot))
+            return slot;
+        return "";
+    }
+
+    private static string GroupOrType(RulesElement item)
+    {
+        if (item.Fields.TryGetValue("Group", out var g) && !string.IsNullOrWhiteSpace(g))
+            return g;
+        if (item.Fields.TryGetValue("Armor Type", out var at) && !string.IsNullOrWhiteSpace(at))
+            return at;
+        if (item.Fields.TryGetValue("Weapon Category", out var wc) && !string.IsNullOrWhiteSpace(wc))
+            return wc;
+        return item.Type;
+    }
+
+    private static int DamageOrAcSortKey(RulesElement item)
+    {
+        // Sort weapons by max damage die rank, armors by armor bonus.
+        if (item.Fields.TryGetValue("Damage", out var d) && !string.IsNullOrWhiteSpace(d))
+        {
+            // "1d8", "2d6", "1d10" — use sides * count as proxy.
+            var m = System.Text.RegularExpressions.Regex.Match(d, @"(\d+)d(\d+)");
+            if (m.Success && int.TryParse(m.Groups[1].Value, out var n) && int.TryParse(m.Groups[2].Value, out var s))
+                return n * s;
+        }
+        if (item.Fields.TryGetValue("Armor Bonus", out var ab) && int.TryParse(ab, out var v))
+            return v;
+        return 0;
+    }
+
+    private static int ParseInt(IReadOnlyDictionary<string, string> fields, string key)
+        => fields.TryGetValue(key, out var s) && int.TryParse(s, out var i) ? i : 0;
+
+    private static int LevelSortKey(RulesElement item)
+        => item.Fields.TryGetValue("Level", out var s) && int.TryParse(s, out var i) ? i : int.MaxValue;
+
+    private static string RitualPracticeAlchemyMeta(RitualPracticeAlchemyEntry row)
+    {
+        var parts = new List<string>();
+        if (row.Element.Fields.TryGetValue("Level", out var level) && !string.IsNullOrWhiteSpace(level))
+            parts.Add($"L{level}");
+        if (!row.IsInventoryItem && row.Quantity == 0)
+            parts.Add("granted");
+        return parts.Count == 0 ? "" : "(" + string.Join(", ", parts) + ")";
+    }
+
+    private static string FormatRitualPracticeAlchemyKind(RitualPracticeAlchemyKind kind)
+        => kind switch
+        {
+            RitualPracticeAlchemyKind.Ritual => "Rituals",
+            RitualPracticeAlchemyKind.RitualScroll => "Ritual Scrolls",
+            RitualPracticeAlchemyKind.AlchemicalFormula => "Alchemical Formulae",
+            RitualPracticeAlchemyKind.AlchemicalItem => "Alchemical Items",
+            RitualPracticeAlchemyKind.PoisonRecipe => "Poison Recipes",
+            RitualPracticeAlchemyKind.MartialPractice => "Martial Practices",
+            _ => kind.ToString(),
+        };
+
+    private static int ParseGoldPrice(RulesElement item)
+    {
+        if (!item.Fields.TryGetValue("Gold", out var p) || string.IsNullOrWhiteSpace(p))
+            return int.MaxValue; // unpriced items go last
+        var m = System.Text.RegularExpressions.Regex.Match(p, @"([\d,]+)");
+        if (m.Success && int.TryParse(m.Groups[1].Value.Replace(",", ""), out var v))
+            return v;
+        return int.MaxValue;
+    }
+
+    /// <summary>
+    /// Display string for an item's purchase cost, suitable for the
+    /// inventory and ritual add modals. Returns null when the rules
+    /// element has no Gold field (or the field is blank).
+    /// </summary>
+    private static string? FormatItemCost(RulesElement item)
+    {
+        if (!item.Fields.TryGetValue("Gold", out var gold) || string.IsNullOrWhiteSpace(gold))
+            return null;
+
+        var trimmed = gold.Trim();
+        // Most rules entries already include the currency suffix; only
+        // append "gp" for bare numerics (e.g. "50" → "50 gp").
+        if (System.Text.RegularExpressions.Regex.IsMatch(trimmed, @"^[\d,]+(\.\d+)?$"))
+            return $"{trimmed} gp";
+        return trimmed;
+    }
+
+    // Ordered for display: most-relevant first.
+    private static readonly string[] _equipmentDisplayFieldOrder =
+    [
+        // Magic-item summary
+        "Enhancement", "Critical", "Magic Item Type", "Rarity", "Weapon",
+        // Combat stats
+        "Damage", "Proficiency Bonus", "Hands Required", "Range",
+        "Armor Bonus", "Armor Type", "Armor Category", "Check", "Speed",
+        // Misc
+        "Group", "Weapon Category", "Properties",
+        // Slot / cost / weight
+        "Item Slot", "Level", "Gold", "Weight",
+    ];
+
+    private static readonly Dictionary<string, string> _fieldDisplayLabels = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Gold"] = "Cost (gp)",
+        ["Weapon"] = "Applies to",
+    };
+
+    private static IReadOnlyList<KeyValuePair<string, string>> GetEquipmentDetailFields(RulesElement element)
+    {
+        var result = new List<KeyValuePair<string, string>>();
+        foreach (var key in _equipmentDisplayFieldOrder)
+        {
+            if (!element.Fields.TryGetValue(key, out var v) || string.IsNullOrWhiteSpace(v))
+                continue;
+            var label = _fieldDisplayLabels.TryGetValue(key, out var l) ? l : key;
+            result.Add(new KeyValuePair<string, string>(label, v.Trim()));
+        }
+        return result;
+    }
+
+    private static IReadOnlyList<(string Name, string Value)> GetEquipmentSummary(RulesElement element)
+    {
+        var summary = new List<(string, string)>();
+        if (element.Fields.TryGetValue("Enhancement", out var enh) && !string.IsNullOrEmpty(enh))
+            summary.Add(("Enh", $"+{enh}"));
+        if (element.Fields.TryGetValue("Damage", out var dmg) && !string.IsNullOrEmpty(dmg))
+            summary.Add(("Dmg", dmg));
+        if (element.Fields.TryGetValue("Armor Bonus", out var ab) && !string.IsNullOrEmpty(ab))
+            summary.Add(("AC", $"+{ab}"));
+        if (element.Fields.TryGetValue("Proficiency Bonus", out var prof) && !string.IsNullOrEmpty(prof))
+            summary.Add(("Prof", $"+{prof}"));
+        return summary;
+    }
+
+    // --- Class Feature grouping for intermediate elements ---
+
+    private sealed record GrantLink(string Label, string InternalId);
+    private sealed record FeatureGroup(RulesElement Parent, List<RulesElement> Children, List<GrantLink> GrantLinks);
+
+    private List<FeatureGroup> GroupClassFeatures(IReadOnlyList<RulesElement> features)
+    {
+        // Build a set of all feature IDs for quick lookup
+        var featureIds = new HashSet<string>(
+            features.Select(f => f.InternalId).Where(id => id is not null)!,
+            StringComparer.OrdinalIgnoreCase);
+
+        // Find intermediates that have same-type children in this list
+        // A child belongs to a parent if its Categories contain the parent's InternalId
+        var childToParent = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var feature in features)
+        {
+            foreach (var cat in feature.Categories)
+            {
+                if (featureIds.Contains(cat))
+                {
+                    childToParent[feature.InternalId] = cat;
+                    break;
+                }
+            }
+        }
+
+        // Build parent -> children map
+        var parentChildren = new Dictionary<string, List<RulesElement>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var (childId, parentId) in childToParent)
+        {
+            if (!parentChildren.TryGetValue(parentId, out var list))
+            {
+                list = [];
+                parentChildren[parentId] = list;
+            }
+            list.Add(features.First(f => string.Equals(f.InternalId, childId, StringComparison.OrdinalIgnoreCase)));
+        }
+
+        var result = new List<FeatureGroup>();
+        foreach (var feature in features)
+        {
+            // Skip children — they'll appear under their parent
+            if (childToParent.ContainsKey(feature.InternalId))
+                continue;
+
+            if (parentChildren.TryGetValue(feature.InternalId, out var children))
+            {
+                // Intermediate with same-type children → header group
+                result.Add(new FeatureGroup(feature, children, []));
+            }
+            else
+            {
+                // Check if it's a grant-only intermediate that should get synthesized links
+                var grantLinks = SynthesizeGrantLinks(feature);
+                result.Add(new FeatureGroup(feature, [], grantLinks));
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// For intermediate elements (only grant/select directives), synthesize
+    /// clickable links to granted elements, e.g. "You can use Wild Shape"
+    /// or "You gain the Defensive Mobility feat".
+    /// Returns empty list for non-intermediate elements.
+    /// </summary>
+    private List<GrantLink> SynthesizeGrantLinks(RulesElement feature)
+    {
+        var detail = SessionService.GetElementDetails(feature.InternalId);
+        if (detail is null || detail.Rules.Count == 0)
+            return [];
+
+        bool allStructural = detail.Rules.All(r => r is GrantDirective or SelectDirective);
+        if (!allStructural)
+            return [];
+
+        var links = new List<GrantLink>();
+        foreach (var rule in detail.Rules)
+        {
+            if (rule is GrantDirective grant)
+            {
+                var grantedElement = SessionService.GetElementDetails(grant.Name);
+                if (grantedElement is null) continue;
+                if (grantedElement.Type.Equals("Internal", StringComparison.OrdinalIgnoreCase)
+                    || grantedElement.Type.Equals("Grants", StringComparison.OrdinalIgnoreCase)
+                    || grantedElement.Type.Equals("CountsAsFeature", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                links.Add(new GrantLink(FormatGrantedElement(grantedElement), grantedElement.InternalId));
+            }
+        }
+
+        return links;
+    }
+
+    private static string FormatGrantedElement(RulesElement element)
+    {
+        return element.Type switch
+        {
+            "Power" => $"You can use {element.Name}",
+            "Feat" => $"You gain the {element.Name} feat",
+            "Proficiency" => $"You gain proficiency with {element.Name}",
+            _ => $"You gain {element.Name}",
+        };
+    }
+
+    private void HandleSessionChanged()
+    {
+        _lastAutoResolveChoiceCount = -1;
+        _lastAutoResolvePendingCount = -1;
+        _lastAutoResolveScoresSet = false;
+        UpdateCompleteToast(SessionService.Session?.IsComplete == true);
+        _ = InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        SessionService.Changed -= HandleSessionChanged;
+        RestoreState.Changed -= HandleSessionChanged;
+        CancelCompleteToastTimer();
+    }
+
+    private void UpdateCompleteToast(bool isComplete)
+    {
+        if (!isComplete)
+        {
+            _lastCompleteState = false;
+            _showCompleteToast = false;
+            CancelCompleteToastTimer();
+            return;
+        }
+
+        if (_lastCompleteState)
+            return;
+
+        _lastCompleteState = true;
+        _showCompleteToast = true;
+        RestartCompleteToastTimer();
+    }
+
+    private void RestartCompleteToastTimer()
+    {
+        CancelCompleteToastTimer();
+        _completeToastCts = new CancellationTokenSource();
+        _ = HideCompleteToastAfterDelayAsync(_completeToastCts.Token);
+    }
+
+    private async Task HideCompleteToastAfterDelayAsync(CancellationToken cancellationToken)
+    {
+        try
+        {
+            await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
+            if (cancellationToken.IsCancellationRequested)
+                return;
+
+            _showCompleteToast = false;
+            await InvokeAsync(StateHasChanged);
+        }
+        catch (OperationCanceledException)
+        {
+        }
+    }
+
+    private void CancelCompleteToastTimer()
+    {
+        if (_completeToastCts is null)
+            return;
+
+        _completeToastCts.Cancel();
+        _completeToastCts.Dispose();
+        _completeToastCts = null;
+    }
+}

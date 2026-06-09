@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Fallback for the MAUI workload-injected MauiVersion. Normally the
+         installed MAUI SDK sets this via Microsoft.Maui.Sdk's BundledVersions
+         targets; pinning here means PackageReference Version="$(MauiVersion)"
+         resolves even if the workload props import is ever broken. -->
+    <MauiVersion>10.0.70</MauiVersion>
+    <!-- The app is English-only. The data files (rules XML, .dnd4e characters)
+         are not localized and have no infrastructure for translation, so the
+         per-locale .NET satellite assemblies (transitively pulled from ASP.NET
+         Core / WindowsAppSDK / MAUI) are pure deadweight. Restrict satellite
+         resource copy to English to drop ~70 locale folders from each publish.
+         Windows App SDK's native .dll.mui resource files come from the runtime
+         pack and aren't covered by this knob — those are pruned post-publish
+         in scripts/build-windows.ps1. -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+</Project>

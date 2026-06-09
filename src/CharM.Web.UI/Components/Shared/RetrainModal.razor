@@ -1,0 +1,321 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject RetrainingService RetrainSvc
+
+@if (Visible && Context is not null)
+{
+    var session = SessionService.Session;
+
+    <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+         @onclick="HandleCancelAsync">
+        <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-5xl w-full max-h-[85vh] flex flex-col ghost-border"
+             @onclick:stopPropagation="true">
+
+            @* --- Header --- *@
+            <div class="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between">
+                <div>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">Retrain at Level @Context.Level</h2>
+                    <p class="text-xs font-label text-on-surface-variant mt-0.5">
+                        Swap one Feat, Trained Skill, or Utility Power for a same-category replacement.
+                    </p>
+                </div>
+                <button @onclick="HandleCancelAsync"
+                        class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+
+            @* --- Body: two panes --- *@
+            <div class="flex flex-1 min-h-0">
+
+                @* Left pane: Give Up *@
+                <div class="w-1/2 border-r border-outline-variant/20 flex flex-col">
+                    <div class="px-4 py-2 border-b border-outline-variant/10 bg-surface-container-low/40">
+                        <p class="text-[10px] font-label font-bold uppercase tracking-wider text-outline">Give Up</p>
+                        <div class="mt-1.5 relative">
+                            <span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+                            <input type="text" @bind="_loseSearch" @bind:event="oninput"
+                                   placeholder="Search what you have..."
+                                   class="w-full pl-8 pr-2 py-1.5 bg-surface-container-lowest border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                        </div>
+                    </div>
+                    <div class="flex flex-1 min-h-0 overflow-y-auto">
+                        @if (session is null)
+                        {
+                            <p class="text-sm text-on-surface-variant p-4">No active session.</p>
+                        }
+                        else if (_loseCandidates is null || _loseCandidates.Count == 0)
+                        {
+                            <p class="text-sm text-on-surface-variant italic p-4">Nothing eligible to retrain at this level.</p>
+                        }
+                        else
+                        {
+                            <table class="w-full text-sm">
+                                <tbody>
+                                    @foreach (var candidate in FilteredLoseCandidates)
+                                    {
+                                        bool selected = _selectedLose is not null
+                                            && string.Equals(_selectedLose.InternalId, candidate.InternalId, StringComparison.OrdinalIgnoreCase);
+                                        <tr class="cursor-pointer border-b border-outline-variant/10
+                                                   @(selected ? "bg-primary/10" : "hover:bg-surface-container-low/50") transition-colors"
+                                            @onclick="() => SelectLose(candidate, session)">
+                                            <td class="px-4 py-2">
+                                                <span class="font-semibold text-on-surface">@candidate.Name</span>
+                                                @if (!string.IsNullOrEmpty(candidate.Type))
+                                                {
+                                                    <span class="ml-1.5 text-[10px] font-bold uppercase tracking-wider text-outline">@FriendlyType(candidate)</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+
+                    @* Selected lose detail strip *@
+                    @if (_selectedLose is not null)
+                    {
+                        <div class="px-4 py-3 border-t border-outline-variant/20 bg-surface-container-low/30 max-h-40 overflow-y-auto">
+                            <ElementDetailView Element="@_selectedLoseDetail" ShowHeader="false"
+                                               OnLoadDetails="LoadDetails"
+                                               OnResolveIds="ResolveIds" />
+                        </div>
+                    }
+                </div>
+
+                @* Right pane: Pick Up *@
+                <div class="w-1/2 flex flex-col">
+                    <div class="px-4 py-2 border-b border-outline-variant/10 bg-surface-container-low/40">
+                        <p class="text-[10px] font-label font-bold uppercase tracking-wider text-outline">Gain Instead</p>
+                        <div class="mt-1.5 relative">
+                            <span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+                            <input type="text" @bind="_gainSearch" @bind:event="oninput"
+                                   placeholder="Search replacements..."
+                                   class="w-full pl-8 pr-2 py-1.5 bg-surface-container-lowest border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                        </div>
+                    </div>
+                    <div class="flex flex-1 min-h-0 overflow-y-auto">
+                        @if (_selectedLose is null)
+                        {
+                            <p class="text-sm text-on-surface-variant italic p-4">Select something to give up first.</p>
+                        }
+                        else if (_gainCandidates is null || _gainCandidates.Count == 0)
+                        {
+                            <p class="text-sm text-on-surface-variant italic p-4">No legal replacements found for this level.</p>
+                        }
+                        else
+                        {
+                            <table class="w-full text-sm">
+                                <tbody>
+                                    @foreach (var candidate in FilteredGainCandidates)
+                                    {
+                                        bool selected = _selectedGain is not null
+                                            && string.Equals(_selectedGain.InternalId, candidate.InternalId, StringComparison.OrdinalIgnoreCase);
+                                        <tr class="cursor-pointer border-b border-outline-variant/10
+                                                   @(selected ? "bg-primary/10" : "hover:bg-surface-container-low/50") transition-colors"
+                                            @onclick="() => SelectGain(candidate)">
+                                            <td class="px-4 py-2">
+                                                <span class="font-semibold text-on-surface">@candidate.Name</span>
+                                                @if (!string.IsNullOrEmpty(candidate.Source))
+                                                {
+                                                    <span class="ml-1.5 text-[10px] text-on-surface-variant">@candidate.Source</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+
+                    @* Selected gain detail strip *@
+                    @if (_selectedGain is not null)
+                    {
+                        <div class="px-4 py-3 border-t border-outline-variant/20 bg-surface-container-low/30 max-h-40 overflow-y-auto">
+                            <ElementDetailView Element="@_selectedGainDetail" ShowHeader="false"
+                                               OnLoadDetails="LoadDetails"
+                                               OnResolveIds="ResolveIds" />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @* --- Footer --- *@
+            <div class="px-6 py-4 border-t border-outline-variant/20 flex items-center justify-between bg-surface-container-low/20">
+                <div>
+                    @if (_errorMessage is not null)
+                    {
+                        <p class="text-xs text-error flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">error</span>
+                            @_errorMessage
+                        </p>
+                    }
+                </div>
+                <div class="flex items-center gap-3">
+                    <button @onclick="HandleCancelAsync"
+                            class="px-4 py-2 rounded bg-surface-container-low text-on-surface text-sm font-label font-semibold hover:bg-surface-container transition-colors">
+                        Cancel
+                    </button>
+                    @if (Context.IsOptional)
+                    {
+                        <button @onclick="HandleSkipAsync"
+                                class="px-4 py-2 rounded bg-surface-container text-on-surface-variant text-sm font-label font-semibold hover:bg-surface-container-high transition-colors">
+                            Skip
+                        </button>
+                    }
+                    <button @onclick="HandleConfirmAsync"
+                            disabled="@(!CanConfirm)"
+                            class="px-4 py-2 rounded bg-primary text-on-primary text-sm font-label font-semibold hover:bg-primary/90 transition-colors scale-98-active disabled:opacity-40 disabled:cursor-not-allowed">
+                        @if (_selectedLose is not null && _selectedGain is not null)
+                        {
+                            <span>Swap @_selectedLose.Name → @_selectedGain.Name</span>
+                        }
+                        else
+                        {
+                            <span>Confirm</span>
+                        }
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@code {
+    /// <summary>Whether the modal is shown.</summary>
+    [Parameter] public bool Visible { get; set; }
+
+    /// <summary>Which level retrain slot this modal is managing.</summary>
+    [Parameter] public RetrainModalContext? Context { get; set; }
+
+    /// <summary>Called with the chosen (lose, gain) pair when the user confirms.
+    /// Null pair means the user skipped (only fired when Context.IsOptional).</summary>
+    [Parameter] public EventCallback<RetrainResult?> OnResult { get; set; }
+
+    private IReadOnlyList<RulesElement>? _loseCandidates;
+    private IReadOnlyList<RulesElement>? _gainCandidates;
+    private RulesElement? _selectedLose;
+    private RulesElement? _selectedGain;
+    private RulesElement? _selectedLoseDetail;
+    private RulesElement? _selectedGainDetail;
+    private string _loseSearch = "";
+    private string _gainSearch = "";
+    private string? _errorMessage;
+
+    protected override void OnParametersSet()
+    {
+        // Reload candidate list whenever the context changes (new level opened).
+        var session = SessionService.Session;
+        if (session is null || Context is null) return;
+
+        _loseCandidates = RetrainSvc.GetLoseCandidates(session, Context.Level);
+        _gainCandidates = null;
+        _selectedLose = null;
+        _selectedGain = null;
+        _selectedLoseDetail = null;
+        _selectedGainDetail = null;
+        _loseSearch = "";
+        _gainSearch = "";
+        _errorMessage = null;
+
+        // If editing an existing retrain, pre-populate both panes.
+        var existing = RetrainSvc.GetExistingRetrain(session, Context.Level);
+        if (existing is not null)
+        {
+            if (existing.OldElement is { } oldEl)
+                SelectLose(oldEl, session);
+            if (existing.NewElement is { } newEl)
+                SelectGain(newEl);
+        }
+    }
+
+    private IEnumerable<RulesElement> FilteredLoseCandidates
+        => _loseCandidates is null
+            ? []
+            : string.IsNullOrWhiteSpace(_loseSearch)
+                ? _loseCandidates
+                : _loseCandidates.Where(e =>
+                    e.Name.Contains(_loseSearch, StringComparison.OrdinalIgnoreCase));
+
+    private IEnumerable<RulesElement> FilteredGainCandidates
+        => _gainCandidates is null
+            ? []
+            : string.IsNullOrWhiteSpace(_gainSearch)
+                ? _gainCandidates
+                : _gainCandidates.Where(e =>
+                    e.Name.Contains(_gainSearch, StringComparison.OrdinalIgnoreCase)
+                    || (e.Source?.Contains(_gainSearch, StringComparison.OrdinalIgnoreCase) ?? false));
+
+    private bool CanConfirm => _selectedLose is not null && _selectedGain is not null;
+
+    private void SelectLose(RulesElement element, CharacterSession session)
+    {
+        _selectedLose = element;
+        _selectedLoseDetail = LoadDetails(element.InternalId) ?? element;
+        _selectedGain = null;
+        _selectedGainDetail = null;
+        _gainSearch = "";
+        _errorMessage = null;
+
+        // Re-fetch gain candidates whenever the lose selection changes.
+        _gainCandidates = Context is not null
+            ? RetrainSvc.GetGainCandidates(session, Context.Level, element)
+            : null;
+    }
+
+    private void SelectGain(RulesElement element)
+    {
+        _selectedGain = element;
+        _selectedGainDetail = LoadDetails(element.InternalId) ?? element;
+        _errorMessage = null;
+    }
+
+    private async Task HandleConfirmAsync()
+    {
+        if (!CanConfirm) return;
+        var session = SessionService.Session;
+        if (session is null || Context is null) return;
+
+        try
+        {
+            RetrainSvc.ApplyRetrain(session, Context.Level, _selectedLose!, _selectedGain!);
+            await OnResult.InvokeAsync(new RetrainResult(_selectedLose!, _selectedGain!));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _errorMessage = ex.Message;
+        }
+    }
+
+    private async Task HandleSkipAsync()
+    {
+        // Skip means "no retrain at this level" — clear any existing one.
+        var session = SessionService.Session;
+        if (session is not null && Context is not null)
+            RetrainSvc.ClearRetrain(session, Context.Level);
+
+        await OnResult.InvokeAsync(null);
+    }
+
+    private async Task HandleCancelAsync()
+    {
+        await OnResult.InvokeAsync(null);
+    }
+
+    private static string FriendlyType(RulesElement e)
+    {
+        if (string.Equals(e.Type, "Class Feature", StringComparison.OrdinalIgnoreCase))
+            return "Skill";
+        return e.Type;
+    }
+
+    private RulesElement? LoadDetails(string? internalId)
+        => string.IsNullOrEmpty(internalId) ? null : SessionService.GetElementDetails(internalId);
+
+    private List<ResolvedElement> ResolveIds(string idList)
+        => SessionService.ResolveElementIds(idList);
+}

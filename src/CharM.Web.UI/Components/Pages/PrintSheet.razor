@@ -1,0 +1,1568 @@
+@page "/print/character"
+@using System.Globalization
+@using CharM.Engine.CharacterModel
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Engine.Powers
+@using CharM.Web.Components.Shared
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject CharacterRestoreState RestoreState
+@inject PrintCardCollector Collector
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@implements IDisposable
+
+<PageTitle>Print Sheet — @(SessionService.Session?.Name ?? "Loading...")</PageTitle>
+
+<style>
+    /* ---- Page sizing -------------------------------------------------- */
+    @@page { size: letter; margin: 0.5in; }
+    .size-a4 { /* JS swaps @@page rule below via dynamic stylesheet, but
+                  we also set the printable canvas size for on-screen preview */
+    }
+
+    /* Screen preview: simulate paper background */
+    body.print-preview-mode {
+        background: #d1d5db;
+    }
+
+    .print-sheet {
+        --ink: #1a1a1a;
+        --ink-soft: #4b5563;
+        --rule: #9ca3af;
+        --rule-soft: #d1d5db;
+        --accent-atwill: #16a34a;
+        --accent-encounter: #b91c1c;
+        --accent-daily: #111827;
+        --accent-utility: #6b7280;
+        --accent-item: #b45309;
+        --accent-cantrip: #0284c7;
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .print-sheet.theme-muted {
+        --accent-atwill: #4d7c0f;
+        --accent-encounter: #991b1b;
+        --accent-daily: #1f2937;
+        --accent-utility: #4b5563;
+        --accent-item: #92400e;
+        --accent-cantrip: #075985;
+    }
+
+    .print-sheet.theme-bw {
+        --accent-atwill: #000;
+        --accent-encounter: #000;
+        --accent-daily: #000;
+        --accent-utility: #000;
+        --accent-item: #000;
+        --accent-cantrip: #000;
+    }
+
+    .print-sheet.size-a4 .print-page {
+        width: 210mm;
+        min-height: 297mm;
+    }
+
+    .print-page {
+        background: white;
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.5in;
+        box-sizing: border-box;
+        page-break-after: always;
+        break-after: page;
+        margin: 0 auto 12px auto;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .print-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+    }
+
+    /* ---- Header bar --------------------------------------------------- */
+    .sheet-header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: baseline;
+        column-gap: 16px;
+        row-gap: 2px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 4px;
+        margin-bottom: 10px;
+    }
+
+    .sheet-name {
+        font-size: 22pt;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+
+    .sheet-details {
+        text-align: right;
+        font-size: 8.5pt;
+        color: var(--ink-soft);
+        line-height: 1.3;
+    }
+    .sheet-details strong { color: var(--ink); font-weight: 700; }
+    .sheet-details .row { display: block; }
+
+    .sheet-langs {
+        grid-column: 1 / -1;
+        font-size: 8pt;
+        color: var(--ink-soft);
+        line-height: 1.3;
+    }
+    .sheet-langs .label {
+        font-size: 7pt;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    /* ---- 3-col summary grid ------------------------------------------ */
+    .summary-grid {
+        display: grid;
+        grid-template-columns: 1.45in 2.0in 1fr;
+        gap: 8px;
+        align-items: stretch;   /* all columns same height */
+        flex: 1;                /* fill remaining page height when summary-page is flex */
+    }
+
+    /* Grid children must declare min-width:0 or 1fr tracks won't clip content */
+    .summary-grid > div { min-width: 0; }
+
+    /* Make summary page fill the print-page with header then growing grid */
+    .summary-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Left and right columns: flex so inner panels can fill height */
+    .left-col, .right-col {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .equip-fill-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .equip-fill-panel table { flex: 1; }
+    .right-col .panel {
+        flex: 1;
+        overflow: hidden;
+    }
+    .center-col {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .panel {
+        border: 1px solid var(--rule);
+        padding: 6px 8px;
+        background: white;
+        overflow: hidden;  /* clip build-entry text that would otherwise push the panel wider */
+    }
+
+    .panel-title {
+        font-size: 8pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-soft);
+        border-bottom: 1px solid var(--rule-soft);
+        padding-bottom: 3px;
+        margin-bottom: 6px;
+    }
+
+    /* ---- Ability score boxes ----------------------------------------- */
+    .ability-row {
+        display: grid;
+        grid-template-columns: 28px 1fr 28px;
+        align-items: center;
+        gap: 6px;
+        font-size: 10pt;
+        padding: 2px 0;
+    }
+
+    .score-box {
+        width: 28px; height: 28px;
+        border: 1.5px solid var(--ink);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 11pt;
+    }
+
+    .ability-name { font-weight: 600; font-size: 10pt; }
+    .mod-box {
+        font-size: 11pt;
+        font-weight: 700;
+        text-align: center;
+        border: 1px solid var(--rule);
+        border-radius: 3px;
+        padding: 2px;
+    }
+
+    /* ---- Ability+Skill combined row (Essentials-style) -------------- */
+    .as-row {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 5px;
+        border: 1px solid var(--rule);
+        padding: 3px 4px;
+        margin-bottom: 3px;
+        align-items: center;
+        background: white;
+    }
+
+    .as-ability {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+    }
+    .as-ability .mod {
+        font-size: 13pt;
+        font-weight: 800;
+        line-height: 1;
+        padding: 2px 6px;
+        background: var(--ink);
+        color: white;
+        border-radius: 3px;
+        min-width: 32px;
+        text-align: center;
+    }
+    .as-ability .ability-name {
+        font-size: 7pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+    }
+    .as-ability .score {
+        font-size: 8pt;
+        font-weight: 600;
+        border: 1px solid var(--rule);
+        padding: 0 4px;
+        line-height: 1.2;
+    }
+
+    .as-skills {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;  /* allow the 1fr track to shrink and clip */
+    }
+    .as-skill {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 7.5pt;
+        gap: 3px;
+        padding: 0 1px;
+        border-bottom: 1px dotted var(--rule-soft);
+        min-width: 0;  /* allow flex children to shrink */
+    }
+    .as-skill.trained {
+        font-weight: 700;
+        background: color-mix(in srgb, var(--ink) 6%, white);
+    }
+    .as-skill .skill-mark {
+        display: inline-block;
+        width: 8px; text-align: center;
+        color: var(--accent-encounter);
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .as-skill .skill-name {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .as-skill .skill-mod {
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+    }
+    .as-skill.no-skills {
+        font-size: 7pt;
+        font-style: italic;
+        color: var(--ink-soft);
+        grid-column: 1 / -1;
+    }
+
+    /* ---- Defense / combat-stat boxes --------------------------------- */
+    .defense-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+
+    .defense-box {
+        border: 1.5px solid var(--ink);
+        border-radius: 4px;
+        text-align: center;
+        padding: 4px 2px;
+    }
+
+    .defense-label {
+        font-size: 7pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+    }
+
+    .defense-value { font-size: 16pt; font-weight: 800; line-height: 1; }
+
+    .tac-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9pt;
+        padding: 2px 0;
+        border-bottom: 1px dotted var(--rule-soft);
+    }
+
+    .tac-label { font-weight: 600; }
+    .tac-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    /* ---- HP / Surges blocks ------------------------------------------ */
+    .hp-block { margin-top: 8px; }
+
+    .hp-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+    }
+
+    .hp-max {
+        font-size: 22pt;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .hp-fill-line {
+        display: grid;
+        grid-template-columns: auto 1fr;  /* label takes natural width; blank fills rest */
+        align-items: end;
+        font-size: 9pt;
+        margin-top: 4px;
+    }
+
+    .fill-blank {
+        border-bottom: 1.5px solid var(--ink);
+        height: 14px;
+    }
+
+    .death-skulls {
+        display: flex;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    .death-skull {
+        width: 16px; height: 16px;
+        border: 1.5px solid var(--ink);
+        border-radius: 50%;
+        font-size: 11pt;
+        text-align: center;
+        line-height: 14px;
+    }
+
+    /* ---- Build summary right column ---------------------------------- */
+    .build-section { margin-bottom: 6px; }
+    .build-section h3 {
+        font-size: 7.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+        margin-bottom: 2px;
+        border-bottom: 1px solid var(--rule-soft);
+    }
+    .build-entry {
+        font-size: 8.5pt;
+        line-height: 1.25;
+        padding: 1px 0;
+        /* One-line clamp: don't let entries wrap past one line. */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .build-entry .name { font-weight: 700; }
+    .build-entry .desc {
+        color: var(--ink-soft);
+        font-size: 7.5pt;
+        font-weight: 400;
+    }
+
+    .power-counts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px 8px;
+        font-size: 9pt;
+        margin-top: 4px;
+    }
+    .power-counts .count { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    /* ---- Equipment table --------------------------------------------- */
+    .equip-table {
+        width: 100%;
+        font-size: 8pt;
+        border-collapse: collapse;
+    }
+    .equip-table td {
+        padding: 1px 3px;
+        border-bottom: 1px dotted var(--rule-soft);
+    }
+    .equip-table td.qty { text-align: right; color: var(--ink-soft); width: 20px; }
+    /* Blank write-in rows are slightly taller */
+    .equip-table tr.blank-row td { height: 14px; padding: 0 3px; }
+
+    /* ---- Bottom row: XP + Wealth (now in center column) -------------- */
+    .xp-box { display: flex; justify-content: space-between; align-items: center; }
+    .xp-fill {
+        flex: 1;
+        margin-left: 8px;
+        border-bottom: 1.5px solid var(--ink);
+        height: 18px;
+    }
+
+    .wealth-fill {
+        height: 28px;
+        border-bottom: 1.5px solid var(--ink);
+    }
+
+    /* ---- Power card grid --------------------------------------------- */
+    .cards-page-title {
+        font-size: 16pt;
+        font-weight: 700;
+        margin-bottom: 6px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 4px;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 2.5in);
+        grid-auto-rows: 3.5in;
+        gap: 0.04in;
+        justify-content: start;
+    }
+
+    .pcard {
+        width: 2.5in;
+        height: 3.5in;
+        position: relative;
+        background: white;
+        border: 0.5pt solid var(--ink);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        font-size: 8pt;
+        line-height: 1.15;
+    }
+
+    .pcard-header {
+        padding: 4px 6px;
+        border-bottom: 1px solid var(--rule);
+        background: var(--header-bg, #f3f4f6);
+        color: var(--header-fg, #111);
+    }
+
+    .pcard.at-will  .pcard-header { --header-bg: color-mix(in srgb, var(--accent-atwill) 18%, white); }
+    .pcard.encounter .pcard-header { --header-bg: color-mix(in srgb, var(--accent-encounter) 18%, white); }
+    .pcard.daily .pcard-header { --header-bg: var(--accent-daily); --header-fg: white; }
+    .pcard.utility .pcard-header { --header-bg: color-mix(in srgb, var(--accent-utility) 18%, white); }
+    .pcard.item .pcard-header { --header-bg: color-mix(in srgb, var(--accent-item) 22%, white); }
+    .pcard.cantrip .pcard-header { --header-bg: color-mix(in srgb, var(--accent-cantrip) 18%, white); }
+
+    .print-sheet.theme-bw .pcard-header { background: white; color: black; border-bottom: 1.5px solid black; }
+    .print-sheet.theme-bw .pcard.daily .pcard-header { background: black; color: white; }
+
+    .pcard-name {
+        font-size: 10pt;
+        font-weight: 700;
+        line-height: 1.05;
+    }
+
+    .pcard-meta {
+        font-size: 7pt;
+        margin-top: 2px;
+        color: inherit;
+        opacity: 0.85;
+    }
+
+    .pcard-body {
+        flex: 1 1 auto;
+        padding: 5px 6px;
+        overflow: hidden;
+        font-size: 8pt;
+    }
+
+    .pcard-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px 6px;
+        margin-bottom: 4px;
+    }
+    .pcard-stats .label {
+        font-size: 6.5pt;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        letter-spacing: 0.04em;
+    }
+    .pcard-stats .val { font-weight: 700; font-size: 8pt; }
+
+    .pcard-entry { margin-bottom: 2px; }
+    .pcard-entry strong { font-weight: 700; }
+
+    /* ---- Cut marks (only when enabled) ------------------------------- */
+    .print-sheet.cuts-on .pcard::before,
+    .print-sheet.cuts-on .pcard::after {
+        content: "";
+        position: absolute;
+        background: black;
+    }
+
+    .print-sheet.cuts-on .pcard::before {
+        /* horizontal ticks at corners */
+        width: 6px; height: 0.5px;
+        top: -3px; left: -3px;
+        box-shadow:
+            calc(2.5in - 0px) 0 0 black,
+            0 calc(3.5in + 0px) 0 black,
+            calc(2.5in - 0px) calc(3.5in + 0px) 0 black;
+    }
+
+    .print-sheet.cuts-on .pcard::after {
+        /* vertical ticks at corners */
+        width: 0.5px; height: 6px;
+        top: -3px; left: -3px;
+        box-shadow:
+            calc(2.5in - 0px) 0 0 black,
+            0 calc(3.5in + 0px) 0 black,
+            calc(2.5in - 0px) calc(3.5in + 0px) 0 black;
+    }
+
+    /* ---- Companion mini-sheet (print version) ------------------------ */
+    .cmp-section {
+        width: 2.5in;
+        height: 3.5in;
+        overflow: hidden;
+        border: 1px solid var(--rule);
+        background: white;
+        display: flex;
+        flex-direction: column;
+    }
+    .cmp-header {
+        background: color-mix(in srgb, var(--accent-utility) 14%, white);
+        padding: 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 1px solid var(--rule);
+    }
+    .cmp-header .cmp-kind {
+        font-size: 7pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink-soft);
+    }
+    .cmp-header .cmp-subtitle { font-size: 7pt; color: var(--ink-soft); }
+    .cmp-name-row {
+        padding: 3px 8px;
+        border-bottom: 1px solid var(--rule-soft);
+        font-size: 10pt;
+    }
+    .cmp-name-row .cmp-name { font-weight: 700; }
+    .cmp-name-row .cmp-appearance { font-style: italic; color: var(--ink-soft); font-size: 8.5pt; margin-left: 8px; }
+    .cmp-body { padding: 5px 8px; }
+    .cmp-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 5px;
+    }
+    .cmp-hp-surge { display: flex; gap: 8px; align-items: center; }
+    .cmp-hp-box {
+        width: 36px; height: 36px;
+        background: var(--accent-encounter);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 6pt;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        flex-shrink: 0;
+    }
+    .cmp-hp-box .cmp-hp-num { font-size: 13pt; font-weight: 800; line-height: 1; }
+    .cmp-hp-text { font-size: 8pt; }
+    .cmp-hp-text .label { font-size: 6.5pt; text-transform: uppercase; color: var(--ink-soft); }
+    .cmp-surge-text { font-size: 8pt; }
+    .cmp-surge-text .label { font-size: 6.5pt; text-transform: uppercase; color: var(--ink-soft); }
+    .cmp-defenses { display: flex; gap: 4px; flex-shrink: 0; }
+    .cmp-def-box {
+        border: 1.5px solid var(--ink);
+        border-radius: 3px;
+        text-align: center;
+        padding: 2px 3px;
+        min-width: 26px;
+    }
+    .cmp-def-box .val { font-size: 11pt; font-weight: 800; line-height: 1; }
+    .cmp-def-box .lbl { font-size: 6pt; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+    .cmp-abilities {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        margin-bottom: 4px;
+    }
+    .cmp-ability {
+        text-align: center;
+        border: 1px solid var(--rule);
+        border-radius: 3px;
+        padding: 2px 4px;
+        min-width: 28px;
+    }
+    .cmp-ability .lbl { font-size: 6pt; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+    .cmp-ability .score { font-size: 9pt; font-weight: 700; line-height: 1; }
+    .cmp-ability .mod { font-size: 7pt; color: var(--ink-soft); }
+    .cmp-descriptors { font-size: 8pt; color: var(--ink); margin-bottom: 3px; }
+    .cmp-descriptors span { margin-right: 10px; }
+    .cmp-descriptors .lbl { font-weight: 700; }
+    .cmp-attack-line {
+        font-size: 8pt;
+        border-top: 1px dotted var(--rule-soft);
+        padding-top: 3px;
+        margin-top: 3px;
+    }
+
+    /* ---- Rituals / inventory pages ----------------------------------- */
+    .list-page-title {
+        font-size: 16pt;
+        font-weight: 700;
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 4px;
+    }
+
+    .ritual-section { margin-bottom: 16px; }
+    .ritual-section h3 {
+        font-size: 11pt;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+    .ritual-row {
+        display: grid;
+        grid-template-columns: 1fr 60px 80px;
+        gap: 8px;
+        font-size: 9pt;
+        padding: 2px 0;
+        border-bottom: 1px dotted var(--rule-soft);
+    }
+
+    .inv-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+    .inv-table th {
+        text-align: left;
+        font-size: 8pt;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+        border-bottom: 1.5px solid var(--ink);
+        padding: 3px 4px;
+    }
+    .inv-table td {
+        padding: 2px 4px;
+        border-bottom: 1px dotted var(--rule-soft);
+    }
+    .inv-table td.qty, .inv-table td.weight { text-align: right; }
+
+    /* ---- On-screen toolbar (hidden in print) ------------------------- */
+    .print-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: white;
+        border-bottom: 1px solid var(--rule);
+        padding: 8px 16px;
+        margin: 0 -16px 16px -16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    @@media print {
+        body.print-preview-mode { background: white; }
+        .no-print { display: none !important; }
+        .print-page {
+            margin: 0;
+            box-shadow: none;
+            padding: 0;
+            min-height: auto;
+        }
+    }
+</style>
+
+@if (SessionService.Session is not { } session)
+{
+    <div class="p-8 text-center text-on-surface-variant">
+        <div class="inline-flex items-center gap-2">
+            <span class="material-symbols-outlined animate-pulse">hourglass_top</span>
+            <span>Loading character&hellip;</span>
+        </div>
+        <p class="mt-4 text-xs">
+            No active character.
+            <button type="button" class="underline text-primary" @onclick='() => Nav.NavigateTo("/")'>Return to the character page</button>.
+        </p>
+    </div>
+}
+else
+{
+    var snapshot = session.GetPartialSnapshot();
+    var collection = Collector.Collect();
+    var cards = collection.AllNonCompanion;
+
+    <div class="print-sheet theme-@_options.Color size-@_options.Size @(_options.CutMarks ? "cuts-on" : "cuts-off")">
+
+        <div class="print-toolbar no-print">
+            <button @onclick='() => Nav.NavigateTo("/")'
+                    class="px-3 py-1.5 bg-surface-container-low text-on-surface text-sm font-label uppercase tracking-wider rounded-sm flex items-center gap-2 hover:bg-surface-container-high"
+                    title="Return to the character page">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                Back
+            </button>
+            <button @onclick="DoPrint" class="px-3 py-1.5 bg-primary text-on-primary text-sm font-label uppercase tracking-wider rounded-sm flex items-center gap-2 hover:opacity-90">
+                <span class="material-symbols-outlined text-sm">print</span>
+                Print
+            </button>
+            <span class="text-xs text-on-surface-variant">
+                Theme: <strong>@_options.Color</strong> ·
+                Size: <strong>@(_options.Size == "a4" ? "A4" : "Letter")</strong> ·
+                Cuts: <strong>@(_options.CutMarks ? "on" : "off")</strong> ·
+                Inventory: <strong>@(_options.Inventory ? "yes" : "no")</strong>
+            </span>
+            <div class="ml-auto text-xs text-on-surface-variant">
+                @session.Name · Level @session.Level · @cards.Count cards · @((int)Math.Ceiling(cards.Count / 6.0)) card page(s)
+            </div>
+        </div>
+
+        @* ============== PAGE 1: SUMMARY ============== *@
+        <section class="print-page summary-page">
+            @{
+                var className = session.GetSelectedElement("Class")?.Name ?? "";
+                var raceName = session.GetSelectedElement("Race")?.Name ?? "";
+                var alignmentName = session.GetSelectedElement("Alignment")?.Name ?? "";
+                var paragonName = session.GetSelectedElement("Paragon Path")?.Name;
+                var epicName = session.GetSelectedElement("Epic Destiny")?.Name;
+                var themeName = session.GetSelectedElement("Theme")?.Name;
+                var backgroundName = session.GetSelectedElement("Background")?.Name;
+                var deityName = session.GetSelectedElement("Deity")?.Name;
+                var languages = string.Join(", ", session.GetAllElementsOfType("Language").Select(l => l.Name));
+            }
+
+            <header class="sheet-header">
+                <div class="sheet-name">@session.Name</div>
+                <div class="sheet-details">
+                    <span class="row">
+                        <strong>@raceName</strong> · <strong>@className</strong>
+                        @if (!string.IsNullOrEmpty(paragonName)) { <text> · @paragonName</text> }
+                        @if (!string.IsNullOrEmpty(epicName)) { <text> · @epicName</text> }
+                        · Level <strong>@session.Level</strong>
+                        @if (!string.IsNullOrEmpty(alignmentName)) { <text> · @alignmentName</text> }
+                    </span>
+                    @{
+                        var headerExtras = new List<string>();
+                        if (!string.IsNullOrEmpty(themeName)) headerExtras.Add($"Theme: {themeName}");
+                        if (!string.IsNullOrEmpty(backgroundName)) headerExtras.Add($"Background: {backgroundName}");
+                        if (!string.IsNullOrEmpty(deityName)) headerExtras.Add($"Deity: {deityName}");
+                    }
+                    @if (headerExtras.Count > 0)
+                    {
+                        <span class="row">@string.Join(" · ", headerExtras)</span>
+                    }
+                </div>
+                @if (!string.IsNullOrEmpty(languages))
+                {
+                    <div class="sheet-langs"><span class="label">Languages:</span> @languages</div>
+                }
+            </header>
+
+            <div class="summary-grid">
+
+                @* ----- LEFT COLUMN: Abilities + skills, then Equipment fills rest ----- *@
+                <div class="left-col">
+                    <div style="font-size:7pt;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);margin-bottom:3px;">
+                        Abilities &amp; Skills
+                    </div>
+                    @foreach (var (abilityName, _) in _abilities)
+                    {
+                        int score = snapshot?.GetStat(abilityName) ?? 10;
+                        int mod = (score - 10) / 2 + (session.Level / 2);
+                        var linked = _abilityToSkills[abilityName];
+
+                        <div class="as-row">
+                            <div class="as-ability">
+                                <div class="mod">@FormatMod(mod)</div>
+                                <div class="ability-name">@abilityName[..3].ToUpper()</div>
+                                <div class="score">@score</div>
+                            </div>
+                            <div class="as-skills">
+                                @if (linked.Length == 0)
+                                {
+                                    <div class="as-skill no-skills">—</div>
+                                }
+                                else
+                                {
+                                    @foreach (var skill in linked)
+                                    {
+                                        int skillVal = snapshot?.GetStat(skill) ?? mod;
+                                        bool trained = IsTrained(snapshot, skill);
+                                        <div class="as-skill @(trained ? "trained" : "")">
+                                            <span class="skill-mark">@(trained ? "●" : "")</span>
+                                            <span class="skill-name">@skill</span>
+                                            <span class="skill-mod">@FormatMod(skillVal)</span>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    @* Equipment panel fills remaining height *@
+                    @{
+                        var equippedItems = GetEquippedItems(session).ToList();
+                        var inventoryItems = session.GetInventory().Where(i => i.Quantity >= 1).ToList();
+                        int filledRows = equippedItems.Count + inventoryItems.Count;
+                        int blankRows = Math.Max(10, 28 - filledRows);
+                    }
+                    <div class="panel equip-fill-panel">
+                        <div class="panel-title">Equipment</div>
+                        <table class="equip-table">
+                            @foreach (var (slotName, item) in equippedItems)
+                            {
+                                <tr>
+                                    <td class="qty">@slotName</td>
+                                    <td>@item</td>
+                                </tr>
+                            }
+                            @foreach (var inv in inventoryItems)
+                            {
+                                <tr>
+                                    <td class="qty">@(inv.Quantity > 1 ? $"×{inv.Quantity}" : "")</td>
+                                    <td>@(inv.Item.CompositeName ?? inv.Item.Base.Name)</td>
+                                </tr>
+                            }
+                            @for (int b = 0; b < blankRows; b++)
+                            {
+                                <tr class="blank-row"><td class="qty"></td><td></td></tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+                @* ----- MIDDLE COLUMN: Combat stats + Power Inventory + XP/Wealth ----- *@
+                <div class="center-col">
+                    <div class="panel">
+                        <div class="panel-title">Defenses</div>
+                        <div class="defense-grid">
+                            @foreach (var (statName, label) in new[] { ("AC", "AC"), ("Fortitude Defense", "FORT"), ("Reflex Defense", "REFL"), ("Will Defense", "WILL") })
+                            {
+                                int val = snapshot?.GetStat(statName) ?? 10;
+                                <div class="defense-box">
+                                    <div class="defense-value">@val</div>
+                                    <div class="defense-label">@label</div>
+                                </div>
+                            }
+                        </div>
+
+                        @foreach (var (statName, label) in new[] {
+                            ("Initiative", "Initiative"),
+                            ("Speed", "Speed"),
+                            ("Passive Insight", "Passive Insight"),
+                            ("Passive Perception", "Passive Perception")
+                        })
+                        {
+                            int val = snapshot?.GetStat(statName) ?? 0;
+                            <div class="tac-row">
+                                <span class="tac-label">@label</span>
+                                <span class="tac-value">@FormatTacticalStat(statName, val)</span>
+                            </div>
+                        }
+                    </div>
+
+                    @{
+                        int hp = snapshot?.GetStat("Hit Points") ?? 0;
+                        int surges = snapshot?.GetStat("Healing Surges") ?? 0;
+                        int powerPoints = snapshot?.GetStat("Power Points") ?? 0;
+                    }
+                    <div class="panel hp-block">
+                        <div class="panel-title">Hit Points</div>
+                        <div class="hp-row">
+                            <span style="font-size:8pt;color:var(--ink-soft)">Max</span>
+                            <span class="hp-max">@hp</span>
+                        </div>
+                        <div style="font-size:8pt;color:var(--ink-soft)">Bloodied @(hp / 2) · Surge Value @(hp / 4)</div>
+                        @if (_options.Blanks)
+                        {
+                            <div class="hp-fill-line"><span>Current HP</span><div class="fill-blank"></div></div>
+                            <div class="hp-fill-line"><span>Temp HP</span><div class="fill-blank"></div></div>
+                            <div class="hp-fill-line"><span>Conditions</span><div class="fill-blank"></div></div>
+                        }
+                        <div style="margin-top:6px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;">
+                            <div>
+                                <div style="font-size:7pt;text-transform:uppercase;color:var(--ink-soft);letter-spacing:0.06em;">Death Saves</div>
+                                <div class="death-skulls">
+                                    <div class="death-skull"></div>
+                                    <div class="death-skull"></div>
+                                    <div class="death-skull"></div>
+                                </div>
+                            </div>
+                            <div style="flex:1;min-width:0;">
+                                <div style="font-size:7pt;text-transform:uppercase;color:var(--ink-soft);letter-spacing:0.06em;">Surges Used</div>
+                                @if (_options.Blanks)
+                                {
+                                    <div class="fill-blank" style="margin-top:2px"></div>
+                                }
+                            </div>
+                            <div style="text-align:right;flex-shrink:0;">
+                                <div style="font-size:7pt;text-transform:uppercase;color:var(--ink-soft);letter-spacing:0.06em;">Surges / Day</div>
+                                <div style="font-size:16pt;font-weight:800;line-height:1">@surges</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (powerPoints > 0)
+                    {
+                        <div class="panel" style="display:flex;justify-content:space-between;align-items:center;">
+                            <div>
+                                <div class="panel-title" style="margin:0;border:0;padding:0">Power Points</div>
+                                <div style="font-size:16pt;font-weight:800;line-height:1">@powerPoints<span style="font-size:8pt;font-weight:600;color:var(--ink-soft)"> max</span></div>
+                            </div>
+                            <div style="text-align:right">
+                                <div style="font-size:7pt;color:var(--ink-soft)">Current</div>
+                                @if (_options.Blanks)
+                                {
+                                    <div class="fill-blank" style="width:60px"></div>
+                                }
+                                else
+                                {
+                                    <div style="font-size:14pt;font-weight:700">@powerPoints</div>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    <div class="panel">
+                        <div class="panel-title">Power Inventory</div>
+                        <div class="power-counts">
+                            <div>At-Will</div><div class="count">@collection.TotalAtWill</div>
+                            <div>Encounter</div><div class="count">@collection.TotalEncounter</div>
+                            <div>Daily</div><div class="count">@collection.TotalDaily</div>
+                            <div>Utility</div><div class="count">@collection.TotalUtility</div>
+                            @if (collection.TotalCantrip > 0)
+                            {
+                                <div>Cantrip</div><div class="count">@collection.TotalCantrip</div>
+                            }
+                            @if (collection.TotalChannelDivinity > 0)
+                            {
+                                <div>Ch. Divinity</div><div class="count">@collection.TotalChannelDivinity</div>
+                            }
+                            @if (collection.TotalMagicItem > 0)
+                            {
+                                <div>Item</div><div class="count">@collection.TotalMagicItem</div>
+                            }
+                        </div>
+                        <div class="hp-fill-line" style="margin-top:6px">
+                            <span style="font-size:8pt">Action Points</span>
+                            <div class="fill-blank"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-title">Experience</div>
+                        <div class="xp-box">
+                            <span style="font-size:9pt">Next level:</span>
+                            <div class="xp-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-title">Wealth</div>
+                        <div class="wealth-fill"></div>
+                    </div>
+                </div>
+
+                @* ----- RIGHT COLUMN: Character Choices (fills to page bottom) ----- *@
+                <div class="right-col">
+                    <div class="panel">
+                        <div class="panel-title">Character Choices</div>
+
+                        @{
+                            var classFeatures = session.GetAllElementsOfType("Class Feature")
+                                .Where(e => !string.IsNullOrEmpty(e.Name))
+                                .Where(e => !IsWrapperOnlyElement(e))
+                                .GroupBy(e => e.InternalId ?? e.Name, StringComparer.OrdinalIgnoreCase)
+                                .Select(g => g.First())
+                                .ToList();
+                            var feats = session.GetAllElementsOfType("Feat")
+                                .Where(e => !string.IsNullOrEmpty(e.Name))
+                                .Where(e => !IsWrapperOnlyElement(e))
+                                .GroupBy(e => e.InternalId ?? e.Name, StringComparer.OrdinalIgnoreCase)
+                                .Select(g => g.First())
+                                .ToList();
+                            var racialTraits = session.GetAllElementsOfType("Racial Trait")
+                                .Where(e => !string.IsNullOrEmpty(e.Name))
+                                .Where(e => !IsWrapperOnlyElement(e))
+                                .GroupBy(e => e.InternalId ?? e.Name, StringComparer.OrdinalIgnoreCase)
+                                .Select(g => g.First())
+                                .ToList();
+                        }
+
+                        @if (classFeatures.Count > 0)
+                        {
+                            <div class="build-section">
+                                <h3>Class Features</h3>
+                                @foreach (var elem in classFeatures)
+                                {
+                                    <div class="build-entry">
+                                        <span class="name">@elem.Name</span>
+                                        @{ var sd = GetShortDescription(elem); }
+                                        @if (!string.IsNullOrEmpty(sd))
+                                        {
+                                            <span class="desc"> — @sd</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        @if (racialTraits.Count > 0)
+                        {
+                            <div class="build-section">
+                                <h3>Racial Traits</h3>
+                                @foreach (var elem in racialTraits)
+                                {
+                                    <div class="build-entry">
+                                        <span class="name">@elem.Name</span>
+                                        @{ var sd = GetShortDescription(elem); }
+                                        @if (!string.IsNullOrEmpty(sd))
+                                        {
+                                            <span class="desc"> — @sd</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        @if (feats.Count > 0)
+                        {
+                            <div class="build-section">
+                                <h3>Feats</h3>
+                                @foreach (var elem in feats)
+                                {
+                                    <div class="build-entry">
+                                        <span class="name">@elem.Name</span>
+                                        @{ var sd = GetShortDescription(elem); }
+                                        @if (!string.IsNullOrEmpty(sd))
+                                        {
+                                            <span class="desc"> — @sd</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @* ============== COMPANION PAGES ============== *@
+        @if (collection.CompanionGroups.Count > 0 || collection.UnpairedCompanionCards.Count > 0)
+        {
+            <section class="print-page cards-page">
+                <h2 class="cards-page-title">Companion Powers</h2>
+                <div class="card-grid">
+                    @foreach (var (mini, card, nameOverride) in collection.CompanionGroups)
+                    {
+                        if (mini is not null)
+                        {
+                            @* ---- Companion mini-sheet as pcard-size block ---- *@
+                            <div class="cmp-section">
+                                <div class="cmp-header">
+                                    <span class="cmp-kind">@CompanionKindLabel(mini)</span>
+                                    <span class="cmp-subtitle">@CompanionSubtitle(mini, session.Level)</span>
+                                </div>
+                                @if (!string.IsNullOrWhiteSpace(mini.Name) || !string.IsNullOrWhiteSpace(mini.Appearance))
+                                {
+                                    <div class="cmp-name-row">
+                                        @if (!string.IsNullOrWhiteSpace(mini.Name))
+                                        {
+                                            <span class="cmp-name">@mini.Name</span>
+                                        }
+                                        @if (!string.IsNullOrWhiteSpace(mini.Appearance))
+                                        {
+                                            <span class="cmp-appearance">@mini.Appearance</span>
+                                        }
+                                    </div>
+                                }
+                                <div class="cmp-body">
+                                    <div class="cmp-top-row">
+                                        <div class="cmp-hp-surge">
+                                            @if (mini.HitPoints is { } cmpHp)
+                                            {
+                                                <div class="cmp-hp-box">HP<div class="cmp-hp-num">@cmpHp</div></div>
+                                            }
+                                            else if (!string.IsNullOrWhiteSpace(mini.HitPointsText))
+                                            {
+                                                <div class="cmp-hp-text"><div class="label">HP</div><div>@mini.HitPointsText</div></div>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(mini.HealingSurgeText))
+                                            {
+                                                <div class="cmp-surge-text"><div class="label">Surge</div><div>@mini.HealingSurgeText</div></div>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(mini.HitPointsNote))
+                                            {
+                                                <div style="font-size:7.5pt;font-style:italic;color:var(--ink-soft)">@mini.HitPointsNote</div>
+                                            }
+                                        </div>
+                                        @if (mini.Ac.HasValue || mini.Fortitude.HasValue || mini.Reflex.HasValue || mini.Will.HasValue)
+                                        {
+                                            <div class="cmp-defenses">
+                                                @if (mini.Ac.HasValue) { <div class="cmp-def-box"><div class="val">@mini.Ac</div><div class="lbl">AC</div></div> }
+                                                @if (mini.Fortitude.HasValue) { <div class="cmp-def-box"><div class="val">@mini.Fortitude</div><div class="lbl">FORT</div></div> }
+                                                @if (mini.Reflex.HasValue) { <div class="cmp-def-box"><div class="val">@mini.Reflex</div><div class="lbl">REF</div></div> }
+                                                @if (mini.Will.HasValue) { <div class="cmp-def-box"><div class="val">@mini.Will</div><div class="lbl">WILL</div></div> }
+                                            </div>
+                                        }
+                                        else if (!string.IsNullOrWhiteSpace(mini.DefensesText))
+                                        {
+                                            <div style="font-size:8pt"><div style="font-size:6.5pt;text-transform:uppercase;color:var(--ink-soft)">Defenses</div><div>@mini.DefensesText</div></div>
+                                        }
+                                    </div>
+                                    @if (!mini.IsSummon && !mini.IsFamiliar)
+                                    {
+                                        <div class="cmp-abilities">
+                                            @foreach (var (abl, score) in new[] { ("STR", mini.Strength), ("CON", mini.Constitution), ("DEX", mini.Dexterity), ("INT", mini.Intelligence), ("WIS", mini.Wisdom), ("CHA", mini.Charisma) })
+                                            {
+                                                int m = (score - 10) / 2;
+                                                <div class="cmp-ability">
+                                                    <div class="lbl">@abl</div>
+                                                    <div class="score">@score</div>
+                                                    <div class="mod">@(m >= 0 ? $"+{m}" : m.ToString())</div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="cmp-descriptors">
+                                        @if (!string.IsNullOrWhiteSpace(mini.Size)) { <span><span class="lbl">Size:</span> @mini.Size</span> }
+                                        @if (!string.IsNullOrWhiteSpace(mini.Speed)) { <span><span class="lbl">Speed:</span> @mini.Speed</span> }
+                                        @if (!string.IsNullOrWhiteSpace(mini.Vision)) { <span><span class="lbl">Vision:</span> @mini.Vision</span> }
+                                        @if (mini.TrainedSkills.Count > 0) { <span><span class="lbl">Trained:</span> @string.Join(", ", mini.TrainedSkills)</span> }
+                                    </div>
+                                    @if (mini.AttackBonus.HasValue && !string.IsNullOrWhiteSpace(mini.AttackText))
+                                    {
+                                        <div class="cmp-attack-line"><strong>@mini.AttackText:</strong> +@mini.AttackBonus vs. AC@(!string.IsNullOrWhiteSpace(mini.Damage) ? "; " + mini.Damage : "")</div>
+                                    }
+                                    else if (!string.IsNullOrWhiteSpace(mini.AttackText))
+                                    {
+                                        <div class="cmp-attack-line">@mini.AttackText</div>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(mini.PowerName))
+                                    {
+                                        <div class="cmp-attack-line"><strong>@mini.PowerName:</strong> @mini.PowerText</div>
+                                    }
+                                    @foreach (var extra in mini.ExtraPowers)
+                                    {
+                                        <div class="cmp-attack-line">
+                                            <strong>@extra.Name</strong>
+                                            @if (!string.IsNullOrWhiteSpace(extra.Action)) { <text> (@extra.Action)</text> }
+                                            @if (!string.IsNullOrWhiteSpace(extra.Description)) { <text> — @extra.Description</text> }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else if (card is not null)
+                        {
+                            @* ---- Companion attack power card ---- *@
+                            <div class="pcard @SectionClass(card.Section)">
+                                <div class="pcard-header">
+                                    <div class="pcard-name">@(nameOverride ?? card.Name)</div>
+                                    <div class="pcard-meta">
+                                        @card.Usage
+                                        @if (!string.IsNullOrEmpty(card.Action)) { <text> · @card.Action</text> }
+                                        @if (!string.IsNullOrWhiteSpace(card.KeywordsText)) { <text> · @card.KeywordsText</text> }
+                                    </div>
+                                </div>
+                                <div class="pcard-body">
+                                    @if (card.PrintStats.Count > 0)
+                                    {
+                                        <div class="pcard-stats">
+                                            @foreach (var s in card.PrintStats)
+                                            {
+                                                <div><span class="label">@s.Label</span><br /><span class="val">@s.Value</span></div>
+                                            }
+                                        </div>
+                                    }
+                                    @if (card.WeaponStats.Count > 0)
+                                    {
+                                        <PowerWeaponStatsTable Card="card" />
+                                    }
+                                    @foreach (var entry in card.Entries.Take(4))
+                                    {
+                                        <div class="pcard-entry"><strong>@entry.Label:</strong> @entry.Text</div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    @foreach (var (card, nameOverride) in collection.UnpairedCompanionCards)
+                    {
+                        <div class="pcard @SectionClass(card.Section)">
+                            <div class="pcard-header">
+                                <div class="pcard-name">@(nameOverride ?? card.Name)</div>
+                                <div class="pcard-meta">@card.Usage@(!string.IsNullOrEmpty(card.Action) ? " · " + card.Action : "")</div>
+                            </div>
+                            <div class="pcard-body">
+                                @if (card.PrintStats.Count > 0)
+                                {
+                                    <div class="pcard-stats">
+                                        @foreach (var s in card.PrintStats) { <div><span class="label">@s.Label</span><br /><span class="val">@s.Value</span></div> }
+                                    </div>
+                                }
+                                @if (card.WeaponStats.Count > 0) { <PowerWeaponStatsTable Card="card" /> }
+                                @foreach (var entry in card.Entries.Take(4)) { <div class="pcard-entry"><strong>@entry.Label:</strong> @entry.Text</div> }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        }
+
+        @* ============== POWER CARD PAGES ============== *@
+        @{
+            int cardsPerPage = 6;
+            int totalPages = (int)Math.Ceiling(cards.Count / (double)cardsPerPage);
+        }
+        @for (int p = 0; p < totalPages; p++)
+        {
+            int pageStart = p * cardsPerPage;
+            <section class="print-page cards-page">
+                <h2 class="cards-page-title">Powers · Page @(p + 1) of @totalPages</h2>
+                <div class="card-grid">
+                    @foreach (var card in cards.Skip(pageStart).Take(cardsPerPage))
+                    {
+                        <div class="pcard @SectionClass(card.Section)">
+                            <div class="pcard-header">
+                                <div class="pcard-name">@card.Name</div>
+                                <div class="pcard-meta">
+                                    @card.Usage
+                                    @if (!string.IsNullOrEmpty(card.Action)) { <text> · @card.Action</text> }
+                                    @if (card.Level > 0) { <text> · L@(card.Level)</text> }
+                                </div>
+                                @if (!string.IsNullOrWhiteSpace(card.KeywordsText))
+                                {
+                                    <div class="pcard-meta" style="font-style:italic">@card.KeywordsText</div>
+                                }
+                            </div>
+                            <div class="pcard-body">
+                                @if (card.PrintStats.Count > 0)
+                                {
+                                    <div class="pcard-stats">
+                                        @foreach (var s in card.PrintStats)
+                                        {
+                                            <div>
+                                                <span class="label">@s.Label</span><br />
+                                                <span class="val">@s.Value</span>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                @if (card.WeaponStats.Count > 0)
+                                {
+                                    <PowerWeaponStatsTable Card="card" />
+                                }
+                                @foreach (var entry in card.Entries.Take(4))
+                                {
+                                    <div class="pcard-entry">
+                                        <strong>@entry.Label:</strong> @entry.Text
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        }
+
+        @* ============== RITUALS / PRACTICES / ALCHEMY ============== *@
+        @{
+            var ritualEntries = session.GetRitualPracticeAlchemyEntries();
+        }
+        @if (ritualEntries.Count > 0)
+        {
+            <section class="print-page">
+                <h2 class="list-page-title">Rituals · Practices · Alchemy</h2>
+                @foreach (var kindGroup in ritualEntries.GroupBy(e => e.Kind))
+                {
+                    <div class="ritual-section">
+                        <h3>@FormatRitualKind(kindGroup.Key)</h3>
+                        @foreach (var entry in kindGroup.OrderBy(r => GetElementLevel(r.Element)).ThenBy(r => r.Element.Name))
+                        {
+                            <div class="ritual-row">
+                                <div>@entry.Element.Name</div>
+                                <div style="text-align:center;color:var(--ink-soft)">Lvl @GetElementLevel(entry.Element)</div>
+                                <div style="text-align:right;color:var(--ink-soft);font-size:8pt">@(entry.Quantity > 1 ? $"×{entry.Quantity}" : "")</div>
+                            </div>
+                        }
+                    </div>
+                }
+                <p style="font-size:8pt;color:var(--ink-soft);margin-top:10px;font-style:italic">See rulebook for full effects, component costs, and casting time.</p>
+            </section>
+        }
+
+        @* ============== FULL INVENTORY (optional) ============== *@
+        @if (_options.Inventory)
+        {
+            <section class="print-page">
+                <h2 class="list-page-title">Full Inventory</h2>
+                <table class="inv-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Type</th>
+                            <th class="qty">Qty</th>
+                            <th class="weight">Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var loot in session.GetEquippedLoot().Values)
+                        {
+                            <tr>
+                                <td>@(loot.CompositeName ?? loot.Base.Name) <span style="color:var(--ink-soft);font-size:8pt">(equipped)</span></td>
+                                <td>@(loot.Components().FirstOrDefault()?.Type ?? "")</td>
+                                <td class="qty">1</td>
+                                <td class="weight">@(GetLootWeight(loot))</td>
+                            </tr>
+                        }
+                        @foreach (var inv in session.GetInventory().OrderBy(i => i.Item.Base.Name))
+                        {
+                            <tr>
+                                <td>@(inv.Item.CompositeName ?? inv.Item.Base.Name)</td>
+                                <td>@(inv.Item.Components().FirstOrDefault()?.Type ?? "")</td>
+                                <td class="qty">@inv.Quantity</td>
+                                <td class="weight">@(GetLootWeight(inv.Item))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        }
+    </div>
+}
+
+@code {
+    private PrintOptions _options = new("color", "letter", false, true, true);
+    private bool _bodyClassApplied;
+
+    private static readonly (string Name, Ability Ability)[] _abilities =
+    [
+        ("Strength", Ability.Strength),
+        ("Constitution", Ability.Constitution),
+        ("Dexterity", Ability.Dexterity),
+        ("Intelligence", Ability.Intelligence),
+        ("Wisdom", Ability.Wisdom),
+        ("Charisma", Ability.Charisma),
+    ];
+
+    // (Skill name, ability) — order matches the Essentials sheet's
+    // ability-grouped layout, which the web UI also follows.
+    private static readonly Dictionary<string, string[]> _abilityToSkills = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Strength"] = ["Athletics"],
+        ["Constitution"] = ["Endurance"],
+        ["Dexterity"] = ["Acrobatics", "Stealth", "Thievery"],
+        ["Intelligence"] = ["Arcana", "History", "Religion"],
+        ["Wisdom"] = ["Dungeoneering", "Heal", "Insight", "Nature", "Perception"],
+        ["Charisma"] = ["Bluff", "Diplomacy", "Intimidate", "Streetwise"],
+    };
+
+    protected override void OnInitialized()
+    {
+        // Re-render when the session lands from auto-restore.
+        SessionService.Changed += HandleChanged;
+        RestoreState.Changed += HandleChanged;
+
+        var uri = Nav.ToAbsoluteUri(Nav.Uri);
+        var qs = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        _options = PrintOptions.FromQuery(
+            qs["color"], qs["size"], qs["inventory"], qs["blanks"], qs["cuts"]);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        if (!_bodyClassApplied)
+        {
+            _bodyClassApplied = true;
+            await JS.InvokeVoidAsync("charm.setBodyClass", "print-preview-mode", true);
+        }
+    }
+
+    private void HandleChanged() => InvokeAsync(StateHasChanged);
+
+    private async Task DoPrint()
+    {
+        await JS.InvokeVoidAsync("print");
+    }
+
+    private static bool IsTrained(CharacterSnapshot? snapshot, string skillName)
+    {
+        // Mirror the Home.razor detection: every skill has a sibling
+        // "<Skill> Trained" stat that the engine sets to 1 when the
+        // character is trained in it.
+        return snapshot is not null && snapshot.GetStat(skillName + " Trained") > 0;
+    }
+
+    /// <summary>
+    /// Mirror of <c>Home.razor</c>'s "synthesize-grant-links" gate: an
+    /// element whose rules are purely structural (Grant/Select directives,
+    /// no Short Description) is a wrapper around picks the user already
+    /// made — hide it from the build summary since the user can see the
+    /// downstream picks themselves.
+    /// </summary>
+    private bool IsWrapperOnlyElement(RulesElement element)
+    {
+        if (string.IsNullOrEmpty(element.InternalId)) return false;
+        var detail = SessionService.GetElementDetails(element.InternalId) ?? element;
+
+        // Has user-facing prose? Show it.
+        if (detail.Fields.TryGetValue("Short Description", out var sd) && !string.IsNullOrWhiteSpace(sd))
+            return false;
+
+        if (detail.Rules.Count == 0)
+        {
+            // No rules AND no description — pure marker / category. Hide.
+            return true;
+        }
+
+        // Pure choice/grant scaffolding — the picks themselves carry the
+        // real content. Hide the wrapper.
+        return detail.Rules.All(r => r is GrantDirective or SelectDirective);
+    }
+
+    private static string FormatMod(int mod) => mod >= 0 ? $"+{mod}" : mod.ToString();
+
+    private static string FormatTacticalStat(string statName, int val)
+        => statName switch
+        {
+            "Speed" => $"{val} sq",
+            "Initiative" => FormatMod(val),
+            _ => val.ToString(),
+        };
+
+    private static string SectionClass(string section) => section switch
+    {
+        PowerSectionKeys.AtWill => "at-will",
+        PowerSectionKeys.Encounter => "encounter",
+        PowerSectionKeys.Daily => "daily",
+        PowerSectionKeys.Utility => "utility",
+        PowerSectionKeys.MagicItem => "item",
+        PowerSectionKeys.Cantrip => "cantrip",
+        _ => "",
+    };
+
+    private static string CompanionKindLabel(CompanionData companion)
+    {
+        if (companion.IsFamiliar) return "Familiar";
+        if (companion.IsSummon) return "Summoned Creature";
+        if (companion.IsMinion) return "Minion Companion";
+        return "Companion";
+    }
+
+    private static string CompanionSubtitle(CompanionData companion, int characterLevel)
+    {
+        if (companion.IsFamiliar) return companion.Category;
+        return companion.IsSummon ? companion.Category : $"Level {characterLevel} {companion.Category}";
+    }
+
+    private static IEnumerable<(string Slot, string Name)> GetEquippedItems(CharacterSession session)
+    {
+        foreach (var (slot, loot) in session.GetEquippedLoot())
+        {
+            yield return (slot, loot.CompositeName ?? loot.Base.Name);
+        }
+    }
+
+    private static string FormatRitualKind(RitualPracticeAlchemyKind kind) => kind switch
+    {
+        RitualPracticeAlchemyKind.Ritual => "Rituals",
+        RitualPracticeAlchemyKind.MartialPractice => "Martial Practices",
+        RitualPracticeAlchemyKind.AlchemicalFormula => "Alchemical Formulas",
+        _ => kind.ToString(),
+    };
+
+    private static int GetElementLevel(RulesElement element)
+        => element.Fields.TryGetValue("Level", out var raw) && int.TryParse(raw, out var lvl) ? lvl : 0;
+
+    private string? GetShortDescription(RulesElement element)
+    {
+        // Resolve from the database so wrappers that don't carry the
+        // field on the in-tree element still surface their description.
+        var detail = (element.InternalId is { Length: > 0 } id
+            ? SessionService.GetElementDetails(id)
+            : null) ?? element;
+
+        if (detail.Fields.TryGetValue("Short Description", out var sd) && !string.IsNullOrWhiteSpace(sd))
+        {
+            // One-line clamp is enforced by CSS (white-space: nowrap +
+            // text-overflow: ellipsis), so we don't truncate here —
+            // the layout will trim with an ellipsis to whatever width
+            // the column has.
+            return sd;
+        }
+        return null;
+    }
+
+    private static string GetLootWeight(LootItem loot)
+    {
+        var weight = loot.Components()
+            .Select(c => c.Fields.TryGetValue("Weight", out var w) ? w : null)
+            .FirstOrDefault(w => !string.IsNullOrEmpty(w));
+        return weight ?? "";
+    }
+
+    public void Dispose()
+    {
+        SessionService.Changed -= HandleChanged;
+        RestoreState.Changed -= HandleChanged;
+        if (_bodyClassApplied)
+        {
+            _ = JS.InvokeVoidAsync("charm.setBodyClass", "print-preview-mode", false);
+        }
+    }
+}

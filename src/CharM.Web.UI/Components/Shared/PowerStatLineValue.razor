@@ -1,0 +1,74 @@
+@inject DiceRollerUiService DiceRoller
+
+@if (TryGetRollExpression(Line, out var expression))
+{
+    @PowerCalculationValue
+    <button type="button"
+            class="ml-1 align-middle text-outline hover:text-primary no-print"
+            title="Roll @Line.Label"
+            @onclick="() => OpenRoll(expression)">
+        <span class="material-symbols-outlined text-sm">casino</span>
+    </button>
+}
+else
+{
+    @PowerCalculationValue
+}
+
+@code {
+    [Parameter, EditorRequired] public PowerStatLine Line { get; set; } = default!;
+    [Parameter, EditorRequired] public string PowerName { get; set; } = "";
+    [Parameter] public string CssClass { get; set; } = "";
+
+    private void OpenRoll(string expression)
+        => DiceRoller.Open(expression, $"{PowerName} {Line.Label}");
+
+    private RenderFragment PowerCalculationValue => builder =>
+    {
+        if (!string.IsNullOrWhiteSpace(Line.Components))
+        {
+            builder.OpenComponent<PowerCalculationPopover>(0);
+            builder.AddAttribute(1, nameof(PowerCalculationPopover.Title), $"{PowerName} {Line.Label}");
+            builder.AddAttribute(2, nameof(PowerCalculationPopover.Value), Line.Value);
+            builder.AddAttribute(3, nameof(PowerCalculationPopover.Components), Line.Components);
+            builder.AddAttribute(4, nameof(PowerCalculationPopover.TriggerClass), CssClass);
+            builder.AddAttribute(5, nameof(PowerCalculationPopover.ChildContent), (RenderFragment)(childBuilder => childBuilder.AddContent(0, Line.Value)));
+            builder.CloseComponent();
+        }
+        else
+        {
+            builder.OpenElement(0, "span");
+            builder.AddAttribute(1, "class", CssClass);
+            builder.AddContent(2, Line.Value);
+            builder.CloseElement();
+        }
+    };
+
+    private static bool TryGetRollExpression(PowerStatLine stat, out string expression)
+    {
+        expression = "";
+        if (stat.Label.Equals("Attack", StringComparison.OrdinalIgnoreCase))
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(stat.Value, @"([+-]?\d+)");
+            if (match.Success)
+            {
+                int bonus = int.Parse(match.Value);
+                expression = $"1d20{(bonus >= 0 ? "+" : "")}{bonus}";
+                return true;
+            }
+        }
+
+        if (stat.Label.Equals("Damage", StringComparison.OrdinalIgnoreCase)
+            || stat.Label.Equals("Healing", StringComparison.OrdinalIgnoreCase))
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(stat.Value.Trim(), @"^\d*d\d+(?:\s*[+-]\s*\d+)?", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            if (match.Success)
+            {
+                expression = match.Value.Replace(" ", "");
+                return true;
+            }
+        }
+
+        return false;
+    }
+}

@@ -1,0 +1,54 @@
+@using CharM.Engine.Rules
+
+@if (Element is not null)
+{
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60"
+         @onclick="HandleBackdropClick">
+        <div class="bg-surface-container rounded-lg shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col"
+             @onclick:stopPropagation>
+            <!-- Header -->
+            <div class="flex items-start justify-between p-4 border-b border-outline-variant/30">
+                <div>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">@Element.Name</h2>
+                    <p class="text-xs font-label text-on-surface-variant mt-0.5 uppercase tracking-wider">
+                        @Element.Type
+                        @if (Element.Source is not null)
+                        {
+                            <span>— @Element.Source</span>
+                        }
+                    </p>
+                </div>
+                <button @onclick="OnClose"
+                        class="text-on-surface-variant hover:text-on-surface transition-colors p-1 -m-1"
+                        aria-label="Close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Body: shared detail view (renders its own header so trim it) -->
+            <div class="p-6 overflow-y-auto flex-1">
+                <ElementDetailView Element="Element"
+                                   OnLoadDetails="OnLoadDetails"
+                                   OnResolveIds="OnResolveIds"
+                                   ShowHeader="false" />
+            </div>
+
+            <!-- Footer -->
+            <div class="flex justify-end p-3 border-t border-outline-variant/30">
+                <button @onclick="OnClose"
+                        class="px-4 py-2 text-sm font-label font-semibold rounded bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public RulesElement? Element { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public Func<string, RulesElement?>? OnLoadDetails { get; set; }
+    [Parameter] public Func<string, List<CharM.Web.Services.ResolvedElement>>? OnResolveIds { get; set; }
+
+    private async Task HandleBackdropClick() => await OnClose.InvokeAsync();
+}

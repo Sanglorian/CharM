@@ -1,0 +1,533 @@
+@using CharM.Engine.Creation
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+
+@if (Visible)
+{
+    <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+         @onclick="CancelAsync">
+        <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-5xl w-full max-h-[85vh] flex flex-col ghost-border"
+             @onclick:stopPropagation="true">
+
+            @* --- Header --- *@
+            <div class="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between">
+                <div>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">@Title</h2>
+                    <p class="text-xs font-label text-on-surface-variant mt-0.5">@Subtitle</p>
+                </div>
+                <button @onclick="CancelAsync"
+                        class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+
+            @* --- Stepper / composite summary --- *@
+            <div class="px-6 py-3 border-b border-outline-variant/20 bg-surface-container-low/40">
+                <div class="flex items-center gap-2 text-xs flex-wrap">
+                    <StepChip Index="1" Label="Base"
+                              Value="@(_base?.Name)"
+                              Active="@(_currentStage == Stage.Base)"
+                              Completed="@(_base is not null)"
+                              Disabled="@(PreselectedBase is not null)"
+                              OnClick="() => GoTo(Stage.Base)" />
+                    <span class="material-symbols-outlined text-on-surface-variant text-base">chevron_right</span>
+                    <StepChip Index="2" Label="Enchantment"
+                              Value="@(_enchantment?.Name ?? (BaseRequiresEnchantment ? null : "(none)"))"
+                              Active="@(_currentStage == Stage.Enchantment)"
+                              Completed="@(_enchantment is not null || (!_isStandaloneBaseSelected && !BaseRequiresEnchantment && _base is not null))"
+                              Disabled="@(_base is null || _isStandaloneBaseSelected)"
+                              OnClick="() => GoTo(Stage.Enchantment)" />
+                    @if (!_isStandaloneBaseSelected)
+                    {
+                        <span class="material-symbols-outlined text-on-surface-variant text-base">chevron_right</span>
+                        <StepChip Index="3" Label="Augment (optional)"
+                                  Value="@(_augment?.Name ?? (_enchantment is not null ? "(none)" : null))"
+                                  Active="@(_currentStage == Stage.Augment)"
+                                  Completed="@(_augment is not null)"
+                                  Disabled="@(_enchantment is null)"
+                                  OnClick="() => GoTo(Stage.Augment)" />
+                    }
+                </div>
+                @if (BaseRequiresEnchantment && _base is not null && _enchantment is null)
+                {
+                    <p class="text-xs text-error mt-2 flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">info</span>
+                        @_base.Name requires a magical enhancement of at least
+                        +@MagicItemClassifier.GetMinimumEnhancementBonus(_base).
+                    </p>
+                }
+            </div>
+
+            @* --- Stage body --- *@
+            <div class="flex flex-1 min-h-0">
+                @* Left: candidate list *@
+                <div class="w-2/5 border-r border-outline-variant/20 overflow-y-auto">
+                    <div class="sticky top-0 z-10 bg-surface-container-low px-3 py-2 border-b border-outline-variant/20">
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+                            <input type="text" @bind="_searchText" @bind:event="oninput"
+                                   placeholder="@StagePlaceholder"
+                                   class="w-full pl-8 pr-2 py-1.5 bg-surface-container-lowest border-b border-outline rounded text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                        </div>
+                        @if (_currentStage == Stage.Base)
+                        {
+                            <div class="flex items-center gap-3 mt-2 text-xs">
+                                <button @onclick="() => SetBaseKind(null)"
+                                        class="px-2 py-0.5 rounded @(_baseKindFilter is null ? "bg-primary text-on-primary" : "text-on-surface-variant hover:bg-surface-container-lowest")">
+                                    All
+                                </button>
+                                <button @onclick="@(() => SetBaseKind("Weapon"))"
+                                        class="px-2 py-0.5 rounded @(_baseKindFilter == "Weapon" ? "bg-primary text-on-primary" : "text-on-surface-variant hover:bg-surface-container-lowest")">
+                                    Weapons
+                                </button>
+                                <button @onclick="@(() => SetBaseKind("Armor"))"
+                                        class="px-2 py-0.5 rounded @(_baseKindFilter == "Armor" ? "bg-primary text-on-primary" : "text-on-surface-variant hover:bg-surface-container-lowest")">
+                                    Armor
+                                </button>
+                                @if (AllowStandalonePath)
+                                {
+                                    <button @onclick="ToggleStandaloneMode"
+                                            class="px-2 py-0.5 rounded @(_standaloneMode ? "bg-tertiary text-on-tertiary" : "text-on-surface-variant hover:bg-surface-container-lowest")"
+                                            title="Browse standalone wearable magic items (cloaks, rings, wondrous, potions, …)">
+                                        Standalone
+                                    </button>
+                                }
+                                <label class="flex items-center gap-1 ml-auto cursor-pointer text-on-surface-variant">
+                                    <input type="checkbox" @bind="_includeMasterwork" class="accent-primary" />
+                                    <span>Masterwork</span>
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                    <table class="w-full text-sm">
+                        <thead class="sticky top-[60px] bg-surface-container-low z-[5]">
+                            <tr>
+                                <th class="text-left px-3 py-1.5 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">Name</th>
+                                <th class="text-left px-2 py-1.5 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">@StageDetailColumn1</th>
+                                <th class="text-left px-2 py-1.5 text-[10px] font-label font-semibold uppercase tracking-wider text-on-surface-variant">@StageDetailColumn2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in FilteredCandidates)
+                            {
+                                bool isSel = item.InternalId == _selectedDetail?.InternalId;
+                                <tr @onclick="() => SelectCandidate(item)"
+                                    class="@(isSel ? "bg-primary/5 font-semibold" : "hover:bg-surface-container-low") cursor-pointer transition-colors">
+                                    <td class="px-3 py-1.5 @(MagicItemClassifier.IsArtifact(item) ? "text-orange-500 font-medium" : "text-on-surface")">
+                                        @item.Name
+                                        @if (MagicItemClassifier.IsArtifact(item))
+                                        {
+                                            <span class="ml-1 text-[10px] uppercase tracking-wider font-label text-orange-500/80">Artifact</span>
+                                        }
+                                    </td>
+                                    <td class="px-2 py-1.5 text-on-surface-variant text-xs">@StageCol1Value(item)</td>
+                                    <td class="px-2 py-1.5 text-on-surface-variant text-xs">@StageCol2Value(item)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @if (FilteredCandidates.Count == 0)
+                    {
+                        <div class="px-4 py-8 text-center text-sm text-on-surface-variant">@EmptyMessage</div>
+                    }
+                </div>
+
+                @* Right: detail of currently-highlighted candidate *@
+                <div class="w-3/5 p-6 overflow-y-auto">
+                    @if (_selectedDetail is not null)
+                    {
+                        <ElementDetailView Element="_selectedDetail" ShowHeader="true" />
+                        <div class="mt-6 flex gap-2">
+                            <button @onclick="SelectForStage"
+                                    class="px-4 py-2 text-sm font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors scale-98-active">
+                                <span>@SelectForStageLabel</span>
+                            </button>
+                            @if (_currentStage == Stage.Augment && _augment is not null)
+                            {
+                                <button @onclick="() => { _augment = null; }"
+                                        class="px-4 py-2 text-sm font-label text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors">
+                                    Remove augment
+                                </button>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="flex items-center justify-center h-full text-sm text-on-surface-variant">
+                            Choose an item from the list to preview.
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @* --- Footer --- *@
+            <div class="px-6 py-3 border-t border-outline-variant/20 flex items-center justify-between">
+                <span class="text-xs text-on-surface-variant">
+                    @FilteredCandidates.Count @StageItemsLabel
+                </span>
+                <div class="flex gap-2">
+                    <button @onclick="CancelAsync"
+                            class="px-4 py-2 text-sm font-label font-semibold text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors scale-98-active">
+                        Cancel
+                    </button>
+                    @if (CanGoBack)
+                    {
+                        <button @onclick="GoToPrevious" type="button"
+                                class="px-4 py-2 text-sm font-label text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors">
+                            Back
+                        </button>
+                    }
+                    @if (CanSkipAugment)
+                    {
+                        <button @onclick="SkipAugment"
+                                class="px-4 py-2 text-sm font-label text-on-surface border border-outline-variant/40 rounded hover:bg-surface-container-low transition-colors">
+                            No augment
+                        </button>
+                    }
+                    <button @onclick="ConfirmAsync" disabled="@(!CanConfirm)"
+                            class="px-4 py-2 text-sm font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors scale-98-active disabled:opacity-40 disabled:cursor-not-allowed">
+                        @ConfirmLabel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private enum Stage { Base, Enchantment, Augment }
+
+    [Parameter] public bool Visible { get; set; }
+
+    /// <summary>Optional pre-selected base item (e.g. from the slot picker's ✨ icon).</summary>
+    [Parameter] public RulesElement? PreselectedBase { get; set; }
+
+    /// <summary>If set, the composite will be equipped to this slot on confirm; otherwise added to inventory.</summary>
+    [Parameter] public string? TargetSlot { get; set; }
+
+    /// <summary>True to allow the "Standalone" base-stage tab. Suppressed when entering via the slot picker's ✨ icon (where the base is already fixed).</summary>
+    [Parameter] public bool AllowStandalonePath { get; set; } = true;
+
+    [Parameter] public EventCallback<LootItem> OnConfirm { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private Stage _currentStage = Stage.Base;
+    private RulesElement? _base;
+    private RulesElement? _enchantment;
+    private RulesElement? _augment;
+    private RulesElement? _selectedDetail;
+    private string _searchText = "";
+    private string? _baseKindFilter;
+    private bool _includeMasterwork;
+    private bool _standaloneMode;
+    private bool _isStandaloneBaseSelected;
+    private string? _openSignature;
+
+    protected override void OnParametersSet()
+    {
+        var signature = Visible
+            ? $"{PreselectedBase?.InternalId}|{TargetSlot}|{AllowStandalonePath}"
+            : null;
+
+        if (Visible && signature != _openSignature)
+        {
+            ResetState();
+            if (PreselectedBase is not null)
+            {
+                _base = PreselectedBase;
+                _isStandaloneBaseSelected = MagicItemClassifier.IsStandaloneMagicItem(PreselectedBase);
+                _currentStage = _isStandaloneBaseSelected ? Stage.Base : Stage.Enchantment;
+            }
+            _openSignature = signature;
+        }
+        else if (!Visible)
+        {
+            _openSignature = null;
+        }
+    }
+
+    private void ResetState()
+    {
+        _currentStage = Stage.Base;
+        _base = null;
+        _enchantment = null;
+        _augment = null;
+        _selectedDetail = null;
+        _searchText = "";
+        _baseKindFilter = null;
+        _includeMasterwork = false;
+        _standaloneMode = false;
+        _isStandaloneBaseSelected = false;
+        _candidatesCache = Array.Empty<RulesElement>();
+        _candidatesSig = null;
+    }
+
+    private string Title => PreselectedBase is not null
+        ? $"Enchant {PreselectedBase.Name}"
+        : (TargetSlot is not null ? $"Add Magic Item: {TargetSlot}" : "Add Magic Item");
+
+    private string Subtitle => _currentStage switch
+    {
+        Stage.Base => _standaloneMode ? "Choose a standalone magic item." : "Choose a base item to enchant.",
+        Stage.Enchantment => $"Choose an enchantment for {_base?.Name}.",
+        Stage.Augment => $"Optionally add an augment to {_enchantment?.Name}.",
+        _ => "",
+    };
+
+    private string StagePlaceholder => _currentStage switch
+    {
+        Stage.Base => _standaloneMode ? "Search magic items..." : "Search bases...",
+        Stage.Enchantment => "Search enchantments...",
+        Stage.Augment => "Search augments...",
+        _ => "Search...",
+    };
+
+    private string EmptyMessage => _currentStage switch
+    {
+        Stage.Enchantment when _base is not null
+            => $"No compatible enchantments for {_base.Name}.",
+        Stage.Augment when _enchantment is not null
+            => $"No compatible augments for {_enchantment.Name}.",
+        _ => "No matching items.",
+    };
+
+    private string StageItemsLabel => _currentStage switch
+    {
+        Stage.Base => _standaloneMode ? "items" : "bases",
+        Stage.Enchantment => "enchantments",
+        Stage.Augment => "augments",
+        _ => "items",
+    };
+
+    private string StageDetailColumn1 => _currentStage switch
+    {
+        Stage.Base => _standaloneMode ? "Type" : "Group / Category",
+        _ => "Enhancement",
+    };
+
+    private string StageDetailColumn2 => _currentStage switch
+    {
+        Stage.Base => "Lvl / Min Enh",
+        _ => "Level",
+    };
+
+    private static string StageCol1Value(RulesElement el)
+    {
+        if (el.Fields.TryGetValue("Magic Item Type", out var mit) && !string.IsNullOrWhiteSpace(mit))
+        {
+            if (el.Fields.TryGetValue("Enhancement", out var enh) && !string.IsNullOrWhiteSpace(enh))
+                return $"+{ExtractEnhBonus(enh)}";
+            return mit;
+        }
+        if (el.Fields.TryGetValue("Group", out var grp) && !string.IsNullOrWhiteSpace(grp))
+            return grp;
+        if (el.Fields.TryGetValue("Armor Category", out var ac) && !string.IsNullOrWhiteSpace(ac))
+            return ac;
+        return el.Type;
+    }
+
+    private static string StageCol2Value(RulesElement el)
+    {
+        var min = MagicItemClassifier.GetMinimumEnhancementBonus(el);
+        var lvl = el.Fields.TryGetValue("Level", out var l) && !string.IsNullOrWhiteSpace(l) ? l : null;
+        if (min > 0) return $"Min +{min}";
+        return lvl ?? "—";
+    }
+
+    private static string ExtractEnhBonus(string raw)
+    {
+        var s = raw.Trim().TrimStart('+');
+        int i = 0;
+        while (i < s.Length && char.IsDigit(s[i])) i++;
+        return i > 0 ? s[..i] : raw;
+    }
+
+    private bool BaseRequiresEnchantment => _base is not null && MagicItemClassifier.IsMasterworkBase(_base);
+
+    private bool CanSkipAugment => _currentStage == Stage.Augment && _augment is null && _enchantment is not null;
+
+    private bool CanGoBack
+    {
+        get
+        {
+            if (_isStandaloneBaseSelected) return false;
+            return _currentStage switch
+            {
+                Stage.Augment => _enchantment is not null,
+                Stage.Enchantment => PreselectedBase is null && _base is not null,
+                _ => false,
+            };
+        }
+    }
+
+    private bool CanConfirm
+    {
+        get
+        {
+            if (_base is null) return false;
+            if (BaseRequiresEnchantment && _enchantment is null) return false;
+            return true;
+        }
+    }
+
+    private string ConfirmLabel
+    {
+        get
+        {
+            if (_isStandaloneBaseSelected && _base is not null)
+            {
+                return TargetSlot is not null
+                    ? $"Equip {_base.Name} → {TargetSlot}"
+                    : $"Add {_base.Name}";
+            }
+            return TargetSlot is not null ? $"Equip → {TargetSlot}" : "Add to inventory";
+        }
+    }
+
+    private string SelectForStageLabel => _currentStage switch
+    {
+        Stage.Base => "Use as base →",
+        Stage.Enchantment => "Use this enchantment →",
+        Stage.Augment => "Use this augment",
+        _ => "Select",
+    };
+
+    private IReadOnlyList<RulesElement> _candidatesCache = Array.Empty<RulesElement>();
+    private Stage _candidatesStage = Stage.Base;
+    private string? _candidatesSig;
+
+    private IReadOnlyList<RulesElement> StageCandidates
+    {
+        get
+        {
+            var sig = $"{_currentStage}|{_baseKindFilter}|{_includeMasterwork}|{_standaloneMode}|{_base?.InternalId}|{_enchantment?.InternalId}";
+            if (_candidatesSig == sig && _candidatesStage == _currentStage)
+                return _candidatesCache;
+
+            _candidatesCache = _currentStage switch
+            {
+                Stage.Base when _standaloneMode => SessionService.GetAvailableStandaloneMagicItems(),
+                Stage.Base => SessionService.GetAvailableMagicItemBases(_baseKindFilter, _includeMasterwork),
+                Stage.Enchantment when _base is not null => SessionService.GetEnchantmentsForBase(_base),
+                Stage.Augment when _enchantment is not null => SessionService.GetAugmentsForEnchantment(_enchantment),
+                _ => Array.Empty<RulesElement>(),
+            };
+            _candidatesStage = _currentStage;
+            _candidatesSig = sig;
+            return _candidatesCache;
+        }
+    }
+
+    private IReadOnlyList<RulesElement> FilteredCandidates
+    {
+        get
+        {
+            var src = StageCandidates;
+            if (string.IsNullOrWhiteSpace(_searchText))
+                return src;
+            return src.Where(e =>
+                e.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
+                || (e.Source?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false))
+                .ToList();
+        }
+    }
+
+    private void GoTo(Stage stage)
+    {
+        // Preselected base is locked — disallow navigating back to the base stage.
+        if (stage == Stage.Base && PreselectedBase is not null) return;
+        if (stage == Stage.Enchantment && (_base is null || _isStandaloneBaseSelected)) return;
+        if (stage == Stage.Augment && _enchantment is null) return;
+        _currentStage = stage;
+        _selectedDetail = null;
+        _searchText = "";
+    }
+
+    private void GoToPrevious()
+    {
+        switch (_currentStage)
+        {
+            case Stage.Augment: GoTo(Stage.Enchantment); break;
+            case Stage.Enchantment:
+                if (PreselectedBase is null) GoTo(Stage.Base);
+                break;
+        }
+    }
+
+    private void SetBaseKind(string? kind)
+    {
+        _baseKindFilter = kind;
+        _standaloneMode = false;
+        _selectedDetail = null;
+    }
+
+    private void ToggleStandaloneMode()
+    {
+        _standaloneMode = !_standaloneMode;
+        _baseKindFilter = null;
+        _selectedDetail = null;
+        _searchText = "";
+    }
+
+    private void SelectCandidate(RulesElement item)
+    {
+        _selectedDetail = item;
+    }
+
+    private void SelectForStage()
+    {
+        if (_selectedDetail is null) return;
+        switch (_currentStage)
+        {
+            case Stage.Base:
+                _base = _selectedDetail;
+                _enchantment = null;
+                _augment = null;
+                _isStandaloneBaseSelected = MagicItemClassifier.IsStandaloneMagicItem(_base);
+                if (_isStandaloneBaseSelected)
+                {
+                    // Stay on the Base stage; keep the picked item highlighted so
+                    // the detail pane still shows what's about to be confirmed.
+                }
+                else
+                {
+                    GoTo(Stage.Enchantment);
+                }
+                break;
+            case Stage.Enchantment:
+                _enchantment = _selectedDetail;
+                _augment = null;
+                GoTo(Stage.Augment);
+                break;
+            case Stage.Augment:
+                _augment = _selectedDetail;
+                break;
+        }
+    }
+
+    private void SkipAugment()
+    {
+        _augment = null;
+        // Stay on stage; user confirms.
+    }
+
+    private async Task ConfirmAsync()
+    {
+        if (!CanConfirm || _base is null) return;
+        var loot = CharacterSessionService.BuildComposite(_base, _enchantment, _augment);
+        await OnConfirm.InvokeAsync(loot);
+        await CloseAsync();
+    }
+
+    private async Task CancelAsync() => await CloseAsync();
+
+    private async Task CloseAsync()
+    {
+        ResetState();
+        _openSignature = null;
+        if (OnClose.HasDelegate)
+            await OnClose.InvokeAsync();
+    }
+}

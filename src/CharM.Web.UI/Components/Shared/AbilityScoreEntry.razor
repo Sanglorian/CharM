@@ -1,0 +1,219 @@
+@using CharM.Engine.Creation
+
+<!-- Mode Tabs -->
+<div class="flex gap-1 mb-3">
+    @foreach (var mode in new[] { ("pointbuy", "Point Buy"), ("standard", "Standard Array"), ("manual", "Manual") })
+    {
+        <button @onclick="() => SetMode(mode.Item1)"
+                class="px-2 py-1 text-xs font-label font-semibold rounded transition-colors @(_mode == mode.Item1 ? "bg-primary text-on-primary" : "bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high")">
+            @mode.Item2
+        </button>
+    }
+</div>
+
+<div class="space-y-3">
+    @foreach (var (ability, index) in _abilityNames.Select((a, i) => (a, i)))
+    {
+        <div class="flex items-center justify-between">
+            <span class="text-xs font-label font-semibold uppercase tracking-wider text-on-surface-variant w-12">
+                @ability[..3]
+            </span>
+            <div class="flex items-center gap-2">
+                @if (_mode == "manual")
+                {
+                    <input type="number" min="3" max="20" @bind="_scores[index]"
+                           class="w-14 px-2 py-1 bg-surface-container-low border-b border-outline rounded text-center text-sm font-body text-on-surface focus:border-primary focus:outline-none" />
+                }
+                else if (_mode == "standard")
+                {
+                    <select value="@_scores[index]" @onchange="e => AssignStandard(index, int.Parse(e.Value!.ToString()!))"
+                            class="w-20 px-2 py-1 bg-surface-container-low border-b border-outline rounded text-center text-sm font-body text-on-surface focus:border-primary focus:outline-none">
+                        <option value="0" selected="@(_scores[index] == 0)">—</option>
+                        @foreach (var v in StandardArrayChoicesFor(index))
+                        {
+                            <option value="@v" selected="@(v == _scores[index])">@v</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <button @onclick="() => Decrement(index)"
+                            disabled="@(GetMinScore(index) >= _scores[index])"
+                            class="w-7 h-7 flex items-center justify-center bg-surface-container-low rounded hover:bg-surface-container-high transition-colors disabled:opacity-30">
+                        <span class="material-symbols-outlined text-sm">remove</span>
+                    </button>
+                    <span class="w-8 text-center font-body font-semibold text-on-surface">@_scores[index]</span>
+                    <button @onclick="() => Increment(index)"
+                            disabled="@(!CanIncrement(index))"
+                            class="w-7 h-7 flex items-center justify-center bg-surface-container-low rounded hover:bg-surface-container-high transition-colors disabled:opacity-30">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                    </button>
+                    @if (_mode == "pointbuy")
+                    {
+                        var cost = AbilityScoreSet.PointBuyCostTable(_scores[index]);
+                        <span class="text-xs text-on-surface-variant w-10 text-right">
+                            @(cost > 0 ? $"+{cost}" : cost == 0 ? "—" : $"{cost}")
+                        </span>
+                    }
+                }
+            </div>
+        </div>
+    }
+
+    @if (_mode == "pointbuy")
+    {
+        <div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+            <span class="text-xs font-label font-semibold text-on-surface-variant">
+                Points Remaining
+            </span>
+            <span class="font-body font-bold @(RemainingPoints < 0 ? "text-error" : RemainingPoints == 0 ? "text-on-surface" : "text-on-surface-variant")">
+                @RemainingPoints
+            </span>
+        </div>
+    }
+
+    @if (_mode == "standard")
+    {
+        var unassigned = StandardArrayUnassigned();
+        <p class="text-xs @(unassigned.Count == 0 ? "text-on-surface-variant" : "text-error") pt-2 border-t border-outline-variant/20">
+            @if (unassigned.Count == 0)
+            {
+                @:All standard array values assigned.
+            }
+            else
+            {
+                @($"Unassigned: {string.Join(", ", unassigned)}")
+            }
+        </p>
+    }
+
+    <button @onclick="Confirm"
+            disabled="@(!IsValid)"
+            class="w-full py-2 bg-primary text-on-primary font-label font-semibold text-sm rounded hover:bg-primary-dim transition-colors scale-98-active disabled:opacity-40">
+        Set Ability Scores
+    </button>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public EventCallback<AbilityScoreSet> OnScoresSet { get; set; }
+
+    private static readonly string[] _abilityNames =
+        ["Strength", "Constitution", "Dexterity", "Intelligence", "Wisdom", "Charisma"];
+
+    // 4e standard array
+    private static readonly int[] _standardArray = [16, 14, 13, 12, 11, 10];
+
+    private string _mode = "pointbuy";
+    private int[] _scores = (int[])AbilityScoreGenerator.PointBuyDefault.Clone();
+
+    private void SetMode(string mode)
+    {
+        if (_mode == mode) return;
+        _mode = mode;
+        _scores = mode switch
+        {
+            "pointbuy" => (int[])AbilityScoreGenerator.PointBuyDefault.Clone(),
+            "standard" => [0, 0, 0, 0, 0, 0],
+            "manual" => [10, 10, 10, 10, 10, 10],
+            _ => [10, 10, 10, 10, 10, 10],
+        };
+    }
+
+    private AbilityScoreSet CurrentScoreSet => AbilityScoreGenerator.FromArray(_scores);
+    private int RemainingPoints => AbilityScoreGenerator.RemainingPoints(CurrentScoreSet);
+
+    private bool IsValid => _mode switch
+    {
+        "pointbuy" => RemainingPoints >= 0 && _scores.All(s => s >= 8 && s <= 18),
+        "standard" => StandardArrayUnassigned().Count == 0,
+        "manual" => _scores.All(s => s >= 3 && s <= 20),
+        _ => false,
+    };
+
+    private int GetMinScore(int index) => _mode switch
+    {
+        "pointbuy" => 8,
+        "standard" => _standardArray.Min(),
+        _ => 3,
+    };
+
+    private bool CanIncrement(int index) => _mode switch
+    {
+        "pointbuy" => _scores[index] < 18 && RemainingPoints >= AbilityScoreGenerator.IncrementCost(_scores[index]),
+        "standard" => _scores[index] < _standardArray.Max(),
+        _ => _scores[index] < 20,
+    };
+
+    private void Increment(int index)
+    {
+        if (_mode == "standard") return; // standard mode uses dropdowns now
+        if (CanIncrement(index))
+            _scores[index]++;
+    }
+
+    private void Decrement(int index)
+    {
+        if (_mode == "standard") return; // standard mode uses dropdowns now
+        if (_scores[index] > GetMinScore(index))
+            _scores[index]--;
+    }
+
+    /// <summary>Multiset difference: standard array values minus what's currently assigned.</summary>
+    private List<int> StandardArrayUnassigned()
+    {
+        var pool = _standardArray.ToList();
+        foreach (var s in _scores)
+            pool.Remove(s); // List.Remove only removes first occurrence — multiset semantics
+        return pool.OrderByDescending(v => v).ToList();
+    }
+
+    /// <summary>Allowed dropdown values for a slot: the value already assigned there + any still-unassigned pool values.</summary>
+    private List<int> StandardArrayChoicesFor(int index)
+    {
+        var available = StandardArrayUnassigned();
+        if (_scores[index] != 0 && !available.Contains(_scores[index]))
+            available.Add(_scores[index]);
+        return available.Where(v => v != 0).Distinct().OrderByDescending(v => v).ToList();
+    }
+
+    private void AssignStandard(int index, int value)
+    {
+        // Determine if a free assignment is possible: the pool must contain at least one
+        // more copy of `value` than is currently assigned (excluding the slot being changed).
+        if (value != 0)
+        {
+            int poolCount = _standardArray.Count(v => v == value);
+            int assignedElsewhere = 0;
+            for (int i = 0; i < 6; i++)
+                if (i != index && _scores[i] == value) assignedElsewhere++;
+
+            if (assignedElsewhere >= poolCount)
+            {
+                // Pool exhausted — must swap with one of the slots already holding `value`.
+                for (int i = 0; i < 6; i++)
+                {
+                    if (i != index && _scores[i] == value)
+                    {
+                        _scores[i] = _scores[index];
+                        _scores[index] = value;
+                        return;
+                    }
+                }
+            }
+        }
+
+        _scores[index] = value;
+    }
+
+    private async Task Confirm()
+    {
+        var set = new AbilityScoreSet();
+        set[Ability.Strength] = _scores[0];
+        set[Ability.Constitution] = _scores[1];
+        set[Ability.Dexterity] = _scores[2];
+        set[Ability.Intelligence] = _scores[3];
+        set[Ability.Wisdom] = _scores[4];
+        set[Ability.Charisma] = _scores[5];
+        await OnScoresSet.InvokeAsync(set);
+    }
+}

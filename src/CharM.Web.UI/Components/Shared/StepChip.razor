@@ -1,0 +1,39 @@
+@* Small stepper chip used in MagicItemBuilderModal *@
+
+<button @onclick="OnClick" disabled="@Disabled"
+        class="@RootClass" title="@Tooltip">
+    <span class="font-bold mr-1">@Index.</span>
+    <span>@Label</span>
+    @if (!string.IsNullOrEmpty(Value))
+    {
+        <span class="ml-1.5 text-on-surface-variant truncate max-w-[12rem]">— @Value</span>
+    }
+    @if (Completed)
+    {
+        <span class="material-symbols-outlined text-sm ml-1 text-tertiary">check_circle</span>
+    }
+</button>
+
+@code {
+    [Parameter] public int Index { get; set; }
+    [Parameter] public string Label { get; set; } = "";
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public bool Active { get; set; }
+    [Parameter] public bool Completed { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+
+    private string Tooltip => Disabled ? "Complete the previous step first" : Label;
+
+    private string RootClass
+    {
+        get
+        {
+            var baseClass = "flex items-center px-3 py-1 rounded-full text-xs font-label transition-colors";
+            if (Disabled) return $"{baseClass} opacity-40 cursor-not-allowed bg-surface-container-low text-on-surface-variant";
+            if (Active) return $"{baseClass} bg-primary text-on-primary";
+            if (Completed) return $"{baseClass} bg-tertiary-container/40 text-on-tertiary-container hover:bg-tertiary-container/60";
+            return $"{baseClass} bg-surface-container-low text-on-surface-variant hover:bg-surface-container";
+        }
+    }
+}

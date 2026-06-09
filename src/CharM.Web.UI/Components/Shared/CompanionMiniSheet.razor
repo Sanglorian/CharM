@@ -1,0 +1,182 @@
+﻿@using CharM.Engine.CharacterModel
+
+@if (Companion is not null)
+{
+    <div class="bg-surface-container-lowest ghost-border overflow-hidden">
+        <!-- Header -->
+        <div class="bg-tertiary-container px-4 py-2 flex items-baseline justify-between gap-2 border-b border-outline-variant/20">
+            <h3 class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-tertiary-container">@HeaderLabel()</h3>
+            <span class="text-[10px] text-on-tertiary-container/70">@SubtitleText()</span>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Companion.Name) || !string.IsNullOrWhiteSpace(Companion.Appearance))
+        {
+            <div class="px-4 py-1.5 border-b border-outline-variant/20 bg-surface-container-low/40">
+                @if (!string.IsNullOrWhiteSpace(Companion.Name))
+                {
+                    <span class="text-sm font-bold text-on-surface">@Companion.Name</span>
+                }
+                @if (!string.IsNullOrWhiteSpace(Companion.Appearance))
+                {
+                    <span class="text-[11px] italic text-on-surface-variant ml-2">@Companion.Appearance</span>
+                }
+            </div>
+        }
+
+        <div class="p-3 space-y-2.5">
+            <!-- Top row: HP + Healing Surge | Defense shields -->
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3 flex-wrap">
+                    @if (Companion.HitPoints is { } hp)
+                    {
+                        <div class="relative w-14 h-14 flex flex-col items-center justify-center shrink-0">
+                            <div class="absolute inset-0 bg-error/85 ability-shield"></div>
+                            <span class="relative z-10 text-[8px] font-label uppercase text-white/80 leading-none">HP</span>
+                            <span class="relative z-10 text-lg font-bold leading-none mt-0.5 text-white">@hp</span>
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(Companion.HitPointsText))
+                    {
+                        <div class="text-[10px] leading-tight text-on-surface max-w-[10rem]">
+                            <div class="font-label uppercase tracking-wide text-outline">HP</div>
+                            <div class="font-bold">@Companion.HitPointsText</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Companion.HealingSurgeText))
+                    {
+                        <div class="text-[10px] leading-tight text-on-surface">
+                            <div class="font-label uppercase tracking-wide text-outline">Surge</div>
+                            <div class="font-bold">@Companion.HealingSurgeText</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Companion.HitPointsNote))
+                    {
+                        <p class="text-[10px] italic text-outline max-w-[12rem] leading-tight">@Companion.HitPointsNote</p>
+                    }
+                </div>
+                @if (Companion.Ac is not null || Companion.Fortitude is not null || Companion.Reflex is not null || Companion.Will is not null)
+                {
+                    <div class="flex gap-1.5 shrink-0">
+                        @DefenseShield("AC", Companion.Ac, "defense-ac")
+                        @DefenseShield("FORT", Companion.Fortitude, "defense-fort")
+                        @DefenseShield("REF", Companion.Reflex, "defense-refl")
+                        @DefenseShield("WILL", Companion.Will, "defense-will")
+                    </div>
+                }
+                else if (!string.IsNullOrWhiteSpace(Companion.DefensesText))
+                {
+                    <div class="text-[10px] leading-tight text-on-surface max-w-[16rem] text-right">
+                        <div class="font-label uppercase tracking-wide text-outline">Defenses</div>
+                        <div class="font-bold">@Companion.DefensesText</div>
+                    </div>
+                }
+            </div>
+
+            <!-- Ability hex row (skipped for summons and familiars that don't carry ability scores) -->
+            @if (!Companion.IsSummon && !Companion.IsFamiliar)
+            {
+                <div class="flex justify-between gap-1.5">
+                    @AbilityHex("STR", Companion.Strength)
+                    @AbilityHex("CON", Companion.Constitution)
+                    @AbilityHex("DEX", Companion.Dexterity)
+                    @AbilityHex("INT", Companion.Intelligence)
+                    @AbilityHex("WIS", Companion.Wisdom)
+                    @AbilityHex("CHA", Companion.Charisma)
+                </div>
+            }
+
+            <!-- Descriptors row -->
+            <dl class="text-[10px] leading-tight space-y-0.5 text-on-surface">
+                @if (!string.IsNullOrWhiteSpace(Companion.Size))
+                {
+                    <div class="flex gap-1"><dt class="font-bold w-14 shrink-0">Size:</dt><dd>@Companion.Size</dd></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Companion.Vision))
+                {
+                    <div class="flex gap-1"><dt class="font-bold w-14 shrink-0">Vision:</dt><dd>@Companion.Vision</dd></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Companion.Speed))
+                {
+                    <div class="flex gap-1"><dt class="font-bold w-14 shrink-0">Speed:</dt><dd>@Companion.Speed</dd></div>
+                }
+                @if (Companion.TrainedSkills.Count > 0)
+                {
+                    <div class="flex gap-1"><dt class="font-bold w-14 shrink-0">Trained:</dt><dd>@string.Join(", ", Companion.TrainedSkills)</dd></div>
+                }
+            </dl>
+
+            <!-- Attack line / power blurb -->
+            @if (Companion.AttackBonus is { } bonus && !string.IsNullOrWhiteSpace(Companion.AttackText))
+            {
+                <p class="text-[11px] leading-tight border-t border-outline-variant/10 pt-1.5"><span class="font-bold">@Companion.AttackText:</span> +@bonus vs. AC@(Companion.Damage is { Length: > 0 } ? "; " + Companion.Damage : "")</p>
+            }
+            else if (!string.IsNullOrWhiteSpace(Companion.AttackText))
+            {
+                <p class="text-[11px] leading-tight border-t border-outline-variant/10 pt-1.5">@Companion.AttackText</p>
+            }
+            @if (!string.IsNullOrWhiteSpace(Companion.PowerName))
+            {
+                <p class="text-[11px] leading-tight"><span class="font-bold">@Companion.PowerName:</span> @Companion.PowerText</p>
+            }
+            @foreach (var extra in Companion.ExtraPowers)
+            {
+                <div class="text-[11px] leading-tight border-t border-outline-variant/10 pt-1.5">
+                    <p>
+                        <span class="font-bold">@extra.Name</span>
+                        @if (!string.IsNullOrWhiteSpace(extra.Action))
+                        {
+                            <span class="text-outline italic"> (@extra.Action)</span>
+                        }
+                    </p>
+                    @if (!string.IsNullOrWhiteSpace(extra.Description))
+                    {
+                        <p class="mt-0.5">@extra.Description</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public CompanionData? Companion { get; set; }
+    [Parameter] public int Level { get; set; } = 1;
+
+    private string HeaderLabel()
+    {
+        if (Companion is null) return string.Empty;
+        if (Companion.IsFamiliar) return "Familiar";
+        if (Companion.IsSummon) return "Summoned Creature";
+        if (Companion.IsMinion) return "Minion Companion";
+        return "Companion";
+    }
+
+    private string SubtitleText()
+    {
+        if (Companion is null) return string.Empty;
+        if (Companion.IsFamiliar) return Companion.Category;
+        return Companion.IsSummon ? Companion.Category : $"Level {Level} {Companion.Category}";
+    }
+
+    private RenderFragment AbilityHex(string label, int score)
+    {
+        int mod = (score - 10) / 2;
+        string modStr = mod >= 0 ? $"+{mod}" : mod.ToString();
+        return @<div class="relative w-12 h-12 flex flex-col items-center justify-center shrink-0">
+            <div class="absolute inset-0 bg-surface-container-highest ability-shield"></div>
+            <span class="relative z-10 text-[8px] font-label uppercase font-bold tracking-tight leading-none text-on-surface-variant">@label</span>
+            <span class="relative z-10 text-sm font-bold leading-none">@score</span>
+            <span class="relative z-10 text-[8px] text-outline leading-none">@modStr</span>
+        </div>;
+    }
+
+    private RenderFragment DefenseShield(string label, int? value, string cssClass) => @<text>
+        @if (value.HasValue)
+        {
+            <div class="relative w-12 h-12 flex flex-col items-center justify-center shrink-0">
+                <div class="absolute inset-0 @cssClass"></div>
+                <span class="relative z-10 text-[8px] font-label uppercase leading-none text-white/80">@label</span>
+                <span class="relative z-10 text-sm font-bold leading-none mt-0.5 text-white">@value</span>
+            </div>
+        }
+    </text>;
+}

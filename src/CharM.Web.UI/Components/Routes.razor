@@ -1,0 +1,38 @@
+@using CharM.Web.Services
+@inject RulesDatabaseService RulesDatabase
+@implements IDisposable
+@rendermode @(AppInteractiveServer)
+
+@if (!RulesDatabase.IsLoaded || RulesDatabase.IsManageMode)
+{
+    <LayoutView Layout="typeof(Layout.MainLayout)">
+        <RulesDatabaseSetup IsManageMode="@RulesDatabase.IsManageMode"
+                            OnCancel="HandleCancelManage" />
+    </LayoutView>
+}
+else
+{
+    <Router AppAssembly="typeof(Routes).Assembly" NotFoundPage="typeof(Pages.NotFound)">
+        <Found Context="routeData">
+            <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+            <FocusOnNavigate RouteData="routeData" Selector="h1" />
+        </Found>
+    </Router>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        RulesDatabase.Changed += HandleRulesDatabaseChanged;
+    }
+
+    private void HandleCancelManage() => RulesDatabase.ExitManageMode();
+
+    private void HandleRulesDatabaseChanged()
+        => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        RulesDatabase.Changed -= HandleRulesDatabaseChanged;
+    }
+}

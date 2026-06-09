@@ -1,0 +1,83 @@
+@inject DiceRollerUiService DiceRoller
+
+@if (Card.ShowWeaponStats)
+{
+    <div class="col-span-full border-t border-surface-container pt-2 mt-1">
+        <span class="block font-label text-[9px] uppercase tracking-widest text-outline mb-1">Weapon Variants</span>
+        <div class="space-y-1">
+            @foreach (var weapon in Card.WeaponStats)
+            {
+                <div class="grid grid-cols-3 gap-2 text-[10px] leading-tight">
+                    <span class="font-bold truncate">@weapon.Name</span>
+                    <span>
+                        @if (weapon.AttackRollExpression is not null)
+                        {
+                            @PowerWeaponCalculationValue($"{Card.Name} {weapon.Name} attack", weapon.Attack ?? "-", weapon.AttackComponents)
+                            <button type="button"
+                                    class="ml-1 align-middle text-outline hover:text-primary no-print"
+                                    title="Roll attack"
+                                    @onclick="() => OpenAttackRoll(weapon.AttackRollExpression)">
+                                <span class="material-symbols-outlined text-sm">casino</span>
+                            </button>
+                        }
+                        else
+                        {
+                            @PowerWeaponCalculationValue($"{Card.Name} {weapon.Name} attack", weapon.Attack ?? "-", weapon.AttackComponents)
+                        }
+                    </span>
+                    <span>
+                        @{
+                            var expression = weapon.DamageRollExpression ?? weapon.HealingRollExpression;
+                            var display = weapon.Damage ?? weapon.Healing ?? "-";
+                        }
+                        @if (expression is not null)
+                        {
+                            @PowerWeaponCalculationValue($"{Card.Name} {weapon.Name}", display, weapon.Damage is not null ? weapon.DamageComponents : weapon.HealingComponents)
+                            <button type="button"
+                                    class="ml-1 align-middle text-outline hover:text-primary no-print"
+                                    title="Roll @weapon.Name"
+                                    @onclick="() => OpenWeaponRoll(expression, weapon.Name)">
+                                <span class="material-symbols-outlined text-sm">casino</span>
+                            </button>
+                        }
+                        else
+                        {
+                            @PowerWeaponCalculationValue($"{Card.Name} {weapon.Name}", display, weapon.Damage is not null ? weapon.DamageComponents : weapon.HealingComponents)
+                        }
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public PowerDisplayCard Card { get; set; } = default!;
+
+    private void OpenAttackRoll(string expression)
+        => DiceRoller.Open(expression, $"{Card.Name} attack");
+
+    private void OpenWeaponRoll(string expression, string weaponName)
+        => DiceRoller.Open(expression, $"{Card.Name} {weaponName}");
+
+    private RenderFragment PowerWeaponCalculationValue(string title, string value, string? components) => builder =>
+    {
+        if (!string.IsNullOrWhiteSpace(components))
+        {
+            builder.OpenComponent<PowerCalculationPopover>(0);
+            builder.AddAttribute(1, nameof(PowerCalculationPopover.Title), title);
+            builder.AddAttribute(2, nameof(PowerCalculationPopover.Value), value);
+            builder.AddAttribute(3, nameof(PowerCalculationPopover.Components), components);
+            builder.AddAttribute(4, nameof(PowerCalculationPopover.TriggerClass), "hover:text-primary transition-colors");
+            builder.AddAttribute(5, nameof(PowerCalculationPopover.ChildContent), (RenderFragment)(childBuilder => childBuilder.AddContent(0, value)));
+            builder.CloseComponent();
+        }
+        else
+        {
+            builder.OpenElement(0, "span");
+            builder.AddContent(1, value);
+            builder.CloseElement();
+        }
+    };
+}

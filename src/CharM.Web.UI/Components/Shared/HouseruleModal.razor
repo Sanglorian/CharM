@@ -1,0 +1,193 @@
+@using CharM.Engine.Rules
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4"
+     @onclick="OnClose">
+    <div class="bg-surface-container-lowest rounded-lg shadow-lg max-w-4xl w-full max-h-[80vh] flex flex-col ghost-border"
+         @onclick:stopPropagation="true">
+        <div class="px-6 py-4 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="font-headline text-xl font-bold text-on-surface">Add Houserule</h2>
+                    <p class="text-xs font-label text-on-surface-variant mt-0.5">
+                        Add an existing rules-database element outside the normal pickers.
+                    </p>
+                </div>
+                <button @onclick="OnClose"
+                        class="p-1 rounded hover:bg-surface-container-low transition-colors">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+                <label class="text-xs font-label text-on-surface-variant">
+                    Type
+                    <select @bind="_elementType"
+                            class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none">
+                        @foreach (var type in CharacterSessionService.HouseruleElementTypes)
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    </select>
+                </label>
+                <label class="text-xs font-label text-on-surface-variant md:col-span-2">
+                    Search
+                    <input type="text" @bind="_searchText" @bind:event="oninput"
+                           class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none"
+                           placeholder="Name or internal id..." />
+                </label>
+            </div>
+        </div>
+
+        <div class="flex flex-1 min-h-0">
+            <div class="w-1/2 overflow-y-auto border-r border-outline-variant/20">
+                @foreach (var candidate in Candidates)
+                {
+                    bool selected = string.Equals(candidate.InternalId, _selected?.InternalId, StringComparison.OrdinalIgnoreCase);
+                    <button class="w-full text-left px-4 py-3 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors @(selected ? "bg-primary-container/40" : "")"
+                            @onclick="() => Select(candidate)">
+                        <div class="font-label text-sm font-semibold text-on-surface">@candidate.Name</div>
+                        <div class="text-[10px] uppercase tracking-wider text-outline">
+                            @candidate.Type
+                            @if (candidate.Fields.TryGetValue("Level", out var level))
+                            {
+                                <span> - Level @level</span>
+                            }
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(candidate.Source))
+                        {
+                            <div class="text-[10px] text-on-surface-variant mt-0.5">@candidate.Source</div>
+                        }
+                    </button>
+                }
+            </div>
+
+            <div class="flex-1 p-5 overflow-y-auto">
+                @if (_selected is null)
+                {
+                    <p class="text-sm text-on-surface-variant">Select an element to add as a houserule.</p>
+                }
+                else
+                {
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-headline text-lg font-bold text-on-surface">@_selected.Name</h3>
+                            <p class="text-xs font-label uppercase tracking-wider text-outline">@_selected.Type</p>
+                        </div>
+
+                        @if (_selected.Fields.TryGetValue("Short Description", out var shortDescription)
+                                                && !string.IsNullOrWhiteSpace(shortDescription))
+                        {
+                            <p class="text-sm text-on-surface-variant leading-relaxed">@shortDescription</p>
+                        }
+
+                        @if (IsLootType(_selected.Type))
+                        {
+                            <label class="block text-xs font-label text-on-surface-variant">
+                                Add as
+                                <select @bind="_lootMode"
+                                        class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none">
+                                    <option value="inventory">Inventory</option>
+                                    <option value="equip">Equipped item</option>
+                                </select>
+                            </label>
+
+                            @if (_lootMode == "equip")
+                            {
+                                <label class="block text-xs font-label text-on-surface-variant">
+                                    Slot
+                                    <select @bind="_equipSlot"
+                                            class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none">
+                                        @foreach (var slot in EquipSlots)
+                                        {
+                                            <option value="@slot">@slot</option>
+                                        }
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="block text-xs font-label text-on-surface-variant">
+                                    Quantity
+                                    <input type="number" min="1" @bind="_quantity"
+                                           class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none" />
+                                </label>
+                            }
+                        }
+                        else
+                        {
+                            <label class="block text-xs font-label text-on-surface-variant">
+                                Acquisition level
+                                <input type="number" min="1" max="30" @bind="_acquisitionLevel"
+                                       class="mt-1 w-full px-3 py-2 bg-surface-container-low border-b border-outline rounded text-sm text-on-surface focus:border-primary focus:outline-none" />
+                            </label>
+                        }
+
+                        <button @onclick="AddSelected"
+                                class="w-full py-2.5 bg-primary text-on-primary font-label font-semibold rounded hover:bg-primary-dim transition-colors">
+                            Add Houserule
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private string _elementType = CharacterSessionService.HouseruleElementTypes[0];
+    private string _searchText = "";
+    private RulesElement? _selected;
+    private int _acquisitionLevel = 1;
+    private int _quantity = 1;
+    private string _lootMode = "inventory";
+    private string _equipSlot = "Main Hand";
+
+    private static readonly string[] EquipSlots =
+        ["Main Hand", "Off-Hand", "Chest", "Head", "Neck", "Arms", "Hands", "Waist", "Feet", "Ring 1", "Ring 2"];
+
+    private IReadOnlyList<RulesElement> Candidates
+        => SessionService.GetHouseruleCandidates(_elementType, _searchText, limit: 100);
+
+    protected override void OnInitialized()
+    {
+        _acquisitionLevel = SessionService.Session?.Level ?? 1;
+    }
+
+    private void Select(RulesElement element)
+    {
+        _selected = element;
+        _acquisitionLevel = Math.Clamp(_acquisitionLevel, 1, 30);
+        _quantity = Math.Max(1, _quantity);
+    }
+
+    private async Task AddSelected()
+    {
+        if (_selected is null)
+            return;
+
+        if (IsLootType(_selected.Type))
+        {
+            if (_lootMode == "equip")
+                SessionService.EquipHouseruleItem(_equipSlot, _selected.InternalId);
+            else
+                SessionService.AddHouseruleInventoryItem(_selected.InternalId, Math.Max(1, _quantity));
+        }
+        else
+        {
+            SessionService.AddHouseruleGrant(_selected.InternalId, Math.Clamp(_acquisitionLevel, 1, 30));
+        }
+
+        await OnClose.InvokeAsync();
+    }
+
+    private static bool IsLootType(string type)
+        => type.Equals("Weapon", StringComparison.OrdinalIgnoreCase)
+        || type.Equals("Armor", StringComparison.OrdinalIgnoreCase)
+        || type.Equals("Magic Item", StringComparison.OrdinalIgnoreCase)
+        || type.Equals("Gear", StringComparison.OrdinalIgnoreCase)
+        || type.Equals("Superior Implement", StringComparison.OrdinalIgnoreCase);
+}

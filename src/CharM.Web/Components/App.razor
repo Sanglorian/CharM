@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>CharM</title>
+    <ResourcePreloader />
+
+    <!-- Fonts: locally bundled WOFF2 (no Google Fonts CDN dependency so
+         the app renders correctly offline / on first load). Manrope is
+         the body face; Noto Serif is used for headlines; Material
+         Symbols Outlined provides icons. See wwwroot/fonts/. -->
+    <link rel="stylesheet" href="@Assets["_content/CharM.Web.UI/fonts/noto-manrope.css"]" />
+    <link rel="stylesheet" href="@Assets["_content/CharM.Web.UI/fonts/noto-serif.css"]" />
+    <link rel="stylesheet" href="@Assets["_content/CharM.Web.UI/fonts/material-symbols.css"]" />
+
+    <!-- Tailwind CSS — generated at build time by the standalone CLI
+         (see tailwind.config.js and the BuildTailwindCss MSBuild target
+         in CharM.Web.UI.csproj). The CLI scans Razor files in this
+         project and CharM.Web for class usage and produces a minified
+         stylesheet with only the utilities actually referenced. Custom
+         design tokens (colors, fonts, radii) live in tailwind.config.js;
+         custom components and utilities live in Styles/site.css. -->
+    <link rel="stylesheet" href="@Assets["_content/CharM.Web.UI/tailwind.css"]" />
+    <link rel="stylesheet" href="@Assets["_content/CharM.Web.UI/CharM.Web.UI.bundle.scp.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/svg+xml" href="_content/CharM.Web.UI/favicon.svg" />
+    <link rel="icon" type="image/png" href="_content/CharM.Web.UI/favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body class="bg-surface text-on-surface font-body">
+    <Routes />
+    <script>
+        window.charm = window.charm || {};
+        window.charm.downloadFileFromBytes = (fileName, base64Data, mimeType) => {
+            const link = document.createElement('a');
+            link.href = `data:${mimeType};base64,${base64Data}`;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        };
+        // Stream-based download for large binaries (e.g. ~50 MB rules.db backup)
+        // — avoids round-tripping through base64 in the SignalR transport.
+        // Blazor sends a DotNetStreamReference which we fetch via `streamRef.arrayBuffer()`.
+        window.charm.downloadFileFromStream = async (fileName, streamRef) => {
+            const buffer = await streamRef.arrayBuffer();
+            const blob = new Blob([buffer]);
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url);
+            link.remove();
+        };
+        window.charm.clickElementById = (elementId) => {
+            document.getElementById(elementId)?.click();
+        };
+        window.charm.setBodyClass = (className, enabled) => {
+            document.body.classList.toggle(className, !!enabled);
+        };
+        window.charm.browserStorage = {
+            getActiveCharacter: () => {
+                try {
+                    return window.localStorage.getItem('charm:character:active')
+                        ?? window.sessionStorage.getItem('charm:character:active');
+                } catch {
+                    try {
+                        return window.sessionStorage.getItem('charm:character:active');
+                    } catch {
+                        return null;
+                    }
+                }
+            },
+            setActiveCharacter: (base64Xml) => {
+                let saved = false;
+                try {
+                    window.localStorage.setItem('charm:character:active', base64Xml);
+                    saved = true;
+                } catch {
+                }
+                try {
+                    window.sessionStorage.setItem('charm:character:active', base64Xml);
+                    saved = true;
+                } catch {
+                }
+                return saved;
+            },
+            clearActiveCharacter: () => {
+                try {
+                    window.localStorage.removeItem('charm:character:active');
+                } catch {
+                }
+                try {
+                    window.sessionStorage.removeItem('charm:character:active');
+                } catch {
+                }
+            }
+        };
+    </script>
+    <script type="module" src="@Assets["_content/CharM.Web.UI/js/d20-roller.js"]"></script>
+    <script src="@Assets["_framework/blazor.web.js"]"></script>
+</body>
+
+</html>

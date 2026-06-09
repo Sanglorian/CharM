@@ -1,0 +1,162 @@
+@using Microsoft.JSInterop
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject RulesDatabaseService RulesDatabase
+@inject BrowserStorageService Storage
+@inject CharacterRestoreState RestoreState
+@implements IDisposable
+
+@code {
+    // Render-less component: drives auto-save (on Session.Changed) and
+    // first-load restore (on OnAfterRenderAsync first render). Placed in
+    // MainLayout so it's mounted exactly once for the lifetime of the
+    // user's circuit. Sits at the top of the layout's <main> so the
+    // restore happens before any page renders meaningful content.
+
+    private System.Threading.Timer? _saveDebounce;
+    private System.Threading.Timer? _periodicSave;
+    private const int SaveDebounceMs = 150;
+    private const int PeriodicSaveMs = 5000;
+    private bool _canUseBrowserStorage;
+    private bool _restoreAttempted;
+    private bool _restoreInProgress;
+
+    protected override void OnInitialized()
+    {
+        SessionService.Changed += HandleSessionChanged;
+        RulesDatabase.Changed += HandleRulesDatabaseChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        _canUseBrowserStorage = true;
+        await TryRestoreAsync();
+        _periodicSave = new System.Threading.Timer(_ =>
+        {
+            _ = InvokeAsync(PersistIfActiveAsync);
+        }, null, PeriodicSaveMs, PeriodicSaveMs);
+
+        if (SessionService.HasSession)
+            await PersistIfActiveAsync();
+    }
+
+    private async Task TryRestoreAsync()
+    {
+        if (!_canUseBrowserStorage) return;
+        if (_restoreAttempted || _restoreInProgress) return;
+        if (SessionService.HasSession) return;
+        if (!SessionService.IsRulesDatabaseReady) return;
+
+        _restoreInProgress = true;
+        string? saved;
+        try
+        {
+            try
+            {
+                saved = await Storage.GetActiveCharacterAsync();
+            }
+            catch
+            {
+                // Transient interop / transport failure (e.g. SignalR
+                // message-size cap, circuit reconnect). Do NOT mark
+                // _restoreAttempted here — a later trigger (rules DB
+                // Changed, periodic re-render) can retry. Crucially,
+                // do NOT clear the slot: the saved character is still
+                // good, we just couldn't read it this time. Drop back
+                // to Idle so the new-character UI can render and the
+                // user isn't stuck on a "loading" overlay forever.
+                RestoreState.Set(RestorePhase.Idle);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(saved))
+            {
+                // Empty slot is a definitive "no saved character" answer.
+                _restoreAttempted = true;
+                RestoreState.Set(RestorePhase.Idle);
+                return;
+            }
+
+            // We have bytes to import — surface the loading modal.
+            RestoreState.Set(RestorePhase.Restoring);
+
+            try
+            {
+                var bytes = Convert.FromBase64String(saved);
+                using var ms = new MemoryStream(bytes);
+                await SessionService.ImportFromDnd4eAsync(ms);
+                _restoreAttempted = true;
+            }
+            catch
+            {
+                // Schema drift, corrupt slot, or DB-version mismatch.
+                // The base64 round-tripped fine but the bytes are bad —
+                // clear the slot so we don't keep failing on every load.
+                await Storage.ClearActiveCharacterAsync();
+                _restoreAttempted = true;
+            }
+            finally
+            {
+                RestoreState.Set(RestorePhase.Idle);
+            }
+        }
+        finally
+        {
+            _restoreInProgress = false;
+        }
+    }
+
+    private void HandleSessionChanged()
+    {
+        // Debounce the save: rapid choice flurries (wizard auto-fill chains)
+        // would otherwise trigger many serializations.
+        _saveDebounce?.Dispose();
+        _saveDebounce = new System.Threading.Timer(_ =>
+        {
+            _ = InvokeAsync(PersistAsync);
+        }, null, SaveDebounceMs, System.Threading.Timeout.Infinite);
+    }
+
+    private void HandleRulesDatabaseChanged()
+        => _ = InvokeAsync(TryRestoreAsync);
+
+    private async Task PersistAsync()
+    {
+        if (!SessionService.HasSession)
+        {
+            await Storage.ClearActiveCharacterAsync();
+            return;
+        }
+
+        await PersistIfActiveAsync();
+    }
+
+    private async Task PersistIfActiveAsync()
+    {
+        if (!_canUseBrowserStorage || !SessionService.HasSession)
+            return;
+
+        var bytes = SessionService.ExportToDnd4e();
+        if (bytes is null || bytes.Length == 0) return;
+
+        try
+        {
+            var encoded = Convert.ToBase64String(bytes);
+            await Storage.SetActiveCharacterAsync(encoded);
+        }
+        catch
+        {
+            // Quota / interop failure — character keeps working in-memory.
+        }
+    }
+
+    public void Dispose()
+    {
+        SessionService.Changed -= HandleSessionChanged;
+        RulesDatabase.Changed -= HandleRulesDatabaseChanged;
+        _saveDebounce?.Dispose();
+        _periodicSave?.Dispose();
+    }
+}

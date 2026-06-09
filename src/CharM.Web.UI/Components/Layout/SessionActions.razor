@@ -1,0 +1,261 @@
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.JSInterop
+@using CharM.Web.Services
+@inject CharacterSessionService SessionService
+@inject RulesDatabaseService RulesDatabase
+@inject BrowserStorageService Storage
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@implements IDisposable
+
+<div class="flex items-center gap-2">
+    <button @onclick="StartNewCharacter"
+            disabled="@(!RulesDatabase.IsLoaded)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Start a new character">
+        <span class="material-symbols-outlined text-lg">add</span>
+        <span class="hidden sm:inline">New</span>
+    </button>
+    <InputFile id="dnd4e-import-input"
+               OnChange="ImportCharacterAsync"
+               class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" />
+    <label for="dnd4e-import-input"
+           class="cursor-pointer flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print @(RulesDatabase.IsLoaded ? "" : "opacity-40 pointer-events-none")"
+           title="Import .dnd4e file">
+        <span class="material-symbols-outlined text-lg">upload</span>
+        <span class="hidden sm:inline">Import</span>
+    </label>
+    <button @onclick="ExportCharacterAsync"
+            disabled="@(!SessionService.HasSession || !RulesDatabase.IsLoaded)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Export .dnd4e file">
+        <span class="material-symbols-outlined text-lg">download</span>
+        <span class="hidden sm:inline">Export</span>
+    </button>
+    <button @onclick="CopyAsTextAsync"
+            disabled="@(!SessionService.HasSession || !RulesDatabase.IsLoaded)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Copy character as OCB-compatible SummaryText (forum-shareable)">
+        <span class="material-symbols-outlined text-lg">content_copy</span>
+        <span class="hidden sm:inline">Copy Text</span>
+    </button>
+    <button @onclick="OpenPasteTextModal"
+            disabled="@(!RulesDatabase.IsLoaded)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Paste a SummaryText character (from a forum or the OCB clipboard)">
+        <span class="material-symbols-outlined text-lg">content_paste</span>
+        <span class="hidden sm:inline">Paste Text</span>
+    </button>
+    <button @onclick="UndoLastChoice"
+            disabled="@(!(SessionService.Session?.ChoiceHistory.Count > 0))"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-surface bg-surface-container-low rounded hover:bg-surface-container-high transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Undo last choice">
+        <span class="material-symbols-outlined text-lg">undo</span>
+        <span class="hidden sm:inline">Undo</span>
+    </button>
+    <button @onclick="OpenPrintModal"
+            disabled="@(!SessionService.HasSession)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-label font-semibold text-on-primary bg-primary rounded hover:bg-primary-dim transition-colors scale-98-active no-print disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Open the printable character sheet">
+        <span class="material-symbols-outlined text-lg">print</span>
+        <span class="hidden sm:inline">Print</span>
+    </button>
+    @if (!string.IsNullOrWhiteSpace(_statusMessage))
+    {
+        <span class="hidden xl:inline text-xs font-label @( _statusIsError ? "text-error" : "text-on-success-container")">
+            @_statusMessage
+        </span>
+    }
+</div>
+
+<PrintOptionsModal Show="_showPrintModal"
+                   OnCancel="ClosePrintModal"
+                   OnConfirm="HandlePrintConfirm" />
+
+@if (_showPasteTextModal)
+{
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-scrim/60" @onclick="ClosePasteTextModal">
+        <div class="bg-surface-container rounded-lg shadow-xl w-full max-w-2xl m-4 p-4" @onclick:stopPropagation="true">
+            <h2 class="text-lg font-bold mb-2">Paste SummaryText character</h2>
+            <p class="text-xs text-on-surface-variant mb-3">
+                Paste an OCB-style SummaryText block (starts with "====== Created Using ..."). The current character will be replaced.
+            </p>
+            <textarea @bind="_pasteTextBuffer"
+                      rows="14"
+                      class="w-full p-2 font-mono text-xs bg-surface-container-low rounded border border-outline-variant"
+                      placeholder="====== Created Using Wizards of the Coast D&D Character Builder ======&#10;..."></textarea>
+            @if (!string.IsNullOrEmpty(_pasteTextStatus))
+            {
+                <p class="mt-2 text-xs @(_pasteTextStatusIsError ? "text-error" : "text-on-surface-variant")">@_pasteTextStatus</p>
+            }
+            <div class="flex justify-end gap-2 mt-3">
+                <button @onclick="ClosePasteTextModal" class="px-3 py-1.5 text-sm font-semibold rounded bg-surface-container-low hover:bg-surface-container-high">Cancel</button>
+                <button @onclick="ImportPastedTextAsync"
+                        disabled="@string.IsNullOrWhiteSpace(_pasteTextBuffer)"
+                        class="px-3 py-1.5 text-sm font-semibold rounded bg-primary text-on-primary hover:bg-primary-dim disabled:opacity-40">
+                    Import
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private string? _statusMessage;
+    private bool _statusIsError;
+    private bool _showPrintModal;
+    private bool _showPasteTextModal;
+    private string _pasteTextBuffer = string.Empty;
+    private string? _pasteTextStatus;
+    private bool _pasteTextStatusIsError;
+
+    private void OpenPasteTextModal()
+    {
+        _pasteTextBuffer = string.Empty;
+        _pasteTextStatus = null;
+        _showPasteTextModal = true;
+    }
+
+    private void ClosePasteTextModal() => _showPasteTextModal = false;
+
+    private async Task CopyAsTextAsync()
+    {
+        var text = SessionService.ExportToSummaryText();
+        if (string.IsNullOrEmpty(text))
+        {
+            _statusIsError = true;
+            _statusMessage = "Nothing to copy.";
+            return;
+        }
+
+        try
+        {
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", text);
+            _statusIsError = false;
+            _statusMessage = "Copied to clipboard";
+        }
+        catch
+        {
+            // Clipboard API blocked (insecure context or permissions). Fall
+            // back to the paste-text modal as a viewer with the text
+            // pre-populated, so the user can manually select-and-copy.
+            _pasteTextBuffer = text;
+            _pasteTextStatus = "Clipboard access denied; copy from the textarea instead.";
+            _pasteTextStatusIsError = false;
+            _showPasteTextModal = true;
+        }
+    }
+
+    private async Task ImportPastedTextAsync()
+    {
+        try
+        {
+            await Storage.ClearActiveCharacterAsync();
+            var unconsumed = SessionService.ImportFromSummaryText(_pasteTextBuffer);
+            _statusIsError = false;
+            _statusMessage = $"Imported {SessionService.Session?.Name ?? "character"}";
+            if (unconsumed.Count > 0)
+                _statusMessage += $" ({unconsumed.Count} unparsed lines)";
+            _showPasteTextModal = false;
+            await InvokeAsync(StateHasChanged);
+            Navigation.NavigateTo("/", forceLoad: false);
+        }
+        catch (Exception ex)
+        {
+            _pasteTextStatusIsError = true;
+            _pasteTextStatus = $"Import failed: {ex.Message}";
+        }
+    }
+
+    private void OpenPrintModal() => _showPrintModal = true;
+    private void ClosePrintModal() => _showPrintModal = false;
+
+    private Task HandlePrintConfirm(PrintOptions options)
+    {
+        _showPrintModal = false;
+        // In-place navigation: works in browser, MAUI BlazorWebView (Windows/
+        // Mac/iOS/Android) and avoids the "external link won't open in user's
+        // browser" UX problem that window.open caused on MAUI. The PrintSheet
+        // page provides its own Print button (window.print) and Back button.
+        var target = "/print/character" + options.ToQueryString();
+        Navigation.NavigateTo(target, forceLoad: false);
+        return Task.CompletedTask;
+    }
+
+    protected override void OnInitialized()
+    {
+        SessionService.Changed += HandleSessionChanged;
+    }
+
+    private async Task ExportCharacterAsync()
+    {
+        var bytes = SessionService.ExportToDnd4e();
+        if (bytes is null || bytes.Length == 0)
+        {
+            _statusIsError = true;
+            _statusMessage = "Nothing to export.";
+            return;
+        }
+
+        string name = SessionService.Session?.Name ?? "character";
+        string safeName = string.Concat(name.Select(ch =>
+            char.IsLetterOrDigit(ch) || ch is '-' or '_' ? ch : '_'));
+
+        _statusIsError = false;
+        _statusMessage = $"Exported {name}";
+
+        await JS.InvokeVoidAsync(
+            "charm.downloadFileFromBytes",
+            $"{safeName}.dnd4e",
+            Convert.ToBase64String(bytes),
+            "application/xml");
+    }
+
+    private async Task ImportCharacterAsync(InputFileChangeEventArgs args)
+    {
+        try
+        {
+            // Clear the persistence slot before the new state lands.
+            // Otherwise the import's Changed cascade races with the
+            // restore path in CharacterPersistence on next reload.
+            await Storage.ClearActiveCharacterAsync();
+            var file = args.File;
+            await using var stream = file.OpenReadStream(10 * 1024 * 1024);
+            var session = await SessionService.ImportFromDnd4eAsync(stream);
+            _statusIsError = false;
+            _statusMessage = $"Imported {session.Name}";
+            await InvokeAsync(StateHasChanged);
+            Navigation.NavigateTo("/", forceLoad: false);
+        }
+        catch (Exception ex)
+        {
+            _statusIsError = true;
+            _statusMessage = $"Import failed: {ex.Message}";
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task StartNewCharacter()
+    {
+        SessionService.ClearSession();
+        await Storage.ClearActiveCharacterAsync();
+        _statusIsError = false;
+        _statusMessage = null;
+        Navigation.NavigateTo("/", forceLoad: false);
+    }
+
+    private void UndoLastChoice()
+    {
+        SessionService.Session?.UndoLastChoice();
+        _statusIsError = false;
+        _statusMessage = "Undid last choice";
+    }
+
+    private void HandleSessionChanged()
+        => _ = InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        SessionService.Changed -= HandleSessionChanged;
+    }
+}

@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CharM.Engine/CharM.Engine.csproj" />
+    <Project Path="src/CharM.ImportExport/CharM.ImportExport.csproj" />
+    <Project Path="src/CharM.Maui/CharM.Maui.csproj" />
+    <Project Path="src/CharM.RulesDb/CharM.RulesDb.csproj" />
+    <Project Path="src/CharM.Serialization/CharM.Serialization.csproj" />
+    <Project Path="src/CharM.Web/CharM.Web.csproj" />
+    <Project Path="src/CharM.Web.UI/CharM.Web.UI.csproj" />
+  </Folder>
+</Solution>
