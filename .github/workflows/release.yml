@@ -29,13 +29,13 @@ jobs:
 
       - name: Build Windows ${{ matrix.arch }} (MAUI + Webserver)
         shell: pwsh
-        run: ./scripts/build-windows.ps1 -Arch ${{ matrix.arch }}
+        run: ./scripts/build-windows.ps1 -Arch ${{ matrix.arch }} -NoZip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: charm-windows-${{ matrix.arch }}
-          path: scripts/out/charm-windows-${{ matrix.arch }}.zip
+          path: scripts/out/windows-${{ matrix.arch }}/
 
   android:
     runs-on: windows-latest
@@ -78,13 +78,13 @@ jobs:
 
       - name: Build Linux ${{ matrix.arch }} webserver
         shell: pwsh
-        run: ./scripts/build-linux.ps1 -Arch ${{ matrix.arch }}
+        run: ./scripts/build-linux.ps1 -Arch ${{ matrix.arch }} -NoZip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: charm-linux-${{ matrix.arch }}
-          path: scripts/out/charm-linux-${{ matrix.arch }}.zip
+          path: scripts/out/linux-${{ matrix.arch }}/
 
   macos:
     runs-on: macos-26
@@ -122,13 +122,27 @@ jobs:
         with:
           path: artifacts
 
+      # Windows + Linux artifacts were uploaded as folders (so the Actions UI
+      # download isn't a zip-of-a-zip). Re-zip them here as flat archives for
+      # the GitHub release. macOS is already a ditto-produced zip inside its
+      # artifact wrapper, and Android is a single .apk — both pass through.
+      - name: Package Windows + Linux artifacts for release
+        run: |
+          set -euo pipefail
+          cd artifacts
+          for d in charm-windows-x64 charm-windows-arm64 charm-linux-x64 charm-linux-arm64; do
+            if [ -d "$d" ]; then
+              (cd "$d" && zip -r -q "../$d.zip" .)
+            fi
+          done
+
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            artifacts/charm-windows-x64/charm-windows-x64.zip
-            artifacts/charm-windows-arm64/charm-windows-arm64.zip
+            artifacts/charm-windows-x64.zip
+            artifacts/charm-windows-arm64.zip
             artifacts/charm-android/charm-android.apk
-            artifacts/charm-linux-x64/charm-linux-x64.zip
-            artifacts/charm-linux-arm64/charm-linux-arm64.zip
+            artifacts/charm-linux-x64.zip
+            artifacts/charm-linux-arm64.zip
             artifacts/charm-macos-universal/charm-macos-universal.zip
