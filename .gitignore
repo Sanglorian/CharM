@@ -57,3 +57,5 @@ TestResult.xml
 nunit-*.xml
 src/CharM.Web.UI/wwwroot/js/three.module.js
 src/CharM.Web.UI/wwwroot/tailwind.css
+.tailwind/
+scripts/out/
