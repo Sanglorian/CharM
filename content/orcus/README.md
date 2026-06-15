@@ -5,7 +5,7 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — two playable classes (levels 1–3)
+## Current scope — three playable classes (levels 1–3)
 
 | File | Contents |
 |---|---|
@@ -14,10 +14,18 @@ for the format.
 | `ancestry.yaml` | Humanity (base Race) + sample Cruxes (Hero, Sage) and Heritages (Aristocrat, Seafarer) |
 | `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects |
 | `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects |
+| `classes/priest.yaml` | Priest (Leader, Wisdom): talents + the key-ability substitution override (shares Angel's Trumpet with the Commander) |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
-| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander) + level 1–2 powers |
+| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + level 1–2 powers |
 
-Compiles to **93 elements across 15 types**, no warnings.
+Compiles to **98 elements across 15 types**, no warnings.
+
+### Ability substitution
+Orcus's "use your class key ability instead, if higher" is implemented: a class
+emits a `"<disciplineId>:key ability"` override and the engine resolves a power's
+attack/damage to the higher ability. Verified via `playtest`: the Priest's
+`Identify Target` resolves to **Wisdom** while the Commander's stays Charisma.
+See `docs/orcus-mapping.md`.
 
 ## Build & playtest
 

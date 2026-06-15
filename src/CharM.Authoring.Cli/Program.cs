@@ -1,4 +1,5 @@
 using CharM.Engine.Creation;
+using CharM.Engine.Powers;
 using CharM.Engine.Rules;
 using CharM.RulesDb.Authoring;
 using CharM.RulesDb.Storage;
@@ -218,6 +219,25 @@ static int Playtest(string[] args)
         .OrderBy(kv => kv.Key);
     var trainedList = string.Join(", ", trained.Select(kv => kv.Key.Replace(" Trained", "")));
     Console.WriteLine($"  Trained skills:  {(trainedList.Length > 0 ? trainedList : "(none)")}");
+
+    // Power cards: compute the attack ability the engine actually resolves
+    // (this is where the Orcus "use the higher ability" rule shows up) plus
+    // the attack bonus, defense and damage. No weapon is supplied, so weapon
+    // dice/proficiency are omitted — the ability resolution is the point.
+    Console.WriteLine("\nPower cards (no weapon; ability resolution is the focus):");
+    foreach (var picked in session.GetSelectedElements("Power"))
+    {
+        var power = db.FindByInternalId(picked.InternalId) ?? picked;
+        if (PowerFieldParser.GetAttackText(power) is null)
+        {
+            Console.WriteLine($"  {power.Name,-22} (no attack line)");
+            continue;
+        }
+        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: null, characterLevel: level);
+        var dmg = string.IsNullOrWhiteSpace(card.DamageExpression) ? "-" : card.DamageExpression;
+        var atk = card.ResolvedAttackStat.Length > 0 ? card.ResolvedAttackStat : "(none)";
+        Console.WriteLine($"  {power.Name,-22} attack {atk} {card.AttackBonus:+0;-0} vs {card.Defense ?? "-"}; damage {dmg}");
+    }
     return 0;
 }
 

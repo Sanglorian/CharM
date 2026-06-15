@@ -1,0 +1,116 @@
+# Priest - Divine Leader (Orcus Classes and Powers). Key ability: Wisdom.
+# The Priest shares the Angel's Trumpet discipline with the Commander, but those
+# powers are printed with Charisma (the discipline's key). Per the Orcus rule a
+# Priest may use Wisdom (its class key) instead if higher. That is implemented by
+# the key-ability override textstring below: the engine picks the higher of the
+# listed abilities for the attack/damage of powers tagged with that discipline.
+
+- id: ORCUS_CLASS_PRIEST
+  name: Priest
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Leader, Divine]
+  fields:
+    Role: Leader
+    Tradition: Divine
+    "Key Ability": Wisdom
+    "Class Disciplines": "Angel's Trumpet, Golden Lion"
+    "Armor Proficiencies": "Cloth, leather, hide, chainmail"
+    "Weapon Proficiencies": "Simple melee, simple ranged"
+    "Focus Proficiencies": "Holy symbol"
+    "Class Skills": "Arcana, Diplomacy, Heal, History, Insight, Religion"
+    Flavor: "You channel the will of the gods to mend, ward and rally."
+  rules:
+    # Orcus key-ability substitution: for Angel's Trumpet powers (printed key
+    # Charisma), use the higher of Charisma and Wisdom (this class's key).
+    - textstring: "ORCUS_DISCIPLINE_ANGELS_TRUMPET:key ability"
+      value: "Charisma,Wisdom"
+    # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
+    - statadd: Hit Points
+      value: 7
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 5 }
+    - statadd: Healing Surges
+      value: 7
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    - statadd: Will Defense
+      value: +2
+      bonusType: Class
+    # Trained in 4 skills from the Priest class skill list (Religion + 3 others).
+    - select:
+        type: Skill Training
+        number: 4
+        category: ORCUS_PRIEST_SKILLS
+        name: Priest Trained Skills
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_PRIEST_TALENT
+        name: Priest Talent
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,at-will,1"
+        name: Priest At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,1"
+        name: Priest Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,1"
+        name: Priest Daily Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,2"
+        name: Priest Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,3"
+        name: Priest Encounter Power 2
+        level: 3
+
+# --- Talents (the four "Worships the God of ..." options) ---------------------
+- id: ORCUS_TALENT_GOD_OF_LIFE
+  name: Worships the God of Life
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_PRIEST_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "Your healing powers are bolstered by the god of life. Secondary ability: Charisma."
+
+- id: ORCUS_TALENT_GOD_OF_PEACE
+  name: Worships the God of Peace
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_PRIEST_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "You ward and protect your allies. Secondary ability: Charisma."
+
+- id: ORCUS_TALENT_GOD_OF_TYRANNY
+  name: Worships the God of Tyranny
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_PRIEST_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "You command through fear and dominion. Secondary ability: Strength."
+
+- id: ORCUS_TALENT_GOD_OF_WAR
+  name: Worships the God of War
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_PRIEST_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "You lead the faithful into battle. Secondary ability: Strength."

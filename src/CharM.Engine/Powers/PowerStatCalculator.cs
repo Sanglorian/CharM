@@ -57,19 +57,6 @@ public static partial class PowerStatCalculator
 
             bool isWeaponPower = PowerFieldParser.IsWeaponPower(power);
             strengthRangedBasicAttack = UsesStrengthForRangedBasicAttack(power, weapon);
-            keyAbilityOverride = ResolveKeyAbilityOverride(
-                stats,
-                power,
-                attackAbility,
-                weapon,
-                sourceNameResolver,
-                sourceElementResolver);
-            if (keyAbilityOverride is not null)
-                attackAbility = ApplyAttackPowerModifier(
-                    keyAbilityOverride.Value.DisplayAbility,
-                    attackAbility);
-            else if (strengthRangedBasicAttack)
-                attackAbility = "Strength";
 
             // Proficiency bonus applies only to weapon powers, not implement
             // powers, AND only when the character is trained with the weapon.
@@ -111,6 +98,16 @@ public static partial class PowerStatCalculator
             if (arenaImprovised)
                 weaponDice = IsTwoHandedWeapon(weapon) ? "1d10" : "1d8";
         }
+
+        // Key-ability override (WotC Melee Training / feat swaps; Orcus class &
+        // talent ability substitution). Resolved for weapon AND non-weapon
+        // powers so focus/implement discipline powers get the substitution too.
+        keyAbilityOverride = ResolveKeyAbilityOverride(
+            stats, power, attackAbility, weapon, sourceNameResolver, sourceElementResolver);
+        if (keyAbilityOverride is not null)
+            attackAbility = ApplyAttackPowerModifier(keyAbilityOverride.Value.DisplayAbility, attackAbility);
+        else if (strengthRangedBasicAttack)
+            attackAbility = "Strength";
 
         // Calculate attack bonus
         if (attackAbility is not null)

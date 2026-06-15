@@ -59,6 +59,27 @@ these new types nicely in the creation wizard; the engine already handles them.
 Still open: **HP/level scaling** (+N HP/level) and the other defenses/skills at
 levels >1 need the higher `ID_INTERNAL_LEVEL_<n>` elements; the slice is level-1.
 
+## Ability substitution (Orcus "use your key ability if higher")
+
+Orcus lets you replace a discipline power's printed key ability with your class's
+key ability (and the secondary with your talent's) when it's higher. Two layers
+cover this:
+
+- **Within a power's printed text** ("Dexterity (ranged) or Strength (melee)",
+  "Highest of Strength, Constitution, Dexterity"): the engine already auto‑picks
+  the highest‑modifier ability among those named — no extra work.
+- **Class key‑ability substitution** (when a class uses a discipline keyed to a
+  different ability — e.g. a Priest, Wisdom, using Charisma‑keyed Angel's
+  Trumpet): the class emits a `textstring` named `"<disciplineId>:key ability"`
+  whose value lists `"<disciplineKey>,<classKey>"`. The engine's key‑ability
+  override then resolves the power's attack **and** damage to the higher of the
+  listed abilities. Verified: a Priest's *Identify Target* resolves to Wisdom,
+  while a Commander's stays Charisma. (A small engine change makes this override
+  apply to non‑weapon/focus powers too, not just weapon powers.)
+
+The secondary‑ability (talent) substitution uses the same hook and is a
+follow‑up once a talent's secondary differs from a discipline's on an attack.
+
 ## Status — playability validated ✅
 
 `content/orcus/` holds **two playable classes** (Guardian/Defender and
