@@ -222,9 +222,12 @@ static int Playtest(string[] args)
 
     // Power cards: compute the attack ability the engine actually resolves
     // (this is where the Orcus "use the higher ability" rule shows up) plus
-    // the attack bonus, defense and damage. No weapon is supplied, so weapon
-    // dice/proficiency are omitted — the ability resolution is the point.
-    Console.WriteLine("\nPower cards (no weapon; ability resolution is the focus):");
+    // attack bonus, defense and damage. We pass a generic implement so the
+    // stock engine resolves the key-ability override for focus/weapon powers —
+    // exactly as the app passes the character's equipped weapon/focus. (Weapon
+    // dice/proficiency are still omitted; the ability resolution is the point.)
+    var implement = new RulesElement { InternalId = "HARNESS_IMPLEMENT", Name = "Implement", Type = "Weapon" };
+    Console.WriteLine("\nPower cards (generic implement equipped; ability resolution is the focus):");
     foreach (var picked in session.GetSelectedElements("Power"))
     {
         var power = db.FindByInternalId(picked.InternalId) ?? picked;
@@ -233,7 +236,7 @@ static int Playtest(string[] args)
             Console.WriteLine($"  {power.Name,-22} (no attack line)");
             continue;
         }
-        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: null, characterLevel: level);
+        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: implement, characterLevel: level);
         var dmg = string.IsNullOrWhiteSpace(card.DamageExpression) ? "-" : card.DamageExpression;
         var atk = card.ResolvedAttackStat.Length > 0 ? card.ResolvedAttackStat : "(none)";
         Console.WriteLine($"  {power.Name,-22} attack {atk} {card.AttackBonus:+0;-0} vs {card.Defense ?? "-"}; damage {dmg}");

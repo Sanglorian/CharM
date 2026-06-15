@@ -241,7 +241,7 @@ public static partial class PowerStatCalculator
         StatBlock stats,
         RulesElement power,
         string? attackAbility,
-        RulesElement? weapon,
+        RulesElement weapon,
         Func<string, string?>? sourceNameResolver,
         Func<string, RulesElement?>? sourceElementResolver)
     {
