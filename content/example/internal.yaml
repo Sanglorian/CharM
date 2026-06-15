@@ -1,0 +1,11 @@
+# Internal "plumbing" reference elements. These are the lookup rows that grants
+# point at (size, vision, etc.) and carry no mechanics of their own — the engine
+# keys off their type/name. A complete database needs one of each value in use.
+
+- id: OGC_INTERNAL_SIZE_MEDIUM
+  name: Medium
+  type: Size
+
+- id: OGC_INTERNAL_VISION_LOW-LIGHT
+  name: Low-light
+  type: Vision

@@ -1,0 +1,63 @@
+# Example OGC race content for the CharM authoring pipeline.
+# Demonstrates the WotC-style "Grants" indirection: a Race grants an internal
+# Grants element, which in turn grants size/vision and the ability-score bonus.
+# All names here are fictional placeholders — replace with Open Game Content.
+
+- id: OGC_RACE_GROXLIN
+  name: Groxlin
+  type: Race
+  source: "Example OGC 1.0"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Low-light
+    "Ability Scores": "+2 Strength, +2 Constitution"
+    Description: >
+      Squat, warty humanoids from the deep marshes. Groxlins are stubborn
+      survivors, prized for their resilience and their unsettling calm in a fight.
+  rules:
+    # Structural grant: attach the internal bundle of size/vision/etc.
+    - grant: OGC_INTERNAL_GRANTS_GROXLIN
+      type: Grants
+    # Direct numeric contributions.
+    - statadd: Speed
+      value: 6
+    - statadd: Constitution
+      value: +2
+      bonusType: Racial
+    # textstring sets a character text property.
+    - textstring: Average Height
+      value: 4'2"-4'8"
+    - textstring: Average Weight
+      value: 160-220 lb.
+    # A user choice: pick one trained skill from a short list.
+    - select:
+        type: Skill Training
+        number: 1
+        category: Endurance|Intimidate
+        name: Groxlin Skill
+
+# The internal bundle the race grants. Mirrors ID_INTERNAL_GRANTS_* elements.
+- id: OGC_INTERNAL_GRANTS_GROXLIN
+  name: Groxlin Grants
+  type: Grants
+  categories: [OGC_RACE_GROXLIN]
+  fields:
+    _SupportsID: OGC_RACE_GROXLIN
+  rules:
+    - grant: OGC_INTERNAL_SIZE_MEDIUM
+      type: Size
+    - grant: OGC_INTERNAL_VISION_LOW-LIGHT
+      type: Vision
+    - grant: OGC_RACE_GROXLIN_ABILITY
+      type: Race Ability Bonus
+
+# The Strength half of the racial bonus, kept as its own element like WotC does.
+- id: OGC_RACE_GROXLIN_ABILITY
+  name: Groxlin Strength
+  type: Race Ability Bonus
+  rules:
+    - statadd: Strength
+      value: 2
+      bonusType: Racial

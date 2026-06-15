@@ -59,3 +59,10 @@ src/CharM.Web.UI/wwwroot/js/three.module.js
 src/CharM.Web.UI/wwwroot/tailwind.css
 .tailwind/
 scripts/out/
+
+# Rules databases. The copyright-restricted WotC-derived rules.db must never be
+# committed; built/compiled databases are generated artifacts, not source.
+rules.db
+*.db
+*.db-shm
+*.db-wal

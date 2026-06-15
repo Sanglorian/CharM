@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>charm-authoring</AssemblyName>
+    <RootNamespace>CharM.Authoring.Cli</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CharM.RulesDb\CharM.RulesDb.csproj" />
+  </ItemGroup>
+
+</Project>

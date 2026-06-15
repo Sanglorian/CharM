@@ -15,6 +15,15 @@ public static class RulesDbBuilder
     /// Import a D20Rules XML file into a new SQLite database.
     /// </summary>
     public static void Import(string xmlPath, string dbPath, IProgress<int>? progress = null)
+        => Build(RulesXmlReader.ReadAll(xmlPath), dbPath, progress);
+
+    /// <summary>
+    /// Write a sequence of parsed elements into a new SQLite database.
+    /// Shared by the XML importer (<see cref="Import"/>) and any other producer
+    /// of <see cref="ParsedElement"/>s (e.g. the YAML authoring compiler), so the
+    /// on-disk format is guaranteed identical regardless of source.
+    /// </summary>
+    public static void Build(IEnumerable<ParsedElement> elements, string dbPath, IProgress<int>? progress = null)
     {
         if (File.Exists(dbPath))
             File.Delete(dbPath);
@@ -39,7 +48,7 @@ public static class RulesDbBuilder
             insertElement = CreateInsertElementCommand(connection, tx);
             insertCategory = CreateInsertCategoryCommand(connection, tx);
 
-            foreach (var parsed in RulesXmlReader.ReadAll(xmlPath))
+            foreach (var parsed in elements)
             {
                 InsertElement(insertElement, insertCategory, parsed);
                 count++;

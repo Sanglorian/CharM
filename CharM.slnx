@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/CharM.Authoring.Cli/CharM.Authoring.Cli.csproj" />
     <Project Path="src/CharM.Engine/CharM.Engine.csproj" />
     <Project Path="src/CharM.ImportExport/CharM.ImportExport.csproj" />
     <Project Path="src/CharM.Maui/CharM.Maui.csproj" />

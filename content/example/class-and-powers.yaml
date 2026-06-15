@@ -1,0 +1,99 @@
+# Example OGC class, feat, powers and plumbing. Fictional placeholders only.
+# Exercises the remaining directive and value-expression forms.
+
+- id: OGC_CLASS_WARDEN_OF_ASH
+  name: Warden of Ash
+  type: Class
+  source: "Example OGC 1.0"
+  prereqs: "Con 13"
+  categories: [Defender, Martial]
+  fields:
+    Role: Defender
+    "Power Source": Martial
+    "Key Abilities": "Constitution, Strength"
+    Flavor: "You stand where the line must hold, and you do not move."
+  rules:
+    - grant: OGC_INTERNAL_GRANTS_WARDEN_OF_ASH
+      type: Grants
+    # Stat reference with an explicit scale factor — needs the mapping form.
+    - statadd: Hit Points
+      value: { statref: Constitution, scale: 1 }
+    # Ability-modifier value expression via the compact grammar.
+    - statadd: Fortitude
+      value: +Constitution modifier
+      bonusType: Class
+    # Two at-will power picks from this class's at-will list.
+    - select:
+        type: Power
+        number: 2
+        category: "$$CLASS,at-will,1"
+        name: Warden of Ash At-Will
+
+- id: OGC_INTERNAL_GRANTS_WARDEN_OF_ASH
+  name: Warden of Ash Grants
+  type: Grants
+  fields:
+    _SupportsID: OGC_CLASS_WARDEN_OF_ASH
+  rules:
+    - grant: OGC_FEATURE_ASHEN_GUARD
+      type: Class Feature
+
+- id: OGC_FEATURE_ASHEN_GUARD
+  name: Ashen Guard
+  type: Class Feature
+  fields:
+    Description: "While you are bloodied, allies adjacent to you gain a +1 bonus to AC."
+  rules:
+    # Conditional, level-gated contribution using the explicit abilmodfunc form.
+    - statadd: "melee:damage"
+      value: { abilmodfunc: Constitution }
+      condition: "while bloodied"
+      level: 1
+
+- id: OGC_POWER_EMBER_STRIKE
+  name: Ember Strike
+  type: Power
+  source: "Example OGC 1.0"
+  categories: ["OGC_CLASS_WARDEN_OF_ASH", "at-will", "1"]
+  fields:
+    "Power Usage": At-Will
+    Action: Standard
+    Keywords: "Martial, Weapon, Fire"
+    Attack: "Strength vs. AC"
+    Hit: "1[W] + Strength modifier fire damage."
+    Flavor: "A scrape of your blade and the air catches light."
+
+- id: OGC_FEAT_ASHEN_RESOLVE
+  name: Ashen Resolve
+  type: Feat
+  source: "Example OGC 1.0"
+  prereqs: "Warden of Ash"
+  categories: [Heroic]
+  fields:
+    Tier: Heroic
+    Description: "You gain a +2 feat bonus to saving throws against ongoing fire damage."
+  rules:
+    - statadd: "save:fire"
+      value: +2
+      bonusType: Feat
+    # suggest does not add anything; it populates the suggestion list.
+    - suggest: OGC_FEAT_ASHEN_RESOLVE
+      type: Feat
+
+# A magic item showing modify (field override) and an alias.
+- id: OGC_ITEM_EMBERBRAND_BLADE
+  name: Emberbrand Blade
+  type: Magic Item
+  source: "Example OGC 1.0"
+  fields:
+    Level: "3"
+    Gold: "680"
+    Flavor: "The blade smoulders with banked heat."
+  rules:
+    - statadd: "weapon:damage"
+      value: +1
+      bonusType: Enhancement
+    - modify: Keywords
+      listAddition: Fire
+    - statalias: "Armor Class"
+      alias: AC
