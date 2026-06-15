@@ -1,0 +1,117 @@
+# Character-creation bootstrap. The engine looks up ID_INTERNAL_LEVEL_<n> by id
+# and runs its directives to (a) seed the Race/Class choice slots and (b) supply
+# the core stat formulas. Orcus inherits 4e's defense/skill maths:
+#   defense = 10 + half level + best of two abilities (non-stacking) + bonuses
+#   skill   = key-ability mod + half level + trained (+5) + misc
+# At level 1 HALF-LEVEL resolves to 0 (lazily, as an undefined stat reference).
+
+- id: ID_INTERNAL_LEVEL_1
+  name: Level 1
+  type: Level
+  rules:
+    # Let class/feature content target either the short or long defense name.
+    - statalias: Fortitude Defense
+      alias: Fortitude
+    - statalias: Reflex Defense
+      alias: Reflex
+    - statalias: Will Defense
+      alias: Will
+    - grant: ID_INTERNAL_LEVEL1RULES
+      type: Level1Rules
+    # The two root choices that begin character creation.
+    - select:
+        type: Race
+        number: 1
+        name: Race
+    - select:
+        type: Class
+        number: 1
+        name: Class
+
+- id: ID_INTERNAL_LEVEL1RULES
+  name: Level 1 Rules
+  type: Level1Rules
+  rules:
+    - statadd: Level
+      value: 1
+
+    # --- Armor Class: 10 + half level + best of Dex/Int ---
+    - statadd: AC
+      value: 10
+    - statadd: AC
+      value: { statref: HALF-LEVEL }
+    - statadd: AC
+      value: { abilmod: Dexterity }
+      bonusType: Ability
+    - statadd: AC
+      value: { abilmod: Intelligence }
+      bonusType: Ability
+
+    # --- Fortitude: 10 + half level + best of Str/Con ---
+    - statadd: Fortitude Defense
+      value: 10
+    - statadd: Fortitude Defense
+      value: { statref: HALF-LEVEL }
+    - statadd: Fortitude Defense
+      value: { abilmod: Strength }
+      bonusType: Ability
+    - statadd: Fortitude Defense
+      value: { abilmod: Constitution }
+      bonusType: Ability
+
+    # --- Reflex: 10 + half level + best of Dex/Int ---
+    - statadd: Reflex Defense
+      value: 10
+    - statadd: Reflex Defense
+      value: { statref: HALF-LEVEL }
+    - statadd: Reflex Defense
+      value: { abilmod: Dexterity }
+      bonusType: Ability
+    - statadd: Reflex Defense
+      value: { abilmod: Intelligence }
+      bonusType: Ability
+
+    # --- Will: 10 + half level + best of Wis/Cha ---
+    - statadd: Will Defense
+      value: 10
+    - statadd: Will Defense
+      value: { statref: HALF-LEVEL }
+    - statadd: Will Defense
+      value: { abilmod: Wisdom }
+      bonusType: Ability
+    - statadd: Will Defense
+      value: { abilmod: Charisma }
+      bonusType: Ability
+
+    # --- Skills: key-ability mod + half level + trained. (Guardian class skills;
+    #     the remaining skills follow the same pattern and are a follow-up.) ---
+    - statadd: Athletics
+      value: { abilmod: Strength }
+    - statadd: Athletics
+      value: { statref: HALF-LEVEL }
+    - statadd: Athletics
+      value: { statref: Athletics Trained }
+    - statadd: Endure
+      value: { abilmod: Constitution }
+    - statadd: Endure
+      value: { statref: HALF-LEVEL }
+    - statadd: Endure
+      value: { statref: Endure Trained }
+    - statadd: Heal
+      value: { abilmod: Wisdom }
+    - statadd: Heal
+      value: { statref: HALF-LEVEL }
+    - statadd: Heal
+      value: { statref: Heal Trained }
+    - statadd: Intimidate
+      value: { abilmod: Charisma }
+    - statadd: Intimidate
+      value: { statref: HALF-LEVEL }
+    - statadd: Intimidate
+      value: { statref: Intimidate Trained }
+    - statadd: Streetsmarts
+      value: { abilmod: Charisma }
+    - statadd: Streetsmarts
+      value: { statref: HALF-LEVEL }
+    - statadd: Streetsmarts
+      value: { statref: Streetsmarts Trained }

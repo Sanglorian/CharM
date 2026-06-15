@@ -30,27 +30,39 @@ A class lists **Class Disciplines**; powers belong to a discipline and are tagge
 filters with `<disciplineA>|<disciplineB>,<frequency>,<level>` (the engine's
 `|` = OR, `,` = AND), mirroring WotC's `$$CLASS,at-will,1`.
 
-## Known engine-vocabulary divergences (full-playability follow-ups)
+## The creation bootstrap (`ID_INTERNAL_LEVEL_1`)
 
-Orcus is close to WotC 4e but not identical. These compile/load fine today, but
-**making a character compute correctly in-app** needs the engine to recognise the
-Orcus names (or an alias layer). Tracked here so it isn't lost:
+Character creation is data-driven from a hardcoded id: the engine looks up
+`ID_INTERNAL_LEVEL_<n>` and runs its directives to **(a)** seed the root
+Race/Class choice slots and **(b)** supply the core stat formulas (defenses,
+skills, half-level). A database with no `ID_INTERNAL_LEVEL_1` builds nothing —
+no Race/Class slots ever appear. `content/orcus/_internal/level.yaml` provides
+it for Orcus, using the standard 4e maths Orcus inherits:
 
-- **Skills:** `Endure` (≈ Endurance), `Streetsmarts` (≈ Streetwise),
-  `Sleight of Hand` (≈ Thievery). Orcus's authoritative list omits Thievery;
-  the Harlequin's "Thievery" is read as Sleight of Hand.
-- **Recoveries** ≈ Healing Surges; **Staggered** ≈ Bloodied. Authored using the
-  engine's existing stat names where the mechanic is identical.
-- **Focus proficiency** is an Orcus weapon/implement category with no direct WotC
-  analogue — modelled as proficiency fields for now.
-- **Talents / Cruxes / Heritages / Disciplines** are new element types; the
-  character-creation wizard will need to surface their selects.
-- **HP/level scaling** (e.g. +6 HP/level) needs the engine's per-level machinery;
-  the slice encodes level-1 base values faithfully and flags the rest.
+- defense = `10 + half level + best of two abilities` (the two ability mods share
+  bonus type `Ability`, so the engine's non-stacking rule keeps the higher);
+- skill = `key-ability mod + half level + trained (+5) + misc`;
+- `statalias` maps `Fortitude`↔`Fortitude Defense` (etc.) so class/feature
+  content can use either name.
 
-## Status
+## Engine-vocabulary divergences — resolved by consistency
 
-`content/orcus/` currently holds a **level-1 Guardian vertical slice** (the
-Guardian class + talents + feature powers, the Art of War discipline's level 1–2
-powers, the Humanity ancestry with sample Cruxes/Heritages, and the skill/size
-plumbing). It compiles and loads; see that folder's README.
+Orcus renames some things (`Endure`≈Endurance, `Streetsmarts`≈Streetwise,
+`Recoveries`≈Healing Surges, `Staggered`≈Bloodied). **These need no engine
+changes**: the engine computes whatever stat names the data uses, so as long as
+the content is internally consistent (the `Level1Rules` computes the same names
+the skills/classes target), it just works. Remaining genuinely-new structures
+(`Crux`, `Heritage`, `Discipline`, talents-as-`Class Feature`) flow through the
+generic select machinery — validated below. The only UI follow-up is surfacing
+these new types nicely in the creation wizard; the engine already handles them.
+
+Still open: **HP/level scaling** (+N HP/level) and the other defenses/skills at
+levels >1 need the higher `ID_INTERNAL_LEVEL_<n>` elements; the slice is level-1.
+
+## Status — playability validated ✅
+
+`content/orcus/` holds a **level-1 Guardian vertical slice** plus the creation
+bootstrap. `charm-authoring playtest` builds a Humanity Guardian headlessly and
+every slot resolves (race → ability bonuses/crux/heritage; class → skills/talent/
+powers) with correct computed stats (HP 31, Fortitude 15, Will 12 incl. the
+Aristocrat heritage's +1, trained skills applied). See `content/orcus/README.md`.

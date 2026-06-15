@@ -1,3 +1,5 @@
+using CharM.Engine.Creation;
+using CharM.Engine.Rules;
 using CharM.RulesDb.Authoring;
 using CharM.RulesDb.Storage;
 
@@ -24,6 +26,7 @@ static int Run(string[] args)
         {
             "build" => Build(rest),
             "lint" => Lint(rest),
+            "playtest" => Playtest(rest),
             "-h" or "--help" or "help" => Usage(),
             _ => Fail($"unknown command '{command}'."),
         };
@@ -82,6 +85,147 @@ static int Lint(string[] args)
     return 0;
 }
 
+// Headless character-build smoke test: build a level-1 character against a
+// compiled database, auto-resolving every choice with its first candidate, then
+// print the computed stats and any slots that had no candidates (the gaps that
+// reveal engine-vocabulary misalignment).
+static int Playtest(string[] args)
+{
+    string? dbPath = null, race = null, cls = null;
+    for (int i = 0; i < args.Length; i++)
+    {
+        switch (args[i])
+        {
+            case "--race": race = args[++i]; break;
+            case "--class": cls = args[++i]; break;
+            default: dbPath ??= args[i]; break;
+        }
+    }
+    if (dbPath is null) return Fail("playtest requires a database path.");
+    race ??= "Humanity";
+    cls ??= "Guardian";
+
+    using var db = new RulesDatabase(dbPath);
+    db.Preload();
+
+    var session = new CharacterSession(
+        db.FindByInternalId,
+        db.FindByNameAndType,
+        db.FindByType,
+        db.FindByTypeAndSource,
+        level: 1,
+        autoFillSelectDefaults: false);
+
+    // A plausible Strength-based defender array.
+    session.SetAbilityScores(new AbilityScoreSet
+    {
+        [Ability.Strength] = 16,
+        [Ability.Constitution] = 14,
+        [Ability.Dexterity] = 13,
+        [Ability.Intelligence] = 10,
+        [Ability.Wisdom] = 12,
+        [Ability.Charisma] = 8,
+    });
+
+    var raceEl = db.FindByNameAndType(race, "Race");
+    var clsEl = db.FindByNameAndType(cls, "Class");
+    if (raceEl is null) return Fail($"race '{race}' not found in database.");
+    if (clsEl is null) return Fail($"class '{cls}' not found in database.");
+    Console.WriteLine($"Building: {race} {cls} (Str 16, Con 14, Dex 13, Int 10, Wis 12, Cha 8)\n");
+    Console.WriteLine($"  pending after scores: {Describe(session.GetAllPendingChoices())}");
+    bool rOk = session.TryMakeChoice(raceEl);
+    Console.WriteLine($"  TryMakeChoice(race={race}) -> {rOk}; pending: {Describe(session.GetAllPendingChoices())}");
+    bool cOk = session.TryMakeChoice(clsEl);
+    Console.WriteLine($"  TryMakeChoice(class={cls}) -> {cOk}; pending: {Describe(session.GetAllPendingChoices())}\n");
+
+    // Auto-resolve choices: one pick per pass, re-fetching pending each time.
+    var used = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+    var gaps = new List<string>();
+    for (int iter = 0; iter < 300; iter++)
+    {
+        var pending = session.GetAllPendingChoices();
+        if (pending.Count == 0) break;
+
+        bool progressed = false;
+        foreach (var pc in pending)
+        {
+            var label = pc.Slot.Name ?? pc.Slot.DisplayLabel ?? pc.Slot.ElementType;
+            var candidates = session.GetCandidatesForSlot(pc.Slot, skipPrereqs: true);
+            if (candidates.Count == 0)
+                continue;
+            if (!used.TryGetValue(label, out var u)) { u = new(StringComparer.Ordinal); used[label] = u; }
+            var pick = candidates.FirstOrDefault(c => !u.Contains(c.InternalId)) ?? candidates[0];
+            try
+            {
+                session.MakeChoice(pc.Slot, pick);
+                u.Add(pick.InternalId);
+                Console.WriteLine($"  chose {pick.Name,-24} for [{label}]");
+                progressed = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  ! MakeChoice failed for [{label}]: {ex.Message}");
+            }
+            break;
+        }
+        if (!progressed) break;
+    }
+
+    // Any pending slots left with no candidates are the gaps.
+    foreach (var pc in session.GetAllPendingChoices())
+    {
+        var label = pc.Slot.Name ?? pc.Slot.DisplayLabel ?? pc.Slot.ElementType;
+        var n = session.GetCandidatesForSlot(pc.Slot, skipPrereqs: true).Count;
+        gaps.Add($"{label} (type='{pc.Slot.ElementType}', category='{pc.Slot.Category}', remaining={pc.Slot.Remaining}, candidates={n})");
+    }
+
+    Console.WriteLine($"\nComplete: {session.IsComplete}");
+    foreach (var t in new[] { "Race", "Crux", "Heritage", "Class", "Class Feature", "Skill Training", "Power", "Race Ability Bonus" })
+    {
+        var picks = session.GetSelectedElements(t);
+        if (picks.Count > 0)
+            Console.WriteLine($"  {t}: {string.Join(", ", picks.Select(p => p.Name))}");
+    }
+
+    if (gaps.Count > 0)
+    {
+        Console.WriteLine($"\nUnfillable slots ({gaps.Count}) — engine-alignment gaps:");
+        foreach (var g in gaps) Console.WriteLine($"  - {g}");
+    }
+
+    var snapshot = session.GetSnapshot() ?? session.GetPartialSnapshot();
+    if (snapshot is null)
+    {
+        Console.WriteLine("\nNo snapshot could be built.");
+        return 0;
+    }
+
+    Console.WriteLine("\nComputed stats:");
+    foreach (var stat in new[]
+    {
+        "Strength", "Constitution", "Dexterity", "Intelligence", "Wisdom", "Charisma",
+        "Hit Points", "Healing Surges", "Speed", "AC",
+        "Fortitude Defense", "Reflex Defense", "Will Defense",
+    })
+    {
+        Console.WriteLine($"  {stat,-16} {snapshot.GetStat(stat)}");
+    }
+
+    var trained = snapshot.GetAllStats()
+        .Where(kv => kv.Key.EndsWith(" Trained", StringComparison.Ordinal) && kv.Value != 0)
+        .OrderBy(kv => kv.Key);
+    var trainedList = string.Join(", ", trained.Select(kv => kv.Key.Replace(" Trained", "")));
+    Console.WriteLine($"  Trained skills:  {(trainedList.Length > 0 ? trainedList : "(none)")}");
+    return 0;
+}
+
+static string Describe(System.Collections.Generic.IReadOnlyList<PendingChoice> pending)
+{
+    if (pending.Count == 0) return "(none)";
+    return string.Join("; ", pending.Select(p =>
+        $"{p.Slot.ElementType}×{p.Slot.Remaining}"));
+}
+
 static int Usage()
 {
     Console.WriteLine(
@@ -89,10 +233,12 @@ static int Usage()
         charm-authoring — compile authored YAML rules content into a CharM rules.db
 
         Usage:
-          charm-authoring build <content-path> -o <rules.db>
-          charm-authoring lint  <content-path>
+          charm-authoring build    <content-path> -o <rules.db>
+          charm-authoring lint     <content-path>
+          charm-authoring playtest <rules.db> [--race <name>] [--class <name>]
 
         <content-path> may be a single .yaml file or a directory (searched recursively).
+        playtest builds a level-1 character headlessly and prints computed stats.
         """);
     return 0;
 }
