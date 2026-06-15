@@ -89,6 +89,10 @@
   rules:
     - grant: ORCUS_FEATURE_LIFT_SPIRITS
       type: Class Feature
+    # Records Charisma as the Commander's chosen ability for "use X or Y"
+    # discipline powers (Orcus key-ability rule; see docs/orcus-mapping.md).
+    - grant: ORCUS_ABILITYCHOICE_COMMANDER_CHARISMA
+      type: Ability Choice
 
 # --- Always-on feature ---------------------------------------------------------
 - id: ORCUS_FEATURE_LIFT_SPIRITS
@@ -176,3 +180,8 @@
   categories: [ORCUS_COMMANDER_ARMAMENT]
   fields:
     Description: "Proficiency with two exotic melee weapons of your choice."
+
+- id: ORCUS_ABILITYCHOICE_COMMANDER_CHARISMA
+  name: Commander Key Charisma
+  type: Ability Choice
+  categories: [Ability Choice]

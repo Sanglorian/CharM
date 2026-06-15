@@ -90,6 +90,10 @@
       type: Class Feature
     - grant: ORCUS_FEATURE_SAVVY_COMBATANT
       type: Class Feature
+    # Records Strength as the Guardian's chosen ability for "use X or Y"
+    # discipline powers (Orcus key-ability rule; see docs/orcus-mapping.md).
+    - grant: ORCUS_ABILITYCHOICE_GUARDIAN_STRENGTH
+      type: Ability Choice
 
 # --- Always-on class features -------------------------------------------------
 - id: ORCUS_FEATURE_COMBAT_DOMINANCE
@@ -167,3 +171,8 @@
     Trigger: "An adjacent creature you have marked shifts or makes an attack that does not include you."
     Effect: "Make a basic melee attack against the triggering creature."
     Special: "This is not an opportunity attack."
+
+- id: ORCUS_ABILITYCHOICE_GUARDIAN_STRENGTH
+  name: Guardian Key Strength
+  type: Ability Choice
+  categories: [Ability Choice]

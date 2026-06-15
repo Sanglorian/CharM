@@ -26,8 +26,10 @@
     "Action Type": Standard Action
     Keywords: "Focus, Martial"
     Target: "Ranged 10, one enemy"
-    Attack: "Charisma vs Will"
-    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma modifier HP."
+    # Printed key ability is Charisma; "or Wisdom" lets the Priest's class-key
+    # substitution resolve via ChosenAbilities (Commander keeps Charisma).
+    Attack: "Charisma or Wisdom vs Will"
+    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma or Wisdom modifier HP."
 
 - id: ORCUS_POWER_MAKE_ROOM
   name: Make Room
@@ -88,7 +90,7 @@
     "Action Type": Standard Action
     Keywords: "Focus, Martial, Psychic"
     Target: "Near burst 3, all enemies"
-    Attack: "Charisma vs Will"
+    Attack: "Charisma or Wisdom vs Will"
     Hit: "The target is weakened (save ends)."
 
 - id: ORCUS_POWER_GEOMETRIC_STRATEGY

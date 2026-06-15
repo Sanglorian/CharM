@@ -18,14 +18,16 @@ for the format.
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + level 1–2 powers |
 
-Compiles to **98 elements across 15 types**, no warnings.
+Compiles to **101 elements across 16 types**, no warnings.
 
 ### Ability substitution
-Orcus's "use your class key ability instead, if higher" is implemented: a class
-emits a `"<disciplineId>:key ability"` override and the engine resolves a power's
-attack/damage to the higher ability. Verified via `playtest`: the Priest's
-`Identify Target` resolves to **Wisdom** while the Commander's stays Charisma.
-See `docs/orcus-mapping.md`.
+Orcus's "use your class key ability instead" is implemented with **no engine
+change and no equipment dependency**: a shared discipline power names the
+candidate abilities (e.g. `Attack: "Charisma or Wisdom vs Will"`) and each class
+grants an `Ability Choice` element naming its key ability, which the engine reads
+into `Stats.ChosenAbilities`. Verified via `playtest` with no weapon/implement:
+the Priest's `Identify Target` resolves to **Wisdom**, the Commander's stays
+Charisma, the Guardian's Art of War powers use Strength. See `docs/orcus-mapping.md`.
 
 ## Build & playtest
 

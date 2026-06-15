@@ -70,21 +70,23 @@ cover this:
   the highest‑modifier ability among those named — no extra work.
 - **Class key‑ability substitution** (when a class uses a discipline keyed to a
   different ability — e.g. a Priest, Wisdom, using Charisma‑keyed Angel's
-  Trumpet): the class emits a `textstring` named `"<disciplineId>:key ability"`
-  whose value lists `"<disciplineKey>,<classKey>"`. The **stock engine's**
-  key‑ability override then resolves the power's attack **and** damage to the
-  higher of the listed abilities. **No engine change is required** — this is
-  pure content. Verified: a Priest's *Identify Target* resolves to Wisdom while
-  a Commander's stays Charisma.
+  Trumpet). Done with **no engine change and no equipment dependency**, via the
+  engine's `Stats.ChosenAbilities`:
+  1. The shared discipline power names every candidate ability in its attack/
+     damage text, e.g. `Attack: "Charisma or Wisdom vs Will"`.
+  2. Each class grants an **"Ability Choice"** element whose name ends in the
+     class's key ability (e.g. `Priest Key Wisdom`, category `Ability Choice`).
+     The engine reads the trailing ability into `Stats.ChosenAbilities`.
+  3. `ResolveAttackAbility`/`ResolveDamageAbility` pick the *chosen* ability
+     among those the power names — for weapon, focus **and** weaponless powers.
 
-  Note: the override resolves when the character has the relevant weapon/focus
-  equipped (the app passes it to the power calculator). That's how every Orcus
-  attack power works anyway — they're all Weapon or Focus powers — so the rule
-  applies in normal play. (`charm-authoring playtest` passes a generic implement
-  to mirror this.)
+  Verified on the unmodified engine with no weapon/implement: a Priest's
+  *Identify Target* resolves to **Wisdom** (attack and the heal die), a
+  Commander's stays **Charisma**, a Guardian's Art of War powers use Strength.
 
-The secondary‑ability (talent) substitution uses the same hook and is a
-follow‑up once a talent's secondary differs from a discipline's on an attack.
+The secondary‑ability (talent) substitution works the same way — the talent
+grants an additional `Ability Choice` and the power text names the secondary —
+and is a follow‑up once an authored power puts the secondary on an attack.
 
 ## Status — playability validated ✅
 
