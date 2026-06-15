@@ -1,0 +1,173 @@
+# Orcus foundational reference rows: sizes, vision, skills, skill-training, and
+# ability-bonus plumbing. These are the lookup elements that grants/selects point
+# at. Skill key abilities are from the Rulebook skill list.
+
+# --- Sizes & vision -----------------------------------------------------------
+- id: ORCUS_SIZE_MEDIUM
+  name: Medium
+  type: Size
+
+- id: ORCUS_VISION_NORMAL
+  name: Normal
+  type: Vision
+
+- id: ORCUS_VISION_LOW-LIGHT
+  name: Low-light
+  type: Vision
+
+# --- Ability-bonus rows (for ancestry "+2 to a chosen ability") ---------------
+- id: ORCUS_ABILITY_STR
+  name: "+2 Strength"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Strength
+      value: 2
+      bonusType: Ancestry
+- id: ORCUS_ABILITY_CON
+  name: "+2 Constitution"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Constitution
+      value: 2
+      bonusType: Ancestry
+- id: ORCUS_ABILITY_DEX
+  name: "+2 Dexterity"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Dexterity
+      value: 2
+      bonusType: Ancestry
+- id: ORCUS_ABILITY_INT
+  name: "+2 Intelligence"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Intelligence
+      value: 2
+      bonusType: Ancestry
+- id: ORCUS_ABILITY_WIS
+  name: "+2 Wisdom"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Wisdom
+      value: 2
+      bonusType: Ancestry
+- id: ORCUS_ABILITY_CHA
+  name: "+2 Charisma"
+  type: Race Ability Bonus
+  rules:
+    - statadd: Charisma
+      value: 2
+      bonusType: Ancestry
+
+# --- Skills (reference rows with a Key Ability field) -------------------------
+- id: ORCUS_SKILL_ACROBATICS
+  name: Acrobatics
+  type: Skill
+  fields: { "Key Ability": Dexterity }
+- id: ORCUS_SKILL_ARCANA
+  name: Arcana
+  type: Skill
+  fields: { "Key Ability": Intelligence }
+- id: ORCUS_SKILL_ATHLETICS
+  name: Athletics
+  type: Skill
+  fields: { "Key Ability": Strength }
+- id: ORCUS_SKILL_BLUFF
+  name: Bluff
+  type: Skill
+  fields: { "Key Ability": Charisma }
+- id: ORCUS_SKILL_DIPLOMACY
+  name: Diplomacy
+  type: Skill
+  fields: { "Key Ability": Charisma }
+- id: ORCUS_SKILL_DUNGEONEERING
+  name: Dungeoneering
+  type: Skill
+  fields: { "Key Ability": Wisdom }
+- id: ORCUS_SKILL_ENDURE
+  name: Endure
+  type: Skill
+  fields: { "Key Ability": Constitution }
+- id: ORCUS_SKILL_HEAL
+  name: Heal
+  type: Skill
+  fields: { "Key Ability": Wisdom }
+- id: ORCUS_SKILL_HISTORY
+  name: History
+  type: Skill
+  fields: { "Key Ability": Intelligence }
+- id: ORCUS_SKILL_INSIGHT
+  name: Insight
+  type: Skill
+  fields: { "Key Ability": Wisdom }
+- id: ORCUS_SKILL_INTIMIDATE
+  name: Intimidate
+  type: Skill
+  fields: { "Key Ability": Charisma }
+- id: ORCUS_SKILL_NATURE
+  name: Nature
+  type: Skill
+  fields: { "Key Ability": Wisdom }
+- id: ORCUS_SKILL_PERCEPTION
+  name: Perception
+  type: Skill
+  fields: { "Key Ability": Wisdom }
+- id: ORCUS_SKILL_RELIGION
+  name: Religion
+  type: Skill
+  fields: { "Key Ability": Intelligence }
+- id: ORCUS_SKILL_SLEIGHT_OF_HAND
+  name: Sleight of Hand
+  type: Skill
+  fields: { "Key Ability": Dexterity }
+- id: ORCUS_SKILL_STEALTH
+  name: Stealth
+  type: Skill
+  fields: { "Key Ability": Dexterity }
+- id: ORCUS_SKILL_STREETSMARTS
+  name: Streetsmarts
+  type: Skill
+  fields: { "Key Ability": Charisma }
+
+# --- Skill Training rows (grant +5 trained; tagged by class skill list) -------
+# Only the Guardian's class skills are tagged ORCUS_GUARDIAN_SKILLS for the slice.
+- id: ORCUS_TRAIN_ATHLETICS
+  name: Athletics
+  type: Skill Training
+  categories: [ORCUS_GUARDIAN_SKILLS]
+  rules:
+    - statadd: Athletics Trained
+      value: 5
+      bonusType: trained
+- id: ORCUS_TRAIN_ENDURE
+  name: Endure
+  type: Skill Training
+  categories: [ORCUS_GUARDIAN_SKILLS]
+  rules:
+    - statadd: Endure Trained
+      value: 5
+      bonusType: trained
+- id: ORCUS_TRAIN_HEAL
+  name: Heal
+  type: Skill Training
+  categories: [ORCUS_GUARDIAN_SKILLS]
+  rules:
+    - statadd: Heal Trained
+      value: 5
+      bonusType: trained
+- id: ORCUS_TRAIN_INTIMIDATE
+  name: Intimidate
+  type: Skill Training
+  categories: [ORCUS_GUARDIAN_SKILLS]
+  rules:
+    - statadd: Intimidate Trained
+      value: 5
+      bonusType: trained
+- id: ORCUS_TRAIN_STREETSMARTS
+  name: Streetsmarts
+  type: Skill Training
+  categories: [ORCUS_GUARDIAN_SKILLS]
+  rules:
+    - statadd: Streetsmarts Trained
+      value: 5
+      bonusType: trained

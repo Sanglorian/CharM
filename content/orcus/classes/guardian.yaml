@@ -1,0 +1,153 @@
+# Guardian — Martial Defender (Orcus Classes and Powers). Level-1 build.
+# HP/defenses use the engine's existing stat names; "Recoveries" maps to the
+# engine's Healing Surges (see docs/orcus-mapping.md). Higher-level HP scaling
+# (+6/level) is a follow-up that needs the engine's per-level machinery.
+
+- id: ORCUS_CLASS_GUARDIAN
+  name: Guardian
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Defender, Martial]
+  fields:
+    Role: Defender
+    Tradition: Martial
+    "Key Ability": Strength
+    "Class Disciplines": "Art of War, Juggernautical"
+    "Armor Proficiencies": "Cloth, leather, hide, chainmail, scale; light shield, heavy shield"
+    "Weapon Proficiencies": "Simple melee, martial melee, simple ranged, martial ranged"
+    "Class Skills": "Athletics, Endure, Heal, Intimidate, Streetsmarts"
+    Flavor: "You stand where the line must hold, and you do not move."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_GUARDIAN
+      type: Grants
+    # Hit Points at 1st level: 15 plus your Constitution score.
+    - statadd: Hit Points
+      value: 15
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    # Recoveries per long rest: 9 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 9
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +2 Fortitude.
+    - statadd: Fortitude
+      value: +2
+      bonusType: Class
+    # Trained in 3 skills from the Guardian class skill list.
+    - select:
+        type: Skill Training
+        number: 3
+        category: ORCUS_GUARDIAN_SKILLS
+        name: Guardian Trained Skills
+    # Choose one talent (sets your secondary ability).
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_GUARDIAN_TALENT
+        name: Guardian Talent
+    # Default level-1 power progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,at-will,1"
+        name: Guardian At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,1"
+        name: Guardian Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,1"
+        name: Guardian Daily Power
+
+- id: ORCUS_INTERNAL_GRANTS_GUARDIAN
+  name: Guardian Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_GUARDIAN }
+  rules:
+    - grant: ORCUS_FEATURE_COMBAT_DOMINANCE
+      type: Class Feature
+    - grant: ORCUS_FEATURE_VETERAN_OPPORTUNIST
+      type: Class Feature
+    - grant: ORCUS_FEATURE_SAVVY_COMBATANT
+      type: Class Feature
+
+# --- Always-on class features -------------------------------------------------
+- id: ORCUS_FEATURE_COMBAT_DOMINANCE
+  name: Combat Dominance
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: >
+      You can choose to emit an aura 1 of combat dominance. While you do so,
+      creatures in the aura who are not marked by anyone else are marked by you.
+      A creature that leaves your aura is no longer marked.
+
+- id: ORCUS_FEATURE_VETERAN_OPPORTUNIST
+  name: Veteran Opportunist
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "Add your Wisdom modifier to your attack rolls when making opportunity attacks."
+
+- id: ORCUS_FEATURE_SAVVY_COMBATANT
+  name: Savvy Combatant
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You gain the punish cowardice and block retreat powers."
+  rules:
+    - grant: ORCUS_POWER_BLOCK_RETREAT
+      type: Power
+    - grant: ORCUS_POWER_PUNISH_COWARDICE
+      type: Power
+
+# --- Talents (chosen via the Guardian Talent select) --------------------------
+- id: ORCUS_TALENT_GREAT_WEAPON_STYLE
+  name: Great Weapon Style
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_GUARDIAN_TALENT]
+  fields:
+    "Secondary Ability": Constitution
+    Description: "You get a +1 bonus on attack rolls with two-handed weapons. Your secondary ability is Constitution."
+
+- id: ORCUS_TALENT_PROTECTION
+  name: Protection
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_GUARDIAN_TALENT]
+  fields:
+    "Secondary Ability": "Dexterity or Wisdom"
+    Description: "You get a +1 bonus on attack rolls with one-handed weapons. Your secondary ability is Dexterity OR Wisdom (your choice)."
+
+# --- Feature powers (from Savvy Combatant) ------------------------------------
+- id: ORCUS_POWER_BLOCK_RETREAT
+  name: Block Retreat
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Trigger: "A creature is hit by your opportunity attack, and the opportunity attack was provoked by movement."
+    Effect: "Their movement stops for this action. They may attempt to move again using another action, if applicable."
+
+- id: ORCUS_POWER_PUNISH_COWARDICE
+  name: Punish Cowardice
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Trigger: "An adjacent creature you have marked shifts or makes an attack that does not include you."
+    Effect: "Make a basic melee attack against the triggering creature."
+    Special: "This is not an opportunity attack."

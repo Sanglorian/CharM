@@ -1,0 +1,108 @@
+# The Art of War discipline (Guardian / Worships the God of War). Level 1-2
+# powers transcribed; higher-level powers (3-29) remain to be added. Powers are
+# tagged [disciplineId, frequency, level] (+ "utility" for utility powers) so a
+# class's power selects can filter them.
+
+- id: ORCUS_DISCIPLINE_ART_OF_WAR
+  name: Art of War
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Strength
+    "Secondary Ability": Dexterity
+    Sources: "Guardian (class), Worships the God of War (kit)"
+    Description: "You are a highly effective fighter who takes advantage of any weakness left by your enemy."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_PASSING_KILL
+  name: Passing Kill
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, "1"]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
+    Hit: "1 point of damage."
+    Special: "At 21st level, you can make two attacks."
+    Flavor: "A mere low-level thug blocks your path. You don't even give them the luxury of losing momentum."
+
+- id: ORCUS_POWER_SWIFT_STRIKE
+  name: Swift Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, "1"]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
+    Hit: "Dexterity (ranged) or Strength (melee) modifier damage, and the target is dazed until the start of your next turn."
+    Flavor: "You find a split-second opening and deliver the attack, hoping to hold the enemy back."
+
+# --- Encounter attack power (level 1) -----------------------------------------
+- id: ORCUS_POWER_IN_THEIR_FACE
+  name: In Their Face
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, "1"]
+  fields:
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
+    Hit: "2dW + Dexterity (ranged) or Strength (melee) modifier damage and the target grants combat advantage until the end of your next turn."
+    Flavor: "Your darting attack puts your enemy off guard."
+
+# --- Daily attack power (level 1) ---------------------------------------------
+- id: ORCUS_POWER_THE_FINISHER
+  name: The Finisher
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, "1"]
+  fields:
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Consistent, Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
+    Hit: "3dW + Dexterity (ranged) or Strength (melee) modifier damage."
+    Flavor: "You hit hard. That's it. That's enough."
+
+# --- Utility powers (level 2) -------------------------------------------------
+- id: ORCUS_POWER_HERON_DEFENSE
+  name: Heron Defense
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, utility, "2"]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You do not grant combat advantage until the start of your next turn."
+    Flavor: "Your enemy tries to find a weakness. It finds none."
+
+- id: ORCUS_POWER_COUNTER_SURGE
+  name: Counter-Surge
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, utility, "2"]
+  fields:
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Reaction Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You take damage from a melee or ranged attack."
+    Effect: "You gain temporary hit points equal to the damage dealt (to a maximum of your recovery value)."
+    Flavor: "An opponent strikes you with an attack. You take the impact and channel it into strength."

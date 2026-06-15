@@ -1,0 +1,152 @@
+# Orcus ancestry: the Humanity base (a Race) plus a sample of Cruxes and
+# Heritages, chosen via selects on the Race. A full transcription would include
+# all 16 cruxes and 6 heritages; this slice includes two of each.
+
+# --- Humanity (base ancestry) -------------------------------------------------
+- id: ORCUS_RACE_HUMANITY
+  name: Humanity
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Normal
+    "Ability Scores": "+2 to two ability scores of your choice"
+    Languages: "Common and one other"
+    Description: >
+      The default Orcus ancestry: heroes defined by the moment that marked them
+      (their crux) and the culture they came from (their heritage), rather than
+      by species.
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_HUMANITY
+      type: Grants
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    # +2 to two different ability scores of the player's choice.
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        name: Humanity Ability Scores
+    # Pick the two halves of your ancestry.
+    - select:
+        type: Crux
+        number: 1
+        name: Crux
+    - select:
+        type: Heritage
+        number: 1
+        name: Heritage
+
+- id: ORCUS_INTERNAL_GRANTS_HUMANITY
+  name: Humanity Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_RACE_HUMANITY }
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+
+# --- Cruxes -------------------------------------------------------------------
+- id: ORCUS_CRUX_HERO
+  name: Hero
+  type: Crux
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: >
+      You risked your own life to defend something precious: perhaps a loved one,
+      a vital military position or a secret.
+    Unmoved: >
+      Reduce any unwilling movement you are subject to by 1 square. When you would
+      fall prone as the result of an attack, make a saving throw; on a success you
+      do not fall.
+  rules:
+    - statadd: Athletics
+      value: +2
+      bonusType: Ancestry
+    - grant: ORCUS_POWER_VIOLENT_RUSH
+      type: Power
+
+- id: ORCUS_CRUX_SAGE
+  name: Sage
+  type: Crux
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: >
+      Through knowledge, practice and experience, you provided sage advice that
+      prevented the unthinkable.
+  rules:
+    - statadd: Perception
+      value: +2
+      bonusType: Ancestry
+    # "You are trained in an extra skill of your choice."
+    - select:
+        type: Skill Training
+        number: 1
+        name: Sage Extra Skill
+    - grant: ORCUS_POWER_INGENUITY
+      type: Power
+
+# --- Heritages ----------------------------------------------------------------
+- id: ORCUS_HERITAGE_ARISTOCRAT
+  name: Aristocrat
+  type: Heritage
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You are a patrician, and believe yourself to be one of a finer class of people."
+  rules:
+    - statadd: Intimidate
+      value: +2
+      bonusType: Ancestry
+    - statadd: Will
+      value: +1
+      bonusType: Ancestry
+
+- id: ORCUS_HERITAGE_SEAFARER
+  name: Seafarer
+  type: Heritage
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You grew up on boats or ships."
+  rules:
+    - statadd: Athletics
+      value: +2
+      bonusType: Ancestry
+    - statadd: Reflex
+      value: +1
+      bonusType: Ancestry
+
+# --- Crux feature powers ------------------------------------------------------
+- id: ORCUS_POWER_VIOLENT_RUSH
+  name: Violent Rush
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Free Action
+    Keywords: Martial
+    "Power Type": Utility
+    Trigger: "You hit with an attack."
+    Effect: "Attack does +1dW. If attack was not with a weapon, +1d8 instead."
+    Flavor: "You press the advantage before the enemy can recover."
+
+- id: ORCUS_POWER_INGENUITY
+  name: Ingenuity
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Swift Action
+    Keywords: Martial
+    "Power Type": Utility
+    Target: "Near burst 5, self or one ally"
+    Effect: >
+      Choose one: target shifts up to 2 as a free action; target makes a saving
+      throw; target gets +2 power bonus to next attack roll; or target gets +4
+      power bonus to next skill check. Power bonuses expire at the end of your
+      next turn if not used.
