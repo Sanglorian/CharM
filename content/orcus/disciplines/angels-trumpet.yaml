@@ -1,0 +1,154 @@
+# The Angel's Trumpet discipline (Commander / Priest; Embodies Charisma, Worships
+# the God of Peace kits). A leader's inspire/heal/redirect powers. Levels 1-2
+# transcribed. Same tagging contract as Art of War: [disciplineId, <frequency>]
+# with a real Level field; utility powers tagged `utility`.
+
+- id: ORCUS_DISCIPLINE_ANGELS_TRUMPET
+  name: Angel's Trumpet
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Charisma
+    "Secondary Ability": Wisdom
+    Sources: "Commander, Priest (classes); Embodies Charisma, Worships the God of Peace (kits)"
+    Description: "Your words and example inspire allies to stay in the fight, and cooperate to take down the enemy."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_IDENTIFY_TARGET
+  name: Identify Target
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Martial"
+    Target: "Ranged 10, one enemy"
+    Attack: "Charisma vs Will"
+    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma modifier HP."
+
+- id: ORCUS_POWER_MAKE_ROOM
+  name: Make Room
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Near earshot, one ally"
+    Effect: "The target makes a basic attack against an enemy of your choice, and gains a bonus to damage rolls for the attack equal to your Charisma modifier."
+    Flavor: "There are others in a better position. You give them the opening they need."
+
+# --- Encounter attack powers (level 1) ----------------------------------------
+- id: ORCUS_POWER_QUICK_SAVE
+  name: Quick Save
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: Martial
+    Target: "Near earshot, the triggering ally"
+    Trigger: "One ally misses with an attack roll against a creature you can see."
+    Effect: "The target may reroll the attack."
+    Flavor: "A quick word or push allows an ally a momentary improvement to their accuracy."
+
+- id: ORCUS_POWER_TARGETED_CALL
+  name: Targeted Call
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Near burst 10, one ally"
+    Effect: "Choose one ally. They make a basic melee or ranged attack. If they hit, they gain temporary HP equal to your Wisdom modifier."
+
+# --- Daily attack powers (level 1) --------------------------------------------
+- id: ORCUS_POWER_BREAK_WILL
+  name: Break Will
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Martial, Psychic"
+    Target: "Near burst 3, all enemies"
+    Attack: "Charisma vs Will"
+    Hit: "The target is weakened (save ends)."
+
+- id: ORCUS_POWER_GEOMETRIC_STRATEGY
+  name: Geometric Strategy
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: Martial
+    Target: "Near earshot, the triggering ally"
+    Trigger: "One ally hits with an attack."
+    Effect: "The target's attack deals +3dW damage."
+    Flavor: "There's a whole machine that works because everyone does what they are supposed to."
+
+# --- Utility powers (level 2) -------------------------------------------------
+- id: ORCUS_POWER_HOLD_FAST
+  name: Hold Fast
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: Martial
+    Target: "Near burst 1, two allies or you and one ally"
+    Effect: "The target gains resistance to all damage equal to your Charisma modifier until the start of your next turn."
+    Flavor: "You push the heads down of those around you, keeping them from the line of fire."
+
+- id: ORCUS_POWER_AN_OUNCE_OF_PREVENTION
+  name: An Ounce of Prevention
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Target: "Near burst 10, one ally"
+    Trigger: "An ally in range is hit by an attack."
+    Effect: "The ally can spend a recovery to gain temporary hit points equal to their recovery value."
+
+- id: ORCUS_POWER_ENCOURAGING_PEAL
+  name: Encouraging Peal
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 5, all allies"
+    Effect: "Targets receive a +2 power bonus on attack rolls and add your Charisma modifier to damage until the end of the encounter."
+    Flavor: "You let out shouts of encouragement to bolster your allies in battle."

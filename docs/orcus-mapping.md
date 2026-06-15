@@ -61,8 +61,10 @@ levels >1 need the higher `ID_INTERNAL_LEVEL_<n>` elements; the slice is level-1
 
 ## Status — playability validated ✅
 
-`content/orcus/` holds a **level-1 Guardian vertical slice** plus the creation
-bootstrap. `charm-authoring playtest` builds a Humanity Guardian headlessly and
-every slot resolves (race → ability bonuses/crux/heritage; class → skills/talent/
-powers) with correct computed stats (HP 31, Fortitude 15, Will 12 incl. the
-Aristocrat heritage's +1, trained skills applied). See `content/orcus/README.md`.
+`content/orcus/` holds **two playable classes** (Guardian/Defender and
+Commander/Leader) with their disciplines, the Humanity ancestry, the full 17-skill
+foundation, and the level 1–3 creation bootstrap. `charm-authoring playtest
+<db> --class <name> --level <n>` builds a character headlessly: every slot
+resolves and stats compute correctly, including per-level scaling and the default
+power progression (L2 utility, L3 second encounter). See
+`content/orcus/README.md`.

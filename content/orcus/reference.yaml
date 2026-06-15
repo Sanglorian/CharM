@@ -130,44 +130,82 @@
   fields: { "Key Ability": Charisma }
 
 # --- Skill Training rows (grant +5 trained; tagged by class skill list) -------
-# Only the Guardian's class skills are tagged ORCUS_GUARDIAN_SKILLS for the slice.
+# Tags: G = Guardian class skill, C = Commander class skill. Untagged skills are
+# still pickable by category-less selects (e.g. the Sage crux's "extra skill").
+- id: ORCUS_TRAIN_ACROBATICS
+  name: Acrobatics
+  type: Skill Training
+  rules: [{ statadd: Acrobatics Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_ARCANA
+  name: Arcana
+  type: Skill Training
+  rules: [{ statadd: Arcana Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_ATHLETICS
   name: Athletics
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS]
-  rules:
-    - statadd: Athletics Trained
-      value: 5
-      bonusType: trained
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Athletics Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_BLUFF
+  name: Bluff
+  type: Skill Training
+  rules: [{ statadd: Bluff Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_DIPLOMACY
+  name: Diplomacy
+  type: Skill Training
+  categories: [ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Diplomacy Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_DUNGEONEERING
+  name: Dungeoneering
+  type: Skill Training
+  rules: [{ statadd: Dungeoneering Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_ENDURE
   name: Endure
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS]
-  rules:
-    - statadd: Endure Trained
-      value: 5
-      bonusType: trained
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Endure Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_HEAL
   name: Heal
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS]
-  rules:
-    - statadd: Heal Trained
-      value: 5
-      bonusType: trained
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Heal Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_HISTORY
+  name: History
+  type: Skill Training
+  categories: [ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: History Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_INSIGHT
+  name: Insight
+  type: Skill Training
+  rules: [{ statadd: Insight Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_INTIMIDATE
   name: Intimidate
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS]
-  rules:
-    - statadd: Intimidate Trained
-      value: 5
-      bonusType: trained
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Intimidate Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_NATURE
+  name: Nature
+  type: Skill Training
+  rules: [{ statadd: Nature Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_PERCEPTION
+  name: Perception
+  type: Skill Training
+  rules: [{ statadd: Perception Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_RELIGION
+  name: Religion
+  type: Skill Training
+  categories: [ORCUS_COMMANDER_SKILLS]
+  rules: [{ statadd: Religion Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_SLEIGHT_OF_HAND
+  name: Sleight of Hand
+  type: Skill Training
+  rules: [{ statadd: Sleight of Hand Trained, value: 5, bonusType: trained }]
+- id: ORCUS_TRAIN_STEALTH
+  name: Stealth
+  type: Skill Training
+  rules: [{ statadd: Stealth Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_STREETSMARTS
   name: Streetsmarts
   type: Skill Training
   categories: [ORCUS_GUARDIAN_SKILLS]
-  rules:
-    - statadd: Streetsmarts Trained
-      value: 5
-      bonusType: trained
+  rules: [{ statadd: Streetsmarts Trained, value: 5, bonusType: trained }]
+

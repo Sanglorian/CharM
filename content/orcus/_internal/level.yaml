@@ -83,38 +83,59 @@
       value: { abilmod: Charisma }
       bonusType: Ability
 
-    # --- Skills: key-ability mod + half level + trained. (Guardian class skills;
-    #     the remaining skills follow the same pattern and are a follow-up.) ---
-    - statadd: Athletics
-      value: { abilmod: Strength }
-    - statadd: Athletics
-      value: { statref: HALF-LEVEL }
-    - statadd: Athletics
-      value: { statref: Athletics Trained }
-    - statadd: Endure
-      value: { abilmod: Constitution }
-    - statadd: Endure
-      value: { statref: HALF-LEVEL }
-    - statadd: Endure
-      value: { statref: Endure Trained }
-    - statadd: Heal
-      value: { abilmod: Wisdom }
-    - statadd: Heal
-      value: { statref: HALF-LEVEL }
-    - statadd: Heal
-      value: { statref: Heal Trained }
-    - statadd: Intimidate
-      value: { abilmod: Charisma }
-    - statadd: Intimidate
-      value: { statref: HALF-LEVEL }
-    - statadd: Intimidate
-      value: { statref: Intimidate Trained }
-    - statadd: Streetsmarts
-      value: { abilmod: Charisma }
-    - statadd: Streetsmarts
-      value: { statref: HALF-LEVEL }
-    - statadd: Streetsmarts
-      value: { statref: Streetsmarts Trained }
+    # --- Skills: key-ability mod + half level + trained (+5). All 17 Orcus
+    #     skills, so any class's class-skill list can be trained. ---
+    - { statadd: Acrobatics, value: { abilmod: Dexterity } }
+    - { statadd: Acrobatics, value: { statref: HALF-LEVEL } }
+    - { statadd: Acrobatics, value: { statref: Acrobatics Trained } }
+    - { statadd: Arcana, value: { abilmod: Intelligence } }
+    - { statadd: Arcana, value: { statref: HALF-LEVEL } }
+    - { statadd: Arcana, value: { statref: Arcana Trained } }
+    - { statadd: Athletics, value: { abilmod: Strength } }
+    - { statadd: Athletics, value: { statref: HALF-LEVEL } }
+    - { statadd: Athletics, value: { statref: Athletics Trained } }
+    - { statadd: Bluff, value: { abilmod: Charisma } }
+    - { statadd: Bluff, value: { statref: HALF-LEVEL } }
+    - { statadd: Bluff, value: { statref: Bluff Trained } }
+    - { statadd: Diplomacy, value: { abilmod: Charisma } }
+    - { statadd: Diplomacy, value: { statref: HALF-LEVEL } }
+    - { statadd: Diplomacy, value: { statref: Diplomacy Trained } }
+    - { statadd: Dungeoneering, value: { abilmod: Wisdom } }
+    - { statadd: Dungeoneering, value: { statref: HALF-LEVEL } }
+    - { statadd: Dungeoneering, value: { statref: Dungeoneering Trained } }
+    - { statadd: Endure, value: { abilmod: Constitution } }
+    - { statadd: Endure, value: { statref: HALF-LEVEL } }
+    - { statadd: Endure, value: { statref: Endure Trained } }
+    - { statadd: Heal, value: { abilmod: Wisdom } }
+    - { statadd: Heal, value: { statref: HALF-LEVEL } }
+    - { statadd: Heal, value: { statref: Heal Trained } }
+    - { statadd: History, value: { abilmod: Intelligence } }
+    - { statadd: History, value: { statref: HALF-LEVEL } }
+    - { statadd: History, value: { statref: History Trained } }
+    - { statadd: Insight, value: { abilmod: Wisdom } }
+    - { statadd: Insight, value: { statref: HALF-LEVEL } }
+    - { statadd: Insight, value: { statref: Insight Trained } }
+    - { statadd: Intimidate, value: { abilmod: Charisma } }
+    - { statadd: Intimidate, value: { statref: HALF-LEVEL } }
+    - { statadd: Intimidate, value: { statref: Intimidate Trained } }
+    - { statadd: Nature, value: { abilmod: Wisdom } }
+    - { statadd: Nature, value: { statref: HALF-LEVEL } }
+    - { statadd: Nature, value: { statref: Nature Trained } }
+    - { statadd: Perception, value: { abilmod: Wisdom } }
+    - { statadd: Perception, value: { statref: HALF-LEVEL } }
+    - { statadd: Perception, value: { statref: Perception Trained } }
+    - { statadd: Religion, value: { abilmod: Intelligence } }
+    - { statadd: Religion, value: { statref: HALF-LEVEL } }
+    - { statadd: Religion, value: { statref: Religion Trained } }
+    - { statadd: Sleight of Hand, value: { abilmod: Dexterity } }
+    - { statadd: Sleight of Hand, value: { statref: HALF-LEVEL } }
+    - { statadd: Sleight of Hand, value: { statref: Sleight of Hand Trained } }
+    - { statadd: Stealth, value: { abilmod: Dexterity } }
+    - { statadd: Stealth, value: { statref: HALF-LEVEL } }
+    - { statadd: Stealth, value: { statref: Stealth Trained } }
+    - { statadd: Streetsmarts, value: { abilmod: Charisma } }
+    - { statadd: Streetsmarts, value: { statref: HALF-LEVEL } }
+    - { statadd: Streetsmarts, value: { statref: Streetsmarts Trained } }
 
 # Higher-level bootstraps. Each is added cumulatively (the engine processes
 # ID_INTERNAL_LEVEL_1..N), so they apply *increments*: Level rises by 1 each

@@ -1,0 +1,178 @@
+# Commander — Martial Leader (Orcus Classes and Powers). Level-1+ build.
+# HP 12 + Con at level 1, +5/level (encoded 7 + Con + 5 x Level). "Recoveries"
+# maps to Healing Surges. Class disciplines: Angel's Trumpet, Golden Lion.
+
+- id: ORCUS_CLASS_COMMANDER
+  name: Commander
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Leader, Martial]
+  fields:
+    Role: Leader
+    Tradition: Martial
+    "Key Ability": Charisma
+    "Class Disciplines": "Angel's Trumpet, Golden Lion"
+    "Armor Proficiencies": "Cloth, leather, hide, chainmail, scale; light shield"
+    "Weapon Proficiencies": "Simple melee, martial melee; simple ranged"
+    "Focus Proficiencies": "Martial focus"
+    "Class Skills": "Athletics, Diplomacy, Endure, Heal, History, Intimidate, Religion"
+    Flavor: "Battles are won by those who can make others fight as one."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_COMMANDER
+      type: Grants
+    # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
+    - statadd: Hit Points
+      value: 7
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 5 }
+    # Recoveries per long rest: 7 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 7
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    - statadd: Fortitude Defense
+      value: +2
+      bonusType: Class
+    # Trained in 4 skills from the Commander class skill list.
+    - select:
+        type: Skill Training
+        number: 4
+        category: ORCUS_COMMANDER_SKILLS
+        name: Commander Trained Skills
+    # Choose a talent (sets your secondary ability) and an armament.
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_COMMANDER_TALENT
+        name: Commander Talent
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_COMMANDER_ARMAMENT
+        name: Commander Armament
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,at-will,1"
+        name: Commander At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,1"
+        name: Commander Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,1"
+        name: Commander Daily Power
+    # Level 2: +1 utility. Level 3: +1 encounter.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,2"
+        name: Commander Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,3"
+        name: Commander Encounter Power 2
+        level: 3
+
+- id: ORCUS_INTERNAL_GRANTS_COMMANDER
+  name: Commander Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_COMMANDER }
+  rules:
+    - grant: ORCUS_FEATURE_LIFT_SPIRITS
+      type: Class Feature
+
+# --- Always-on feature ---------------------------------------------------------
+- id: ORCUS_FEATURE_LIFT_SPIRITS
+  name: Lift Spirits (Feature)
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You can use the lift spirits power two times each encounter. Level 16: three times."
+  rules:
+    - grant: ORCUS_POWER_LIFT_SPIRITS
+      type: Power
+
+- id: ORCUS_POWER_LIFT_SPIRITS
+  name: Lift Spirits
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Healing"
+    Target: "Near burst 5 (10 at level 11, 15 at level 21), one ally or yourself"
+    Effect: "The target spends a recovery and heals their recovery value plus your Charisma modifier."
+
+# --- Talents (chosen via the Commander Talent select) -------------------------
+- id: ORCUS_TALENT_STORMTROOPER_TACTICS
+  name: Stormtrooper Tactics
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_TALENT]
+  fields:
+    "Secondary Ability": Dexterity
+    Description: "Once per turn, an ally targeted by one of your powers can shift 1 as a free action."
+
+- id: ORCUS_TALENT_SIEGE_TACTICS
+  name: Siege Tactics
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_TALENT]
+  fields:
+    "Secondary Ability": Wisdom
+    Description: "Once per turn, an ally targeted by one of your powers gains temporary hit points equal to your Wisdom modifier."
+
+- id: ORCUS_TALENT_RESILIENCE_TACTICS
+  name: Resilience Tactics
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_TALENT]
+  fields:
+    "Secondary Ability": Intelligence
+    Description: "Once per turn, an ally targeted by one of your powers makes a saving throw against one save-ends condition."
+
+- id: ORCUS_TALENT_INSPIRING_TACTICS
+  name: Inspiring Tactics
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "Once per turn, an ally targeted by one of your powers gains a +2 power bonus to their next attack roll."
+
+# --- Armament (chosen via the Commander Armament select) ----------------------
+- id: ORCUS_ARMAMENT_RANGED
+  name: "Armament: Martial Ranged"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_ARMAMENT]
+  fields:
+    Description: "Proficiency with martial ranged weapons; you may use Strength instead of Dexterity for basic ranged attacks."
+
+- id: ORCUS_ARMAMENT_HEAVY
+  name: "Armament: Heavy Armor"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_ARMAMENT]
+  fields:
+    Description: "Proficiency with heavy shields and plate armor."
+
+- id: ORCUS_ARMAMENT_EXOTIC
+  name: "Armament: Exotic Weapons"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_COMMANDER_ARMAMENT]
+  fields:
+    Description: "Proficiency with two exotic melee weapons of your choice."

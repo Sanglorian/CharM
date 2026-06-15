@@ -5,17 +5,19 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — a level-1 Guardian vertical slice
+## Current scope — two playable classes (levels 1–3)
 
 | File | Contents |
 |---|---|
-| `_internal/level.yaml` | Creation bootstrap (`ID_INTERNAL_LEVEL_1`): seeds Race/Class slots + core stat formulas |
-| `reference.yaml` | Sizes, vision, the 17 Orcus skills, Guardian skill-training rows, ability-bonus rows |
+| `_internal/level.yaml` | Creation bootstrap (`ID_INTERNAL_LEVEL_1..3`): seeds Race/Class slots + core stat formulas (defenses, all 17 skills, half-level) |
+| `reference.yaml` | Sizes, vision, the 17 Orcus skills + their skill-training rows (tagged per class), ability-bonus rows |
 | `ancestry.yaml` | Humanity (base Race) + sample Cruxes (Hero, Sage) and Heritages (Aristocrat, Seafarer) |
-| `classes/guardian.yaml` | Guardian class, its Grants bundle, features, two talents, and feature powers |
-| `disciplines/art-of-war.yaml` | The Art of War discipline + its level 1–2 powers |
+| `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects |
+| `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects |
+| `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
+| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander) + level 1–2 powers |
 
-Compiles to **57 elements across 15 types**, no warnings.
+Compiles to **93 elements across 15 types**, no warnings.
 
 ## Build & playtest
 
@@ -28,16 +30,15 @@ dotnet run --project ../../src/CharM.Authoring.Cli -- build . -o /tmp/orcus.db
 dotnet run --project ../../src/CharM.Authoring.Cli -- playtest /tmp/orcus.db
 ```
 
-A Humanity Guardian builds end-to-end: every slot resolves (ability bonuses,
-crux, heritage, 3 trained skills, talent, 2 at-will / 1 encounter / 1 daily
-power) and stats compute correctly (HP 31, Fortitude 15, Will 12 with the
-Aristocrat +1, trained skills applied).
+Both a Guardian and a Commander build end-to-end at levels 1–3: every slot
+resolves and stats compute correctly, including per-level scaling (e.g. Guardian
+HP 31→43 from L1→L3, half-level applied to all defenses) and the default power
+progression (L2 adds a utility, L3 a second encounter). Try
+`--class Commander --level 3`.
 
 ## What's next
 
-The pattern is proven and playable. Remaining work: the other 8 classes, the
-rest of the disciplines, all cruxes/heritages, feats, kits, deities and
-equipment; the remaining 12 skills' computation rows; and the higher-level
-`ID_INTERNAL_LEVEL_<n>` bootstraps for levels >1 (HP/level scaling, etc.).
-A content tagging nicety: utility powers are currently eligible for attack
-selects — tighten the discipline category tags to separate them.
+Two of nine classes are in (a Defender and a Leader). Remaining work: the other
+seven classes and their disciplines, all 16 cruxes / 6 heritages, feats, kits,
+deities and equipment; higher-level bootstraps beyond level 3 (and the +P
+prestige / +E epic power tiers).
