@@ -1,7 +1,8 @@
-# The Art of War discipline (Guardian / Worships the God of War). Level 1-2
-# powers transcribed; higher-level powers (3-29) remain to be added. Powers are
-# tagged [disciplineId, frequency, level] (+ "utility" for utility powers) so a
-# class's power selects can filter them.
+# The Art of War discipline (Guardian / Worships the God of War). Powers carry a
+# real `Level` field (the engine's category level filter is `level <= N` against
+# that field) and are tagged [disciplineId, <frequency>] where frequency is one
+# of at-will / encounter / daily for ATTACK powers, or `utility` for utility
+# powers — so attack selects never pull in utilities. Levels 1-3 transcribed.
 
 - id: ORCUS_DISCIPLINE_ART_OF_WAR
   name: Art of War
@@ -18,8 +19,9 @@
   name: Passing Kill
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, "1"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will]
   fields:
+    Level: "1"
     "Power Usage": At-Will
     "Power Type": Attack
     "Action Type": Swift Action
@@ -34,8 +36,9 @@
   name: Swift Strike
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, "1"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will]
   fields:
+    Level: "1"
     "Power Usage": At-Will
     "Power Type": Attack
     "Action Type": Standard Action
@@ -45,13 +48,14 @@
     Hit: "Dexterity (ranged) or Strength (melee) modifier damage, and the target is dazed until the start of your next turn."
     Flavor: "You find a split-second opening and deliver the attack, hoping to hold the enemy back."
 
-# --- Encounter attack power (level 1) -----------------------------------------
+# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_IN_THEIR_FACE
   name: In Their Face
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, "1"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter]
   fields:
+    Level: "1"
     "Power Usage": Encounter
     "Power Type": Attack
     "Action Type": Standard Action
@@ -61,17 +65,34 @@
     Hit: "2dW + Dexterity (ranged) or Strength (melee) modifier damage and the target grants combat advantage until the end of your next turn."
     Flavor: "Your darting attack puts your enemy off guard."
 
+- id: ORCUS_POWER_FASTER_THAN_THE_HAMMER
+  name: Faster Than The Hammer
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, the triggering creature"
+    Trigger: "A creature makes an attack against you."
+    Effect: "Make a basic attack against the target. The target suffers a -4 penalty to the triggering attack roll."
+    Flavor: "You hear your enemy's muscles twitch."
+
 # --- Daily attack power (level 1) ---------------------------------------------
 - id: ORCUS_POWER_THE_FINISHER
   name: The Finisher
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, "1"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily]
   fields:
+    Level: "1"
     "Power Usage": Daily
     "Power Type": Attack
-    "Action Type": Standard Action
     Keywords: "Consistent, Martial, Weapon"
+    "Action Type": Standard Action
     Target: "Melee or Ranged weapon, one creature"
     Attack: "Dexterity (ranged) or Strength (melee) vs AC"
     Hit: "3dW + Dexterity (ranged) or Strength (melee) modifier damage."
@@ -82,8 +103,9 @@
   name: Heron Defense
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, utility, "2"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
+    Level: "2"
     "Power Usage": At-Will
     "Power Type": Utility
     "Action Type": Move Action
@@ -96,8 +118,9 @@
   name: Counter-Surge
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, utility, "2"]
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
+    Level: "2"
     "Power Usage": Daily
     "Power Type": Utility
     "Action Type": Reaction Action

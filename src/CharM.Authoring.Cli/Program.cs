@@ -92,12 +92,14 @@ static int Lint(string[] args)
 static int Playtest(string[] args)
 {
     string? dbPath = null, race = null, cls = null;
+    int level = 1;
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
         {
             case "--race": race = args[++i]; break;
             case "--class": cls = args[++i]; break;
+            case "--level": level = int.Parse(args[++i]); break;
             default: dbPath ??= args[i]; break;
         }
     }
@@ -113,7 +115,7 @@ static int Playtest(string[] args)
         db.FindByNameAndType,
         db.FindByType,
         db.FindByTypeAndSource,
-        level: 1,
+        level: level,
         autoFillSelectDefaults: false);
 
     // A plausible Strength-based defender array.
@@ -131,7 +133,7 @@ static int Playtest(string[] args)
     var clsEl = db.FindByNameAndType(cls, "Class");
     if (raceEl is null) return Fail($"race '{race}' not found in database.");
     if (clsEl is null) return Fail($"class '{cls}' not found in database.");
-    Console.WriteLine($"Building: {race} {cls} (Str 16, Con 14, Dex 13, Int 10, Wis 12, Cha 8)\n");
+    Console.WriteLine($"Building: level {level} {race} {cls} (Str 16, Con 14, Dex 13, Int 10, Wis 12, Cha 8)\n");
     Console.WriteLine($"  pending after scores: {Describe(session.GetAllPendingChoices())}");
     bool rOk = session.TryMakeChoice(raceEl);
     Console.WriteLine($"  TryMakeChoice(race={race}) -> {rOk}; pending: {Describe(session.GetAllPendingChoices())}");

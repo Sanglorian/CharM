@@ -20,11 +20,14 @@
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_GUARDIAN
       type: Grants
-    # Hit Points at 1st level: 15 plus your Constitution score.
+    # Hit Points: 15 + Con score at level 1, +6 per level thereafter.
+    # Encoded as 9 + Con score + 6 x Level (the Level stat = character level).
     - statadd: Hit Points
-      value: 15
+      value: 9
     - statadd: Hit Points
       value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 6 }
     # Recoveries per long rest: 9 plus your Constitution modifier.
     - statadd: Healing Surges
       value: 9
@@ -62,6 +65,19 @@
         number: 1
         category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,1"
         name: Guardian Daily Power
+    # Default progression: +1 utility power at level 2, +1 encounter at level 3.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,2"
+        name: Guardian Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,3"
+        name: Guardian Encounter Power 2
+        level: 3
 
 - id: ORCUS_INTERNAL_GRANTS_GUARDIAN
   name: Guardian Grants

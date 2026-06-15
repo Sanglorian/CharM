@@ -115,3 +115,23 @@
       value: { statref: HALF-LEVEL }
     - statadd: Streetsmarts
       value: { statref: Streetsmarts Trained }
+
+# Higher-level bootstraps. Each is added cumulatively (the engine processes
+# ID_INTERNAL_LEVEL_1..N), so they apply *increments*: Level rises by 1 each
+# level, and HALF-LEVEL rises by floor(n/2) - floor((n-1)/2) — i.e. +1 on even
+# levels, +0 on odd. (Per-level HP comes from the class, scaled by the Level stat.)
+- id: ID_INTERNAL_LEVEL_2
+  name: Level 2
+  type: Level
+  rules:
+    - statadd: Level
+      value: 1
+    - statadd: HALF-LEVEL
+      value: 1
+
+- id: ID_INTERNAL_LEVEL_3
+  name: Level 3
+  type: Level
+  rules:
+    - statadd: Level
+      value: 1
