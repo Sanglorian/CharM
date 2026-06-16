@@ -1,0 +1,180 @@
+# Feats (Orcus Player Options). Characters gain a feat at level 1 and at every
+# even level thereafter (16 by level 30); the slots are opened by ID_INTERNAL_LEVEL_1
+# with per-slot `level:` gates. The engine consumes a chosen element globally, so a
+# build needs at least as many distinct feats as slots — this is a representative
+# sample of the heroic-tier (no level prerequisite) general feats, which is enough
+# to fill all 16. Defense/skill/HP feats apply their bonus as a `Feat` bonus
+# (same-named feat bonuses do not stack, matching the rules); their 11th/21st-level
+# scaling and the purely-narrative feats are recorded in the Benefit text.
+# Paragon/epic feats (with level prerequisites) and "take multiple times" feats are
+# left for a later pass.
+
+- id: ORCUS_FEAT_ALERTNESS
+  name: Alertness
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +2 bonus on all Perception checks and you cannot be caught surprised."
+  rules:
+    - { statadd: Perception, value: 2, bonusType: Feat }
+
+- id: ORCUS_FEAT_ARMOR_FOCUS
+  name: Armor Focus
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Armor does not inflict an armor check penalty on you."
+
+- id: ORCUS_FEAT_AVOIDANCE
+  name: Avoidance
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Opportunity attacks suffer a -2 penalty on attack rolls against you."
+
+- id: ORCUS_FEAT_BLIND_FIGHTING
+  name: Blind-Fighting
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Ignore attack penalties because your target is in concealment or total concealment."
+
+- id: ORCUS_FEAT_CROSSFIRE
+  name: Crossfire
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "While you wield a ranged weapon, you can flank from two squares away from an enemy, as long as you would be flanking the target if you moved into the nearest adjacent square."
+
+- id: ORCUS_FEAT_DEFLECTING_SHOT
+  name: Deflecting Shot
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Ignore attack penalties because your target is in cover."
+
+- id: ORCUS_FEAT_EASY_TARGET
+  name: Easy Target
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "When targeting a Large or larger creature with an arc, burst, or wall attack, you gain a +2 bonus to damage rolls against the target for every square beyond the first that it occupies."
+
+- id: ORCUS_FEAT_ENERGY_RESISTANCE
+  name: Energy Resistance
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Choose acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant or thunder. You gain resistance to that damage type equal to your level."
+
+- id: ORCUS_FEAT_FROM_THE_DECK
+  name: From the Deck
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You do not suffer the penalty to attack rolls for being prone."
+
+- id: ORCUS_FEAT_GREAT_FORTITUDE
+  name: Great Fortitude
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +2 feat bonus to Fortitude defense. Level 11: +3. Level 21: +4."
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Feat }
+
+- id: ORCUS_FEAT_HUNKER_DOWN
+  name: Hunker Down
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "As a swift action, you can spend a recovery to gain resistance to all damage 5 until the end of your next turn."
+
+- id: ORCUS_FEAT_IMPROVED_INITIATIVE
+  name: Improved Initiative
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +4 feat bonus on initiative checks."
+
+- id: ORCUS_FEAT_IRON_WILL
+  name: Iron Will
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +2 feat bonus to Will defense. Level 11: +3. Level 21: +4."
+  rules:
+    - { statadd: Will Defense, value: 2, bonusType: Feat }
+
+- id: ORCUS_FEAT_KEEN_DEFENSES
+  name: Keen Defenses
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +1 feat bonus to Fortitude, Reflex and Will defenses. Level 11: +2. Level 21: +3."
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Feat }
+    - { statadd: Reflex Defense, value: 1, bonusType: Feat }
+    - { statadd: Will Defense, value: 1, bonusType: Feat }
+
+- id: ORCUS_FEAT_LIGHTNING_REFLEXES
+  name: Lightning Reflexes
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +2 feat bonus to Reflex defense. Level 11: +3. Level 21: +4."
+  rules:
+    - { statadd: Reflex Defense, value: 2, bonusType: Feat }
+
+- id: ORCUS_FEAT_MELEE_FINESSE
+  name: Melee Finesse
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Choose an ability. Use that ability modifier for your basic melee attack rolls instead of Strength, and add half that modifier to damage in lieu of your Strength modifier if it is higher."
+
+- id: ORCUS_FEAT_RESILIENCE
+  name: Resilience
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "Your recovery value increases by +3. Level 11: +4. Level 21: +5."
+
+- id: ORCUS_FEAT_SHARP_OPPORTUNIST
+  name: Sharp Opportunist
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +2 bonus on attack rolls when making opportunity attacks."
+
+- id: ORCUS_FEAT_TALENTED_HEALER
+  name: Talented Healer
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You can provide first aid as a swift action. You also get a +2 bonus on all Heal checks."
+  rules:
+    - { statadd: Heal, value: 2, bonusType: Feat }
+
+- id: ORCUS_FEAT_TOUGHNESS
+  name: Toughness
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You gain additional hit points equal to your level."
+  rules:
+    - { statadd: Hit Points, value: { statref: Level }, bonusType: Feat }
+
+- id: ORCUS_FEAT_TOUCH_OF_GRACE
+  name: Touch of Grace
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You get a +1 bonus on all saving throws. Level 11: +2. Level 21: +3."
+
+- id: ORCUS_FEAT_TWILIGHT_SIGHT
+  name: Twilight Sight
+  type: Feat
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Benefit: "You gain low-light vision."

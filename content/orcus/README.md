@@ -13,17 +13,18 @@ for the format.
 | `reference.yaml` | Sizes, vision, the 17 Orcus skills + their skill-training rows (tagged per class), racial ability-bonus rows, and per-level ability-increase pools |
 | `ancestry.yaml` | Humanity (base Race) + sample Cruxes (Hero, Sage) and Heritages (Aristocrat, Seafarer) |
 | `ancestries-species.yaml` | 14 species ancestries (Apefolk, Automaton, Azer, Catfolk, Deepfolk, Dromite, Frogfolk, Gnoll, Half-Giant, Hobgoblin, Mephit, Minotaur, Shadow Elf, Vishya) — each selected in the Race slot *instead* of a crux + heritage |
+| `feats.yaml` | A sample of 22 heroic-tier general feats (the pool for the level 1 + even-level feat slots) |
 | `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects to 30 |
 | `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects to 30 |
 | `classes/priest.yaml` | Priest (Leader, Wisdom): talents + the key-ability substitution override (shares Angel's Trumpet with the Commander) |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
 | `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
-| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) + powers across the level range |
+| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) — **all** powers, levels 1–29 |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 
-Compiles to **290 elements across 20 types**, no warnings.
+Compiles to **325 elements across 21 types**, no warnings.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
@@ -41,10 +42,14 @@ the **prestige path** (chosen at 11) grants 11th/16th features and powers at
 11/12/20; the **epic path** (chosen at 21) grants 21st/24th/30th features and a
 26th-level power. Later path benefits carry a `level:` gate, which the engine
 honours (future-level grants are deferred), so a level-11 character does not get
-its 16th/20th-level path benefits early. Feats (gained every even level) are not
-modelled yet — no feat content exists. Verified via `playtest`: Guardian,
-Commander and Priest all build end-to-end at level 30 (and at the 11/21 tier
-boundaries) with every slot filled.
+its 16th/20th-level path benefits early. Feats are gained at level 1 and every
+even level (16 by level 30); the slots live in `ID_INTERNAL_LEVEL_1` with per-slot
+`level:` gates and draw from `feats.yaml`. Defense/skill/HP feats apply a `Feat`
+bonus (which, being same-named, does not stack between feats — matching the
+rules); tier scaling at 11/21 and the narrative-only feats are kept in the Benefit
+text. Verified via `playtest`: Guardian, Commander and Priest all build end-to-end
+at level 30 (and at the 11/21 tier boundaries) with every slot — powers, ability
+increases, paths and all 16 feats — filled.
 
 ### Species ancestries
 A species is an alternative to Humanity's crux + heritage: it is chosen in the
@@ -101,9 +106,10 @@ power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
 
 Three of nine classes are in (a Defender and two Leaders), playable across the
 full 1–30 range, with both Guardian disciplines (Art of War, Juggernautical) and
-both Commander disciplines (Angel's Trumpet, Golden Lion), 14 species ancestries,
-a sample of prestige paths and all six epic paths. Remaining work: the other six
-classes and their disciplines, the rest of the species roster and prestige paths,
-all 16 cruxes / 6 heritages, feats, kits, deities and equipment; power
-replacements (the optional 13/15/17/… swaps) and higher discipline power levels
-for richer high-level choice.
+both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
+in full to level 29), 14 species ancestries, a sample of feats, a sample of
+prestige paths and all six epic paths. Remaining work: the other six classes and
+their disciplines, full power lists for the remaining disciplines, the rest of the
+species roster, prestige paths and feats (including paragon/epic-tier and
+multi-take feats), all 16 cruxes / 6 heritages, kits, deities and equipment; and
+the optional power-replacement swaps at levels 13/15/17/….

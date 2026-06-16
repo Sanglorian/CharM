@@ -27,6 +27,26 @@
         type: Class
         number: 1
         name: Class
+    # Feats: one at level 1, then one at every even level (16 by level 30). The
+    # slots live here with per-slot `level:` gates rather than in each LEVEL_n
+    # element. Each is a single pick from the Feat pool (the engine consumes a
+    # chosen feat globally, so every slot gets a distinct feat).
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 1)" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 10)", level: 10 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 12)", level: 12 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 14)", level: 14 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 16)", level: 16 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 18)", level: 18 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 20)", level: 20 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 22)", level: 22 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 24)", level: 24 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 26)", level: 26 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 28)", level: 28 } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 30)", level: 30 } }
 
 - id: ID_INTERNAL_LEVEL1RULES
   name: Level 1 Rules

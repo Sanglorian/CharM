@@ -1,7 +1,10 @@
 # The Golden Lion discipline (Commander). An inspiring front-line leader who
 # multiplies the value of fighting alongside allies. Same tagging contract as the
 # other disciplines: [disciplineId, <frequency>] (+ `ability-swap` on powers that
-# make the character's own attack) with a real Level field. Levels 1-3 transcribed.
+# make the character's own attack) with a real Level field. This discipline is
+# transcribed in FULL: every published power, levels 1-29. (The class power
+# selects only reach some of these; the higher-level encounter/daily attacks are
+# the pool for the optional power-replacement swaps at levels 13/15/17/...)
 
 - id: ORCUS_DISCIPLINE_GOLDEN_LION
   name: Golden Lion
@@ -200,3 +203,217 @@
     Target: "Near burst 5, one ally that has not yet acted this turn"
     Effect: "The ally moves up in the initiative order to act just after your turn ends."
     Flavor: "Through your knowledge of tactics, you direct an ally to greater effectiveness."
+
+# --- Paragon & epic tier powers (full transcription, levels 13-29) ------------
+- id: ORCUS_POWER_WARNING_ROAR
+  name: Warning Roar
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Target: "Near burst 5, one ally"
+    Trigger: "An ally in range is hit by an attack."
+    Effect: "The attacker must reroll their attack and use the second result."
+    Flavor: "Witnessing a clear and present danger to an ally, you shout out a well-timed warning."
+
+- id: ORCUS_POWER_GOLDEN_LION_CHARGER
+  name: Golden Lion Charger
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: "Near burst 5, all allies and yourself"
+    Effect: "While you are in this stance, allies in range (including yourself) add your Charisma modifier to damage when attacking during the Charge action."
+    Flavor: "Sometimes a powerful opening charge can be the edge the warrior needs."
+
+- id: ORCUS_POWER_CHARGE_OF_THE_BATTLE_CAT
+  name: Charge of the Battle Cat
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage and the target falls prone."
+    Special: "Before your attack, move up to your speed."
+    Flavor: "Like the charge of the mighty lion, you crash into your chosen foe and knock them to the ground."
+
+- id: ORCUS_POWER_GOLDEN_SWIPE
+  name: Golden Swipe
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage."
+    Effect: "The target is pushed 6 squares. Each ally in reach of the target at some point during its move may make a melee basic attack against it."
+    Flavor: "With a series of furious blows, you batter your foe into the waiting blades of your allies."
+
+- id: ORCUS_POWER_HARRY_THE_PREY
+  name: Harry the Prey
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage."
+    Miss: "Allies within 5 squares of the target can make a basic melee attack against a target of their choice, or a basic ranged attack against the target of your attack."
+    Flavor: "Through coordinated tactics, the comrades at your side may act as one."
+
+- id: ORCUS_POWER_GUARD_THE_PRIDE
+  name: Guard the Pride
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 5, all allies and yourself"
+    Effect: "You and all allies receive a +10 power bonus to attack rolls. Each time an attack misses one or more of you, the bonus decreases by 2 until it reaches +0, at which point this power ends."
+    Flavor: "You trust your heavenly sense of the battle to see where the next attack is coming."
+
+- id: ORCUS_POWER_ROAR_OF_BATTLE
+  name: Roar of Battle
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage and the target gets vulnerability to all damage 5 until the end of your next turn."
+    Flavor: "You deliver a telling blow, opening vital places for your allies to gain purchase."
+
+- id: ORCUS_POWER_STRATEGIC_BLOW
+  name: Strategic Blow
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage."
+    Effect: "Allies within 5 of the target can immediately shift 2 as a free action."
+    Flavor: "With a tremendous strike, you confuse the enemy and create an opening for an ally to reposition."
+
+- id: ORCUS_POWER_GOLDEN_GENERALS_STANCE
+  name: Golden General's Stance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: Self
+    Effect: "Allies within 5 receive a +2 power bonus on attack rolls. If they score a critical hit, they add your Charisma modifier to the damage."
+    Flavor: "A beacon of victory upon the field, you personify glory in combat."
+
+- id: ORCUS_POWER_LORD_OF_THE_PRIDELANDS
+  name: Lord of the Pridelands
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: Self
+    Effect: "While you are in this stance, allies within 10 can use your Strength attack bonus instead of their own for any melee attacks that they make. You can end the stance with a swift action."
+    Flavor: "Proving you are the undisputed master of war, you call for crushing victory through overwhelming numbers."
+
+- id: ORCUS_POWER_WAR_LIONS_CHARGE
+  name: War Lion's Charge
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage and the target is stunned until the end of your next turn."
+    Effect: "Half damage and the target is dazed until the end of your next turn."
+    Flavor: "With the ferocity of an angered lion, you race across the battlefield to bear down on a single enemy."
+
+- id: ORCUS_POWER_LION_LORDS_AGONY
+  name: Lion Lord's Agony
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 1, all enemies"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage and push the target 2."
+    Flavor: "With a fury born of desperation, you pour your pain into your swings."
+
+- id: ORCUS_POWER_TRIUMPHANT_LIONS_LEADERSHIP
+  name: Triumphant Lion's Leadership
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: "Martial, Weapon, Healing"
+    Target: "Melee weapon, one target"
+    Trigger: "Your ally is the target of an attack."
+    Attack: "Strength vs AC"
+    Hit: "7dW + Strength modifier damage, and the attack that triggered this power misses."
+    Miss: "Half damage. If the triggering attack hits, it does half damage."
+    Effect: "The triggering ally can spend a recovery to heal their recovery value."
+    Special: "Before your attack, shift up to twice your speed."
+    Flavor: "The power and majesty of the lion lords lives within you - your victories are a victory for your allies."
