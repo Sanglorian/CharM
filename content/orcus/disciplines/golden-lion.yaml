@@ -115,3 +115,88 @@
     Target: "Melee touch, one ally"
     Effect: "The target can take a move action right away."
     Flavor: "With a watchful eye on the flow of combat, you know when to spur an ally into a better position."
+
+# --- Higher-level powers (to populate the level 4-30 class selects) ------------
+- id: ORCUS_POWER_DEFENDING_THE_PRIDE
+  name: Defending the Pride
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "2dW + Strength modifier damage."
+    Effect: "Allies within 5 receive a +2 power bonus to AC until the end of the encounter."
+    Flavor: "With a cry to defend themselves, your inspirational words aid your allies in your defense."
+
+- id: ORCUS_POWER_CIRCLING_THE_PREY
+  name: Circling the Prey
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 5, all allies and yourself"
+    Effect: "You and all allies in range shift 1."
+    Flavor: "With practiced precision and a quick shout, you and your allies move in unison."
+
+- id: ORCUS_POWER_PYRITE_SWIPE
+  name: Pyrite Swipe
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: >
+      1dW + Strength modifier damage and push the target 2. Each ally in reach of
+      the target at some point during its move may make a melee basic attack
+      against it. Boost (Level 17): 2dW + Strength modifier damage, and shunt the
+      target 4 squares.
+    Flavor: "With a powerful strike, you push your foe into the waiting blades of your allies."
+
+- id: ORCUS_POWER_KILL_THE_WOUNDED
+  name: Kill the Wounded
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC"
+    Hit: "2dW + Strength modifier damage."
+    Effect: "The target gets vulnerability to all damage 5 until the end of your next turn."
+    Flavor: "You make a ferocious assault, opening the enemy's defenses to the attacks of your allies."
+
+- id: ORCUS_POWER_DIRECT_THE_PRIDE
+  name: Direct the Pride
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 5, one ally that has not yet acted this turn"
+    Effect: "The ally moves up in the initiative order to act just after your turn ends."
+    Flavor: "Through your knowledge of tactics, you direct an ally to greater effectiveness."

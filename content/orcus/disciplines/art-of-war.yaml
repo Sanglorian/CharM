@@ -129,3 +129,69 @@
     Trigger: "You take damage from a melee or ranged attack."
     Effect: "You gain temporary hit points equal to the damage dealt (to a maximum of your recovery value)."
     Flavor: "An opponent strikes you with an attack. You take the impact and channel it into strength."
+
+# --- Higher-level powers (to populate the level 4-30 class selects) ------------
+- id: ORCUS_POWER_ALL_OR_NOTHING
+  name: All or Nothing
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You hit an enemy."
+    Effect: >
+      The target takes 2dW extra damage from the triggering attack and is knocked
+      prone. Boost (Level 15): the target takes 3dW extra damage and is knocked prone.
+    Flavor: "You strike so fast, both attacks are literally too close to distinguish."
+
+- id: ORCUS_POWER_FLOW_OR_CRASH
+  name: Flow or Crash
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You gain a move action."
+    Flavor: "Become what you need to survive. Adapt, flow, slide, and prove yourself."
+
+- id: ORCUS_POWER_FALSE_STRIKE
+  name: False Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Melee weapon, one creature"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage."
+    Miss: "Shift to any square adjacent to the target and repeat the attack. Do not repeat if you miss with the second attack."
+    Flavor: "Your first strike was intentionally lackluster, to trick your opponent into a mistake."
+
+- id: ORCUS_POWER_IDLE_HANDS
+  name: Idle Hands
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You gain an additional standard action on your next turn."
+    Flavor: "Your limbs seemingly act on their own as you concentrate on other matters."

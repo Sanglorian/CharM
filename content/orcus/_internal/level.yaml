@@ -139,20 +139,242 @@
 
 # Higher-level bootstraps. Each is added cumulatively (the engine processes
 # ID_INTERNAL_LEVEL_1..N), so they apply *increments*: Level rises by 1 each
-# level, and HALF-LEVEL rises by floor(n/2) - floor((n-1)/2) — i.e. +1 on even
-# levels, +0 on odd. (Per-level HP comes from the class, scaled by the Level stat.)
+# level, and HALF-LEVEL (= Orcus's "Level Bonus", floor(level/2)) rises by +1 on
+# even levels, +0 on odd. (Per-level HP comes from the class, scaled by the Level
+# stat.) Per the Levels and Their Benefits table, characters also get:
+#   - "Increase two by +1" ability bumps at 4, 8, 14, 18, 24 and 28 (a select);
+#   - "Increase all by +1" at 11 and 21 (a granted bundle);
+#   - a prestige path at 11 and an epic path at 21 (a select).
+# Feats (gained at every even level) are not modelled yet: no feat content exists.
 - id: ID_INTERNAL_LEVEL_2
   name: Level 2
   type: Level
   rules:
-    - statadd: Level
-      value: 1
-    - statadd: HALF-LEVEL
-      value: 1
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
 
 - id: ID_INTERNAL_LEVEL_3
   name: Level 3
   type: Level
   rules:
-    - statadd: Level
-      value: 1
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_4
+  name: Level 4
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_4
+        name: Ability Increase (Lv 4)
+
+- id: ID_INTERNAL_LEVEL_5
+  name: Level 5
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_6
+  name: Level 6
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_7
+  name: Level 7
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_8
+  name: Level 8
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_8
+        name: Ability Increase (Lv 8)
+
+- id: ID_INTERNAL_LEVEL_9
+  name: Level 9
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_10
+  name: Level 10
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+# Prestige tier begins. +1 to all abilities, and the prestige-path choice.
+- id: ID_INTERNAL_LEVEL_11
+  name: Level 11
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - grant: ORCUS_ABILITY_ALL_PLUS1_PARAGON
+      type: Grants
+    - select:
+        type: Prestige Path
+        number: 1
+        name: Prestige Path
+
+- id: ID_INTERNAL_LEVEL_12
+  name: Level 12
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_13
+  name: Level 13
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_14
+  name: Level 14
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_14
+        name: Ability Increase (Lv 14)
+
+- id: ID_INTERNAL_LEVEL_15
+  name: Level 15
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_16
+  name: Level 16
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_17
+  name: Level 17
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_18
+  name: Level 18
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_18
+        name: Ability Increase (Lv 18)
+
+- id: ID_INTERNAL_LEVEL_19
+  name: Level 19
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_20
+  name: Level 20
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+# Epic tier begins. +1 to all abilities, and the epic-path choice.
+- id: ID_INTERNAL_LEVEL_21
+  name: Level 21
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - grant: ORCUS_ABILITY_ALL_PLUS1_EPIC
+      type: Grants
+    - select:
+        type: Epic Path
+        number: 1
+        name: Epic Path
+
+- id: ID_INTERNAL_LEVEL_22
+  name: Level 22
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_23
+  name: Level 23
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_24
+  name: Level 24
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_24
+        name: Ability Increase (Lv 24)
+
+- id: ID_INTERNAL_LEVEL_25
+  name: Level 25
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_26
+  name: Level 26
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_27
+  name: Level 27
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_28
+  name: Level 28
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }
+    - select:
+        type: Level Ability Bonus
+        number: 2
+        category: ORCUS_LVLUP_28
+        name: Ability Increase (Lv 28)
+
+- id: ID_INTERNAL_LEVEL_29
+  name: Level 29
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+
+- id: ID_INTERNAL_LEVEL_30
+  name: Level 30
+  type: Level
+  rules:
+    - { statadd: Level, value: 1 }
+    - { statadd: HALF-LEVEL, value: 1 }

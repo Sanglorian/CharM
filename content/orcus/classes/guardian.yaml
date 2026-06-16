@@ -78,6 +78,51 @@
         category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,3"
         name: Guardian Encounter Power 2
         level: 3
+    # Default progression to level 30 (class powers only; +P/+E come from the
+    # prestige/epic paths). Daily 2@5, utility 2@6, encounter 3@7, daily 3@9,
+    # utility 3@10, utility 4@16, utility 5@22.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,5"
+        name: Guardian Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,6"
+        name: Guardian Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,7"
+        name: Guardian Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,9"
+        name: Guardian Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,10"
+        name: Guardian Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,16"
+        name: Guardian Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,22"
+        name: Guardian Utility Power 5
+        level: 22
 
 - id: ORCUS_INTERNAL_GRANTS_GUARDIAN
   name: Guardian Grants

@@ -81,6 +81,49 @@
         category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,3"
         name: Commander Encounter Power 2
         level: 3
+    # Default progression to level 30 (class powers only; +P/+E come from paths).
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,5"
+        name: Commander Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,6"
+        name: Commander Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,7"
+        name: Commander Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,9"
+        name: Commander Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,10"
+        name: Commander Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,16"
+        name: Commander Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,22"
+        name: Commander Utility Power 5
+        level: 22
 
 - id: ORCUS_INTERNAL_GRANTS_COMMANDER
   name: Commander Grants

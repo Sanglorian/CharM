@@ -139,3 +139,53 @@
     Effect: "You gain temporary hit points equal to twice your Strength modifier."
     Special: "Use a standard action and a move action instead of a swift action with this power to gain temporary hit points equal to twice your Constitution and Strength modifiers."
     Flavor: "You lift up a few inches and widen your stance, finding a newly found surge of adrenaline."
+
+# --- Higher-level powers (to populate the level 4-30 class selects) ------------
+- id: ORCUS_POWER_WADE_IN
+  name: Wade In
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one creature"
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage and the target is dazed until the end of your next turn."
+    Effect: "You gain resistance to all damage 5 until the end of your next turn."
+    Flavor: "A powerful blow tells your foes to bring it on. You are ready."
+
+- id: ORCUS_POWER_ONCE_MORE_INTO_THE_BREACH
+  name: Once More Into the Breach
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Healing, Martial"
+    Target: Self
+    Requirements: "You must be staggered."
+    Effect: "You regain hit points equal to twice your Strength modifier plus twice your Constitution modifier."
+    Flavor: "Despite injuries and your brain telling you you're done, your body refuses to fall."
+
+- id: ORCUS_POWER_THE_RUNAWAY_BOULDER
+  name: The Runaway Boulder
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Shift your speed +2. Until the end of your next turn, you gain resistance 10 to all damage."
+    Special: "If you complete a streak, you recover the use of this power."
+    Flavor: "You barrel through terrain and people and anchor yourself further up the line."

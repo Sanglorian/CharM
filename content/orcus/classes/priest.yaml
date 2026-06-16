@@ -82,6 +82,49 @@
         category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,encounter,3"
         name: Priest Encounter Power 2
         level: 3
+    # Default progression to level 30 (class powers only; +P/+E come from paths).
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,daily,5"
+        name: Priest Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,utility,6"
+        name: Priest Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,encounter,7"
+        name: Priest Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,daily,9"
+        name: Priest Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,utility,10"
+        name: Priest Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,utility,16"
+        name: Priest Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,utility,22"
+        name: Priest Utility Power 5
+        level: 22
 
 # --- Talents (the four "Worships the God of ..." options) ---------------------
 - id: ORCUS_TALENT_GOD_OF_LIFE

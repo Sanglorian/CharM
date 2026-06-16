@@ -75,6 +75,76 @@
       value: 2
       bonusType: Ancestry
 
+# --- Level ability increases --------------------------------------------------
+# "Increase two by +1" at levels 4/8/14/18/24/28 is a number:2 select over a
+# fresh six-row pool per level (the engine consumes a chosen element globally, so
+# each level-up needs its own rows). "Increase all by +1" at 11/21 is a granted
+# bundle (see ORCUS_ABILITY_ALL_PLUS1_*).
+# level 4
+- { id: ORCUS_LVL4_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL4_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL4_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL4_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL4_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL4_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_4], rules: [{ statadd: Charisma, value: 1 }] }
+# level 8
+- { id: ORCUS_LVL8_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL8_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL8_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL8_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL8_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL8_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_8], rules: [{ statadd: Charisma, value: 1 }] }
+# level 14
+- { id: ORCUS_LVL14_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL14_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL14_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL14_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL14_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL14_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_14], rules: [{ statadd: Charisma, value: 1 }] }
+# level 18
+- { id: ORCUS_LVL18_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL18_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL18_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL18_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL18_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL18_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_18], rules: [{ statadd: Charisma, value: 1 }] }
+# level 24
+- { id: ORCUS_LVL24_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL24_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL24_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL24_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL24_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL24_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_24], rules: [{ statadd: Charisma, value: 1 }] }
+# level 28
+- { id: ORCUS_LVL28_STR, name: "+1 Strength", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Strength, value: 1 }] }
+- { id: ORCUS_LVL28_CON, name: "+1 Constitution", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Constitution, value: 1 }] }
+- { id: ORCUS_LVL28_DEX, name: "+1 Dexterity", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Dexterity, value: 1 }] }
+- { id: ORCUS_LVL28_INT, name: "+1 Intelligence", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Intelligence, value: 1 }] }
+- { id: ORCUS_LVL28_WIS, name: "+1 Wisdom", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Wisdom, value: 1 }] }
+- { id: ORCUS_LVL28_CHA, name: "+1 Charisma", type: Level Ability Bonus, categories: [ORCUS_LVLUP_28], rules: [{ statadd: Charisma, value: 1 }] }
+
+- id: ORCUS_ABILITY_ALL_PLUS1_PARAGON
+  name: Paragon Ability Boost (+1 all)
+  type: Grants
+  rules:
+    - { statadd: Strength, value: 1 }
+    - { statadd: Constitution, value: 1 }
+    - { statadd: Dexterity, value: 1 }
+    - { statadd: Intelligence, value: 1 }
+    - { statadd: Wisdom, value: 1 }
+    - { statadd: Charisma, value: 1 }
+
+- id: ORCUS_ABILITY_ALL_PLUS1_EPIC
+  name: Epic Ability Boost (+1 all)
+  type: Grants
+  rules:
+    - { statadd: Strength, value: 1 }
+    - { statadd: Constitution, value: 1 }
+    - { statadd: Dexterity, value: 1 }
+    - { statadd: Intelligence, value: 1 }
+    - { statadd: Wisdom, value: 1 }
+    - { statadd: Charisma, value: 1 }
+
 # --- Skills (reference rows with a Key Ability field) -------------------------
 - id: ORCUS_SKILL_ACROBATICS
   name: Acrobatics

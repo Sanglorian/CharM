@@ -5,23 +5,46 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — three playable classes (levels 1–3)
+## Current scope — three playable classes (levels 1–30)
 
 | File | Contents |
 |---|---|
-| `_internal/level.yaml` | Creation bootstrap (`ID_INTERNAL_LEVEL_1..3`): seeds Race/Class slots + core stat formulas (defenses, all 17 skills, half-level) |
-| `reference.yaml` | Sizes, vision, the 17 Orcus skills + their skill-training rows (tagged per class), ability-bonus rows |
+| `_internal/level.yaml` | Creation bootstrap (`ID_INTERNAL_LEVEL_1..30`): seeds Race/Class slots + core stat formulas; per-level increments (Level, Level Bonus); ability-score increases at 4/8/14/18/24/28 and +1-all at 11/21; prestige-path slot at 11, epic-path slot at 21 |
+| `reference.yaml` | Sizes, vision, the 17 Orcus skills + their skill-training rows (tagged per class), racial ability-bonus rows, and per-level ability-increase pools |
 | `ancestry.yaml` | Humanity (base Race) + sample Cruxes (Hero, Sage) and Heritages (Aristocrat, Seafarer) |
 | `ancestries-species.yaml` | 14 species ancestries (Apefolk, Automaton, Azer, Catfolk, Deepfolk, Dromite, Frogfolk, Gnoll, Half-Giant, Hobgoblin, Mephit, Minotaur, Shadow Elf, Vishya) — each selected in the Race slot *instead* of a crux + heritage |
-| `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects |
-| `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects |
+| `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects to 30 |
+| `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects to 30 |
 | `classes/priest.yaml` | Priest (Leader, Wisdom): talents + the key-ability substitution override (shares Angel's Trumpet with the Commander) |
-| `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
-| `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + level 1–3 powers |
-| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + level 1–2 powers |
-| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) + level 1–3 powers |
+| `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
+| `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
+| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
+| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) + powers across the level range |
+| `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
+| `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 
-Compiles to **156 elements across 17 types**, no warnings.
+Compiles to **290 elements across 20 types**, no warnings.
+
+### Levels 1–30, prestige & epic paths
+The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
+`Level` stat (so class HP/`6×Level`-style formulas scale) and, on even levels,
+the `HALF-LEVEL` stat (Orcus's *Level Bonus* = `floor(level/2)`, which feeds
+defenses and skills). Ability-score increases come from level-gated selects: a
+`number: 2` pick at 4/8/14/18/24/28 over a fresh six-row pool per level (the
+engine consumes a chosen element globally, so each level-up needs its own rows),
+plus a granted "+1 to all" bundle at 11 and 21.
+
+Each class's discipline power selects continue to 30 (encounter@7, daily@5/9,
+utility@6/10/16/22), each gated with `level:` and filtered by `…,<freq>,<max>`.
+The `+P`/`+E` powers in the progression table come from the paths, not the class:
+the **prestige path** (chosen at 11) grants 11th/16th features and powers at
+11/12/20; the **epic path** (chosen at 21) grants 21st/24th/30th features and a
+26th-level power. Later path benefits carry a `level:` gate, which the engine
+honours (future-level grants are deferred), so a level-11 character does not get
+its 16th/20th-level path benefits early. Feats (gained every even level) are not
+modelled yet — no feat content exists. Verified via `playtest`: Guardian,
+Commander and Priest all build end-to-end at level 30 (and at the 11/21 tier
+boundaries) with every slot filled.
 
 ### Species ancestries
 A species is an alternative to Humanity's crux + heritage: it is chosen in the
@@ -76,9 +99,11 @@ power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
 
 ## What's next
 
-Three of nine classes are in (a Defender and two Leaders), with both Guardian
-disciplines (Art of War, Juggernautical) and both Commander disciplines (Angel's
-Trumpet, Golden Lion) at levels 1–3, plus 14 species ancestries. Remaining work:
-the other six classes and their disciplines, the rest of the species roster, all
-16 cruxes / 6 heritages, feats, kits, deities and equipment; higher-level
-bootstraps beyond level 3 (and the +P prestige / +E epic power tiers).
+Three of nine classes are in (a Defender and two Leaders), playable across the
+full 1–30 range, with both Guardian disciplines (Art of War, Juggernautical) and
+both Commander disciplines (Angel's Trumpet, Golden Lion), 14 species ancestries,
+a sample of prestige paths and all six epic paths. Remaining work: the other six
+classes and their disciplines, the rest of the species roster and prestige paths,
+all 16 cruxes / 6 heritages, feats, kits, deities and equipment; power
+replacements (the optional 13/15/17/… swaps) and higher discipline power levels
+for richer high-level choice.

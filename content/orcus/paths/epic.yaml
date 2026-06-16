@@ -1,0 +1,276 @@
+# Epic paths (Orcus Classes and Powers). At level 21 every character chooses an
+# epic path, on top of their class and prestige path. It grants class features at
+# 21st, 24th and 30th level and a single power at 26th. Selected via the Epic Path
+# slot opened by ID_INTERNAL_LEVEL_21; the 24th/26th/30th benefits are gated with
+# `level:`. All six published paths are transcribed.
+
+# === Agent Retriever ==========================================================
+- id: ORCUS_EPIC_AGENT_RETRIEVER
+  name: Agent Retriever
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You travel across the planes, locating and acquiring whatever your patrons need."
+    Immortality: "Corner of the World's Eye: you fade from public view, but no one can ever confirm your death."
+  rules:
+    - { grant: ORCUS_FEATURE_APPROPRIATION, type: Class Feature }
+    - { grant: ORCUS_FEATURE_INTERPLANAR_CONTINGENCIES, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_THE_ECONOMIC_FLOW, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_FORCE_SPHERE, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_APPROPRIATION
+  name: Appropriation
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "After a long rest, choose any magic item of your level or lower; it appears under your bedroll, ready for use, and disappears when you begin your next long rest. The item is summoned, not created." }
+- id: ORCUS_FEATURE_INTERPLANAR_CONTINGENCIES
+  name: Interplanar Contingencies
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "Once per day, when you die, you appear the following round with half your maximum HP and slowed, in an unoccupied space at least 6 squares from your body, with copies of your equipment. Merge the bodies with a swift action while adjacent to your corpse." }
+- id: ORCUS_FEATURE_THE_ECONOMIC_FLOW
+  name: The Economic Flow
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "If something is for sale anywhere in the planes, you can purchase it as a free action; the object appears and the payment (which must be on your person) disappears." }
+
+- id: ORCUS_POWER_FORCE_SPHERE
+  name: Force Sphere
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Force, Zone"
+    Target: "Near burst X"
+    Effect: "Create an impenetrable sphere of force in a near burst between 1 and 5 squares in radius (your choice). The zone persists until the end of your next turn."
+    Special: "Maintain Swift: the zone persists until the end of your next turn."
+
+# === Master ===================================================================
+- id: ORCUS_EPIC_MASTER
+  name: Master
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You are the single greatest expert on the planet on a specific subject. All others bend to your word."
+  rules:
+    - { grant: ORCUS_FEATURE_OUT_OF_ANYONES_LEAGUE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_AGAINST_THE_LAWS_OF_PHYSICS, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_BEYOND_IMPOSSIBLE, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_PIONEER, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_OUT_OF_ANYONES_LEAGUE
+  name: Out of Anyone's League
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "Gain a +2 bonus to one ability score of your choice and a +3 bonus to one skill of your choice." }
+- id: ORCUS_FEATURE_AGAINST_THE_LAWS_OF_PHYSICS
+  name: Against the Laws of Physics
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "Pick one of your daily utility powers. It is now an encounter power." }
+- id: ORCUS_FEATURE_BEYOND_IMPOSSIBLE
+  name: Beyond Impossible
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "Spend a recovery as a swift action but regain no hit points; instead, gain a +20 power bonus to your next skill roll with the skill you selected with Out of Anyone's League." }
+
+- id: ORCUS_POWER_PIONEER
+  name: Pioneer
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You heal damage equal to double your recovery value. You recover all your used encounter powers."
+    Special: "Once you use this power, you cannot recover it except by taking a long rest."
+    Flavor: "You're not tired. You're just getting warmed up."
+
+# === Most Dangerous ===========================================================
+- id: ORCUS_EPIC_MOST_DANGEROUS
+  name: Most Dangerous
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "No one who hunts you knows your real name. You're a ghost, one of the most wanted individuals on the planet."
+  rules:
+    - { grant: ORCUS_FEATURE_SECOND_NATURE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_IMPLAUSIBLE_SPEED, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_VORPAL_WAYS, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_REPUTATION_EARNED, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_SECOND_NATURE
+  name: Second Nature
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "You reroll natural 1s and 2s on attack rolls and skill checks, but must take the second result even if it is another 1 or a 2." }
+- id: ORCUS_FEATURE_IMPLAUSIBLE_SPEED
+  name: Implausible Speed
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "You can use two action points per encounter, and gain two action points when you reach a streak. You cannot use more than one action point per round." }
+- id: ORCUS_FEATURE_VORPAL_WAYS
+  name: Vorpal Ways
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "Once per hit, if you roll the maximum result on one or more of your initial damage dice, you can roll those dice again and add them to your damage total." }
+
+- id: ORCUS_POWER_REPUTATION_EARNED
+  name: Reputation Earned
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You gain two action points."
+    Flavor: "Your enemy will soon discover why your name is so feared."
+
+# === Respected ================================================================
+- id: ORCUS_EPIC_RESPECTED
+  name: Respected
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "Every soldier knows your face. You don't win battles - you win wars."
+  rules:
+    - { grant: ORCUS_FEATURE_TRY_AGAIN_AIM_THIS_TIME, type: Class Feature }
+    - { grant: ORCUS_FEATURE_SACRIFICE_PLAY, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_MASTER_TACTICIAN, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_NOT_TOLERATE_LOSING, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_TRY_AGAIN_AIM_THIS_TIME
+  name: "Try Again and Aim This Time"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "The first time in an encounter that an ally within line of sight misses on an attack, they may reroll their attack roll." }
+- id: ORCUS_FEATURE_SACRIFICE_PLAY
+  name: Sacrifice Play
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "As an immediate reaction once per encounter, when an ally is reduced below 0 hit points, you can grant any other ally in line of sight a standard, a move and a swift action." }
+- id: ORCUS_FEATURE_MASTER_TACTICIAN
+  name: Master Tactician
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "Once per encounter, as a standard action, give one swift, one move and one standard action to be split among up to three allies of your choice in line of sight." }
+
+- id: ORCUS_POWER_NOT_TOLERATE_LOSING
+  name: Not Tolerate Losing
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Near burst 10, all allies"
+    Effect: "The target regains one expended encounter power."
+    Flavor: "You make every ally fear you more than the enemy."
+
+# === Team =====================================================================
+- id: ORCUS_EPIC_TEAM
+  name: Team
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "It was always, and will always be, about the team."
+  rules:
+    - { grant: ORCUS_FEATURE_TEAM_SUPPORT, type: Class Feature }
+    - { grant: ORCUS_FEATURE_WHERE_THE_NEED_IS_GREATEST, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_BROTHERS_AND_SISTERS_OF_BLOOD, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_FOR_THE_SAKE_OF_THE_TEAM, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_TEAM_SUPPORT
+  name: Team Support
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "Each time you spend a recovery for any purpose, choose one ally within line of sight; that ally immediately saves against one effect a save can end (except dying)." }
+- id: ORCUS_FEATURE_WHERE_THE_NEED_IS_GREATEST
+  name: Where the Need is Greatest
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "As a swift action, choose an ally (or yourself) to lose one recovery; then choose an ally (or yourself) to gain one recovery." }
+- id: ORCUS_FEATURE_BROTHERS_AND_SISTERS_OF_BLOOD
+  name: Brothers and Sisters of Blood
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "For every epic-tier ally in line of sight, you gain a cumulative +1 bonus to all skill checks and damage rolls (maximum +4)." }
+
+- id: ORCUS_POWER_FOR_THE_SAKE_OF_THE_TEAM
+  name: For the Sake of the Team
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: "Near burst 10, one ally"
+    Effect: "The target takes one standard action."
+    Flavor: "You give an ally the precious time they need to complete the task."
+
+# === Ultimate =================================================================
+- id: ORCUS_EPIC_ULTIMATE
+  name: Ultimate
+  type: Epic Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "As the legendary fighter, you have too many laurels to count. You have the blood of kings."
+  rules:
+    - { grant: ORCUS_FEATURE_WHY_WONT_YOU_DIE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_GLORY_OF_THE_FIGHT, type: Class Feature, level: 24 }
+    - { grant: ORCUS_FEATURE_RISKY_MANEUVER, type: Class Feature, level: 30 }
+    - { grant: ORCUS_POWER_LASTING_IMAGE, type: Power, level: 26 }
+
+- id: ORCUS_FEATURE_WHY_WONT_YOU_DIE
+  name: "Why Won't You Die?"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "21", Description: "Attacks cannot score critical hits against you (you take normal damage instead)." }
+- id: ORCUS_FEATURE_GLORY_OF_THE_FIGHT
+  name: Glory of the Fight
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "24", Description: "If you kill a non-mook enemy, you gain a +4 power bonus on your next attack roll." }
+- id: ORCUS_FEATURE_RISKY_MANEUVER
+  name: Risky Maneuver
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "30", Description: "As a swift action, reduce all your defense values to 1 until the start of your next turn. On your next turn, the first attack you make is an automatic critical hit." }
+
+- id: ORCUS_POWER_LASTING_IMAGE
+  name: Lasting Image
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "26"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You begin dying."
+    Effect: >
+      You regain consciousness and stand up. You can take a single action on your
+      turn (plus free/immediate actions and opportunity attacks), gaining a +2
+      bonus to attack rolls and +5 to damage rolls until the end of the encounter.
+      You cannot be healed and do not make death saves until then, when you fall
+      unconscious and begin making death saves as normal.

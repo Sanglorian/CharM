@@ -1,0 +1,249 @@
+# Prestige paths (Orcus Classes and Powers). At level 11 every character chooses
+# a prestige path on top of their class; it grants class features at 11th and 16th
+# level and three powers (an encounter attack at 11, a level-12 power, and a daily
+# attack at 20) that do not count against class power limits. The path is selected
+# via the Prestige Path slot opened by ID_INTERNAL_LEVEL_11; its later features and
+# powers are gated with `level:` so a character built below 16/12/20 doesn't get
+# them early. A representative sample of the 17 paths is transcribed here;
+# requirements are recorded descriptively (not enforced).
+
+# === Assassin =================================================================
+- id: ORCUS_PRESTIGE_ASSASSIN
+  name: Assassin
+  type: Prestige Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Requirements: "Proficiency with simple melee and ranged weapons."
+    Description: >
+      Someone hands you an image, an address, or just a name. You move in quickly
+      and quietly, dispatch the target, and vanish into the shadows.
+  rules:
+    - { grant: ORCUS_FEATURE_TWICE_IN_THE_CHEST, type: Class Feature }
+    - { grant: ORCUS_FEATURE_ONCE_IN_THE_HEAD, type: Class Feature }
+    - { grant: ORCUS_FEATURE_GETAWAY, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_MAKE_SURE_THEYRE_DEAD, type: Power }
+    - { grant: ORCUS_POWER_THE_PROFESSIONAL, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_LIKE_A_GHOST, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_TWICE_IN_THE_CHEST
+  name: Twice in the Chest
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "Spend an action point to add your basic melee attack damage to your last hit with any one-handed melee weapon, instead of taking an extra action." }
+- id: ORCUS_FEATURE_ONCE_IN_THE_HEAD
+  name: Once in the Head
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "You can score a critical hit with any one-handed weapon on a natural roll of 19 or 20." }
+- id: ORCUS_FEATURE_GETAWAY
+  name: Getaway
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "16", Description: "Each time you stagger a target with a one-handed weapon, you may shift a number of squares equal to your Dexterity modifier as a free action." }
+
+- id: ORCUS_POWER_MAKE_SURE_THEYRE_DEAD
+  name: Make Sure They're Dead
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: "Martial, Consistent, Weapon"
+    Target: "Near burst 5, the triggering creature"
+    Trigger: "You stagger a creature with a one-handed weapon."
+    Attack: "Strength or Dexterity (your choice) vs AC"
+    Hit: "2dW + Strength or Dexterity (your choice) modifier damage."
+    Flavor: "Otherwise you don't get paid..."
+- id: ORCUS_POWER_THE_PROFESSIONAL
+  name: The Professional
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: Self
+    Effect: >
+      Until the end of the encounter, when you are granted a basic attack outside
+      of your turn, you do additional damage equal to your Dexterity modifier +2
+      if you hit. Level 21: additional damage equal to your Dexterity modifier +5.
+- id: ORCUS_POWER_LIKE_A_GHOST
+  name: Like a Ghost
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature granting you combat advantage"
+    Attack: "Strength or Dexterity (your choice) vs AC"
+    Hit: "4dW + Strength or Dexterity (your choice) modifier damage."
+    Miss: "Half damage."
+    Effect: "Shift up to 10 squares."
+
+# === Battlefield Healer =======================================================
+- id: ORCUS_PRESTIGE_BATTLEFIELD_HEALER
+  name: Battlefield Healer
+  type: Prestige Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Requirements: "Trained in Heal."
+    Description: >
+      You specialise in impromptu medical care, in the field, under the pressures
+      of combat - still armed, protecting your team with blades and bandages.
+  rules:
+    - { grant: ORCUS_FEATURE_A_TRUE_HEALER, type: Class Feature }
+    - { grant: ORCUS_FEATURE_HEAL_THY_SELF, type: Class Feature }
+    - { grant: ORCUS_FEATURE_PROFOUND_MEDICAL_ADVICE, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_RACE_TO_THE_FALLEN, type: Power }
+    - { grant: ORCUS_POWER_IMPROMPTU_SURGERY, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_NO_LONGER_CIVILIZED, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_A_TRUE_HEALER
+  name: A True Healer
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "When you spend an action point to take an extra action, all allies in sight can make a saving throw." }
+- id: ORCUS_FEATURE_HEAL_THY_SELF
+  name: Heal Thy Self
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "The Rally action only takes a swift action for you." }
+- id: ORCUS_FEATURE_PROFOUND_MEDICAL_ADVICE
+  name: Profound Medical Advice
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "16", Description: "Once per round, you can take the Treat Ally action as a swift action." }
+
+- id: ORCUS_POWER_RACE_TO_THE_FALLEN
+  name: Race to the Fallen
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: "Healing, Martial, Weapon"
+    Target: "Near burst 5, the triggering ally"
+    Trigger: "One ally in burst you can see is staggered by an attack."
+    Effect: >
+      The triggering enemy is pushed 2 squares, and you make a basic attack
+      against it (in either order). Shift into a square adjacent to the target.
+      The target ally can spend a recovery and regain its recovery value plus 3d6
+      additional hit points.
+- id: ORCUS_POWER_IMPROMPTU_SURGERY
+  name: Impromptu Surgery
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: "Healing, Martial"
+    Target: "Melee touch, one staggered ally"
+    Effect: "The target automatically succeeds on one saving throw and can spend up to two recoveries to heal its recovery value that many times."
+- id: ORCUS_POWER_NO_LONGER_CIVILIZED
+  name: No Longer Civilized
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature that has reduced an ally in line of sight to 0 hit points or below"
+    Attack: "Wisdom vs AC"
+    Hit: "4dW + Wisdom modifier damage, and the target is pushed a number of squares equal to your Wisdom modifier."
+    Miss: "Repeat the attack against the same target at -2 to the attack roll but +1dW damage on a hit. If you still miss, the target takes half damage and is pushed one square."
+
+# === Bounty Hunter ============================================================
+- id: ORCUS_PRESTIGE_BOUNTY_HUNTER
+  name: Bounty Hunter
+  type: Prestige Path
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: >
+      You analyse the actions and motivations of individuals, pinpoint specific
+      threats, and coordinate others to remove them - with weapons as a backup.
+  rules:
+    - { grant: ORCUS_FEATURE_TARGET_FOCUS, type: Class Feature }
+    - { grant: ORCUS_FEATURE_ALL_IN, type: Class Feature }
+    - { grant: ORCUS_FEATURE_THREAT_COMPENSATION, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_THOUGHT_PROCESS, type: Power }
+    - { grant: ORCUS_POWER_MENTAL_PREDICTION, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_THIS_ONE_ESPECIALLY, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_TARGET_FOCUS
+  name: Target Focus
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "Once per encounter, you can mark a creature as a swift action. When you hit a creature you have marked, you do 1d6+3 damage (2d6+5 at level 21)." }
+- id: ORCUS_FEATURE_ALL_IN
+  name: All In
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "11", Description: "When you spend an action point to make an attack against a creature you have marked, you gain a +2 power bonus to the attack roll and can score a critical hit on an 18, 19, or 20 with the attack." }
+- id: ORCUS_FEATURE_THREAT_COMPENSATION
+  name: Threat Compensation
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "16", Description: "When a creature you have marked moves, you can shift 1 square as an immediate reaction." }
+
+- id: ORCUS_POWER_THOUGHT_PROCESS
+  name: Thought Process
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Consistent"
+    Target: "Near burst 10, a creature you have marked"
+    Attack: "Intelligence +2 vs Will"
+    Hit: "The target is rattled and grants combat advantage to all allies in sight until the end of your next turn."
+    Flavor: "You predict where the enemy will move."
+- id: ORCUS_POWER_MENTAL_PREDICTION
+  name: Mental Prediction
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: Martial
+    Target: "Near earshot, you and up to four allies"
+    Effect: "The target gains a +2 power bonus to AC and Reflex defense against creatures you have marked until the start of your next turn."
+    Special: "Maintain Swift: the effect persists until the start of your next turn. You can maintain only once."
+- id: ORCUS_POWER_THIS_ONE_ESPECIALLY
+  name: This One Especially
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Weapon"
+    Target: "Near earshot, you and up to four allies"
+    Effect: "Choose a creature you have marked. Each target makes a basic attack against that creature."
+    Flavor: "Of all the targets, this is the one that must be taken down immediately."

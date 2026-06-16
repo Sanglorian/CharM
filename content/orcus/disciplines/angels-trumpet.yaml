@@ -155,3 +155,92 @@
     Target: "Near burst 5, all allies"
     Effect: "Targets receive a +2 power bonus on attack rolls and add your Charisma modifier to damage until the end of the encounter."
     Flavor: "You let out shouts of encouragement to bolster your allies in battle."
+
+# --- Higher-level powers (to populate the level 4-30 class selects) ------------
+- id: ORCUS_POWER_CALL_TO_ACTION
+  name: Call to Action
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 10, one enemy"
+    Effect: "Choose two allies. Each ally chooses one: they may charge the target, or make a basic melee or ranged attack against them."
+
+- id: ORCUS_POWER_RALLYING_INSTRUCTION
+  name: Rallying Instruction
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Near burst 10, one ally"
+    Effect: "The target regains one recovery. The target can make a basic melee or ranged attack, dealing +2dW damage if they hit."
+
+- id: ORCUS_POWER_GOLDEN_COMMANDER_STANCE
+  name: Golden Commander Stance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: Self
+    Effect: "Any enemies within 10 that are flanked by any allies (including yourself) count as flanked by all of your allies."
+    Flavor: "Through your superior tactical ability, you direct your allies for maximum effectiveness."
+
+- id: ORCUS_POWER_MILESTONE_FOE
+  name: Milestone Foe
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Near burst 10, one enemy"
+    Effect: "Until the end of your next turn, attacks against the target add your Charisma modifier to the attack and damage roll."
+
+- id: ORCUS_POWER_IDENTIFY_WEAK_POINT
+  name: Identify Weak Point
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one enemy"
+    Attack: "Charisma vs Will"
+    Hit: "The target is vulnerable to all damage 5 until the end of the encounter."
+    Effect: "The target is dazed (save ends)."
+
+- id: ORCUS_POWER_BOLSTER_THE_LINE
+  name: Bolster the Line
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: "Healing, Martial"
+    Target: "Near burst 2, all allies"
+    Effect: "The target gains temporary hit points equal to twice your Charisma modifier."
+    Flavor: "You shout a few inspiring words and quote the soldier's creed. The spines of those around you stiffen."
