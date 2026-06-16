@@ -1,4 +1,5 @@
 using CharM.Engine.Creation;
+using CharM.Engine.Orchestration;
 using CharM.Engine.Powers;
 using CharM.Engine.Rules;
 using CharM.RulesDb.Authoring;
@@ -96,12 +97,14 @@ static int Playtest(string[] args)
     int level = 1;
     int[]? scores = null;
     string? talentHint = null;
+    bool demoSwaps = false;
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
         {
             case "--race": race = args[++i]; break;
             case "--class": cls = args[++i]; break;
+            case "--swaps": demoSwaps = true; break;
             case "--level": level = int.Parse(args[++i]); break;
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
@@ -208,11 +211,79 @@ static int Playtest(string[] args)
         foreach (var g in gaps) Console.WriteLine($"  - {g}");
     }
 
+    // --swaps: demonstrate the power-replacement (retraining) swap chain that the
+    // classes declare via `replace` directives. The engine's headless builder
+    // doesn't auto-generate candidates from a directive's PowerSwap (that wiring
+    // is deferred), so we drive the working ElementReplacement API directly: at
+    // each replacement level (encounter at 13/17/23/27, daily at 15/19/25/29) we
+    // drop one class attack power of that frequency and grant a higher-level one
+    // of the same frequency from the same discipline pool.
+    if (demoSwaps && level >= 13)
+    {
+        Console.WriteLine("\nPower-replacement swaps (--swaps):");
+        var allPowers = db.FindByType("Power").ToList();
+        string? Field(RulesElement e, string f) => e.Fields.TryGetValue(f, out var v) ? v : null;
+        bool IsAttack(RulesElement e) => string.Equals(Field(e, "Power Type"), "Attack", StringComparison.OrdinalIgnoreCase);
+        bool FreqIs(RulesElement e, string freq) => string.Equals(Field(e, "Power Usage"), freq, StringComparison.OrdinalIgnoreCase);
+        List<string> Disc(RulesElement e) => e.Categories.Where(c => c.StartsWith("ORCUS_DISCIPLINE_", StringComparison.Ordinal)).ToList();
+        int Lvl(RulesElement e) => int.TryParse(Field(e, "Level"), out var n) ? n : 0;
+
+        // Working set of the character's class attack powers; updated as we swap
+        // (so a later level can re-swap a power gained from an earlier swap — the
+        // engine applies chained replacements in level order).
+        var held = session.GetSelectedElements("Power")
+            .Select(p => db.FindByInternalId(p.InternalId) ?? p)
+            .Where(p => IsAttack(p) && Disc(p).Count > 0)
+            .ToList();
+
+        foreach (var (swapLevel, freq) in new[]
+        {
+            (13, "Encounter"), (15, "Daily"), (17, "Encounter"), (19, "Daily"),
+            (23, "Encounter"), (25, "Daily"), (27, "Encounter"), (29, "Daily"),
+        })
+        {
+            if (swapLevel > level) continue;
+            // Old: the lowest-level class attack power of this frequency we hold.
+            var old = held.Where(p => FreqIs(p, freq)).OrderBy(Lvl).FirstOrDefault();
+            if (old is null) { Console.WriteLine($"  Lv {swapLevel}: no {freq.ToLower()} attack power to swap"); continue; }
+            // The character's disciplines (a swap may pull from any of them).
+            var myDiscs = held.SelectMany(Disc).ToHashSet(StringComparer.Ordinal);
+            var heldNames = held.Select(p => p.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            // New: highest-level same-frequency attack from one of your disciplines,
+            // <= the level being reached, that we don't already hold — and only if
+            // it is a genuine upgrade over the power being given up.
+            var rep = allPowers
+                .Where(p => IsAttack(p) && FreqIs(p, freq) && Lvl(p) <= swapLevel
+                    && Disc(p).Any(myDiscs.Contains) && !heldNames.Contains(p.Name))
+                .OrderByDescending(Lvl).FirstOrDefault();
+            if (rep is null || Lvl(rep) <= Lvl(old))
+            {
+                Console.WriteLine($"  Lv {swapLevel}: no higher-level {freq.ToLower()} power available to swap into");
+                continue;
+            }
+
+            session.AddReplacement(swapLevel, new ElementReplacement(old.InternalId, rep.InternalId));
+            held.Remove(old);
+            held.Add(rep);
+            Console.WriteLine($"  Lv {swapLevel}: {old.Name} (Lv {Lvl(old)}) -> {rep.Name} (Lv {Lvl(rep)})");
+        }
+    }
+
     var snapshot = session.GetSnapshot() ?? session.GetPartialSnapshot();
     if (snapshot is null)
     {
         Console.WriteLine("\nNo snapshot could be built.");
         return 0;
+    }
+
+    if (demoSwaps && level >= 13)
+    {
+        var finalAttacks = snapshot.ElementTree.GetActiveElements()
+            .Where(e => string.Equals(e.Type, "Power", StringComparison.OrdinalIgnoreCase)
+                && string.Equals(e.Fields.TryGetValue("Power Type", out var pt) ? pt : null, "Attack", StringComparison.OrdinalIgnoreCase)
+                && e.Categories.Any(c => c.StartsWith("ORCUS_DISCIPLINE_", StringComparison.Ordinal)))
+            .Select(e => e.Name).Distinct().OrderBy(n => n);
+        Console.WriteLine($"  Post-swap class attack powers: {string.Join(", ", finalAttacks)}");
     }
 
     Console.WriteLine("\nComputed stats:");
@@ -272,7 +343,7 @@ static int Usage()
         Usage:
           charm-authoring build    <content-path> -o <rules.db>
           charm-authoring lint     <content-path>
-          charm-authoring playtest <rules.db> [--race <name>] [--class <name>]
+          charm-authoring playtest <rules.db> [--race <name>] [--class <name>] [--level <n>] [--swaps]
 
         <content-path> may be a single .yaml file or a directory (searched recursively).
         playtest builds a level-1 character headlessly and prints computed stats.

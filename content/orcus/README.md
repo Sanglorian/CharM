@@ -51,6 +51,20 @@ text. Verified via `playtest`: Guardian, Commander and Priest all build end-to-e
 at level 30 (and at the 11/21 tier boundaries) with every slot — powers, ability
 increases, paths and all 16 feats — filled.
 
+### Power-replacement swaps
+The progression table's optional swaps — give up one class attack power and gain
+one of the level you're reaching — are declared on each class with the engine's
+`replace` directive (encounter at 13/17/23/27, daily at 15/19/25/29; each carries
+a `powerSwap` filter `"<disciplines>,<freq>,<maxlevel>"` and is `optional`). The
+headless builder doesn't yet auto-generate candidates from a `replace` directive
+(that wiring is deferred in the engine — `PowerSwap` is currently declarative), so
+swaps are applied through the working `ElementReplacement` retrain path. The
+`playtest --swaps` flag demonstrates this end-to-end: at each replacement level it
+drops the lowest-level held attack power of the right frequency and swaps in the
+highest-level one from your disciplines, including **chained** re-swaps at epic
+levels (e.g. a Commander's Charge of the Battle Cat → Lion Lord's Agony at 27).
+Try `playtest --class Commander --level 30 --swaps`.
+
 ### Species ancestries
 A species is an alternative to Humanity's crux + heritage: it is chosen in the
 same Race slot and supplies size, vision, speed, two fixed skill bonuses, a
@@ -97,7 +111,8 @@ progression (L2 adds a utility, L3 a second encounter). Try
 `--race Mephit`). The harness also accepts `--talent`/`--pick <substring>` to
 bias any inner select toward a named candidate (handy for checking the
 secondary‑ability swap, e.g. `--class Guardian --pick "Great Weapon Style"`, or
-a specific discipline power, e.g. `--pick "Pack Pounce"`).
+a specific discipline power, e.g. `--pick "Pack Pounce"`). `--swaps` applies a
+sample power-replacement chain (levels 13–29) and prints the resulting powers.
 
 Weapon dice written `dW`/`NdW` are normalized to the engine's `[W]`/`N[W]`, so a
 power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
@@ -111,5 +126,7 @@ in full to level 29), 14 species ancestries, a sample of feats, a sample of
 prestige paths and all six epic paths. Remaining work: the other six classes and
 their disciplines, full power lists for the remaining disciplines, the rest of the
 species roster, prestige paths and feats (including paragon/epic-tier and
-multi-take feats), all 16 cruxes / 6 heritages, kits, deities and equipment; and
-the optional power-replacement swaps at levels 13/15/17/….
+multi-take feats), all 16 cruxes / 6 heritages, kits, deities and equipment. The
+power-replacement swaps are declared on the classes and demonstrated via
+`--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
+candidates is an engine-side follow-up.
