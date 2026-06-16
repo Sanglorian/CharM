@@ -128,6 +128,11 @@
   fields:
     "Secondary Ability": Dexterity
     Description: "Once per turn, an ally targeted by one of your powers can shift 1 as a free action."
+  rules:
+    # Talent secondary substitution (Orcus): use Dexterity for a discipline
+    # power's printed secondary ability when higher.
+    - grant: ORCUS_SECSWAP_STORMTROOPER_DEXTERITY
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_SIEGE_TACTICS
   name: Siege Tactics
@@ -137,6 +142,9 @@
   fields:
     "Secondary Ability": Wisdom
     Description: "Once per turn, an ally targeted by one of your powers gains temporary hit points equal to your Wisdom modifier."
+  rules:
+    - grant: ORCUS_SECSWAP_SIEGE_WISDOM
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_RESILIENCE_TACTICS
   name: Resilience Tactics
@@ -146,6 +154,9 @@
   fields:
     "Secondary Ability": Intelligence
     Description: "Once per turn, an ally targeted by one of your powers makes a saving throw against one save-ends condition."
+  rules:
+    - grant: ORCUS_SECSWAP_RESILIENCE_INTELLIGENCE
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_INSPIRING_TACTICS
   name: Inspiring Tactics
@@ -155,6 +166,9 @@
   fields:
     "Secondary Ability": Strength
     Description: "Once per turn, an ally targeted by one of your powers gains a +2 power bonus to their next attack roll."
+  rules:
+    - grant: ORCUS_SECSWAP_INSPIRING_STRENGTH
+      type: Secondary Ability Swap
 
 # --- Armament (chosen via the Commander Armament select) ----------------------
 - id: ORCUS_ARMAMENT_RANGED
@@ -188,3 +202,21 @@
   name: Commander Key Charisma
   type: Key Ability Swap
   categories: [Key Ability Swap]
+
+# --- Talent secondary-ability swap markers (Orcus) ---------------------------
+- id: ORCUS_SECSWAP_STORMTROOPER_DEXTERITY
+  name: Stormtrooper Tactics Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SIEGE_WISDOM
+  name: Siege Tactics Secondary Wisdom
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_RESILIENCE_INTELLIGENCE
+  name: Resilience Tactics Secondary Intelligence
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_INSPIRING_STRENGTH
+  name: Inspiring Tactics Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

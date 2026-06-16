@@ -192,6 +192,13 @@ public static partial class PowerFieldParser
         // PowerDamageSweep harness on Grasp of the Obsidian Tomb.
         text = BracketedWeaponDicePattern.Replace(text, "$1[W]");
 
+        // Orcus writes weapon dice as "dW" / "NdW" — the same concept as 4e's
+        // "[W]" / "N[W]" (the equipped weapon's damage die). Normalize so the
+        // weapon-dice machinery substitutes the real die when a weapon is
+        // equipped (and renders "N[W]" when none is).
+        text = WeaponDieShorthandPattern.Replace(
+            text, m => (m.Groups[1].Value.Length == 0 ? "1" : m.Groups[1].Value) + "[W]");
+
         // Powers with tier-up scaling stack clauses by newline:
         //   "1[W] + Str modifier damage."
         //   "Level 21: 2[W] + Str modifier damage."
@@ -578,6 +585,9 @@ public static partial class PowerFieldParser
     // Captured group 1 is the dice count which we splice into "N[W]" form.
     private static Regex BracketedWeaponDicePattern => BracketedWeaponDiceRegex();
 
+    // Orcus "dW"/"NdW" weapon-die shorthand → canonical "[W]"/"N[W]".
+    private static Regex WeaponDieShorthandPattern => WeaponDieShorthandRegex();
+
     // Multi-attack powers (primary + secondary) use "Primary Hit" instead of "Hit".
     private static readonly string[] HitFieldFallback =
         ["Hit", "Primary Hit", "Secondary Hit", "Tertiary Hit"];
@@ -875,6 +885,10 @@ public static partial class PowerFieldParser
 
     [GeneratedRegex(@"\[(\d+)\s*W\]", RegexOptions.IgnoreCase)]
     private static partial Regex BracketedWeaponDiceRegex();
+
+    // Orcus "dW" / "NdW" weapon-die shorthand (group 1 = optional multiplier).
+    [GeneratedRegex(@"\b(\d*)dW\b", RegexOptions.IgnoreCase)]
+    private static partial Regex WeaponDieShorthandRegex();
 
     [GeneratedRegex(@"\[W\]|\d+d\d+|\bongoing\s+\d+|\bdamage\b", RegexOptions.IgnoreCase)]
     private static partial Regex DamageSignalRegex();

@@ -92,6 +92,11 @@
   fields:
     "Secondary Ability": Charisma
     Description: "Your healing powers are bolstered by the god of life. Secondary ability: Charisma."
+  rules:
+    # Talent secondary substitution (Orcus): use Charisma for a discipline
+    # power's printed secondary ability when higher.
+    - grant: ORCUS_SECSWAP_GOD_OF_LIFE_CHARISMA
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_GOD_OF_PEACE
   name: Worships the God of Peace
@@ -101,6 +106,9 @@
   fields:
     "Secondary Ability": Charisma
     Description: "You ward and protect your allies. Secondary ability: Charisma."
+  rules:
+    - grant: ORCUS_SECSWAP_GOD_OF_PEACE_CHARISMA
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_GOD_OF_TYRANNY
   name: Worships the God of Tyranny
@@ -110,6 +118,9 @@
   fields:
     "Secondary Ability": Strength
     Description: "You command through fear and dominion. Secondary ability: Strength."
+  rules:
+    - grant: ORCUS_SECSWAP_GOD_OF_TYRANNY_STRENGTH
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_GOD_OF_WAR
   name: Worships the God of War
@@ -119,6 +130,9 @@
   fields:
     "Secondary Ability": Strength
     Description: "You lead the faithful into battle. Secondary ability: Strength."
+  rules:
+    - grant: ORCUS_SECSWAP_GOD_OF_WAR_STRENGTH
+      type: Secondary Ability Swap
 
 # Lets the Priest substitute Wisdom (its class key) for a discipline power's
 # printed key ability when higher (category "Key Ability Swap").
@@ -126,3 +140,21 @@
   name: Priest Key Wisdom
   type: Key Ability Swap
   categories: [Key Ability Swap]
+
+# --- Talent secondary-ability swap markers (Orcus) ---------------------------
+- id: ORCUS_SECSWAP_GOD_OF_LIFE_CHARISMA
+  name: Worships the God of Life Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_GOD_OF_PEACE_CHARISMA
+  name: Worships the God of Peace Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_GOD_OF_TYRANNY_STRENGTH
+  name: Worships the God of Tyranny Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_GOD_OF_WAR_STRENGTH
+  name: Worships the God of War Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

@@ -99,6 +99,14 @@ Because the substitution is role‑scoped, it never bleeds across roles:
   verified Con‑heavy Guardian resolves Constitution with Great Weapon Style but
   Strength with Protection.
 
+All three classes' talents grant their secondary swap: the Guardian's *Great
+Weapon Style* (Constitution) and *Protection* — whose secondary is "Dexterity OR
+Wisdom (your choice)", modelled as a one‑of `select` between two
+`Secondary Ability Swap` options — plus the four Commander Tactics and four
+Priest "Worships the God of …" talents. (Commander/Priest secondaries currently
+appear in *effect* text rather than attack/damage, so they're inert on today's
+Angel's Trumpet powers but correct for any secondary‑referencing power or kit.)
+
 This **scales to kits**: a discipline reached by any number of classes (via kit
 access) is always "higher of {printed ability, *this* character's role ability}",
 because each character contributes only its own key/secondary — never another
@@ -115,6 +123,16 @@ ability names; the engine then weaves the matching swap abilities in after each
 as "or X" alternatives and the existing highest‑modifier resolver does the rest.
 A no‑op without both the tag and the elements, so WotC content (which has
 neither) is completely unaffected, and it needs no weapon/implement equipped.
+
+### Weapon-die shorthand (`dW` = `[W]`)
+
+Orcus writes weapon damage dice as `dW` / `NdW`; 4e's canonical token is `[W]` /
+`N[W]` (the equipped weapon's damage die). `PowerFieldParser` normalizes the
+former to the latter (word‑boundary‑anchored, so only standalone `dW`/`NdW` is
+touched), after which the existing weapon‑dice machinery substitutes the real die
+when a weapon is equipped — e.g. Art of War's *The Finisher* (`3dW`) renders
+`3[W]` with no weapon and `3d10` etc. with one. WotC powers don't use the `dW`
+spelling, so they're unaffected.
 
 ## Status — playability validated ✅
 

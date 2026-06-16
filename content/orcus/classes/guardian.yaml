@@ -150,10 +150,15 @@
     "Secondary Ability": "Dexterity or Wisdom"
     Description: "You get a +1 bonus on attack rolls with one-handed weapons. Your secondary ability is Dexterity OR Wisdom (your choice)."
   rules:
-    # Protection's secondary is Dexterity or Wisdom (player's choice); modelled
-    # as Dexterity here. Full either/or choice is a follow-up.
-    - grant: ORCUS_SECSWAP_PROTECTION_DEXTERITY
-      type: Secondary Ability Swap
+    # Protection's secondary is Dexterity OR Wisdom (the player's choice at
+    # creation), modelled as a one-of select between two Secondary Ability Swap
+    # options. Whichever is chosen becomes the talent secondary the engine
+    # substitutes into discipline powers.
+    - select:
+        type: Secondary Ability Swap
+        number: 1
+        category: ORCUS_PROTECTION_SECONDARY
+        name: Protection Secondary Ability
 
 # --- Feature powers (from Savvy Combatant) ------------------------------------
 - id: ORCUS_POWER_BLOCK_RETREAT
@@ -195,4 +200,8 @@
 - id: ORCUS_SECSWAP_PROTECTION_DEXTERITY
   name: Protection Secondary Dexterity
   type: Secondary Ability Swap
-  categories: [Secondary Ability Swap]
+  categories: [Secondary Ability Swap, ORCUS_PROTECTION_SECONDARY]
+- id: ORCUS_SECSWAP_PROTECTION_WISDOM
+  name: Protection Secondary Wisdom
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap, ORCUS_PROTECTION_SECONDARY]
