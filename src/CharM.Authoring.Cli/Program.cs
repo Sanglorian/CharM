@@ -98,6 +98,7 @@ static int Playtest(string[] args)
     int[]? scores = null;
     string? talentHint = null;
     bool demoSwaps = false;
+    string? weaponName = null, armorName = null, shieldName = null;
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
@@ -105,6 +106,9 @@ static int Playtest(string[] args)
             case "--race": race = args[++i]; break;
             case "--class": cls = args[++i]; break;
             case "--swaps": demoSwaps = true; break;
+            case "--weapon": weaponName = args[++i]; break;
+            case "--armor": armorName = args[++i]; break;
+            case "--shield": shieldName = args[++i]; break;
             case "--level": level = int.Parse(args[++i]); break;
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
@@ -269,6 +273,32 @@ static int Playtest(string[] args)
         }
     }
 
+    // --weapon/--armor/--shield: equip gear and let it flow into the build, so
+    // armor's AC/skill statadds apply and the equipped weapon supplies the [W]
+    // die for power damage. (Heavy armor suppresses the Dex/Int AC bonus via the
+    // bootstrap's `notWearing: armor:heavy` conditions.)
+    RulesElement? equippedWeapon = null;
+    if (weaponName is not null)
+    {
+        equippedWeapon = db.FindByNameAndType(weaponName, "Weapon");
+        if (equippedWeapon is null) Console.WriteLine($"\n  ! weapon '{weaponName}' not found");
+        else session.EquipItem("Main Hand", equippedWeapon);
+    }
+    if (armorName is not null)
+    {
+        var armorEl = db.FindByNameAndType(armorName, "Armor");
+        if (armorEl is null) Console.WriteLine($"  ! armor '{armorName}' not found");
+        else session.EquipItem("Body", armorEl);
+    }
+    if (shieldName is not null)
+    {
+        var shieldEl = db.FindByNameAndType(shieldName, "Armor");
+        if (shieldEl is null) Console.WriteLine($"  ! shield '{shieldName}' not found");
+        else session.EquipItem("Off-hand", shieldEl);
+    }
+    if (weaponName is not null || armorName is not null || shieldName is not null)
+        Console.WriteLine($"\nEquipped: {string.Join(", ", new[] { weaponName, armorName, shieldName }.Where(s => s is not null))}");
+
     var snapshot = session.GetSnapshot() ?? session.GetPartialSnapshot();
     if (snapshot is null)
     {
@@ -305,11 +335,12 @@ static int Playtest(string[] args)
 
     // Power cards: compute the attack ability the engine actually resolves
     // (this is where the Orcus "use the higher ability" rule shows up) plus
-    // attack bonus, defense and damage. NO weapon/implement is supplied, to
-    // prove the ability resolution is equipment-independent (the substitution
-    // rides on the character's ChosenAbilities, not on gear). Weapon dice /
-    // proficiency are therefore omitted — the ability resolution is the point.
-    Console.WriteLine("\nPower cards (no weapon/implement; equipment-independent ability resolution):");
+    // attack bonus, defense and damage. With no --weapon, none is supplied — that
+    // proves the ability resolution is equipment-independent. With --weapon, the
+    // equipped weapon supplies the [W] die (and proficiency, when trained).
+    Console.WriteLine(equippedWeapon is null
+        ? "\nPower cards (no weapon/implement; equipment-independent ability resolution):"
+        : $"\nPower cards (weapon: {equippedWeapon.Name}, {(equippedWeapon.Fields.TryGetValue("Damage", out var wd) ? wd : "?")}):");
     foreach (var picked in session.GetSelectedElements("Power"))
     {
         var power = db.FindByInternalId(picked.InternalId) ?? picked;
@@ -318,7 +349,7 @@ static int Playtest(string[] args)
             Console.WriteLine($"  {power.Name,-22} (no attack line)");
             continue;
         }
-        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: null, characterLevel: level,
+        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: equippedWeapon, characterLevel: level,
             sourceElementResolver: db.FindByInternalId);
         var dmg = string.IsNullOrWhiteSpace(card.DamageExpression) ? "-" : card.DamageExpression;
         var atk = card.ResolvedAttackStat.Length > 0 ? card.ResolvedAttackStat : "(none)";

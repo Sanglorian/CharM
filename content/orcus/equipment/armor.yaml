@@ -1,0 +1,147 @@
+# Armor & shields (Orcus Rulebook). Modelled as the engine's `Armor` element type.
+# AC works *with* the bootstrap formula (AC = 10 + level bonus + Dex/Int): each
+# armor adds its bonus over cloth's base 10 (leather +2, hide +3, chain +6,
+# scale +7, plate +8) as an `Armor` bonus, and the bootstrap's Dex/Int-to-AC
+# contributions carry `notWearing: armor:heavy`, so heavy armor correctly
+# suppresses the ability bonus (the engine registers `armor:heavy` from the
+# `Armor Type` field). Shields add their bonus to AC *and* Reflex. Armor check
+# penalties hit the physical skills (Acrobatics, Athletics, Endure, Stealth,
+# Sleight of Hand); heavy armor also reduces Speed.
+
+# === Light armor ==============================================================
+- id: ORCUS_ARMOR_CLOTH
+  name: Cloth armor
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Light
+    "Item Slot": Body
+    "Base AC": "10"
+    Cost: "1 gp"
+    Weight: "4 lb."
+  # Base AC 10 == the bootstrap's unarmored base, so no AC contribution.
+
+- id: ORCUS_ARMOR_LEATHER
+  name: Leather armor
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Light
+    "Item Slot": Body
+    "Base AC": "12"
+    Cost: "25 gp"
+    Weight: "15 lb."
+  rules:
+    - { statadd: AC, value: 2, bonusType: Armor }
+
+- id: ORCUS_ARMOR_HIDE
+  name: Hide armor
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Light
+    "Item Slot": Body
+    "Base AC": "13"
+    "Armor Check Penalty": "-1"
+    Cost: "30 gp"
+    Weight: "25 lb."
+  rules:
+    - { statadd: AC, value: 3, bonusType: Armor }
+    - { statadd: Acrobatics, value: -1, bonusType: Armor }
+    - { statadd: Athletics, value: -1, bonusType: Armor }
+    - { statadd: Endure, value: -1, bonusType: Armor }
+    - { statadd: Stealth, value: -1, bonusType: Armor }
+    - { statadd: Sleight of Hand, value: -1, bonusType: Armor }
+
+# === Heavy armor (suppresses Dex/Int on AC via armor:heavy) ===================
+- id: ORCUS_ARMOR_CHAINMAIL
+  name: Chainmail
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Heavy
+    "Item Slot": Body
+    "Base AC": "16"
+    "Armor Check Penalty": "-1"
+    "Speed Penalty": "-1"
+    Cost: "40 gp"
+    Weight: "40 lb."
+  rules:
+    - { statadd: AC, value: 6, bonusType: Armor }
+    - { statadd: Speed, value: -1, bonusType: Armor }
+    - { statadd: Acrobatics, value: -1, bonusType: Armor }
+    - { statadd: Athletics, value: -1, bonusType: Armor }
+    - { statadd: Endure, value: -1, bonusType: Armor }
+    - { statadd: Stealth, value: -1, bonusType: Armor }
+    - { statadd: Sleight of Hand, value: -1, bonusType: Armor }
+
+- id: ORCUS_ARMOR_SCALE
+  name: Scale armor
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Heavy
+    "Item Slot": Body
+    "Base AC": "17"
+    "Speed Penalty": "-1"
+    Cost: "45 gp"
+    Weight: "45 lb."
+  rules:
+    - { statadd: AC, value: 7, bonusType: Armor }
+    - { statadd: Speed, value: -1, bonusType: Armor }
+
+- id: ORCUS_ARMOR_PLATE
+  name: Plate armor
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Heavy
+    "Item Slot": Body
+    "Base AC": "18"
+    "Armor Check Penalty": "-2"
+    "Speed Penalty": "-1"
+    Cost: "50 gp"
+    Weight: "50 lb."
+  rules:
+    - { statadd: AC, value: 8, bonusType: Armor }
+    - { statadd: Speed, value: -1, bonusType: Armor }
+    - { statadd: Acrobatics, value: -2, bonusType: Armor }
+    - { statadd: Athletics, value: -2, bonusType: Armor }
+    - { statadd: Endure, value: -2, bonusType: Armor }
+    - { statadd: Stealth, value: -2, bonusType: Armor }
+    - { statadd: Sleight of Hand, value: -2, bonusType: Armor }
+
+# === Shields (bonus to AC and Reflex) =========================================
+- id: ORCUS_ARMOR_LIGHT_SHIELD
+  name: Light shield
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Shield
+    "Item Slot": Off-hand
+    "Shield Bonus": "+1"
+    Cost: "5 gp"
+    Weight: "6 lb."
+  rules:
+    - { statadd: AC, value: 1, bonusType: Shield }
+    - { statadd: Reflex Defense, value: 1, bonusType: Shield }
+
+- id: ORCUS_ARMOR_HEAVY_SHIELD
+  name: Heavy shield
+  type: Armor
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Armor Type": Shield
+    "Item Slot": Off-hand
+    "Shield Bonus": "+2"
+    "Armor Check Penalty": "-2"
+    Cost: "10 gp"
+    Weight: "15 lb."
+  rules:
+    - { statadd: AC, value: 2, bonusType: Shield }
+    - { statadd: Reflex Defense, value: 2, bonusType: Shield }
+    - { statadd: Acrobatics, value: -2, bonusType: Armor }
+    - { statadd: Athletics, value: -2, bonusType: Armor }
+    - { statadd: Endure, value: -2, bonusType: Armor }
+    - { statadd: Stealth, value: -2, bonusType: Armor }
+    - { statadd: Sleight of Hand, value: -2, bonusType: Armor }

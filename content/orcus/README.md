@@ -23,8 +23,26 @@ for the format.
 | `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) — **all** powers, levels 1–29 |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
+| `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
+| `equipment/armor.yaml` | Light & heavy armor + shields as `Armor` elements (AC / Reflex / speed / armor-check contributions) |
+| `equipment/gear.yaml` | Adventuring gear (`Gear`) and focuses (`Focus`) |
 
-Compiles to **325 elements across 21 types**, no warnings.
+Compiles to **374 elements across 25 types**, no warnings.
+
+### Equipment
+Weapons are `Weapon` elements: equipping one feeds power damage (the `Damage`
+field supplies the `[W]` die — e.g. *In Their Face* reads `2[W]`, which becomes
+`2d10` with a greatsword or `2d6` with a sling), and `Proficiency Bonus` / `Group`
+drive attack bonuses and weapon-group rules. Armor and shields are `Armor`
+elements whose `statadd` rules contribute to AC (and Reflex, speed, and the
+physical skills). The AC maths stays faithful to 4e: each armor adds its bonus
+over cloth's base 10, and the bootstrap's Dex/Int-to-AC contributions carry
+`notWearing: armor:heavy`, so **light armor keeps your ability bonus to AC while
+heavy armor suppresses it** (the engine registers `armor:heavy` from the armor's
+`Armor Type`). Verified via `playtest`: unarmored AC 11 → 20 in plate + heavy
+shield (Dex/Int dropped, +8 +2 added), leather → AC 13 (ability kept), chainmail
+→ AC 16 (ability dropped); speed drops 6→5 in plate; and weapon dice flow into
+power damage. Try `playtest --weapon Greatsword --armor "Plate armor" --shield "Heavy shield"`.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
@@ -113,6 +131,8 @@ bias any inner select toward a named candidate (handy for checking the
 secondary‑ability swap, e.g. `--class Guardian --pick "Great Weapon Style"`, or
 a specific discipline power, e.g. `--pick "Pack Pounce"`). `--swaps` applies a
 sample power-replacement chain (levels 13–29) and prints the resulting powers.
+`--weapon`/`--armor`/`--shield` equip gear by name and show its effect on AC,
+defenses, speed and weapon damage.
 
 Weapon dice written `dW`/`NdW` are normalized to the engine's `[W]`/`N[W]`, so a
 power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
@@ -123,10 +143,11 @@ Three of nine classes are in (a Defender and two Leaders), playable across the
 full 1–30 range, with both Guardian disciplines (Art of War, Juggernautical) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
 in full to level 29), 14 species ancestries, a sample of feats, a sample of
-prestige paths and all six epic paths. Remaining work: the other six classes and
-their disciplines, full power lists for the remaining disciplines, the rest of the
-species roster, prestige paths and feats (including paragon/epic-tier and
-multi-take feats), all 16 cruxes / 6 heritages, kits, deities and equipment. The
+prestige paths, all six epic paths, and a starter set of weapons, armor and gear.
+Remaining work: the other six classes and their disciplines, full power lists for
+the remaining disciplines, the rest of the species roster, prestige paths and
+feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
+6 heritages, kits, deities, magic items and the rest of the equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

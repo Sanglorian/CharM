@@ -1,0 +1,298 @@
+# Weapons (Orcus Rulebook). Modelled as the engine's `Weapon` element type so that
+# equipping one feeds power damage: the "Damage" field supplies the [W] die, the
+# "Proficiency Bonus" adds to attack rolls when the wielder is trained, and "Group"
+# drives weapon-group feats/powers. Named examples built from the weapon templates,
+# with each martial/exotic weapon's group benefit already applied (Axes/Maces/
+# Spears/Staffs: die +1 step; Light/Heavy Blades: proficiency +1; Picks & Hammers /
+# Flails & Chains: Improved Critical; Polearms: Reach). Simple weapons get no group
+# benefit. A representative cross-section of groups, not the full catalogue.
+
+# === Simple melee =============================================================
+- id: ORCUS_WEAPON_DAGGER
+  name: Dagger
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Simple]
+  fields:
+    "Weapon Category": "Melee, Simple"
+    "Item Slot": Off-hand
+    Damage: "1d4"
+    "Proficiency Bonus": "2"
+    Group: "Light Blades"
+    Range: "5/10"
+    Properties: "Side Weapon, Thrown (Light)"
+    Cost: "2 gp"
+    Weight: "2 lb."
+
+- id: ORCUS_WEAPON_MACE
+  name: Mace
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Simple]
+  fields:
+    "Weapon Category": "Melee, Simple"
+    "Item Slot": Main Hand
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Maces and Clubs"
+    Range: "-"
+    Cost: "5 gp"
+    Weight: "5 lb."
+
+- id: ORCUS_WEAPON_SHORTSPEAR
+  name: Shortspear
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Simple]
+  fields:
+    "Weapon Category": "Melee, Simple"
+    "Item Slot": Main Hand
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Spears and Lances"
+    Range: "-"
+    Cost: "5 gp"
+    Weight: "5 lb."
+
+- id: ORCUS_WEAPON_QUARTERSTAFF
+  name: Quarterstaff
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Simple]
+  fields:
+    "Weapon Category": "Melee, Simple"
+    "Item Slot": Two-Hands
+    Damage: "1d10"
+    "Proficiency Bonus": "2"
+    Group: "Staffs"
+    Range: "-"
+    Properties: "Two-Handed (also usable as an arcane focus)"
+    Cost: "5 gp"
+    Weight: "10 lb."
+
+# === Martial melee (group benefit applied) ====================================
+- id: ORCUS_WEAPON_LONGSWORD
+  name: Longsword
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Main Hand
+    Damage: "1d8"
+    "Proficiency Bonus": "3"
+    Group: "Heavy Blades"
+    Range: "-"
+    Properties: "Heavy Blade (proficiency +1)"
+    Cost: "10 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_GREATSWORD
+  name: Greatsword
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Two-Hands
+    Damage: "1d10"
+    "Proficiency Bonus": "3"
+    Group: "Heavy Blades"
+    Range: "-"
+    Properties: "Two-Handed, Heavy Blade (proficiency +1)"
+    Cost: "25 gp"
+    Weight: "8 lb."
+
+- id: ORCUS_WEAPON_SCIMITAR
+  name: Scimitar
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Main Hand
+    Damage: "1d8"
+    "Proficiency Bonus": "3"
+    Group: "Light Blades"
+    Range: "-"
+    Properties: "Light Blade (proficiency +1)"
+    Cost: "10 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_BATTLEAXE
+  name: Battleaxe
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Main Hand
+    Damage: "1d10"
+    "Proficiency Bonus": "2"
+    Group: "Axes"
+    Range: "-"
+    Properties: "Axe (damage die +1 step)"
+    Cost: "10 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_GREATAXE
+  name: Greataxe
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Two-Hands
+    Damage: "1d12"
+    "Proficiency Bonus": "2"
+    Group: "Axes"
+    Range: "-"
+    Properties: "Two-Handed, Axe (damage die +1 step)"
+    Cost: "25 gp"
+    Weight: "8 lb."
+
+- id: ORCUS_WEAPON_WARHAMMER
+  name: Warhammer
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Main Hand
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Picks and Hammers"
+    Range: "-"
+    Properties: "Improved Critical"
+    Cost: "10 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_HANDAXE
+  name: Handaxe
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Off-hand
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Axes"
+    Range: "5/10"
+    Properties: "Side Weapon, Thrown (Heavy), Axe (damage die +1 step)"
+    Cost: "5 gp"
+    Weight: "1 lb."
+
+- id: ORCUS_WEAPON_HALBERD
+  name: Halberd
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Martial]
+  fields:
+    "Weapon Category": "Melee, Martial"
+    "Item Slot": Two-Hands
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Polearms"
+    Range: "-"
+    Properties: "Two-Handed, Polearm (Reach)"
+    Cost: "25 gp"
+    Weight: "8 lb."
+
+# === Ranged ===================================================================
+- id: ORCUS_WEAPON_SLING
+  name: Sling
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Ranged, Simple]
+  fields:
+    "Weapon Category": "Ranged, Simple"
+    "Item Slot": Main Hand
+    Damage: "1d6"
+    "Proficiency Bonus": "2"
+    Group: "Slings"
+    Range: "10/20"
+    Properties: "Loading (Free)"
+    Cost: "0 gp"
+    Weight: "0 lb."
+
+- id: ORCUS_WEAPON_LIGHT_CROSSBOW
+  name: Light Crossbow
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Ranged, Simple]
+  fields:
+    "Weapon Category": "Ranged, Simple"
+    "Item Slot": Main Hand
+    Damage: "1d6"
+    "Proficiency Bonus": "2"
+    Group: "Crossbows"
+    Range: "10/20"
+    Properties: "Loading (Free)"
+    Cost: "35 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_HEAVY_CROSSBOW
+  name: Heavy Crossbow
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Ranged, Simple]
+  fields:
+    "Weapon Category": "Ranged, Simple"
+    "Item Slot": Two-Hands
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Crossbows"
+    Range: "15/30"
+    Properties: "Two-Handed, Loading (Swift)"
+    Cost: "50 gp"
+    Weight: "8 lb."
+
+- id: ORCUS_WEAPON_LONGBOW
+  name: Longbow
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Ranged, Martial]
+  fields:
+    "Weapon Category": "Ranged, Martial"
+    "Item Slot": Two-Hands
+    Damage: "1d10"
+    "Proficiency Bonus": "2"
+    Group: "Bows"
+    Range: "20/40"
+    Properties: "Two-Handed, Loading (Free)"
+    Cost: "50 gp"
+    Weight: "4 lb."
+
+- id: ORCUS_WEAPON_SHORTBOW
+  name: Shortbow
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Ranged, Martial]
+  fields:
+    "Weapon Category": "Ranged, Martial"
+    "Item Slot": Two-Hands
+    Damage: "1d8"
+    "Proficiency Bonus": "2"
+    Group: "Bows"
+    Range: "15/30"
+    Properties: "Two-Handed, Loading (Free), Small"
+    Cost: "35 gp"
+    Weight: "3 lb."
+
+# === Exotic ===================================================================
+- id: ORCUS_WEAPON_GARROTE
+  name: Garrote
+  type: Weapon
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Melee, Exotic]
+  fields:
+    "Weapon Category": "Melee, Exotic"
+    "Item Slot": Two-Hands
+    Damage: "1d4"
+    "Proficiency Bonus": "3"
+    Group: "Special"
+    Range: "-"
+    Properties: "Special (Garrote): on a hit you grapple and daze the target (-2 to escape)."
+    Cost: "1 gp"
+    Weight: "0 lb."

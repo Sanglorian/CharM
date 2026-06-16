@@ -56,6 +56,9 @@
       value: 1
 
     # --- Armor Class: 10 + half level + best of Dex/Int ---
+    # The Dex/Int contribution is suppressed while wearing heavy armor (the
+    # engine registers `armor:heavy` from an Armor element's `Armor Type` field),
+    # matching 4e: light armor adds your ability mod to AC, heavy armor does not.
     - statadd: AC
       value: 10
     - statadd: AC
@@ -63,9 +66,11 @@
     - statadd: AC
       value: { abilmod: Dexterity }
       bonusType: Ability
+      notWearing: armor:heavy
     - statadd: AC
       value: { abilmod: Intelligence }
       bonusType: Ability
+      notWearing: armor:heavy
 
     # --- Fortitude: 10 + half level + best of Str/Con ---
     - statadd: Fortitude Defense
