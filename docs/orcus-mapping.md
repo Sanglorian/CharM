@@ -92,11 +92,24 @@ cover this:
   Wisdom; **high‑Cha Priest → Charisma**; Commander (even with high Wisdom) →
   Charisma; Guardian → Strength.
 
-  Limitation: this relies on a discipline's named set being `{disciplineKey} ∪
-  {keys of the classes that use it}`. For a discipline shared by three or more
-  classes with distinct keys, a differing‑key class could see a third class's
-  key among the names; pinning that case to a 2‑element "higher of" set is the
-  one scenario the stock engine can't express via content alone.
+  Scope / limitation: this content‑only scheme is correct for the **nine base
+  classes**, where every discipline maps to exactly one class except Angel's
+  Trumpet (Commander + Priest = two keys). It does **not** scale to **kits**.
+  Per the Kits chapter, a kit's associated discipline is used "as if it were one
+  of your class disciplines" — i.e. with *your* class key — and kits are open to
+  any class. So once kits exist, most disciplines become reachable by classes of
+  many different keys (up to all six). Naming the full set in the power text then
+  over‑grants (a Guardian could pick Charisma off a shared "Cha or Wis or …"
+  line), and `ChosenAbilities` can only *force* one ability, not take the higher
+  of a per‑character pair.
+
+  The general, correct, scalable fix is a small **engine** enhancement: union
+  the character's class key (and talent secondary) into the power's candidate
+  set and take the highest — exactly what the engine already does for *basic*
+  attacks (`SelectBestBasicAttackAbility`), generalised to discipline powers and
+  made equipment‑independent. Until then the content‑only scheme stands for base
+  classes; kits will need that engine change (or accept `ChosenAbilities` force
+  semantics, which reintroduces the high‑Charisma‑Priest false negative).
 
 The secondary‑ability (talent) substitution works the same way (the power names
 the secondary options) and is a follow‑up once an authored power puts the

@@ -15,7 +15,7 @@
     Role: Leader
     Tradition: Divine
     "Key Ability": Wisdom
-    "Class Disciplines": "Angel's Trumpet, Golden Lion"
+    "Class Disciplines": "Angel's Trumpet"
     "Armor Proficiencies": "Cloth, leather, hide, chainmail"
     "Weapon Proficiencies": "Simple melee, simple ranged"
     "Focus Proficiencies": "Holy symbol"
@@ -57,28 +57,28 @@
     - select:
         type: Power
         number: 2
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,at-will,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,at-will,1"
         name: Priest At-Will Powers
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,encounter,1"
         name: Priest Encounter Power
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,daily,1"
         name: Priest Daily Power
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,2"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,utility,2"
         name: Priest Utility Power
         level: 2
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,3"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET,encounter,3"
         name: Priest Encounter Power 2
         level: 3
 
