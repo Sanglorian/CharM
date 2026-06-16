@@ -146,6 +146,15 @@
     # place of a discipline power's printed key ability. See docs/orcus-mapping.md.
     - grant: ORCUS_KEYSWAP_COMMANDER_CHARISMA
       type: Key Ability Swap
+    # Proficiencies: simple & martial melee, simple ranged weapons; cloth,
+    # leather, hide, chainmail, scale armor; light shields.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+    - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
+    - { grant: ORCUS_APROF_SCALE, type: Proficiency }
+    - { grant: ORCUS_APROF_LIGHT_SHIELD, type: Proficiency }
 
 # --- Always-on feature ---------------------------------------------------------
 - id: ORCUS_FEATURE_LIFT_SPIRITS

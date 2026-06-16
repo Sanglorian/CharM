@@ -152,6 +152,17 @@
     # whose key is already Strength, but applies to any discipline it reaches.)
     - grant: ORCUS_KEYSWAP_GUARDIAN_STRENGTH
       type: Key Ability Swap
+    # Proficiencies: simple & martial, melee & ranged weapons; cloth, leather,
+    # hide, chainmail, scale armor; light and heavy shields.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+    - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
+    - { grant: ORCUS_APROF_SCALE, type: Proficiency }
+    - { grant: ORCUS_APROF_LIGHT_SHIELD, type: Proficiency }
+    - { grant: ORCUS_APROF_HEAVY_SHIELD, type: Proficiency }
 
 # --- Always-on class features -------------------------------------------------
 - id: ORCUS_FEATURE_COMBAT_DOMINANCE

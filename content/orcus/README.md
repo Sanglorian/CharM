@@ -26,8 +26,9 @@ for the format.
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
 | `equipment/armor.yaml` | Light & heavy armor + shields as `Armor` elements (AC / Reflex / speed / armor-check contributions) |
 | `equipment/gear.yaml` | Adventuring gear (`Gear`) and focuses (`Focus`) |
+| `equipment/proficiencies.yaml` | Weapon/armor `Proficiency` elements + per-category `Grants` bundles the classes pull in |
 
-Compiles to **374 elements across 25 types**, no warnings.
+Compiles to **404 elements across 26 types**, no warnings.
 
 ### Equipment
 Weapons are `Weapon` elements: equipping one feeds power damage (the `Damage`
@@ -43,6 +44,16 @@ heavy armor suppresses it** (the engine registers `armor:heavy` from the armor's
 shield (Dex/Int dropped, +8 +2 added), leather → AC 13 (ability kept), chainmail
 → AC 16 (ability dropped); speed drops 6→5 in plate; and weapon dice flow into
 power damage. Try `playtest --weapon Greatsword --armor "Plate armor" --shield "Heavy shield"`.
+
+**Proficiency** is wired functionally. The engine tracks weapon training by exact
+weapon name (a `Weapon Proficiency (<weapon>)` `Proficiency` element), and only
+adds a weapon's `Proficiency Bonus` to the attack roll when the wielder is
+trained. So each class's category proficiency is expanded (in
+`proficiencies.yaml`) into per-weapon elements grouped into `Grants` bundles the
+class grants. Verified: a Guardian wielding a longsword attacks at +6 (ability +3
+**+3 longsword proficiency**); with the exotic garrote it drops to +3 (the
+Guardian isn't proficient, so no bonus). Armor proficiencies are recorded too,
+but the engine has no armor non-proficiency penalty yet, so those are declarative.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the

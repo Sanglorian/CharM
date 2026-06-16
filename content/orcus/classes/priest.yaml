@@ -30,6 +30,12 @@
     # stock engine path with no equipment. See docs/orcus-mapping.md.
     - grant: ORCUS_KEYSWAP_PRIEST_WISDOM
       type: Key Ability Swap
+    # Proficiencies: simple melee & simple ranged weapons; cloth, leather, hide,
+    # chainmail armor (no shields).
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+    - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
     # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
     - statadd: Hit Points
       value: 7
