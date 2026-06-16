@@ -1,0 +1,750 @@
+# Orcus species ancestries (Advanced Options). A species is selected in the Race
+# slot *instead* of Humanity's crux + heritage. Each species grants size, vision,
+# speed, fixed skill bonuses, a "pick two of three" ability-score select (filtered
+# by an ORCUS_ABILTRIO_* category from reference.yaml) and one or more powers.
+#
+# Conditional / always-on traits that don't map to a single stat (resistances,
+# natural weapons, fly/swim speeds, etc.) are recorded in descriptive fields so
+# they surface on the sheet without inventing stats the engine can't apply.
+
+# === Apefolk ==================================================================
+- id: ORCUS_RACE_APEFOLK
+  name: Apefolk
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Normal
+    "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Charisma"
+    Languages: "Common and one other"
+    "Heart of the Legion": "When adjacent to at least two allies, you receive a +1 power bonus to all defenses."
+    Description: >
+      Humanoids reminiscent of gorillas, orang-utans and chimpanzees, apefolk
+      prize legacy and enduring might.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Diplomacy
+      value: +2
+      bonusType: Ancestry
+    - statadd: Religion
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_CON_CHA
+        name: Apefolk Ability Scores
+    - select:
+        type: Power
+        number: 1
+        category: ORCUS_APEFOLK_POWER
+        name: Apefolk Power
+
+- id: ORCUS_POWER_CULL_THE_WEAK
+  name: Cull the Weak
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature, ORCUS_APEFOLK_POWER]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Standard Action
+    "Power Type": Attack
+    Target: Self
+    Effect: "Make two basic attacks against a staggered target."
+
+- id: ORCUS_POWER_RALLY_THE_TROOPS
+  name: Rally the Troops
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature, ORCUS_APEFOLK_POWER]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Swift Action
+    "Power Type": Utility
+    Target: "Near burst 5, one ally"
+    Effect: "The target can take the rally action as a free action, if they are eligible to do so."
+    Special: "This does not count against the maximum number of times a character can use the rally action in an encounter."
+
+# === Automaton ===============================================================
+- id: ORCUS_RACE_AUTOMATON
+  name: Automaton
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Normal
+    "Ability Scores": "Pick two of +2 Constitution, +2 Intelligence and +2 Wisdom"
+    Languages: "Common and one other"
+    "Relentless Endurance": "The first time in an encounter that you are staggered, you gain temporary HP equal to your level."
+    "Made of Metal": "You do not make death saving throws. You still die if reduced to negative hit points equal to your maximum hit points. You do not sleep, breathe, eat or drink."
+    Description: >
+      Created beings of brass, clockwork and a pinch of sorcery, the automatons
+      are a relatively new people still finding their place in the world.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Endure
+      value: +2
+      bonusType: Ancestry
+    - statadd: History
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_CON_INT_WIS
+        name: Automaton Ability Scores
+    - grant: ORCUS_POWER_INGENUITY
+      type: Power
+
+# === Azer =====================================================================
+- id: ORCUS_RACE_AZER
+  name: Azer
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: "5 squares (not reduced by heavy armor or a heavy load)"
+    Vision: Low-light
+    "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Wisdom"
+    Languages: "Common, Primordial"
+    "Resistance to Fire": "You gain resistance to fire equal to 5 + half your level."
+    "Minor Magics": "You know the fiery spirit power from the Cantrips discipline."
+    Description: >
+      Stout beings who resemble dwarves with hair of fire, azer are often skilled
+      artisans organised on quasi-military lines.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_LOW-LIGHT
+      type: Vision
+    - statadd: Speed
+      value: 5
+    - statadd: Language Count
+      value: 2
+    - statadd: Arcana
+      value: +2
+      bonusType: Ancestry
+    - statadd: Endure
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_CON_WIS
+        name: Azer Ability Scores
+    - grant: ORCUS_POWER_VENGEANCE_OF_THE_PIT
+      type: Power
+
+- id: ORCUS_POWER_VENGEANCE_OF_THE_PIT
+  name: Vengeance of the Pit
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Free Action
+    Keywords: Fire
+    "Power Type": Attack
+    Target: "Near burst 10, one enemy"
+    Trigger: "An attack by that enemy hits you."
+    Effect: >
+      The target takes 1d6 + Intelligence OR Charisma modifier fire damage.
+      Level 11: 2d6 + Intelligence OR Charisma modifier. Level 21: 3d6 +
+      Intelligence OR Charisma modifier.
+
+# === Catfolk ==================================================================
+- id: ORCUS_RACE_CATFOLK
+  name: Catfolk
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Low-light
+    "Ability Scores": "Pick two of +2 Dexterity, +2 Wisdom and +2 Charisma"
+    Languages: "Common and one other"
+    "Natural Weapon - Claws": "You are proficient with your claws: a martial side weapon in the light blades category (proficiency +3, 1d6 damage), though they cannot be thrown."
+    "Balance Guidance": "Allies within 10 receive a +1 ancestry bonus to Acrobatics."
+    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
+    Description: >
+      Playful, lithe humanoids with feline heads and short fur, different catfolk
+      clans resemble different breeds of big cat.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_LOW-LIGHT
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Acrobatics
+      value: +2
+      bonusType: Ancestry
+    - statadd: Streetsmarts
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_DEX_WIS_CHA
+        name: Catfolk Ability Scores
+    - grant: ORCUS_POWER_FARSTRIDER
+      type: Power
+
+- id: ORCUS_POWER_FARSTRIDER
+  name: Farstrider
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Move Action
+    "Power Type": Utility
+    Target: Self
+    Effect: "Shift up to your speed."
+
+# === Deepfolk =================================================================
+- id: ORCUS_RACE_DEEPFOLK
+  name: Deepfolk
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: "6 squares, swim 4 squares"
+    Vision: Darkvision
+    "Ability Scores": "Pick two of +2 Dexterity, +2 Wisdom and +2 Charisma"
+    Languages: "Common, Deep Speech"
+    Description: >
+      Amphibious humanoids with fish-like features, deepfolk are skilled in
+      underwater combat and wield weapons of coral and obsidian.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_DARKVISION
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Dungeoneering
+      value: +2
+      bonusType: Ancestry
+    - statadd: Streetsmarts
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_DEX_WIS_CHA
+        name: Deepfolk Ability Scores
+    - grant: ORCUS_POWER_BLINDING_MUCUS
+      type: Power
+
+- id: ORCUS_POWER_BLINDING_MUCUS
+  name: Blinding Mucus
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Standard Action
+    Keywords: Focus
+    "Power Type": Attack
+    Target: "Ranged 5, one creature"
+    Attack: "Dexterity, Wisdom or Charisma (your choice) vs Reflex"
+    Hit: "The target is blinded until the end of your next turn."
+
+# === Dromite ==================================================================
+- id: ORCUS_RACE_DROMITE
+  name: Dromite
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Small]
+  fields:
+    Size: Small
+    Speed: 5 squares
+    Vision: Darkvision
+    "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Charisma"
+    Languages: "Common, Deep Speech"
+    "Blast Shard": "You gain Blast Shard as a bonus feat."
+    Description: >
+      Small insect-like humanoids who form cooperative colonies in great earthen
+      mounds; their powerful legs let them leap great distances.
+  rules:
+    - grant: ORCUS_SIZE_SMALL
+      type: Size
+    - grant: ORCUS_VISION_DARKVISION
+      type: Vision
+    - statadd: Speed
+      value: 5
+    - statadd: Language Count
+      value: 2
+    - statadd: Arcana
+      value: +2
+      bonusType: Ancestry
+    - statadd: Insight
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_DEX_INT_CHA
+        name: Dromite Ability Scores
+    - grant: ORCUS_POWER_PSYCHIC_LEAP
+      type: Power
+
+- id: ORCUS_POWER_PSYCHIC_LEAP
+  name: Psychic Leap
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Move Action
+    Keywords: Psychic
+    "Power Type": Utility
+    Target: "Near burst 5, self or one ally"
+    Effect: "The target jumps up to 3 squares. This movement does not provoke opportunity attacks."
+
+# === Frogfolk =================================================================
+- id: ORCUS_RACE_FROGFOLK
+  name: Frogfolk
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Small]
+  fields:
+    Size: Small
+    Speed: "5 squares, swim 5 squares"
+    Vision: Normal
+    "Ability Scores": "Pick two of +2 Constitution, +2 Dexterity and +2 Charisma"
+    Languages: "Common and one other"
+    "Hide in a Flash": "When you make an initiative check, if you are in cover or concealment, you can make a Stealth check to hide (no action)."
+    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
+    Description: >
+      Amphibious humanoids with webbed hands, sticky tongues and a cheery,
+      adventurous streak that sours fast if their skin dries out.
+  rules:
+    - grant: ORCUS_SIZE_SMALL
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+    - statadd: Speed
+      value: 5
+    - statadd: Language Count
+      value: 2
+    - statadd: Nature
+      value: +2
+      bonusType: Ancestry
+    - statadd: Stealth
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_CON_DEX_CHA
+        name: Frogfolk Ability Scores
+    - grant: ORCUS_POWER_LUCKY
+      type: Power
+
+- id: ORCUS_POWER_LUCKY
+  name: Lucky
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Counter Action
+    "Power Type": Utility
+    Target: Self
+    Trigger: "An attack hits you."
+    Effect: "The opponent must reroll that attack and take the second result."
+
+# === Gnoll ====================================================================
+- id: ORCUS_RACE_GNOLL
+  name: Gnoll
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Low-light
+    "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Charisma"
+    Languages: "Common, Abyssal"
+    Vigor: "Add your Constitution modifier to your recovery value."
+    "Natural Weapon - Bite": "You are proficient with your bite: a martial one-handed weapon in the heavy blades category (proficiency +3, 1d8 damage), requiring no hands to use."
+    Description: >
+      Humanoid hyenas known for wildness and cunning, fiercely loyal to their
+      pack but with little patience for fools.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_LOW-LIGHT
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Athletics
+      value: +2
+      bonusType: Ancestry
+    - statadd: Perception
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_CON_CHA
+        name: Gnoll Ability Scores
+    - grant: ORCUS_POWER_VIOLENT_RUSH
+      type: Power
+
+# === Half-Giant ===============================================================
+- id: ORCUS_RACE_HALF_GIANT
+  name: Half-Giant
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Normal
+    "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Wisdom"
+    Languages: "Common, Giant"
+    "Powerful Build": "+2 ancestry bonus to checks to escape a grapple. Against attacks that vary by target size, you may be treated as Large instead of Medium."
+    Unmoved: "Reduce any unwilling movement you are subject to by 1 square. When you would fall prone as the result of an attack, make a saving throw; on a success you do not fall."
+    Description: >
+      Seven- to eight-foot-tall humanoids who are their own people (not the
+      offspring of giants), proud and inclined to see themselves as leaders.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Athletics
+      value: +2
+      bonusType: Ancestry
+    - statadd: Diplomacy
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_CON_WIS
+        name: Half-Giant Ability Scores
+    - grant: ORCUS_POWER_STOMP
+      type: Power
+
+- id: ORCUS_POWER_STOMP
+  name: Stomp
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Standard Action
+    Keywords: Focus
+    "Power Type": Attack
+    Target: "Near burst 1, all creatures"
+    Attack: "Strength, Constitution or Wisdom (your choice) vs Fortitude"
+    Hit: "The target falls prone."
+
+# === Hobgoblin ================================================================
+- id: ORCUS_RACE_HOBGOBLIN
+  name: Hobgoblin
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Normal
+    "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Dexterity"
+    Languages: "Common, Goblin"
+    "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
+    "Heavy Blade Weapon Proficiency": "You have proficiency with martial weapons in the heavy blades category."
+    Description: >
+      Bright-skinned humanoids with pointed ears and heavy brows, known for
+      discipline, honour and rigid hierarchical societies.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_NORMAL
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: History
+      value: +2
+      bonusType: Ancestry
+    - statadd: Intimidate
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_CON_DEX
+        name: Hobgoblin Ability Scores
+    - grant: ORCUS_POWER_CAREFUL_FOCUS
+      type: Power
+
+- id: ORCUS_POWER_CAREFUL_FOCUS
+  name: Careful Focus
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Free Action
+    "Power Type": Utility
+    Target: Self
+    Trigger: "You just made an attack roll."
+    Effect: "Reroll the attack roll and take the new result."
+
+# === Mephit ===================================================================
+- id: ORCUS_RACE_MEPHIT
+  name: Mephit
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Small]
+  fields:
+    Size: Small
+    Speed: 6 squares
+    Vision: Darkvision
+    "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Charisma"
+    Languages: "Common, Primordial"
+    "Under-Developed Wings": "You have a fly speed of 6, but you fall at the end of your turn and your maximum altitude is 1."
+    "Resistance to X": "Resistance 5 + half your level to your element's damage type. Air: lightning and thunder. Ice: cold. Earth: acid. Fire: fire."
+    Description: >
+      Small, winged imps from the elemental planes - mischievous, clever and
+      talkative, delighting in their associated element.
+  rules:
+    - grant: ORCUS_SIZE_SMALL
+      type: Size
+    - grant: ORCUS_VISION_DARKVISION
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Arcana
+      value: +2
+      bonusType: Ancestry
+    - statadd: Religion
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_DEX_INT_CHA
+        name: Mephit Ability Scores
+    - grant: ORCUS_POWER_BREATH_WEAPON
+      type: Power
+
+- id: ORCUS_POWER_BREATH_WEAPON
+  name: Breath Weapon
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Swift Action
+    Keywords: "Focus, [Energy]"
+    "Power Type": Attack
+    Target: "Near arc 3, all targets"
+    Attack: "Highest of Strength, Constitution or Dexterity vs Reflex"
+    Hit: >
+      1d6 + Constitution modifier. Level 11: 2d6 + Constitution modifier.
+      Level 21: 3d6 + Constitution modifier.
+    Special: "This power has the same damage type as your resistance."
+
+# === Minotaur =================================================================
+- id: ORCUS_RACE_MINOTAUR
+  name: Minotaur
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Darkvision
+    "Ability Scores": "Pick two of +2 Strength, +2 Intelligence and +2 Wisdom"
+    Languages: "Common and one other"
+    "Maze Mind": "When you are the target of an attack with the Psychic tag, the attacker is rattled (save ends)."
+    "Wandering Charge": "When you charge, you do not need to move in a straight line."
+    Description: >
+      Strong, imposing half-bull half-humans, marked by courage and a struggle
+      to reconcile fierce instincts with human emotion.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_DARKVISION
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Dungeoneering
+      value: +2
+      bonusType: Ancestry
+    - statadd: Religion
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_STR_INT_WIS
+        name: Minotaur Ability Scores
+    - grant: ORCUS_POWER_MOMENTUM_BLOW
+      type: Power
+
+- id: ORCUS_POWER_MOMENTUM_BLOW
+  name: Momentum Blow
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Free Action
+    "Power Type": Attack
+    Target: Self
+    Requirements: "You have made an attack after moving at least two squares this turn."
+    Effect: "If your attack hits, the target also falls prone."
+
+# === Shadow Elf ===============================================================
+- id: ORCUS_RACE_SHADOW_ELF
+  name: Shadow Elf
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Low-light
+    "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Wisdom"
+    Languages: "Common, Elven"
+    "Minor Magics": "You know the ghost sound power from the Cantrips discipline."
+    Trance: "You don't sleep; a 4-hour meditative trance has the same effect as a 6-hour long rest."
+    Description: >
+      Enigmatic descendants of refugees from the Seelie-Unseelie wars, shadow
+      elves are known for haunting beauty and a taste for secrecy and intrigue.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_LOW-LIGHT
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Bluff
+      value: +2
+      bonusType: Ancestry
+    - statadd: Insight
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_DEX_INT_WIS
+        name: Shadow Elf Ability Scores
+    - grant: ORCUS_POWER_HIGHBLOOD_TELEPORT
+      type: Power
+
+- id: ORCUS_POWER_HIGHBLOOD_TELEPORT
+  name: Highblood Teleport
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Move Action
+    Keywords: Teleport
+    "Power Type": Utility
+    Target: Self
+    Effect: "Teleport up to 5."
+
+# === Vishya ===================================================================
+- id: ORCUS_RACE_VISHYA
+  name: Vishya
+  type: Race
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Medium]
+  fields:
+    Size: Medium
+    Speed: 6 squares
+    Vision: Low-light
+    "Ability Scores": "Pick two of +2 Constitution, +2 Dexterity and +2 Charisma"
+    Languages: "Common, Draconic"
+    "Hold Breath": "+5 ancestry bonus to Endure checks to hold your breath."
+    "Swamp Stride": "Mud, marsh and shallows are not difficult terrain for you."
+    Whistle: "You can communicate using high-pitched whistles that adults cannot hear but dogs and children can."
+    Description: >
+      Graceful humanoids with venomous fangs, serpentine eyes and supple,
+      lightly scaled skin often patterned like a serpent's.
+  rules:
+    - grant: ORCUS_SIZE_MEDIUM
+      type: Size
+    - grant: ORCUS_VISION_LOW-LIGHT
+      type: Vision
+    - statadd: Speed
+      value: 6
+    - statadd: Language Count
+      value: 2
+    - statadd: Acrobatics
+      value: +2
+      bonusType: Ancestry
+    - statadd: Bluff
+      value: +2
+      bonusType: Ancestry
+    - select:
+        type: Race Ability Bonus
+        number: 2
+        category: ORCUS_ABILTRIO_CON_DEX_CHA
+        name: Vishya Ability Scores
+    - grant: ORCUS_POWER_POISONOUS_NIP
+      type: Power
+
+- id: ORCUS_POWER_POISONOUS_NIP
+  name: Poisonous Nip
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Action Type": Swift Action
+    Keywords: "Focus, Poison"
+    "Power Type": Attack
+    Target: "Melee 1, one target"
+    Attack: "Dexterity or Constitution vs AC"
+    Hit: >
+      1d8 + your Dexterity or Constitution modifier poison damage.
+      Level 11: attack bonus increases to +4, 2d8 + modifier damage.
+      Level 21: attack bonus increases to +6, 3d8 + modifier damage.

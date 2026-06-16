@@ -106,7 +106,8 @@ static int Playtest(string[] args)
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
                 break;
-            case "--talent": talentHint = args[++i]; break;
+            case "--talent":
+            case "--pick": talentHint = args[++i]; break;
             default: dbPath ??= args[i]; break;
         }
     }
