@@ -330,6 +330,10 @@ static int Playtest(string[] args)
         if ((miType is "Weapon" or "Focus") && equippedWeapon is not null
             && mi.Fields.TryGetValue("Enhancement", out var enh))
         {
+            // Composite pairing: the enchanted weapon is a base weapon + an
+            // enchantment, modelled as a LootItem and re-equipped in the weapon
+            // slot. The enhancement is also reflected on the power card below.
+            session.EquipItem("Main Hand", new LootItem { Base = equippedWeapon, Enchantment = mi });
             equippedWeapon.Fields["Enhancement"] = enh;
         }
         else

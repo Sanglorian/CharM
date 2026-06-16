@@ -1,0 +1,613 @@
+# Boosted enchanted items (Orcus Rulebook). A "boost" (I-IV) raises an enchanted
+# item's level (and price) by 1-4 without changing its +X bonus or adding any
+# property to these generic items — it just places the same enhancement at a
+# higher level slot for treasure/purchase purposes. Generated for all four
+# families at +1..+6 x Boost I-IV. Same statadd rules as the un-boosted item.
+
+# === Enchanted Weapon boosts ===
+- id: ORCUS_MAGIC_WEAPON_PLUS1_BOOST1
+  name: "Enchanted Weapon +1 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+1", "Item Level": "2", Boost: "I", Cost: "520 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS1_BOOST2
+  name: "Enchanted Weapon +1 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+1", "Item Level": "3", Boost: "II", Cost: "680 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS1_BOOST3
+  name: "Enchanted Weapon +1 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+1", "Item Level": "4", Boost: "III", Cost: "840 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS1_BOOST4
+  name: "Enchanted Weapon +1 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+1", "Item Level": "5", Boost: "IV", Cost: "1,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS2_BOOST1
+  name: "Enchanted Weapon +2 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+2", "Item Level": "7", Boost: "I", Cost: "2,600 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS2_BOOST2
+  name: "Enchanted Weapon +2 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+2", "Item Level": "8", Boost: "II", Cost: "3,400 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS2_BOOST3
+  name: "Enchanted Weapon +2 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+2", "Item Level": "9", Boost: "III", Cost: "4,200 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS2_BOOST4
+  name: "Enchanted Weapon +2 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+2", "Item Level": "10", Boost: "IV", Cost: "5,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS3_BOOST1
+  name: "Enchanted Weapon +3 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+3", "Item Level": "12", Boost: "I", Cost: "13,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS3_BOOST2
+  name: "Enchanted Weapon +3 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+3", "Item Level": "13", Boost: "II", Cost: "17,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS3_BOOST3
+  name: "Enchanted Weapon +3 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+3", "Item Level": "14", Boost: "III", Cost: "21,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS3_BOOST4
+  name: "Enchanted Weapon +3 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+3", "Item Level": "15", Boost: "IV", Cost: "25,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS4_BOOST1
+  name: "Enchanted Weapon +4 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+4", "Item Level": "17", Boost: "I", Cost: "65,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS4_BOOST2
+  name: "Enchanted Weapon +4 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+4", "Item Level": "18", Boost: "II", Cost: "85,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS4_BOOST3
+  name: "Enchanted Weapon +4 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+4", "Item Level": "19", Boost: "III", Cost: "105,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS4_BOOST4
+  name: "Enchanted Weapon +4 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+4", "Item Level": "20", Boost: "IV", Cost: "125,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS5_BOOST1
+  name: "Enchanted Weapon +5 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+5", "Item Level": "22", Boost: "I", Cost: "325,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS5_BOOST2
+  name: "Enchanted Weapon +5 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+5", "Item Level": "23", Boost: "II", Cost: "425,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS5_BOOST3
+  name: "Enchanted Weapon +5 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+5", "Item Level": "24", Boost: "III", Cost: "525,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS5_BOOST4
+  name: "Enchanted Weapon +5 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+5", "Item Level": "25", Boost: "IV", Cost: "625,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS6_BOOST1
+  name: "Enchanted Weapon +6 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+6", "Item Level": "27", Boost: "I", Cost: "1,625,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS6_BOOST2
+  name: "Enchanted Weapon +6 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+6", "Item Level": "28", Boost: "II", Cost: "2,125,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS6_BOOST3
+  name: "Enchanted Weapon +6 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+6", "Item Level": "29", Boost: "III", Cost: "2,625,000 gp" }
+- id: ORCUS_MAGIC_WEAPON_PLUS6_BOOST4
+  name: "Enchanted Weapon +6 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Weapon, "Magic Item Type": Weapon, Enhancement: "+6", "Item Level": "30", Boost: "IV", Cost: "3,125,000 gp" }
+
+# === Enchanted Focus boosts ===
+- id: ORCUS_MAGIC_FOCUS_PLUS1_BOOST1
+  name: "Enchanted Focus +1 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+1", "Item Level": "2", Boost: "I", Cost: "520 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS1_BOOST2
+  name: "Enchanted Focus +1 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+1", "Item Level": "3", Boost: "II", Cost: "680 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS1_BOOST3
+  name: "Enchanted Focus +1 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+1", "Item Level": "4", Boost: "III", Cost: "840 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS1_BOOST4
+  name: "Enchanted Focus +1 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+1", "Item Level": "5", Boost: "IV", Cost: "1,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS2_BOOST1
+  name: "Enchanted Focus +2 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+2", "Item Level": "7", Boost: "I", Cost: "2,600 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS2_BOOST2
+  name: "Enchanted Focus +2 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+2", "Item Level": "8", Boost: "II", Cost: "3,400 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS2_BOOST3
+  name: "Enchanted Focus +2 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+2", "Item Level": "9", Boost: "III", Cost: "4,200 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS2_BOOST4
+  name: "Enchanted Focus +2 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+2", "Item Level": "10", Boost: "IV", Cost: "5,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS3_BOOST1
+  name: "Enchanted Focus +3 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+3", "Item Level": "12", Boost: "I", Cost: "13,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS3_BOOST2
+  name: "Enchanted Focus +3 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+3", "Item Level": "13", Boost: "II", Cost: "17,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS3_BOOST3
+  name: "Enchanted Focus +3 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+3", "Item Level": "14", Boost: "III", Cost: "21,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS3_BOOST4
+  name: "Enchanted Focus +3 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+3", "Item Level": "15", Boost: "IV", Cost: "25,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS4_BOOST1
+  name: "Enchanted Focus +4 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+4", "Item Level": "17", Boost: "I", Cost: "65,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS4_BOOST2
+  name: "Enchanted Focus +4 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+4", "Item Level": "18", Boost: "II", Cost: "85,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS4_BOOST3
+  name: "Enchanted Focus +4 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+4", "Item Level": "19", Boost: "III", Cost: "105,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS4_BOOST4
+  name: "Enchanted Focus +4 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+4", "Item Level": "20", Boost: "IV", Cost: "125,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS5_BOOST1
+  name: "Enchanted Focus +5 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+5", "Item Level": "22", Boost: "I", Cost: "325,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS5_BOOST2
+  name: "Enchanted Focus +5 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+5", "Item Level": "23", Boost: "II", Cost: "425,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS5_BOOST3
+  name: "Enchanted Focus +5 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+5", "Item Level": "24", Boost: "III", Cost: "525,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS5_BOOST4
+  name: "Enchanted Focus +5 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+5", "Item Level": "25", Boost: "IV", Cost: "625,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS6_BOOST1
+  name: "Enchanted Focus +6 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+6", "Item Level": "27", Boost: "I", Cost: "1,625,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS6_BOOST2
+  name: "Enchanted Focus +6 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+6", "Item Level": "28", Boost: "II", Cost: "2,125,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS6_BOOST3
+  name: "Enchanted Focus +6 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+6", "Item Level": "29", Boost: "III", Cost: "2,625,000 gp" }
+- id: ORCUS_MAGIC_FOCUS_PLUS6_BOOST4
+  name: "Enchanted Focus +6 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Implement, "Magic Item Type": Focus, Enhancement: "+6", "Item Level": "30", Boost: "IV", Cost: "3,125,000 gp" }
+
+# === Enchanted Armor boosts ===
+- id: ORCUS_MAGIC_ARMOR_PLUS1_BOOST1
+  name: "Enchanted Armor +1 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+1", "Item Level": "2", Boost: "I", Cost: "520 gp" }
+  rules: [{ statadd: AC, value: 1, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS1_BOOST2
+  name: "Enchanted Armor +1 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+1", "Item Level": "3", Boost: "II", Cost: "680 gp" }
+  rules: [{ statadd: AC, value: 1, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS1_BOOST3
+  name: "Enchanted Armor +1 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+1", "Item Level": "4", Boost: "III", Cost: "840 gp" }
+  rules: [{ statadd: AC, value: 1, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS1_BOOST4
+  name: "Enchanted Armor +1 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+1", "Item Level": "5", Boost: "IV", Cost: "1,000 gp" }
+  rules: [{ statadd: AC, value: 1, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS2_BOOST1
+  name: "Enchanted Armor +2 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+2", "Item Level": "7", Boost: "I", Cost: "2,600 gp" }
+  rules: [{ statadd: AC, value: 2, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS2_BOOST2
+  name: "Enchanted Armor +2 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+2", "Item Level": "8", Boost: "II", Cost: "3,400 gp" }
+  rules: [{ statadd: AC, value: 2, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS2_BOOST3
+  name: "Enchanted Armor +2 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+2", "Item Level": "9", Boost: "III", Cost: "4,200 gp" }
+  rules: [{ statadd: AC, value: 2, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS2_BOOST4
+  name: "Enchanted Armor +2 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+2", "Item Level": "10", Boost: "IV", Cost: "5,000 gp" }
+  rules: [{ statadd: AC, value: 2, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS3_BOOST1
+  name: "Enchanted Armor +3 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+3", "Item Level": "12", Boost: "I", Cost: "13,000 gp" }
+  rules: [{ statadd: AC, value: 3, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS3_BOOST2
+  name: "Enchanted Armor +3 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+3", "Item Level": "13", Boost: "II", Cost: "17,000 gp" }
+  rules: [{ statadd: AC, value: 3, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS3_BOOST3
+  name: "Enchanted Armor +3 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+3", "Item Level": "14", Boost: "III", Cost: "21,000 gp" }
+  rules: [{ statadd: AC, value: 3, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS3_BOOST4
+  name: "Enchanted Armor +3 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+3", "Item Level": "15", Boost: "IV", Cost: "25,000 gp" }
+  rules: [{ statadd: AC, value: 3, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS4_BOOST1
+  name: "Enchanted Armor +4 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+4", "Item Level": "17", Boost: "I", Cost: "65,000 gp" }
+  rules: [{ statadd: AC, value: 4, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS4_BOOST2
+  name: "Enchanted Armor +4 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+4", "Item Level": "18", Boost: "II", Cost: "85,000 gp" }
+  rules: [{ statadd: AC, value: 4, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS4_BOOST3
+  name: "Enchanted Armor +4 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+4", "Item Level": "19", Boost: "III", Cost: "105,000 gp" }
+  rules: [{ statadd: AC, value: 4, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS4_BOOST4
+  name: "Enchanted Armor +4 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+4", "Item Level": "20", Boost: "IV", Cost: "125,000 gp" }
+  rules: [{ statadd: AC, value: 4, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS5_BOOST1
+  name: "Enchanted Armor +5 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+5", "Item Level": "22", Boost: "I", Cost: "325,000 gp" }
+  rules: [{ statadd: AC, value: 5, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS5_BOOST2
+  name: "Enchanted Armor +5 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+5", "Item Level": "23", Boost: "II", Cost: "425,000 gp" }
+  rules: [{ statadd: AC, value: 5, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS5_BOOST3
+  name: "Enchanted Armor +5 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+5", "Item Level": "24", Boost: "III", Cost: "525,000 gp" }
+  rules: [{ statadd: AC, value: 5, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS5_BOOST4
+  name: "Enchanted Armor +5 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+5", "Item Level": "25", Boost: "IV", Cost: "625,000 gp" }
+  rules: [{ statadd: AC, value: 5, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS6_BOOST1
+  name: "Enchanted Armor +6 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+6", "Item Level": "27", Boost: "I", Cost: "1,625,000 gp" }
+  rules: [{ statadd: AC, value: 6, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS6_BOOST2
+  name: "Enchanted Armor +6 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+6", "Item Level": "28", Boost: "II", Cost: "2,125,000 gp" }
+  rules: [{ statadd: AC, value: 6, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS6_BOOST3
+  name: "Enchanted Armor +6 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+6", "Item Level": "29", Boost: "III", Cost: "2,625,000 gp" }
+  rules: [{ statadd: AC, value: 6, bonusType: Enhancement }]
+- id: ORCUS_MAGIC_ARMOR_PLUS6_BOOST4
+  name: "Enchanted Armor +6 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Body, "Magic Item Type": Armor, Enhancement: "+6", "Item Level": "30", Boost: "IV", Cost: "3,125,000 gp" }
+  rules: [{ statadd: AC, value: 6, bonusType: Enhancement }]
+
+# === Enchanted Cloak boosts ===
+- id: ORCUS_MAGIC_CLOAK_PLUS1_BOOST1
+  name: "Enchanted Cloak +1 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+1", "Item Level": "2", Boost: "I", Cost: "520 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 1, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS1_BOOST2
+  name: "Enchanted Cloak +1 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+1", "Item Level": "3", Boost: "II", Cost: "680 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 1, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS1_BOOST3
+  name: "Enchanted Cloak +1 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+1", "Item Level": "4", Boost: "III", Cost: "840 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 1, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS1_BOOST4
+  name: "Enchanted Cloak +1 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+1", "Item Level": "5", Boost: "IV", Cost: "1,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 1, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS2_BOOST1
+  name: "Enchanted Cloak +2 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+2", "Item Level": "7", Boost: "I", Cost: "2,600 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 2, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS2_BOOST2
+  name: "Enchanted Cloak +2 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+2", "Item Level": "8", Boost: "II", Cost: "3,400 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 2, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS2_BOOST3
+  name: "Enchanted Cloak +2 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+2", "Item Level": "9", Boost: "III", Cost: "4,200 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 2, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS2_BOOST4
+  name: "Enchanted Cloak +2 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+2", "Item Level": "10", Boost: "IV", Cost: "5,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 2, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS3_BOOST1
+  name: "Enchanted Cloak +3 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+3", "Item Level": "12", Boost: "I", Cost: "13,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 3, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS3_BOOST2
+  name: "Enchanted Cloak +3 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+3", "Item Level": "13", Boost: "II", Cost: "17,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 3, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS3_BOOST3
+  name: "Enchanted Cloak +3 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+3", "Item Level": "14", Boost: "III", Cost: "21,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 3, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS3_BOOST4
+  name: "Enchanted Cloak +3 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+3", "Item Level": "15", Boost: "IV", Cost: "25,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 3, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS4_BOOST1
+  name: "Enchanted Cloak +4 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+4", "Item Level": "17", Boost: "I", Cost: "65,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 4, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS4_BOOST2
+  name: "Enchanted Cloak +4 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+4", "Item Level": "18", Boost: "II", Cost: "85,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 4, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS4_BOOST3
+  name: "Enchanted Cloak +4 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+4", "Item Level": "19", Boost: "III", Cost: "105,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 4, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS4_BOOST4
+  name: "Enchanted Cloak +4 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+4", "Item Level": "20", Boost: "IV", Cost: "125,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 4, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS5_BOOST1
+  name: "Enchanted Cloak +5 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+5", "Item Level": "22", Boost: "I", Cost: "325,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 5, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS5_BOOST2
+  name: "Enchanted Cloak +5 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+5", "Item Level": "23", Boost: "II", Cost: "425,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 5, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS5_BOOST3
+  name: "Enchanted Cloak +5 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+5", "Item Level": "24", Boost: "III", Cost: "525,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 5, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS5_BOOST4
+  name: "Enchanted Cloak +5 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+5", "Item Level": "25", Boost: "IV", Cost: "625,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 5, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS6_BOOST1
+  name: "Enchanted Cloak +6 (Boost I)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+6", "Item Level": "27", Boost: "I", Cost: "1,625,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 6, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS6_BOOST2
+  name: "Enchanted Cloak +6 (Boost II)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+6", "Item Level": "28", Boost: "II", Cost: "2,125,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 6, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS6_BOOST3
+  name: "Enchanted Cloak +6 (Boost III)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+6", "Item Level": "29", Boost: "III", Cost: "2,625,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 6, bonusType: Enhancement }
+- id: ORCUS_MAGIC_CLOAK_PLUS6_BOOST4
+  name: "Enchanted Cloak +6 (Boost IV)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Neck, "Magic Item Type": Neck, Enhancement: "+6", "Item Level": "30", Boost: "IV", Cost: "3,125,000 gp" }
+  rules:
+    - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 6, bonusType: Enhancement }

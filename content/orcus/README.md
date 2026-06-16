@@ -30,8 +30,9 @@ for the format.
 | `equipment/magic-items.yaml` | The four generic enchanted-item families (Weapon, Focus, Armor, Cloak) at +1…+6 as `Magic Item` elements |
 | `kits.yaml` | Kits (mapped to the engine's `Theme` type) + the "Has Kit" marker and "Feats and Kits" house-rule elements |
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
+| `equipment/magic-items-boosts.yaml` | The Boost I–IV variants of every enchanted item (same +X, higher item level/price) |
 
-Compiles to **458 elements across 31 types**, no warnings.
+Compiles to **554 elements across 31 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -81,9 +82,13 @@ focuses carry an `Enhancement` field, which the calculator adds to attack and
 damage. Verified: a +3 cloak adds +3 to Fortitude/Reflex/Will, +3 armor adds +3
 AC, and a +3 longsword takes *In Their Face* from +12 / 2d8 to +15 / 2d8+3. Try
 `playtest --weapon Longsword --magic "Enchanted Weapon +3"` or
-`--magic "Enchanted Cloak +3"`. The level-scaling "boost" variants (which only
-raise item level) and the enchanted-armor light/heavy AC scaling are recorded in
-the item Description rather than computed.
+`--magic "Enchanted Cloak +3"`. The Boost I–IV variants (same +X at a higher item
+level/price) are generated for every family in `magic-items-boosts.yaml`. When a
+weapon/focus enchantment is applied to an equipped weapon, the harness models it
+as a composite `LootItem` (Base + Enchantment) — e.g. a longsword + *Enchanted
+Weapon +3 (Boost II)* resolves *In Their Face* at +3 attack / 2d8+3. The
+enchanted-armor light/heavy AC scaling is still recorded in the Description
+rather than computed.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
@@ -191,8 +196,7 @@ Remaining work: the other six classes and their disciplines, full power lists fo
 the remaining disciplines, the rest of the species roster, prestige paths and
 feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
 6 heritages, the rest of the kits (incl. the "Dabbles in …" multiclass kits) and
-their associated-discipline power access, the magic-item boost variants, and the
-rest of the equipment list. The
+their associated-discipline power access, and the rest of the equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.
