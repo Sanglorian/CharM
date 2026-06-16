@@ -1,10 +1,10 @@
 # Priest - Divine Leader (Orcus Classes and Powers). Key ability: Wisdom.
 # The Priest shares the Angel's Trumpet discipline with the Commander, but those
 # powers are printed with the discipline's key (Charisma). Per the Orcus rule a
-# Priest uses Wisdom (its class key) instead. This is done with no engine change
-# and no equipment dependency: Angel's Trumpet attacks name "Charisma or Wisdom",
-# and this class grants an "Ability Choice" element naming Wisdom, so the engine
-# resolves those powers to Wisdom for a Priest (and Charisma for a Commander).
+# Priest may use Wisdom (its class key) INSTEAD, if higher. Angel's Trumpet
+# attacks name "Charisma or Wisdom" and the engine takes the higher-modifier
+# ability among those named - no engine change, no equipment dependency, and no
+# false negative when a Priest's Charisma happens to exceed its Wisdom.
 
 - id: ORCUS_CLASS_PRIEST
   name: Priest
@@ -23,13 +23,12 @@
     Flavor: "You channel the will of the gods to mend, ward and rally."
   rules:
     # Orcus key-ability substitution (equipment-independent, no engine change):
-    # grant an "Ability Choice" element naming this class's key ability. The
-    # engine adds it to Stats.ChosenAbilities and, for any discipline power whose
-    # attack/damage text names more than one ability, resolves it to this one.
-    # Angel's Trumpet powers print "Charisma or Wisdom", so a Priest uses Wisdom
-    # while a Commander uses Charisma. See docs/orcus-mapping.md.
-    - grant: ORCUS_ABILITYCHOICE_PRIEST_WISDOM
-      type: Ability Choice
+    # Angel's Trumpet attacks name "Charisma or Wisdom" (the discipline key plus
+    # this class's key). The Priest grants NO "Ability Choice", so the engine
+    # takes the HIGHER of the two — Wisdom when it leads, but Charisma if a Priest
+    # happens to have more of it. (A class whose key equals the discipline key,
+    # like the Commander, instead grants an Ability Choice to pin it to its key.)
+    # See docs/orcus-mapping.md.
     # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
     - statadd: Hit Points
       value: 7
@@ -119,10 +118,3 @@
   fields:
     "Secondary Ability": Strength
     Description: "You lead the faithful into battle. Secondary ability: Strength."
-
-# Records Wisdom as the Priest's chosen ability for "use X or Y" discipline
-# powers (category "Ability Choice"; the engine reads the trailing ability name).
-- id: ORCUS_ABILITYCHOICE_PRIEST_WISDOM
-  name: Priest Key Wisdom
-  type: Ability Choice
-  categories: [Ability Choice]

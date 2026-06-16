@@ -70,23 +70,37 @@ cover this:
   the highest‑modifier ability among those named — no extra work.
 - **Class key‑ability substitution** (when a class uses a discipline keyed to a
   different ability — e.g. a Priest, Wisdom, using Charisma‑keyed Angel's
-  Trumpet). Done with **no engine change and no equipment dependency**, via the
-  engine's `Stats.ChosenAbilities`:
-  1. The shared discipline power names every candidate ability in its attack/
-     damage text, e.g. `Attack: "Charisma or Wisdom vs Will"`.
-  2. Each class grants an **"Ability Choice"** element whose name ends in the
-     class's key ability (e.g. `Priest Key Wisdom`, category `Ability Choice`).
-     The engine reads the trailing ability into `Stats.ChosenAbilities`.
-  3. `ResolveAttackAbility`/`ResolveDamageAbility` pick the *chosen* ability
-     among those the power names — for weapon, focus **and** weaponless powers.
+  Trumpet). Done with **no engine change and no equipment dependency**. The
+  shared discipline power names every candidate ability in its attack/damage
+  text — `Attack: "Charisma or Wisdom vs Will"` — and the engine's
+  `ResolveAttackAbility`/`ResolveDamageAbility` pick among them (weapon, focus
+  **and** weaponless powers). Two cases, because the rule ("you *may* replace
+  the discipline key with your class key") means *use the higher*:
 
-  Verified on the unmodified engine with no weapon/implement: a Priest's
-  *Identify Target* resolves to **Wisdom** (attack and the heal die), a
-  Commander's stays **Charisma**, a Guardian's Art of War powers use Strength.
+  - **Class key ≠ discipline key** (Priest): grant **no** Ability Choice. The
+    named set `{disciplineKey, classKey}` is exactly the Priest's legal set, so
+    the engine's highest‑modifier fallback uses the higher of the two — Wisdom
+    when it leads, **Charisma when a Priest's Charisma is higher** (no false
+    negative).
+  - **Class key = discipline key** (Commander): grant an **"Ability Choice"**
+    element naming the key (e.g. `Commander Key Charisma`, category
+    `Ability Choice`). This pins the class to its key so it does **not** pick up
+    the other class's key (Wisdom) that only appears because the text is shared
+    (no false positive).
 
-The secondary‑ability (talent) substitution works the same way — the talent
-grants an additional `Ability Choice` and the power text names the secondary —
-and is a follow‑up once an authored power puts the secondary on an attack.
+  Verified on the unmodified engine, no weapon/implement: high‑Wis Priest →
+  Wisdom; **high‑Cha Priest → Charisma**; Commander (even with high Wisdom) →
+  Charisma; Guardian → Strength.
+
+  Limitation: this relies on a discipline's named set being `{disciplineKey} ∪
+  {keys of the classes that use it}`. For a discipline shared by three or more
+  classes with distinct keys, a differing‑key class could see a third class's
+  key among the names; pinning that case to a 2‑element "higher of" set is the
+  one scenario the stock engine can't express via content alone.
+
+The secondary‑ability (talent) substitution works the same way (the power names
+the secondary options) and is a follow‑up once an authored power puts the
+secondary on an attack.
 
 ## Status — playability validated ✅
 

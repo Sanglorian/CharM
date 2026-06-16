@@ -94,6 +94,7 @@ static int Playtest(string[] args)
 {
     string? dbPath = null, race = null, cls = null;
     int level = 1;
+    int[]? scores = null;
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
@@ -101,12 +102,16 @@ static int Playtest(string[] args)
             case "--race": race = args[++i]; break;
             case "--class": cls = args[++i]; break;
             case "--level": level = int.Parse(args[++i]); break;
+            case "--scores": // STR,CON,DEX,INT,WIS,CHA
+                scores = args[++i].Split(',').Select(int.Parse).ToArray();
+                break;
             default: dbPath ??= args[i]; break;
         }
     }
     if (dbPath is null) return Fail("playtest requires a database path.");
     race ??= "Humanity";
     cls ??= "Guardian";
+    scores ??= [16, 14, 13, 10, 12, 8];
 
     using var db = new RulesDatabase(dbPath);
     db.Preload();
@@ -122,19 +127,19 @@ static int Playtest(string[] args)
     // A plausible Strength-based defender array.
     session.SetAbilityScores(new AbilityScoreSet
     {
-        [Ability.Strength] = 16,
-        [Ability.Constitution] = 14,
-        [Ability.Dexterity] = 13,
-        [Ability.Intelligence] = 10,
-        [Ability.Wisdom] = 12,
-        [Ability.Charisma] = 8,
+        [Ability.Strength] = scores[0],
+        [Ability.Constitution] = scores[1],
+        [Ability.Dexterity] = scores[2],
+        [Ability.Intelligence] = scores[3],
+        [Ability.Wisdom] = scores[4],
+        [Ability.Charisma] = scores[5],
     });
 
     var raceEl = db.FindByNameAndType(race, "Race");
     var clsEl = db.FindByNameAndType(cls, "Class");
     if (raceEl is null) return Fail($"race '{race}' not found in database.");
     if (clsEl is null) return Fail($"class '{cls}' not found in database.");
-    Console.WriteLine($"Building: level {level} {race} {cls} (Str 16, Con 14, Dex 13, Int 10, Wis 12, Cha 8)\n");
+    Console.WriteLine($"Building: level {level} {race} {cls} (base Str {scores[0]}, Con {scores[1]}, Dex {scores[2]}, Int {scores[3]}, Wis {scores[4]}, Cha {scores[5]})\n");
     Console.WriteLine($"  pending after scores: {Describe(session.GetAllPendingChoices())}");
     bool rOk = session.TryMakeChoice(raceEl);
     Console.WriteLine($"  TryMakeChoice(race={race}) -> {rOk}; pending: {Describe(session.GetAllPendingChoices())}");
