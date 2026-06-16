@@ -1,0 +1,334 @@
+# Magic items (Orcus Rulebook). Orcus uses four generic "enchanted item" families
+# rather than a named catalogue, each giving a +X enhancement bonus. The core +X
+# appears at levels 1/6/11/16/21/26 (boost variants, which only raise item level,
+# are omitted for now). Modelled as `Magic Item` elements:
+#   - Enchanted Armor / Cloak carry statadd rules, so equipping them raises AC /
+#     defenses (the engine runs an equipped item's directives).
+#   - Enchanted Weapon / Focus carry an `Enhancement` field, which the power
+#     calculator adds to attack and damage rolls for that weapon/focus.
+# Enchanted-armor AC scaling (light +1/+1 in the prestige/epic tiers; heavy x2)
+# and the +Xd6 crit bonus are recorded in the Description.
+
+- id: ORCUS_MAGIC_WEAPON_PLUS1
+  name: "Enchanted Weapon +1"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+1"
+    "Item Level": "1"
+    Cost: "360 gp"
+    Description: "+1 enhancement bonus to attack and damage rolls with that weapon; +1d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS1
+  name: "Enchanted Focus +1"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+1"
+    "Item Level": "1"
+    Cost: "360 gp"
+    Description: "+1 enhancement bonus to attack and damage rolls with that focus; +1d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS1
+  name: "Enchanted Armor +1"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+1"
+    "Item Level": "1"
+    Cost: "360 gp"
+    Description: "+1 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 1, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS1
+  name: "Enchanted Cloak +1"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+1"
+    "Item Level": "1"
+    Cost: "360 gp"
+    Description: "+1 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 1, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_WEAPON_PLUS2
+  name: "Enchanted Weapon +2"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+2"
+    "Item Level": "6"
+    Cost: "1,800 gp"
+    Description: "+2 enhancement bonus to attack and damage rolls with that weapon; +2d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS2
+  name: "Enchanted Focus +2"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+2"
+    "Item Level": "6"
+    Cost: "1,800 gp"
+    Description: "+2 enhancement bonus to attack and damage rolls with that focus; +2d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS2
+  name: "Enchanted Armor +2"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+2"
+    "Item Level": "6"
+    Cost: "1,800 gp"
+    Description: "+2 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 2, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS2
+  name: "Enchanted Cloak +2"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+2"
+    "Item Level": "6"
+    Cost: "1,800 gp"
+    Description: "+2 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 2, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_WEAPON_PLUS3
+  name: "Enchanted Weapon +3"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+3"
+    "Item Level": "11"
+    Cost: "9,000 gp"
+    Description: "+3 enhancement bonus to attack and damage rolls with that weapon; +3d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS3
+  name: "Enchanted Focus +3"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+3"
+    "Item Level": "11"
+    Cost: "9,000 gp"
+    Description: "+3 enhancement bonus to attack and damage rolls with that focus; +3d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS3
+  name: "Enchanted Armor +3"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+3"
+    "Item Level": "11"
+    Cost: "9,000 gp"
+    Description: "+3 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 3, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS3
+  name: "Enchanted Cloak +3"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+3"
+    "Item Level": "11"
+    Cost: "9,000 gp"
+    Description: "+3 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 3, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_WEAPON_PLUS4
+  name: "Enchanted Weapon +4"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+4"
+    "Item Level": "16"
+    Cost: "45,000 gp"
+    Description: "+4 enhancement bonus to attack and damage rolls with that weapon; +4d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS4
+  name: "Enchanted Focus +4"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+4"
+    "Item Level": "16"
+    Cost: "45,000 gp"
+    Description: "+4 enhancement bonus to attack and damage rolls with that focus; +4d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS4
+  name: "Enchanted Armor +4"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+4"
+    "Item Level": "16"
+    Cost: "45,000 gp"
+    Description: "+4 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 4, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS4
+  name: "Enchanted Cloak +4"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+4"
+    "Item Level": "16"
+    Cost: "45,000 gp"
+    Description: "+4 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 4, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_WEAPON_PLUS5
+  name: "Enchanted Weapon +5"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+5"
+    "Item Level": "21"
+    Cost: "225,000 gp"
+    Description: "+5 enhancement bonus to attack and damage rolls with that weapon; +5d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS5
+  name: "Enchanted Focus +5"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+5"
+    "Item Level": "21"
+    Cost: "225,000 gp"
+    Description: "+5 enhancement bonus to attack and damage rolls with that focus; +5d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS5
+  name: "Enchanted Armor +5"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+5"
+    "Item Level": "21"
+    Cost: "225,000 gp"
+    Description: "+5 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 5, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS5
+  name: "Enchanted Cloak +5"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+5"
+    "Item Level": "21"
+    Cost: "225,000 gp"
+    Description: "+5 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 5, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_WEAPON_PLUS6
+  name: "Enchanted Weapon +6"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+6"
+    "Item Level": "26"
+    Cost: "1,125,000 gp"
+    Description: "+6 enhancement bonus to attack and damage rolls with that weapon; +6d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+
+- id: ORCUS_MAGIC_FOCUS_PLUS6
+  name: "Enchanted Focus +6"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Implement
+    "Magic Item Type": Focus
+    Enhancement: "+6"
+    "Item Level": "26"
+    Cost: "1,125,000 gp"
+    Description: "+6 enhancement bonus to attack and damage rolls with that focus; +6d6 damage on a critical hit."
+
+- id: ORCUS_MAGIC_ARMOR_PLUS6
+  name: "Enchanted Armor +6"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Body
+    "Magic Item Type": Armor
+    Enhancement: "+6"
+    "Item Level": "26"
+    Cost: "1,125,000 gp"
+    Description: "+6 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+  rules:
+    - { statadd: AC, value: 6, bonusType: Enhancement }
+
+- id: ORCUS_MAGIC_CLOAK_PLUS6
+  name: "Enchanted Cloak +6"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Magic Item Type": Neck
+    Enhancement: "+6"
+    "Item Level": "26"
+    Cost: "1,125,000 gp"
+    Description: "+6 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+  rules:
+    - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
+    - { statadd: Will Defense, value: 6, bonusType: Enhancement }

@@ -99,6 +99,7 @@ static int Playtest(string[] args)
     string? talentHint = null;
     bool demoSwaps = false;
     string? weaponName = null, armorName = null, shieldName = null;
+    var magicNames = new List<string>();
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
@@ -109,6 +110,7 @@ static int Playtest(string[] args)
             case "--weapon": weaponName = args[++i]; break;
             case "--armor": armorName = args[++i]; break;
             case "--shield": shieldName = args[++i]; break;
+            case "--magic": magicNames.Add(args[++i]); break;
             case "--level": level = int.Parse(args[++i]); break;
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
@@ -296,8 +298,27 @@ static int Playtest(string[] args)
         if (shieldEl is null) Console.WriteLine($"  ! shield '{shieldName}' not found");
         else session.EquipItem("Off-hand", shieldEl);
     }
-    if (weaponName is not null || armorName is not null || shieldName is not null)
-        Console.WriteLine($"\nEquipped: {string.Join(", ", new[] { weaponName, armorName, shieldName }.Where(s => s is not null))}");
+    // --magic: enchanted items. Weapon/Focus enchantments stamp their `Enhancement`
+    // onto the equipped weapon (the calculator reads it for attack/damage); other
+    // enchantments (armor, cloak) equip into their slot so their statadds apply.
+    foreach (var magicName in magicNames)
+    {
+        var mi = db.FindByNameAndType(magicName, "Magic Item");
+        if (mi is null) { Console.WriteLine($"  ! magic item '{magicName}' not found"); continue; }
+        var miType = mi.Fields.TryGetValue("Magic Item Type", out var mt) ? mt : "";
+        if ((miType is "Weapon" or "Focus") && equippedWeapon is not null
+            && mi.Fields.TryGetValue("Enhancement", out var enh))
+        {
+            equippedWeapon.Fields["Enhancement"] = enh;
+        }
+        else
+        {
+            var slot = mi.Fields.TryGetValue("Item Slot", out var s) && !string.IsNullOrWhiteSpace(s) ? s : "Body";
+            session.EquipItem(slot, mi);
+        }
+    }
+    if (weaponName is not null || armorName is not null || shieldName is not null || magicNames.Count > 0)
+        Console.WriteLine($"\nEquipped: {string.Join(", ", new[] { weaponName, armorName, shieldName }.Concat(magicNames).Where(s => s is not null))}");
 
     var snapshot = session.GetSnapshot() ?? session.GetPartialSnapshot();
     if (snapshot is null)

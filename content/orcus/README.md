@@ -27,8 +27,9 @@ for the format.
 | `equipment/armor.yaml` | Light & heavy armor + shields as `Armor` elements (AC / Reflex / speed / armor-check contributions) |
 | `equipment/gear.yaml` | Adventuring gear (`Gear`) and focuses (`Focus`) |
 | `equipment/proficiencies.yaml` | Weapon/armor `Proficiency` elements + per-category `Grants` bundles the classes pull in |
+| `equipment/magic-items.yaml` | The four generic enchanted-item families (Weapon, Focus, Armor, Cloak) at +1…+6 as `Magic Item` elements |
 
-Compiles to **404 elements across 26 types**, no warnings.
+Compiles to **428 elements across 27 types**, no warnings.
 
 ### Equipment
 Weapons are `Weapon` elements: equipping one feeds power damage (the `Damage`
@@ -54,6 +55,18 @@ class grants. Verified: a Guardian wielding a longsword attacks at +6 (ability +
 **+3 longsword proficiency**); with the exotic garrote it drops to +3 (the
 Guardian isn't proficient, so no bonus). Armor proficiencies are recorded too,
 but the engine has no armor non-proficiency penalty yet, so those are declarative.
+
+**Magic items** follow Orcus's generic "enchanted item" model — four families
+(Weapon, Focus, Armor, Cloak), each a +X enhancement appearing at levels
+1/6/11/16/21/26 (`magic-items.yaml`). Enchanted armor and cloaks carry `statadd`
+rules, so equipping them raises AC / the three defenses; enchanted weapons and
+focuses carry an `Enhancement` field, which the calculator adds to attack and
+damage. Verified: a +3 cloak adds +3 to Fortitude/Reflex/Will, +3 armor adds +3
+AC, and a +3 longsword takes *In Their Face* from +12 / 2d8 to +15 / 2d8+3. Try
+`playtest --weapon Longsword --magic "Enchanted Weapon +3"` or
+`--magic "Enchanted Cloak +3"`. The level-scaling "boost" variants (which only
+raise item level) and the enchanted-armor light/heavy AC scaling are recorded in
+the item Description rather than computed.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
@@ -143,7 +156,8 @@ secondary‑ability swap, e.g. `--class Guardian --pick "Great Weapon Style"`, o
 a specific discipline power, e.g. `--pick "Pack Pounce"`). `--swaps` applies a
 sample power-replacement chain (levels 13–29) and prints the resulting powers.
 `--weapon`/`--armor`/`--shield` equip gear by name and show its effect on AC,
-defenses, speed and weapon damage.
+defenses, speed and weapon damage; `--magic` (repeatable) applies an enchanted
+item (weapon/focus enhancement, or armor/cloak when equipped).
 
 Weapon dice written `dW`/`NdW` are normalized to the engine's `[W]`/`N[W]`, so a
 power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
@@ -158,7 +172,8 @@ prestige paths, all six epic paths, and a starter set of weapons, armor and gear
 Remaining work: the other six classes and their disciplines, full power lists for
 the remaining disciplines, the rest of the species roster, prestige paths and
 feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
-6 heritages, kits, deities, magic items and the rest of the equipment list. The
+6 heritages, kits, deities, the magic-item boost variants and the rest of the
+equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.
