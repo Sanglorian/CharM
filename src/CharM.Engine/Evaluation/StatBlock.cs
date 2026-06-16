@@ -108,6 +108,7 @@ public sealed class StatBlock
         TrainedImplements.Clear();
         ChosenAbilities.Clear();
         KeyAbilitySwaps.Clear();
+        SecondaryAbilitySwaps.Clear();
         ClassEquivalents.Clear();
     }
 
@@ -155,6 +156,17 @@ public sealed class StatBlock
     /// is unaffected. See docs/orcus-mapping.md.
     /// </summary>
     public HashSet<string> KeyAbilitySwaps { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Like <see cref="KeyAbilitySwaps"/>, but substitutes for a discipline
+    /// power's printed SECONDARY ability — the Orcus "replace the secondary
+    /// ability with your talent's secondary" rule. Populated from active
+    /// "Secondary Ability Swap" category elements (e.g. a talent's
+    /// "Great Weapon Style Secondary Constitution"). Applied only to the
+    /// discipline's secondary-ability references, so it never bleeds onto the
+    /// key ability.
+    /// </summary>
+    public HashSet<string> SecondaryAbilitySwaps { get; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
     /// InternalIds of every class the character has, has via a Hybrid Class,

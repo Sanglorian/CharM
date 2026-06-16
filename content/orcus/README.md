@@ -18,19 +18,22 @@ for the format.
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + level 1–2 powers |
 
-Compiles to **100 elements across 16 types**, no warnings.
+Compiles to **103 elements across 17 types**, no warnings.
 
 ### Ability substitution
-Orcus's "you may use your class key ability instead, if higher" is implemented
-via a small, **isolated** engine enhancement plus content tags. A class‑discipline
-power is tagged `ability-swap` and keeps its printed key ability; each class
-grants a `Key Ability Swap` element naming its key. The engine adds that ability
-to the power's candidates and takes the **higher**. Equipment‑independent and
-**kit‑scalable** (each character contributes only its own key). WotC content has
-neither the tag nor the elements, so it's unaffected. Verified via `playtest`
-with no weapon/implement: high‑Wis Priest → Wisdom, **high‑Cha Priest → Charisma
-(no false negative)**, high‑Wis Commander → Charisma (no false positive),
-Guardian → Strength. See `docs/orcus-mapping.md`.
+Orcus's "use your class key ability (and talent secondary) instead, if higher"
+is implemented via a small, **isolated** engine enhancement plus content tags. A
+class‑discipline power is tagged `ability-swap` and keeps its printed abilities;
+each class grants a `Key Ability Swap` element (its key) and each talent a
+`Secondary Ability Swap` element (its secondary). Using the discipline's
+`Key Ability`/`Secondary Ability` fields, the engine adds the class key to the
+*key* reference and the talent secondary to the *secondary* reference, taking the
+**higher** of each — role‑scoped, equipment‑independent, and **kit‑scalable**.
+WotC content has neither the tag nor the elements, so it's unaffected. Verified
+via `playtest` (no weapon): high‑Cha Priest → Charisma (no false negative),
+high‑Wis Commander → Charisma (no false positive), and a Con‑heavy Guardian's
+*Passing Kill* resolves Constitution with Great Weapon Style but Strength with
+Protection. See `docs/orcus-mapping.md`.
 
 ## Build & playtest
 

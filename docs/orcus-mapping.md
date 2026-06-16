@@ -68,48 +68,53 @@ cover this:
 - **Within a power's printed text** ("Dexterity (ranged) or Strength (melee)",
   "Highest of Strength, Constitution, Dexterity"): the engine already auto‑picks
   the highest‑modifier ability among those named — no extra work.
-- **Class key‑ability substitution** — implemented with a small, isolated engine
-  enhancement (see "Engine enhancement" below). The character's class key is
-  *added* to a discipline power's candidate abilities and the **higher** is used.
+- **Class key / talent secondary substitution** — implemented with a small,
+  isolated engine enhancement (see "Engine enhancement" below). The character's
+  class key is added to a discipline power's *key*-ability reference and the
+  talent's secondary to its *secondary*-ability reference; the **higher** is used
+  in each role.
 
 ### Authoring it
 
 1. Tag each class‑discipline attack/damage power with the **`ability-swap`**
    category (alongside the discipline id), e.g. Angel's Trumpet's *Identify
-   Target*. Leave the printed ability as the discipline key (`"Charisma vs Will"`).
-2. Have each class grant a **`Key Ability Swap`** element whose name ends in the
-   class's key ability — `Commander Key Charisma`, `Priest Key Wisdom` (category
-   `Key Ability Swap`). (A talent can grant another for its secondary.)
+   Target*. Leave the printed abilities as the discipline's key/secondary.
+2. Give the discipline element a `Key Ability` and `Secondary Ability` field (it
+   already has these) so the engine knows which printed ability is which.
+3. Have each class grant a **`Key Ability Swap`** element whose name ends in the
+   class's key ability (`Priest Key Wisdom`), and each talent grant a
+   **`Secondary Ability Swap`** element ending in its secondary ability
+   (`Great Weapon Style Secondary Constitution`).
 
-The engine adds the character's swap abilities to the power's candidate set and
-takes the highest, so:
+Because the substitution is role‑scoped, it never bleeds across roles:
 
-- **Priest** (Wisdom) on *Identify Target* (printed Charisma): uses **Wisdom**
+- **Priest** (Wisdom) on *Identify Target* (printed key Charisma): uses **Wisdom**
   when higher, **Charisma when the Priest's Charisma is higher** — no false
   negative.
-- **Commander** (Charisma = the discipline key): its only swap is Charisma, so it
-  stays on Charisma even with high Wisdom — no false positive.
+- **Commander** (Charisma = the discipline key): its only key swap is Charisma, so
+  it stays on Charisma even with high Wisdom — no false positive.
+- **Guardian** + *Great Weapon Style* (secondary → Constitution) on Art of War's
+  *Passing Kill* ("Dexterity (ranged) or Strength (melee)"): the **secondary**
+  Dexterity may become Constitution, while the **key** Strength is untouched —
+  verified Con‑heavy Guardian resolves Constitution with Great Weapon Style but
+  Strength with Protection.
 
 This **scales to kits**: a discipline reached by any number of classes (via kit
-access) is always "higher of {printed key, *this* character's key}", because each
-character contributes only its own key — never another class's. Verified on the
-engine with no weapon/implement: high‑Wis Priest → Wisdom; high‑Cha Priest →
-Charisma; high‑Wis Commander → Charisma; Guardian → Strength.
+access) is always "higher of {printed ability, *this* character's role ability}",
+because each character contributes only its own key/secondary — never another
+class's.
 
 ### Engine enhancement (isolated, additive)
 
-A new `StatBlock.KeyAbilitySwaps` set is populated from active `Key Ability Swap`
-elements (`CharacterBuilder.IndexKeyAbilitySwaps`). In `PowerStatCalculator`,
-when a power carries the `ability-swap` category **and** the character has swap
-abilities, those abilities are woven into the power's attack/damage ability
-references as "or X" alternatives, after which the existing highest‑modifier
-resolver does the rest. It is a no‑op without both the tag and the elements, so
-WotC content (which has neither) is completely unaffected; it also needs no
-weapon/implement equipped.
-
-The secondary‑ability (talent) substitution uses the same mechanism (the talent
-grants another `Key Ability Swap`) and is a follow‑up once an authored power puts
-the secondary on an attack.
+`StatBlock.KeyAbilitySwaps` / `SecondaryAbilitySwaps` are populated from active
+`Key Ability Swap` / `Secondary Ability Swap` elements
+(`CharacterBuilder.IndexKeyAbilitySwaps`). In `PowerStatCalculator`, when a power
+carries the `ability-swap` category **and** the character has swaps, the power's
+discipline (resolved from its category id) supplies the printed key/secondary
+ability names; the engine then weaves the matching swap abilities in after each
+as "or X" alternatives and the existing highest‑modifier resolver does the rest.
+A no‑op without both the tag and the elements, so WotC content (which has
+neither) is completely unaffected, and it needs no weapon/implement equipped.
 
 ## Status — playability validated ✅
 

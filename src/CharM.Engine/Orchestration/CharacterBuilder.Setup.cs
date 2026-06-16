@@ -55,21 +55,27 @@ public sealed partial class CharacterBuilder
     private void IndexKeyAbilitySwaps()
     {
         Stats.KeyAbilitySwaps.Clear();
+        Stats.SecondaryAbilitySwaps.Clear();
         foreach (var re in ElementTree.GetActiveElements())
         {
-            // "Key Ability Swap" elements record an ability a character may use
-            // in place of a discipline power's printed key ability when higher
-            // (Orcus class-key substitution). The ability is the trailing token
+            // "Key Ability Swap" / "Secondary Ability Swap" elements record an
+            // ability a character may use in place of a discipline power's
+            // printed key / secondary ability when higher (Orcus class-key and
+            // talent-secondary substitution). The ability is the trailing token
             // of the element's Name — e.g. "Priest Key Wisdom".
-            bool isSwap = re.Categories.Any(c =>
+            bool isKey = re.Categories.Any(c =>
                 string.Equals(c, "Key Ability Swap", StringComparison.OrdinalIgnoreCase));
-            if (!isSwap) continue;
+            bool isSecondary = re.Categories.Any(c =>
+                string.Equals(c, "Secondary Ability Swap", StringComparison.OrdinalIgnoreCase));
+            if (!isKey && !isSecondary) continue;
 
             var tokens = re.Name.Split(
                 ' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (tokens.Length == 0) continue;
-            if (AbilityNames.TryParse(tokens[^1], out var ability))
-                Stats.KeyAbilitySwaps.Add(AbilityNames.GetFullName(ability));
+            if (!AbilityNames.TryParse(tokens[^1], out var ability)) continue;
+            var full = AbilityNames.GetFullName(ability);
+            if (isKey) Stats.KeyAbilitySwaps.Add(full);
+            if (isSecondary) Stats.SecondaryAbilitySwaps.Add(full);
         }
     }
 

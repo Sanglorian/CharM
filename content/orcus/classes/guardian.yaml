@@ -90,6 +90,11 @@
       type: Class Feature
     - grant: ORCUS_FEATURE_SAVVY_COMBATANT
       type: Class Feature
+    # Orcus key-ability rule: the Guardian may use Strength (its class key) in
+    # place of a discipline power's printed key ability. (No-op for Art of War,
+    # whose key is already Strength, but applies to any discipline it reaches.)
+    - grant: ORCUS_KEYSWAP_GUARDIAN_STRENGTH
+      type: Key Ability Swap
 
 # --- Always-on class features -------------------------------------------------
 - id: ORCUS_FEATURE_COMBAT_DOMINANCE
@@ -130,6 +135,11 @@
   fields:
     "Secondary Ability": Constitution
     Description: "You get a +1 bonus on attack rolls with two-handed weapons. Your secondary ability is Constitution."
+  rules:
+    # Talent secondary substitution: use Constitution in place of a discipline
+    # power's printed secondary ability (Art of War secondary = Dexterity) when higher.
+    - grant: ORCUS_SECSWAP_GWS_CONSTITUTION
+      type: Secondary Ability Swap
 
 - id: ORCUS_TALENT_PROTECTION
   name: Protection
@@ -139,6 +149,11 @@
   fields:
     "Secondary Ability": "Dexterity or Wisdom"
     Description: "You get a +1 bonus on attack rolls with one-handed weapons. Your secondary ability is Dexterity OR Wisdom (your choice)."
+  rules:
+    # Protection's secondary is Dexterity or Wisdom (player's choice); modelled
+    # as Dexterity here. Full either/or choice is a follow-up.
+    - grant: ORCUS_SECSWAP_PROTECTION_DEXTERITY
+      type: Secondary Ability Swap
 
 # --- Feature powers (from Savvy Combatant) ------------------------------------
 - id: ORCUS_POWER_BLOCK_RETREAT
@@ -167,3 +182,17 @@
     Trigger: "An adjacent creature you have marked shifts or makes an attack that does not include you."
     Effect: "Make a basic melee attack against the triggering creature."
     Special: "This is not an opportunity attack."
+
+# --- Ability-swap markers (Orcus class-key / talent-secondary substitution) ---
+- id: ORCUS_KEYSWAP_GUARDIAN_STRENGTH
+  name: Guardian Key Strength
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_GWS_CONSTITUTION
+  name: Great Weapon Style Secondary Constitution
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_PROTECTION_DEXTERITY
+  name: Protection Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

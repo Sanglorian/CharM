@@ -95,6 +95,7 @@ static int Playtest(string[] args)
     string? dbPath = null, race = null, cls = null;
     int level = 1;
     int[]? scores = null;
+    string? talentHint = null;
     for (int i = 0; i < args.Length; i++)
     {
         switch (args[i])
@@ -105,6 +106,7 @@ static int Playtest(string[] args)
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
                 break;
+            case "--talent": talentHint = args[++i]; break;
             default: dbPath ??= args[i]; break;
         }
     }
@@ -162,7 +164,11 @@ static int Playtest(string[] args)
             if (candidates.Count == 0)
                 continue;
             if (!used.TryGetValue(label, out var u)) { u = new(StringComparer.Ordinal); used[label] = u; }
-            var pick = candidates.FirstOrDefault(c => !u.Contains(c.InternalId)) ?? candidates[0];
+            RulesElement? pick = null;
+            if (talentHint is not null)
+                pick = candidates.FirstOrDefault(c =>
+                    c.Name.Contains(talentHint, StringComparison.OrdinalIgnoreCase) && !u.Contains(c.InternalId));
+            pick ??= candidates.FirstOrDefault(c => !u.Contains(c.InternalId)) ?? candidates[0];
             try
             {
                 session.MakeChoice(pc.Slot, pick);
@@ -240,7 +246,8 @@ static int Playtest(string[] args)
             Console.WriteLine($"  {power.Name,-22} (no attack line)");
             continue;
         }
-        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: null, characterLevel: level);
+        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: null, characterLevel: level,
+            sourceElementResolver: db.FindByInternalId);
         var dmg = string.IsNullOrWhiteSpace(card.DamageExpression) ? "-" : card.DamageExpression;
         var atk = card.ResolvedAttackStat.Length > 0 ? card.ResolvedAttackStat : "(none)";
         Console.WriteLine($"  {power.Name,-22} attack {atk} {card.AttackBonus:+0;-0} vs {card.Defense ?? "-"}; damage {dmg}");

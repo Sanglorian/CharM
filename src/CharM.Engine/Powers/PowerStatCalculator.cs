@@ -40,10 +40,10 @@ public static partial class PowerStatCalculator
         // of {printed key, class key}. Fully isolated: a no-op unless the power
         // carries the tag AND the character has Key Ability Swap elements, so
         // WotC content is unaffected. Works with or without a weapon equipped.
-        if (stats.KeyAbilitySwaps.Count > 0
+        if ((stats.KeyAbilitySwaps.Count > 0 || stats.SecondaryAbilitySwaps.Count > 0)
             && power.Categories.Contains("ability-swap", StringComparer.OrdinalIgnoreCase))
         {
-            power = ApplyKeyAbilitySwaps(power, stats.KeyAbilitySwaps);
+            power = ApplyAbilitySwaps(power, stats, sourceElementResolver);
         }
 
         // Extract fields from the power
@@ -936,15 +936,34 @@ public static partial class PowerStatCalculator
     // ===== Orcus class-key ability substitution =================================
 
     /// <summary>
-    /// Return a copy of <paramref name="power"/> whose attack and damage ability
-    /// references include the character's substitutable key abilities as "or X"
-    /// alternatives. The existing resolver then takes the highest-modifier
-    /// ability among them, implementing Orcus's "use your class key ability
-    /// instead, if higher" without forcing it. Only called for "ability-swap"
-    /// powers when swaps exist, so it never touches other content.
+    /// Return a copy of <paramref name="power"/> whose attack/damage ability
+    /// references have the character's substitutable abilities woven in as
+    /// "or X" alternatives, so the existing resolver takes the higher modifier
+    /// (Orcus "use your class key / talent secondary, if higher" — without
+    /// forcing). The power's discipline (looked up via its category id) tells us
+    /// which printed ability is the KEY (← <see cref="StatBlock.KeyAbilitySwaps"/>)
+    /// and which is the SECONDARY (← <see cref="StatBlock.SecondaryAbilitySwaps"/>),
+    /// so each substitution targets only its own role. Only called for
+    /// "ability-swap" powers when swaps exist, so other content is untouched.
     /// </summary>
-    private static RulesElement ApplyKeyAbilitySwaps(RulesElement power, IReadOnlySet<string> swaps)
+    private static RulesElement ApplyAbilitySwaps(
+        RulesElement power, StatBlock stats, Func<string, RulesElement?>? sourceElementResolver)
     {
+        // Resolve the discipline to learn its key/secondary ability names.
+        string? disciplineKey = null, disciplineSecondary = null;
+        if (sourceElementResolver is not null)
+        {
+            foreach (var cat in power.Categories)
+            {
+                var disc = sourceElementResolver(cat);
+                if (disc is null || !disc.Type.Equals("Discipline", StringComparison.OrdinalIgnoreCase))
+                    continue;
+                disc.Fields.TryGetValue("Key Ability", out disciplineKey);
+                disc.Fields.TryGetValue("Secondary Ability", out disciplineSecondary);
+                break;
+            }
+        }
+
         var source = power.FieldEntries.Count > 0
             ? power.FieldEntries
             : power.Fields.Select(p => new KeyValuePair<string, string>(p.Key, p.Value)).ToList();
@@ -953,10 +972,18 @@ public static partial class PowerStatCalculator
         foreach (var kv in source)
         {
             string value = kv.Value;
-            if (IsAttackAbilityField(kv.Key))
-                value = AddAttackAbilityAlternatives(value, swaps);
-            else if (kv.Key.Equals("Hit", StringComparison.OrdinalIgnoreCase))
-                value = AddDamageAbilityAlternatives(value, swaps);
+            bool isAttack = IsAttackAbilityField(kv.Key);
+            bool isDamage = kv.Key.Equals("Hit", StringComparison.OrdinalIgnoreCase);
+            if (isAttack || isDamage)
+            {
+                if (disciplineKey is not null || disciplineSecondary is not null)
+                    value = WeaveDisciplineSwaps(
+                        value, disciplineKey, stats.KeyAbilitySwaps, disciplineSecondary, stats.SecondaryAbilitySwaps);
+                else if (stats.KeyAbilitySwaps.Count > 0) // discipline unknown — best-effort on the key
+                    value = isAttack
+                        ? AddAttackAbilityAlternatives(value, stats.KeyAbilitySwaps)
+                        : AddDamageAbilityAlternatives(value, stats.KeyAbilitySwaps);
+            }
             entries.Add(new KeyValuePair<string, string>(kv.Key, value));
         }
 
@@ -976,6 +1003,39 @@ public static partial class PowerStatCalculator
             Rules = power.Rules,
             Categories = [.. power.Categories],
         };
+    }
+
+    /// <summary>
+    /// Insert " or &lt;swap&gt;" immediately after the discipline's key‑ability
+    /// name (using <paramref name="keySwaps"/>) and after its secondary‑ability
+    /// name (using <paramref name="secondarySwaps"/>), computed against the
+    /// original text so the two never interfere.
+    /// </summary>
+    private static string WeaveDisciplineSwaps(
+        string text,
+        string? disciplineKey, IReadOnlySet<string> keySwaps,
+        string? disciplineSecondary, IReadOnlySet<string> secondarySwaps)
+    {
+        var inserts = new List<(int Pos, string Text)>();
+        CollectSwapInsert(text, disciplineKey, keySwaps, inserts);
+        CollectSwapInsert(text, disciplineSecondary, secondarySwaps, inserts);
+        foreach (var (pos, ins) in inserts.OrderByDescending(i => i.Pos))
+            text = text.Insert(pos, ins);
+        return text;
+    }
+
+    private static void CollectSwapInsert(
+        string text, string? ability, IReadOnlySet<string> swaps, List<(int Pos, string Text)> inserts)
+    {
+        if (string.IsNullOrWhiteSpace(ability) || swaps.Count == 0)
+            return;
+        int idx = text.IndexOf(ability, StringComparison.OrdinalIgnoreCase);
+        if (idx < 0)
+            return;
+        var toAdd = swaps.Where(s => !ContainsAbilityWord(text, s)).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        if (toAdd.Count == 0)
+            return;
+        inserts.Add((idx + ability.Length, " or " + string.Join(" or ", toAdd)));
     }
 
     private static bool IsAttackAbilityField(string key) =>
