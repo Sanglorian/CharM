@@ -28,8 +28,25 @@ for the format.
 | `equipment/gear.yaml` | Adventuring gear (`Gear`) and focuses (`Focus`) |
 | `equipment/proficiencies.yaml` | Weapon/armor `Proficiency` elements + per-category `Grants` bundles the classes pull in |
 | `equipment/magic-items.yaml` | The four generic enchanted-item families (Weapon, Focus, Armor, Cloak) at +1…+6 as `Magic Item` elements |
+| `kits.yaml` | Kits (mapped to the engine's `Theme` type) + the "Has Kit" marker and "Feats and Kits" house-rule elements |
+| `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
 
-Compiles to **428 elements across 27 types**, no warnings.
+Compiles to **458 elements across 31 types**, no warnings.
+
+### Kits and the feats-vs-kits house rule
+Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
+surfaces) are chosen at level 1 and grant features at levels 1/5/10. By default a
+character takes a kit **instead of** the six heroic-tier feats (levels 1/2/4/6/8/10)
+— kit XOR feats. This is enforced by content: every kit grants a "Has Kit" marker,
+and the six heroic feat slots carry `requires: "(!Has Kit) | Feats and Kits"`, so
+they vanish once a kit is taken. The **"Feats and Kits" house rule** is an element
+that, when present, satisfies the `requires` and re-enables the feats — so you get
+both. Paragon/epic feats (level 12+) are never affected. Verified via `playtest`:
+no kit → 6 heroic feats; `--kit "Embodies Strength"` → 0 heroic feats (kit
+features instead); `--kit … --feats-and-kits` → kit **and** 6 feats; at level 30 a
+kitted character still gets its 10 paragon/epic feats. The "Worships the God of …"
+kits are the deity/domain mechanic (Channel Divinity + a Blessing feat), pointing
+at the gods in `deities.yaml`.
 
 ### Equipment
 Weapons are `Weapon` elements: equipping one feeds power damage (the `Damage`
@@ -157,7 +174,8 @@ a specific discipline power, e.g. `--pick "Pack Pounce"`). `--swaps` applies a
 sample power-replacement chain (levels 13–29) and prints the resulting powers.
 `--weapon`/`--armor`/`--shield` equip gear by name and show its effect on AC,
 defenses, speed and weapon damage; `--magic` (repeatable) applies an enchanted
-item (weapon/focus enhancement, or armor/cloak when equipped).
+item (weapon/focus enhancement, or armor/cloak when equipped). `--kit <name>`
+takes a kit and `--feats-and-kits` enables the house rule that grants both.
 
 Weapon dice written `dW`/`NdW` are normalized to the engine's `[W]`/`N[W]`, so a
 power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
@@ -172,8 +190,9 @@ prestige paths, all six epic paths, and a starter set of weapons, armor and gear
 Remaining work: the other six classes and their disciplines, full power lists for
 the remaining disciplines, the rest of the species roster, prestige paths and
 feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
-6 heritages, kits, deities, the magic-item boost variants and the rest of the
-equipment list. The
+6 heritages, the rest of the kits (incl. the "Dabbles in …" multiclass kits) and
+their associated-discipline power access, the magic-item boost variants, and the
+rest of the equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

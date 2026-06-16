@@ -97,8 +97,8 @@ static int Playtest(string[] args)
     int level = 1;
     int[]? scores = null;
     string? talentHint = null;
-    bool demoSwaps = false;
-    string? weaponName = null, armorName = null, shieldName = null;
+    bool demoSwaps = false, featsAndKits = false;
+    string? weaponName = null, armorName = null, shieldName = null, kitName = null;
     var magicNames = new List<string>();
     for (int i = 0; i < args.Length; i++)
     {
@@ -111,6 +111,8 @@ static int Playtest(string[] args)
             case "--armor": armorName = args[++i]; break;
             case "--shield": shieldName = args[++i]; break;
             case "--magic": magicNames.Add(args[++i]); break;
+            case "--kit": kitName = args[++i]; break;
+            case "--feats-and-kits": featsAndKits = true; break;
             case "--level": level = int.Parse(args[++i]); break;
             case "--scores": // STR,CON,DEX,INT,WIS,CHA
                 scores = args[++i].Split(',').Select(int.Parse).ToArray();
@@ -156,7 +158,22 @@ static int Playtest(string[] args)
     bool rOk = session.TryMakeChoice(raceEl);
     Console.WriteLine($"  TryMakeChoice(race={race}) -> {rOk}; pending: {Describe(session.GetAllPendingChoices())}");
     bool cOk = session.TryMakeChoice(clsEl);
-    Console.WriteLine($"  TryMakeChoice(class={cls}) -> {cOk}; pending: {Describe(session.GetAllPendingChoices())}\n");
+    Console.WriteLine($"  TryMakeChoice(class={cls}) -> {cOk}; pending: {Describe(session.GetAllPendingChoices())}");
+
+    // House rule + kit: applied before auto-resolve so the heroic feat slots see
+    // the "Has Kit" marker / "Feats and Kits" house rule when deciding to appear.
+    if (featsAndKits)
+    {
+        var hr = db.FindByNameAndType("Feats and Kits", "House Rule");
+        if (hr is not null) { session.AddUserEditPick(hr); Console.WriteLine("  house rule: Feats and Kits ON"); }
+    }
+    if (kitName is not null)
+    {
+        var kitEl = db.FindByNameAndType(kitName, "Theme");
+        if (kitEl is null) Console.WriteLine($"  ! kit '{kitName}' not found");
+        else Console.WriteLine($"  TryMakeChoice(kit={kitName}) -> {session.TryMakeChoice(kitEl)}");
+    }
+    Console.WriteLine();
 
     // Auto-resolve choices: one pick per pass, re-fetching pending each time.
     var used = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
@@ -170,6 +187,10 @@ static int Playtest(string[] args)
         foreach (var pc in pending)
         {
             var label = pc.Slot.Name ?? pc.Slot.DisplayLabel ?? pc.Slot.ElementType;
+            // Don't auto-pick the optional kit (Theme slot) — the default
+            // character takes feats; a kit is selected explicitly via --kit.
+            if (string.Equals(pc.Slot.ElementType, "Theme", StringComparison.OrdinalIgnoreCase))
+                continue;
             var candidates = session.GetCandidatesForSlot(pc.Slot, skipPrereqs: true);
             if (candidates.Count == 0)
                 continue;

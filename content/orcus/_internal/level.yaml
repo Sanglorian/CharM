@@ -31,12 +31,19 @@
     # slots live here with per-slot `level:` gates rather than in each LEVEL_n
     # element. Each is a single pick from the Feat pool (the engine consumes a
     # chosen feat globally, so every slot gets a distinct feat).
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 1)" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2 } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4 } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6 } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8 } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 10)", level: 10 } }
+    #
+    # The six HEROIC-tier feat slots (levels 1, 2, 4, 6, 8, 10) carry
+    # `requires: "(!Has Kit) | Feats and Kits"`: taking a kit grants the "Has Kit"
+    # marker, which removes them (kit XOR heroic feats) — unless the "Feats and
+    # Kits" House Rule element is present, which re-enables them. Paragon/epic feat
+    # slots (level 12+) are unaffected.
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 1)", requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2, requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Theme, number: 1, name: "Kit", optional: true } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4, requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6, requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8, requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 10)", level: 10, requires: "(!Has Kit) | Feats and Kits" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 12)", level: 12 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 14)", level: 14 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 16)", level: 16 } }

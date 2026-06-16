@@ -1,0 +1,45 @@
+# Deities (Orcus). Orcus treats gods as "domains": a worshipper takes the matching
+# "Worships the God of ..." kit (kits.yaml), which grants Channel Divinity and that
+# god's Blessing. These `Deity` elements record the gods themselves for reference
+# and for the kit's `Deity` field to point at. (Descriptive; the mechanical
+# benefits live on the kit.)
+
+- id: ORCUS_DEITY_WAR
+  name: God of War
+  type: Deity
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Domain: War
+    Kit: "Worships the God of War"
+    "Channel Divinity": "Shielded Soul"
+    Description: "A god devoted to conflict and combat. Worshippers gain the Art of War discipline and martial blessings."
+
+- id: ORCUS_DEITY_PEACE
+  name: God of Peace
+  type: Deity
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Domain: Peace
+    Kit: "Worships the God of Peace"
+    "Channel Divinity": "Light Ward"
+    Description: "A god devoted to peace and protection. Worshippers ward and shield their allies."
+
+- id: ORCUS_DEITY_LIFE
+  name: God of Life
+  type: Deity
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Domain: Life
+    Kit: "Worships the God of Life"
+    "Channel Divinity": "Guidance"
+    Description: "A god devoted to life and healing. Worshippers bolster their healing and guard the dying."
+
+- id: ORCUS_DEITY_TYRANNY
+  name: God of Tyranny
+  type: Deity
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Domain: Tyranny
+    Kit: "Worships the God of Tyranny"
+    "Channel Divinity": "Spur On"
+    Description: "A god devoted to domination and pain. Worshippers cow their foes and drive their allies on."

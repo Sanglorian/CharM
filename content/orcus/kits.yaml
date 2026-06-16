@@ -1,0 +1,212 @@
+# Kits ("themes") and the feats-vs-kits house rule (Orcus Classes and Powers).
+#
+# A kit is chosen at level 1. By DEFAULT a character takes a kit *instead of* the
+# six feats they would gain across the heroic tier (levels 1, 2, 4, 6, 8 and 10) —
+# kit XOR heroic feats. The house rule "Feats and Kits" lets a character have both.
+#
+# Mechanism: every kit grants the "Has Kit" marker; the six heroic-tier feat slots
+# (in _internal/level.yaml) carry `requires: "!Has Kit | Feats and Kits"`, so they
+# disappear once a kit is taken — unless the "Feats and Kits" House Rule element is
+# present, which re-enables them. Paragon/epic feats (levels 12+) are unaffected.
+#
+# Each kit grants features at levels 1/5/10 and names an associated discipline
+# (recorded as a field; letting a kit's discipline feed the class power selects is
+# a follow-up). A representative set whose associated disciplines are already in
+# this content (Juggernautical, Art of War, Angel's Trumpet) plus the four
+# "Worships the God of ..." deity kits.
+
+- id: ORCUS_MARKER_HAS_KIT
+  name: Has Kit
+  type: Marker
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "Internal marker: present when the character has taken a kit. Suppresses the heroic-tier feat slots unless the Feats and Kits house rule is active."
+
+- id: ORCUS_HOUSERULE_FEATS_AND_KITS
+  name: Feats and Kits
+  type: House Rule
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "House rule: a character may take a kit AND keep their six heroic-tier feats, instead of choosing one or the other."
+
+# === Embodies kits ============================================================
+- id: ORCUS_KIT_EMBODIES_STRENGTH
+  name: Embodies Strength
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": Juggernautical
+    Description: "You are a beast - an imposing behemoth or a gentle giant who raises a hand only when necessary."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_FULL_TORQUE, type: Class Feature }
+    - { grant: ORCUS_KITF_NO_TIME_FOR_PAIN, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_COMICAL_REACTION, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_FULL_TORQUE
+  name: Full Torque
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "Use Strength in place of Dexterity for attack and damage rolls with thrown (light) weapons and with sling and bow weapons. Use Strength in place of Charisma for Intimidate checks." }
+- id: ORCUS_KITF_NO_TIME_FOR_PAIN
+  name: No Time for Pain
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "While staggered, add your Strength modifier to your recovery value." }
+- id: ORCUS_KITF_COMICAL_REACTION
+  name: Comical Reaction
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "When you succeed on a saving throw against blinded, dazed, deafened, slowed, stunned or weakened, you gain a basic attack as a free action." }
+
+- id: ORCUS_KIT_EMBODIES_SPEED
+  name: Embodies Speed
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": Born to Run
+    Description: "You have perfected a body designed for raw speed and agility, keeping an entire landscape of paths and escape routes in mind."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_POWER_TO_WEIGHT, type: Class Feature }
+    - { grant: ORCUS_KITF_SPEED_VAULT, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_SPLIT_SLIDE, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_POWER_TO_WEIGHT
+  name: Power To Weight Ratio
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "Use Dexterity in place of Strength for Athletics climb/jump checks and for attack and damage with unarmed attacks, one-handed melee weapons and grapples. You do not grant combat advantage while balancing." }
+- id: ORCUS_KITF_SPEED_VAULT
+  name: Speed Vault
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "If you move at least 2 squares running toward a wall, you gain a climb speed equal to your remaining movement." }
+- id: ORCUS_KITF_SPLIT_SLIDE
+  name: Split-Slide
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "Once per round as a swift action, choose one enemy in line of sight; you do not provoke opportunity attacks from it and can move through its square (not ending there)." }
+
+# === Worships the God of ... (deity kits) =====================================
+# Each grants Channel Divinity (once/encounter) and a Blessing of the God feat,
+# plus a 5th- and 10th-level feature. See deities.yaml for the gods themselves.
+- id: ORCUS_KIT_WORSHIPS_WAR
+  name: Worships the God of War
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": Art of War
+    Deity: "God of War"
+    Description: "You worship a god devoted to conflict and combat, and gain their blessings."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_CD_SHIELDED_SOUL, type: Class Feature }
+    - { grant: ORCUS_KITF_DISCIPLE_OF_WAR, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_BROTHERS_IN_ARMS, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_CD_SHIELDED_SOUL
+  name: "Channel Divinity - Shielded Soul"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (War) feat." }
+- id: ORCUS_KITF_DISCIPLE_OF_WAR
+  name: Disciple of War
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "You gain one additional recovery per long rest." }
+- id: ORCUS_KITF_BROTHERS_IN_ARMS
+  name: Brothers in Arms
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "When you are a target of a Near or Far attack, you and all allied targets gain a bonus to defense against it equal to the number of allied targets." }
+
+- id: ORCUS_KIT_WORSHIPS_PEACE
+  name: Worships the God of Peace
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": "Angel's Trumpet"
+    Deity: "God of Peace"
+    Description: "You worship a god devoted to peace and protection, and gain their blessings."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_CD_LIGHT_WARD, type: Class Feature }
+    - { grant: ORCUS_KITF_DISCIPLE_OF_PEACE, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_CALMING_PRESENCE, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_CD_LIGHT_WARD
+  name: "Channel Divinity - Light Ward"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Peace) feat." }
+- id: ORCUS_KITF_DISCIPLE_OF_PEACE
+  name: Disciple of Peace
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "Enemies you are adjacent to suffer a -1 penalty on attack rolls." }
+- id: ORCUS_KITF_CALMING_PRESENCE
+  name: Calming Presence
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "Allies adjacent to you can rally as a swift action." }
+
+- id: ORCUS_KIT_WORSHIPS_LIFE
+  name: Worships the God of Life
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": Radiant Dawn
+    Deity: "God of Life"
+    Description: "You worship a god devoted to life and healing, and gain their blessings."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_CD_GUIDANCE, type: Class Feature }
+    - { grant: ORCUS_KITF_DISCIPLE_OF_LIFE, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_TOWARDS_THE_LIGHT, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_CD_GUIDANCE
+  name: "Channel Divinity - Guidance"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Life) feat." }
+- id: ORCUS_KITF_DISCIPLE_OF_LIFE
+  name: Disciple of Life
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "Add your Wisdom modifier to the amount you heal with powers that have the Healing tag." }
+- id: ORCUS_KITF_TOWARDS_THE_LIGHT
+  name: Towards the Light
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "You and allies within 5 squares gain a +2 bonus on saving throws while at 0 HP or below." }
+
+- id: ORCUS_KIT_WORSHIPS_TYRANNY
+  name: Worships the God of Tyranny
+  type: Theme
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Associated Discipline": "Puppeteer's String"
+    Deity: "God of Tyranny"
+    Description: "You worship a god devoted to domination and pain, and gain their blessings."
+  rules:
+    - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_KITF_CD_SPUR_ON, type: Class Feature }
+    - { grant: ORCUS_KITF_DISCIPLE_OF_TYRANNY, type: Class Feature, level: 5 }
+    - { grant: ORCUS_KITF_DIG_DEEPER, type: Class Feature, level: 10 }
+
+- id: ORCUS_KITF_CD_SPUR_ON
+  name: "Channel Divinity - Spur On"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Tyranny) feat." }
+- id: ORCUS_KITF_DISCIPLE_OF_TYRANNY
+  name: Disciple of Tyranny
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "5", Description: "You are trained in Intimidate (if not already)." }
+- id: ORCUS_KITF_DIG_DEEPER
+  name: Dig Deeper
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { Level: "10", Description: "Each time you use a Healing power, you may give one target temporary HP equal to your Strength modifier." }
