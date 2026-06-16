@@ -18,18 +18,19 @@ for the format.
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + level 1–3 powers |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + level 1–2 powers |
 
-Compiles to **99 elements across 16 types**, no warnings.
+Compiles to **100 elements across 16 types**, no warnings.
 
 ### Ability substitution
 Orcus's "you may use your class key ability instead, if higher" is implemented
-with **no engine change and no equipment dependency**. A shared discipline power
-names the candidate abilities (e.g. `Attack: "Charisma or Wisdom vs Will"`); the
-engine then takes the **higher** of those named. A class whose key *equals* the
-discipline key (Commander) grants an `Ability Choice` element to pin it to its
-key so it can't pick up another class's key from the shared text. Verified via
-`playtest` with no weapon/implement, including the edge case: a **high‑Charisma
-Priest correctly uses Charisma** (no false negative), a high‑Wisdom Commander
-still uses Charisma (no false positive). See `docs/orcus-mapping.md`.
+via a small, **isolated** engine enhancement plus content tags. A class‑discipline
+power is tagged `ability-swap` and keeps its printed key ability; each class
+grants a `Key Ability Swap` element naming its key. The engine adds that ability
+to the power's candidates and takes the **higher**. Equipment‑independent and
+**kit‑scalable** (each character contributes only its own key). WotC content has
+neither the tag nor the elements, so it's unaffected. Verified via `playtest`
+with no weapon/implement: high‑Wis Priest → Wisdom, **high‑Cha Priest → Charisma
+(no false negative)**, high‑Wis Commander → Charisma (no false positive),
+Guardian → Strength. See `docs/orcus-mapping.md`.
 
 ## Build & playtest
 

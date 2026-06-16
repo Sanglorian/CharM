@@ -59,7 +59,7 @@ these new types nicely in the creation wizard; the engine already handles them.
 Still open: **HP/level scaling** (+N HP/level) and the other defenses/skills at
 levels >1 need the higher `ID_INTERNAL_LEVEL_<n>` elements; the slice is level-1.
 
-## Ability substitution (Orcus "use your key ability if higher")
+## Ability substitution (Orcus "use your key ability, if higher")
 
 Orcus lets you replace a discipline power's printed key ability with your class's
 key ability (and the secondary with your talent's) when it's higher. Two layers
@@ -68,52 +68,48 @@ cover this:
 - **Within a power's printed text** ("Dexterity (ranged) or Strength (melee)",
   "Highest of Strength, Constitution, Dexterity"): the engine already auto‑picks
   the highest‑modifier ability among those named — no extra work.
-- **Class key‑ability substitution** (when a class uses a discipline keyed to a
-  different ability — e.g. a Priest, Wisdom, using Charisma‑keyed Angel's
-  Trumpet). Done with **no engine change and no equipment dependency**. The
-  shared discipline power names every candidate ability in its attack/damage
-  text — `Attack: "Charisma or Wisdom vs Will"` — and the engine's
-  `ResolveAttackAbility`/`ResolveDamageAbility` pick among them (weapon, focus
-  **and** weaponless powers). Two cases, because the rule ("you *may* replace
-  the discipline key with your class key") means *use the higher*:
+- **Class key‑ability substitution** — implemented with a small, isolated engine
+  enhancement (see "Engine enhancement" below). The character's class key is
+  *added* to a discipline power's candidate abilities and the **higher** is used.
 
-  - **Class key ≠ discipline key** (Priest): grant **no** Ability Choice. The
-    named set `{disciplineKey, classKey}` is exactly the Priest's legal set, so
-    the engine's highest‑modifier fallback uses the higher of the two — Wisdom
-    when it leads, **Charisma when a Priest's Charisma is higher** (no false
-    negative).
-  - **Class key = discipline key** (Commander): grant an **"Ability Choice"**
-    element naming the key (e.g. `Commander Key Charisma`, category
-    `Ability Choice`). This pins the class to its key so it does **not** pick up
-    the other class's key (Wisdom) that only appears because the text is shared
-    (no false positive).
+### Authoring it
 
-  Verified on the unmodified engine, no weapon/implement: high‑Wis Priest →
-  Wisdom; **high‑Cha Priest → Charisma**; Commander (even with high Wisdom) →
-  Charisma; Guardian → Strength.
+1. Tag each class‑discipline attack/damage power with the **`ability-swap`**
+   category (alongside the discipline id), e.g. Angel's Trumpet's *Identify
+   Target*. Leave the printed ability as the discipline key (`"Charisma vs Will"`).
+2. Have each class grant a **`Key Ability Swap`** element whose name ends in the
+   class's key ability — `Commander Key Charisma`, `Priest Key Wisdom` (category
+   `Key Ability Swap`). (A talent can grant another for its secondary.)
 
-  Scope / limitation: this content‑only scheme is correct for the **nine base
-  classes**, where every discipline maps to exactly one class except Angel's
-  Trumpet (Commander + Priest = two keys). It does **not** scale to **kits**.
-  Per the Kits chapter, a kit's associated discipline is used "as if it were one
-  of your class disciplines" — i.e. with *your* class key — and kits are open to
-  any class. So once kits exist, most disciplines become reachable by classes of
-  many different keys (up to all six). Naming the full set in the power text then
-  over‑grants (a Guardian could pick Charisma off a shared "Cha or Wis or …"
-  line), and `ChosenAbilities` can only *force* one ability, not take the higher
-  of a per‑character pair.
+The engine adds the character's swap abilities to the power's candidate set and
+takes the highest, so:
 
-  The general, correct, scalable fix is a small **engine** enhancement: union
-  the character's class key (and talent secondary) into the power's candidate
-  set and take the highest — exactly what the engine already does for *basic*
-  attacks (`SelectBestBasicAttackAbility`), generalised to discipline powers and
-  made equipment‑independent. Until then the content‑only scheme stands for base
-  classes; kits will need that engine change (or accept `ChosenAbilities` force
-  semantics, which reintroduces the high‑Charisma‑Priest false negative).
+- **Priest** (Wisdom) on *Identify Target* (printed Charisma): uses **Wisdom**
+  when higher, **Charisma when the Priest's Charisma is higher** — no false
+  negative.
+- **Commander** (Charisma = the discipline key): its only swap is Charisma, so it
+  stays on Charisma even with high Wisdom — no false positive.
 
-The secondary‑ability (talent) substitution works the same way (the power names
-the secondary options) and is a follow‑up once an authored power puts the
-secondary on an attack.
+This **scales to kits**: a discipline reached by any number of classes (via kit
+access) is always "higher of {printed key, *this* character's key}", because each
+character contributes only its own key — never another class's. Verified on the
+engine with no weapon/implement: high‑Wis Priest → Wisdom; high‑Cha Priest →
+Charisma; high‑Wis Commander → Charisma; Guardian → Strength.
+
+### Engine enhancement (isolated, additive)
+
+A new `StatBlock.KeyAbilitySwaps` set is populated from active `Key Ability Swap`
+elements (`CharacterBuilder.IndexKeyAbilitySwaps`). In `PowerStatCalculator`,
+when a power carries the `ability-swap` category **and** the character has swap
+abilities, those abilities are woven into the power's attack/damage ability
+references as "or X" alternatives, after which the existing highest‑modifier
+resolver does the rest. It is a no‑op without both the tag and the elements, so
+WotC content (which has neither) is completely unaffected; it also needs no
+weapon/implement equipped.
+
+The secondary‑ability (talent) substitution uses the same mechanism (the talent
+grants another `Key Ability Swap`) and is a follow‑up once an authored power puts
+the secondary on an attack.
 
 ## Status — playability validated ✅
 

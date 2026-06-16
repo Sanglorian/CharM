@@ -52,6 +52,27 @@ public sealed partial class CharacterBuilder
         }
     }
 
+    private void IndexKeyAbilitySwaps()
+    {
+        Stats.KeyAbilitySwaps.Clear();
+        foreach (var re in ElementTree.GetActiveElements())
+        {
+            // "Key Ability Swap" elements record an ability a character may use
+            // in place of a discipline power's printed key ability when higher
+            // (Orcus class-key substitution). The ability is the trailing token
+            // of the element's Name — e.g. "Priest Key Wisdom".
+            bool isSwap = re.Categories.Any(c =>
+                string.Equals(c, "Key Ability Swap", StringComparison.OrdinalIgnoreCase));
+            if (!isSwap) continue;
+
+            var tokens = re.Name.Split(
+                ' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            if (tokens.Length == 0) continue;
+            if (AbilityNames.TryParse(tokens[^1], out var ability))
+                Stats.KeyAbilitySwaps.Add(AbilityNames.GetFullName(ability));
+        }
+    }
+
     private void IndexClassEquivalents()
     {
         Stats.ClassEquivalents.Clear();

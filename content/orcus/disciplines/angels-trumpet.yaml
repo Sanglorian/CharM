@@ -18,7 +18,10 @@
   name: Identify Target
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will]
+  # "ability-swap": the engine adds the character's class key ability (Key
+  # Ability Swap element) to this power's printed key (Charisma) and uses the
+  # higher. See docs/orcus-mapping.md.
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will, ability-swap]
   fields:
     Level: "1"
     "Power Usage": At-Will
@@ -26,10 +29,8 @@
     "Action Type": Standard Action
     Keywords: "Focus, Martial"
     Target: "Ranged 10, one enemy"
-    # Printed key ability is Charisma; "or Wisdom" lets the Priest's class-key
-    # substitution resolve via ChosenAbilities (Commander keeps Charisma).
-    Attack: "Charisma or Wisdom vs Will"
-    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma or Wisdom modifier HP."
+    Attack: "Charisma vs Will"
+    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma modifier HP."
 
 - id: ORCUS_POWER_MAKE_ROOM
   name: Make Room
@@ -82,7 +83,7 @@
   name: Break Will
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
     "Power Usage": Daily
@@ -90,7 +91,7 @@
     "Action Type": Standard Action
     Keywords: "Focus, Martial, Psychic"
     Target: "Near burst 3, all enemies"
-    Attack: "Charisma or Wisdom vs Will"
+    Attack: "Charisma vs Will"
     Hit: "The target is weakened (save ends)."
 
 - id: ORCUS_POWER_GEOMETRIC_STRATEGY

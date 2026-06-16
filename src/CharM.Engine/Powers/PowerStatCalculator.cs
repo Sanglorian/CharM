@@ -33,6 +33,19 @@ public static partial class PowerStatCalculator
     {
         var result = new PowerStatBlock();
 
+        // Orcus class-key substitution: for a class-discipline power (tagged
+        // "ability-swap"), weave the character's substitutable key abilities
+        // into the attack/damage ability references so the engine's existing
+        // "X or Y -> highest modifier" logic lets the character use the higher
+        // of {printed key, class key}. Fully isolated: a no-op unless the power
+        // carries the tag AND the character has Key Ability Swap elements, so
+        // WotC content is unaffected. Works with or without a weapon equipped.
+        if (stats.KeyAbilitySwaps.Count > 0
+            && power.Categories.Contains("ability-swap", StringComparer.OrdinalIgnoreCase))
+        {
+            power = ApplyKeyAbilitySwaps(power, stats.KeyAbilitySwaps);
+        }
+
         // Extract fields from the power
         string? attackAbility = PowerFieldParser.GetAttackAbility(power, overlay);
         result.Defense = PowerFieldParser.GetDefense(power, overlay);
@@ -920,4 +933,91 @@ public static partial class PowerStatCalculator
         return sb.ToString();
     }
 
+    // ===== Orcus class-key ability substitution =================================
+
+    /// <summary>
+    /// Return a copy of <paramref name="power"/> whose attack and damage ability
+    /// references include the character's substitutable key abilities as "or X"
+    /// alternatives. The existing resolver then takes the highest-modifier
+    /// ability among them, implementing Orcus's "use your class key ability
+    /// instead, if higher" without forcing it. Only called for "ability-swap"
+    /// powers when swaps exist, so it never touches other content.
+    /// </summary>
+    private static RulesElement ApplyKeyAbilitySwaps(RulesElement power, IReadOnlySet<string> swaps)
+    {
+        var source = power.FieldEntries.Count > 0
+            ? power.FieldEntries
+            : power.Fields.Select(p => new KeyValuePair<string, string>(p.Key, p.Value)).ToList();
+
+        var entries = new List<KeyValuePair<string, string>>(source.Count);
+        foreach (var kv in source)
+        {
+            string value = kv.Value;
+            if (IsAttackAbilityField(kv.Key))
+                value = AddAttackAbilityAlternatives(value, swaps);
+            else if (kv.Key.Equals("Hit", StringComparison.OrdinalIgnoreCase))
+                value = AddDamageAbilityAlternatives(value, swaps);
+            entries.Add(new KeyValuePair<string, string>(kv.Key, value));
+        }
+
+        var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var e in entries)
+            fields.TryAdd(e.Key, e.Value);
+
+        return new RulesElement
+        {
+            InternalId = power.InternalId,
+            Name = power.Name,
+            Type = power.Type,
+            Source = power.Source,
+            Prereqs = power.Prereqs,
+            Fields = fields,
+            FieldEntries = entries,
+            Rules = power.Rules,
+            Categories = [.. power.Categories],
+        };
+    }
+
+    private static bool IsAttackAbilityField(string key) =>
+        key.Equals("Attack", StringComparison.OrdinalIgnoreCase)
+        || key.Equals("Primary Attack", StringComparison.OrdinalIgnoreCase)
+        || key.Equals("Secondary Attack", StringComparison.OrdinalIgnoreCase)
+        || key.Equals("Tertiary Attack", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Insert " or &lt;ability&gt;" before the " vs &lt;defense&gt;" of an attack line.</summary>
+    private static string AddAttackAbilityAlternatives(string text, IReadOnlySet<string> swaps)
+    {
+        if (!AbilityNameOrder.Any(a => ContainsAbilityWord(text, a)))
+            return text; // no ability reference to extend
+        string addition = BuildAdditions(text, swaps);
+        if (addition.Length == 0)
+            return text;
+        int vs = text.IndexOf(" vs", StringComparison.OrdinalIgnoreCase);
+        return vs >= 0 ? text.Insert(vs, addition) : text + addition;
+    }
+
+    /// <summary>Insert " or &lt;ability&gt;" before " modifier" in a damage line.</summary>
+    private static string AddDamageAbilityAlternatives(string text, IReadOnlySet<string> swaps)
+    {
+        var match = DamageAbilityModifierRegex().Match(text);
+        if (!match.Success)
+            return text;
+        string addition = BuildAdditions(text, swaps);
+        if (addition.Length == 0)
+            return text;
+        int insertAt = match.Index + match.Length - " modifier".Length;
+        return text.Insert(insertAt, addition);
+    }
+
+    private static string BuildAdditions(string text, IReadOnlySet<string> swaps)
+    {
+        var toAdd = swaps.Where(s => !ContainsAbilityWord(text, s)).ToList();
+        return toAdd.Count == 0 ? string.Empty : " or " + string.Join(" or ", toAdd);
+    }
+
+    private static bool ContainsAbilityWord(string text, string ability)
+    {
+        int i = text.IndexOf(ability, StringComparison.OrdinalIgnoreCase);
+        return i >= 0;
+    }
 }

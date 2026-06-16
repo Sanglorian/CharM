@@ -203,6 +203,11 @@ public sealed partial class CharacterBuilder
         //    higher modifier.
         IndexAbilityChoices();
 
+        // 8b. Index "Key Ability Swap" elements (e.g. Priest Key Wisdom) into
+        //     Stats.KeyAbilitySwaps — the Orcus class-key substitution, added to
+        //     a discipline power's candidate abilities (highest wins).
+        IndexKeyAbilitySwaps();
+
         // 9. Index every class id the character has, has via Hybrid Class, or
         //    counts as (CountsAsClass _SupportsID — both inherent and multiclass
         //    feat grants). PowerStatCalculator uses this to answer "is this

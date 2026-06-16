@@ -1,10 +1,11 @@
 # Priest - Divine Leader (Orcus Classes and Powers). Key ability: Wisdom.
 # The Priest shares the Angel's Trumpet discipline with the Commander, but those
 # powers are printed with the discipline's key (Charisma). Per the Orcus rule a
-# Priest may use Wisdom (its class key) INSTEAD, if higher. Angel's Trumpet
-# attacks name "Charisma or Wisdom" and the engine takes the higher-modifier
-# ability among those named - no engine change, no equipment dependency, and no
-# false negative when a Priest's Charisma happens to exceed its Wisdom.
+# Priest may use Wisdom (its class key) INSTEAD, if higher. The class grants a
+# "Key Ability Swap: Wisdom" element; the engine adds Wisdom to the candidate
+# abilities of the discipline's "ability-swap" powers and uses the higher, with
+# no false negative when a Priest's Charisma exceeds its Wisdom. This scales to
+# any class (incl. kit access) since each just contributes its own key.
 
 - id: ORCUS_CLASS_PRIEST
   name: Priest
@@ -22,13 +23,13 @@
     "Class Skills": "Arcana, Diplomacy, Heal, History, Insight, Religion"
     Flavor: "You channel the will of the gods to mend, ward and rally."
   rules:
-    # Orcus key-ability substitution (equipment-independent, no engine change):
-    # Angel's Trumpet attacks name "Charisma or Wisdom" (the discipline key plus
-    # this class's key). The Priest grants NO "Ability Choice", so the engine
-    # takes the HIGHER of the two — Wisdom when it leads, but Charisma if a Priest
-    # happens to have more of it. (A class whose key equals the discipline key,
-    # like the Commander, instead grants an Ability Choice to pin it to its key.)
-    # See docs/orcus-mapping.md.
+    # Orcus key-ability substitution: the Priest may use Wisdom (its class key)
+    # in place of a discipline power's printed key ability. The engine adds
+    # Wisdom to the power's candidate abilities and takes the higher, so a Priest
+    # with more Charisma still uses Charisma (no false negative). Works on the
+    # stock engine path with no equipment. See docs/orcus-mapping.md.
+    - grant: ORCUS_KEYSWAP_PRIEST_WISDOM
+      type: Key Ability Swap
     # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
     - statadd: Hit Points
       value: 7
@@ -118,3 +119,10 @@
   fields:
     "Secondary Ability": Strength
     Description: "You lead the faithful into battle. Secondary ability: Strength."
+
+# Lets the Priest substitute Wisdom (its class key) for a discipline power's
+# printed key ability when higher (category "Key Ability Swap").
+- id: ORCUS_KEYSWAP_PRIEST_WISDOM
+  name: Priest Key Wisdom
+  type: Key Ability Swap
+  categories: [Key Ability Swap]

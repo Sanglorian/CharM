@@ -107,6 +107,7 @@ public sealed class StatBlock
         TrainedWeapons.Clear();
         TrainedImplements.Clear();
         ChosenAbilities.Clear();
+        KeyAbilitySwaps.Clear();
         ClassEquivalents.Clear();
     }
 
@@ -140,6 +141,20 @@ public sealed class StatBlock
     /// Populated by <c>CharacterBuilder.IndexAbilityChoices</c> at end of build.
     /// </summary>
     public HashSet<string> ChosenAbilities { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Ability names that may be SUBSTITUTED in for a power's printed key
+    /// ability when they are higher — the Orcus "use your class key ability
+    /// instead" rule. Populated from active "Key Ability Swap" category
+    /// elements (name ends in the ability, e.g. "Priest Key Wisdom"). Unlike
+    /// <see cref="ChosenAbilities"/> (which forces a player's pick), these are
+    /// ADDED to a power's candidate abilities and the highest is taken, so a
+    /// character never does worse than the printed ability. Applied only to
+    /// powers tagged with the "ability-swap" category (a class-discipline
+    /// power), so WotC content — which has neither the elements nor the tag —
+    /// is unaffected. See docs/orcus-mapping.md.
+    /// </summary>
+    public HashSet<string> KeyAbilitySwaps { get; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
     /// InternalIds of every class the character has, has via a Hybrid Class,
