@@ -94,8 +94,11 @@ but the engine has no armor non-proficiency penalty yet, so those are declarativ
 1/6/11/16/21/26 (`magic-items.yaml`). Enchanted armor and cloaks carry `statadd`
 rules, so equipping them raises AC / the three defenses; enchanted weapons and
 focuses carry an `Enhancement` field, which the calculator adds to attack and
-damage. Verified: a +3 cloak adds +3 to Fortitude/Reflex/Will, +3 armor adds +3
-AC, and a +3 longsword takes *In Their Face* from +12 / 2d8 to +15 / 2d8+3. Try
+damage. **Enchanted focuses work too**: equip one with `--focus` and its
+enhancement feeds Focus-keyword powers (the implement analogue of an enchanted
+weapon). Verified: a +3 cloak adds +3 to Fortitude/Reflex/Will, +3 armor adds +3
+AC, a +3 longsword takes *In Their Face* from +12 / 2d8 to +15 / 2d8+3, and a
+Magician's +3 focus takes *Thermodynamic Bolt* from +19 / 2d6+3 to +22 / 2d6+6. Try
 `playtest --weapon Longsword --magic "Enchanted Weapon +3"` or
 `--magic "Enchanted Cloak +3"`. The Boost I–IV variants (same +X at a higher item
 level/price) are generated for every family in `magic-items-boosts.yaml`. When a
@@ -194,7 +197,8 @@ a specific discipline power, e.g. `--pick "Pack Pounce"`). `--swaps` applies a
 sample power-replacement chain (levels 13–29) and prints the resulting powers.
 `--weapon`/`--armor`/`--shield` equip gear by name and show its effect on AC,
 defenses, speed and weapon damage; `--magic` (repeatable) applies an enchanted
-item (weapon/focus enhancement, or armor/cloak when equipped). `--kit <name>`
+item (armor/cloak when equipped). `--focus <name>` equips an implement (e.g. an
+Enchanted Focus) whose enhancement feeds Focus-keyword powers. `--kit <name>`
 takes a kit and `--feats-and-kits` enables the house rule that grants both.
 
 Weapon dice written `dW`/`NdW` are normalized to the engine's `[W]`/`N[W]`, so a

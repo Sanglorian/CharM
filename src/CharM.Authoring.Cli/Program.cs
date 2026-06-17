@@ -98,7 +98,7 @@ static int Playtest(string[] args)
     int[]? scores = null;
     string? talentHint = null;
     bool demoSwaps = false, featsAndKits = false;
-    string? weaponName = null, armorName = null, shieldName = null, kitName = null;
+    string? weaponName = null, armorName = null, shieldName = null, kitName = null, focusName = null;
     var magicNames = new List<string>();
     for (int i = 0; i < args.Length; i++)
     {
@@ -111,6 +111,7 @@ static int Playtest(string[] args)
             case "--armor": armorName = args[++i]; break;
             case "--shield": shieldName = args[++i]; break;
             case "--magic": magicNames.Add(args[++i]); break;
+            case "--focus": focusName = args[++i]; break;
             case "--kit": kitName = args[++i]; break;
             case "--feats-and-kits": featsAndKits = true; break;
             case "--level": level = int.Parse(args[++i]); break;
@@ -345,8 +346,18 @@ static int Playtest(string[] args)
             session.EquipItem(slot, mi);
         }
     }
-    if (weaponName is not null || armorName is not null || shieldName is not null || magicNames.Count > 0)
-        Console.WriteLine($"\nEquipped: {string.Join(", ", new[] { weaponName, armorName, shieldName }.Concat(magicNames).Where(s => s is not null))}");
+    // --focus: an implement (typically an "Enchanted Focus +X" magic item). Its
+    // Enhancement feeds the attack and damage of Focus-keyword powers — the
+    // implement analogue of an enchanted weapon. (A focus supplies no [W] die.)
+    RulesElement? equippedFocus = null;
+    if (focusName is not null)
+    {
+        equippedFocus = db.FindByNameAndType(focusName, "Magic Item") ?? db.FindByNameAndType(focusName, "Focus");
+        if (equippedFocus is null) Console.WriteLine($"  ! focus '{focusName}' not found");
+        else session.EquipItem("Implement", equippedFocus);
+    }
+    if (weaponName is not null || armorName is not null || shieldName is not null || focusName is not null || magicNames.Count > 0)
+        Console.WriteLine($"\nEquipped: {string.Join(", ", new[] { weaponName, armorName, shieldName, focusName }.Concat(magicNames).Where(s => s is not null))}");
 
     var snapshot = session.GetSnapshot() ?? session.GetPartialSnapshot();
     if (snapshot is null)
@@ -398,7 +409,12 @@ static int Playtest(string[] args)
             Console.WriteLine($"  {power.Name,-22} (no attack line)");
             continue;
         }
-        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: equippedWeapon, characterLevel: level,
+        // Focus-keyword powers draw on the equipped focus/implement; weapon
+        // powers on the equipped weapon. (A power with neither just uses neither.)
+        bool isFocusPower = power.Fields.TryGetValue("Keywords", out var kw)
+            && kw.Contains("Focus", StringComparison.OrdinalIgnoreCase);
+        var item = (isFocusPower && equippedFocus is not null) ? equippedFocus : equippedWeapon;
+        var card = PowerStatCalculator.Calculate(power, snapshot.Builder.Stats, weapon: item, characterLevel: level,
             sourceElementResolver: db.FindByInternalId);
         var dmg = string.IsNullOrWhiteSpace(card.DamageExpression) ? "-" : card.DamageExpression;
         var atk = card.ResolvedAttackStat.Length > 0 ? card.ResolvedAttackStat : "(none)";
