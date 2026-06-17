@@ -5,7 +5,7 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — five playable classes (levels 1–30)
+## Current scope — six playable classes (levels 1–30)
 
 | File | Contents |
 |---|---|
@@ -19,6 +19,7 @@ for the format.
 | `classes/priest.yaml` | Priest (Leader, Wisdom): talents + the key-ability substitution override (shares Angel's Trumpet with the Commander) |
 | `classes/exemplar.yaml` | Exemplar (Striker, Dexterity): Momentum/Triumphant Strike features, Gladiator/Swashbuckler talents, level-gated power selects to 30 |
 | `classes/magician.yaml` | Magician (Controller, Arcane, Intelligence): schools (Conjurer/Enchanter/Evoker), Arcane Strength choice, auto-trained Arcana + 3, selects to 30 |
+| `classes/reaper.yaml` | Reaper (Controller, Spirit, Dexterity): Sprouting Overwatch / Spirit Entreaty features, Paviser/Peltast/Sharpshooter talents, auto-trained Nature + 3, selects to 30 |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
 | `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
@@ -26,6 +27,7 @@ for the format.
 | `disciplines/rapiers-point.yaml` | Rapier's Point discipline (Exemplar) + levels 1–10 powers |
 | `disciplines/blades-in-the-dark.yaml` | Blades in the Dark discipline (Exemplar) + levels 1–7 powers |
 | `disciplines/spells-of-ice-and-fire.yaml` | Spells of Ice and Fire discipline (Magician) + levels 1–22 powers |
+| `disciplines/starfall.yaml` | Starfall discipline (Reaper) + levels 1–16 powers |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
@@ -39,7 +41,7 @@ for the format.
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 | `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **1050 elements across 32 types**, no warnings.
+Compiles to **1087 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -211,10 +213,11 @@ power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
 
 ## What's next
 
-Five of nine classes are in (a Defender, two Leaders, a Striker and a Controller),
-playable across the full 1–30 range, with both Guardian disciplines (Art of War,
-Juggernautical), both Exemplar disciplines (Rapier's Point, Blades in the Dark),
-one of the Magician's three (Spells of Ice and Fire) and
+Six of nine classes are in (a Defender, two Leaders, a Striker and two
+Controllers), playable across the full 1–30 range, with both Guardian disciplines
+(Art of War, Juggernautical), both Exemplar disciplines (Rapier's Point, Blades in
+the Dark), one each of the Magician's (Spells of Ice and Fire) and Reaper's
+(Starfall) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
 in full to level 29), 14 species ancestries, a sample of feats, a sample of
 prestige paths, all six epic paths, and a starter set of weapons, armor and gear.

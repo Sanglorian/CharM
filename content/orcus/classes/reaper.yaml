@@ -1,0 +1,302 @@
+# Reaper — Spirit Controller (Orcus Classes and Powers). Key ability Dexterity.
+# A ranged controller backed by nature spirits. HP 12 + Con at level 1, +5/level
+# (encoded 7 + Con + 5 x Level). "Recoveries" -> Healing Surges. Trained in Nature
+# automatically + 3 chosen class skills. One discipline (Starfall) transcribed so
+# far; the class power selects also OR in |$$KITDISC.
+
+- id: ORCUS_CLASS_REAPER
+  name: Reaper
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Controller, Spirit]
+  fields:
+    Role: Controller
+    Tradition: Spirit
+    "Key Ability": Dexterity
+    "Class Disciplines": "Seershot, Starfall"
+    "Armor Proficiencies": "Cloth, leather"
+    "Weapon Proficiencies": "Simple melee, simple ranged, martial ranged"
+    "Class Skills": "Acrobatics, Athletics, Endure, Heal, Insight, Intimidate, Nature, Perception, Stealth"
+    Flavor: "You loose rains of arrows and bind the battlefield with willing spirits."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_REAPER
+      type: Grants
+    # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
+    - statadd: Hit Points
+      value: 7
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 5 }
+    # Recoveries per long rest: 7 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 7
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +1 Reflex, +1 Will.
+    - statadd: Reflex Defense
+      value: +1
+      bonusType: Class
+    - statadd: Will Defense
+      value: +1
+      bonusType: Class
+    # Trained in Nature + 3 other class skills.
+    - select:
+        type: Skill Training
+        number: 3
+        category: ORCUS_REAPER_SKILLS
+        name: Reaper Trained Skills
+    # Choose one talent (sets your secondary ability).
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_REAPER_TALENT
+        name: Reaper Talent
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,at-will,1"
+        name: Reaper At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,1"
+        name: Reaper Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,1"
+        name: Reaper Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,2"
+        name: Reaper Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,3"
+        name: Reaper Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,5"
+        name: Reaper Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,6"
+        name: Reaper Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,7"
+        name: Reaper Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,9"
+        name: Reaper Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,10"
+        name: Reaper Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,16"
+        name: Reaper Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,22"
+        name: Reaper Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_REAPER
+  name: Reaper Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_REAPER }
+  rules:
+    # Always trained in Nature (the class's signature skill).
+    - grant: ORCUS_TRAIN_NATURE
+      type: Skill Training
+    - grant: ORCUS_FEATURE_SPROUTING_OVERWATCH
+      type: Class Feature
+    - grant: ORCUS_FEATURE_SPIRIT_ENTREATY
+      type: Class Feature
+    - grant: ORCUS_FEATURE_ACTION_RECHARGE
+      type: Class Feature
+    - grant: ORCUS_KEYSWAP_REAPER_DEXTERITY
+      type: Key Ability Swap
+    # Proficiencies: simple melee, simple ranged, martial ranged weapons; cloth
+    # and leather armor.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_RANGED, type: Grants }
+    - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+    - { grant: ORCUS_APROF_LEATHER, type: Proficiency }
+
+# --- Class features -----------------------------------------------------------
+- id: ORCUS_FEATURE_SPROUTING_OVERWATCH
+  name: Sprouting Overwatch (Feature)
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You have the sprouting overwatch power."
+  rules:
+    - grant: ORCUS_POWER_SPROUTING_OVERWATCH
+      type: Power
+
+- id: ORCUS_FEATURE_SPIRIT_ENTREATY
+  name: Spirit Entreaty
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "Once per encounter, entreat the spirits for one of: grasping vines, spirit's prank or unleashed spirit. (Action Recharge can refresh it.)"
+  rules:
+    - grant: ORCUS_POWER_GRASPING_VINES
+      type: Power
+    - grant: ORCUS_POWER_SPIRITS_PRANK
+      type: Power
+    - grant: ORCUS_POWER_UNLEASHED_SPIRIT
+      type: Power
+
+- id: ORCUS_FEATURE_ACTION_RECHARGE
+  name: Action Recharge
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "When you spend an action point, you recover the use of Spirit Entreaty for the encounter."
+
+# --- Feature powers -----------------------------------------------------------
+- id: ORCUS_POWER_SPROUTING_OVERWATCH
+  name: Sprouting Overwatch
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Spirit, Weapon, Zone"
+    Target: "Far burst 1 within range 10"
+    Effect: "Until the start of your next turn, make a ranged basic attack (immediate interrupt) against a creature that enters the area; afterward enemies treat the area as difficult terrain until the start of your next turn."
+
+- id: ORCUS_POWER_GRASPING_VINES
+  name: Grasping Vines
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: Spirit
+    Target: "Near burst 1, all enemies"
+    Effect: "The target is pushed 1 and slowed until the end of your next turn. Level 11: burst 2. Level 21: burst 3."
+
+- id: ORCUS_POWER_SPIRITS_PRANK
+  name: Spirit's Prank
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: Spirit
+    Target: Self
+    Trigger: "Your ranged attack misses a target."
+    Effect: "Make a ranged basic attack against a creature within 5 of the triggering target."
+
+- id: ORCUS_POWER_UNLEASHED_SPIRIT
+  name: Unleashed Spirit
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: "Spirit, Weapon"
+    Target: "Melee weapon, the triggering enemy"
+    Trigger: "A melee attack misses you."
+    Hit: "1dW + Strength modifier damage and push 1."
+
+# --- Talents ------------------------------------------------------------------
+- id: ORCUS_TALENT_PAVISER
+  name: Paviser
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_REAPER_TALENT]
+  fields:
+    "Secondary Ability": Constitution
+    Description: "If you don't move on your turn, reduce unwilling movement by 1 and gain +1 AC until your next turn. Proficient with hide and chainmail. Secondary ability: Constitution."
+  rules:
+    - grant: ORCUS_SECSWAP_PAVISER_CONSTITUTION
+      type: Secondary Ability Swap
+    - { grant: ORCUS_APROF_HIDE, type: Proficiency }
+    - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
+
+- id: ORCUS_TALENT_PELTAST
+  name: Peltast
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_REAPER_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "+1 to attacks with thrown weapons, which return to your hand. In light or no armor, add Strength to AC instead of Dex/Int if higher. Secondary ability: Strength."
+  rules:
+    - grant: ORCUS_SECSWAP_PELTAST_STRENGTH
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_SHARPSHOOTER
+  name: Sharpshooter
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_REAPER_TALENT]
+  fields:
+    "Secondary Ability": Intelligence
+    Description: "+1 to attack rolls against targets 6 or more squares away. Secondary ability: Intelligence."
+  rules:
+    - grant: ORCUS_SECSWAP_SHARPSHOOTER_INTELLIGENCE
+      type: Secondary Ability Swap
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_REAPER_DEXTERITY
+  name: Reaper Key Dexterity
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_PAVISER_CONSTITUTION
+  name: Paviser Secondary Constitution
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_PELTAST_STRENGTH
+  name: Peltast Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SHARPSHOOTER_INTELLIGENCE
+  name: Sharpshooter Secondary Intelligence
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
