@@ -1,0 +1,367 @@
+# Specific magic items by slot (Orcus Advanced Options). Single named items (not
+# the +1..+6 boost families). Recorded as `Magic Item` elements with slot, item
+# level, cost and a (condensed) description; most effects are conditional item
+# powers/utilities kept descriptive. Items that come in a few tiers get one entry
+# per level. Boots of Speed carries its always-on speed bonus as a stat.
+
+- id: ORCUS_MAGIC_HEADBAND_OF_INTELLECT_L3
+  name: "Headband of Intellect"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Head, "Item Level": "3", Cost: "680 gp", Description: "Item Power (free, encounter): when you miss an Intelligence attack or fail an Intelligence skill check, reroll it." }
+
+- id: ORCUS_MAGIC_HELM_OF_BRILLIANCE_L11
+  name: "Helm of Brilliance"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Head, "Item Level": "11", Cost: "9,000 gp", Description: "Resistance to fire 10. Radiant light aura 6 (undead starting their turn in it take 5 radiant). Item Power (free, enc, Fire): a hit deals +2d6 fire." }
+
+- id: ORCUS_MAGIC_HELM_OF_COMPREHENDING_LANGUAGES_L2
+  name: "Helm of Comprehending Languages"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Head, "Item Level": "2", Cost: "520 gp", Description: "You are under the effect of the understand languages incantation." }
+
+- id: ORCUS_MAGIC_HELM_OF_TELEPATHY_L11
+  name: "Helm of Telepathy"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Head, "Item Level": "11", Cost: "9,000 gp", Description: "You have telepathy 12." }
+
+- id: ORCUS_MAGIC_BELT_OF_DWARVENKIND_L4
+  name: "Belt of Dwarvenkind"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "4", Cost: "840 gp", Description: "Resistance to poison 5; darkvision; speak/read/write Dwarvish." }
+
+- id: ORCUS_MAGIC_BELT_OF_GIANT_STRENGTH_L4
+  name: "Belt of Giant Strength"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "4", Cost: "840 gp", Description: "Item Power (free, encounter): when you miss a Strength attack or fail a Strength skill check, reroll it." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_ARCHER_L5
+  name: "Belt of the Archer (Level 5)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "5", Cost: "1,000 gp", Description: "Your basic ranged attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_ARCHER_L15
+  name: "Belt of the Archer (Level 15)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "15", Cost: "25,000 gp", Description: "Your basic ranged attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_ARCHER_L25
+  name: "Belt of the Archer (Level 25)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "25", Cost: "625,000 gp", Description: "Your basic ranged attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_MAN_AT_ARMS_L5
+  name: "Belt of the Man-at-Arms (Level 5)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "5", Cost: "1,000 gp", Description: "Your basic melee attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_MAN_AT_ARMS_L15
+  name: "Belt of the Man-at-Arms (Level 15)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "15", Cost: "25,000 gp", Description: "Your basic melee attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_BELT_OF_THE_MAN_AT_ARMS_L25
+  name: "Belt of the Man-at-Arms (Level 25)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Waist, "Item Level": "25", Cost: "625,000 gp", Description: "Your basic melee attacks deal +2 damage (+4 at L15, +6 at L25)." }
+
+- id: ORCUS_MAGIC_ARROW_CATCHING_SHIELD_L6
+  name: "Arrow-Catching Shield (Level 6)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Arms, "Item Level": "6", Cost: "1,800 gp", Description: "+1 AC vs ranged attacks (+2 at L16, +3 at L26). Item Power (counter, enc): become the target of a ranged attack aimed at an adjacent ally." }
+
+- id: ORCUS_MAGIC_ARROW_CATCHING_SHIELD_L16
+  name: "Arrow-Catching Shield (Level 16)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Arms, "Item Level": "16", Cost: "45,000 gp", Description: "+1 AC vs ranged attacks (+2 at L16, +3 at L26). Item Power (counter, enc): become the target of a ranged attack aimed at an adjacent ally." }
+
+- id: ORCUS_MAGIC_ARROW_CATCHING_SHIELD_L26
+  name: "Arrow-Catching Shield (Level 26)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Arms, "Item Level": "26", Cost: "1,125,000 gp", Description: "+1 AC vs ranged attacks (+2 at L16, +3 at L26). Item Power (counter, enc): become the target of a ranged attack aimed at an adjacent ally." }
+
+- id: ORCUS_MAGIC_GLOVES_OF_SWIMMING_AND_CLIMBING_L5
+  name: "Gloves of Swimming and Climbing"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Hands, "Item Level": "5", Cost: "1,000 gp", Description: "Climb and swim at your walk speed without extra cost; +2 item bonus to Athletics to climb or swim." }
+
+- id: ORCUS_MAGIC_GAUNTLETS_OF_OGRE_POWER_L1
+  name: "Gauntlets of Ogre Power"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Hands, "Item Level": "1", Cost: "360 gp", Description: "Your carrying capacity doubles." }
+
+- id: ORCUS_MAGIC_RING_OF_EVASION_L14
+  name: "Ring of Evasion"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "14", Cost: "21,000 gp", Description: "Item Power (immediate, encounter): when an attack vs Reflex hits you, the attacker rerolls and uses the second result." }
+
+- id: ORCUS_MAGIC_RING_OF_FREE_ACTION_L11
+  name: "Ring of Free Action"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "11", Cost: "9,000 gp", Description: "You have the terrain stride feature." }
+
+- id: ORCUS_MAGIC_RING_OF_INVISIBILITY_L21
+  name: "Ring of Invisibility"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "21", Cost: "225,000 gp", Description: "Item Power (standard, daily, Illusion): turn invisible until the encounter ends, you attack, or you end it (swift)." }
+
+- id: ORCUS_MAGIC_RING_OF_MIND_SHIELDING_L20
+  name: "Ring of Mind Shielding"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "20", Cost: "125,000 gp", Description: "Creatures cannot read your thoughts, detect lies, or know your alignment/ancestry. You may make the ring invisible." }
+
+- id: ORCUS_MAGIC_RING_OF_REGENERATION_L30
+  name: "Ring of Regeneration"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "30", Cost: "3,125,000 gp", Description: "While you have at least 1 HP, regain 5 HP each round; regrow lost body parts over 1d6+1 days." }
+
+- id: ORCUS_MAGIC_RING_OF_RESISTANCE_L6
+  name: "Ring of Resistance (Level 6)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "6", Cost: "1,800 gp", Description: "Resistance 5 to one chosen damage type (10 at L16, 15 at L26)." }
+
+- id: ORCUS_MAGIC_RING_OF_RESISTANCE_L16
+  name: "Ring of Resistance (Level 16)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "16", Cost: "45,000 gp", Description: "Resistance 5 to one chosen damage type (10 at L16, 15 at L26)." }
+
+- id: ORCUS_MAGIC_RING_OF_RESISTANCE_L26
+  name: "Ring of Resistance (Level 26)"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "26", Cost: "1,125,000 gp", Description: "Resistance 5 to one chosen damage type (10 at L16, 15 at L26)." }
+
+- id: ORCUS_MAGIC_RING_OF_WARMTH_L1
+  name: "Ring of Warmth"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "1", Cost: "360 gp", Description: "Resistance to fire 2; unharmed by temperatures as low as -50F." }
+
+- id: ORCUS_MAGIC_RING_OF_WATER_WALKING_L7
+  name: "Ring of Water Walking"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "7", Cost: "2,600 gp", Description: "Stand on and move across any liquid surface as if solid." }
+
+- id: ORCUS_MAGIC_RING_OF_X_RAY_VISION_L7
+  name: "Ring of X-ray Vision"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Ring, "Item Level": "7", Cost: "2,600 gp", Description: "Swift action: see through solid matter (radius 6) for 1 minute." }
+
+- id: ORCUS_MAGIC_BOOTS_OF_FEATHER_FALLING_L5
+  name: "Boots of Feather Falling"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "5", Cost: "1,000 gp", Description: "When you fall, you descend 12 squares/round and take no falling damage." }
+
+- id: ORCUS_MAGIC_BOOTS_OF_JUMPING_L13
+  name: "Boots of Jumping"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "13", Cost: "17,000 gp", Description: "Item Power (move, encounter): jump up to your speed without provoking opportunity attacks." }
+
+- id: ORCUS_MAGIC_BOOTS_OF_LEVITATION_L10
+  name: "Boots of Levitation"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "10", Cost: "5,000 gp", Description: "You gain a fly speed of 4 (maximum altitude 2)." }
+
+- id: ORCUS_MAGIC_BOOTS_OF_SPEED_L9
+  name: "Boots of Speed"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "9", Cost: "4,200 gp", Description: "Your walking speed increases by 2." }
+  rules:
+    - { statadd: Speed, value: 2, bonusType: Item }
+
+- id: ORCUS_MAGIC_BOOTS_OF_THE_WINTERLANDS_L2
+  name: "Boots of the Winterlands"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "2", Cost: "520 gp", Description: "Ice stride; tolerate extreme cold (-50F, -100F in heavy clothes)." }
+
+- id: ORCUS_MAGIC_WINGED_BOOTS_L17
+  name: "Winged Boots"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Feet, "Item Level": "17", Cost: "65,000 gp", Description: "Flying speed equal to your walking speed, up to 4 hours per day." }
+
+- id: ORCUS_MAGIC_BRACELET_OF_FRIENDS_L14
+  name: "Bracelet of Friends"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "14", Cost: "21,000 gp", Description: "Grasp a charm and speak a keyed ally's name to summon that willing ally (and their gear) to you across the same plane; the charm then vanishes." }
+
+- id: ORCUS_MAGIC_DECANTER_OF_ENDLESS_WATER_L9
+  name: "Decanter of Endless Water"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "9", Cost: "4,200 gp", Description: "Command word pours endless fresh or salt water (stream 1 gal/round, or fountain 5 gal/round)." }
+
+- id: ORCUS_MAGIC_EFFICIENT_QUIVER_L3
+  name: "Efficient Quiver"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "3", Cost: "680 gp", Description: "Three extradimensional compartments (60 arrows/bolts, 18 javelins, 6 long items) weighing only 2 lb; draw items freely." }
+
+- id: ORCUS_MAGIC_EYES_OF_MINUTE_SEEING_L4
+  name: "Eyes of Minute Seeing"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "4", Cost: "840 gp", Description: "+2 enhancement bonus to sight-based checks searching or studying within 1 foot." }
+
+- id: ORCUS_MAGIC_EYES_OF_THE_EAGLE_L8
+  name: "Eyes of the Eagle"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "8", Cost: "3,400 gp", Description: "+2 enhancement bonus on Perception checks that rely on sight; make out distant details." }
+
+- id: ORCUS_MAGIC_EVERSMOKING_BOTTLE_L6
+  name: "Eversmoking Bottle"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "6", Cost: "1,800 gp", Description: "Item Power (standard, daily, Fire/Zone): Near burst 6 of thick smoke (heavily obscured) for 5 minutes or until strong wind." }
+
+- id: ORCUS_MAGIC_FOLDING_BOAT_L16
+  name: "Folding Boat"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "16", Cost: "45,000 gp", Description: "Command words unfold the box into a skiff or a ship, or fold it back into a box." }
+
+- id: ORCUS_MAGIC_GOGGLES_OF_NIGHT_L1
+  name: "Goggles of Night"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "1", Cost: "360 gp", Description: "Darkvision 12 (or +12 to existing darkvision)." }
+
+- id: ORCUS_MAGIC_HAND_OF_THE_MAGE_L3
+  name: "Hand of the Mage"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "3", Cost: "680 gp", Description: "You can use one cantrip (GM's choice from the Cantrips discipline)." }
+
+- id: ORCUS_MAGIC_HORSESHOES_OF_A_ZEPHYR_L9
+  name: "Horseshoes of a Zephyr"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "9", Cost: "4,200 gp", Description: "A shod mount can fly at its walk speed (hover, max altitude 1) and travel 12 hours/day without exhaustion." }
+
+- id: ORCUS_MAGIC_HORSESHOES_OF_SPEED_L10
+  name: "Horseshoes of Speed"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "10", Cost: "5,000 gp", Description: "A shod mount's walking speed increases by 6." }
+
+- id: ORCUS_MAGIC_IMMOVABLE_ROD_L8
+  name: "Immovable Rod"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "8", Cost: "3,400 gp", Description: "Swift action: fix the rod in place (holds up to 8,000 lb) until pressed again." }
+
+- id: ORCUS_MAGIC_INSTANT_FORTRESS_L24
+  name: "Instant Fortress"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "24", Cost: "525,000 gp", Description: "Standard action: grow a 4x4x6-square adamantine tower (walls/door/roof: 100 HP, resist 15); dismiss when empty." }
+
+- id: ORCUS_MAGIC_LANTERN_OF_REVEALING_L10
+  name: "Lantern of Revealing"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "10", Cost: "5,000 gp", Description: "Sheds bright light (6) / dim (6 more); reveals invisible creatures/objects in its bright light." }
+
+- id: ORCUS_MAGIC_MARVELOUS_PIGMENTS_L17
+  name: "Marvelous Pigments"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "17", Cost: "65,000 gp", Description: "Paint inanimate objects or terrain (up to 2 squares high) into reality; nothing worth more than 25 gp." }
+
+- id: ORCUS_MAGIC_NECROSIS_CUBE_L7
+  name: "Necrosis Cube"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "7", Cost: "2,600 gp", Description: "Regenesis: spending a recovery heals +Wis mod (Wis+2 at L11, Wis+5 at L21). No need to eat/drink; 2h long rest. Healing Light (reaction, enc): when a creature within 6 uses an arcane power, spend a recovery to heal." }
+
+- id: ORCUS_MAGIC_PIPES_OF_THE_SEWERS_L4
+  name: "Pipes of the Sewers"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "4", Cost: "840 gp", Description: "Communicate with rats; they will not attack you unless threatened." }
+
+- id: ORCUS_MAGIC_PORTABLE_HOLE_L9
+  name: "Portable Hole"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "9", Cost: "4,200 gp", Description: "Unfolds into a 2-square-deep extradimensional hole; fold it up to carry its contents (10 minutes of air)." }
+
+- id: ORCUS_MAGIC_ROBE_OF_EYES_L10
+  name: "Robe of Eyes"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "10", Cost: "5,000 gp", Description: "See in all directions; darkvision 24; see invisible/Ethereal out to 24. Radiant hits daze you (save ends)." }
+
+- id: ORCUS_MAGIC_ROPE_OF_CLIMBING_L2
+  name: "Rope of Climbing"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "2", Cost: "520 gp", Description: "A 60-ft rope (holds 3,000 lb) that moves on command and can knot/unknot itself." }
+
+- id: ORCUS_MAGIC_SATCHEL_OF_USEFUL_ITEMS_L7
+  name: "Satchel of Useful Items"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "7", Cost: "2,600 gp", Description: "Detach cloth patches (swift action) that become real items (dagger, lantern, rope, pit, mule, etc.)." }
+
+- id: ORCUS_MAGIC_SCRIPT_OF_FAITHFULNESS_L6
+  name: "Script of Faithfulness"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "6", Cost: "1,800 gp", Description: "The holder is warned of actions or items that would harm their alignment or standing with their deity." }
+
+- id: ORCUS_MAGIC_SPIRITLINK_CHARM_L3
+  name: "Spiritlink Charm"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "3", Cost: "680 gp", Description: "On a critical hit, your companion deals +1d6 per point of your enchanted weapon/focus bonus." }
+
+- id: ORCUS_MAGIC_STONE_OF_ALARM_L1
+  name: "Stone of Alarm"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "1", Cost: "360 gp", Description: "Affix to an object; if touched without the command word, it screeches for 1 hour (audible up to a quarter-mile)." }
+
+- id: ORCUS_MAGIC_SUSTAINING_SPOON_L2
+  name: "Sustaining Spoon"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "2", Cost: "520 gp", Description: "Placed in an empty container, fills it with nourishing gruel enough to feed up to four humans per day." }
+
+- id: ORCUS_MAGIC_BAG_OF_TRICKS
+  name: "Bag of Tricks"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields: { "Item Slot": Wondrous, "Item Level": "varies", Description: "Pull Out a Mook (standard, daily, Summons): summon the bag's associated mook as a companion (level = the mook's). It vanishes at encounter end or 0 HP." }

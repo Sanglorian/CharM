@@ -37,8 +37,9 @@ for the format.
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
 | `equipment/magic-items-boosts.yaml` | The named **boosts** (Focus/Weapon/Cloak/Armor) from Advanced Options — each as its six +1…+6 versions (e.g. flame tongue, frost brand, cloak of displacement, armor of resistance) |
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
+| `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **990 elements across 32 types**, no warnings.
+Compiles to **1050 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
