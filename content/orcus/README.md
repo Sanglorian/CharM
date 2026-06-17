@@ -35,9 +35,10 @@ for the format.
 | `equipment/magic-items.yaml` | The four generic enchanted-item families (Weapon, Focus, Armor, Cloak) at +1…+6 as `Magic Item` elements |
 | `kits.yaml` | Kits (mapped to the engine's `Theme` type) + the "Has Kit" marker and "Feats and Kits" house-rule elements |
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
-| `equipment/magic-items-boosts.yaml` | The Boost I–IV variants of every enchanted item (same +X, higher item level/price) |
+| `equipment/magic-items-boosts.yaml` | The named **boosts** (Focus/Weapon/Cloak/Armor) from Advanced Options — each as its six +1…+6 versions (e.g. flame tongue, frost brand, cloak of displacement, armor of resistance) |
+| `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 
-Compiles to **640 elements across 32 types**, no warnings.
+Compiles to **990 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -100,8 +101,11 @@ weapon). Verified: a +3 cloak adds +3 to Fortitude/Reflex/Will, +3 armor adds +3
 AC, a +3 longsword takes *In Their Face* from +12 / 2d8 to +15 / 2d8+3, and a
 Magician's +3 focus takes *Thermodynamic Bolt* from +19 / 2d6+3 to +22 / 2d6+6. Try
 `playtest --weapon Longsword --magic "Enchanted Weapon +3"` or
-`--magic "Enchanted Cloak +3"`. The Boost I–IV variants (same +X at a higher item
-level/price) are generated for every family in `magic-items-boosts.yaml`. When a
+`--magic "Enchanted Cloak +3"`. The named **boosts** (Advanced Options) are generated in `magic-items-boosts.yaml` —
+each of the Focus/Weapon/Cloak/Armor boosts (flame tongue, frost brand, cloak of
+displacement, armor of resistance, …) as its six +1…+6 versions, carrying the
+standard +X enhancement plus the boost's special `Property`. **Consumables**
+(oils, tonics, potions) are in `magic-items-consumables.yaml`. When a
 weapon/focus enchantment is applied to an equipped weapon, the harness models it
 as a composite `LootItem` (Base + Enchantment) — e.g. a longsword + *Enchanted
 Weapon +3 (Boost II)* resolves *In Their Face* at +3 attack / 2d8+3. The
