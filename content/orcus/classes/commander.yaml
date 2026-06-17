@@ -56,84 +56,84 @@
     - select:
         type: Power
         number: 2
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,at-will,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,at-will,1"
         name: Commander At-Will Powers
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,1"
         name: Commander Encounter Power
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,1"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,1"
         name: Commander Daily Power
     # Level 2: +1 utility. Level 3: +1 encounter.
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,2"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,utility,2"
         name: Commander Utility Power
         level: 2
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,3"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,3"
         name: Commander Encounter Power 2
         level: 3
     # Default progression to level 30 (class powers only; +P/+E come from paths).
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,5"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,5"
         name: Commander Daily Power 2
         level: 5
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,6"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,utility,6"
         name: Commander Utility Power 2
         level: 6
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,7"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,7"
         name: Commander Encounter Power 3
         level: 7
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,9"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,9"
         name: Commander Daily Power 3
         level: 9
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,10"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,utility,10"
         name: Commander Utility Power 3
         level: 10
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,16"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,utility,16"
         name: Commander Utility Power 4
         level: 16
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,utility,22"
+        category: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,utility,22"
         name: Commander Utility Power 5
         level: 22
     # Power-replacement (retraining) swaps (see Guardian for the full note).
     # Encounter swaps at 13/17/23/27, daily at 15/19/25/29.
-    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,13", level: 13, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,15",     level: 15, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,17", level: 17, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,19",     level: 19, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,23", level: 23, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,25",     level: 25, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,encounter,27", level: 27, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION,daily,29",     level: 29, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_ANGELS_TRUMPET|ORCUS_DISCIPLINE_GOLDEN_LION|$$KITDISC,daily,29",     level: 29, optional: true } }
 
 - id: ORCUS_INTERNAL_GRANTS_COMMANDER
   name: Commander Grants

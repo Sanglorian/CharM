@@ -123,6 +123,30 @@ public static class SelectVariables
         if (characterLevel is int lvl && lvl > 0)
             variables["$$LEVEL"] = lvl.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
+        // $$KITDISC: disciplines the character can select powers from via a kit's
+        // "associated discipline" (Orcus). A kit grants a "Discipline Access"
+        // element whose `_Discipline` field is the discipline's InternalId; a
+        // class power-select category that ORs in $$KITDISC then accepts that
+        // discipline's powers as class powers. Absent when no such access exists,
+        // in which case the OR alternative simply doesn't match (see CategoryMatcher).
+        var kitDisciplineIds = new List<string>();
+        var kitDisciplineSeen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var node in tree.Root.GetAllDescendants())
+        {
+            if (!node.IsActive || node.RulesElement is not { } element)
+                continue;
+            if (!string.Equals(element.Type, "Discipline Access", StringComparison.OrdinalIgnoreCase))
+                continue;
+            if (element.Fields.TryGetValue("_Discipline", out var disc)
+                && !string.IsNullOrWhiteSpace(disc)
+                && kitDisciplineSeen.Add(disc))
+            {
+                kitDisciplineIds.Add(disc.Trim());
+            }
+        }
+        if (kitDisciplineIds.Count > 0)
+            variables["$$KITDISC"] = string.Join("|", kitDisciplineIds);
+
         return variables;
     }
 

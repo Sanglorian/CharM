@@ -32,7 +32,7 @@ for the format.
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
 | `equipment/magic-items-boosts.yaml` | The Boost I–IV variants of every enchanted item (same +X, higher item level/price) |
 
-Compiles to **554 elements across 31 types**, no warnings.
+Compiles to **557 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -48,6 +48,16 @@ features instead); `--kit … --feats-and-kits` → kit **and** 6 feats; at leve
 kitted character still gets its 10 paragon/epic feats. The "Worships the God of …"
 kits are the deity/domain mechanic (Channel Divinity + a Blessing feat), pointing
 at the gods in `deities.yaml`.
+
+**Associated-discipline access.** A kit can let you select powers from its
+associated discipline *as class powers*. This is wired through a small engine
+variable: a kit grants a `Discipline Access` element (carrying the discipline's
+id in `_Discipline`), `SelectVariables` folds those into a new `$$KITDISC`
+substitution, and each class power-select category ORs in `|$$KITDISC`. When the
+variable is absent (no kit), that OR alternative simply doesn't match, so nothing
+changes. Verified: a Commander with **Embodies Strength** can pick the
+Juggernautical at-will *Devastating Body Attack* as a class power (and cannot
+without the kit). Only the disciplines that exist in this content are wired.
 
 ### Equipment
 Weapons are `Weapon` elements: equipping one feeds power damage (the `Damage`
@@ -195,8 +205,8 @@ prestige paths, all six epic paths, and a starter set of weapons, armor and gear
 Remaining work: the other six classes and their disciplines, full power lists for
 the remaining disciplines, the rest of the species roster, prestige paths and
 feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
-6 heritages, the rest of the kits (incl. the "Dabbles in …" multiclass kits) and
-their associated-discipline power access, and the rest of the equipment list. The
+6 heritages, the rest of the kits (incl. the "Dabbles in …" multiclass kits), and
+the rest of the equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

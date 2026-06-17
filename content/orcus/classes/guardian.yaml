@@ -53,29 +53,29 @@
     - select:
         type: Power
         number: 2
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,at-will,1"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,at-will,1"
         name: Guardian At-Will Powers
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,1"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,1"
         name: Guardian Encounter Power
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,1"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,1"
         name: Guardian Daily Power
     # Default progression: +1 utility power at level 2, +1 encounter at level 3.
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,2"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,utility,2"
         name: Guardian Utility Power
         level: 2
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,3"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,3"
         name: Guardian Encounter Power 2
         level: 3
     # Default progression to level 30 (class powers only; +P/+E come from the
@@ -84,57 +84,57 @@
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,5"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,5"
         name: Guardian Daily Power 2
         level: 5
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,6"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,utility,6"
         name: Guardian Utility Power 2
         level: 6
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,7"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,7"
         name: Guardian Encounter Power 3
         level: 7
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,9"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,9"
         name: Guardian Daily Power 3
         level: 9
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,10"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,utility,10"
         name: Guardian Utility Power 3
         level: 10
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,16"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,utility,16"
         name: Guardian Utility Power 4
         level: 16
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,utility,22"
+        category: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,utility,22"
         name: Guardian Utility Power 5
         level: 22
     # Power-replacement (retraining) swaps. At these levels you may give up one
     # class attack power of the listed frequency and gain one of the level you are
     # reaching, drawn from your disciplines. Declared with the engine's `replace`
     # directive (optional). Encounter swaps at 13/17/23/27, daily at 15/19/25/29.
-    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,13", level: 13, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,15",     level: 15, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,17", level: 17, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,19",     level: 19, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,23", level: 23, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,25",     level: 25, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,encounter,27", level: 27, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL,daily,29",     level: 29, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_ART_OF_WAR|ORCUS_DISCIPLINE_JUGGERNAUTICAL|$$KITDISC,daily,29",     level: 29, optional: true } }
 
 - id: ORCUS_INTERNAL_GRANTS_GUARDIAN
   name: Guardian Grants

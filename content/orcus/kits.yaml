@@ -29,6 +29,15 @@
   fields:
     Description: "House rule: a character may take a kit AND keep their six heroic-tier feats, instead of choosing one or the other."
 
+# A kit's "associated discipline" is modelled as a Discipline Access element it
+# grants; the engine folds the `_Discipline` id into the $$KITDISC select variable,
+# and the class power selects OR that variable into their discipline pool — so the
+# kit's discipline becomes selectable in the normal class power slots. Only the
+# disciplines that exist in this content are wired (others are descriptive).
+- { id: ORCUS_DISCACCESS_JUGGERNAUTICAL, name: "Discipline Access (Juggernautical)", type: Discipline Access, source: "Orcus (Outlaw Kingdoms)", fields: { _Discipline: ORCUS_DISCIPLINE_JUGGERNAUTICAL } }
+- { id: ORCUS_DISCACCESS_ART_OF_WAR, name: "Discipline Access (Art of War)", type: Discipline Access, source: "Orcus (Outlaw Kingdoms)", fields: { _Discipline: ORCUS_DISCIPLINE_ART_OF_WAR } }
+- { id: ORCUS_DISCACCESS_ANGELS_TRUMPET, name: "Discipline Access (Angel's Trumpet)", type: Discipline Access, source: "Orcus (Outlaw Kingdoms)", fields: { _Discipline: ORCUS_DISCIPLINE_ANGELS_TRUMPET } }
+
 # === Embodies kits ============================================================
 - id: ORCUS_KIT_EMBODIES_STRENGTH
   name: Embodies Strength
@@ -39,6 +48,7 @@
     Description: "You are a beast - an imposing behemoth or a gentle giant who raises a hand only when necessary."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_JUGGERNAUTICAL, type: Discipline Access }
     - { grant: ORCUS_KITF_FULL_TORQUE, type: Class Feature }
     - { grant: ORCUS_KITF_NO_TIME_FOR_PAIN, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_COMICAL_REACTION, type: Class Feature, level: 10 }
@@ -101,6 +111,7 @@
     Description: "You worship a god devoted to conflict and combat, and gain their blessings."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_ART_OF_WAR, type: Discipline Access }
     - { grant: ORCUS_KITF_CD_SHIELDED_SOUL, type: Class Feature }
     - { grant: ORCUS_KITF_DISCIPLE_OF_WAR, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_BROTHERS_IN_ARMS, type: Class Feature, level: 10 }
@@ -131,6 +142,7 @@
     Description: "You worship a god devoted to peace and protection, and gain their blessings."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_ANGELS_TRUMPET, type: Discipline Access }
     - { grant: ORCUS_KITF_CD_LIGHT_WARD, type: Class Feature }
     - { grant: ORCUS_KITF_DISCIPLE_OF_PEACE, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_CALMING_PRESENCE, type: Class Feature, level: 10 }
