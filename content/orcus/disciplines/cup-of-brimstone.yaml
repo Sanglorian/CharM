@@ -1,0 +1,224 @@
+# Cup of Brimstone discipline (Magician / Conjures Fiends kit). Demonic attacks
+# and fiend summons. Key Charisma / secondary Constitution; the Magician's class
+# key (Intelligence) substitutes via `ability-swap`. Implement/Focus powers
+# (fixed dice + ability mod). Levels 1-10 transcribed (summon stat blocks omitted).
+
+- id: ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE
+  name: Cup of Brimstone
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Charisma
+    "Secondary Ability": Constitution
+    Sources: "Magician (class); Conjures Fiends (kit)"
+    Description: "You call on demonic forces for your attacks, and summon fiends to fight for you."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_BURN_IT_OFF
+  name: Burn It Off
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Fire"
+    Target: "Ranged 10, one enemy"
+    Attack: "Charisma vs Fortitude"
+    Hit: "1d8 + Charisma modifier fire damage. Level 21: 2d8 + Charisma modifier."
+    Special: "Can be used as a basic ranged attack."
+
+- id: ORCUS_POWER_STAB_IN_THE_SOUL
+  name: Stab in the Soul
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Necrotic"
+    Target: "Ranged 10, one enemy"
+    Attack: "Charisma vs Fortitude"
+    Hit: "1d12 + Charisma modifier necrotic damage. Level 21: 2d12 + Charisma modifier."
+    Miss: "You take 1d6 damage."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_DEATH_MARK
+  name: Death Mark
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane"
+    Target: "Ranged 10, one enemy"
+    Attack: "Charisma vs Fortitude"
+    Hit: "1d8 + Charisma modifier necrotic damage and the target gains vulnerability to all damage 5 until the end of your next turn."
+
+- id: ORCUS_POWER_REDOUBLED_MISERY
+  name: Redoubled Misery
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: "Focus, Arcane"
+    Target: "Ranged 10, one enemy"
+    Trigger: "The target fails a saving throw."
+    Attack: "Charisma vs Fortitude"
+    Hit: "2d6 + Charisma modifier damage and -2 to saving throws until the end of your next turn."
+
+- id: ORCUS_POWER_EVERBURN
+  name: Everburn
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Fire"
+    Target: "Ranged 10, one enemy"
+    Attack: "Charisma vs Fortitude"
+    Hit: "1d6 + Charisma modifier fire damage; persistent 5 fire and vulnerability to fire 5 (save ends both)."
+
+- id: ORCUS_POWER_MOCKING_CURSE
+  name: Mocking Curse
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: "Focus, Arcane, Psychic"
+    Target: "Ranged 10, one enemy"
+    Trigger: "The target misses you with an attack."
+    Attack: "Charisma vs Fortitude"
+    Hit: "1d10 + Charisma modifier psychic damage and the target is dazed until the end of your next turn."
+
+# --- Daily attack powers (fiend summons) --------------------------------------
+- id: ORCUS_POWER_LEAST_BINDING
+  name: Least Binding
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, daily]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Summons"
+    Target: "Ranged 1, unoccupied square"
+    Effect: "Summon a Small demon toad or Small hopping imp until the end of the encounter."
+
+- id: ORCUS_POWER_MINOR_BINDING
+  name: Minor Binding
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, daily]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Summons"
+    Target: "Ranged 1, unoccupied square"
+    Effect: "Summon a Medium burner demon or Medium hellhound until the end of the encounter (hellhound gains a quarry)."
+
+- id: ORCUS_POWER_LESSER_BINDING
+  name: Lesser Binding
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, daily]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Arcane, Summons"
+    Target: "Ranged 1, unoccupied square"
+    Effect: "Summon a Large vulture demon, Medium hungry maw or Large hezrou until the end of the encounter."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_PERVERSE_BLESSING
+  name: Perverse Blessing
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "Gain +2 to defenses; when hit you lose it and instead take -1 to defenses, switching each time you are hit while in the stance."
+
+- id: ORCUS_POWER_DANCE_IN_FIRE
+  name: Dance in Fire
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Fire, Stance"
+    Target: Self
+    Effect: "When an enemy enters a square adjacent to you, it takes damage equal to your Intelligence modifier."
+
+- id: ORCUS_POWER_FLAMING_TELEPORT
+  name: Flaming Teleport
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Teleportation"
+    Target: Self
+    Effect: "Teleport to an unoccupied space adjacent to a creature taking persistent fire damage."
+
+- id: ORCUS_POWER_FOLLOW_THE_BLOOD
+  name: Follow the Blood
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Teleportation"
+    Target: "Ranged 10, one staggered creature"
+    Effect: "Teleport to an unoccupied space adjacent to the target."
+
+- id: ORCUS_POWER_ABYSSAL_BARGAIN
+  name: Abyssal Bargain
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_CUP_OF_BRIMSTONE, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Healing"
+    Target: "Melee touch, one ally on 0 HP or below"
+    Effect: "The ally heals to maximum HP. You and the ally both have zero recoveries until the next long rest."

@@ -1,0 +1,246 @@
+# Seershot discipline (Reaper). A keen, measured sharpshooter — single-target
+# precision (contrast Starfall's area control). Key Dexterity / secondary Wisdom.
+# Same tagging contract. Levels 1-16 transcribed.
+
+- id: ORCUS_DISCIPLINE_SEERSHOT
+  name: Seershot
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Dexterity
+    "Secondary Ability": Wisdom
+    Sources: "Reaper (class)"
+    Description: "You are a keen, measured sharpshooter."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_AIMED_SHOT
+  name: Aimed Shot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: "1dW damage and the target is shunted 1 square. Level 21: 2dW."
+
+- id: ORCUS_POWER_SHARPSHOOTER_POWER
+  name: Sharpshooter
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and choose one: the target is slowed until the end of your next turn, or suffers -2 to defenses until the end of your next turn. Level 21: 2dW."
+
+- id: ORCUS_POWER_SNAP_SHOT
+  name: Snap-Shot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and choose one: the target is marked until the end of your next turn, or is knocked prone. Level 21: 2dW."
+    Special: "If a creature you marked with snap-shot attacks without including you, you may make a snap-shot against it as a counter."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_BEYOND_THE_CALL
+  name: Beyond The Call
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, three creatures"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_SWIFT_SILENT_DEADLY
+  name: Swift, Silent, Deadly
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Consistent, Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Effect: "Gain a +2 power bonus to attack rolls against the target until the end of your next turn."
+
+- id: ORCUS_POWER_EXPOSE_TARGET
+  name: Expose Target
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage and the target grants combat advantage until the end of your next turn."
+    Effect: "Shunt the target 2."
+
+- id: ORCUS_POWER_PINPOINT_ACCURACY
+  name: Pinpoint Accuracy
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Consistent, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Special: "Ignore any penalties to attack for cover or superior cover."
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_KEYHOLE_ATTACK
+  name: Keyhole Attack
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Consistent, Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_ORGAN_SHOT
+  name: Organ Shot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: "Consistent, Martial, Weapon"
+    Target: Self
+    Trigger: "You hit a creature."
+    Attack: "Dexterity vs Fortitude"
+    Hit: "The target takes 10 damage, and a further 10 persistent damage (save ends)."
+
+- id: ORCUS_POWER_PENETRATING_SHOT
+  name: Penetrating Shot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "4dW + Dexterity modifier damage."
+    Miss: "Half damage."
+    Special: "You can ignore one square of blocking terrain for line of sight, line of effect and cover."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_FAKE_ECHO
+  name: Fake Echo
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Requirements: "You make a ranged attack while hidden."
+    Effect: "You remain hidden after the attack."
+
+- id: ORCUS_POWER_HOLD_THE_BREATH
+  name: Hold The Breath, Skip A Beat
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Gain a +4 power bonus to your next attack roll. If you miss, this power is not expended."
+
+- id: ORCUS_POWER_CHECK_THE_WIND
+  name: Check the Wind
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Martial, Weapon"
+    Target: Self
+    Effect: "Your weapon's long range doubles for your next ranged attack and you gain +2 to the attack roll."
+
+- id: ORCUS_POWER_FAILURE_IS_NOT_AN_OPTION
+  name: Failure Is Not an Option
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You make a ranged attack roll and dislike the result."
+    Effect: "Reroll the attack roll and use the second result."
+
+- id: ORCUS_POWER_SHARPSHOOTERS_AIM
+  name: Sharpshooter's Aim
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SEERSHOT, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Martial, Weapon"
+    Target: Self
+    Effect: "Double your weapon's normal and long range. Until the end of your next turn, your attacks with it can crit on a natural 18-20."

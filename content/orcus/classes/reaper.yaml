@@ -56,82 +56,82 @@
     - select:
         type: Power
         number: 2
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,at-will,1"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,at-will,1"
         name: Reaper At-Will Powers
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,1"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,1"
         name: Reaper Encounter Power
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,1"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,1"
         name: Reaper Daily Power
     # Default progression to level 30.
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,2"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,utility,2"
         name: Reaper Utility Power
         level: 2
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,3"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,3"
         name: Reaper Encounter Power 2
         level: 3
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,5"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,5"
         name: Reaper Daily Power 2
         level: 5
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,6"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,utility,6"
         name: Reaper Utility Power 2
         level: 6
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,7"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,7"
         name: Reaper Encounter Power 3
         level: 7
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,9"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,9"
         name: Reaper Daily Power 3
         level: 9
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,10"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,utility,10"
         name: Reaper Utility Power 3
         level: 10
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,16"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,utility,16"
         name: Reaper Utility Power 4
         level: 16
     - select:
         type: Power
         number: 1
-        category: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,utility,22"
+        category: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,utility,22"
         name: Reaper Utility Power 5
         level: 22
     # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
-    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,13", level: 13, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,15",     level: 15, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,17", level: 17, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,19",     level: 19, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,23", level: 23, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,25",     level: 25, optional: true } }
-    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,encounter,27", level: 27, optional: true } }
-    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|$$KITDISC,daily,29",     level: 29, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_STARFALL|ORCUS_DISCIPLINE_SEERSHOT|$$KITDISC,daily,29",     level: 29, optional: true } }
 
 - id: ORCUS_INTERNAL_GRANTS_REAPER
   name: Reaper Grants
