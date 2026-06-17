@@ -1,0 +1,100 @@
+# Custom / example magic items (Orcus). Orcus's published magic system is
+# deliberately minimal (generic +X enchanted items, their boosts, and a few
+# consumables), but the content model supports fully custom items: a `Magic Item`
+# element can carry arbitrary `rules` (stat bonuses, resistances, even granted
+# powers) and descriptive fields (crit riders, on-hit properties, daily powers).
+# These examples show the range — equip one with `playtest --magic "<name>"`
+# (weapon enchantments via `--weapon <base> --magic "<name>"`).
+
+# --- Stat-boost wondrous items (slot items with an Item bonus) ----------------
+- id: ORCUS_MAGIC_BOOTS_OF_STRIDING
+  name: Boots of Striding
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Feet
+    "Item Level": "3"
+    Cost: "680 gp"
+    Description: "Your base speed increases by 1."
+  rules:
+    - { statadd: Speed, value: 1, bonusType: Item }
+
+- id: ORCUS_MAGIC_BELT_OF_VIGOR
+  name: Belt of Vigor
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Waist
+    "Item Level": "5"
+    Cost: "1,000 gp"
+    Description: "You gain a +12 item bonus to maximum hit points."
+  rules:
+    - { statadd: Hit Points, value: 12, bonusType: Item }
+
+- id: ORCUS_MAGIC_BRACERS_OF_DEFENSE
+  name: Bracers of Defense
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Arms
+    "Item Level": "6"
+    Cost: "1,800 gp"
+    Description: "You gain a +1 item bonus to AC and Reflex defense."
+  rules:
+    - { statadd: AC, value: 1, bonusType: Item }
+    - { statadd: Reflex Defense, value: 1, bonusType: Item }
+
+- id: ORCUS_MAGIC_CLOAK_OF_THE_FOX
+  name: Cloak of the Fox
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Item Level": "4"
+    Cost: "840 gp"
+    Description: "You gain a +5 item bonus to Stealth and a +1 item bonus to Will defense."
+  rules:
+    - { statadd: Stealth, value: 5, bonusType: Item }
+    - { statadd: Will Defense, value: 1, bonusType: Item }
+
+# --- A custom resistance item -------------------------------------------------
+- id: ORCUS_MAGIC_SALAMANDER_CLOAK
+  name: Salamander Cloak
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Neck
+    "Item Level": "8"
+    Cost: "3,400 gp"
+    Description: "You gain resistance to fire 10 and a +2 item bonus to Endure checks against heat."
+  rules:
+    - { statadd: "Resist Fire", value: 10, bonusType: Item }
+    - { statadd: Endure, value: 2, bonusType: Item }
+
+# --- A custom weapon enchantment (enhancement + a special property) -----------
+# Applied to a base weapon as a composite, e.g.:
+#   playtest --weapon Longsword --magic "Flametongue +2"
+- id: ORCUS_MAGIC_FLAMETONGUE_PLUS2
+  name: "Flametongue +2"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": Weapon
+    "Magic Item Type": Weapon
+    Enhancement: "+2"
+    "Item Level": "7"
+    Cost: "2,600 gp"
+    Property: "On a hit, the weapon deals +1d6 fire damage."
+    Critical: "+2d6 fire damage on a critical hit (in addition to the enhancement's +2d6)."
+    Description: "A blade wreathed in flame. A custom enchanted weapon: it carries the standard +2 attack/damage enhancement plus a fire property."
+
+# --- A consumable -------------------------------------------------------------
+- id: ORCUS_MAGIC_POTION_OF_HEALING
+  name: Potion of Healing
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Type": Consumable
+    "Item Level": "5"
+    Cost: "40 gp"
+    Description: "Minor action: drink to spend a recovery and regain your recovery value plus 1d6 hit points. Consumable."

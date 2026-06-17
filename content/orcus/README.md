@@ -36,8 +36,9 @@ for the format.
 | `kits.yaml` | Kits (mapped to the engine's `Theme` type) + the "Has Kit" marker and "Feats and Kits" house-rule elements |
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
 | `equipment/magic-items-boosts.yaml` | The Boost I–IV variants of every enchanted item (same +X, higher item level/price) |
+| `equipment/magic-items-custom.yaml` | Example **custom** magic items — wondrous slot items (stat/skill/resistance bonuses), a custom weapon enchant, a consumable |
 
-Compiles to **622 elements across 32 types**, no warnings.
+Compiles to **629 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -107,6 +108,18 @@ as a composite `LootItem` (Base + Enchantment) — e.g. a longsword + *Enchanted
 Weapon +3 (Boost II)* resolves *In Their Face* at +3 attack / 2d8+3. The
 enchanted-armor light/heavy AC scaling is still recorded in the Description
 rather than computed.
+
+**Custom items.** Orcus's published list is intentionally minimal, but the model
+isn't limited to the generic +X — a `Magic Item` element can carry arbitrary
+`rules` and fields, so bespoke items work too. `magic-items-custom.yaml` has
+examples: Boots of Striding (+1 speed), Belt of Vigor (+12 HP), Bracers of
+Defense (+1 AC/Reflex), Cloak of the Fox (+5 Stealth, +1 Will), a Salamander
+Cloak (fire resistance), a custom Flametongue +2 weapon enchant (the standard
++2 plus a fire property), and a Potion of Healing consumable. Verified by
+equipping the four wondrous items at once: speed 6→7, HP 62→74, AC/Reflex +1,
+Will +1; and Longsword + Flametongue +2 resolves *In Their Face* at +2 / 2d8+2.
+An item can also `grant` a power (e.g. a daily item power) the same way a class
+feature does.
 
 ### Levels 1–30, prestige & epic paths
 The bootstrap runs `ID_INTERNAL_LEVEL_1..30` cumulatively. Each level raises the
