@@ -241,11 +241,12 @@
 - id: ORCUS_TRAIN_DIPLOMACY
   name: Diplomacy
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: Diplomacy Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_DUNGEONEERING
   name: Dungeoneering
   type: Skill Training
+  categories: [ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: Dungeoneering Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_ENDURE
   name: Endure
@@ -260,12 +261,12 @@
 - id: ORCUS_TRAIN_HISTORY
   name: History
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: History Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_INSIGHT
   name: Insight
   type: Skill Training
-  categories: [ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS]
+  categories: [ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: Insight Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_INTIMIDATE
   name: Intimidate
@@ -275,6 +276,7 @@
 - id: ORCUS_TRAIN_NATURE
   name: Nature
   type: Skill Training
+  categories: [ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: Nature Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_PERCEPTION
   name: Perception
@@ -284,7 +286,7 @@
 - id: ORCUS_TRAIN_RELIGION
   name: Religion
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS]
   rules: [{ statadd: Religion Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_SLEIGHT_OF_HAND
   name: Sleight of Hand

@@ -1,0 +1,242 @@
+# Magician — Arcane Controller (Orcus Classes and Powers). Key ability Intelligence
+# (the first Arcane class and first Controller here). HP 10 + Con at level 1,
+# +4/level (encoded 6 + Con + 4 x Level). "Recoveries" -> Healing Surges. Trained
+# in Arcana automatically + 3 chosen class skills. One discipline (Spells of Ice
+# and Fire) is transcribed so far; the class power selects also OR in |$$KITDISC.
+
+- id: ORCUS_CLASS_MAGICIAN
+  name: Magician
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Controller, Arcane]
+  fields:
+    Role: Controller
+    Tradition: Arcane
+    "Key Ability": Intelligence
+    "Class Disciplines": "Spells of Ice and Fire, Cup of Brimstone, Puppeteer's String"
+    "Armor Proficiencies": "Cloth"
+    "Weapon Proficiencies": "Simple melee"
+    "Focus Proficiencies": "Orb, staff, wand, rod, book"
+    "Class Skills": "Arcana, Diplomacy, Dungeoneering, History, Insight, Nature, Religion"
+    Flavor: "You bend the elements and the minds of others to your will."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_MAGICIAN
+      type: Grants
+    # Hit Points: 10 + Con score at level 1, +4 per level (6 + Con + 4 x Level).
+    - statadd: Hit Points
+      value: 6
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 4 }
+    # Recoveries per long rest: 6 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 6
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +2 Will.
+    - statadd: Will Defense
+      value: +2
+      bonusType: Class
+    # Trained in Arcana + 3 other class skills.
+    - select:
+        type: Skill Training
+        number: 3
+        category: ORCUS_MAGICIAN_SKILLS
+        name: Magician Trained Skills
+    # Choose a talent (school of magic) and an Arcane Strength option.
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_MAGICIAN_TALENT
+        name: Magician Talent
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_MAGICIAN_ARCANE_STRENGTH
+        name: Magician Arcane Strength
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,at-will,1"
+        name: Magician At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,1"
+        name: Magician Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,1"
+        name: Magician Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,utility,2"
+        name: Magician Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,3"
+        name: Magician Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,5"
+        name: Magician Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,utility,6"
+        name: Magician Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,7"
+        name: Magician Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,9"
+        name: Magician Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,utility,10"
+        name: Magician Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,utility,16"
+        name: Magician Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,utility,22"
+        name: Magician Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_MAGICIAN
+  name: Magician Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_MAGICIAN }
+  rules:
+    # Always trained in Arcana (the class's signature skill).
+    - grant: ORCUS_TRAIN_ARCANA
+      type: Skill Training
+    - grant: ORCUS_FEATURE_ARCANE_TRAINING
+      type: Class Feature
+    - grant: ORCUS_FEATURE_CANTRIPS
+      type: Class Feature
+    # Orcus key-ability rule: the Magician may use Intelligence (its class key)
+    # in place of a discipline power's printed key ability.
+    - grant: ORCUS_KEYSWAP_MAGICIAN_INTELLIGENCE
+      type: Key Ability Swap
+    # Proficiencies: cloth armor; simple melee weapons. (Focus proficiency —
+    # orb/staff/wand/rod/book — is recorded on the class but has no mechanical
+    # penalty in the engine, so it is descriptive.)
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+
+# --- Always-on class features -------------------------------------------------
+- id: ORCUS_FEATURE_ARCANE_TRAINING
+  name: Arcane Training
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You gain the Athame feat or a feat from the Art Feats section (your choice)."
+- id: ORCUS_FEATURE_CANTRIPS
+  name: Cantrips
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You gain the Cantrip Master feat (three powers from the Cantrips discipline)."
+
+# --- Talents (schools of magic) -----------------------------------------------
+- id: ORCUS_TALENT_CONJURER
+  name: Conjurer
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGICIAN_TALENT]
+  fields:
+    "Secondary Ability": Constitution
+    Description: "Active daily Summon powers are not expended when an encounter ends (re-summoning restores the creature's prior state but refreshes its encounter powers). Secondary ability: Constitution."
+  rules:
+    - grant: ORCUS_SECSWAP_CONJURER_CONSTITUTION
+      type: Secondary Ability Swap
+- id: ORCUS_TALENT_ENCHANTER
+  name: Enchanter
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGICIAN_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "When a Psychic power would deal damage, you may instead deal none to your enemy targets for a +2 bonus on the attack roll. Secondary ability: Charisma."
+  rules:
+    - grant: ORCUS_SECSWAP_ENCHANTER_CHARISMA
+      type: Secondary Ability Swap
+- id: ORCUS_TALENT_EVOKER
+  name: Evoker
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGICIAN_TALENT]
+  fields:
+    "Secondary Ability": Dexterity
+    Description: "Increase the area of a near/far Acid, Cold, Fire, Flux, Lightning or Thunder power by 1; change your flux energy as a swift action. Secondary ability: Dexterity."
+  rules:
+    - grant: ORCUS_SECSWAP_EVOKER_DEXTERITY
+      type: Secondary Ability Swap
+
+# --- Arcane Strength (choose one) ---------------------------------------------
+- id: ORCUS_FEATURE_ARCANE_OVERFLOW
+  name: Arcane Overflow
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
+  fields:
+    Description: "Your class encounter attack powers gain a Miss entry if they lack one: half damage, and a hit's condition is downgraded (e.g. stunned -> dazed, immobile -> slowed)."
+- id: ORCUS_FEATURE_ARCANE_SUSTENANCE
+  name: Arcane Sustenance
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
+  fields:
+    Description: "At the start of each turn, freely Maintain one active power or give one of your companions an action (without spending your own)."
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_MAGICIAN_INTELLIGENCE
+  name: Magician Key Intelligence
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_CONJURER_CONSTITUTION
+  name: Conjurer Secondary Constitution
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_ENCHANTER_CHARISMA
+  name: Enchanter Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_EVOKER_DEXTERITY
+  name: Evoker Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

@@ -1,0 +1,258 @@
+# Spells of Ice and Fire discipline (Magician). Arcane elemental controller powers
+# (the Flux keyword picks a damage energy). Printed key Dexterity / secondary
+# Intelligence; the Magician's class key (Intelligence) substitutes via the
+# `ability-swap` tag. Implement/Focus powers — damage is fixed dice + ability mod
+# (no [W]). Levels 1-22 transcribed (fills the full class power progression).
+
+- id: ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE
+  name: Spells of Ice and Fire
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Dexterity
+    "Secondary Ability": Intelligence
+    Sources: "Magician (class)"
+    Description: "You control elemental ice and fire. (Flux powers take a chosen energy: lightning, acid, cold, fire or thunder.)"
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_THERMAL_TOUCH
+  name: Thermal Touch
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Melee touch, one creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: "1d6 + Dexterity modifier [flux] damage, and the target takes half damage at the start of your next turn. Level 21: 2d6 + Dexterity modifier."
+    Special: "Maintain Standard: at the start of your next turn the target takes the half damage again."
+
+- id: ORCUS_POWER_THERMODYNAMIC_BOLT
+  name: Thermodynamic Bolt
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Ranged 10, one creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: "1d6 + Dexterity modifier [flux] damage. Level 21: 2d6 + Dexterity modifier."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_BOTTLED_THERMODYNAMIC_TRANSFER
+  name: Bottled Thermodynamic Transfer
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Ranged 20, one creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: "2d8 + Dexterity modifier [flux] damage."
+    Effect: "Make either a second attack against the target or attack each enemy adjacent to it (secondary hit: 1d8 + Dexterity modifier)."
+
+- id: ORCUS_POWER_ENTROPIC_BURST
+  name: Entropic Burst
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Near burst 3, all creatures"
+    Attack: "Dexterity vs Reflex"
+    Hit: "1d6 + Dexterity modifier [flux] damage, and the target is pushed to the nearest square outside the burst (knocked prone if it hits an obstruction)."
+    Miss: "Half damage, but the target is still pushed."
+
+- id: ORCUS_POWER_ELEMENTAL_RESTRAINT
+  name: Elemental Restraint
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Ranged 20, one Medium or smaller creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: "1d6 + Dexterity modifier [flux] damage, plus a flux effect — Cold: caged/immobile until it deals enough damage to the ice; Fire: extra damage equal to your level and shunt up to your Dexterity modifier."
+
+- id: ORCUS_POWER_BROKEN_EQUILIBRIUM
+  name: Broken Equilibrium
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Far burst 2 within range 20, all creatures"
+    Attack: "Dexterity vs Reflex"
+    Hit: "3d6 + Dexterity modifier [flux] damage. Cold: target slowed until the end of your next turn. Fire: if it moves more than two squares next turn it takes 5 fire damage."
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_RESONANT_RAY
+  name: Resonant Ray
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus"
+    Target: "Near wall 8, all creatures in wall"
+    Attack: "Dexterity vs Reflex"
+    Hit: "2d8 + Dexterity modifier [flux] damage, and until the end of your next turn the target is immobile (cold) or weakened (fire)."
+    Miss: "Half damage."
+
+- id: ORCUS_POWER_EXPANDING_PHASE_TRANSITION
+  name: Expanding Phase Transition
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Flux, Focus, Zone"
+    Target: "Near burst 3"
+    Effect: "A flux zone: Cold creates smooth ice (enterers fall prone) or ice spikes (difficult terrain, 1d4 + Dexterity modifier damage); Fire makes difficult terrain dealing 1d6 + Dexterity modifier to enterers."
+
+- id: ORCUS_POWER_DYNAMIC_TEMPEST
+  name: Dynamic Tempest
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Focus, Cold"
+    Target: "Near burst 5, all creatures"
+    Effect: "A localized storm (until the end of your next turn) grants concealment; creatures other than you starting their turn in it take cold damage equal to your level and are slowed. It moves with you."
+
+- id: ORCUS_POWER_HALO_OF_FIRE
+  name: Halo of Fire
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Focus, Fire"
+    Target: "Far burst 3 within range 20, all creatures"
+    Attack: "Dexterity vs Reflex"
+    Hit: "3d6 + Dexterity modifier fire damage, and the target is pulled 2 toward the center or takes an additional 3d6 fire damage (their choice)."
+    Miss: "3d6 + Dexterity modifier fire damage."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_THERMAL_ABSORPTION
+  name: Thermal Absorption
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Flux"
+    Target: Self
+    Trigger: "You are about to take damage matching your flux energy."
+    Effect: "You take no damage and recover hit points up to your recovery value or the damage prevented (whichever is less)."
+
+- id: ORCUS_POWER_FROZEN_CREATION
+  name: Frozen Creation
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "6"
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: "Arcane, Cold"
+    Target: "Near wall 4"
+    Effect: "Create simple ice objects (bridges, walls, pillars, furniture) supporting 500 lbs/square that shatter after 10 damage. They persist until the end of your next turn."
+
+- id: ORCUS_POWER_THERMAL_WALL
+  name: Thermal Wall
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Arcane, Flux"
+    Target: "Far wall 5 within range 3"
+    Effect: "Erect a 2-square-high wall that blocks line of sight. Cold: solid, grants cover, withstands 50 damage. Fire: grants resistance 3 behind it and deals 3d6 fire to creatures in it (until the end of your next turn)."
+
+- id: ORCUS_POWER_THERMAL_SHIELD
+  name: Thermal Shield
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Arcane, Flux"
+    Target: "Near burst 3"
+    Effect: "A 2-square-radius dome blocking line of sight. Cold: solid (100 damage), trapping those inside. Fire: outer wall grants resistance 3 inside and deals 4d6 fire to enterers."
+
+- id: ORCUS_POWER_ROCKET_PROPULSION
+  name: Rocket Propulsion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Arcane, Fire"
+    Target: Self
+    Effect: "Gain a fly speed of 8 until the end of your next turn; creatures adjacent to your launch square take 5 fire damage."
+    Special: "Maintain Swift: the fly speed persists; if you do not maintain and remain aloft, you fall."
+
+- id: ORCUS_POWER_ICE_CASTLE
+  name: Ice Castle
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Standard and Move Action
+    Keywords: "Arcane, Ice"
+    Target: Self
+    Effect: "Create a single-room ice structure (up to 16 squares, 4 tall) with any entrances. Persists indefinitely below freezing, else 24 hours. Each square withstands 50 damage."
