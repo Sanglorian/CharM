@@ -1,0 +1,192 @@
+# Blades in the Dark discipline (Exemplar / Brews Poison kit). Tricky, punishing
+# attacks that exploit weakness. Key ability Dexterity. Same tagging contract.
+# Levels 1-7 transcribed (rounds out the Exemplar's class power pool).
+
+- id: ORCUS_DISCIPLINE_BLADES_IN_THE_DARK
+  name: Blades in the Dark
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Dexterity
+    "Secondary Ability": Strength
+    Sources: "Exemplar (class); Brews Poison (kit)"
+    Description: "Your attacks are tricky and punishing, taking advantage of any signs of weakness."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_DEADLY_THRUST
+  name: Deadly Thrust
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage. If the target is staggered, also add your Strength modifier to the damage. Level 21: 2dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_EVASIVE_STRIKE
+  name: Evasive Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and you shift 1. Level 21: 2dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_FLYING_BLADE
+  name: Flying Blade
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and you gain momentum. Level 21: 2dW + Dexterity modifier damage."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_SURE_CUT
+  name: Sure Cut
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage."
+    Miss: "If you have momentum, you lose it but the target takes damage equal to your Triumphant Strike value."
+
+- id: ORCUS_POWER_TUMBLING_STRIKE
+  name: Tumbling Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Effect: "Until the start of your next turn, if an attack misses you, you can shift 1 as a reaction."
+
+- id: ORCUS_POWER_SLOPPY_STRIKE
+  name: Sloppy Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: >
+      1dW + Dexterity modifier damage. The next time the target attacks you, you
+      can make a secondary attack (Dexterity vs AC; 2dW + Dexterity modifier and
+      slowed until the end of your next turn) as an immediate counter action.
+      Boost (Level 17): if your secondary attack hits, the triggering attack
+      automatically misses.
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_RETORT
+  name: Retort
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Reaction Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Trigger: "You lose momentum."
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage."
+    Effect: "Make a secondary attack against the same target (Dexterity vs AC): 1dW + Dexterity modifier, or 2dW + Dexterity modifier if you gained momentum this turn."
+
+- id: ORCUS_POWER_ATTACK_FROM_THE_BLUE
+  name: Attack from the Blue
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+    Special: "Move up to your speed before your attack. If you moved less than your speed, you can shift up to the difference after your attack."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_POCKET_OF_SAND
+  name: Pocket of Sand
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility, ability-swap]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: Martial
+    Target: "Melee touch, one target"
+    Attack: "Dexterity vs Reflex"
+    Hit: "The target is blinded until the end of your next turn."
+    Special: "If you have momentum and an enemy targets you, you can lose momentum to use this as a reaction against that enemy."
+
+- id: ORCUS_POWER_ROLL_WITH_IT
+  name: Roll With It
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You are hit by an attack while you have momentum."
+    Effect: "You take half damage from the attack and do not lose momentum."
+
+- id: ORCUS_POWER_DOUBLE_DOWN
+  name: Double Down
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Trigger: "You miss with an attack roll or fail on a skill check."
+    Effect: "Reroll the attack roll or check. If it still misses or fails, you are dazed until the end of your next turn."

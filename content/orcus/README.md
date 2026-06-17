@@ -5,7 +5,7 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — three playable classes (levels 1–30)
+## Current scope — four playable classes (levels 1–30)
 
 | File | Contents |
 |---|---|
@@ -17,10 +17,13 @@ for the format.
 | `classes/guardian.yaml` | Guardian (Defender): Grants bundle, features, talents, feature powers, level-gated power selects to 30 |
 | `classes/commander.yaml` | Commander (Leader): talents, armament, Lift Spirits, level-gated power selects to 30 |
 | `classes/priest.yaml` | Priest (Leader, Wisdom): talents + the key-ability substitution override (shares Angel's Trumpet with the Commander) |
+| `classes/exemplar.yaml` | Exemplar (Striker, Dexterity): Momentum/Triumphant Strike features, Gladiator/Swashbuckler talents, level-gated power selects to 30 |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
 | `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
 | `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) — **all** powers, levels 1–29 |
+| `disciplines/rapiers-point.yaml` | Rapier's Point discipline (Exemplar) + levels 1–10 powers |
+| `disciplines/blades-in-the-dark.yaml` | Blades in the Dark discipline (Exemplar) + levels 1–7 powers |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
@@ -32,7 +35,7 @@ for the format.
 | `deities.yaml` | The four gods (`Deity`) referenced by the "Worships the God of …" kits |
 | `equipment/magic-items-boosts.yaml` | The Boost I–IV variants of every enchanted item (same +X, higher item level/price) |
 
-Compiles to **557 elements across 32 types**, no warnings.
+Compiles to **592 elements across 32 types**, no warnings.
 
 ### Kits and the feats-vs-kits house rule
 Kits (Orcus's "themes", mapped to the engine's `Theme` type so the optional slot
@@ -197,8 +200,9 @@ power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
 
 ## What's next
 
-Three of nine classes are in (a Defender and two Leaders), playable across the
-full 1–30 range, with both Guardian disciplines (Art of War, Juggernautical) and
+Four of nine classes are in (a Defender, two Leaders and a Striker), playable
+across the full 1–30 range, with both Guardian disciplines (Art of War, Juggernautical),
+both Exemplar disciplines (Rapier's Point, Blades in the Dark) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
 in full to level 29), 14 species ancestries, a sample of feats, a sample of
 prestige paths, all six epic paths, and a starter set of weapons, armor and gear.

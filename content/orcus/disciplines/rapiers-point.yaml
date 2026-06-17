@@ -1,0 +1,187 @@
+# Rapier's Point discipline (Exemplar). A graceful duelist's powers. Key ability
+# Dexterity (Exemplar class key). Same tagging contract as the other disciplines:
+# [disciplineId, <frequency>] (+ `ability-swap` on the character's own attacks).
+# Levels 1-10 transcribed (enough for the full class power progression).
+
+- id: ORCUS_DISCIPLINE_RAPIERS_POINT
+  name: Rapier's Point
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Dexterity
+    "Secondary Ability": Charisma
+    Sources: "Exemplar (class)"
+    Description: "You are a graceful, skilled duelist."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_DANCE_OF_BLADES
+  name: Dance of Blades
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and you swap places with the target. Level 21: 2dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_GENTLEFOLKS_CHALLENGE
+  name: Gentlefolk's Challenge
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage. Level 21: 2dW + Dexterity modifier damage."
+    Effect: "The target is marked."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_SURE_THING
+  name: Sure Thing
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity +2 vs Reflex"
+    Hit: "1dW + Dexterity modifier damage."
+
+- id: ORCUS_POWER_LUNGING_DRAW
+  name: Lunging Draw
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon +1 reach, one target"
+    Attack: "Dexterity vs Will"
+    Hit: "2dW + Dexterity modifier damage and pull 1."
+
+- id: ORCUS_POWER_THROUGH_THE_FOOT
+  name: Through the Foot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and the target is immobile until the end of your next turn."
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_ONLY_FOOLING
+  name: Only Fooling
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Trigger: "You are prone, immobile, restrained, grappled or slowed."
+    Attack: "Dexterity vs Reflex"
+    Hit: "2dW + Dexterity modifier damage."
+    Special: "You lose one condition that triggers this power, or stand up from prone. Move up to your speed before making your attack."
+
+- id: ORCUS_POWER_CALLING_CARD
+  name: Calling Card
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Effect: "Until the end of your next turn, your allies get a +2 bonus on attack rolls against the target."
+    Special: "Maintain Swift: the effect persists until the end of your next turn."
+
+- id: ORCUS_POWER_CERTAIN_STRIKE
+  name: Certain Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage. On this attack, you can score a critical hit on a 16-20."
+    Miss: "This power is not expended."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_SCORNFUL_LAUGH
+  name: Scornful Laugh
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Reaction Action
+    Keywords: Martial
+    Target: "Near burst 10"
+    Trigger: "An enemy misses you with an attack."
+    Effect: "The enemy takes a -4 penalty on attack rolls until the end of your next turn."
+
+- id: ORCUS_POWER_THROW_OFF
+  name: Throw Off
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 5, one enemy"
+    Effect: "The target grants combat advantage until the end of your next turn."
+
+- id: ORCUS_POWER_BRAVADO
+  name: Bravado
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Martial
+    Target: Self
+    Effect: "An attack against your Fortitude, Reflex or Will is instead made against your Armor Class."

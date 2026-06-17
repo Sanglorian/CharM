@@ -216,9 +216,12 @@ static int Playtest(string[] args)
         if (!progressed) break;
     }
 
-    // Any pending slots left with no candidates are the gaps.
+    // Any pending slots left with no candidates are the gaps. The optional Kit
+    // (Theme) slot is intentionally not auto-filled, so it isn't a gap.
     foreach (var pc in session.GetAllPendingChoices())
     {
+        if (string.Equals(pc.Slot.ElementType, "Theme", StringComparison.OrdinalIgnoreCase))
+            continue;
         var label = pc.Slot.Name ?? pc.Slot.DisplayLabel ?? pc.Slot.ElementType;
         var n = session.GetCandidatesForSlot(pc.Slot, skipPrereqs: true).Count;
         gaps.Add($"{label} (type='{pc.Slot.ElementType}', category='{pc.Slot.Category}', remaining={pc.Slot.Remaining}, candidates={n})");

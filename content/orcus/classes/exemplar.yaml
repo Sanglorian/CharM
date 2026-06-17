@@ -1,0 +1,226 @@
+# Exemplar — Martial Striker (Orcus Classes and Powers). Key ability Dexterity.
+# Mirrors the other classes' structure: a Grants bundle (features, proficiencies,
+# key-ability swap), talents that set the secondary ability, and the full level
+# 1-30 discipline power progression (Rapier's Point + Blades in the Dark, with
+# |$$KITDISC so a kit's discipline can feed the slots). HP 12 + Con at level 1,
+# +5/level (encoded 7 + Con + 5 x Level). "Recoveries" -> Healing Surges.
+
+- id: ORCUS_CLASS_EXEMPLAR
+  name: Exemplar
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Striker, Martial]
+  fields:
+    Role: Striker
+    Tradition: Martial
+    "Key Ability": Dexterity
+    "Class Disciplines": "Rapier's Point, Blades in the Dark"
+    "Armor Proficiencies": "Cloth, leather; light shield"
+    "Weapon Proficiencies": "Simple melee, martial melee, simple ranged"
+    "Class Skills": "Acrobatics, Athletics, Bluff, Diplomacy, Insight, Intimidate, Perception, Stealth, Streetsmarts, Sleight of Hand"
+    Flavor: "You are a duelist who turns momentum into a killing edge."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_EXEMPLAR
+      type: Grants
+    # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
+    - statadd: Hit Points
+      value: 7
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 5 }
+    # Recoveries per long rest: 6 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 6
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +2 Reflex.
+    - statadd: Reflex Defense
+      value: +2
+      bonusType: Class
+    # Trained in 4 skills from the Exemplar class skill list.
+    - select:
+        type: Skill Training
+        number: 4
+        category: ORCUS_EXEMPLAR_SKILLS
+        name: Exemplar Trained Skills
+    # Choose one talent (sets your secondary ability).
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_EXEMPLAR_TALENT
+        name: Exemplar Talent
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,at-will,1"
+        name: Exemplar At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,1"
+        name: Exemplar Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,1"
+        name: Exemplar Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,utility,2"
+        name: Exemplar Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,3"
+        name: Exemplar Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,5"
+        name: Exemplar Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,utility,6"
+        name: Exemplar Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,7"
+        name: Exemplar Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,9"
+        name: Exemplar Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,utility,10"
+        name: Exemplar Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,utility,16"
+        name: Exemplar Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,utility,22"
+        name: Exemplar Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_RAPIERS_POINT|ORCUS_DISCIPLINE_BLADES_IN_THE_DARK|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_EXEMPLAR
+  name: Exemplar Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_EXEMPLAR }
+  rules:
+    - grant: ORCUS_FEATURE_MOMENTUM
+      type: Class Feature
+    - grant: ORCUS_FEATURE_TRIUMPHANT_STRIKE
+      type: Class Feature
+    - grant: ORCUS_FEATURE_BIDE_YOUR_TIME
+      type: Class Feature
+    - grant: ORCUS_FEATURE_NICK_OF_TIME
+      type: Class Feature
+    # Orcus key-ability rule: the Exemplar may use Dexterity (its class key) in
+    # place of a discipline power's printed key ability.
+    - grant: ORCUS_KEYSWAP_EXEMPLAR_DEXTERITY
+      type: Key Ability Swap
+    # Proficiencies: simple & martial melee, simple ranged weapons; cloth and
+    # leather armor; light shield.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+    - { grant: ORCUS_APROF_LEATHER, type: Proficiency }
+    - { grant: ORCUS_APROF_LIGHT_SHIELD, type: Proficiency }
+
+# --- Always-on class features -------------------------------------------------
+- id: ORCUS_FEATURE_MOMENTUM
+  name: Momentum
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "When you hit an enemy with a melee attack and don't already have momentum, you gain momentum. You lose it when you are hit by any attack. Momentum has no effect on its own but is required by Triumphant Strike and Bide Your Time and referenced by some powers."
+
+- id: ORCUS_FEATURE_TRIUMPHANT_STRIKE
+  name: Triumphant Strike
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "While you have momentum, once per turn you can add +1dW damage to any attack. Level 11: +2dW. Level 21: +3dW."
+
+- id: ORCUS_FEATURE_BIDE_YOUR_TIME
+  name: Bide Your Time
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "If you use an encounter attack power and hit no targets, you can lose your momentum to keep the power (it is not expended). Requires momentum."
+
+- id: ORCUS_FEATURE_NICK_OF_TIME
+  name: Nick of Time
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    Description: "You get a +2 bonus on attack rolls you make outside of your turn (opportunity attacks, immediate actions)."
+
+# --- Talents (chosen via the Exemplar Talent select) --------------------------
+- id: ORCUS_TALENT_GLADIATOR
+  name: Gladiator
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_EXEMPLAR_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "Once per turn when you shift, you can shunt an adjacent enemy 1 at one point during your movement. Your secondary ability is Strength."
+  rules:
+    - grant: ORCUS_SECSWAP_GLADIATOR_STRENGTH
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_SWASHBUCKLER
+  name: Swashbuckler
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_EXEMPLAR_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "Your Triumphant Strike deals additional damage equal to your Charisma modifier against a marked enemy. Your secondary ability is Charisma."
+  rules:
+    - grant: ORCUS_SECSWAP_SWASHBUCKLER_CHARISMA
+      type: Secondary Ability Swap
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_EXEMPLAR_DEXTERITY
+  name: Exemplar Key Dexterity
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_GLADIATOR_STRENGTH
+  name: Gladiator Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SWASHBUCKLER_CHARISMA
+  name: Swashbuckler Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
