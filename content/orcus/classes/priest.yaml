@@ -35,6 +35,9 @@
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
     - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
     - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
+    # Trained in Religion (auto) + 3 others from the class skills.
+    - grant: ORCUS_TRAIN_RELIGION
+      type: Skill Training
     # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
     - statadd: Hit Points
       value: 7
@@ -49,10 +52,10 @@
     - statadd: Will Defense
       value: +2
       bonusType: Class
-    # Trained in 4 skills from the Priest class skill list (Religion + 3 others).
+    # Trained in Religion (auto-granted) + 3 others from the class skill list.
     - select:
         type: Skill Training
-        number: 4
+        number: 3
         category: ORCUS_PRIEST_SKILLS
         name: Priest Trained Skills
     - select:
