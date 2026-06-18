@@ -1,0 +1,223 @@
+# Strong Bidding discipline (Sylvan / Binds Familiar kit). Companion-focused powers
+# where you and your familiar/animal companion/summon fight as one. Key ability
+# Charisma, secondary Wisdom. Same tagging contract. Levels 1-19 transcribed.
+
+- id: ORCUS_DISCIPLINE_STRONG_BIDDING
+  name: Strong Bidding
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Charisma
+    "Secondary Ability": Wisdom
+    Sources: "Sylvan (class); Binds Familiar (kit)"
+    Description: "You share a special bond with your companion that allows you to fight as one."
+    Note: "“Companion” refers to a familiar, animal companion or summoned creature. Unless otherwise mentioned, your companion must be within line of sight or 20 squares for a Strong Bidding power that uses your companion."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_COMPANION_STRIKE
+  name: Companion Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Spirit, Companion"
+    Special: ""
+    Effect: "Your companion makes a basic melee attack and adds your Charisma modifier to the damage."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_SIDE_BY_SIDE
+  name: Side by Side
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Spirit, Companion"
+    Target: "Melee weapon, one creature"
+    Attack: "Charisma vs AC"
+    Hit: "1dW + Charisma modifier damage."
+    Effect: "Your companion can also move its speed and make a basic melee attack against the same target."
+
+# --- Daily / utility powers ---------------------------------------------------
+- id: ORCUS_POWER_LIFELINK
+  name: Lifelink
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Spirit, Companion"
+    Trigger: "Your companion is hit by an attack."
+    Effect: "You experience all of the consequences of the hit, instead of your companion. If you are also a target of the attack, you are also affected by it as normal."
+
+- id: ORCUS_POWER_SHARE_SENSES
+  name: Share Senses
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Spirit, Companion"
+    Effect: "Until the end of your next turn, you can use any or all of your companion’s senses as your own, gaining the benefits of any special senses that it has. During this time, you lose any of the senses that you take from your companion, but retain your other senses as normal. For example, you could share your companion’s sight, but keep your hearing."
+    Maintain: "Maintain Swift: The effect persists until the end of your next turn."
+    Boost: "Level 16: This becomes an encounter power."
+
+- id: ORCUS_POWER_FAMILIAR_GUIDANCE
+  name: Familiar Guidance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Spirit, Companion"
+    Trigger: "You miss on an at-will or encounter attack"
+    Effect: "Reroll the attack and take the second result."
+
+- id: ORCUS_POWER_INTERFERING_COMPANION
+  name: Interfering Companion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Spirit, Companion"
+    Target: Self
+    Effect: "Your companion can flank, if it couldn’t already, until the end of the encounter. Level 11: You get combat advantage against enemies adjacent to your companion. Level 21: Enemies adjacent to your companion cannot shift. You get combat advantage against enemies adjacent to your companion."
+
+- id: ORCUS_POWER_LEAP_TO_COMPANION
+  name: Leap to Companion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Spirit, Teleport, Companion"
+    Target: Self
+    Requirements: "There must be room for you in the space your companion occupies."
+    Effect: "Teleport to the space occupied by your companion. If they are a familiar, they are hidden away. If they are a different type of companion, they shift 1 into an unoccupied space. If there is no eligible space, the companion falls prone in your space."
+
+- id: ORCUS_POWER_LEAPING_INTERCEPT
+  name: Leaping Intercept
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Spirit, Companion"
+    Trigger: "Your companion is adjacent to you and you are hit by an attack"
+    Effect: "You take half damage from the attack and your companion takes half damage from the attack."
+
+- id: ORCUS_POWER_SAFEGUARD_COMPANION
+  name: Safeguard Companion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: "Spirit, Focus, Companion"
+    Trigger: "Your companion is the target of an attack from an enemy adjacent to it."
+    Attack: "Charisma vs Will"
+    Hit: "1d8 + Charisma modifier + Intelligence modifier and push the target 2."
+
+- id: ORCUS_POWER_RECALL_FAMILIAR
+  name: Recall Familiar
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Spirit, Companion"
+    Trigger: "Your familiar is hit by an attack."
+    Effect: "Your familiar teleports to your space and is hidden away."
+
+- id: ORCUS_POWER_COMPANION_FORM
+  name: Companion Form
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Spirit, Form"
+    Target: Self
+    Effect: "You take the form of your companion, including size, source and type, senses and speed. You can also spend one recovery to heal your recovery value. While in this form you cannot use powers unless they have the Wild Shape tag. You can leave this form as a swift action, and you do so automatically if you are reduced to 0 HP or below. Otherwise, it lasts until you take a long rest."
+
+- id: ORCUS_POWER_MASTERS_FORM
+  name: Master’s Form
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Spirit, Transmutation, Companion"
+    Target: "Ranged 10, one companion"
+    Effect: "Until the end of your next turn, your companion transforms into a humanoid of your race with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat’s eyes or a serpent’s tongue."
+    Maintain: "Maintain Swift: The effect persists until the end of your next turn."
+
+- id: ORCUS_POWER_COMPANION_SWARM
+  name: Companion Swarm
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Spirit, Focus, Companion"
+    Target: "Far burst 1 within range 20 (centered on your companion), all enemies"
+    Attack: "Charisma vs Fortitude"
+    Hit: "4d8 + Charisma modifier damage"
+    Effect: "Creates a zone that persists until the end of your next turn. Swarm Zone: Enemies that enter the zone or begin their turn in it take 10 damage and are slowed until the start of their next turn. Spend a move action to move the zone up to 2."
+    Special: "Your companion is removed from play while the zone remains in effect."
+    Maintain: "Maintain Swift: The zone persists until the end of your next turn."
+
+- id: ORCUS_POWER_ENLARGE_COMPANION
+  name: Enlarge Companion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Spirit, Transmutation, Companion"
+    Target: "Ranged 10, one companion"
+    Effect: "If your companion is smaller than Medium size, it grows to Medium size. If your companion is Medium size or larger, it increases by one size category. Its maximum and current HP are increased by your recovery value. The companion can flank if it could not already. Once per round, as a swift action, the companion can knock an adjacent enemy prone or push it 1 square. You may use a swift action to end the effect; otherwise it lasts until your next long rest."

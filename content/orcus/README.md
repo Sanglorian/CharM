@@ -35,7 +35,9 @@ for the format.
 | `disciplines/puppeteers-string.yaml` | Puppeteer's String discipline (Magician) — psychic control, levels 1–7 |
 | `disciplines/starfall.yaml` | Starfall discipline (Reaper) + levels 1–16 powers |
 | `disciplines/seershot.yaml` | Seershot discipline (Reaper) — precision sharpshooting, levels 1–16 |
-| `disciplines/red-in-tooth-and-claw.yaml` | Red in Tooth and Claw discipline (Sylvan) — wild-shape beast combat, levels 1–10 |
+| `disciplines/red-in-tooth-and-claw.yaml` | Red in Tooth and Claw discipline (Sylvan) — wild-shape beast combat, levels 1–10 (partial: 16 of ~71 powers) |
+| `disciplines/frontline-fighting.yaml` | Frontline Fighting discipline (Sylvan) — brawler weapon combat, levels 1–29 (37 powers) |
+| `disciplines/strong-bidding.yaml` | Strong Bidding discipline (Sylvan / Binds Familiar) — fight-as-one companion powers, levels 1–19 (14 powers) |
 | `disciplines/last-laugh.yaml` | Last Laugh discipline (Harlequin) — taunts, marks and misdirection, levels 1–29 |
 | `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation, levels 1–29 |
 | `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana, levels 1–29 |
@@ -53,7 +55,7 @@ for the format.
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 | `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **1355 elements across 33 types**, no warnings.
+Compiles to **1408 elements across 33 types**, no warnings.
 
 ### Animal companions
 The Sylvan introduces companion mechanics. Its **Animal Companion** wild gift
@@ -241,16 +243,17 @@ Martial Controller (Harlequin) and the Arcane Defender (Mageblade) — playable
 across the full 1–30 range, with both Guardian disciplines
 (Art of War, Juggernautical), both Exemplar disciplines (Rapier's Point, Blades in
 the Dark), all three of the Magician's (Spells of Ice and Fire, Cup of Brimstone,
-Puppeteer's String), both of the Reaper's (Starfall, Seershot), the Sylvan's
-Red in Tooth and Claw (with **animal-companion** mechanics), both Harlequin
+Puppeteer's String), both of the Reaper's (Starfall, Seershot), all three of the Sylvan's
+(Red in Tooth and Claw with **animal-companion** mechanics — partial — plus
+Frontline Fighting and Strong Bidding in full), both Harlequin
 disciplines (Last Laugh, Mastermind's Gambit), both Mageblade disciplines
 (Elemental Flux, Veiled Moon) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
 in full to level 29), 14 species ancestries, a sample of feats, a sample of
 prestige paths, all six epic paths, and a starter set of weapons, armor and gear.
-Remaining work: the remaining disciplines (Frontline Fighting, Strong Bidding,
-High Cunning, Radiant Dawn, Third Mind, …) and the rest of each existing
-discipline's power list, the rest of the species roster, prestige paths and
+Remaining work: the remaining disciplines (High Cunning, Radiant Dawn, Third Mind,
+Born to Run, Deep Dark Truthful Mirror, …) and the rest of each existing
+discipline's power list (notably Red in Tooth and Claw, still 16 of ~71 powers), the rest of the species roster, prestige paths and
 feats (including paragon/epic-tier and multi-take feats), the rest of the kits
 (incl. the "Dabbles in …" multiclass kits), and
 the rest of the equipment list. The
