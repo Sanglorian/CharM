@@ -1,0 +1,255 @@
+# Red in Tooth and Claw discipline (Sylvan / Eats Monster Hearts, Takes Bestial
+# Form kits). Wild-shape beast combat. Key Constitution / secondary Wisdom; the
+# Sylvan class key (Constitution) substitutes via `ability-swap`. Implement/Focus
+# powers (Con-based, fixed dice). A representative set across levels 1-10.
+
+- id: ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW
+  name: Red in Tooth and Claw
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Constitution
+    "Secondary Ability": Wisdom
+    Sources: "Sylvan (class); Eats Monster Hearts, Takes Bestial Form (kits)"
+    Description: "You take the form of wild beasts, or take on their characteristics while keeping your own form."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_BLOOD_LUST
+  name: Blood Lust
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: "1d8 + Constitution modifier damage, and you gain temporary hit points equal to your Wisdom modifier. Level 21: 2d8 + Constitution modifier."
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_POWERFUL_SWIPE
+  name: Powerful Swipe
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: "1d12 + Constitution modifier damage. Level 21: 2d12 + Constitution modifier."
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_KNOCKBACK
+  name: Knockback
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: "1d8 + Constitution modifier damage and the target is pushed 1. Level 21: 2d8, push Wisdom modifier squares."
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_BOB_AND_WEAVE
+  name: Bob and Weave
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: "1d6 + Constitution modifier damage, and you shift 1 square. Level 21: 2d6 + Constitution modifier."
+    Special: "Can be used as a basic melee attack."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_CHOPPERS
+  name: Choppers
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Consistent, Focus, Spirit"
+    Target: "Melee touch, one target"
+    Attack: "Constitution vs AC"
+    Hit: "2d6 + Constitution modifier damage, and the target is weakened until the start of your next turn."
+
+- id: ORCUS_POWER_FLAILING_ATTACKS
+  name: Flailing Attacks
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit"
+    Target: "Melee touch, one target"
+    Attack: "Constitution vs AC"
+    Hit: "1d8 + Constitution modifier damage."
+    Miss: "Make a secondary attack against the same or a different target (Constitution vs AC; 1d8 + Constitution modifier)."
+
+- id: ORCUS_POWER_RAKE
+  name: Rake
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: "Focus, Spirit"
+    Target: "Melee touch, one target"
+    Trigger: "You hit on an attack."
+    Attack: "Same target; Constitution vs AC"
+    Hit: "1d8 + Constitution modifier damage and 5 persistent damage (save ends)."
+
+- id: ORCUS_POWER_WILD_SWINGS
+  name: Wild Swings
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Focus, Spirit"
+    Target: "Near burst 1, all enemies"
+    Hit: "1d6 + Constitution modifier damage."
+
+# --- Daily attack powers (Wild Shape forms) -----------------------------------
+- id: ORCUS_POWER_SHAPE_OF_THE_BEAR
+  name: Shape of the Bear
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Form, Polymorph, Spirit"
+    Target: Self
+    Effect: "Become a Large bear (low-light vision, climb 2); you gain the blood lust at-will power. Form Attack (standard, Focus): Melee 1, Con vs AC, 2d8 + Constitution modifier and the target is grappled; half damage on a miss."
+
+- id: ORCUS_POWER_SHAPE_OF_THE_CAT
+  name: Shape of the Cat
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Form, Polymorph, Spirit"
+    Target: Self
+    Effect: "Become a cat/big cat (low-light vision, +2 speed; shift 1 when an adjacent enemy misses you); you gain bob and weave. Form Attack: Melee 1, Con vs AC, 3d8 + Constitution modifier and hide as a free action; half on a miss."
+
+- id: ORCUS_POWER_SHAPE_OF_THE_WOLF
+  name: Shape of the Wolf
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Form, Polymorph, Spirit"
+    Target: Self
+    Effect: "Become a Medium wolf (+2 speed; +2 vs prone targets); you gain drag down. Form Attack: Melee 1, Con vs AC, 2d8 + Constitution modifier and grapple a prone target; then move up to half your speed, pulling one adjacent enemy."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_AGILE_ANIMUS
+  name: Agile Animus
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Spirit
+    Target: Self
+    Effect: "Until the end of your next turn, +1 speed, +2 AC and Reflex, +3 Acrobatics and Stealth. Maintain Special: save at the end of each turn to extend."
+
+- id: ORCUS_POWER_FORCEFUL_ANIMUS
+  name: Forceful Animus
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Healing, Spirit"
+    Target: Self
+    Effect: "You gain regeneration 3 until the end of the encounter."
+
+- id: ORCUS_POWER_RHINOHIDE
+  name: Rhinohide
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: Spirit
+    Target: Self
+    Effect: "You gain resistance 3 to all damage until the end of the encounter."
+
+- id: ORCUS_POWER_SCENT
+  name: Scent
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Spirit
+    Target: Self
+    Effect: "+15 to your next Stealth check; until you leave cover, attacking from hiding does not reveal you."
+
+- id: ORCUS_POWER_BLOODHOUND
+  name: Bloodhound
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Spirit
+    Target: Self
+    Effect: "Gain a +10 power bonus to your next Insight or Perception check."

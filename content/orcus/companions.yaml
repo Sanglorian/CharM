@@ -1,0 +1,291 @@
+# Animal Companions (Orcus Classes and Powers). Modelled as the engine's `Companion`
+# element type and tagged ORCUS_ANIMAL_COMPANION so the Sylvan's Animal Companion
+# Wild Gift can offer them in a Companion slot. A companion's level equals yours;
+# its AC/defenses are the listed base + your level, and its HP equal your staggered
+# value (recorded in the Description, as they scale with the character).
+
+- id: ORCUS_COMPANION_APE
+  name: "Ape"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "16"
+    Constitution: "12"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "5, climb 5"
+    "Armor Class": "14"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "12"
+    "Will Defense": "14"
+    Attack: "Fist (standard, at-will): your level +4 vs AC, 1d8 + your level. Stone (ranged 5/10): your level +4 vs AC, 1d8 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Athletics, Intimidate. Could also be a yeti."
+
+- id: ORCUS_COMPANION_ARBOREAL_SAPLING
+  name: "Arboreal Sapling"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Small Natural Automaton"
+    Size: "Small"
+    Strength: "16"
+    Constitution: "12"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "5"
+    "Armor Class": "13"
+    "Fortitude Defense": "14"
+    "Reflex Defense": "10"
+    "Will Defense": "11"
+    Attack: "Branch (standard, at-will): your level +3 vs AC, 1d10 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Nature. Could also be a wood golem."
+
+- id: ORCUS_COMPANION_BEAR
+  name: "Bear"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "16"
+    Constitution: "14"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "12"
+    Charisma: "10"
+    Speed: "5"
+    "Armor Class": "14"
+    "Fortitude Defense": "12"
+    "Reflex Defense": "10"
+    "Will Defense": "12"
+    Attack: "Bite (standard, at-will): your level +2 vs AC, 1d12 + your level."
+    Description: "Sturdy: starts each battle with temporary HP equal to double its level. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Endure, Intimidate. Giant badger, wolverine or owlbear."
+
+- id: ORCUS_COMPANION_BIG_CAT
+  name: "Big Cat"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "7"
+    "Armor Class": "14"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "14"
+    "Will Defense": "10"
+    Attack: "Bite (standard, at-will): your level +4 vs AC, 1d6 + your level."
+    Description: "Greased Lightning: on the first round, combat advantage against any creature that has not yet acted. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Athletics, Stealth. A lion, tiger, jaguar, leopard or cougar."
+
+- id: ORCUS_COMPANION_BLINK_DOG
+  name: "Blink Dog"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Fey Beast"
+    Size: "Medium"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "12"
+    Charisma: "10"
+    Speed: "6, teleport 3"
+    "Armor Class": "14"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "14"
+    "Will Defense": "10"
+    Attack: "Bite (standard, at-will): your level +4 vs AC, 1d8 + your level."
+    Description: "Jolt Back: after being hit by an attack, it can teleport 2. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Stealth."
+
+- id: ORCUS_COMPANION_BULL
+  name: "Bull"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "16"
+    Constitution: "12"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "6"
+    "Armor Class": "14"
+    "Fortitude Defense": "14"
+    "Reflex Defense": "10"
+    "Will Defense": "10"
+    Attack: "Tusk (standard, at-will): your level +4 vs AC, 1d8 + your level."
+    Description: "Eager to Fight: +1 attack bonus on a charge. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Endure, Nature. A bull, buffalo, cow, yak or boar."
+
+- id: ORCUS_COMPANION_GIANT_BAT
+  name: "Giant Bat"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Small Natural Beast"
+    Size: "Small"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "2, fly 6"
+    "Armor Class": "14"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "14"
+    "Will Defense": "12"
+    Attack: "Bite (standard, at-will): your level +4 vs AC, 1d6 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). darkvision, blindsight 6."
+
+- id: ORCUS_COMPANION_GIANT_LIZARD
+  name: "Giant Lizard"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "5, climb 5"
+    "Armor Class": "14"
+    "Fortitude Defense": "12"
+    "Reflex Defense": "14"
+    "Will Defense": "10"
+    Attack: "Bite (standard, at-will): your level +3 vs AC, 1d8 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). darkvision; Athletics, Stealth. A cave gecko, giant iguana."
+
+- id: ORCUS_COMPANION_GIANT_RAPTOR
+  name: "Giant Raptor"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Small Natural Beast"
+    Size: "Small"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "2, fly 8"
+    "Armor Class": "14"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "14"
+    "Will Defense": "12"
+    Attack: "Claw (standard, at-will): your level +4 vs AC, 1d6 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Perception, Stealth. A hawk, eagle, owl or falcon."
+
+- id: ORCUS_COMPANION_GIANT_SNAKE
+  name: "Giant Snake"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "16"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "12"
+    Charisma: "10"
+    Speed: "5, swim 5"
+    "Armor Class": "12"
+    "Fortitude Defense": "10"
+    "Reflex Defense": "14"
+    "Will Defense": "12"
+    Attack: "Bite (standard, at-will): your level +3 vs AC, 1d8 + your level."
+    Description: "Venomous Snap: opportunity attacks also deal 2 persistent poison (save ends); 4 at level 11, 6 at level 21. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Stealth. A venomous snake, spider, toad or Gila monster."
+
+- id: ORCUS_COMPANION_HORSE
+  name: "Horse"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Large Natural Beast"
+    Size: "Large"
+    Strength: "16"
+    Constitution: "12"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "6"
+    "Armor Class": "14"
+    "Fortitude Defense": "14"
+    "Reflex Defense": "10"
+    "Will Defense": "10"
+    Attack: "Hoof (standard, at-will): your level +4 vs AC, 1d10 + your level."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). Endure. A horse, camel or llama."
+
+- id: ORCUS_COMPANION_HOUND
+  name: "Hound"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "14"
+    Intelligence: "2"
+    Wisdom: "12"
+    Charisma: "10"
+    Speed: "8"
+    "Armor Class": "12"
+    "Fortitude Defense": "12"
+    "Reflex Defense": "12"
+    "Will Defense": "12"
+    Attack: "Bite (standard, at-will): your level +3 vs AC, 1d8 + your level."
+    Description: "Combat Advantage: +2 damage when it has combat advantage; +4 at level 11, +6 at level 21. AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). low-light vision; Endure, Nature. A dog, wolf, coyote, jackal or hyena."
+
+- id: ORCUS_COMPANION_HUNTING_SPIDER
+  name: "Hunting Spider"
+  type: Companion
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_ANIMAL_COMPANION]
+  fields:
+    Type: "Medium Natural Beast"
+    Size: "Medium"
+    Strength: "14"
+    Constitution: "16"
+    Dexterity: "12"
+    Intelligence: "2"
+    Wisdom: "14"
+    Charisma: "10"
+    Speed: "5, climb 5"
+    "Armor Class": "14"
+    "Fortitude Defense": "12"
+    "Reflex Defense": "14"
+    "Will Defense": "10"
+    Attack: "Bite (standard, at-will): your level +3 vs AC, 1d8 + your level. Sticky Thread (standard, encounter, reach 2): your level +3 vs AC, 1d8 + your level and pull 1."
+    Description: "AC/defenses are the listed value + your level; HP = your staggered value (can use your recoveries). darkvision; Athletics, Stealth. A web-throwing spider, chameleon or giant frog."

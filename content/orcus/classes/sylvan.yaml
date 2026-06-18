@@ -1,0 +1,337 @@
+# Sylvan — Spirit Striker (Orcus Classes and Powers). Key ability Constitution.
+# A wild-shape striker who can take an animal companion. HP 12 + Con at level 1,
+# +5/level (encoded 7 + Con + 5 x Level). "Recoveries" -> Healing Surges. Trained
+# in Nature automatically + 3 chosen class skills. One discipline (Red in Tooth
+# and Claw) transcribed so far; selects also OR in |$$KITDISC.
+
+- id: ORCUS_CLASS_SYLVAN
+  name: Sylvan
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Striker, Spirit]
+  fields:
+    Role: Striker
+    Tradition: Spirit
+    "Key Ability": Constitution
+    "Class Disciplines": "Frontline Fighting, Red in Tooth and Claw, Strong Bidding"
+    "Armor Proficiencies": "Cloth, leather, hide"
+    "Weapon Proficiencies": "Simple melee, martial melee, simple ranged, martial ranged"
+    "Focus Proficiencies": "Staff, druidic focus, martial focus"
+    "Class Skills": "Acrobatics, Athletics, Diplomacy, Dungeoneering, Endure, Heal, Insight, Intimidate, Nature, Perception, Stealth"
+    Flavor: "You wear the shapes of beasts and run with a companion at your side."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_SYLVAN
+      type: Grants
+    # Hit Points: 12 + Con score at level 1, +5 per level (7 + Con + 5 x Level).
+    - statadd: Hit Points
+      value: 7
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 5 }
+    # Recoveries per long rest: 6 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 6
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +1 Fortitude, +1 Reflex.
+    - statadd: Fortitude Defense
+      value: +1
+      bonusType: Class
+    - statadd: Reflex Defense
+      value: +1
+      bonusType: Class
+    # Trained in Nature + 3 other class skills.
+    - select:
+        type: Skill Training
+        number: 3
+        category: ORCUS_SYLVAN_SKILLS
+        name: Sylvan Trained Skills
+    # Choose a talent (rampage power + secondary), a Wild Gift, and a Favored Terrain.
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_SYLVAN_TALENT
+        name: Sylvan Talent
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_SYLVAN_WILD_GIFT
+        name: Sylvan Wild Gift
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_SYLVAN_FAVORED_TERRAIN
+        name: Sylvan Favored Terrain
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,at-will,1"
+        name: Sylvan At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,1"
+        name: Sylvan Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,1"
+        name: Sylvan Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,utility,2"
+        name: Sylvan Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,3"
+        name: Sylvan Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,5"
+        name: Sylvan Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,utility,6"
+        name: Sylvan Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,7"
+        name: Sylvan Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,9"
+        name: Sylvan Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,utility,10"
+        name: Sylvan Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,utility,16"
+        name: Sylvan Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,utility,22"
+        name: Sylvan Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_SYLVAN
+  name: Sylvan Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_SYLVAN }
+  rules:
+    - grant: ORCUS_TRAIN_NATURE
+      type: Skill Training
+    - grant: ORCUS_KEYSWAP_SYLVAN_CONSTITUTION
+      type: Key Ability Swap
+    # Proficiencies: simple & martial, melee & ranged weapons; cloth, leather, hide.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+
+# --- Talents (each grants a rampage feature power) ----------------------------
+- id: ORCUS_TALENT_WATCHFUL
+  name: Watchful
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_TALENT]
+  fields:
+    "Secondary Ability": Wisdom
+    Description: "You gain the fearful rampage power. Secondary ability: Wisdom."
+  rules:
+    - grant: ORCUS_POWER_FEARFUL_RAMPAGE
+      type: Power
+    - grant: ORCUS_SECSWAP_WATCHFUL_WISDOM
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_COMPANIONABLE
+  name: Companionable
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "You gain the companion rampage power. Secondary ability: Charisma."
+  rules:
+    - grant: ORCUS_POWER_COMPANION_RAMPAGE
+      type: Power
+    - grant: ORCUS_SECSWAP_COMPANIONABLE_CHARISMA
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_SWIFT
+  name: Swift
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_TALENT]
+  fields:
+    "Secondary Ability": Dexterity
+    Description: "You gain the swift rampage power. Secondary ability: Dexterity."
+  rules:
+    - grant: ORCUS_POWER_SWIFT_RAMPAGE
+      type: Power
+    - grant: ORCUS_SECSWAP_SWIFT_DEXTERITY
+      type: Secondary Ability Swap
+
+# --- Rampage feature powers ---------------------------------------------------
+- id: ORCUS_POWER_FEARFUL_RAMPAGE
+  name: Fearful Rampage
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": No Action
+    Keywords: "Spirit, Weapon or Focus, Psychic, Fear"
+    Target: "Melee touch, one creature"
+    Trigger: "You hit with an attack."
+    Effect: "The target takes 2 + your Wisdom modifier damage and is shunted 1. Once per round. Level 11: one or two creatures. Level 21: all enemies."
+
+- id: ORCUS_POWER_COMPANION_RAMPAGE
+  name: Companion Rampage
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": No Action
+    Keywords: "Spirit, Weapon or Focus"
+    Target: "Special range, one creature"
+    Trigger: "You hit with an attack."
+    Effect: "The target (within melee reach of you or your animal companion) takes 2 + your Charisma modifier damage. Once per round. Level 11: one or two creatures. Level 21: all enemies."
+
+- id: ORCUS_POWER_SWIFT_RAMPAGE
+  name: Swift Rampage
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": No Action
+    Keywords: "Spirit, Weapon or Focus"
+    Target: "Melee touch, one creature"
+    Trigger: "You hit with an attack."
+    Effect: "The target takes 2 + your Dexterity modifier damage. You shift 1. Once per round. Level 11: one or two creatures. Level 21: all enemies."
+
+# --- Wild Gift (choose one) ---------------------------------------------------
+- id: ORCUS_WILDGIFT_SKINCHANGER
+  name: "Wild Gift: Skinchanger"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_WILD_GIFT]
+  fields:
+    Description: "In light or no armor, add your Constitution modifier to AC instead of Dexterity/Intelligence. You can spend additional shape powers for extra Form Attacks."
+
+- id: ORCUS_WILDGIFT_HUNTER
+  name: "Wild Gift: Hunter"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_WILD_GIFT]
+  fields:
+    Description: "Treat all one-handed melee weapons as having the side weapon property. +1 to attacks vs enemies no ally is closer to. Bonus feat (Toughness, Two-Weapon Defense, Shield Proficiency or Melee Finesse)."
+
+- id: ORCUS_WILDGIFT_ANIMAL_COMPANION
+  name: "Wild Gift: Animal Companion"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_WILD_GIFT]
+  fields:
+    Description: "You gain an animal companion (its level = yours; HP = your staggered value). When you use a Red in Tooth and Claw power, your companion may use it in your place."
+  rules:
+    - select:
+        type: Companion
+        number: 1
+        category: ORCUS_ANIMAL_COMPANION
+        name: Animal Companion
+
+# --- Favored Terrain (choose one) ---------------------------------------------
+- id: ORCUS_SYLVAN_TERRAIN_ARCTIC
+  name: "Favored Terrain: Arctic"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
+  fields:
+    Description: "You gain the ice stride feature and a +2 bonus to Endure."
+  rules:
+    - { statadd: Endure, value: +2, bonusType: Class }
+
+- id: ORCUS_SYLVAN_TERRAIN_FOREST
+  name: "Favored Terrain: Forest or Heath"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
+  fields:
+    Description: "You gain the woodland stride feature and a +2 bonus to Nature."
+  rules:
+    - { statadd: Nature, value: +2, bonusType: Class }
+
+- id: ORCUS_SYLVAN_TERRAIN_MARSHES
+  name: "Favored Terrain: Marshes"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
+  fields:
+    Description: "You gain the swamp stride feature and a +2 bonus to Athletics."
+  rules:
+    - { statadd: Athletics, value: +2, bonusType: Class }
+
+- id: ORCUS_SYLVAN_TERRAIN_UNDERGROUND
+  name: "Favored Terrain: Underground or Mountains"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
+  fields:
+    Description: "You gain the stone stride feature and a +2 bonus to Dungeoneering."
+  rules:
+    - { statadd: Dungeoneering, value: +2, bonusType: Class }
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_SYLVAN_CONSTITUTION
+  name: Sylvan Key Constitution
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_WATCHFUL_WISDOM
+  name: Watchful Secondary Wisdom
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_COMPANIONABLE_CHARISMA
+  name: Companionable Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SWIFT_DEXTERITY
+  name: Swift Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
