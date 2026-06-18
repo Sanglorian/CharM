@@ -1,0 +1,307 @@
+# Mageblade — Arcane Defender (Orcus Classes and Powers). Key ability Intelligence.
+# A gish defender who marks foes with a sigil and punishes them with weapon-arcana.
+# HP 15 + Con at level 1, +6/level (encoded 9 + Con + 6 x Level). "Recoveries" ->
+# Healing Surges. Two disciplines: Elemental Flux, Veiled Moon. Selects OR in |$$KITDISC.
+
+- id: ORCUS_CLASS_MAGEBLADE
+  name: Mageblade
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Defender, Arcane]
+  fields:
+    Role: Defender
+    Tradition: Arcane
+    "Key Ability": Intelligence
+    "Class Disciplines": "Elemental Flux, Veiled Moon"
+    "Armor Proficiencies": "Cloth, leather"
+    "Weapon Proficiencies": "Simple melee, martial melee, simple ranged"
+    "Focus Proficiencies": "See Athame feature"
+    "Class Skills": "Arcana, Acrobatics, Athletics, Diplomacy, Endure, History, Insight, Intimidate"
+    Flavor: "A warrior-mage who binds enemies with an arcane sigil and strikes with elemental steel."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_MAGEBLADE
+      type: Grants
+    # Hit Points: 15 + Con score at level 1, +6 per level (9 + Con + 6 x Level).
+    - statadd: Hit Points
+      value: 9
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 6 }
+    # Recoveries per long rest: 8 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 8
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +1 AC, +2 Will.
+    - statadd: AC
+      value: +1
+      bonusType: Class
+    - statadd: Will Defense
+      value: +2
+      bonusType: Class
+    # Shimmering Shield: +2 shield bonus to AC while a hand is free (not carrying a
+    # shield, two-handed weapon or focus). Shield-typed, so it does not stack with a
+    # real shield (which would occupy the hand anyway).
+    - statadd: AC
+      value: +2
+      bonusType: Shield
+    # Trained in Arcana + 3 others from class skills.
+    - select:
+        type: Skill Training
+        number: 3
+        category: ORCUS_MAGEBLADE_SKILLS
+        name: Mageblade Trained Skills
+    # Mageblade's Sigil feature power.
+    - grant: ORCUS_POWER_MAGEBLADES_SIGIL
+      type: Power
+    # Choose a talent (sigil power + secondary ability).
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_MAGEBLADE_TALENT
+        name: Mageblade Talent
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,at-will,1"
+        name: Mageblade At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,1"
+        name: Mageblade Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,1"
+        name: Mageblade Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,utility,2"
+        name: Mageblade Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,3"
+        name: Mageblade Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,5"
+        name: Mageblade Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,utility,6"
+        name: Mageblade Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,7"
+        name: Mageblade Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,9"
+        name: Mageblade Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,utility,10"
+        name: Mageblade Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,utility,16"
+        name: Mageblade Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,utility,22"
+        name: Mageblade Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_ELEMENTAL_FLUX|ORCUS_DISCIPLINE_VEILED_MOON|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_MAGEBLADE
+  name: Mageblade Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_MAGEBLADE }
+  rules:
+    - grant: ORCUS_TRAIN_ARCANA
+      type: Skill Training
+    - grant: ORCUS_KEYSWAP_MAGEBLADE_INTELLIGENCE
+      type: Key Ability Swap
+    # Proficiencies: simple & martial melee, simple ranged; cloth, leather.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+
+# --- Talents (each grants a sigil power + sets the secondary ability) ----------
+- id: ORCUS_TALENT_ILLUSION_SPECIALIST
+  name: Illusion Specialist
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGEBLADE_TALENT]
+  fields:
+    "Secondary Ability": Dexterity
+    Description: "You gain the blurring sigil power. Secondary ability: Dexterity."
+  rules:
+    - grant: ORCUS_POWER_BLURRING_SIGIL
+      type: Power
+    - grant: ORCUS_SECSWAP_ILLUSION_DEXTERITY
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_MARTYR_SPECIALIST
+  name: Martyr Specialist
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGEBLADE_TALENT]
+  fields:
+    "Secondary Ability": Constitution
+    Description: "You gain the vortex sigil power. Secondary ability: Constitution."
+  rules:
+    - grant: ORCUS_POWER_VORTEX_SIGIL
+      type: Power
+    - grant: ORCUS_SECSWAP_MARTYR_CONSTITUTION
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_PUNISHMENT_SPECIALIST
+  name: Punishment Specialist
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGEBLADE_TALENT]
+  fields:
+    "Secondary Ability": Charisma
+    Description: "You gain the fiery sigil power. Secondary ability: Charisma."
+  rules:
+    - grant: ORCUS_POWER_FIERY_SIGIL
+      type: Power
+    - grant: ORCUS_SECSWAP_PUNISHMENT_CHARISMA
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_RUSH_SPECIALIST
+  name: Rush Specialist
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_MAGEBLADE_TALENT]
+  fields:
+    "Secondary Ability": Strength
+    Description: "You gain the beacon sigil power. Secondary ability: Strength."
+  rules:
+    - grant: ORCUS_POWER_BEACON_SIGIL
+      type: Power
+    - grant: ORCUS_SECSWAP_RUSH_STRENGTH
+      type: Secondary Ability Swap
+
+# --- Sigil feature powers -----------------------------------------------------
+- id: ORCUS_POWER_MAGEBLADES_SIGIL
+  name: Mageblade's Sigil
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Arcane
+    Target: "Near burst 2, one target"
+    Effect: "The target is marked until you use this power again."
+
+- id: ORCUS_POWER_BEACON_SIGIL
+  name: Beacon Sigil
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Reaction Action
+    Keywords: "Arcane, Teleport, Weapon"
+    Target: "Near burst 5, the triggering enemy"
+    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
+    Effect: "Teleport to an unoccupied square adjacent to the target and make a basic melee attack against them."
+
+- id: ORCUS_POWER_BLURRING_SIGIL
+  name: Blurring Sigil
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Weapon"
+    Target: "Near burst 10, the triggering enemy"
+    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
+    Effect: "Any one target of the triggering creature's attack gains resistance to all damage equal to your level + your Dexterity modifier, until the end of the current turn."
+
+- id: ORCUS_POWER_FIERY_SIGIL
+  name: Fiery Sigil
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Reaction Action
+    Keywords: "Arcane, Fire, Weapon"
+    Target: "Near burst 10, the triggering enemy"
+    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
+    Effect: "The triggering creature takes 1d6 + your Charisma modifier fire damage. Level 11: 2d6 + your Charisma modifier. Level 21: 3d6 + your Charisma modifier."
+
+- id: ORCUS_POWER_VORTEX_SIGIL
+  name: Vortex Sigil
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Teleport, Weapon"
+    Target: "Near burst 5, the triggering enemy"
+    Trigger: "A creature marked by your sigil attempts to make an attack that does not include you as a target."
+    Effect: "The triggering creature teleports to an unoccupied square of your choice adjacent to you. If it now arranges the attack so that it includes you as a target, the attack goes ahead. Otherwise it misses all targets."
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_MAGEBLADE_INTELLIGENCE
+  name: Mageblade Key Intelligence
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_ILLUSION_DEXTERITY
+  name: Illusion Specialist Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_MARTYR_CONSTITUTION
+  name: Martyr Specialist Secondary Constitution
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_PUNISHMENT_CHARISMA
+  name: Punishment Specialist Secondary Charisma
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_RUSH_STRENGTH
+  name: Rush Specialist Secondary Strength
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

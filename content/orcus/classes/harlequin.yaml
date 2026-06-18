@@ -1,0 +1,246 @@
+# Harlequin — Martial Controller (Orcus Classes and Powers). Key ability Charisma.
+# A trickster controller who fights with auras, marks and misdirection. HP 10 + Con
+# at level 1, +4/level (encoded 6 + Con + 4 x Level). "Recoveries" -> Healing Surges.
+# Two disciplines: Last Laugh, Mastermind's Gambit. Selects also OR in |$$KITDISC.
+
+- id: ORCUS_CLASS_HARLEQUIN
+  name: Harlequin
+  type: Class
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [Controller, Martial]
+  fields:
+    Role: Controller
+    Tradition: Martial
+    "Key Ability": Charisma
+    "Class Disciplines": "Last Laugh, Mastermind's Gambit"
+    "Armor Proficiencies": "Cloth, leather"
+    "Weapon Proficiencies": "Simple melee, simple ranged"
+    "Focus Proficiencies": "Martial focus"
+    "Class Skills": "Bluff, Diplomacy, Heal, History, Insight, Intimidate, Perception, Religion, Streetsmarts, Thievery"
+    Flavor: "A trickster who controls the battlefield with auras, taunts and misdirection."
+  rules:
+    - grant: ORCUS_INTERNAL_GRANTS_HARLEQUIN
+      type: Grants
+    # Hit Points: 10 + Con score at level 1, +4 per level (6 + Con + 4 x Level).
+    - statadd: Hit Points
+      value: 6
+    - statadd: Hit Points
+      value: { statref: Constitution }
+    - statadd: Hit Points
+      value: { statref: Level, scale: 4 }
+    # Recoveries per long rest: 6 plus your Constitution modifier.
+    - statadd: Healing Surges
+      value: 6
+    - statadd: Healing Surges
+      value: { abilmod: Constitution }
+    # Defenses: +2 Will.
+    - statadd: Will Defense
+      value: +2
+      bonusType: Class
+    # Trained in Bluff or Diplomacy + 4 others from class skills (5 total).
+    - select:
+        type: Skill Training
+        number: 5
+        category: ORCUS_HARLEQUIN_SKILLS
+        name: Harlequin Trained Skills
+    # Clever Fellow: gain the general confusion and hasty retreat powers.
+    - grant: ORCUS_POWER_GENERAL_CONFUSION
+      type: Power
+    - grant: ORCUS_POWER_HASTY_RETREAT
+      type: Power
+    # Choose a talent (aura + secondary ability).
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_HARLEQUIN_TALENT
+        name: Harlequin Talent
+    # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
+    - select:
+        type: Power
+        number: 2
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,at-will,1"
+        name: Harlequin At-Will Powers
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,1"
+        name: Harlequin Encounter Power
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,1"
+        name: Harlequin Daily Power
+    # Default progression to level 30.
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,utility,2"
+        name: Harlequin Utility Power
+        level: 2
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,3"
+        name: Harlequin Encounter Power 2
+        level: 3
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,5"
+        name: Harlequin Daily Power 2
+        level: 5
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,utility,6"
+        name: Harlequin Utility Power 2
+        level: 6
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,7"
+        name: Harlequin Encounter Power 3
+        level: 7
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,9"
+        name: Harlequin Daily Power 3
+        level: 9
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,utility,10"
+        name: Harlequin Utility Power 3
+        level: 10
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,utility,16"
+        name: Harlequin Utility Power 4
+        level: 16
+    - select:
+        type: Power
+        number: 1
+        category: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,utility,22"
+        name: Harlequin Utility Power 5
+        level: 22
+    # Power-replacement (retraining) swaps. Encounter at 13/17/23/27, daily at 15/19/25/29.
+    - { replace: { name: "Encounter Power Swap (Lv 13)", powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,13", level: 13, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 15)",     powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,15",     level: 15, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 17)", powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,17", level: 17, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 19)",     powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,19",     level: 19, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 23)", powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,23", level: 23, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 25)",     powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,25",     level: 25, optional: true } }
+    - { replace: { name: "Encounter Power Swap (Lv 27)", powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,encounter,27", level: 27, optional: true } }
+    - { replace: { name: "Daily Power Swap (Lv 29)",     powerSwap: "ORCUS_DISCIPLINE_LAST_LAUGH|ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT|$$KITDISC,daily,29",     level: 29, optional: true } }
+
+- id: ORCUS_INTERNAL_GRANTS_HARLEQUIN
+  name: Harlequin Grants
+  type: Grants
+  fields: { _SupportsID: ORCUS_CLASS_HARLEQUIN }
+  rules:
+    - grant: ORCUS_KEYSWAP_HARLEQUIN_CHARISMA
+      type: Key Ability Swap
+    # Proficiencies: simple melee & ranged weapons; cloth, leather.
+    - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
+    - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+
+# --- Talents (auras; each sets the secondary ability) -------------------------
+- id: ORCUS_TALENT_FIXER
+  name: Fixer
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_HARLEQUIN_TALENT]
+  fields:
+    "Secondary Ability": Dexterity
+    Description: "Demoralizing Presence aura 2: enemies in the aura take a -2 penalty to all saving throws. Secondary ability: Dexterity."
+  rules:
+    - grant: ORCUS_SECSWAP_FIXER_DEXTERITY
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_JESTER
+  name: Jester
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_HARLEQUIN_TALENT]
+  fields:
+    "Secondary Ability": Wisdom
+    Description: "Attention Grabber aura 2: you can mark an enemy in the aura as a swift action; enemies you marked inside the aura take an extra -1 to attacks that don't include you. Secondary ability: Wisdom."
+  rules:
+    - grant: ORCUS_SECSWAP_JESTER_WISDOM
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_SABOTEUR
+  name: Saboteur
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_HARLEQUIN_TALENT]
+  fields:
+    "Secondary Ability": Intelligence
+    Description: "Threatened Footfalls aura 2: enemies treat the area within the aura as difficult terrain. Secondary ability: Intelligence."
+  rules:
+    - grant: ORCUS_SECSWAP_SABOTEUR_INTELLIGENCE
+      type: Secondary Ability Swap
+
+- id: ORCUS_TALENT_SCOUT
+  name: Scout
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_HARLEQUIN_TALENT]
+  fields:
+    "Secondary Ability": Constitution
+    Description: "Watchful aura 2: you do not grant combat advantage to enemies inside the aura. Secondary ability: Constitution."
+  rules:
+    - grant: ORCUS_SECSWAP_SCOUT_CONSTITUTION
+      type: Secondary Ability Swap
+
+# --- Clever Fellow feature powers ---------------------------------------------
+- id: ORCUS_POWER_GENERAL_CONFUSION
+  name: General Confusion
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near 5, one creature marked by yourself or one of your allies"
+    Effect: "The target is no longer marked by that character, and is instead marked by yourself or the ally of your choice until the end of your next turn."
+
+- id: ORCUS_POWER_HASTY_RETREAT
+  name: Hasty Retreat
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [feature]
+  fields:
+    "Power Usage": At-Will
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Shift 1."
+
+# --- Ability-swap markers -----------------------------------------------------
+- id: ORCUS_KEYSWAP_HARLEQUIN_CHARISMA
+  name: Harlequin Key Charisma
+  type: Key Ability Swap
+  categories: [Key Ability Swap]
+- id: ORCUS_SECSWAP_FIXER_DEXTERITY
+  name: Fixer Secondary Dexterity
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_JESTER_WISDOM
+  name: Jester Secondary Wisdom
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SABOTEUR_INTELLIGENCE
+  name: Saboteur Secondary Intelligence
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]
+- id: ORCUS_SECSWAP_SCOUT_CONSTITUTION
+  name: Scout Secondary Constitution
+  type: Secondary Ability Swap
+  categories: [Secondary Ability Swap]

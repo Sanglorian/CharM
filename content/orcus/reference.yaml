@@ -221,27 +221,27 @@
 - id: ORCUS_TRAIN_ACROBATICS
   name: Acrobatics
   type: Skill Training
-  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Acrobatics Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_ARCANA
   name: Arcana
   type: Skill Training
-  categories: [ORCUS_PRIEST_SKILLS]
+  categories: [ORCUS_PRIEST_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Arcana Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_ATHLETICS
   name: Athletics
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Athletics Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_BLUFF
   name: Bluff
   type: Skill Training
-  categories: [ORCUS_EXEMPLAR_SKILLS]
+  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Bluff Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_DIPLOMACY
   name: Diplomacy
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_HARLEQUIN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Diplomacy Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_DUNGEONEERING
   name: Dungeoneering
@@ -251,27 +251,27 @@
 - id: ORCUS_TRAIN_ENDURE
   name: Endure
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Endure Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_HEAL
   name: Heal
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Heal Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_HISTORY
   name: History
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_HARLEQUIN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: History Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_INSIGHT
   name: Insight
   type: Skill Training
-  categories: [ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_PRIEST_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_HARLEQUIN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Insight Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_INTIMIDATE
   name: Intimidate
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_COMMANDER_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_HARLEQUIN_SKILLS, ORCUS_MAGEBLADE_SKILLS]
   rules: [{ statadd: Intimidate Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_NATURE
   name: Nature
@@ -281,17 +281,17 @@
 - id: ORCUS_TRAIN_PERCEPTION
   name: Perception
   type: Skill Training
-  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS]
+  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_REAPER_SKILLS, ORCUS_SYLVAN_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Perception Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_RELIGION
   name: Religion
   type: Skill Training
-  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS]
+  categories: [ORCUS_COMMANDER_SKILLS, ORCUS_PRIEST_SKILLS, ORCUS_MAGICIAN_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Religion Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_SLEIGHT_OF_HAND
   name: Sleight of Hand
   type: Skill Training
-  categories: [ORCUS_EXEMPLAR_SKILLS]
+  categories: [ORCUS_EXEMPLAR_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Sleight of Hand Trained, value: 5, bonusType: trained }]
 - id: ORCUS_TRAIN_STEALTH
   name: Stealth
@@ -301,6 +301,6 @@
 - id: ORCUS_TRAIN_STREETSMARTS
   name: Streetsmarts
   type: Skill Training
-  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_EXEMPLAR_SKILLS]
+  categories: [ORCUS_GUARDIAN_SKILLS, ORCUS_EXEMPLAR_SKILLS, ORCUS_HARLEQUIN_SKILLS]
   rules: [{ statadd: Streetsmarts Trained, value: 5, bonusType: trained }]
 

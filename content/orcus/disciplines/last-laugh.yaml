@@ -1,0 +1,553 @@
+# Last Laugh discipline (Harlequin / Dabbles in Harlequinry kit). A slippery,
+# taunting combatant who fools even skeptical foes — mostly Charisma vs Will
+# Psychic control powers. Key ability Charisma, secondary Dexterity. Same tagging
+# contract: Attack powers also carry the `ability-swap` tag. Levels 1-29
+# transcribed (the full Harlequin class power progression).
+
+- id: ORCUS_DISCIPLINE_LAST_LAUGH
+  name: Last Laugh
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Charisma
+    "Secondary Ability": Dexterity
+    Sources: "Harlequin (class); Dabbles in Harlequinry (kit)"
+    Description: "You are a slippery, taunting combatant who can fool even skeptical foes."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_BITING_TAUNT
+  name: Biting Taunt
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: Self
+    Effect: "When you enter this stance, you may mark one creature within 10 squares. While you are in this stance, creatures you have marked do half damage on any attack that does not include you as a target."
+
+- id: ORCUS_POWER_FAILURE_TO_COMMUNICATE
+  name: Failure to Communicate
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Weapon"
+    Target: Self
+    Effect: "Make a basic attack. After the attack, you can shift a square."
+    Special: "If the creature you attacked as part of this action misses you with an attack before the start of your next turn, you can make a basic attack against it as a reaction."
+
+- id: ORCUS_POWER_TRICKY_TAUNT
+  name: Tricky Taunt
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Stance"
+    Target: Self
+    Effect: "When you enter this stance, you may mark one creature within 10 squares. While you are in this stance, creatures you have marked provoke an opportunity attack from you if they miss you with an attack. You can make basic ranged attacks for opportunity attacks triggered by this power."
+
+- id: ORCUS_POWER_WHO_ME
+  name: Who, Me?
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic"
+    Target: "Near burst 10, three creatures not within 3 of you"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target cannot make melee or ranged attacks against you until the start of your next turn. If you mark or inflict damage on the target, the effect ends and the target is immune to this power until the end of the encounter."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_EXPLOIT_WEAKNESS
+  name: Exploit Weakness
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is immobile until the end of your next turn. If the target takes any damage from you or your allies, it immediately recovers from this effect."
+
+- id: ORCUS_POWER_PERSONAL_BETRAYAL
+  name: Personal Betrayal
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: "Near burst 10, one creature you can see that you have not damaged this encounter"
+    Effect: "Until the start of your next turn, whenever you make a damage roll against the target, you gain a power bonus to the roll equal to your Charisma modifier."
+    Maintain: "Maintain Swift: the effect persists until the start of your next turn."
+
+- id: ORCUS_POWER_TALK_DOWN
+  name: Talk Down
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Consistent, Psychic"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is dazed until the end of your next turn."
+
+- id: ORCUS_POWER_EMPATHIC_RESPONSE
+  name: Empathic Response
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is marked and cannot make any attack that only includes you until the end of your next turn."
+
+- id: ORCUS_POWER_CENTER_OF_ATTENTION
+  name: Center of Attention
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You mark all enemies that can see you until the end of your next turn. You lose all benefits of cover or concealment. Until the end of your next turn, basic attacks only require a swift action."
+
+- id: ORCUS_POWER_GRUFF_AND_TOUGH
+  name: Gruff and Tough
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Fear, Martial, Psychic"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Effect: "The target is stunned until the end of your next turn, and you push the target its speed."
+
+- id: ORCUS_POWER_DAZZLING_PERSONALITY
+  name: Dazzling Personality
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is controlled until the start of your next turn."
+
+- id: ORCUS_POWER_ALL_ATTENTION
+  name: All Attention
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Open, Psychic"
+    Target: "Near burst 10, four creatures"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is marked and cannot make attacks that do not include you until the end of your next turn. Each ally in burst can shift a number of squares up to their speed."
+    Effect: "You gain a +4 power bonus to all defenses until the start of your next turn."
+
+- id: ORCUS_POWER_DESTRUCTIVE_CRITICISM
+  name: Destructive Criticism
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, one creature"
+    Attack: "Charisma +2 vs Will"
+    Hit: "Choose one of the following: the target fails its next saving throw; or one condition with a finite duration that the target is suffering lasts an additional round."
+    Maintain: "Maintain Move: repeat the attack. You can maintain until you miss."
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_FORKED_TONGUE
+  name: Forked Tongue
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 5, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "Until the end of your next turn, your allies have concealment against the target and you gain a +3 power bonus to all Diplomacy and Bluff checks against it. If the target takes any damage while this power is in effect, it is stunned until the end of your next turn."
+    Special: "Requirements: You, the target, and the target's allies have not been damaged this encounter."
+    Maintain: "Maintain Standard: the effect persists until the end of your next turn, until the target takes damage or until you take damage, whichever comes first."
+
+- id: ORCUS_POWER_PARLEY
+  name: Parley
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is stunned (save ends). If the target takes any damage or is moved, the effect immediately ends and the target gains a +2 bonus to all defenses until the start of its next turn."
+
+- id: ORCUS_POWER_PERFECT_MASQUERADE
+  name: Perfect Masquerade
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Psychic"
+    Target: "Near burst 10, all creatures"
+    Attack: "Charisma +2 vs Will"
+    Hit: "Your allies gain concealment against the target, and the target is dazed until the end of your next turn."
+    Effect: "You gain a +3 power bonus to Bluff checks and can make a Bluff check in place of any knowledge (but not monster knowledge) check until the end of your next turn."
+    Special: "Requirements: This power cannot be used if you, the target, or any of the target's allies has taken damage previously in the encounter."
+    Maintain: "Maintain Standard: repeat the attack."
+
+- id: ORCUS_POWER_SOW_DISTRUST
+  name: Sow Distrust
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: "Martial, Consistent, Psychic"
+    Target: "Near burst 10, one creature"
+    Trigger: "A creature makes a ranged attack against you or an adjacent ally."
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target's attack is directed to any other target in range and line of sight (your choice)."
+
+- id: ORCUS_POWER_INSTANT_INFATUATION
+  name: Instant Infatuation
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Swift Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 2, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "Until the end of your next turn, the target suffers a -4 penalty to Will defense and a -4 penalty to attack rolls with attacks that include you."
+    Miss: "Until the end of your next turn, you gain a +4 power bonus to Will defense against the target's attacks and a +4 power bonus to Bluff and Diplomacy checks against the target."
+    Special: "Requirements: You, the target, and the target's allies have not been damaged this encounter."
+    Maintain: "Maintain Swift: the effects persist until the end of your next turn. You can maintain until you inflict damage on the target or until the target inflicts damage on you."
+
+- id: ORCUS_POWER_READ_BODY_LANGUAGE
+  name: Read Body Language
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Counter Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, the triggering enemy"
+    Trigger: "One enemy in burst you can see uses a power."
+    Attack: "Charisma +2 vs Will"
+    Hit: "The triggering power is expended and the target's action is lost. If you score a critical hit, the target is also stunned until the start of your next turn."
+    Special: "Spend a recovery as part of this power, but regain no hit points; instead, you recover the use of this power."
+
+- id: ORCUS_POWER_BACKUP_PLAN
+  name: Backup Plan
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Trigger: "You make a Bluff, Diplomacy or Intimidate check and dislike the result."
+    Effect: "Make a basic attack against the target. On a hit, the target takes 3dW extra damage from the attack and is dazed (save ends). On a miss, the target is dazed until the start of your next turn."
+
+- id: ORCUS_POWER_STUNNING_GOOD_LOOKS
+  name: Stunning Good Looks
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Martial, Psychic"
+    Target: "Near burst 5, all enemies"
+    Attack: "Charisma +2 vs Will"
+    Hit: "Until the end of your next turn, the target is dazed and helpless, and your allies gain concealment against it. You gain a +10 power bonus to your next Diplomacy or Bluff check against the target and a +5 bonus to all other Diplomacy and Bluff checks until the end of your next turn."
+    Miss: "The target is dazed until the end of your next turn and you gain a +3 bonus to all Diplomacy and Bluff checks until the end of your next turn."
+    Special: "Requirements: You, the target, and the target's allies have not been damaged this encounter. If the target takes any damage, they are no longer helpless, though they are still dazed."
+    Maintain: "Maintain Standard: the effect persists until the end of your next turn. If either the target or you take damage, the effect ends immediately and cannot be maintained."
+
+- id: ORCUS_POWER_INTIMATE_ASSASSIN
+  name: Intimate Assassin
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 1, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Effect: "Until the start of your next turn, the target is stunned and helpless against your attacks."
+    Special: "Requirements: This power cannot be used if you, the target, or any of the target's allies has taken damage previously in the encounter."
+
+- id: ORCUS_POWER_LEAD_THE_SHOT
+  name: Lead the Shot
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: "Near earshot, one ally"
+    Effect: "Until the start of your next turn, as an immediate counter action, the target may make any single action available to it. The target gains a +4 power bonus to attack rolls made as part of that action. Before or after your ally acts, you can take a move action."
+
+- id: ORCUS_POWER_FEIGN_MORTALITY
+  name: Feign Mortality
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Free Action
+    Keywords: "Martial, Psychic, Weapon"
+    Target: "Melee or Ranged weapon, the creature that staggered you"
+    Effect: "Choose a condition, like helpless or unconscious, or an affliction, like cyanide poisoning or a witch's curse. You appear to suffer from that condition or affliction. You can drop prone as part of this action. You gain a +10 bonus to Bluff checks to maintain the illusion. This effect lasts until the end of the encounter or until you make the following attack."
+    Attack: "As an immediate interrupt or as a swift action on your turn, make a basic attack against the target. You automatically score a critical hit, and deal 1dW extra damage."
+    Special: "Requirements: You are staggered."
+
+- id: ORCUS_POWER_TOUCHED_A_NERVE
+  name: Touched a Nerve
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is helpless (save ends). If the target is hit by an attack, they are no longer helpless."
+
+- id: ORCUS_POWER_COMMANDING_PRESENCE
+  name: Commanding Presence
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 10, two creatures you can see"
+    Attack: "Charisma +2 vs Will"
+    Hit: "The target is controlled (save ends)."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_GRACE_UNDER_PRESSURE
+  name: Grace Under Pressure
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Effect: "Until the start of your next turn, you gain a +2 power bonus to all defenses (AC, Fortitude, Reflex and Will)."
+
+- id: ORCUS_POWER_WINNING_SMILE
+  name: Winning Smile
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Double your Charisma modifier to Bluff or Diplomacy checks until the end of the encounter (or five minutes)."
+
+- id: ORCUS_POWER_SMOOTH_TALKER
+  name: Smooth Talker
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Gain a +5 power bonus to your next Bluff, Diplomacy, Insight, or Perception check or your next attack with the Psychic tag."
+    Special: "If you fail the check or miss with the attack, this power is not expended."
+
+- id: ORCUS_POWER_COOL_NERVES
+  name: Cool Nerves
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Martial, Psychic"
+    Target: "Near earshot, all allies"
+    Effect: "The target gains a +2 power bonus to Will defense until the end of the encounter. On their next turn, the target can either spend a recovery or gain an additional move action."
+
+- id: ORCUS_POWER_FAST_TALK
+  name: Fast-Talk
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Martial
+    Target: Self
+    Effect: "You gain a +10 power bonus to your next Bluff, Diplomacy, or Intimidate check, and you gain a +3 power bonus to all other skill checks with those skills until the end of the encounter (or five minutes)."
+
+- id: ORCUS_POWER_I_KNOW_THIS_TRICK
+  name: I Know This Trick
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You are affected by one of the following conditions that a save can end: dazed, marked, slowed, or stunned."
+    Effect: "You gain a +5 power bonus to saving throws against the triggering condition until you save."
+
+- id: ORCUS_POWER_METHOD_ACTING
+  name: Method Acting
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Martial
+    Target: Self
+    Effect: "Until the end of the encounter, you gain a +5 power bonus to all Bluff and Intimidate checks and can use Bluff in place of any Intelligence- or Wisdom-based skill."
+
+- id: ORCUS_POWER_UNSHAKABLE_PERSONA
+  name: Unshakable Persona
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: Martial
+    Target: Self
+    Trigger: "You make any Intelligence-, Wisdom-, or Charisma-based skill check and dislike the result."
+    Effect: "You succeed at the roll."
+
+- id: ORCUS_POWER_BUTT_IN
+  name: Butt In
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": No Action
+    Keywords: "Martial, Psychic"
+    Target: Self
+    Trigger: "You roll for initiative."
+    Effect: "Gain a +10 power bonus to initiative. If you act first in an encounter, you gain a standard action which must be used for a power with the Psychic tag."
+    Special: "Requirements: You are not surprised."

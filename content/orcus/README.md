@@ -5,7 +5,7 @@ CharM YAML authoring format. See [`../../docs/orcus-mapping.md`](../../docs/orcu
 for the concept mapping and [`../../docs/authoring.md`](../../docs/authoring.md)
 for the format.
 
-## Current scope — seven playable classes (levels 1–30)
+## Current scope — all nine playable classes (levels 1–30)
 
 | File | Contents |
 |---|---|
@@ -22,6 +22,8 @@ for the format.
 | `classes/reaper.yaml` | Reaper (Controller, Spirit, Dexterity): Sprouting Overwatch / Spirit Entreaty features, Paviser/Peltast/Sharpshooter talents, auto-trained Nature + 3, selects to 30 |
 | `classes/sylvan.yaml` | Sylvan (Striker, Spirit, Constitution): Watchful/Companionable/Swift talents, Skinchanger/Hunter/**Animal Companion** wild gifts, Favored Terrain, selects to 30 — the Animal Companion gift opens a `Companion` slot |
 | `companions.yaml` | 13 animal companions (`Companion` type) selectable via the Sylvan's Animal Companion wild gift |
+| `classes/harlequin.yaml` | Harlequin (Controller, Martial, Charisma): Fixer/Jester/Saboteur/Scout aura talents, Clever Fellow feature powers, Impudent Flourish, selects to 30 |
+| `classes/mageblade.yaml` | Mageblade (Defender, Arcane, Intelligence): Mageblade's Sigil, Illusion/Martyr/Punishment/Rush sigil talents, Shimmering Shield (+2 AC), selects to 30 |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
 | `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
 | `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
@@ -34,6 +36,10 @@ for the format.
 | `disciplines/starfall.yaml` | Starfall discipline (Reaper) + levels 1–16 powers |
 | `disciplines/seershot.yaml` | Seershot discipline (Reaper) — precision sharpshooting, levels 1–16 |
 | `disciplines/red-in-tooth-and-claw.yaml` | Red in Tooth and Claw discipline (Sylvan) — wild-shape beast combat, levels 1–10 |
+| `disciplines/last-laugh.yaml` | Last Laugh discipline (Harlequin) — taunts, marks and misdirection, levels 1–29 |
+| `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation, levels 1–29 |
+| `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana, levels 1–29 |
+| `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers, levels 1–29 |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
@@ -47,7 +53,7 @@ for the format.
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 | `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **1183 elements across 33 types**, no warnings.
+Compiles to **1355 elements across 33 types**, no warnings.
 
 ### Animal companions
 The Sylvan introduces companion mechanics. Its **Animal Companion** wild gift
@@ -229,19 +235,24 @@ power like *The Finisher* (`3dW`) picks up the equipped weapon's die.
 
 ## What's next
 
-Seven of nine classes are in (a Defender, two Leaders, two Strikers and two
-Controllers), playable across the full 1–30 range, with both Guardian disciplines
+All nine classes are in — a Defender (Guardian), two Leaders (Commander, Priest),
+two Strikers (Exemplar, Sylvan), two Controllers (Magician, Reaper) plus the
+Martial Controller (Harlequin) and the Arcane Defender (Mageblade) — playable
+across the full 1–30 range, with both Guardian disciplines
 (Art of War, Juggernautical), both Exemplar disciplines (Rapier's Point, Blades in
 the Dark), all three of the Magician's (Spells of Ice and Fire, Cup of Brimstone,
 Puppeteer's String), both of the Reaper's (Starfall, Seershot), the Sylvan's
-Red in Tooth and Claw (with **animal-companion** mechanics) and
+Red in Tooth and Claw (with **animal-companion** mechanics), both Harlequin
+disciplines (Last Laugh, Mastermind's Gambit), both Mageblade disciplines
+(Elemental Flux, Veiled Moon) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
 in full to level 29), 14 species ancestries, a sample of feats, a sample of
 prestige paths, all six epic paths, and a starter set of weapons, armor and gear.
-Remaining work: the other two classes (Harlequin, Mageblade) and their disciplines, full power lists for
-the remaining disciplines, the rest of the species roster, prestige paths and
-feats (including paragon/epic-tier and multi-take feats), all 16 cruxes /
-6 heritages, the rest of the kits (incl. the "Dabbles in …" multiclass kits), and
+Remaining work: the remaining disciplines (Frontline Fighting, Strong Bidding,
+High Cunning, Radiant Dawn, Third Mind, …) and the rest of each existing
+discipline's power list, the rest of the species roster, prestige paths and
+feats (including paragon/epic-tier and multi-take feats), the rest of the kits
+(incl. the "Dabbles in …" multiclass kits), and
 the rest of the equipment list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard

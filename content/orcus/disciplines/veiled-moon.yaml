@@ -1,0 +1,499 @@
+# Veiled Moon discipline (Mageblade / Dabbles in Mageblading kit). Arcane teleport
+# and spirit-walking weapon powers that strike from impossible vantage points.
+# Key ability Intelligence, secondary Dexterity. Same tagging contract.
+# Levels 1-29 transcribed (rounds out the Mageblade's class power pool).
+
+- id: ORCUS_DISCIPLINE_VEILED_MOON
+  name: Veiled Moon
+  type: Discipline
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Key Ability": Intelligence
+    "Secondary Ability": Dexterity
+    Sources: "Mageblade (class); Dabbles in Mageblading (kit)"
+    Description: "You pass through worlds, delivering attacks from impossible vantage points."
+
+# --- At-Will attack powers (level 1) ------------------------------------------
+- id: ORCUS_POWER_DIMENSIONAL_STRIKE
+  name: Dimensional Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": At-Will
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs Reflex"
+    Hit: "1dW + Intelligence modifier damage. Level 21: 2dW + Intelligence modifier damage."
+
+# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_DISTURBING_BLOW
+  name: Disturbing Blow
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "1dW + Intelligence modifier damage. The creature grants combat advantage to the next attack against it, provided that attack occurs before the end of your next turn."
+
+- id: ORCUS_POWER_BRILLIANT_MOON
+  name: Brilliant Moon
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs Reflex"
+    Hit: "2dW + Intelligence modifier force damage."
+
+- id: ORCUS_POWER_FLICKER_STRIKE
+  name: Flicker Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": Encounter
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon, Teleport"
+    Target: Self
+    Effect: "Teleport 6. Secondary Attack: Intelligence vs AC. 2dW + Intelligence modifier damage on a hit, and you can teleport 6."
+
+# --- Daily attack powers ------------------------------------------------------
+- id: ORCUS_POWER_CURSED_FATE
+  name: Cursed Fate
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs Will"
+    Hit: "2dW + Intelligence modifier damage and the target grants combat advantage until the end of your next turn."
+    Miss: "1dW + Intelligence modifier damage and the creature grants combat advantage to the next attack against it, provided that attack occurs before the end of your next turn."
+
+- id: ORCUS_POWER_RESONANCE_STRIKE
+  name: Resonance Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Near burst 10, one enemy in range"
+    Attack: "Intelligence vs Reflex"
+    Hit: "3dW + Intelligence modifier force damage."
+    Miss: "Half damage."
+
+- id: ORCUS_POWER_BREATH_OF_THE_MOON
+  name: Breath of the Moon
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Near arc 3"
+    Attack: "Intelligence vs Will"
+    Hit: "2dW + Intelligence modifier psychic damage, and the target cannot target you with attacks (save ends)."
+    Miss: "Target cannot target you with attacks until the end of your next turn."
+
+- id: ORCUS_POWER_ESSENCE_SHATTERING_STRIKE
+  name: Essence Shattering Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs Fortitude"
+    Hit: "3dW + Intelligence modifier damage and the target is dazed (save ends)."
+    Miss: "Half damage. The target is not dazed."
+
+- id: ORCUS_POWER_ETHER_WAVE
+  name: Ether Wave
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Near arc 4"
+    Attack: "Intelligence vs Reflex"
+    Hit: "3dW + Intelligence modifier force damage, and persistent 5 force damage (save ends)."
+    Miss: "Half damage (no persistent damage)."
+
+- id: ORCUS_POWER_WARP_WORM
+  name: Warp Worm
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon, Teleport"
+    Target: "Melee weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "3dW + Intelligence modifier damage, and you teleport up to 4 squares."
+    Miss: "Half damage, and you teleport up to 2 squares."
+    Effect: "Make two secondary attacks. Secondary Attack: Intelligence vs AC; 2d8 + Intelligence modifier damage, and you teleport up to 4 squares; on a miss, no damage and you teleport up to 2 squares. Secondary Attack: Intelligence vs AC; 1d8 + Intelligence modifier damage, and you teleport up to 4 squares; on a miss, no damage and you teleport up to 2 squares."
+    Special: "No creature may be the target of more than one attack as part of this action."
+
+- id: ORCUS_POWER_DISPERSAL_STRIKE
+  name: Dispersal Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "4dW + Intelligence modifier damage."
+    Miss: "Half damage."
+    Effect: "The target becomes incorporeal (save ends). While incorporeal, their attacks behave as if all targets had the incorporeal property (in most cases, this means they do half damage)."
+
+- id: ORCUS_POWER_FLASHING_ETHER_TOUCH
+  name: Flashing Ether Touch
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon, Teleport"
+    Target: "Melee touch, one target"
+    Attack: "Intelligence vs Will"
+    Hit: "The target disappears until the beginning of your next turn. Then they appear in the space 12 squares above the space that they disappeared from."
+    Miss: "The target disappears until the beginning of your next turn. Then they appear in the space 6 squares above the space that they disappeared from."
+
+- id: ORCUS_POWER_BANISH_TO_THE_BEYOND
+  name: Banish to the Beyond
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon, Teleport"
+    Target: "Melee touch, one target"
+    Attack: "Intelligence vs Will"
+    Hit: "4dW + Intelligence modifier force damage. If, immediately after this damage, the target's current hit points are lower than yours, they are transported to the Astral Plane indefinitely. Otherwise, they are transported to the Astral Plane (save ends)."
+    Miss: "Half damage, and the target is not transported to the Astral Plane."
+
+- id: ORCUS_POWER_ECLIPSING_MOON
+  name: Eclipsing Moon
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": Daily
+    "Power Type": Attack
+    "Action Type": Standard Action
+    Keywords: "Arcane, Weapon, Teleport"
+    Target: "Near burst 12, all enemies"
+    Attack: "Intelligence vs Reflex"
+    Hit: "2dW + Intelligence modifier damage."
+    Effect: "After all attacks had been made, choose a space adjacent to an enemy within range. You teleport to that space."
+
+# --- Utility powers -----------------------------------------------------------
+- id: ORCUS_POWER_GHOST_HUNTING_BLOW
+  name: Ghost Hunting Blow
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "Your attacks do force damage as well as any other type of damage, and they do damage against incorporeal targets as if the targets were not incorporeal."
+
+- id: ORCUS_POWER_INNER_SENSE
+  name: Inner Sense
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Free Action
+    Keywords: Arcane
+    Target: Self
+    Trigger: "You make a saving throw."
+    Effect: "Add +2 to the result."
+    Special: "You can use this power after seeing the result of your roll."
+
+- id: ORCUS_POWER_LEAPING_SPIRIT_DANCE
+  name: Leaping Spirit Dance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "You receive a +2 power bonus to AC and Reflex. If you end any turn without having moved at least 2 squares, this stance ends."
+
+- id: ORCUS_POWER_SPIRIT_SENSING_STANCE
+  name: Spirit Sensing Stance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "2"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "You know the location to the nearest square of all creatures within 6 squares of you, even if they are hiding, incorporeal or invisible."
+
+- id: ORCUS_POWER_FADING_STRIKE
+  name: Fading Strike
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Move Action
+    Keywords: "Arcane, Teleport"
+    Target: Self
+    Effect: "Teleport 6."
+
+- id: ORCUS_POWER_HALF_GONE
+  name: Half-Gone
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: Arcane
+    Target: Self
+    Trigger: "You are hit by an attack."
+    Effect: "You are incorporeal for the purpose of this attack (typically, you take half damage from the attack)."
+
+- id: ORCUS_POWER_ALTERED_PENUMBRA
+  name: Altered Penumbra
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "6"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Conjuration, Teleport"
+    Target: Self
+    Trigger: "You are the target of an attack."
+    Effect: "You teleport up to 2 squares. In your space is conjured an immovable illusion of yourself. The conjuration disappears at the end of your next turn, or once it is hit by a melee or ranged attack (potentially including the attack that triggered the use of this power)."
+    Special: "If the teleportation does not move you outside the range of a near or far attack, you are still subject to that attack."
+    Maintain: "Move: Repeat the effect."
+
+- id: ORCUS_POWER_FADING_LEAP
+  name: Fading Leap
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Teleport"
+    Target: Self
+    Effect: "Teleport 6."
+
+- id: ORCUS_POWER_FORMLESS_DANCE
+  name: Formless Dance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Illusion, Stance"
+    Target: Self
+    Effect: "You have concealment and truesight 6."
+
+- id: ORCUS_POWER_GHOSTWALK
+  name: Ghostwalk
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: Arcane
+    Target: Self
+    Hit: "You become incorporeal until the end of your next turn."
+
+- id: ORCUS_POWER_ETHEREAL_REMINISCENCE
+  name: Ethereal Reminiscence
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "10"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: Arcane
+    Target: Self
+    Hit: "You become incorporeal until the end of your next turn. You may spend a recovery to heal your recovery value."
+
+- id: ORCUS_POWER_TWISTING_ETHER
+  name: Twisting Ether
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Encounter
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Teleport"
+    Target: "Near burst 5, one ally"
+    Effect: "You and your ally simultaneously swap spaces via teleportation."
+
+- id: ORCUS_POWER_STANCE_OF_THE_ETHER_GATE
+  name: Stance of the Ether Gate
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "16"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance, Teleport"
+    Target: Self
+    Effect: "As a move action, you can teleport 6."
+
+- id: ORCUS_POWER_ANCHORING_SPIRIT
+  name: Anchoring Spirit
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "You become incorporeal. Enemies within 12 cannot choose to teleport. Allies within 12 can always choose not to teleport if they would be subject to an effect that would teleport them."
+
+- id: ORCUS_POWER_FADE_THROUGH
+  name: Fade Through
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Standard Action
+    Keywords: "Arcane, Teleport"
+    Target: Self
+    Effect: "Move up to your speed, with phasing. Make a basic melee attack against each enemy that you move through."
+
+- id: ORCUS_POWER_LUNAR_PENUMBRA
+  name: Lunar Penumbra
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Counter Action
+    Keywords: "Arcane, Teleport"
+    Target: Self
+    Trigger: "You are the target of an attack."
+    Effect: "You and the attacker swap places via teleportation. The attacker now becomes the target of their own attack."
+
+- id: ORCUS_POWER_PHANTOM_PENUMBRA
+  name: Phantom Penumbra
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Illusion"
+    Target: Self
+    Effect: "A number of times equal to the number of recoveries you have spent so far since your last long rest, you can force enemies within 6 squares to reroll an attack roll. You can only force each attack roll to be rerolled once. Any remaining uses are lost when the encounter ends."
+
+- id: ORCUS_POWER_SPIRITUAL_WEAPON_STANCE
+  name: Spiritual Weapon Stance
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
+  fields:
+    Level: "22"
+    "Power Usage": Daily
+    "Power Type": Utility
+    "Action Type": Swift Action
+    Keywords: "Arcane, Stance"
+    Target: Self
+    Effect: "Your attacks do persistent 5 force damage (save ends)."
