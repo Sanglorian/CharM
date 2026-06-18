@@ -18,7 +18,6 @@
     "Weapon Proficiencies": "Simple melee, martial melee, simple ranged, martial ranged"
     "Focus Proficiencies": "Staff, druidic focus, martial focus"
     "Class Skills": "Acrobatics, Athletics, Diplomacy, Dungeoneering, Endure, Heal, Insight, Intimidate, Nature, Perception, Stealth"
-    Flavor: "You wear the shapes of beasts and run with a companion at your side."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_SYLVAN
       type: Grants
@@ -168,7 +167,8 @@
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Wisdom
-    Description: "You gain the fearful rampage power. Secondary ability: Wisdom."
+    Description: >-
+      You gain the fearful rampage power. Your secondary ability is Wisdom.
   rules:
     - grant: ORCUS_POWER_FEARFUL_RAMPAGE
       type: Power
@@ -182,7 +182,8 @@
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "You gain the companion rampage power. Secondary ability: Charisma."
+    Description: >-
+      You gain the companion rampage power. Your secondary ability is Charisma.
   rules:
     - grant: ORCUS_POWER_COMPANION_RAMPAGE
       type: Power
@@ -196,7 +197,8 @@
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Dexterity
-    Description: "You gain the swift rampage power. Secondary ability: Dexterity."
+    Description: >-
+      You gain the swift rampage power. Your secondary ability is Dexterity.
   rules:
     - grant: ORCUS_POWER_SWIFT_RAMPAGE
       type: Power
@@ -210,42 +212,56 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": No Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "No Action"
     Keywords: "Spirit, Weapon or Focus, Psychic, Fear"
     Target: "Melee touch, one creature"
-    Trigger: "You hit with an attack."
-    Effect: "The target takes 2 + your Wisdom modifier damage and is shunted 1. Once per round. Level 11: one or two creatures. Level 21: all enemies."
-
+    Trigger: "You hit with an attack"
+    Effect: >-
+      The target takes damage equal to 2 + your Wisdom modifier and is shunted
+      1.
+    Special: >-
+      You can use this power once per round. Level 11: Melee touch, one or two
+      creatures. Level 21: Melee touch, all enemies.
 - id: ORCUS_POWER_COMPANION_RAMPAGE
   name: Companion Rampage
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": No Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "No Action"
     Keywords: "Spirit, Weapon or Focus"
     Target: "Special range, one creature"
-    Trigger: "You hit with an attack."
-    Effect: "The target (within melee reach of you or your animal companion) takes 2 + your Charisma modifier damage. Once per round. Level 11: one or two creatures. Level 21: all enemies."
-
+    Trigger: "You hit with an attack"
+    Effect: >-
+      The target must be within Melee reach of you, or of your animal companion.
+      The target takes damage equal to 2 + your Charisma modifier.
+    Special: >-
+      You can use this power once per round. Level 11: Special range, one or two
+      creatures. Level 21: Special range, all enemies.
 - id: ORCUS_POWER_SWIFT_RAMPAGE
   name: Swift Rampage
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": No Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "No Action"
     Keywords: "Spirit, Weapon or Focus"
     Target: "Melee touch, one creature"
-    Trigger: "You hit with an attack."
-    Effect: "The target takes 2 + your Dexterity modifier damage. You shift 1. Once per round. Level 11: one or two creatures. Level 21: all enemies."
-
+    Trigger: "You hit with an attack"
+    Effect: >-
+      The target takes damage equal to 2 + your Dexterity modifier. You shift 1.
+    Special: >-
+      You can use this power once per round. Level 11: Melee touch, one or two
+      creatures. Level 21: Melee touch, all enemies.
 # --- Wild Gift (choose one) ---------------------------------------------------
 - id: ORCUS_WILDGIFT_SKINCHANGER
   name: "Wild Gift: Skinchanger"
@@ -253,23 +269,63 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
-    Description: "In light or no armor, add your Constitution modifier to AC instead of Dexterity/Intelligence. You can spend additional shape powers for extra Form Attacks."
 
+    Description: >-
+      When you wear light or no armor, you can add your Constitution modifier to
+      your AC instead of Dexterity or Intelligence. While under the effects of a
+      shape of the X power, you can spend any other shape of the X power you
+      have yet to use in order to make an additional Form Attack, over and above
+      the one granted by the using the original shape of the X power. This
+      additional Form Attack may be of either the shape you are currently in or
+      the additional shape you have expended. You may use this option once for
+      each shape of the X power you have yet to use.
 - id: ORCUS_WILDGIFT_HUNTER
   name: "Wild Gift: Hunter"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
-    Description: "Treat all one-handed melee weapons as having the side weapon property. +1 to attacks vs enemies no ally is closer to. Bonus feat (Toughness, Two-Weapon Defense, Shield Proficiency or Melee Finesse)."
 
+    Description: >-
+      You treat all one-handed melee weapons as having the side weapon property.
+      When no ally is closer to an enemy than you are, you get a +1 bonus on
+      attack rolls against that enemy. You gain this bonus against all enemies
+      who meet these criteria. In addition, you also get a bonus feat:
+      Toughness, Two-Weapon Defense, Shield Proficiency or Melee Finesse.
 - id: ORCUS_WILDGIFT_ANIMAL_COMPANION
   name: "Wild Gift: Animal Companion"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
-    Description: "You gain an animal companion (its level = yours; HP = your staggered value). When you use a Red in Tooth and Claw power, your companion may use it in your place."
+    Description: >-
+      You gain the service of an animal companion (from the list below). When
+      you use a Red in Tooth and Claw power, you can choose for your animal
+      companion to use the power in your place (it is assumed to always be in
+      wild shape form), using your attack bonus and damage die. The animal
+      companion obeys the following rules: Actions Your companion’s initiative
+      equals your own. If you take a move action, the animal companion can take
+      a move action as well. You can give up actions to command the animal
+      companion, in which case it gets to take the same actions. For example,
+      you can give up your standard action in order for the animal companion to
+      take a standard action, at your direction. You can also use an immediate
+      action in order for the animal companion to make an opportunity attack or
+      use a counter or reaction (in all three cases, only if eligible to do so).
+      If you are incapacitated or not present, your animal companion gets its
+      full complement of actions without needing to be "commanded". However, it
+      acts like the animal it is: loyally but with limited intelligence. Stats
+      and Combat The animal companion’s level is equal to your own. The animal
+      companion’s maximum HP are equal to your staggered value. Your animal
+      companion has no recoveries of its own, but can use yours. Whenever you
+      have the chance to spend a recovery to heal, you can spend a second
+      recovery to heal your animal companion your recovery value. When your
+      animal companion drops to 0 hit points, it disappears, leaving behind no
+      physical form. It reappears after your next long rest, at full HP. Your
+      animal companion can contribute to a flank. Other Your animal companion
+      always obeys your commands. If you retrain, you can select a different
+      animal companion. The animal companion is an ally of you, and of your
+      allies. The animal companion is a bright, sensitive animal, but
+      nonetheless has animal-level intelligence.
   rules:
     - select:
         type: Companion

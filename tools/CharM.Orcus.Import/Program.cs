@@ -47,10 +47,20 @@ if (mode == "generate-discipline")
     return 0;
 }
 
+if (mode == "patch-class")
+{
+    // patch-class <repo-root> <classFile.yaml> "<Class Name>"
+    string pRoot = args[1];
+    string classFile = args[2];
+    string className = args[3];
+    string book = Directory.EnumerateFiles(pRoot, "Orcus Classes and Powers*.md").Single();
+    return ClassPatcher.Patch(book, classFile, className);
+}
+
 string root = args.Length > 1 ? args[1] : Directory.GetCurrentDirectory();
 string reportPath = args.Length > 2 ? args[2] : Path.Combine(root, "tools/CharM.Orcus.Import/audit-report.md");
 
-if (mode != "audit") { Console.Error.WriteLine("unknown mode; use 'audit' or 'generate-discipline'"); return 1; }
+if (mode != "audit") { Console.Error.WriteLine("unknown mode; use 'audit', 'generate-discipline' or 'patch-class'"); return 1; }
 
 var sourceFiles = Directory.EnumerateFiles(root, "Orcus*.md", SearchOption.TopDirectoryOnly)
     .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase))

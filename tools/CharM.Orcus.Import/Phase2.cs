@@ -189,9 +189,15 @@ public static class Phase2
             // After header.
             if (TryBoldLabel(line, out string label, out string rest))
             {
-                string firstWord = label.Split(' ', 2)[0];
-                if (RangeWords.Contains(firstWord) && pw.Target.Length == 0)
+                string fw = label.Split(' ', 2)[0];
+                // The range/target line: a range word, or the "Special range, ..."
+                // form some powers use for unusual targeting.
+                bool isRange = RangeWords.Contains(fw)
+                    || (fw.Equals("Special", StringComparison.OrdinalIgnoreCase)
+                        && rest.TrimStart().StartsWith("range", StringComparison.OrdinalIgnoreCase));
+                if (isRange && pw.Target.Length == 0)
                 { pw.Target = Unwrap(line); current = "Target"; continue; }
+
                 if (label.Equals("Target", StringComparison.OrdinalIgnoreCase))
                 { pw.Target = (pw.Target + " " + Unwrap(rest)).Trim(); current = "Target"; continue; }
 
@@ -378,52 +384,88 @@ public static class Phase2
         int pass = 0;
         foreach (var pw in disc.Powers)
         {
-            var blockSeq = Tokens(pw.RawBlock);
-            var blockTokens = blockSeq.ToHashSet();
-
-            // Tokens that exist in the output as values OR as structural keys.
-            var covered = new HashSet<string>(StructuralKeyWords);
-            foreach (var t in Tokens(pw.Name)) covered.Add(t);
-            foreach (var t in Tokens(pw.Usage)) covered.Add(t);
-            foreach (var t in Tokens(pw.Type)) covered.Add(t);
-            foreach (var t in Tokens(pw.Level)) covered.Add(t);
-            foreach (var t in Tokens(pw.Action)) covered.Add(t);
-            foreach (var t in Tokens(pw.Keywords)) covered.Add(t);
-            foreach (var t in Tokens(pw.Target)) covered.Add(t);
-            foreach (var t in Tokens(pw.Flavor)) covered.Add(t);
-            foreach (var (lbl, v) in pw.Body)
-            {
-                foreach (var t in Tokens(lbl)) covered.Add(t);   // the field key word
-                foreach (var t in Tokens(v)) covered.Add(t);
-            }
-
-            var problems = new List<string>();
-
-            // FORWARD (no fabrication / rewording): each prose field's tokens must
-            // form a subsequence of the block's tokens (same words, same order;
-            // intervening structural words may be skipped).
-            void Fwd(string fieldName, string val)
-            {
-                if (string.IsNullOrWhiteSpace(val)) return;
-                var seq = Tokens(val);
-                if (seq.Count > 0 && !IsSubsequence(seq, blockSeq))
-                    problems.Add($"FABRICATED/REWORDED in {fieldName}: \"{Short(val)}\"");
-            }
-            Fwd("Keywords", pw.Keywords);
-            Fwd("Target", pw.Target);
-            foreach (var (lbl, v) in pw.Body) Fwd(lbl, v);
-            if (pw.Flavor.Length > 0) Fwd("Flavor", pw.Flavor);
-
-            // BACKWARD (no omission): every source word must be covered.
-            var missing = blockTokens.Where(t => !covered.Contains(t)).ToList();
-            if (missing.Count > 0)
-                problems.Add($"OMITTED source words: {string.Join(", ", missing.Take(30))}");
-
+            var problems = CheckPower(pw);
             if (problems.Count == 0) pass++;
             else failures.Add($"  ✗ {pw.Name} (L{pw.Level} {pw.Usage} {pw.Type})\n        "
                               + string.Join("\n        ", problems));
         }
         return (pass, failures);
+    }
+
+    /// <summary>Per-power round-trip check: forward (no fabrication/rewording) +
+    /// backward (no omission). Returns an empty list when faithful.</summary>
+    public static List<string> CheckPower(ParsedPower pw)
+    {
+        var blockSeq = Tokens(pw.RawBlock);
+        var blockTokens = blockSeq.ToHashSet();
+
+        var covered = new HashSet<string>(StructuralKeyWords);
+        foreach (var t in Tokens(pw.Name)) covered.Add(t);
+        foreach (var t in Tokens(pw.Usage)) covered.Add(t);
+        foreach (var t in Tokens(pw.Type)) covered.Add(t);
+        foreach (var t in Tokens(pw.Level)) covered.Add(t);
+        foreach (var t in Tokens(pw.Action)) covered.Add(t);
+        foreach (var t in Tokens(pw.Keywords)) covered.Add(t);
+        foreach (var t in Tokens(pw.Target)) covered.Add(t);
+        foreach (var t in Tokens(pw.Flavor)) covered.Add(t);
+        foreach (var (lbl, v) in pw.Body)
+        {
+            foreach (var t in Tokens(lbl)) covered.Add(t);
+            foreach (var t in Tokens(v)) covered.Add(t);
+        }
+
+        var problems = new List<string>();
+        void Fwd(string fieldName, string val)
+        {
+            if (string.IsNullOrWhiteSpace(val)) return;
+            var seq = Tokens(val);
+            if (seq.Count > 0 && !IsSubsequence(seq, blockSeq))
+                problems.Add($"FABRICATED/REWORDED in {fieldName}: \"{Short(val)}\"");
+        }
+        Fwd("Keywords", pw.Keywords);
+        Fwd("Target", pw.Target);
+        foreach (var (lbl, v) in pw.Body) Fwd(lbl, v);
+        if (pw.Flavor.Length > 0) Fwd("Flavor", pw.Flavor);
+
+        var missing = blockTokens.Where(t => !covered.Contains(t)).ToList();
+        if (missing.Count > 0)
+            problems.Add($"OMITTED source words: {string.Join(", ", missing.Take(30))}");
+        return problems;
+    }
+
+    /// <summary>Verify a verbatim prose value (e.g. a feature Description) is a
+    /// subsequence of the given source text — no rewording, no fabrication.</summary>
+    public static bool TextIsFaithful(string value, string sourceText) =>
+        IsSubsequence(Tokens(value), Tokens(sourceText));
+
+    /// <summary>Parse a single power's blockquote lines (public wrapper).</summary>
+    public static ParsedPower ParsePowerBlock(string name, List<string> blockLines) =>
+        ParsePower(name, blockLines);
+
+    /// <summary>Emit the `fields:` child lines (Level..Flavor) for a power, at the
+    /// given indent — reused by the class patcher.</summary>
+    public static List<string> EmitFieldLines(ParsedPower pw, int indent)
+    {
+        string pad = new string(' ', indent);
+        var sb = new StringBuilder();
+        sb.AppendLine($"{pad}Level: \"{pw.Level}\"");
+        sb.AppendLine($"{pad}\"Power Usage\": {Scalar(pw.Usage)}");
+        sb.AppendLine($"{pad}\"Power Type\": {Scalar(pw.Type)}");
+        if (pw.Action.Length > 0) sb.AppendLine($"{pad}\"Action Type\": {Scalar(pw.Action)}");
+        if (pw.Keywords.Length > 0) AppendField(sb, "Keywords", pw.Keywords, indent);
+        if (pw.Target.Length > 0) AppendField(sb, "Target", pw.Target, indent);
+        foreach (var (label, value) in pw.Body)
+            if (value.Length > 0) AppendField(sb, label, value, indent);
+        if (pw.Flavor.Length > 0) AppendField(sb, "Flavor", pw.Flavor, indent);
+        return sb.ToString().TrimEnd('\n').Split('\n').ToList();
+    }
+
+    /// <summary>Emit a single field (key: value) at the given indent as lines.</summary>
+    public static List<string> EmitFieldLines(string key, string value, int indent)
+    {
+        var sb = new StringBuilder();
+        AppendField(sb, key, value, indent);
+        return sb.ToString().TrimEnd('\n').Split('\n').ToList();
     }
 
     static List<string> Tokens(string? s) =>

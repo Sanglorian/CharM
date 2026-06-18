@@ -38,6 +38,19 @@ tangled in the YAML:
 - **Engine semantics** (`id`, `type`, `categories`, `rules`) — hand-authored
   overlay, keyed by id, containing no source prose.
 
-Phase 2 (not yet built, pending review of this audit) is the parser + generator
-that regenerates the verbatim text and re-attaches the semantic overlay, with the
-round-trip check as a CI gate.
+Phase 2 (the parser + generator) regenerates the verbatim text and re-attaches the
+semantic overlay, with the round-trip check as a CI gate.
+
+## Commands
+
+- `audit <repo-root>` — the fidelity/coverage report described above.
+- `generate-discipline <repo-root> "<Name>" <DISCIPLINE_ID> <SUFFIX> <out.yaml>` —
+  regenerate a whole discipline file verbatim from the book; runs the round-trip
+  gate (forward: no fabricated/reworded text; backward: no dropped source word).
+- `patch-class <repo-root> <classFile.yaml> "<Class Name>"` — rewrite only the
+  verbatim-text fields of an existing class file (feature/talent Description prose
+  and feature-power stat blocks) from the book, and delete invented `Flavor`.
+  Every `rules:` block, id, category and structural field is preserved; each
+  rewritten feature power is round-trip checked. This keeps the hand-authored
+  engine wiring (HP formulas, selects, grants, swaps) while making the copied
+  text faithful.

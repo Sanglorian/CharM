@@ -2,8 +2,8 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1597
-- Prose fields scanned: 4100; flagged: 602
-- Flavor fields: 401 faithful, 12 INVENTED
+- Prose fields scanned: 4102; flagged: 595
+- Flavor fields: 401 faithful, 11 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -20,7 +20,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 - classes/magician.yaml :: Magician :: "You bend the elements and the minds of others to your will."
 - classes/priest.yaml :: Priest :: "You channel the will of the gods to mend, ward and rally."
 - classes/reaper.yaml :: Reaper :: "You loose rains of arrows and bind the battlefield with willing spirits."
-- classes/sylvan.yaml :: Sylvan :: "You wear the shapes of beasts and run with a companion at your side."
 - paths/epic.yaml :: For the Sake of the Team :: "You give an ally the precious time they need to complete the task."
 - paths/epic.yaml :: Not Tolerate Losing :: "You make every ally fear you more than the enemy."
 
@@ -174,29 +173,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ In light or no armor, add Strength to AC instead of Dex/Int if higher
   [Class Feature] Sharpshooter — field 'Description':
       ✗ +1 to attack rolls against targets 6 or more squares away
-```
-### classes/sylvan.yaml
-```
-  [Power] Fearful Rampage — field 'Effect':
-      ✗ The target takes 2 + your Wisdom modifier damage and is shunted 1
-      ✗ Level 11: one or two creatures
-      ✗ Level 21: all enemies
-  [Power] Companion Rampage — field 'Effect':
-      ✗ The target (within melee reach of you or your animal companion) takes 2 + your Charisma modifier damage
-      ✗ Level 11: one or two creatures
-      ✗ Level 21: all enemies
-  [Power] Swift Rampage — field 'Effect':
-      ✗ The target takes 2 + your Dexterity modifier damage
-      ✗ Level 11: one or two creatures
-      ✗ Level 21: all enemies
-  [Class Feature] Wild Gift: Skinchanger — field 'Description':
-      ✗ In light or no armor, add your Constitution modifier to AC instead of Dexterity/Intelligence
-      ✗ You can spend additional shape powers for extra Form Attacks
-  [Class Feature] Wild Gift: Hunter — field 'Description':
-      ✗ +1 to attacks vs enemies no ally is closer to
-  [Class Feature] Wild Gift: Animal Companion — field 'Description':
-      ✗ You gain an animal companion (its level = yours
-      ✗ When you use a Red in Tooth and Claw power, your companion may use it in your place
 ```
 ### companions.yaml
 ```
