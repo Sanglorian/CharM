@@ -1,191 +1,453 @@
-# The Juggernautical discipline (Guardian / Embodies Strength kit). A sturdy,
-# unstoppable bruiser who is almost impossible to take down or hold back. Same
-# tagging contract as the other disciplines: [disciplineId, <frequency>] (+
-# `ability-swap` on powers that make the character's own attack) with a real
-# Level field. Levels 1-3 transcribed.
+# Juggernautical discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_JUGGERNAUTICAL
-  name: Juggernautical
+  name: "Juggernautical"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Strength
-    "Secondary Ability": Constitution
-    Sources: "Guardian (class); Embodies Strength (kit)"
-    Description: "You are sturdy and powerful, and it is almost impossible to take you down or hold you back."
+    "Key Ability": "Strength"
+    "Secondary Ability": "Constitution"
+    Sources: "Guardian (class), Embodies Strength (kit)"
+    Description: >-
+      You are sturdy and powerful, and it is almost impossible to take you down
+      or hold you back.
 
-# --- At-Will attack power (level 1) -------------------------------------------
 - id: ORCUS_POWER_DEVASTATING_BODY_ATTACK
-  name: Devastating Body Attack
+  name: "Devastating Body Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature up to one square out of reach"
     Attack: "Strength vs AC"
-    Hit: >
+    Hit: >-
       1dW + Strength modifier damage, and you push the target 1 square. If the
       target cannot be pushed because of an obstruction, you inflict maximum
       damage. Level 21: 2dW + Strength modifier damage.
-    Effect: "Before your attack, shift up to one square towards the target. This must bring the target within reach."
-    Flavor: "You make the target think it just got struck by a gorilla... riding a horse."
+    Effect: >-
+      Before your attack, shift up to one square towards the target. This must
+      bring the target within reach.
+    Flavor: >-
+      You make the target think it just got struck by a gorilla … riding a
+      horse.
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_KNOCK_ABOUT_STRIKE
-  name: Knock-About Strike
+  name: "Knock-About Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Make a basic melee attack. If you hit, the target is also rattled until the end of your next turn."
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Make a basic melee attack. If you hit, the target is also rattled until
+      the end of your next turn.
     Flavor: "You leave your opponent reeling."
 
-- id: ORCUS_POWER_OUT_OF_THE_FIRE
-  name: Out of the Fire
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter]
-  fields:
-    Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Martial, Weapon"
-    Target: Self
-    Trigger: "You hit one creature."
-    Effect: >
-      The target takes 1dW extra damage from the triggering attack. Secondary
-      Effect: you and one adjacent ally can shift a number of squares equal to
-      1 + your Strength modifier. You and the ally must be adjacent at the end of
-      the shift.
-    Flavor: "You know when to fight and when not to. You grab an ally and pull back."
-
-# --- Daily attack power (level 1) ---------------------------------------------
 - id: ORCUS_POWER_INCONSEQUENTIAL_INJURY
-  name: Inconsequential Injury
+  name: "Inconsequential Injury"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": No Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Select one condition you suffer from. Gain a +4 bonus to the saving throw against that condition until you pass. When you pass, you gain two basic attacks."
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Select one condition you suffer from. Gain a +4 bonus to the saving throw
+      against that condition until you pass. When you pass, you gain two basic
+      attacks.
     Flavor: "Nothing clears the head like hurting something else."
 
-# --- Utility powers (level 2) -------------------------------------------------
 - id: ORCUS_POWER_FOR_THE_COMMON_HONOR
-  name: For the Common Honor
+  name: "For the Common Honor"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
     Target: "Near burst 2, one ally"
-    Trigger: "One staggered ally in range is hit by an attack that does not include you."
+    Trigger: >-
+      One staggered ally in range is hit by an attack that does not include you.
     Effect: "You are hit by the attack instead of the ally."
-    Flavor: "In an instant, you weigh the options and realize someone else's life is more vital than your own."
+    Flavor: >-
+      In an instant, you weigh the options and realize someone else’s life is
+      more vital than your own.
 
-- id: ORCUS_POWER_IM_THE_JUGGERNAUT
-  name: I'm the Juggernaut
+- id: ORCUS_POWER_I_M_THE_JUGGERNAUT
+  name: "I’m the Juggernaut"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: Self
-    Effect: >
-      Shift a number of squares equal to 1 + your Constitution modifier, ignoring
-      difficult terrain. You can move through enemies' squares during this
-      movement. Non-creature obstructions in squares you attempt to enter take
-      damage equal to 5 x your Strength modifier; if this destroys the
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Shift a number of squares equal to 1 + your Constitution modifier,
+      ignoring difficult terrain. You can move through enemies’ squares during
+      this movement. Non-creature obstructions in squares you attempt to enter
+      take damage equal to 5 × your Strength modifier: if this destroys the
       obstruction, you can enter the square.
-    Flavor: "You ignore any obstacles as you plow through terrain and opponents."
+    Flavor: >-
+      You ignore any obstacles as you plow through terrain and opponents.
 
 - id: ORCUS_POWER_THE_BEHEMOTH
-  name: The Behemoth
+  name: "The Behemoth"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
-    Target: Self
-    Effect: "You gain temporary hit points equal to twice your Strength modifier."
-    Special: "Use a standard action and a move action instead of a swift action with this power to gain temporary hit points equal to twice your Constitution and Strength modifiers."
-    Flavor: "You lift up a few inches and widen your stance, finding a newly found surge of adrenaline."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      You gain temporary hit points equal to twice your Strength modifier.
+    Special: >-
+      Use a standard action and a move action instead of a swift action with
+      this power and gain temporary hit points equal to twice your Constitution
+      and Strength modifier.
+    Flavor: >-
+      You lift up a few inches and widen your stance. You find a newly found
+      surge of adrenaline.
 
-# --- Higher-level powers (to populate the level 4-30 class selects) ------------
+- id: ORCUS_POWER_OUT_OF_THE_FIRE
+  name: "Out of the Fire"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit one creature"
+    Effect: >-
+      The target takes 1dW extra damage from the triggering attack. Secondary
+      Effect: You and one adjacent ally can shift a number of squares equal to
+      1+ your Strength modifier. You and the ally must be adjacent at the end of
+      the shift.
+    Flavor: >-
+      You know when to fight and when not to. You grab an ally and pull back.
+
 - id: ORCUS_POWER_WADE_IN
-  name: Wade In
+  name: "Wade In"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "3dW + Strength modifier damage and the target is dazed until the end of your next turn."
-    Effect: "You gain resistance to all damage 5 until the end of your next turn."
+    Hit: >-
+      3dW + Strength modifier damage and the target is dazed until the end of
+      your next turn.
+    Effect: >-
+      You gain resistance to all damage 5 until the end of your next turn.
     Flavor: "A powerful blow tells your foes to bring it on. You are ready."
 
 - id: ORCUS_POWER_ONCE_MORE_INTO_THE_BREACH
-  name: Once More Into the Breach
+  name: "Once More Into the Breach"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "6"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
     Keywords: "Healing, Martial"
-    Target: Self
+    Target: "Self"
     Requirements: "You must be staggered."
-    Effect: "You regain hit points equal to twice your Strength modifier plus twice your Constitution modifier."
-    Flavor: "Despite injuries and your brain telling you you're done, your body refuses to fall."
+    Effect: >-
+      You regain hit points equal to twice your Strength modifier plus twice
+      your Constitution modifier.
+    Flavor: >-
+      Despite injuries and your brain telling you you’re done, your body refuses
+      to fall.
+
+- id: ORCUS_POWER_THE_BULLDOZER
+  name: "The Bulldozer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Stance"
+    Target: "Self"
+    Effect: >-
+      While you are in this stance, you have resistance 5 to all damage. You can
+      shift 1 as a swift action, but you must shift towards the nearest enemy.
+    Flavor: >-
+      You slowly approach your enemies, pushing your advancing line and claiming
+      more of the battlefield.
+
+- id: ORCUS_POWER_IN_THE_FACE
+  name: "In The Face"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "No Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, the triggering enemy"
+    Trigger: "One enemy hits you with an opportunity attack."
+    Attack: "Strength vs AC"
+    Hit: "1dW + Strength modifier damage, and the attack misses."
+    Boost: "Level 17 3dW + Strength modifier damage, and the attack misses."
+    Flavor: >-
+      An enemy raises a club, sword, or any other archaic implement of barbarity
+      and you respond with your own medieval response.
+
+- id: ORCUS_POWER_HE_AIN_T_HEAVY
+  name: "He Ain’t Heavy"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 6, one unconscious or otherwise helpless ally"
+    Effect: >-
+      Shift into the ally’s occupied square. Secondary Effect: Make a basic
+      attack. One hit creature takes 2dW extra damage Miss: Half damage Tertiary
+      Effect: Shift a number of squares equal to 1+ your Constitution or
+      Strength modifier, and shunt the target with you.
+    Flavor: >-
+      You grab a fallen ally and throw them over your shoulder as you withdraw.
 
 - id: ORCUS_POWER_THE_RUNAWAY_BOULDER
-  name: The Runaway Boulder
+  name: "The Runaway Boulder"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "10"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Shift your speed +2. Until the end of your next turn, you gain resistance 10 to all damage."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Shift your speed +2. Until the end of your next turn, you gain resistance
+      10 to all damage.
     Special: "If you complete a streak, you recover the use of this power."
-    Flavor: "You barrel through terrain and people and anchor yourself further up the line."
+    Flavor: >-
+      You barrel through terrain and people and anchor yourself further up the
+      line.
+
+- id: ORCUS_POWER_LIKE_AN_ELEPHANT
+  name: "Like An Elephant"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, each enemy in reach during your shift"
+    Attack: "Strength vs AC"
+    Hit: >-
+      2dW + Strength modifier damage, and the target is pushed 3 squares and
+      knocked prone.
+    Effect: >-
+      Before your attacks, shift your speed. You can pass through enemy occupied
+      squares.
+    Flavor: >-
+      You offer your shoulder to enemies you plow through, slamming them back
+      and clearing a way.
+
+- id: ORCUS_POWER_DOWN_FIGHTING
+  name: "Down Fighting"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You are reduced to 0 or fewer hit points"
+    Effect: >-
+      Until the start of your next turn, you are dazed, but do not fall
+      unconscious, make death saves, or die from reaching your negative
+      staggered value in hit points; you also gain a +4 power bonus to all
+      attack and damage rolls.
+    Special: >-
+      If you are still alive at the end of the encounter, you automatically
+      stabilize at 0 hit points.
+    Maintain: >-
+      Free The effect persists until the start of your next turn. If you do not
+      hit with an attack before the start of your next turn, you are considered
+      to have failed a death save.
+    Flavor: >-
+      You ignore all those pesky holes and bleeding wounds. You refuse to accept
+      humiliation. You will not fall before winning a fight.
+
+- id: ORCUS_POWER_THE_FORTRESS
+  name: "The Fortress"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      You gain regeneration 5 until the end of your next turn. You grant cover
+      to all allies in adjacent squares, regardless of line of sight.
+    Maintain: >-
+      Move The effect persists until the end of your next turn. You cannot
+      maintain if you leave your current square.
+    Flavor: >-
+      You’re an immovable object, a rooted post for allies to rally back to.
+
+- id: ORCUS_POWER_NOSEBLEED
+  name: "Nosebleed"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, the triggering enemy"
+    Trigger: "One enemy hits you with an attack."
+    Effect: >-
+      The hit inflicts no damage. Make a basic attack: one hit creature takes
+      1dW extra damage.
+    Boost: >-
+      Level 29 After you make your basic attack, you gain a +2 bonus to all
+      attack rolls and damage rolls until the end of the encounter against the
+      triggering enemy.
+    Flavor: >-
+      You sniff up the blood, bark loudly, and assault the newly frightened
+      enemy.
+
+- id: ORCUS_POWER_JUST_GOT_THE_WIND_KNOCKED
+  name: "Just Got the Wind Knocked"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You take damage from an attack."
+    Effect: >-
+      Until the end of the encounter, you suppress all effects of the attack. At
+      the end of the encounter, you immediately suffer these effects.
+    Flavor: "What? Nah, nah, I’m doing just fine."
+
+- id: ORCUS_POWER_JUST_WALK_IT_OFF
+  name: "Just Walk It Off"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Healing, Martial, Weapon"
+    Target: "Melee weapon, one creature"
+    Requirements: "You must be staggered."
+    Attack: "Strength vs AC"
+    Hit: "4dW + Strength modifier damage."
+    Miss: "Half damage."
+    Effect: "Spend a recovery and regain double your recovery value."
+    Flavor: >-
+      You know perfectly well how much damage was done. You attempt to ignore it
+      and continue the fight.
+
+- id: ORCUS_POWER_BLATANT_DISREGARD_FOR_PERSONAL_SAFETY
+  name: "Blatant Disregard for Personal Safety"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Effect: >-
+      Shift a number of squares equal to your Strength modifier. Make three
+      basic attacks at any point during the move. Each time you miss with an
+      attack roll, you can spend a recovery and heal your recovery value in hit
+      points.
+    Flavor: >-
+      You walk in the open, brazenly approaching your foe without care or
+      concern.
+
+- id: ORCUS_POWER_BEHIND_ME
+  name: "Behind Me!"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 1, you and two allies"
+    Effect: >-
+      Each target can shift its speed. They must remain in adjacent squares at
+      the end of the move. Each target can use one attack power at any point
+      during the move. Until the end of your next turn, you grant cover to
+      adjacent allies.
+    Flavor: "Your ally uses you as cover as you march towards your enemy."
+

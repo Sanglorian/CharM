@@ -1,639 +1,840 @@
-# Mastermind's Gambit discipline (Harlequin). Tactical leader powers that direct
-# allies, control enemy positioning, and grant marks and bonus attacks. Printed
-# key Intelligence / secondary Charisma (the Harlequin's class key is
-# Intelligence, so attack powers carry the `ability-swap` tag). Many attacks use
-# Intelligence +2 vs a defense. Levels 1-29 transcribed (full class power pool).
+# Mastermind's Gambit discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT
-  name: Mastermind's Gambit
+  name: "Mastermind's Gambit"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Intelligence
-    "Secondary Ability": Charisma
+    "Key Ability": "Intelligence"
+    "Secondary Ability": "Charisma"
     Sources: "Harlequin (class)"
     Description: "A tactical master, you direct your allies to seize victory."
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_INSTINCTUAL_REACTION
-  name: Instinctual Reaction
+  name: "Instinctual Reaction"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Focus, Martial"
     Target: "Ranged 10, one creature"
     Attack: "Intelligence +2 vs Will"
-    Hit: "Until the start of your next turn, the target loses all benefits of cover or concealment; superior cover and total concealment is reduced to -2. The target grants combat advantage to one ally in range until the start of your next turn."
+    Hit: >-
+      Until the start of your next turn, the target loses all benefits of cover
+      or concealment; superior cover and total concealment is reduced to -2. The
+      target grants combat advantage to one ally in range until the start of
+      your next turn.
+    Flavor: >-
+      Your intuition tells you where your enemy is most likely to be, where
+      their weaknesses lie, and where to direct your attention to counteract
+      their plan.
 
 - id: ORCUS_POWER_MARK_OF_THE_PUPPETEER
-  name: Mark of the Puppeteer
+  name: "Mark of the Puppeteer"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
-    Target: Self
+    Target: "Self"
     Effect: "Make a basic attack. If you hit, you shunt the target two squares."
+    Flavor: "You lead the target into another’s threat range."
 
 - id: ORCUS_POWER_TACTICAL_ALTERATION
-  name: Tactical Alteration
+  name: "Tactical Alteration"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Focus, Martial"
     Target: "Near burst 10, one creature you can see"
     Attack: "Intelligence +2 vs Will"
-    Hit: "The target is marked by an ally in line of sight to the target. The mark lasts until the target is staggered or until you use tactical alteration again."
+    Hit: >-
+      The target is marked by an ally in line of sight to the target. The mark
+      lasts until the target is staggered or until you use tactical alteration
+      again.
+    Flavor: >-
+      You outmaneuver your opponent and feign them into a poor strategic
+      position.
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_DISTRACTING_ATTACK
-  name: Distracting Attack
+  name: "Distracting Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You hit a creature that has cover against you."
-    Effect: "The target grants combat advantage to all allies in eyesight until the start of your next turn."
-    Maintain: "Standard: the effect persists until the start of your next turn. You cannot maintain if the target moves from cover."
+    Effect: >-
+      The target grants combat advantage to all allies in eyesight until the
+      start of your next turn.
+    Maintain: >-
+      Standard The effect persists until the start of your next turn. You cannot
+      maintain if the target moves from cover.
+    Flavor: >-
+      You make your foe believe an attack is impending from a flank. You cause
+      it to move from cover.
 
 - id: ORCUS_POWER_INTO_THE_FIRE
-  name: Into the Fire
+  name: "Into the Fire"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You hit a creature."
-    Effect: "The creature you hit is marked until the end of your next turn. Two allies in eyesight shift their speed."
+    Effect: >-
+      The creature you hit is marked until the end of your next turn. Two allies
+      in eyesight shift their speed.
+    Flavor: "You rescue an ally from impending doom."
 
 - id: ORCUS_POWER_STICK_TO_THE_PLAN
-  name: Stick to the Plan
+  name: "Stick to the Plan"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Focus, Martial"
     Target: "Near eyesight, all creatures"
     Attack: "Intelligence +2 vs Will"
     Hit: "Shunt the target 2 squares."
     Special: "Allies must be willing to be targeted."
+    Flavor: >-
+      Your brilliant maneuver forces enemies into an unwise counter-maneuver.
 
-- id: ORCUS_POWER_COVER_THE_ESCAPE
-  name: Cover The Escape
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Martial, Weapon"
-    Target: Self
-    Trigger: "You hit a creature."
-    Effect: "The creature you hit takes 1dW extra damage from the triggering attack and, until the end of your next turn, that creature cannot make opportunity attacks or benefit from combat advantage. All allies adjacent to the creature can shift their speed -4."
-
-- id: ORCUS_POWER_ENCOURAGING_ADVICE
-  name: Encouraging Advice
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
-    Keywords: "Martial, Consistent"
-    Target: "Near eyesight, one creature"
-    Trigger: "An ally in range misses the target with an attack."
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "The target is hit by the triggering attack."
-
-- id: ORCUS_POWER_BLIND_SPOT
-  name: Blind Spot
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee or Ranged weapon, one enemy"
-    Trigger: "An enemy makes its first attack of the encounter."
-    Effect: "Make a basic attack against the target. If you hit, the target takes 1dW extra damage from the attack. The target suffers a -4 penalty to attack rolls until the end of your next turn."
-
-- id: ORCUS_POWER_RIGHT_INTO_THE_TRAP
-  name: Right into the Trap
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
-    Keywords: "Focus, Martial"
-    Target: "Near eyesight, the triggering ally"
-    Trigger: "One ally hits a creature."
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "Your ally's hit becomes a critical hit."
-
-- id: ORCUS_POWER_TAKE_THE_LEAD
-  name: Take the Lead
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Martial, Weapon"
-    Target: Self
-    Trigger: "You hit one creature, and there are no allies closer to this creature than you are."
-    Effect: "The creature is marked until the end of your next turn. While it is marked, if the creature moves in any direction that does not bring it closer to you, you can make a basic attack against it as a counter."
-    Maintain: "Swift: the effect persists until the end of your next turn."
-
-- id: ORCUS_POWER_DIVERTING_ATTACK
-  name: Diverting Attack
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: Self
-    Trigger: "You hit a creature."
-    Hit: "You and all allies in sight can score a critical hit against the creature you hit on a natural roll of 18, 19, or 20 until the start of your next turn."
-    Maintain: "Move: the effect persists until the start of your next turn. You cannot maintain if you or any ally scored a critical hit the previous round."
-
-- id: ORCUS_POWER_POSITIVE_REINFORCEMENT
-  name: Positive Reinforcement
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: "Near burst 10, one creature you damaged this turn"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "Until the start of your next turn, you and all allies in sight gain a +6 power bonus to attack rolls with basic attacks against the target."
-
-- id: ORCUS_POWER_SUBTLE_ENCOURAGEMENT
-  name: Subtle Encouragement
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: "Near burst 10, one creature"
-    Hit: "Shunt the target a number of squares equal to your Charisma modifier, and it grants you and all allies combat advantage until the end of your next turn. One ally in eyesight automatically hits with their next at-will or encounter power against the target."
-
-- id: ORCUS_POWER_CENTER_PEEL
-  name: Center Peel
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: "Ranged eyesight, all enemies"
-    Effect: "Until the end of your next turn, the targets are marked and slowed. Allies in range shift a number of squares equal to 1 + your Charisma modifier, but must not end their movement adjacent to an enemy."
-
-- id: ORCUS_POWER_DIRECT_THREAT
-  name: Direct Threat
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: "Near burst 5, one creature you can see"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "Until the end of your next turn, the target can make no attacks that do not include you, you gain a +2 bonus to all defenses against the target's attacks, and if the target hits you, you can make a basic attack against it as an immediate reaction."
-    Maintain: "Swift: the effect persists until the end of your next turn. You can only sustain if you are not staggered."
-
-- id: ORCUS_POWER_TARGET_PRIORITY
-  name: Target Priority
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: "Near eyesight, one ally"
-    Effect: "Until the start of your next turn, all enemies suffer a -4 penalty to attack rolls against the target, and if any enemy hits the target, one ally in eyesight gains a basic attack against that enemy as a counter."
-    Maintain: "Move: the effect persists until the start of your next turn. You cannot sustain if the target scores a critical hit on an enemy."
-
-- id: ORCUS_POWER_SUDDEN_EXPOSURE
-  name: Sudden Exposure
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "23"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: "Near eyesight, one enemy"
-    Effect: "Shunt one ally adjacent to the target their speed -4. Make the following attack against the target."
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "The target gains vulnerability to all weapon damage 5 until the end of your next turn."
-    Maintain: "Move: the target gains vulnerability to all weapon damage 5 until the end of your next turn. You cannot sustain if the target is staggered."
-
-- id: ORCUS_POWER_ON_A_PILE_OF_CORPSES
-  name: On A Pile of Corpses
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "23"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Martial, Weapon"
-    Target: "Near burst 10, all enemies you can see"
-    Effect: "You mark the target and pull it 4 squares. Until the end of your next turn, you gain a +4 bonus to all defenses, and if any of your marked targets makes an attack that does not include you, the target is helpless against your attacks."
-    Maintain: "Move: the effect persists until the end of your next turn. You can only sustain this power once."
-
-- id: ORCUS_POWER_BRILLIANT_OPPORTUNITY
-  name: Brilliant Opportunity
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "27"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: "Ranged eyesight, one creature"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "Until the start of your next turn, when the target hits with an attack, one ally in eyesight makes a basic attack against a target of their choice as a reaction."
-    Maintain: "Move: the effect persists until the start of your next turn. You can only sustain once."
-
-- id: ORCUS_POWER_PERFECT_TIMING
-  name: Perfect Timing
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
-  fields:
-    Level: "27"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
-    Target: "Near eyesight, all allies"
-    Effect: "Once before the start of your next turn, the target can make a basic attack as a counter."
-
-# --- Daily attack powers ------------------------------------------------------
 - id: ORCUS_POWER_FORCE_IT_BACK
-  name: Force It Back
+  name: "Force It Back"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Focus, Martial, Consistent"
     Target: "Near eyesight, one creature"
     Attack: "Intelligence +2 vs Will"
-    Hit: "Until the end of the encounter, each time the target is hit with an attack, you can shunt it 1 square."
+    Hit: >-
+      Until the end of the encounter, each time the target is hit with an
+      attack, you can shunt it 1 square.
+    Flavor: "Converge all attacks on the target and drive it back."
 
 - id: ORCUS_POWER_MAKE_IT_DANCE
-  name: Make It Dance
+  name: "Make It Dance"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Counter Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, triggering creature"
     Trigger: "A creature in eyesight moves towards you or an ally."
-    Effect: "Make a basic attack against the target. Until the end of your next turn, the target is immobile, and you and all allies in sight gain combat advantage against the target."
+    Effect: >-
+      Make a basic attack against the target. Until the end of your next turn,
+      the target is immobile, and you and all allies in sight gain combat
+      advantage against the target.
+    Flavor: >-
+      You make your foe dive for cover rather than continue their attack.
 
-- id: ORCUS_POWER_BACK_TO_BACK
-  name: Back-To-Back
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee touch, you and one adjacent ally"
-    Effect: "The target makes a basic attack. Until the start of your next turn, the target gains a +2 power bonus to AC and Reflex defense."
-    Maintain: "Standard: the target repeats the attack and the effect persists. You cannot maintain if you and the targeted ally are no longer in adjacent squares."
-
-- id: ORCUS_POWER_COVER_OPPORTUNITY
-  name: Cover Opportunity
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Healing, Martial, Consistent"
-    Target: "Near burst 5, two creatures you can see"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "The target is marked until the end of the encounter."
-    Effect: "All allies in eyesight can spend a recovery and heal their recovery value in hit points."
-
-- id: ORCUS_POWER_AGGRAVATE_THE_WOUND
-  name: Aggravate the Wound
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Martial, Weapon"
-    Target: Self
-    Trigger: "You hit a creature."
-    Effect: "The creature you hit takes 2dW extra damage from the triggering attack, and it fails its next saving throw."
-
-- id: ORCUS_POWER_PROUD_TARGET
-  name: Proud Target
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial"
-    Target: "Near burst 10, all enemies you can see"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "The target is marked until the end of your next turn. An enemy marked by you that does not include you as a target on its next attack suffers a -3 penalty to all defenses until the end of your next turn."
-    Effect: "You gain a +2 power bonus to all defenses until the end of your next turn."
-    Maintain: "Move: repeat the attack and the bonus to defenses persists until the end of your next turn."
-
-- id: ORCUS_POWER_HEARTEN_THE_SQUAD
-  name: Hearten the Squad
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "15"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Focus, Martial"
-    Target: "Near burst 10, one creature you can see"
-    Effect: "All allies in sight and in line of effect to the target automatically hit the target with basic attacks until the start of your next turn."
-
-- id: ORCUS_POWER_NO_TIME_TO_BLEED
-  name: No Time to Bleed
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "15"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Healing, Martial, Weapon"
-    Target: "Near eyesight, the triggering creature"
-    Trigger: "You hit one creature that hit you since the start of your last turn."
-    Effect: "The target takes 3dW extra damage from the triggering attack, and you can spend a recovery and heal your recovery value."
-
-- id: ORCUS_POWER_SECURE_PERIMETER
-  name: Secure Perimeter
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "19"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Near burst 3, you and up to four allies"
-    Effect: "The target can make a basic attack as an opportunity action against any enemy that approaches within 5 squares of them but is not adjacent. Creatures hit are immobile until the start of the target's next turn."
-    Maintain: "Standard: you and allies repeat the attack. You cannot sustain if a target moves 3 squares or further from another target."
-
-- id: ORCUS_POWER_POINT_OF_NO_RETURN
-  name: Point Of No Return
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Healing, Martial"
-    Target: "Near eyesight, you and four allies"
-    Effect: "The target can spend a recovery. They can either regain hit points or use their recovery value as a damage bonus on their next hit. The target can make an immediate basic attack."
-
-- id: ORCUS_POWER_PINPOINT_OBJECTIVE
-  name: Pinpoint Objective
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: "Focus, Martial, Consistent"
-    Target: "Near burst 10, one creature you can see"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "Until the start of your next turn, all allies in sight gain a +2 bonus to attack and a +5 bonus to damage against the target."
-    Maintain: "Move: until the start of your next turn, each time an ally hits the target, the target takes +5 damage."
-
-- id: ORCUS_POWER_SHOCK_AND_AWE
-  name: Shock And Awe
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "29"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Swift Action
-    Keywords: "Focus, Martial"
-    Target: "Near burst 10, all enemies"
-    Attack: "Intelligence +2 vs Reflex"
-    Hit: "The target is stunned until the start of your next turn."
-    Effect: "You and each ally in burst can shift a number of squares equal to 1 + your Intelligence modifier."
-    Maintain: "Swift: repeat the attack."
-
-- id: ORCUS_POWER_SHINING_EXAMPLE
-  name: Shining Example
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
-  fields:
-    Level: "29"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: "Near burst 10, all enemies"
-    Effect: "You mark the target. Until the end of your next turn, you take no damage from the target's attacks provided it remains marked by you; instead, grant temporary hit points to one ally in range equal to the damage dealt. An ally cannot receive more temporary hit points than their recovery value. Any target that is out of range by the end of your turn is no longer marked."
-    Maintain: "Move: the effect persists until the start of your next turn. You cannot sustain if you are staggered."
-
-# --- Utility powers -----------------------------------------------------------
 - id: ORCUS_POWER_BRING_ME_EVERYONE
-  name: Bring Me Everyone
+  name: "Bring Me Everyone"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near eyesight, all allies"
     Effect: "Pull the target 4 squares."
+    Flavor: "Everyone?"
+
+- id: ORCUS_POWER_COVER_THE_ESCAPE
+  name: "Cover The Escape"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit a creature."
+    Effect: >-
+      The creature you hit takes 1dW extra damage from the triggering attack
+      and, until the end of your next turn, that creature cannot make
+      opportunity attacks or benefit from combat advantage. All allies adjacent
+      to the creature can shift their speed −4.
+    Flavor: "You provide direct assistance to allow allies to withdraw."
+
+- id: ORCUS_POWER_ENCOURAGING_ADVICE
+  name: "Encouraging Advice"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Consistent"
+    Target: "Near eyesight, one creature"
+    Trigger: "An ally in range misses the target with an attack."
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: "The target is hit by the triggering attack."
+    Flavor: "You stand with your allies and support their actions."
+
+- id: ORCUS_POWER_BACK_TO_BACK
+  name: "Back-To-Back"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee touch, you and one adjacent ally"
+    Effect: >-
+      The target makes a basic attack. Until the start of your next turn, the
+      target gains a +2 power bonus to AC and Reflex defense.
+    Maintain: >-
+      Standard The target repeats the attack and the effect persists. You cannot
+      maintain if you and the targeted ally are no longer in adjacent squares.
+    Flavor: "They have your back; you have theirs."
+
+- id: ORCUS_POWER_COVER_OPPORTUNITY
+  name: "Cover Opportunity"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Healing, Martial, Consistent"
+    Target: "Near burst 5, two creatures you can see"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: "The target is marked until the end of the encounter."
+    Effect: >-
+      All allies in eyesight can spend a recovery and heal their recovery value
+      in hit points.
+    Flavor: >-
+      You take the full force of your enemy’s attack to offer your allies a
+      chance to recover.
 
 - id: ORCUS_POWER_ATTRACT_ATTENTION
-  name: Attract Attention
+  name: "Attract Attention"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: Self
-    Effect: "All creatures you have marked suffer an additional -2 penalty to attacks that don't include you until the end of your next turn. All targets you have marked gain a +2 bonus to attack you until the end of your next turn."
-    Maintain: "Move: the effect persists until the end of your next turn."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      All creatures you have marked suffer an additional -2 penalty to attacks
+      that don’t include you until the end of your next turn. All targets you
+      have marked gain a +2 bonus to attack you until the end of your next turn.
+    Maintain: "Move The effect persists until the end of your next turn."
+    Flavor: "You’ve got to do something stupid in order to save the team."
 
-- id: ORCUS_POWER_BOARS_HEAD
-  name: Boar's Head
+- id: ORCUS_POWER_BLIND_SPOT
+  name: "Blind Spot"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one enemy"
+    Trigger: "An enemy makes its first attack of the encounter."
+    Effect: >-
+      Make a basic attack against the target. If you hit, the target takes 1dW
+      extra damage from the attack. The target suffers a -4 penalty to attack
+      rolls until the end of your next turn.
+    Flavor: >-
+      An enemy comes out of nowhere. You make a quick attack before it can
+      assault a comrade.
+
+- id: ORCUS_POWER_RIGHT_INTO_THE_TRAP
+  name: "Right into the Trap"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Focus, Martial"
+    Target: "Near eyesight, the triggering ally"
+    Trigger: "One ally hits a creature."
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: "Your ally’s hit becomes a critical hit."
+    Flavor: >-
+      Your opponent falls perfectly for your taunt. It doesn’t realize its
+      mistake until it’s too late.
+
+- id: ORCUS_POWER_TAKE_THE_LEAD
+  name: "Take the Lead"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: >-
+      You hit one creature, and there are no allies closer to this creature than
+      you are.
+    Effect: >-
+      The creature is marked until the end of your next turn. While it is
+      marked, if the creature moves in any direction that does not bring it
+      closer to you, you can make a basic attack against it as a counter.
+    Maintain: "Swift The effect persists until the end of your next turn."
+    Flavor: >-
+      In the absence of proper leadership, you stand up to lead the charge.
+
+- id: ORCUS_POWER_AGGRAVATE_THE_WOUND
+  name: "Aggravate the Wound"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit a creature."
+    Effect: >-
+      The creature you hit takes 2dW extra damage from the triggering attack,
+      and it fails its next saving throw.
+    Flavor: >-
+      Your attack struck a previous wound the enemy had already sustained,
+      causing further damage.
+
+- id: ORCUS_POWER_PROUD_TARGET
+  name: "Proud Target"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, all enemies you can see"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: >-
+      The target is marked until the end of your next turn. An enemy marked by
+      you that does not include you as a target on its next attack suffers a -3
+      penalty to all defenses until the end of your next turn.
+    Effect: >-
+      You gain a +2 power bonus to all defenses until the end of your next turn.
+    Maintain: >-
+      Move Repeat the attack and the bonus to defenses persists until the end of
+      your next turn.
+    Flavor: "Yup, you’re the leader. They know it, even if it isn’t true."
+
+- id: ORCUS_POWER_BOAR_S_HEAD
+  name: "Boar’s Head"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near burst 3, you and all allies"
-    Effect: "The target moves your speed. Each target must end their move adjacent to at least one other target."
+    Effect: >-
+      The target moves your speed. Each target must end their move adjacent to
+      at least one other target.
+    Flavor: "You and your allies move in formation."
 
 - id: ORCUS_POWER_TAUNTING_MOCKERY
-  name: Taunting Mockery
+  name: "Taunting Mockery"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
     Target: "Ranged 20, one creature"
     Effect: "You mark the target until the start of your next turn."
-    Maintain: "Swift: the effect persists until the start of your next turn."
+    Maintain: "Swift The effect persists until the start of your next turn."
+    Flavor: "You scream obscenities and hurl rocks to anger an opponent."
+
+- id: ORCUS_POWER_DIVERTING_ATTACK
+  name: "Diverting Attack"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Self"
+    Trigger: "You hit a creature."
+    Hit: >-
+      You and all allies in sight can score a critical hit against the creature
+      you hit on a natural roll of 18, 19, or 20 until the start of your next
+      turn.
+    Maintain: >-
+      Move The effect persists until the start of your next turn. You cannot
+      maintain if you or any ally scored a critical hit the previous round.
+    Flavor: >-
+      Your attack causes your enemy to rear its head, allowing others to take
+      the kill shot.
+
+- id: ORCUS_POWER_POSITIVE_REINFORCEMENT
+  name: "Positive Reinforcement"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Near burst 10, one creature you damaged this turn"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: >-
+      Until the start of your next turn, you and all allies in sight gain a +6
+      power bonus to attack rolls with basic attacks against the target.
+    Flavor: >-
+      You ally’s attack was far more deadly than even they thought it was.
+
+- id: ORCUS_POWER_SUBTLE_ENCOURAGEMENT
+  name: "Subtle Encouragement"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one creature"
+    Hit: >-
+      Shunt the target a number of squares equal to your Charisma modifier, and
+      it grants you and all allies combat advantage until the end of your next
+      turn. One ally in eyesight automatically hits with their next at-will or
+      encounter power against the target.
+    Flavor: >-
+      The enemy doesn’t know it, but you have maneuvered them right where you
+      want them.
+
+- id: ORCUS_POWER_HEARTEN_THE_SQUAD
+  name: "Hearten the Squad"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one creature you can see"
+    Effect: >-
+      All allies in sight and in line of effect to the target automatically hit
+      the target with basic attacks until the start of your next turn.
+    Flavor: "There stands the enemy and your group must destroy it."
+
+- id: ORCUS_POWER_NO_TIME_TO_BLEED
+  name: "No Time to Bleed"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Healing, Martial, Weapon"
+    Target: "Near eyesight, the triggering creature"
+    Trigger: >-
+      You hit one creature that hit you since the start of your last turn.
+    Effect: >-
+      The target takes 3dW extra damage from the triggering attack, and you can
+      spend a recovery and heal your recovery value.
+    Flavor: "You’re hit but the others can’t see you squirm."
 
 - id: ORCUS_POWER_DIRECT_STRIKE
-  name: Direct Strike
+  name: "Direct Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near burst 10, all enemies you can see"
-    Effect: "The target grants combat advantage to you and all allies until the start of your next turn."
+    Effect: >-
+      The target grants combat advantage to you and all allies until the start
+      of your next turn.
+    Flavor: >-
+      You relay important information to allies about approaching threats.
 
 - id: ORCUS_POWER_PLAN_OF_ATTACK
-  name: Plan of Attack
+  name: "Plan of Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near eyesight, four allies"
-    Effect: "The target gains a +3 power bonus to attack rolls until the start of your next turn."
+    Effect: >-
+      The target gains a +3 power bonus to attack rolls until the start of your
+      next turn.
+    Flavor: >-
+      Don’t just all of you run headstrong into a fight. Let’s think this
+      through.
+
+- id: ORCUS_POWER_CENTER_PEEL
+  name: "Center Peel"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Ranged eyesight, all enemies"
+    Effect: >-
+      Until the end of your next turn, the targets are marked and slowed. Allies
+      in range shift a number of squares equal to 1 + your Charisma modifier,
+      but must not end their movement adjacent to an enemy.
+    Flavor: >-
+      You create a diversion and a precious opportunity for a wounded ally to
+      break off and retreat.
+
+- id: ORCUS_POWER_DIRECT_THREAT
+  name: "Direct Threat"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Near burst 5, one creature you can see"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: >-
+      Until the end of your next turn, the target can make no attacks that do
+      not include you, you gain a +2 bonus to all defenses against the target’s
+      attacks, and if the target hits you, you can make a basic attack against
+      it as an immediate reaction.
+    Maintain: >-
+      Swift The effect persists until the end of your next turn. You can only
+      sustain if you are not staggered.
+    Flavor: "You stand against the most dangerous opponent on the field."
+
+- id: ORCUS_POWER_TARGET_PRIORITY
+  name: "Target Priority"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near eyesight, one ally"
+    Effect: >-
+      Until the start of your next turn, all enemies suffer a -4 penalty to
+      attack rolls against the target, and if any enemy hits the target, one
+      ally in eyesight gains a basic attack against that enemy as a counter.
+    Maintain: >-
+      Move The effect persists until the start of your next turn. You cannot
+      sustain if the target scores a critical hit on an enemy.
+    Flavor: >-
+      One ally is injured. You goad enemies into shifting their attention.
+
+- id: ORCUS_POWER_SECURE_PERIMETER
+  name: "Secure Perimeter"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 3, you and up to four allies"
+    Effect: >-
+      The target can make a basic attack as an opportunity action against any
+      enemy that approaches within 5 squares of them but is not adjacent.
+      Creatures hit are immobile until the start of the target’s next turn.
+    Maintain: >-
+      Standard You and allies repeat the attack. You cannot sustain if a target
+      moves 3 squares or further from another target.
+    Flavor: >-
+      You form a circle with your comrades when surrounded by enemies. You make
+      a final stand against the onslaught.
 
 - id: ORCUS_POWER_FOCUS_TARGET
-  name: Focus Target
+  name: "Focus Target"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "22"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near eyesight, one ally"
-    Effect: "Until the start of your next turn, the target gains a +4 power bonus to attack rolls and can score a critical hit on a natural roll of 18-20."
+    Effect: >-
+      Until the start of your next turn, the target gains a +4 power bonus to
+      attack rolls and can score a critical hit on a natural roll of 18-20.
+    Flavor: "You order an ally to focus and ignore all distractions."
+
+- id: ORCUS_POWER_SUDDEN_EXPOSURE
+  name: "Sudden Exposure"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Near eyesight, one enemy"
+    Effect: >-
+      Shunt one ally adjacent to the target their speed -4. Make the following
+      attack against the target. Attack: Intelligence +2 vs. Reflex Hit: The
+      target gains vulnerability to all weapon damage 5 until the end of your
+      next turn.
+    Maintain: >-
+      Move The target gains vulnerability to all weapon damage 5 until the end
+      of your next turn. You cannot sustain if the target is staggered.
+    Flavor: >-
+      You scream for an ally to get down, making their foe vulnerable to attack.
+
+- id: ORCUS_POWER_ON_A_PILE_OF_CORPSES
+  name: "On A Pile of Corpses"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 10, all enemies you can see"
+    Effect: >-
+      You mark the target and pull it 4 squares. Until the end of your next
+      turn, you gain a +4 bonus to all defenses, and if any of your marked
+      targets makes an attack that does not include you, the target is helpless
+      against your attacks.
+    Maintain: >-
+      Move The effect persists until the end of your next turn. You can only
+      sustain this power once.
+    Flavor: >-
+      You scream in defiance, standing on a hill built from the bodies of your
+      enemies.
+
+- id: ORCUS_POWER_POINT_OF_NO_RETURN
+  name: "Point Of No Return"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Healing, Martial"
+    Target: "Near eyesight, you and four allies"
+    Effect: >-
+      The target can spend a recovery. They can either regain hit points or use
+      their recovery value as a damage bonus on their next hit. The target can
+      make an immediate basic attack.
+    Flavor: >-
+      You risk everything, even personal injury, towards the success of the
+      mission.
+
+- id: ORCUS_POWER_PINPOINT_OBJECTIVE
+  name: "Pinpoint Objective"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: >-
+      Until the start of your next turn, all allies in sight gain a +2 bonus to
+      attack and a +5 bonus to damage against the target.
+    Maintain: >-
+      Move Until the start of your next turn, each time an ally hits the target,
+      the target takes +5 damage.
+    Flavor: >-
+      You find the most dangerous opponent--the enemy commander or the largest
+      target. Everyone coordinates their attacks.
+
+- id: ORCUS_POWER_BRILLIANT_OPPORTUNITY
+  name: "Brilliant Opportunity"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial, Consistent"
+    Target: "Ranged eyesight, one creature"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: >-
+      Until the start of your next turn, when the target hits with an attack,
+      one ally in eyesight makes a basic attack against a target of their choice
+      as a reaction.
+    Maintain: >-
+      Move The effect persists until the start of your next turn. You can only
+      sustain once.
+    Flavor: "Your tactical planning has created an opening."
+
+- id: ORCUS_POWER_PERFECT_TIMING
+  name: "Perfect Timing"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near eyesight, all allies"
+    Effect: >-
+      Once before the start of your next turn, the target can make a basic
+      attack as a counter.
+    Flavor: >-
+      You‘ve planned ahead for this moment. You knew where your enemy would be,
+      where they would strike, and when their weaknesses would be revealed. You
+      give your allies the word and they act according to the plan.
+
+- id: ORCUS_POWER_SHOCK_AND_AWE
+  name: "Shock And Awe"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, all enemies"
+    Attack: "Intelligence +2 vs Reflex"
+    Hit: "The target is stunned until the start of your next turn."
+    Effect: >-
+      You and each ally in burst can shift a number of squares equal to 1+ your
+      Intelligence modifier.
+    Maintain: "Swift Repeat the attack."
+    Flavor: "You display overwhelming battle awareness."
+
+- id: ORCUS_POWER_SHINING_EXAMPLE
+  name: "Shining Example"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, all enemies"
+    Effect: >-
+      You mark the target. Until the end of your next turn, you take no damage
+      from the target’s attacks provided it remains marked by you; instead,
+      grant temporary hit points to one ally in range equal to the damage dealt.
+      An ally cannot receive more temporary hit points than their recovery
+      value. Any target that is out of range by the end of your turn is no
+      longer marked.
+    Maintain: >-
+      Move The effect persists until the start of your next turn. You cannot
+      sustain if you are staggered.
+    Flavor: "Your allies are moved by your bravado."
+

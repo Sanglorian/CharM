@@ -1,330 +1,912 @@
-# Starfall discipline (Reaper). A ranged area-controller "siege weapon" — rains of
-# arrows. Key ability Dexterity (the Reaper class key is also Dexterity). Same
-# tagging contract: [disciplineId, <frequency>] (+ `ability-swap` on the
-# character's own attacks). Levels 1-16 transcribed (fills the full class
-# progression).
+# Starfall discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_STARFALL
-  name: Starfall
+  name: "Starfall"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Dexterity
-    "Secondary Ability": Intelligence
+    "Key Ability": "Dexterity"
+    "Secondary Ability": "Intelligence"
     Sources: "Reaper (class)"
-    Description: "You are a one-person siege weapon, firing rains of arrows that force your foes to duck for cover."
+    Description: >-
+      You are a one-person siege weapon, firing down rains of arrows that force
+      your foes to duck for cover.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_ATTACK_OF_NECESSITY
-  name: Attack of Necessity
+  name: "Attack of Necessity"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near arc 3, all creatures"
     Attack: "Dexterity vs Reflex"
-    Hit: "1dW damage; the target is pushed to the nearest empty square outside the blast (if it can't, it takes Dexterity modifier extra damage). Level 21: 2dW."
+    Hit: >-
+      1dW damage, and the target is pushed to the nearest empty square outside
+      of the blast. If the target cannot move to the nearest empty square, the
+      target takes additional damage equal to your Dexterity modifier. Level 21
+      2dW damage.
     Special: "If you do not move this turn, arc 4 instead."
+    Flavor: "Out of options, become a hero."
 
 - id: ORCUS_POWER_MICRO_BURST
-  name: Micro Burst
+  name: "Micro Burst"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Far burst 1 within weapon range, all creatures you can see"
     Attack: "Dexterity vs Reflex"
-    Hit: "1 damage and the target is slowed until the start of your next turn."
-    Special: "If you do not move this turn, deal your Dexterity modifier in damage instead."
+    Hit: >-
+      1 damage and the target is slowed until the start of your next turn.
+    Special: >-
+      If you do not move this turn, your Dexterity modifier in damage instead.
+    Flavor: "Your shots are more to impede enemies than kill them."
 
 - id: ORCUS_POWER_POTENTIAL_PUSH
-  name: Potential Push
+  name: "Potential Push"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Ranged weapon, one creature"
     Attack: "Dexterity vs AC"
-    Hit: "1dW + Dexterity modifier damage and push 1 (if it can't be pushed, +Intelligence modifier damage). Level 21: 2dW + Dexterity modifier."
-    Special: "If you do not move this turn, push 2 instead."
+    Hit: >-
+      1dW + Dexterity modifier damage, and the target is pushed 1 square. If the
+      target cannot be pushed because of an obstruction or difficult terrain, it
+      takes additional damage equal to your Intelligence modifier. Level 21: 2dW
+      + Dexterity modifier damage.
+    Special: >-
+      If you do not move this turn, the target is pushed 2 squares instead of 1
+      (and suffers the indicated damage if it cannot be pushed at least 2
+      squares).
+    Flavor: "The power of your attack sends the enemy tumbling back."
 
 - id: ORCUS_POWER_RAPID_SHOTS
-  name: Rapid Shots
+  name: "Rapid Shots"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Far wall 3 within weapon range, all creatures in wall you can see"
     Attack: "Dexterity vs Reflex"
-    Hit: "1dW damage. Level 21: 2dW."
-    Special: "If you do not move this turn, wall 4 instead."
+    Hit: >-
+      1dW damage. Level 21: 2dW damage.
+    Special: "If you do not move this turn, wall 4 instead of a wall 3."
+    Flavor: "You shoot towards an area."
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_FOCUSED_SHOT
-  name: Focused Shot
+  name: "Focused Shot"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Ranged weapon, one creature"
     Attack: "Dexterity vs AC"
     Hit: "2dW + Dexterity modifier damage."
-    Special: "If you do not move this turn, the target is also slowed or weakened (your choice) until the start of your next turn."
+    Special: >-
+      If you do not move this turn, the target is also slowed or weakened (your
+      choice) until the start of your next turn.
+    Flavor: "You make a continuous stream of attacks against a single target."
 
 - id: ORCUS_POWER_PINNING_SHOT
-  name: Pinning Shot
+  name: "Pinning Shot"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Ranged weapon, one creature"
     Attack: "Dexterity vs AC"
-    Hit: "1dW + Dexterity modifier damage and the target is slowed until the start of your next turn."
-    Special: "If you do not move this turn, the target is immobile instead. Maintain Standard: repeat the attack (once)."
+    Hit: >-
+      1dW + Dexterity modifier damage, and the target is slowed until the start
+      of your next turn.
+    Special: >-
+      If you do not move this turn, the target is immobile instead of slowed.
+    Maintain: >-
+      Standard Repeat the attack against the same target. You can maintain only
+      once.
+    Flavor: "Your shots force an enemy down or to cover."
 
-- id: ORCUS_POWER_COVERING_SHOT
-  name: Covering Shot
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
-  fields:
-    Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Ranged weapon, one creature"
-    Attack: "Dexterity vs Reflex"
-    Hit: "1dW + Dexterity modifier damage; the target is immobile and cannot make opportunity attacks until the start of your next turn."
-    Effect: "If you do not move this turn, the target is rattled until the start of your next turn (no hit required)."
-
-- id: ORCUS_POWER_THE_KILLING_FIELD
-  name: The Killing Field
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon, Zone"
-    Target: "Far burst 5 within range 20"
-    Effect: "Create a zone (until end of your next turn) that is difficult terrain except for you. As an opportunity action, attack any creature that enters: Dexterity vs AC, 1dW + Dexterity modifier damage."
-    Special: "Maintain Standard: the zone persists and can be moved within range."
-
-- id: ORCUS_POWER_TRI_SHOT
-  name: Tri-Shot
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Ranged weapon, one, two or three creatures"
-    Attack: "Dexterity vs AC (three attacks)"
-    Hit: "1dW + Dexterity modifier damage."
-
-# --- Daily attack powers ------------------------------------------------------
 - id: ORCUS_POWER_SHOT_ON_THE_RUN
-  name: Shot on the Run
+  name: "Shot on the Run"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Far wall 5 within weapon range, all creatures in wall you can see"
     Attack: "Dexterity vs AC"
     Hit: "1dW + Dexterity modifier damage."
     Miss: "Half damage."
-    Effect: "Before the attack you may run, shift or walk as a move action without weapon move penalties."
+    Effect: >-
+      Before the attack, you can run, shift, or walk as a normal move action; if
+      you are wielding a weapon that normally incurs attack penalties when
+      moving, this movement does not inflict those penalties.
+    Special: "If you do not move this turn, wall 6."
+    Flavor: >-
+      You lay down a line of shots as you make a dash across the enemy’s flank.
 
 - id: ORCUS_POWER_WILDFIRE
-  name: Wildfire
+  name: "Wildfire"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move and Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near arc 6, all creatures"
     Attack: "Dexterity vs Reflex"
-    Hit: "1 damage, and the target is knocked prone and dazed until the start of your next turn."
+    Hit: >-
+      1 damage, and the target is knocked prone and dazed until the start of
+      your next turn.
     Miss: "The target is dazed until the start of your next turn."
     Special: "If you do not move this turn, arc 7."
+    Flavor: >-
+      There’s too many of them. You keep the arrows coming and plow a road.
 
-- id: ORCUS_POWER_BLACK_SKY
-  name: Black Sky
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Ranged 5, one, two or three creatures"
-    Attack: "Dexterity vs AC (three attacks)"
-    Hit: "1dW + Dexterity modifier damage and the target is knocked prone."
-    Miss: "Half damage, and the target is knocked prone."
-
-- id: ORCUS_POWER_STANDING_BARRAGE
-  name: Standing Barrage
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Far burst 1 within weapon range, all creatures you can see"
-    Attack: "Dexterity vs Reflex"
-    Hit: "1dW + Dexterity modifier damage and the target is immobile until the start of your next turn."
-    Miss: "Half damage."
-    Special: "Maintain Move and Standard: repeat the attack against the same area."
-
-- id: ORCUS_POWER_FORCE_BACK
-  name: Force Back
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
-  fields:
-    Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Far burst 2 within weapon range, all creatures you can see"
-    Attack: "Dexterity vs Reflex"
-    Hit: "1dW + Dexterity modifier damage and the target is immobile until the end of your next turn."
-    Special: "Maintain Standard: repeat the attack; you can shift the barrage up to 3 squares each turn."
-
-# --- Utility powers -----------------------------------------------------------
 - id: ORCUS_POWER_BARBED_ARROWS
-  name: Barbed Arrows
+  name: "Barbed Arrows"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
     Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Trigger: "You hit with an arc, burst or wall attack."
-    Effect: "Each creature you hit takes an additional 5 damage."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You hit with an arc, burst, or wall attack."
+    Effect: "Each creature you hit takes an additional 5 extra damage."
+    Flavor: >-
+      You may have loosed a storm of arrows, but each one cuts as deeply as if
+      it were carefully aimed.
+
+- id: ORCUS_POWER_COVERING_SHOT
+  name: "Covering Shot"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      1dW + Dexterity modifier damage, and the target is immobile and cannot
+      make opportunity attacks until the start of your next turn.
+    Effect: >-
+      If you do not move this turn, the target is rattled until the start of
+      your next turn (this does not require a hit).
+    Flavor: "You protect an ally’s movement through hostile terrain."
+
+- id: ORCUS_POWER_EYE_THE_ENEMY
+  name: "Eye the Enemy"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit an enemy with a ranged weapon."
+    Effect: >-
+      Add your Intelligence modifier to the damage roll of all hits against the
+      target (including the triggering hit) until the start of your next turn.
+    Maintain: >-
+      Swift The effect persists until the start of your next turn. You cannot
+      maintain if the target is staggered.
+    Flavor: >-
+      You quickly ascertain your enemy’s tactics and motives. You taunt them to
+      reveal a weakness.
+
+- id: ORCUS_POWER_BLACK_SKY
+  name: "Black Sky"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged 5, one, two or three creatures"
+    Attack: "Dexterity vs AC, three attacks"
+    Hit: "1dW + Dexterity modifier damage, and the target is knocked prone."
+    Miss: "Half damage, and the target is knocked prone."
+    Special: >-
+      If you do not move this turn, on a hit, the target also suffers 5
+      persistent damage (save ends).
+    Flavor: >-
+      You unleash a hail of arrows so intense, enemies are sent flat on their
+      backs.
+
+- id: ORCUS_POWER_STANDING_BARRAGE
+  name: "Standing Barrage"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move and Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 1 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      1dW + Dexterity modifier damage, and the target is immobile until the
+      start of your next turn.
+    Miss: "Half damage."
+    Special: >-
+      If you do not move this turn, on a hit, the target is rattled until the
+      start of your next turn.
+    Maintain: "Move and Standard Repeat the attack against the same area."
+    Flavor: >-
+      You lay down a rain of arrows against entrenched or approaching foes.
 
 - id: ORCUS_POWER_CHAIN_SHOTS
-  name: Chain Shots
+  name: "Chain Shots"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
     Level: "6"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Until the end of your next turn, roll twice for every attack roll (spending ammunition for each) and take the higher result."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, roll twice for every attack roll (using
+      ammunition with each roll) and take the higher result.
+    Flavor: "It almost feels like a game as enemies drop quickly in your path."
 
 - id: ORCUS_POWER_TO_THE_RESCUE
-  name: To the Rescue!
+  name: "To the Rescue!"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
     Level: "6"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Standard Action
-    Keywords: Martial
-    Target: "Near burst 6, one dead, prone or unconscious ally"
-    Effect: "Shift into the target's square. Enemies cannot make ranged or melee attacks against the target, and it gains +3 to defenses vs area attacks, until the end of your next turn / it stands / you leave its square."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 6, one dead, prone, or unconscious ally in burst."
+    Effect: >-
+      You shift into the target’s square. Enemies cannot make any ranged or
+      melee attack against the target, and the target gains a +3 power bonus to
+      all defenses against area attacks. The effect ends at the end of your next
+      turn, when the target stands, or when you leave the target’s square,
+      whichever happens first.
+    Maintain: >-
+      Swift The effect persists until the end of your next turn, or until the
+      target stands, or until you leave the target’s square, whichever happens
+      first.
+    Flavor: >-
+      You drop to a knee by a fallen ally and ensure that ally is safe until
+      help arrives.
+
+- id: ORCUS_POWER_THE_KILLING_FIELD
+  name: "The Killing Field"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon, Zone"
+    Target: "Far burst 5 within range 20"
+    Effect: >-
+      You create a zone in the affected area. The zone lasts until the end of
+      your next turn. It is considered difficult terrain, except for you. You
+      can make the following attack against any creature that enters any square
+      of the zone as an opportunity action: Attack: Dexterity vs AC Hit: 1dW +
+      Dexterity modifier damage
+    Special: >-
+      Note that most characters only receive one opportunity action per turn.
+    Maintain: >-
+      Standard The zone persists until the end of your next turn. You can move
+      the zone to a new area within range as part of this action.
+    Flavor: >-
+      You hold your weapon back and wait for the advancing enemy. You have the
+      entire battlefield in your view.
+
+- id: ORCUS_POWER_TRI_SHOT
+  name: "Tri-Shot"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one, two or three creatures"
+    Attack: "Dexterity vs AC, three attacks"
+    Hit: "1dW + Dexterity modifier damage."
+    Flavor: >-
+      To conserve arrows, you control your shots to specific targets rather than
+      shooting chaotically at your foes.
+
+- id: ORCUS_POWER_DISTRACTING_ARROW
+  name: "Distracting Arrow"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit an enemy with a ranged weapon."
+    Effect: >-
+      The target takes 1dW extra damage from the triggering attack. Two allies
+      in line of sight can make saving throws against one condition a save can
+      end.
+    Flavor: >-
+      Your attack is more of a diversion to allow others the opportunity to
+      recover.
+
+- id: ORCUS_POWER_FORCE_BACK
+  name: "Force Back"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 2 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      1dW + Dexterity modifier damage, and the target is immobile until the end
+      of your next turn.
+    Special: >-
+      If you do not move this turn, the target is rattled until the start of
+      your next turn whether or not you hit.
+    Maintain: >-
+      Standard Repeat the attack. You can shift the barrage up to 3 squares
+      every turn. If you miss all targets in the burst, you can no longer
+      maintain.
+    Flavor: "A nonstop rain of arrows tracks an assaulting or flanking enemy."
 
 - id: ORCUS_POWER_MACHINE_OF_DESTRUCTION
-  name: Machine of Destruction
+  name: "Machine of Destruction"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Until the end of your next turn, you are immobile and any basic attack or at-will power's action is reduced (standard to move, move to swift)."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, you are immobile and the action required
+      for any basic attack or at-will power is reduced from standard to move, or
+      from move to swift.
+    Flavor: >-
+      This is what it all comes down to. You and your weapon. That’s all that
+      matters.
+
+- id: ORCUS_POWER_BATTLE_POSITION
+  name: "Battle Position"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Shift your speed -2. You do not count as having moved for the purpose of
+      powers that get a benefit if you have not moved.
+    Flavor: >-
+      Enemies are all around you. You need room to shoot. You wave your bow
+      wildly.
+
+- id: ORCUS_POWER_CLEARING_THE_ROOM
+  name: "Clearing the Room"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged 5, one, two or three creatures"
+    Attack: "Dexterity vs AC, three attacks"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is pushed 2 squares. If
+      the target cannot be pushed 2 squares, it suffers an additional 1dW
+      damage.
+    Special: >-
+      If you do not move this turn, a hit target is pushed 4 squares and suffers
+      additional damage if it cannot be pushed back 4 squares.
+
+- id: ORCUS_POWER_STACKED_VOLLEYS
+  name: "Stacked Volleys"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 2 within weapon range, all creatures"
+    Attack: "Dexterity vs Reflex, two attacks per target"
+    Hit: >-
+      1dW + Dexterity modifier, and the target is dazed until the end of its
+      next turn. If hit twice, the target is dazed (save ends).
+    Special: >-
+      If you do not move this turn, gain a +1 bonus to each second attack.
+    Flavor: >-
+      You launch two identical volleys of arrows, nearly on top of each other.
+      Opponents don’t expect the second one as quickly.
+
+- id: ORCUS_POWER_TRACKING_SHOTS
+  name: "Tracking Shots"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Consistent, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      1dW + Dexterity modifier damage. Make a secondary attack against the same
+      target. Secondary Attack: Dexterity +2 vs AC Hit: 1dW + Dexterity modifier
+      damage. Make a tertiary attack against the same target. Miss: Half damage
+      Tertiary Attack: Dexterity +4 vs AC Hit: 2dW + Dexterity modifier damage.
+    Flavor: "Your first shot guides your second."
+
+- id: ORCUS_POWER_WILDFIRE_BLITZ
+  name: "Wildfire Blitz"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move and Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 4 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: "2dW + Dexterity modifier damage."
+    Miss: "Half damage."
+    Flavor: "You spray arrows across a massive area."
+
+- id: ORCUS_POWER_BANDIT_S_YELL
+  name: "Bandit’s Yell"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Healing, Martial"
+    Target: "Self"
+    Trigger: >-
+      You are affected by one of the following conditions that a save can end:
+      blinded, dazed, marked, slowed, stunned, or weakened.
+    Effect: "You gain a +5 bonus to the saving throw until you succeed."
+    Flavor: "You scream loudly as you shake off the damage."
 
 - id: ORCUS_POWER_TOXOPHILITE
-  name: Toxophilite
+  name: "Toxophilite"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
     Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Until the end of your next turn, gain a +1 bonus to attack rolls and a +4 bonus to damage rolls."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, gain a +1 bonus to attack rolls and a +4
+      bonus to damage rolls.
 
-- id: ORCUS_POWER_BANDITS_YELL
-  name: Bandit's Yell
+- id: ORCUS_POWER_FLURRY_OF_ARROWS
+  name: "Flurry of Arrows"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one or two enemies"
+    Attack: "Dexterity vs AC, two attacks"
+    Hit: "2dW + Dexterity modifier damage"
+    Special: >-
+      If you do not move this turn, increase damage to 3dW + Dexterity modifier.
+    Flavor: "You unleash a flurry of arrows towards an enemy."
+
+- id: ORCUS_POWER_MOSQUITO_S_NIP
+  name: "Mosquito’s Nip"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Effect: >-
+      Each enemy you hit with a ranged attack until the end of your next turn is
+      marked until the end of your next turn. If your marked target makes an
+      attack that does not include you as a target, you gain a +2 bonus to
+      attack rolls and a +4 bonus to damage rolls against the target until the
+      end of your next turn.
+    Maintain: "Move The effect persists until the end of your next turn."
+    Flavor: >-
+      It is hard for your enemies to think of anything but you as you continue
+      to rain steel from the sky.
+
+- id: ORCUS_POWER_MINDLESS_MAYHEM
+  name: "Mindless Mayhem"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one two or three enemies"
+    Attack: "Dexterity vs AC, three attacks"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is pushed a number of
+      squares equal to your Intelligence modifier and is weakened until the
+      start of your next turn.
+    Miss: >-
+      Half damage and the target is weakened until the start of your next turn.
+    Special: >-
+      If you do not move this turn, you can target up to 4 enemies instead of 3
+      and make 4 attacks instead of 3; you must target at least two separate
+      creatures.
+    Flavor: "You send a tsunami of arrows into the enemy."
+
+- id: ORCUS_POWER_SUPPRESSING_SHOTS
+  name: "Suppressing Shots"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard and Move Action"
+    Keywords: "Martial, Weapon, Zone"
+    Target: "Far burst 2 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is slowed (save ends).
+    Effect: >-
+      You create a zone in the burst that persists until the start of your next
+      turn. Creatures that enter the zone or start their turns in it take 1dW
+      damage and are slowed (save ends). You use ammunition each time you
+      inflict damage.
+    Special: "If you do not move this turn, burst 3."
+    Maintain: "Move The zone persists until the start of your next turn."
+    Flavor: "You cover an area with arrows to keep enemies from moving."
+
+- id: ORCUS_POWER_NEW_POSITION
+  name: "New Position"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_STARFALL, utility]
   fields:
-    Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": No Action
-    Keywords: "Healing, Martial"
-    Target: Self
-    Trigger: "You are affected by blinded, dazed, marked, slowed, stunned or weakened (save ends)."
-    Effect: "You gain a +5 bonus to the saving throw until you succeed."
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: "Shift your speed."
+    Flavor: >-
+      The effectiveness of your current location is in question. You quickly
+      move to better ground.
+
+- id: ORCUS_POWER_BEHEMOTH_KILLER
+  name: "Behemoth-Killer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: >-
+      Far burst 5 within weapon range, one Large or larger creature you can see
+    Attack: "Dexterity +2 vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+    Special: >-
+      If you do not move this turn, increase to 4dW + Dexterity modifier damage.
+    Flavor: "You relax as you loose the arrow. It’s not like you can miss."
+
+- id: ORCUS_POWER_CLEAR_THE_GROUND
+  name: "Clear the Ground"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 5 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: "2dW + Dexterity modifier damage"
+    Effect: >-
+      Until the end of the encounter, all difficult terrain in the area is no
+      longer difficult terrain.
+    Special: "If you do not move this turn, 3dW damage"
+    Flavor: >-
+      You cut down trees, walls, bushes, and people--anything that gets in your
+      way.
+
+- id: ORCUS_POWER_CLOUD_OF_HELLFIRE
+  name: "Cloud of Hellfire"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move and Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 4 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: "2dW + Dexterity modifier damage"
+    Effect: >-
+      Until the end of your next turn, the area becomes difficult terrain,
+      except for you, and targets in the area grant combat advantage to anyone
+      outside the area.
+    Special: "If you do not move this turn, burst 5."
+    Maintain: "Move The zone persists until the end of your next turn."
+    Flavor: >-
+      Your shots pepper the ground, sending up debris, hampering vision and
+      movement.
+
+- id: ORCUS_POWER_CONE_OF_BARBS
+  name: "Cone of Barbs"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near arc 8, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is knocked prone and dazed
+      until the end of your next turn.
+    Miss: >-
+      Half damage, and the target is knocked prone and dazed until the end of
+      your next turn.
+    Special: >-
+      If you do not move this turn, targets in Near arc 3 take 1dW extra damage.
+    Flavor: "You sweep your weapon wide, attacking everything in front of you."
+
+- id: ORCUS_POWER_ONE_ON_ONE
+  name: "One on One"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Consistent, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      4dW + Dexterity modifier damage, and the target is stunned until the end
+      of your next turn.
+    Special: >-
+      If you do not move this turn, you can reroll all 1s on any damage dice for
+      this power until the result is anything but a 1.
+    Maintain: >-
+      Standard Repeat the attack against the same target. You cannot maintain if
+      you missed on your previous turn.
+    Flavor: >-
+      Your opponent is a lone creature of incredible power. You aim for this
+      single target and release everything.
+
+- id: ORCUS_POWER_OVERWATCH
+  name: "Overwatch"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 3 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      3dW + Dexterity modifier damage, and the target is stunned until the end
+      of your next turn.
+    Special: "If you do not move this turn, burst 4"
+    Maintain: >-
+      Standard Repeat the attack against the same area. On a hit, you deal no
+      additional damage but the target is stunned until the end of your next
+      turn.
+    Flavor: >-
+      You keep a careful eye on an ally or allies from an advantageous position,
+      and wait for enemies to poke out their heads.
+
+- id: ORCUS_POWER_FINISH_THE_JOB
+  name: "Finish the Job"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Consistent, Weapon"
+    Target: >-
+      Ranged weapon, one creature you hit this round as part of a Far attack
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+    Special: "If you do not move this turn, 4dW + Dexterity modifier damage"
+    Flavor: >-
+      After an onslaught of arrows, one target still didn’t fall. You turn your
+      attention and ensure it follows your advice.
+
+- id: ORCUS_POWER_SELECTIVE_SHOTS
+  name: "Selective Shots"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: >-
+      Ranged weapon, five creatures, each no more than 3 squares from another
+      target.
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage"
+    Effect: "The target is dazed until the start of your next turn."
+    Special: >-
+      If you do not move this turn, each target can be no more than 5 squares
+      away from another.
+    Flavor: >-
+      You’ve trained enough to know the difference between friend and enemy. You
+      no longer need to lay down broad volleys of arrows.
+
+- id: ORCUS_POWER_FALL_OF_HEAVEN
+  name: "Fall of Heaven"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, all enemies you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is stunned (save ends).
+    Miss: "Half damage."
+    Special: >-
+      If you do not move this turn, 2dW + Dexterity modifier + Intelligence
+      modifier damage.
+    Flavor: >-
+      You crash the pillars and bring down the sky, raining steel, offloading
+      everything you have.
+
+- id: ORCUS_POWER_MEASURED_RESPONSE
+  name: "Measured Response"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_STARFALL, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Far burst 1 within weapon range, all creatures you can see"
+    Attack: "Dexterity vs Reflex"
+    Hit: "4dW + Dexterity modifier damage."
+    Miss: "Half damage."
+    Effect: >-
+      If the target is staggered before or after the initial damage, it takes an
+      additional 2dW damage.
+    Flavor: "You respond to an attack with a proportionate level of aggression."
+

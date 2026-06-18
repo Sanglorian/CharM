@@ -1,197 +1,370 @@
-# The Art of War discipline (Guardian / Worships the God of War). Powers carry a
-# real `Level` field (the engine's category level filter is `level <= N` against
-# that field) and are tagged [disciplineId, <frequency>] where frequency is one
-# of at-will / encounter / daily for ATTACK powers, or `utility` for utility
-# powers — so attack selects never pull in utilities. Levels 1-3 transcribed.
+# Art of War discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_ART_OF_WAR
-  name: Art of War
+  name: "Art of War"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Strength
-    "Secondary Ability": Dexterity
+    "Key Ability": "Strength"
+    "Secondary Ability": "Dexterity"
     Sources: "Guardian (class), Worships the God of War (kit)"
-    Description: "You are a highly effective fighter who takes advantage of any weakness left by your enemy."
+    Description: >-
+      You are a highly effective fighter who takes advantage of any weakness
+      left by your enemy.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_PASSING_KILL
-  name: Passing Kill
+  name: "Passing Kill"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, one creature"
     Attack: "Dexterity (ranged) or Strength (melee) vs AC"
     Hit: "1 point of damage."
     Special: "At 21st level, you can make two attacks."
-    Flavor: "A mere low-level thug blocks your path. You don't even give them the luxury of losing momentum."
+    Flavor: >-
+      A mere low-level thug blocks your path. You don’t even give them the
+      luxury of losing momentum.
 
 - id: ORCUS_POWER_SWIFT_STRIKE
-  name: Swift Strike
+  name: "Swift Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, one creature"
     Attack: "Dexterity (ranged) or Strength (melee) vs AC"
-    Hit: "Dexterity (ranged) or Strength (melee) modifier damage, and the target is dazed until the start of your next turn."
-    Flavor: "You find a split-second opening and deliver the attack, hoping to hold the enemy back."
+    Hit: >-
+      Dexterity (ranged) or Strength (melee) modifier damage, and the target is
+      dazed until the start of your next turn.
+    Flavor: >-
+      You find a split-second opening and deliver the attack, hoping to hold the
+      enemy back.
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_IN_THEIR_FACE
-  name: In Their Face
+  name: "In Their Face"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, one creature"
     Attack: "Dexterity (ranged) or Strength (melee) vs AC"
-    Hit: "2dW + Dexterity (ranged) or Strength (melee) modifier damage and the target grants combat advantage until the end of your next turn."
+    Hit: >-
+      2dW + Dexterity (ranged) or Strength (melee) modifier damage and the
+      target grants combat advantage until the end of your next turn.
     Flavor: "Your darting attack puts your enemy off guard."
 
+- id: ORCUS_POWER_THE_FINISHER
+  name: "The Finisher"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Consistent, Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
+    Hit: "3dW + Dexterity (ranged) or Strength (melee) modifier damage."
+    Flavor: "You hit hard. That’s it. That’s enough."
+
+- id: ORCUS_POWER_HERON_DEFENSE
+  name: "Heron Defense"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      You do not grant combat advantage until the start of your next turn.
+    Flavor: "Your enemy tries to find a weakness. It finds none."
+
+- id: ORCUS_POWER_COUNTER_SURGE
+  name: "Counter-Surge"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You take damage from a melee or ranged attack."
+    Effect: >-
+      You gain temporary hit points equal to the damage dealt (to a maximum of
+      your recovery value).
+    Flavor: >-
+      An opponent strikes you with an attack. You take the impact and channel it
+      into strength.
+
 - id: ORCUS_POWER_FASTER_THAN_THE_HAMMER
-  name: Faster Than The Hammer
+  name: "Faster Than The Hammer"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, the triggering creature"
     Trigger: "A creature makes an attack against you."
-    Effect: "Make a basic attack against the target. The target suffers a -4 penalty to the triggering attack roll."
-    Flavor: "You hear your enemy's muscles twitch."
+    Effect: >-
+      Make a basic attack against the target. The target suffers a -4 penalty to
+      the triggering attack roll.
+    Flavor: "You hear your enemy’s muscles twitch."
 
-# --- Daily attack power (level 1) ---------------------------------------------
-- id: ORCUS_POWER_THE_FINISHER
-  name: The Finisher
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
-  fields:
-    Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    Keywords: "Consistent, Martial, Weapon"
-    "Action Type": Standard Action
-    Target: "Melee or Ranged weapon, one creature"
-    Attack: "Dexterity (ranged) or Strength (melee) vs AC"
-    Hit: "3dW + Dexterity (ranged) or Strength (melee) modifier damage."
-    Flavor: "You hit hard. That's it. That's enough."
-
-# --- Utility powers (level 2) -------------------------------------------------
-- id: ORCUS_POWER_HERON_DEFENSE
-  name: Heron Defense
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
-  fields:
-    Level: "2"
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
-    Target: Self
-    Effect: "You do not grant combat advantage until the start of your next turn."
-    Flavor: "Your enemy tries to find a weakness. It finds none."
-
-- id: ORCUS_POWER_COUNTER_SURGE
-  name: Counter-Surge
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Reaction Action
-    Keywords: Martial
-    Target: Self
-    Trigger: "You take damage from a melee or ranged attack."
-    Effect: "You gain temporary hit points equal to the damage dealt (to a maximum of your recovery value)."
-    Flavor: "An opponent strikes you with an attack. You take the impact and channel it into strength."
-
-# --- Higher-level powers (to populate the level 4-30 class selects) ------------
 - id: ORCUS_POWER_ALL_OR_NOTHING
-  name: All or Nothing
+  name: "All or Nothing"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You hit an enemy."
-    Effect: >
-      The target takes 2dW extra damage from the triggering attack and is knocked
-      prone. Boost (Level 15): the target takes 3dW extra damage and is knocked prone.
-    Flavor: "You strike so fast, both attacks are literally too close to distinguish."
+    Effect: >-
+      The target takes 2dW extra damage from the triggering attack and is
+      knocked prone.
+    Boost: >-
+      Level 15 The target takes 3dW extra damage from the triggering attack and
+      is knocked prone.
+    Flavor: >-
+      You strike so fast, both attacks are literally too close to distinguish
+      them.
 
 - id: ORCUS_POWER_FLOW_OR_CRASH
-  name: Flow or Crash
+  name: "Flow or Crash"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "6"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Effect: "You gain a move action."
-    Flavor: "Become what you need to survive. Adapt, flow, slide, and prove yourself."
+    Flavor: >-
+      Become what you need to survive. Adapt, flow, slide, and prove yourself.
 
 - id: ORCUS_POWER_FALSE_STRIKE
-  name: False Strike
+  name: "False Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "3dW + Strength modifier damage."
-    Miss: "Shift to any square adjacent to the target and repeat the attack. Do not repeat if you miss with the second attack."
-    Flavor: "Your first strike was intentionally lackluster, to trick your opponent into a mistake."
+    Miss: >-
+      Shift to any square adjacent to the target and repeat the attack. Don’t
+      repeat if you miss with the second attack.
+    Flavor: >-
+      Your first strike was intentionally lackluster to trick your opponent into
+      a mistake. You counter and strike hard before they realize their folly.
 
 - id: ORCUS_POWER_IDLE_HANDS
-  name: Idle Hands
+  name: "Idle Hands"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "10"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Effect: "You gain an additional standard action on your next turn."
-    Flavor: "Your limbs seemingly act on their own as you concentrate on other matters."
+    Flavor: >-
+      Your limbs seemingly act on their own as your concentrate on other
+      matters.
+
+- id: ORCUS_POWER_REFLEX_SHOT
+  name: "Reflex Shot"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, the triggering creature"
+    Trigger: >-
+      A creature’s attack does damage to an ally that would cause the ally to
+      become staggered.
+    Effect: >-
+      Make a basic attack against the target. If the attack hits, the triggering
+      creature’s attack misses.
+    Flavor: >-
+      Your training creates an instinctual reaction if an ally is at risk of
+      being struck down.
+
+- id: ORCUS_POWER_SWELL_OF_DISCIPLINE
+  name: "Swell of Discipline"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your turn, all powers you use have their actions reduced
+      from standard to move, or move to swift.
+    Flavor: >-
+      Your body moves faster than others can blink and without warning, you have
+      either vanished or your enemies around have fallen at your feet.
+
+- id: ORCUS_POWER_NERVE_CLUSTER
+  name: "Nerve Cluster"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one creature marked by you"
+    Attack: "Strength vs AC"
+    Hit: >-
+      1dW + Strength modifier damage, and the target is dazed, weakened, and is
+      rattled until the end of your next turn.
+    Miss: >-
+      Half damage, and the target is dazed until the end of your next turn.
+    Maintain: >-
+      Standard Repeat the attack against the same target. You cannot maintain if
+      you miss.
+    Boost: >-
+      Level 27 2dW + Strength modifier damage, and the target is dazed,
+      weakened, and is rattled until the end of your next turn.
+    Flavor: "Your attack temporarily paralyzes your opponent."
+
+- id: ORCUS_POWER_AN_UNWISE_ACTION
+  name: "An Unwise Action"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 1, all enemies you can see"
+    Effect: >-
+      The target drops any weapons it is holding, and you make a basic attack
+      against it.
+    Special: >-
+      You can choose to grab any weapon a target drops and use it for subsequent
+      basic attack/s. You can drop a weapon you pick up as part of this power as
+      a free action.
+    Flavor: >-
+      Enemies train their weapons. You advise your opponents of the wisdom of
+      such a risk, and then show them why.
+
+- id: ORCUS_POWER_STRIKE_AND_SLIP_AWAY
+  name: "Strike and Slip Away"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit an enemy."
+    Effect: >-
+      The target takes 2dW extra damage from the triggering attack, and it
+      cannot attack you until the start of your next turn unless that attack
+      includes at least one other creature.
+    Flavor: "After your attack, you move into your target's blind spot."
+
+- id: ORCUS_POWER_ATTACK_DEFLECTION
+  name: "Attack Deflection"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 1, one creature"
+    Trigger: "You are hit by an attack."
+    Effect: >-
+      The attack hits the target instead of you. If the target is not in range
+      or in line of sight of the attack, shunt the target to the nearest square
+      to place it in range and in line of sight. Then shift your speed and make
+      a basic attack.
+    Flavor: >-
+      You maneuver in such a way to direct the attack to an enemy nearby.
+
+- id: ORCUS_POWER_DELAYED_DEATH_TOUCH
+  name: "Delayed Death Touch"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You hit an enemy."
+    Effect: >-
+      The triggering creature makes a saving throw at the end of each turn. The
+      first time the saving throw fails, the target takes 7d10 points of damage.
+    Flavor: >-
+      With a twist in the right position, your attack carries a powerful energy
+      that shatters your opponent’s bones and ruptures their organs.
+

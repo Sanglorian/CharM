@@ -1,239 +1,574 @@
-# Puppeteer's String discipline (Magician / Worships the God of Tyranny kit).
-# Enchant, influence and dominate. Key Wisdom / secondary Charisma; the Magician's
-# class key (Intelligence) substitutes via `ability-swap`. Implement/Focus powers.
-# Levels 1-7 transcribed (a strong control toolkit; many powers have no damage).
+# Puppeteer's String discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_PUPPETEERS_STRING
-  name: Puppeteer's String
+  name: "Puppeteer's String"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Wisdom
-    "Secondary Ability": Charisma
-    Sources: "Magician (class); Worships the God of Tyranny (kit)"
-    Description: "You can enchant, influence and dominate the weaker-willed."
+    "Key Ability": "Wisdom"
+    "Secondary Ability": "Charisma"
+    Sources: "Magician (class), Worships the God of Tyranny (kit)"
+    Description: "You can enchant, influence and dominate the weaker willed."
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_BEFUDDLE
-  name: Befuddle
+  name: "Befuddle"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Arcane, Focus, Psychic"
     Target: "Near burst 3, one creature"
     Attack: "Wisdom vs Will"
     Hit: "The target is dazed until the start of your next turn."
+    Flavor: "Your mental influence clouds your opponent’s concentration."
 
 - id: ORCUS_POWER_NEURAL_SPEAR
-  name: Neural Spear
+  name: "Neural Spear"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Focus, Psychic"
     Target: "Near burst 5, one living creature"
     Attack: "Wisdom vs Will"
-    Hit: "1d8 + Wisdom modifier psychic damage. Level 21: 2d8 + Wisdom modifier."
+    Hit: >-
+      1d8 + Wisdom modifier psychic damage. Level 21: 2d8 + Wisdom modifier
+      damage.
+    Flavor: "You scour the target’s mind."
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_INSTANT_FRIENDS
-  name: Instant Friends
+  name: "Instant Friends"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Charm, Focus, Psychic"
     Target: "Near burst 5, one creature"
     Attack: "Wisdom vs Will"
-    Hit: "The target treats you as a friend and cannot attack you until the end of your next turn (ends if you damage it). You may use Bluff to convince it to help you."
+    Hit: >-
+      The target treats you as a friend and cannot attack you until the end of
+      your next turn. You can use your Bluff skill to convince the target to do
+      something for you, as per normal rules for Bluff. The effect ends
+      immediately if you make an attack that damages the target.
+    Maintain: >-
+      Swift Repeat the attack against the same target. On a hit the duration is
+      extended until the end of your next turn.
+    Flavor: "Don’t you remember me? We’re old pals."
+
+- id: ORCUS_POWER_RECALL_PROBE
+  name: "Recall Probe"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Focus, Psychic"
+    Target: "Melee touch, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      2d4 + your Wisdom modifier psychic damage and the target is dazed until
+      the end of your next turn. You search the target’s mind for a specific
+      memory. Make an Arcana check: DC 20 for a memory 24 hours old or less, DC
+      25 for a week old and DC 30 for up to a month old (GM’s discretion for
+      older memories).
+    Miss: >-
+      The power is not expended, but you cannot use it on the same target until
+      after your next long rest.
+    Maintain: "Standard Repeat the attack against an eligible target."
+    Flavor: >-
+      You sift through the target’s memories, searching for the needed one.
+
+- id: ORCUS_POWER_DREAMTRANCER
+  name: "Dreamtrancer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard and Move Action"
+    Keywords: "Arcane, Psychic"
+    Target: "Unlimited one unconscious creature you have met"
+    Effect: >-
+      You enter the target’s dream until the start of your next turn. You can
+      communicate with the target, convince it you are real or not. Once on your
+      turn, make a Wisdom vs Will attack if you wish to take control of the
+      dream: otherwise, you can only control your dream body and anything you
+      can directly affect with it. If you take control of the dream, the target
+      can attempt a Wisdom or Charisma vs Will attack at the start of its next
+      turn to regain control. If you inflict harm on the target or the target
+      inflicts harm on itself, it wakes up: however, if you are in control of
+      the dream, the target can only harm itself if you wish it. While you are
+      in the dream, you can take no actions outside of it. If you suffer damage
+      in reality, the effect ends.
+    Maintain: >-
+      Free The effect persists until the start of your next turn. You cannot
+      maintain if the target wakes up.
+    Flavor: >-
+      You move through the netherscape of untapped subconscious to communicate
+      with someone else.
+
+- id: ORCUS_POWER_IMPRINT
+  name: "Imprint"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Illusion"
+    Target: "Melee touch, one tiny object"
+    Effect: >-
+      You make one object look like something else of the same approximate size
+      and shape. The illusion only affects the object’s visual qualities.
+      Observers can make a Perception check opposed by your Bluff check to
+      identify the illusion. The effect lasts until you dismiss it as a free
+      action, or until you stop touching the object.
+    Flavor: >-
+      You wave your hand and suddenly a piece of paper looks like a letter from
+      the king, a copper coin looks like a gold coin, or a rock looks like a
+      diamond. Surely there are other applications, but you can’t think of any.
+
+- id: ORCUS_POWER_LONG_RANGE_COMMUNICATION
+  name: "Long Range Communication"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Psychic"
+    Target: "Near burst 1 mile, one creature you can envision"
+    Effect: >-
+      You transmit a message of 25 words or less that only the target will hear.
+    Flavor: >-
+      You concentrate and transmit a simple message over a vast distance.
+
+- id: ORCUS_POWER_INDIRECT_CAMOUFLAGE
+  name: "Indirect Camouflage"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Consistent, Focus, Illusion, Psychic"
+    Target: "Self"
+    Hit: >-
+      You disguise your appearance until the end of your next turn, making you
+      look like someone else. The details of your appearance are up to you. You
+      gain a +5 bonus to Bluff checks related to the disguise.
+    Maintain: >-
+      Move The effect persists until the end of your next turn. You cannot
+      maintain for longer than five minutes.
+    Flavor: "The best disguise is the one established in the mind."
 
 - id: ORCUS_POWER_ALL_A_JUMBLE
-  name: All a Jumble
+  name: "All a Jumble"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Consistent, Focus, Psychic"
     Target: "Near burst 10, the triggering creature"
     Trigger: "A creature makes a ranged attack against you or an adjacent ally."
     Attack: "Wisdom vs Will"
-    Hit: "The target attacks a different creature of your choice within its attack's range."
+    Hit: >-
+      The target attacks a different creature of your choice within its attack’s
+      range.
+    Flavor: >-
+      The target mixes up their target and ends attacking their best friend.
+      That won’t go over well.
 
 - id: ORCUS_POWER_CUT_THE_STRINGS
-  name: Cut the Strings
+  name: "Cut the Strings"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Consistent, Focus, Psychic"
     Target: "Near burst 5, one creature"
     Attack: "Wisdom vs Will"
-    Hit: "The target falls unconscious until the end of your next turn (wakes if it takes damage)."
+    Hit: >-
+      The target falls unconscious until the end of your next turn. If it
+      suffers any damage, it immediately wakes up.
+    Maintain: >-
+      Swift Repeat the attack against the same target. You can continue to
+      maintain even after the encounter ends. While you are not in an encounter,
+      each time you maintain this power, the target is unconscious for one hour
+      or until it suffers damage.
+    Flavor: "The target’s eyes roll back and they take a nice long nap."
+
+- id: ORCUS_POWER_REVERBERATION
+  name: "Reverberation"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Consistent, Focus, Psychic"
+    Target: "Far burst 5 within range 20, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      The target is distracted and grants combat advantage to all creatures
+      until the end of your next turn.
+    Flavor: "You create a sound everyone thinks they hear."
+
+- id: ORCUS_POWER_DIRECT_MANIPULATION
+  name: "Direct Manipulation"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Charm, Consistent, Focus, Psychic"
+    Target: "Near burst 5, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is controlled until the end of your next turn."
+    Maintain: >-
+      Standard Repeat the attack against the same target. You can continue to
+      maintain even after the encounter ends. While you are not in an encounter,
+      each time you maintain this power, the target is controlled for one hour.
+    Flavor: >-
+      You push the target’s brain aside and take direct control of the target.
+
+- id: ORCUS_POWER_MAKING_MATTERS_WORSE
+  name: "Making Matters Worse"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Arcane, Focus, Psychic"
+    Target: >-
+      Unlimited range, one creature that has just taken damage from a Psychic
+      power you used
+    Effect: >-
+      The target takes an additional 2d8 + Wisdom modifier damage and is
+      weakened until the end of your next turn. Level 15: 3d8 + Wisdom modifier
+      damage. Level 25: 4d8 + Wisdom modifier damage.
+    Flavor: >-
+      You’re already wiggling around their mind. Might as well cut a few nerves.
+
+- id: ORCUS_POWER_DEEP_SCAN
+  name: "Deep Scan"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard and Move Action"
+    Keywords: "Arcane, Consistent, Focus, Psychic"
+    Target: "Near burst 1 mile, one creature you can envision"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      You are able to scan the surface thoughts of the target, revealing its
+      current location and what it is doing.
+    Special: "No attack necessary against a willing target."
+    Flavor: "You attempt to scan the thoughts of someone you cannot see."
+
+- id: ORCUS_POWER_INSTILL_CONFIDENCE
+  name: "Instill Confidence"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Psychic"
+    Target: "Near burst 5, one ally"
+    Effect: "The target gains a +5 bonus to all skill checks for five minutes."
+    Flavor: "You make someone feel just awesome."
+
+- id: ORCUS_POWER_PSYCHIC_REFRESH
+  name: "Psychic Refresh"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Psychic"
+    Target: "Self"
+    Effect: "Recover the use of one of your encounter powers."
+    Flavor: "You are not like other people, limited in their uses of things."
 
 - id: ORCUS_POWER_VISUAL_DELETION
-  name: Visual Deletion
+  name: "Visual Deletion"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Focus, Illusion, Psychic"
     Target: "Near burst 5, all enemies"
     Attack: "Wisdom vs Will"
     Hit: "You are invisible to the target until the end of your next turn."
+    Maintain: "Move Repeat the attack against any targets you hit last turn."
+    Flavor: >-
+      Although you can still make a noise, your opponents have no other ways to
+      locate you.
 
-# --- Daily attack powers ------------------------------------------------------
-- id: ORCUS_POWER_RECALL_PROBE
-  name: Recall Probe
+- id: ORCUS_POWER_ACT_CASUAL
+  name: "Act Casual"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
-    Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Focus, Psychic"
-    Target: "Melee touch, one creature"
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Charm, Focus, Psychic"
+    Target: "Near burst 5, one creature"
     Attack: "Wisdom vs Will"
-    Hit: "2d4 + Wisdom modifier psychic damage and the target is dazed until the end of your next turn; search its mind for a memory (Arcana check)."
-    Miss: "Not expended, but you cannot use it on the same target until after your next long rest."
+    Hit: >-
+      The target is controlled (save ends), but not dazed (enabling you to use
+      more than one of its actions) and the target doesn’t grant combat
+      advantage unless you wish them to.
+    Flavor: "No one suspects a thing."
 
-- id: ORCUS_POWER_DIRECT_MANIPULATION
-  name: Direct Manipulation
+- id: ORCUS_POWER_NEURAL_SLICE
+  name: "Neural Slice"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Focus, Psychic"
+    Target: "Far burst 3 within range 10, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is dazed, immobile, and weakened (save ends all)."
+    Miss: >-
+      The target is dazed, immobile, and weakened until the start of your next
+      turn.
+    Flavor: >-
+      You send out a cascade of psychic energy to affect all those around.
+
+- id: ORCUS_POWER_TELEPATHIC_BLOCKER
+  name: "Telepathic Blocker"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Arcane, Psychic"
+    Target: "Self"
+    Effect: "You gain a +4 bonus to Will defense for 5 minutes."
+    Flavor: >-
+      You go on the defense to ensure you don’t suffer from any effects you
+      yourself are known for.
+
+- id: ORCUS_POWER_BLACKOUT
+  name: "Blackout"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Focus, Psychic"
+    Target: "Near burst 5, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is blinded and deafened (save ends)."
+    Miss: >-
+      The target is blinded and deafened until the start of your next turn.
+    Flavor: >-
+      You cut off every sense in your opponent. You suppose they could still
+      smell you.
+
+- id: ORCUS_POWER_TRANSPLANT_SENSES
+  name: "Transplant Senses"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Consistent, Focus, Psychic"
+    Target: "Ranged 20, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      Until the start of your next turn, you either look through the targets
+      eyes or you force the target to see what you see. While looking through
+      the target’s eyes, you may choose whether or not the target is aware of
+      your use of this power. While looking through the target’s eyes, you grant
+      combat advantage to all creatures: while looking through yours, the target
+      grants combat advantage to all creatures and may not be able to see
+      certain targets in order to attack them. If the target takes damage, the
+      effect ends.
+    Maintain: >-
+      Standard Repeat the attack against the same target. You can continue to
+      maintain even after the encounter ends. While you are not in an encounter,
+      each time you maintain this power, the effect remains for one hour or
+      until you end it as a swift action.
+    Flavor: >-
+      You can either look through someone else’s eyes or force their vision
+      through your own.
+
+- id: ORCUS_POWER_FIELD_CONTROL
+  name: "Field Control"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Charm, Focus, Psychic"
+    Target: "Near burst 5, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is controlled until the end of your next turn."
+    Maintain: "Standard Repeat the attack against any targets you hit last turn."
+    Flavor: "This feels more like a tabletop wargame and these are your troops."
+
+- id: ORCUS_POWER_PHRENIC_CASCADE
+  name: "Phrenic Cascade"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Consistent, Focus, Psychic"
+    Target: "Near burst 10, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      5d10 + Wisdom modifier damage, and the target is stunned until the end of
+      your next turn. Level 27: 7d10 + Wisdom modifier damage
+    Flavor: "You simply cause havoc in the target’s brain."
+
+- id: ORCUS_POWER_GODLY_STRING
+  name: "Godly String"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard and Move Action"
+    Keywords: "Arcane, Focus, Psychic"
+    Target: "Near burst 1 mile, one creature you can envision"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is controlled (save ends)."
+    Flavor: >-
+      No matter where they go, no matter where they hide, you can get at them.
+
+- id: ORCUS_POWER_PURE_PUPPETEER
+  name: "Pure Puppeteer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Consistent, Focus, Psychic"
+    Target: "Near burst 5, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      The target is under your control until the end of your next turn. This is
+      identical to being controlled, except you can activate rechargeable,
+      encounter, and daily powers. You can command the target to attack allies
+      or itself (if possible).
+    Maintain: >-
+      Move Repeat the attack against the same target. You can continue to
+      maintain even after the encounter ends. While you are not in an encounter,
+      each time you maintain this power, the effect remains for one hour.
+    Flavor: >-
+      You convince the target that what you wish is all that matters. You are
+      nothing less than a god and they will do anything and everything in your
+      name.
+
+- id: ORCUS_POWER_PERSONALITY_MANIPULATION
+  name: "Personality Manipulation"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Charm, Consistent, Focus, Psychic"
     Target: "Near burst 5, one creature"
     Attack: "Wisdom vs Will"
-    Hit: "The target is controlled until the end of your next turn."
-    Special: "Maintain Standard: repeat the attack against the same target (out of combat, one hour per maintain)."
+    Hit: >-
+      You rewrite the target’s personality so that it is convinced you and your
+      allies are its allies until the end of your next turn. You have no direct
+      control over the target but are able to give it instructions which it will
+      try to follow to the best of its abilities.
+    Maintain: >-
+      Move Repeat the attack against the same target. You can continue to
+      maintain even after the encounter ends. While you are not in an encounter,
+      each time you maintain this power, the effect remains for one day.
+    Flavor: >-
+      Until now, everything you have done has been temporary. People would wake
+      up and feel the fool. Now, there is nothing holding you back … this is
+      that moment where you need to decide which side you’re really on.
 
-- id: ORCUS_POWER_MAKING_MATTERS_WORSE
-  name: Making Matters Worse
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Arcane, Focus, Psychic"
-    Target: "Unlimited range, one creature that just took damage from a Psychic power you used"
-    Effect: "The target takes an additional 2d8 + Wisdom modifier damage and is weakened until the end of your next turn. Level 15: 3d8. Level 25: 4d8."
-
-# --- Utility powers -----------------------------------------------------------
-- id: ORCUS_POWER_DREAMTRANCER
-  name: Dreamtrancer
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "2"
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Standard and Move Action
-    Keywords: "Arcane, Psychic"
-    Target: "One unconscious creature you have met"
-    Effect: "Enter the target's dream until the start of your next turn; you may attempt to take control of it (Wisdom vs Will)."
-
-- id: ORCUS_POWER_IMPRINT
-  name: Imprint
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "2"
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Standard Action
-    Keywords: "Arcane, Illusion"
-    Target: "Melee touch, one tiny object"
-    Effect: "Make one object look like another of similar size and shape (visual only); Perception vs your Bluff to see through it."
-
-- id: ORCUS_POWER_INDIRECT_CAMOUFLAGE
-  name: Indirect Camouflage
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: "Arcane, Consistent, Focus, Illusion, Psychic"
-    Target: Self
-    Effect: "Disguise your appearance until the end of your next turn (+5 to related Bluff checks)."
-
-- id: ORCUS_POWER_DEEP_SCAN
-  name: Deep Scan
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Standard and Move Action
-    Keywords: "Arcane, Consistent, Focus, Psychic"
-    Target: "Near burst 1 mile, one creature you can envision"
-    Effect: "Scan the target's surface thoughts (Wisdom vs Will; no attack vs a willing target), revealing its location and activity."
-
-- id: ORCUS_POWER_INSTILL_CONFIDENCE
-  name: Instill Confidence
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: "Arcane, Psychic"
-    Target: "Near burst 5, one ally"
-    Effect: "The target gains a +5 bonus to all skill checks for five minutes."
-
-- id: ORCUS_POWER_PSYCHIC_REFRESH
-  name: Psychic Refresh
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
-  fields:
-    Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: "Arcane, Psychic"
-    Target: Self
-    Effect: "Recover the use of one of your encounter powers."

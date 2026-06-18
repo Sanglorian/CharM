@@ -40,7 +40,7 @@ public static class Phase2
     static readonly HashSet<string> RangeWords = new(StringComparer.OrdinalIgnoreCase)
     {
         "Melee", "Ranged", "Near", "Far", "Close", "Area", "Wall", "Personal",
-        "Self", "Melee or Ranged", "Ranged or Melee", "Aura",
+        "Self", "Aura", "Unlimited", "Touch",
     };
     static readonly HashSet<string> BodyLabels = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -54,6 +54,13 @@ public static class Phase2
     static readonly Regex Header = new(
         @"^\*\*(?<usage>[^*]+?)\*\*\s+\*\*(?<type>[^*]+?)\*\*\s+\*\*(?<level>[^*]+?)\*\*\s*\(\s*\*?\*?(?<action>[^*)]+?)\*?\*?\s*\)\s*(?:●\s*\*\*(?<kw>[^*]+?)\*\*)?\s*$",
         RegexOptions.Compiled);
+    // Variant where the whole stat header is a single bold span:
+    //   **Encounter Attack 1 (Standard Action)** ● **Martial, Weapon**
+    static readonly Regex HeaderAll = new(
+        @"^\*\*(?<body>[^*]+?)\*\*\s*(?:●\s*\*\*(?<kw>[^*]+?)\*\*\s*)?$", RegexOptions.Compiled);
+    static readonly Regex HeaderInner = new(
+        @"^(?<usage>At-Will|Encounter|Daily)\s+(?<type>Attack|Utility)\s+(?<level>Feature|\d+)\s*\(\s*(?<action>[^)]+?)\s*\)\s*$",
+        RegexOptions.Compiled);
 
     // ------------------------------------------------------------------ parsing
     public static ParsedDiscipline Parse(string sourceFile, string disciplineName)
@@ -63,8 +70,7 @@ public static class Phase2
         for (int i = 0; i < lines.Length; i++)
         {
             var m = H2.Match(lines[i]);
-            if (m.Success && HttpUtility.HtmlDecode(m.Groups[1].Value).Trim()
-                    .Equals(disciplineName, StringComparison.OrdinalIgnoreCase))
+            if (m.Success && SameName(HttpUtility.HtmlDecode(m.Groups[1].Value), disciplineName))
             { start = i; }
             else if (start >= 0 && (H2.IsMatch(lines[i]) || H1.IsMatch(lines[i]))) { end = i; break; }
         }
@@ -158,6 +164,21 @@ public static class Phase2
                     headerSeen = true;
                     continue;
                 }
+                var ma = HeaderAll.Match(line);
+                if (ma.Success)
+                {
+                    var mi = HeaderInner.Match(ma.Groups["body"].Value.Trim());
+                    if (mi.Success)
+                    {
+                        pw.Usage = mi.Groups["usage"].Value.Trim();
+                        pw.Type = mi.Groups["type"].Value.Trim();
+                        pw.Level = mi.Groups["level"].Value.Trim();
+                        pw.Action = mi.Groups["action"].Value.Trim();
+                        pw.Keywords = ma.Groups["kw"].Success ? ma.Groups["kw"].Value.Trim() : "";
+                        headerSeen = true;
+                        continue;
+                    }
+                }
                 // Pre-header italic line == flavor.
                 if (line.StartsWith("*") && !line.StartsWith("**") && line.EndsWith("*"))
                 { pw.Flavor = Unwrap(line); continue; }
@@ -168,8 +189,11 @@ public static class Phase2
             // After header.
             if (TryBoldLabel(line, out string label, out string rest))
             {
-                if (RangeWords.Contains(label) && pw.Target.Length == 0)
+                string firstWord = label.Split(' ', 2)[0];
+                if (RangeWords.Contains(firstWord) && pw.Target.Length == 0)
                 { pw.Target = Unwrap(line); current = "Target"; continue; }
+                if (label.Equals("Target", StringComparison.OrdinalIgnoreCase))
+                { pw.Target = (pw.Target + " " + Unwrap(rest)).Trim(); current = "Target"; continue; }
 
                 string first = label.Split(' ', 2)[0];
                 if (BodyLabels.Contains(label) || BodyLabels.Contains(first)
@@ -220,6 +244,14 @@ public static class Phase2
         if (label.StartsWith("Maintain", StringComparison.OrdinalIgnoreCase)) return "Maintain";
         if (label.StartsWith("Boost", StringComparison.OrdinalIgnoreCase)) return "Boost";
         return char.ToUpperInvariant(first[0]) + first.Substring(1).ToLowerInvariant();
+    }
+
+    static bool SameName(string a, string b)
+    {
+        static string K(string s) => string.Join(' ',
+            s.Replace('’', '\'').Replace('‘', '\'').ToLowerInvariant()
+             .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries));
+        return K(a) == K(b);
     }
 
     static string Strip(string s) => s.Replace("*", "").Replace("`", "");

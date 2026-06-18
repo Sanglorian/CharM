@@ -1,246 +1,883 @@
-# The Angel's Trumpet discipline (Commander / Priest; Embodies Charisma, Worships
-# the God of Peace kits). A leader's inspire/heal/redirect powers. Levels 1-2
-# transcribed. Same tagging contract as Art of War: [disciplineId, <frequency>]
-# with a real Level field; utility powers tagged `utility`.
+# Angel's Trumpet discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_ANGELS_TRUMPET
-  name: Angel's Trumpet
+  name: "Angel's Trumpet"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Charisma
-    "Secondary Ability": Wisdom
-    Sources: "Commander, Priest (classes); Embodies Charisma, Worships the God of Peace (kits)"
-    Description: "Your words and example inspire allies to stay in the fight, and cooperate to take down the enemy."
+    "Key Ability": "Charisma"
+    "Secondary Ability": "Wisdom"
+    Sources: "Commander, Priest (classes), Embodies Charisma, Worships the God of Peace (kits)"
+    Description: >-
+      Your words and example inspire allies to stay in the fight, and cooperate
+      to take down the enemy.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_IDENTIFY_TARGET
-  name: Identify Target
+  name: "Identify Target"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  # "ability-swap": the engine adds the character's class key ability (Key
-  # Ability Swap element) to this power's printed key (Charisma) and uses the
-  # higher. See docs/orcus-mapping.md.
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Martial"
     Target: "Ranged 10, one enemy"
     Attack: "Charisma vs Will"
-    Hit: "The target grants combat advantage until the end of your next turn. The first ally to hit the target with an attack heals 1d6 + your Charisma modifier HP."
+    Hit: >-
+      The target grants combat advantage until the end of your next turn. The
+      first ally to hit the target with an attack heals 1d6 + your Charisma
+      modifier HP.
 
 - id: ORCUS_POWER_MAKE_ROOM
-  name: Make Room
+  name: "Make Room"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Near earshot, one ally"
-    Effect: "The target makes a basic attack against an enemy of your choice, and gains a bonus to damage rolls for the attack equal to your Charisma modifier."
-    Flavor: "There are others in a better position. You give them the opening they need."
+    Effect: >-
+      The target makes a basic attack against an enemy of your choice, and gains
+      a bonus to damage rolls for the attack equal to your Charisma modifier.
+      Level 21: Use as a move action instead of a standard action.
+    Flavor: >-
+      There are others in a better position. You give them the opening they
+      need.
 
-# --- Encounter attack powers (level 1) ----------------------------------------
 - id: ORCUS_POWER_QUICK_SAVE
-  name: Quick Save
+  name: "Quick Save"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Counter Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
     Target: "Near earshot, the triggering ally"
-    Trigger: "One ally misses with an attack roll against a creature you can see."
+    Trigger: >-
+      One ally misses with an attack roll against a creature you can see.
     Effect: "The target may reroll the attack."
-    Flavor: "A quick word or push allows an ally a momentary improvement to their accuracy."
+    Flavor: >-
+      A quick word or push allows an ally a momentary improvement to their
+      accuracy.
 
 - id: ORCUS_POWER_TARGETED_CALL
-  name: Targeted Call
+  name: "Targeted Call"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Near burst 10, one ally"
-    Effect: "Choose one ally. They make a basic melee or ranged attack. If they hit, they gain temporary HP equal to your Wisdom modifier."
+    Effect: >-
+      Choose one ally. They make a basic melee or ranged attack. If they hit,
+      they gain temporary HP equal to your Wisdom modifier.
 
-# --- Daily attack powers (level 1) --------------------------------------------
 - id: ORCUS_POWER_BREAK_WILL
-  name: Break Will
+  name: "Break Will"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Martial, Psychic"
     Target: "Near burst 3, all enemies"
     Attack: "Charisma vs Will"
     Hit: "The target is weakened (save ends)."
 
 - id: ORCUS_POWER_GEOMETRIC_STRATEGY
-  name: Geometric Strategy
+  name: "Geometric Strategy"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Reaction Action
-    Keywords: Martial
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
     Target: "Near earshot, the triggering ally"
     Trigger: "One ally hits with an attack."
-    Effect: "The target's attack deals +3dW damage."
-    Flavor: "There's a whole machine that works because everyone does what they are supposed to."
+    Effect: "The target’s attack deals +3dW damage."
+    Flavor: >-
+      There’s a whole machine that works because everyone does what they are
+      supposed to.
 
-# --- Utility powers (level 2) -------------------------------------------------
+- id: ORCUS_POWER_NO_ONE_HITS_THE_CHIEF
+  name: "No One Hits The Chief"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near earshot, two allies"
+    Effect: >-
+      The target makes a basic attack against one creature that hit you since
+      the start of your last turn.
+    Flavor: "You’re hit and your comrades don’t take kindly to that."
+
+- id: ORCUS_POWER_RESCUING_ANGEL
+  name: "Rescuing Angel"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one ally"
+    Trigger: "An ally in range is reduced to 0 HP or below"
+    Effect: >-
+      Choose one ally. They make a basic melee or ranged attack against the
+      creature that made the attack, and can add your Charisma modifier to their
+      attack and damage. You move your speed. If you end your move adjacent to
+      the original ally, they can spend a recovery to heal their recovery value
+      plus your Wisdom modifier.
+
 - id: ORCUS_POWER_HOLD_FAST
-  name: Hold Fast
+  name: "Hold Fast"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near burst 1, two allies or you and one ally"
-    Effect: "The target gains resistance to all damage equal to your Charisma modifier until the start of your next turn."
-    Flavor: "You push the heads down of those around you, keeping them from the line of fire."
+    Effect: >-
+      The target gains resistance to all damage equal to your Charisma modifier
+      until the start of your next turn.
+    Maintain: >-
+      Move The effect persists until the end of your next turn. If either target
+      leaves its current square, the effect ends.
+    Flavor: >-
+      You push the heads down of those around you, keeping them from the line of
+      fire.
 
 - id: ORCUS_POWER_AN_OUNCE_OF_PREVENTION
-  name: An Ounce of Prevention
+  name: "An Ounce of Prevention"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
     Target: "Near burst 10, one ally"
     Trigger: "An ally in range is hit by an attack."
-    Effect: "The ally can spend a recovery to gain temporary hit points equal to their recovery value."
+    Effect: >-
+      The ally can spend a recovery to gain temporary hit points equal to their
+      recovery value.
 
 - id: ORCUS_POWER_ENCOURAGING_PEAL
-  name: Encouraging Peal
+  name: "Encouraging Peal"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
     Target: "Near burst 5, all allies"
-    Effect: "Targets receive a +2 power bonus on attack rolls and add your Charisma modifier to damage until the end of the encounter."
-    Flavor: "You let out shouts of encouragement to bolster your allies in battle."
+    Effect: >-
+      Targets receive a +2 power bonus on attack rolls and add your Charisma
+      modifier to damage until the end of the encounter.
+    Flavor: >-
+      You let out shouts of encouragement to bolster your allies in battle.
 
-# --- Higher-level powers (to populate the level 4-30 class selects) ------------
-- id: ORCUS_POWER_CALL_TO_ACTION
-  name: Call to Action
+- id: ORCUS_POWER_INSPIRE_THE_TROOPS
+  name: "Inspire the Troops"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 5, two allies"
+    Effect: >-
+      The target gains a +2 power bonus to all attack rolls until the start of
+      your next turn. The target gains an additional move action on their next
+      turn, and can trade two move actions for one standard action.
+    Flavor: "“Come on, say a few words …”"
+
+- id: ORCUS_POWER_PRIDE_LEADER_S_STANCE
+  name: "Pride Leader’s Stance"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Stance"
+    Target: "Self"
+    Effect: >-
+      Allies within 10 squares (including yourself) have a +2 power bonus to
+      Will defense and on saving throws.
+    Flavor: >-
+      By adopting the mannerisms of commanding lions of the great savannahs, you
+      inspire heroics by your presence.
+
+- id: ORCUS_POWER_THE_STRENGTH_WITHIN
+  name: "The Strength Within"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally or yourself"
+    Effect: >-
+      The target can spend a recovery to heal their recovery value, and add your
+      Charisma modifier to damage rolls until the end of your next turn.
+
+- id: ORCUS_POWER_CALL_TO_ACTION
+  name: "Call to Action"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near burst 10, one enemy"
-    Effect: "Choose two allies. Each ally chooses one: they may charge the target, or make a basic melee or ranged attack against them."
+    Effect: >-
+      Choose two allies. Each ally chooses one: they may charge the target or
+      make a basic melee or ranged attack against them.
+    Flavor: >-
+      By having a watchful eye on the flow of combat, you know when to spur an
+      ally into a better position.
 
 - id: ORCUS_POWER_RALLYING_INSTRUCTION
-  name: Rallying Instruction
+  name: "Rallying Instruction"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Near burst 10, one ally"
-    Effect: "The target regains one recovery. The target can make a basic melee or ranged attack, dealing +2dW damage if they hit."
+    Effect: >-
+      The target regains one recovery. The target can make a basic melee or
+      ranged attack. They do +2dW damage if they hit.
 
 - id: ORCUS_POWER_GOLDEN_COMMANDER_STANCE
-  name: Golden Commander Stance
+  name: "Golden Commander Stance"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "6"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Stance"
-    Target: Self
-    Effect: "Any enemies within 10 that are flanked by any allies (including yourself) count as flanked by all of your allies."
-    Flavor: "Through your superior tactical ability, you direct your allies for maximum effectiveness."
+    Target: "Self"
+    Effect: >-
+      Any enemies within 10 that are flanked by any allies (including yourself)
+      count as flanked by all of your allies.
+    Flavor: >-
+      Through the use of your superior tactical ability, you are able to direct
+      your allies in combat for maximum effectiveness.
 
-- id: ORCUS_POWER_MILESTONE_FOE
-  name: Milestone Foe
+- id: ORCUS_POWER_NO_ONE_LEFT_BEHIND
+  name: "No One Left Behind"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter]
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Healing, Martial"
+    Target: "Melee touch, one staggered ally"
+    Effect: >-
+      Spend a recovery, but do not regain hit points; instead, the target
+      regains hit points as if they had spent a recovery. You and the target
+      shift a number of squares equal to 1+ your Charisma modifier. You and the
+      target must be adjacent at the end of the shift.
+    Maintain: >-
+      Move You and the target shift a number of squares equal to 1 + your
+      Charisma modifier squares. You and the target must be in adjacent squares
+      at the end of the shift.
+    Flavor: "You grab an ally by the shoulder and drag them to safety."
+
+- id: ORCUS_POWER_INHERIT_TOUGHNESS
+  name: "Inherit Toughness"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Martial"
+    Target: "Near burst 5, all allies and yourself"
+    Effect: "Each target heals 10 + your Charisma modifier HP."
+    Flavor: >-
+      With a cry to defend themselves from incoming attacks, your inspirational
+      words aid your allies in their defense.
+
+- id: ORCUS_POWER_WHEN_A_PLAN_COMES_TOGETHER
+  name: "When A Plan Comes Together"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Requirements: "An encounter ends with no allies dying, unconscious, or staggered."
+    Effect: "Each ally gains one additional action point."
+    Flavor: "You congratulate the group for a job well done."
+
+- id: ORCUS_POWER_MILESTONE_FOE
+  name: "Milestone Foe"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Near burst 10, one enemy"
-    Effect: "Until the end of your next turn, attacks against the target add your Charisma modifier to the attack and damage roll."
+    Effect: >-
+      Until the end of your next turn, attacks against the target add your
+      Charisma modifier to the attack and damage roll.
 
 - id: ORCUS_POWER_IDENTIFY_WEAK_POINT
-  name: Identify Weak Point
+  name: "Identify Weak Point"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Martial"
     Target: "Near burst 10, one enemy"
     Attack: "Charisma vs Will"
-    Hit: "The target is vulnerable to all damage 5 until the end of the encounter."
+    Hit: >-
+      The target is vulnerable to all damage 5 until the end of the encounter.
     Effect: "The target is dazed (save ends)."
 
 - id: ORCUS_POWER_BOLSTER_THE_LINE
-  name: Bolster the Line
+  name: "Bolster the Line"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
     Keywords: "Healing, Martial"
     Target: "Near burst 2, all allies"
-    Effect: "The target gains temporary hit points equal to twice your Charisma modifier."
-    Flavor: "You shout a few inspiring words and quote the soldier's creed. The spines of those around you stiffen."
+    Effect: >-
+      The target gains temporary hit points equal to twice your Charisma
+      modifier.
+    Flavor: >-
+      You shout a few inspiring words and quote the soldier’s creed. The spines
+      of those around you stiffen.
+
+- id: ORCUS_POWER_CONTROL_THE_BATTLE_THEATRE
+  name: "Control The Battle Theatre"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 3, you and four allies"
+    Effect: "The target shifts its speed."
+    Flavor: "You bark out orders and change the pattern of attack."
+
+- id: ORCUS_POWER_GOLDEN_GENERAL_S_VICTORY
+  name: "Golden General’s Victory"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Martial"
+    Target: "Near burst 5, all allies"
+    Effect: >-
+      Each target can spend a recovery to heal their recovery value. They also
+      make a saving throw against one effect of their choice. They get a +2
+      power bonus to attack rolls until the end of your next turn.
+    Flavor: >-
+      You are a beacon of command on the field of battle, inspiring your troops
+      by your mere presence.
+
+- id: ORCUS_POWER_NOW_WHAT_DID_WE_LEARN
+  name: "Now What Did We Learn?"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Requirements: >-
+      An encounter ends. At least two allies were staggered at some point during
+      the encounter.
+    Effect: >-
+      An ally who was staggered during the encounter regains 2 recoveries and 1
+      daily power.
+    Special: "This power can only be recovered during a long rest."
+    Flavor: >-
+      You talk it over with the others and you show how, even in the direst
+      circumstances, something can be learned.
+
+- id: ORCUS_POWER_RESTRAINT
+  name: "Restraint"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one enemy"
+    Attack: "Charisma vs Will"
+    Hit: "The target cannot make attacks until the end of your next turn."
+
+- id: ORCUS_POWER_LEAD_THE_GROUP
+  name: "Lead the Group"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Near earshot, all allies"
+    Effect: >-
+      Until the end of the encounter, on the target’s turn, you can either shunt
+      the target one square or the target gains a +2 bonus to all attack rolls
+      until the end of the turn. You can also use a reaction to grant the target
+      a basic attack.
+    Flavor: >-
+      You stand in front as a proud example. Where you point, others will
+      follow.
+
+- id: ORCUS_POWER_TO_ARMS
+  name: "To Arms"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, three allies"
+    Effect: >-
+      Each ally may immediately choose to perform any one of the following:
+      charge, make a basic melee or ranged attack or spend a recovery to heal
+      their recovery value.
+
+- id: ORCUS_POWER_DISCIPLINE_OF_THE_HOLY_HOST
+  name: "Discipline of the Holy Host"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally"
+    Trigger: >-
+      Use when you have just used a utility power with the range of Self.
+    Effect: >-
+      The utility power you just used has a range of “Self and one ally within
+      range of discipline of the holy host”
+    Flavor: >-
+      Through training with your allies, you have taught them the basics of your
+      military skill that they may call upon in times of duress.
+
+- id: ORCUS_POWER_LOOK_ALIVE
+  name: "Look Alive!"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Healing, Martial"
+    Target: "Melee touch, one staggered ally"
+    Requirements: >-
+      The target can spend a recovery and heal their recovery value. If the
+      target is prone, they can stand up.
+    Flavor: >-
+      You grab an ally by the shoulder, help them up, and reassure them of the
+      triviality of their wound.
+
+- id: ORCUS_POWER_HANG_TOGETHER
+  name: "Hang Together"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 5, you and all allies"
+    Effect: >-
+      The target receives temporary hit points equal to twice your Charisma
+      modifier. Until the end of your next turn, the target gains a +2 bonus to
+      Fortitude and Will defense and a +2 bonus to all saving throws.
+    Flavor: >-
+      Your presence inspires others to act with a similar strength of
+      personality.
+
+- id: ORCUS_POWER_MARTYR
+  name: "Martyr"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally"
+    Trigger: "You are hit by an attack"
+    Effect: >-
+      An ally within range can make a basic melee or ranged attack or charge
+      against the creature that made the attack. The attack has combat
+      advantage, and adds your Wisdom modifier to attack and damage rolls.
+
+- id: ORCUS_POWER_BLITZING_YELL
+  name: "Blitzing Yell"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 5, all enemies"
+    Attack: "Charisma vs Will"
+    Hit: "The target is stunned (save ends)."
+    Effect: >-
+      Allies within range can spend a recovery to heal their recovery value plus
+      your Wisdom modifier.
+
+- id: ORCUS_POWER_CRITICAL_MOMENT
+  name: "Critical Moment"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Near earshot, the triggering ally"
+    Trigger: "An ally hits with an attack"
+    Effect: "The triggering hit becomes a critical hit."
+    Flavor: >-
+      One word of encouragement at the right moments can make all the
+      difference.
+
+- id: ORCUS_POWER_PULL_IT_TOGETHER
+  name: "Pull It Together"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Martial"
+    Target: >-
+      Melee touch, one ally suffering from any of the following conditions:
+      blinded, dazed, deafened, slowed, stunned, or weakened.
+    Effect: >-
+      You suppress one of the listed conditions until the start of your next
+      turn.
+    Maintain: >-
+      Swift The effect persists until the start of your next turn. The target
+      must still be in range.
+    Flavor: >-
+      You resort to anger, encouraging support, or violence to get an ally to
+      shrug it off.
+
+- id: ORCUS_POWER_PEAL_OF_HOPE
+  name: "Peal of Hope"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Near burst 5, all allies"
+    Effect: >-
+      Until the end of your next turn, any ally that misses with an encounter or
+      daily attack power can choose to keep the power unexpended instead of its
+      usual miss effect (if any).
+    Flavor: >-
+      With an awesome cry for victory and bravery from your allies, you bolster
+      allies’ defenses and attacks for a moment as your allies cannot help
+      themselves but to win.
+
+- id: ORCUS_POWER_ON_YOUR_FEET
+  name: "On Your Feet"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Martial"
+    Target: "Melee touch, one unconscious ally"
+    Effect: >-
+      The target is no longer unconscious. If they spend a recovery, they heal
+      hit points equal to double their recovery value; otherwise they heal hit
+      points equal to their recovery value.
+    Flavor: "Your inspiring words reach even the fallen."
+
+- id: ORCUS_POWER_JUST_STOP
+  name: "Just Stop …"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Near earshot, you and all allies"
+    Effect: >-
+      The target recovers one expended encounter power. The target may spend a
+      recovery. If they do so, they heal their recovery value.
+    Flavor: >-
+      “We need to take a moment to focus … just focus. Take a deep breath and
+      let us deal with this threat like the team we are.”
+
+- id: ORCUS_POWER_BLESSED_FEAST
+  name: "Blessed Feast"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Martial, Stance"
+    Target: "Self"
+    Effect: >-
+      Whenever an enemy within 10 is reduced to 0 HP or below, choose an ally
+      within 10. That ally can spend a recovery and heal their recovery value
+      plus your Charisma modifier.
+    Flavor: >-
+      Victory over each foe invigorate your allies like the courses at a great
+      banquet.
+
+- id: ORCUS_POWER_TAKE_ME
+  name: "Take Me"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one enemy"
+    Attack: "Charisma vs Will"
+    Hit: "The target is stunned and marked until the end of your next turn."
+    Miss: "The target is marked until the end of your next turn."
+
+- id: ORCUS_POWER_ENCOURAGING_REACTION
+  name: "Encouraging Reaction"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Healing, Martial"
+    Target: "Near earshot, you and four allies"
+    Effect: >-
+      The target can spend a recovery. They can either regain hit points or gain
+      their recovery value as a power bonus to the damage roll on their next
+      hit. The target can make a basic attack.
+    Flavor: >-
+      You risk everything, even personal injury, towards the success of the
+      mission.
+
+- id: ORCUS_POWER_FULL_SUITE
+  name: "Full Suite"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally"
+    Effect: >-
+      One ally regains all expended encounter powers. You regain one expended
+      encounter power.
+
+- id: ORCUS_POWER_BOOST_PERFORMANCE
+  name: "Boost Performance"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near earshot, four allies"
+    Effect: "The target gains a 2dW damage bonus to her next hit."
+    Flavor: "You offer your expertise to others. Your talents are appreciated."
+
+- id: ORCUS_POWER_GRIPPED_WITH_FEAR
+  name: "Gripped with Fear"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Fear, Focus, Martial"
+    Target: "Near burst 5, all enemies"
+    Attack: "Charisma vs Will"
+    Hit: >-
+      Shunt the target a number of squares equal to your Charisma modifier. Each
+      ally in range selects one target. If that target passes within reach, they
+      may make an opportunity attack against that creature during the shunt.
+
+- id: ORCUS_POWER_BATTLE_SYMPHONY
+  name: "Battle Symphony"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near earshot, four allies"
+    Effect: >-
+      The target can shift a number of squares equal to 1 + your Charisma
+      modifier. The target can make a basic attack before or after the move,
+      dealing +2dW extra damage on a hit. If the target misses, they can make a
+      second basic attack, dealing +1dW extra damage on a hit.
+    Flavor: >-
+      Allies target where you want. You perform a magnum opus of combat--your
+      concert of indomitable defense, devastating attacks, and the silence of
+      your fallen foes.
+
+- id: ORCUS_POWER_REMEMBER_ME
+  name: "Remember Me?"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally"
+    Trigger: "An ally has just finished an action."
+    Effect: >-
+      The target can repeat the last action it performed again, even if it used
+      an expended power.
+    Special: "You must spend an action point to use this power."
+

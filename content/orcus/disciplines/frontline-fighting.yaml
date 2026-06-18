@@ -1,93 +1,110 @@
-# Frontline Fighting discipline (Sylvan). Knock-down, drag-out brawler powers
-# mixing weapon blows and haymakers. Key ability Strength, secondary Constitution.
-# The Sylvan's class key (Strength) substitutes via the `ability-swap` tag on
-# attack powers. Levels 1-29 transcribed (full class power progression).
+# Frontline Fighting discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_FRONTLINE_FIGHTING
-  name: Frontline Fighting
+  name: "Frontline Fighting"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Strength
-    "Secondary Ability": Constitution
+    "Key Ability": "Strength"
+    "Secondary Ability": "Constitution"
     Sources: "Sylvan (class)"
-    Description: "You are a knock-down, drag-out battler, happy to mix haymakers with weapon blows."
+    Description: >-
+      You are a knock-down, drag-out battler, happy to mix haymakers with weapon
+      blows.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_ROPE_A_DOPE
-  name: Rope-A-Dope
+  name: "Rope-A-Dope"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage. Level 21: 2dW + Strength modifier."
-    Effect: "Shift to any square adjacent to the target. You either push the target 1 square or shunt it into the square you just occupied."
+    Hit: >-
+      1dW + Strength modifier damage. Level 21: 2dW + Strength modifier.
+    Effect: >-
+      Shift to any square adjacent to the target. You either push the target 1
+      square or shunt it into the square you just occupied.
+    Flavor: >-
+      You confuse your enemy with one hand but strike fast with the other. You
+      weave around your opponent in the confusion.
 
 - id: ORCUS_POWER_UNBALANCING_STRIKE
-  name: Unbalancing Strike
+  name: "Unbalancing Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs Fortitude"
-    Hit: "1dW damage, and you gain combat advantage against the target until the end of your next turn. Level 21: 2dW."
+    Hit: >-
+      1dW damage, and you gain combat advantage against the target until the end
+      of your next turn. Level 21: 2dW.
+    Flavor: >-
+      A quick jab is better than a heavier thrust which can throw you off
+      balance.
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_FULL_SWEEP
-  name: Full Sweep
+  name: "Full Sweep"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near burst 1, all enemies you can see"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage, and the target is knocked prone and dazed until the start of your next turn."
+    Hit: >-
+      1dW + Strength modifier damage, and the target is knocked prone and dazed
+      until the start of your next turn.
+    Flavor: "You spin around, attacking all targets around you."
 
 - id: ORCUS_POWER_SUDDEN_LEAP
-  name: Sudden Leap
+  name: "Sudden Leap"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near burst 4 (minimum 3), one creature"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage, and you push the target one square. You shift into the square the target previously occupied. If the target cannot be pushed, the target is knocked prone and you shift into the occupied square."
+    Hit: >-
+      1dW + Strength modifier damage, and you push the target one square. You
+      shift into the square the target previously occupied. If the target cannot
+      be pushed, the target is knocked prone and you shift into the occupied
+      square.
     Miss: "You shift to a square adjacent to the target."
+    Flavor: "You vault in the air and deliver a crippling blow from up high."
 
-# --- Daily attack powers ------------------------------------------------------
 - id: ORCUS_POWER_BEST_DEFENSE_IS_GOOD_OFFENSE
-  name: Best Defense is Good Offense
+  name: "Best Defense is Good Offense"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Counter Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, the triggering enemy"
     Trigger: "One enemy makes a melee attack against you."
@@ -95,521 +112,658 @@
     Hit: "1dW + Strength modifier damage."
     Miss: "Half damage."
     Effect: "You gain a +3 power bonus to AC until the end of your next turn."
+    Flavor: >-
+      You strike when the enemy least suspects it, through an assumed
+      impenetrable defense.
 
 - id: ORCUS_POWER_INSULT_TO_INJURY
-  name: Insult to Injury
+  name: "Insult to Injury"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Special Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Special Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, the triggering enemy"
     Trigger: "One enemy is knocked prone."
     Attack: "Strength vs AC"
-    Hit: "2dW + Strength modifier damage, and the target is pushed 3 squares. If the target cannot be pushed 3 squares because of an obstruction, both the obstruction and the target take 1d6 + your Constitution modifier damage."
+    Hit: >-
+      2dW + Strength modifier damage, and the target is pushed 3 squares. If the
+      target cannot be pushed 3 squares because of an obstruction, both the
+      obstruction and the target take 1d6 + your Constitution modifier damage.
     Miss: "Half damage, and the target is not pushed."
     Special: "You can use this power as a swift action or a reaction."
+    Flavor: >-
+      A noble warrior doesn’t kick someone when they’re down. You’re not that
+      noble.
 
-# --- Utility powers -----------------------------------------------------------
 - id: ORCUS_POWER_REDIRECTION_OF_ENERGY
-  name: Redirection of Energy
+  name: "Redirection of Energy"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You are hit by a melee or ranged attack by an adjacent enemy."
-    Effect: "You gain a +4 power bonus to AC and Reflex defense against the attack. Shift to any other square adjacent to the target and gain combat advantage against the target until the end of your next turn."
+    Effect: >-
+      You gain a +4 power bonus to AC and Reflex defense against the attack.
+      Shift to any other square adjacent to the target and gain combat advantage
+      against the target until the end of your next turn.
+    Flavor: >-
+      You utilize the direction of your enemy’s attack injury into a
+      counter-maneuver.
 
-- id: ORCUS_POWER_ROLL_WITH_IT_FRONTLINE
-  name: Roll With It
+- id: ORCUS_POWER_ROLL_WITH_IT_FF
+  name: "Roll With It"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Reaction Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You are hit by a melee or ranged attack."
-    Effect: "You shift 1 square away from the triggering attacker and only suffer 1 point of damage from the hit. If you cannot move away from the attacker, you may not use this power."
+    Effect: >-
+      You shift 1 square away from the triggering attacker and only suffer 1
+      point of damage from the hit. If you cannot move away from the attacker,
+      you may not use this power.
+    Flavor: >-
+      You take an injury and fall back, hoping to diminish the severity of the
+      impact.
 
-# --- Encounter attack powers (level 3) ----------------------------------------
 - id: ORCUS_POWER_ADAPTABLE_WARRIOR
-  name: Adaptable Warrior
+  name: "Adaptable Warrior"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one or two creatures"
     Attack: "Strength +1 vs AC (2 attacks) or Strength +4 vs AC (1 attack)"
     Hit: "1dW + Strength modifier damage."
+    Flavor: >-
+      Being able to adapt to any situation is the mark of any master of the
+      martial arts.
 
 - id: ORCUS_POWER_MISTAKEN_AGGRAVATION
-  name: Mistaken Aggravation
+  name: "Mistaken Aggravation"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "1dW + Strength modifier damage."
-    Effect: "Shift your speed. You must take the most direct path away from the target."
+    Effect: >-
+      Shift your speed. You must take the most direct path away from the target.
+    Flavor: >-
+      You might have misjudged this opponent. Time for a strategic withdrawal.
 
 - id: ORCUS_POWER_OVERREACH_LUNGE
-  name: Overreach Lunge
+  name: "Overreach Lunge"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Melee weapon, one creature 1 square beyond your reach"
     Attack: "Strength vs AC"
     Hit: "2dW + Strength modifier damage."
     Effect: "Shift to any square adjacent to the target."
+    Flavor: "Your opponent thinks they are safe. Prove them wrong."
 
-# --- Daily attack powers (level 5) --------------------------------------------
 - id: ORCUS_POWER_FLAWLESS_VICTORY
-  name: Flawless Victory
+  name: "Flawless Victory"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one staggered enemy"
     Attack: "Strength vs AC"
     Hit: "4dW + Strength modifier damage."
     Miss: "Half damage."
-    Effect: "If the attack does not drop the target to 0 hit points or fewer, you grant combat advantage to the target until the end of your next turn. If the target hits you before the start of your next turn, you grant combat advantage until the end of your following turn."
+    Effect: >-
+      If the attack does not drop the target to 0 hit points or fewer, you grant
+      combat advantage to the target until the end of your next turn. If the
+      target hits you before the start of your next turn, you grant combat
+      advantage until the end of your following turn.
+    Flavor: >-
+      Your enemy is near defeat. Use all remaining reserves for a decisive win.
 
 - id: ORCUS_POWER_HIP_THROW
-  name: Hip Throw
+  name: "Hip Throw"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon (unarmed), one creature"
     Attack: "Strength vs Reflex"
-    Hit: "3dW + Strength modifier damage, and you shunt the target 3 squares, knock it prone and daze it until the end of your next turn."
+    Hit: >-
+      3dW + Strength modifier damage, and you shunt the target 3 squares, knock
+      it prone and daze it until the end of your next turn.
     Miss: "Half damage, and you shunt the target 3 squares."
+    Flavor: >-
+      You and your opponent are in a clinch. You utilize leverage and superior
+      balance to toss your enemy down.
 
-# --- Utility powers (level 6) -------------------------------------------------
 - id: ORCUS_POWER_SMACK_ATTACK
-  name: Smack-Attack
+  name: "Smack-Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "A creature hits you with a melee attack."
-    Effect: "The attack misses. Shift to any square adjacent to the triggering attacker, and it grants you combat advantage until the end of your next turn."
+    Effect: >-
+      The attack misses. Shift to any square adjacent to the triggering
+      attacker, and it grants you combat advantage until the end of your next
+      turn.
+    Flavor: "Your opponent rushes you. You direct their energy past you."
 
-# --- Encounter attack powers (level 7) ----------------------------------------
 - id: ORCUS_POWER_CONSEQUENTIAL_ATTACK
-  name: Consequential Attack
+  name: "Consequential Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Melee weapon, one creature 1 square beyond your reach"
     Attack: "Strength vs AC"
     Hit: "3dW + Strength modifier damage + Constitution modifier."
-    Effect: "Regardless if you hit, you grant combat advantage to all enemies until the start of your next turn."
+    Effect: >-
+      Regardless if you hit, you grant combat advantage to all enemies until the
+      start of your next turn.
+    Flavor: >-
+      You throw yourself to such a degree into the attack, you leave yourself
+      vulnerable.
 
 - id: ORCUS_POWER_JAW_STRIKE
-  name: Jaw Strike
+  name: "Jaw Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage, and the target is pushed 1 square, knocked prone, and dazed until the start of your next turn."
+    Hit: >-
+      1dW + Strength modifier damage, and the target is pushed 1 square, knocked
+      prone, and dazed until the start of your next turn.
+    Flavor: >-
+      You connect hard, sending a bolt of pain into your opponent’s head.
 
-# --- Daily attack powers (level 9) --------------------------------------------
 - id: ORCUS_POWER_ANY_OPPORTUNITY
-  name: Any Opportunity
+  name: "Any Opportunity"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "2dW + Strength modifier damage."
+    Flavor: "You see a split-second opening to take a passing strike."
 
 - id: ORCUS_POWER_KNOCK_OUT_BUTTON
-  name: Knock-Out Button
+  name: "Knock-Out Button"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage, and the target is knocked prone and stunned (save ends)."
+    Hit: >-
+      1dW + Strength modifier damage, and the target is knocked prone and
+      stunned (save ends).
+    Flavor: >-
+      You hit that sweet spot. Hopefully it’s lights out for your opponent.
 
-# --- Utility powers (level 10) ------------------------------------------------
 - id: ORCUS_POWER_LAST_SECOND_RECOVERY
-  name: Last Second Recovery
+  name: "Last Second Recovery"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
     Keywords: "Healing, Martial"
-    Target: Self
+    Target: "Self"
     Requirements: "You must be staggered."
-    Effect: "Shift to the nearest square not in reach of an enemy and spend a recovery to heal hit points equal to your recovery value."
+    Effect: >-
+      Shift to the nearest square not in reach of an enemy and spend a recovery
+      to heal hit points equal to your recovery value.
+    Flavor: >-
+      You jump back, shake your head, clear your mind, and ready yourself to
+      push back into the fight.
 
 - id: ORCUS_POWER_POUND_FOR_POUND
-  name: Pound for Pound
+  name: "Pound for Pound"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Until the end of your next turn, your at-will powers that require a standard action only require a move action, and those that require a move action only require a swift action."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, your at-will powers that require a
+      standard action only require a move action, and those that require a move
+      action only require a swift action.
+    Flavor: "All things being equal . . . you have no equal."
 
-# --- Encounter attack powers (level 13) ---------------------------------------
 - id: ORCUS_POWER_SNAP_SWEEP
-  name: Snap-Sweep
+  name: "Snap-Sweep"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "2dW + Strength modifier damage, and the target is knocked prone."
     Miss: "Half damage, and the target is not knocked prone."
+    Flavor: >-
+      You drop and spin around, tripping your opponent and making them open for
+      another attack.
 
 - id: ORCUS_POWER_VICIOUS_HOOK
-  name: Vicious Hook
+  name: "Vicious Hook"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "1dW + Strength modifier damage, and the target is stunned until the start of your next turn."
+    Hit: >-
+      1dW + Strength modifier damage, and the target is stunned until the start
+      of your next turn.
+    Flavor: >-
+      You bend your arm and shift your weight. Your throw everything into a
+      solid strike with knockout power.
 
-# --- Daily attack powers (level 15) -------------------------------------------
 - id: ORCUS_POWER_BATTLE_STRIDE
-  name: Battle Stride
+  name: "Battle Stride"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "15"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "2dW + Strength modifier damage, and the target is dazed (save ends)."
+    Hit: >-
+      2dW + Strength modifier damage, and the target is dazed (save ends).
     Miss: "Half damage."
-    Effect: "Before your attack, shift up to 3 squares. After your attack, shift 3 squares and repeat the attack against a different target. Then shift 3 squares and repeat the attack against a third target. Then shift 1 square."
-    Special: "The target of each attack must be different. If there is not a target close to enough to shift to, the power ends."
+    Effect: >-
+      Before your attack, shift up to 3 squares. After your attack, shift 3
+      squares and repeat the attack against a different target. Then shift 3
+      squares and repeat the attack against a third target. Then shift 1 square.
+    Special: >-
+      The target of each attack must be different. If there is not a target
+      close to enough to shift to, the power ends.
+    Flavor: >-
+      Whether you barrel in or elegantly weave through, you fight your way past
+      enemy lines.
 
 - id: ORCUS_POWER_ROUNDHOUSE_ATTACK
-  name: Roundhouse Attack
+  name: "Roundhouse Attack"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "15"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Near burst 1, all creatures"
     Attack: "Strength vs AC"
-    Hit: "3dW + Strength modifier damage, and the target is pushed 1 square. If the target cannot be pushed due to an obstruction, the target takes additional damage equal to twice your Constitution modifier."
-    Miss: "Half damage, and the target is pushed 1 square. They do not take additional damage if they cannot be pushed."
+    Hit: >-
+      3dW + Strength modifier damage, and the target is pushed 1 square. If the
+      target cannot be pushed due to an obstruction, the target takes additional
+      damage equal to twice your Constitution modifier.
+    Miss: >-
+      Half damage, and the target is pushed 1 square. They do not take
+      additional damage if they cannot be pushed.
+    Flavor: >-
+      In the air, with a circular sweep, you cut all your enemies down. Yeah, it
+      works.
 
-# --- Utility powers (level 16) ------------------------------------------------
 - id: ORCUS_POWER_GAMBIT_RECOVERY
-  name: Gambit Recovery
+  name: "Gambit Recovery"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You miss with an attack roll."
     Effect: "Reroll until the result is higher than the triggering attack roll."
+    Flavor: >-
+      You give your opponent the impression you’re not in your game. An
+      uncharacteristic miss is instantly followed up with another attempt.
 
 - id: ORCUS_POWER_KNOCKOUT_POWER
-  name: Knockout Power
+  name: "Knockout Power"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "16"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Effect: "Until the end of the encounter (or five minutes), the damage die of your unarmed attacks increases by one step ( 1d4 > 1d6 > 1d8 > 1d10 > 2d6)."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter (or five minutes), the damage die of your
+      unarmed attacks increases by one step ( 1d4 > 1d6 > 1d8 > 1d10 > 2d6).
+    Flavor: "You’ve been working out."
 
-# --- Encounter attack powers (level 17) ---------------------------------------
 - id: ORCUS_POWER_STRING_COMBO
-  name: String-Combo
+  name: "String-Combo"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
-    Attack: "Strength vs AC, three attacks. Resolve each attack before making the next."
-    Hit: "1dW + Strength modifier damage. Gain a cumulative +2 bonus to additional attack rolls with this power. If you hit the target with all three attacks, you inflict additional damage equal to twice your Strength modifier."
+    Attack: >-
+      Strength vs AC, three attacks. Resolve each attack before making the next.
+    Hit: >-
+      1dW + Strength modifier damage. Gain a cumulative +2 bonus to additional
+      attack rolls with this power. If you hit the target with all three
+      attacks, you inflict additional damage equal to twice your Strength
+      modifier.
+    Flavor: >-
+      You mount attack upon attack so rapidly, your enemies are unable to defend
+      themselves.
 
 - id: ORCUS_POWER_WEAR_THEM_DOWN
-  name: Wear Them Down
+  name: "Wear Them Down"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC, two attacks"
-    Hit: "2dW + Strength modifier damage, and the target is weakened and dazed until the end of your next turn. If you hit the target with both attacks, the target is weakened and dazed (save ends both) and cannot save until the end of your next turn."
+    Hit: >-
+      2dW + Strength modifier damage, and the target is weakened and dazed until
+      the end of your next turn. If you hit the target with both attacks, the
+      target is weakened and dazed (save ends both) and cannot save until the
+      end of your next turn.
+    Flavor: "You pound upon your foe in hopes of breaking their spirit."
 
-# --- Daily attack powers (level 19) -------------------------------------------
 - id: ORCUS_POWER_LIGHTS_OUT
-  name: Lights Out
+  name: "Lights Out"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "19"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "3dW + Strength modifier damage, and the target is unconscious (save ends). The moment the target takes any further damage, it immediately wakes up."
+    Hit: >-
+      3dW + Strength modifier damage, and the target is unconscious (save ends).
+      The moment the target takes any further damage, it immediately wakes up.
     Miss: "3dW + Strength modifier damage."
+    Flavor: >-
+      You strike your opponent at a tender spot, just behind the head or under
+      the jaw. Your enemy falls limp before you.
 
 - id: ORCUS_POWER_OFF_THE_BONE
-  name: Off the Bone
+  name: "Off the Bone"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "19"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
-    Hit: "4dW + Strength modifier damage, and the target suffers 10 persistent damage (save ends)."
+    Hit: >-
+      4dW + Strength modifier damage, and the target suffers 10 persistent
+      damage (save ends).
     Miss: "Half damage and 5 persistent damage (save ends)."
+    Flavor: "Your enemy’s tendons snap and bones break."
 
-# --- Utility powers (level 22) ------------------------------------------------
 - id: ORCUS_POWER_BLOCKING_POSE
-  name: Blocking Pose
+  name: "Blocking Pose"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, utility]
   fields:
     Level: "22"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
     Keywords: "Healing, Martial"
-    Target: Self
-    Effect: "Take half damage from all melee attacks until the start of your next turn."
-    Maintain: "Maintain Move: The effect persists until the start of your next turn. You cannot maintain if you move from your square or an enemy scores a critical hit against you."
+    Target: "Self"
+    Effect: >-
+      Take half damage from all melee attacks until the start of your next turn.
+    Maintain: >-
+      Move The effect persists until the start of your next turn. You cannot
+      maintain if you move from your square or an enemy scores a critical hit
+      against you.
+    Flavor: >-
+      You change your guard to withstand punishment from oncoming attacks.
 
-# --- Encounter attack powers (level 23) ---------------------------------------
 - id: ORCUS_POWER_CALCULATED_STRIKE
-  name: Calculated Strike
+  name: "Calculated Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "23"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength +6 vs AC"
     Hit: "2dW + Strength modifier damage."
-    Effect: "For every -2 penalty you accept on this attack (maximum -6) the attack deals +1dW damage."
+    Effect: >-
+      For every -2 penalty you accept on this attack (maximum -6) the attack
+      deals +1dW damage.
+    Flavor: >-
+      You make a quick determination upon the best course of action, choosing
+      either accuracy or power.
 
 - id: ORCUS_POWER_SPHERICAL_DISCIPLINE
-  name: Spherical Discipline
+  name: "Spherical Discipline"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "23"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, all enemies in reach"
     Attack: "Strength vs AC"
-    Hit: "2dW + Strength modifier damage, and the target is dazed and weakened until the end of your next turn."
+    Hit: >-
+      2dW + Strength modifier damage, and the target is dazed and weakened until
+      the end of your next turn.
     Effect: "You gain a +2 power bonus to AC until the end of your next turn."
+    Flavor: >-
+      You lash at opponents all around, striking behind, in front, and in blind
+      spots.
 
-# --- Daily attack powers (level 25) -------------------------------------------
 - id: ORCUS_POWER_MASTER_COMBO
-  name: Master Combo
+  name: "Master Combo"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Move Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon"
-    Effect: "Use three at-will powers. You can select the same power multiple times."
+    Effect: >-
+      Use three at-will powers. You can select the same power multiple times.
     Special: "When you complete a streak, you recover the use of this power."
+    Flavor: >-
+      Your opponents have never seen talent like this. Your resolve is absolute.
+      There could be ten times more men against you and it still wouldn’t
+      matter.
 
 - id: ORCUS_POWER_ROUNDABOUT_STRIKE
-  name: Roundabout Strike
+  name: "Roundabout Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "3dW + Strength modifier damage."
     Miss: "Half damage with each attack."
-    Effect: "Shift to any unoccupied square adjacent to the enemy and make a secondary attack. Secondary Attack: Strength vs AC; 2dW + Strength modifier damage, and the target is knocked prone and cannot stand (save ends)."
+    Effect: >-
+      Shift to any unoccupied square adjacent to the enemy and make a secondary
+      attack. Secondary Attack: Strength vs AC; 2dW + Strength modifier damage,
+      and the target is knocked prone and cannot stand (save ends).
+    Flavor: >-
+      After your opponent is temporarily dazed, you slide to another position
+      for a follow-up attack.
 
-# --- Encounter attack powers (level 27) ---------------------------------------
 - id: ORCUS_POWER_FLOW_LIKE_WATER
-  name: Flow Like Water
+  name: "Flow Like Water"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, encounter, ability-swap]
   fields:
     Level: "27"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength vs AC"
     Hit: "3dW + Strength modifier damage."
     Effect: "Shift to any square adjacent to the target."
-    Maintain: "Maintain Standard: Repeat the attack against a different target."
+    Maintain: "Standard Repeat the attack against a different target."
+    Flavor: >-
+      You pass through enemy lines without worry, crashing into whatever foes
+      you wish.
 
-# --- Daily attack powers (level 29) -------------------------------------------
 - id: ORCUS_POWER_SURE_KILL
-  name: Sure-Kill
+  name: "Sure-Kill"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_FRONTLINE_FIGHTING, daily, ability-swap]
   fields:
     Level: "29"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one creature"
     Attack: "Strength -2 vs AC"
-    Hit: "6dW + Strength modifier damage, and all enemies in a burst 5 of the target are stunned until the end of your next turn."
+    Hit: >-
+      6dW + Strength modifier damage, and all enemies in a burst 5 of the target
+      are stunned until the end of your next turn.
     Miss: "Half damage, and enemies are not stunned."
+    Flavor: >-
+      One single strike is all you’ll need. You crush your opponent and strike
+      fear into all those around with such a brutal act of violence.
+

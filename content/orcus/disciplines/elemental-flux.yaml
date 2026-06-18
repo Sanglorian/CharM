@@ -1,581 +1,686 @@
-# Elemental Flux discipline (Mageblade). Weapon attacks supplemented with elemental
-# energy (the Flux keyword picks a chosen energy: lightning, acid, cold, fire or
-# thunder, replacing [flux] in the text). Key ability Intelligence / secondary
-# Constitution. Attack powers use weapon dice (dW); the `ability-swap` tag handles
-# the class key substitution. Levels 1-29 transcribed (full class power progression).
+# Elemental Flux discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_ELEMENTAL_FLUX
-  name: Elemental Flux
+  name: "Elemental Flux"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Intelligence
-    "Secondary Ability": Constitution
-    Sources: "Mageblade (class); Dabbles in Mageblading (kit)"
-    Description: "You supplement your attacks with powerful elemental energies. (Flux powers take a chosen energy: lightning, acid, cold, fire or thunder.)"
+    "Key Ability": "Intelligence"
+    "Secondary Ability": "Constitution"
+    Sources: "Mageblade (class)"
+    Description: >-
+      You supplement your attacks with powerful elemental energies. When a power
+      refers to [flux], it always means your current flux energy, even if you
+      used the power when your flux energy was different. For example, if you
+      conjured a vortex devil, it does damage of your current flux energy not
+      the flux energy you had when you conjured it.
+    Note: >-
+      When you first gain a power with the Flux tag, choose an element:
+      lightning, acid, cold, fire or thunder. All powers with the Flux tag have
+      that energy as a tag, and replace any reference to [flux] in the power
+      text with that energy. There are some powers that allow you to change your
+      Flux energy, if you take them. You can also change your Flux energy when
+      you retrain at a new level. Some classes interact with Flux powers in
+      other ways.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_ENERGY_JOLT
-  name: Energy Jolt
+  name: "Energy Jolt"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Flux, Weapon"
     Target: "Near burst 3, one target"
     Attack: "Intelligence vs Reflex"
-    Hit: >
-      1dW + Intelligence modifier [flux] damage, and the target:
-      ● Acid: Takes a -2 penalty to AC until the end of your next turn.
-      ● Cold: Is shunted 1.
-      ● Fire: Loses their next move action.
-      ● Lightning: Is pulled 2.
-      ● Thunder: Is pushed 2.
-      Level 21: 2dW + Intelligence modifier [flux] damage, and the additional effect.
+    Hit: >-
+      1dW + Intelligence modifier [flux] damage, and the target: ● Acid: Takes a
+      -2 penalty to AC until the end of your next turn. ● Cold: Is shunted 1. ●
+      Fire: Loses their next move action. ● Lightning: Is pulled 2. ● Thunder:
+      Is pushed 2. Level 21: 2dW + Intelligence modifier [flux] damage, and the
+      additional effect.
+    Flavor: >-
+      You fill the opponent with harmful elemental energy, dealing damage and
+      causing them to suffer debilitating effects.
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_SPARK_STRIKE
-  name: Spark Strike
+  name: "Spark Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Flux, Weapon"
     Target: "Melee or Ranged weapon, one target"
     Attack: "Intelligence vs AC"
     Hit: "2dW + Intelligence modifier [flux] damage."
+    Flavor: >-
+      By letting the power of the elements flow through you and into your
+      attack, you’re able to strike true with raw primal energies at your
+      unlucky foe.
+
+- id: ORCUS_POWER_VARIABLE_FLUX
+  name: "Variable Flux"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: >-
+      1dW + Intelligence modifier [flux] damage, and the target is subject to
+      one of the following until the end of your next turn. ● Acid: Slowed. ●
+      Cold: Vulnerability to lightning and cold 5. ● Fire: Persistent fire
+      damage equal to your Constitution modifier. ● Lightning: Rattled. ●
+      Thunder: Dazed.
+    Miss: "Half damage, and no additional effect."
+    Flavor: >-
+      Filling your weapon with the power of the elements, you lash out with
+      barely-contained eldritch power.
+
+- id: ORCUS_POWER_ELDRITCH_SHIELD
+  name: "Eldritch Shield"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Arcane, Flux"
+    Target: "Self"
+    Trigger: "You are about to take damage."
+    Effect: >-
+      You gain resistance to [flux] 5 + your Constitution modifier, for that
+      attack.
+    Flavor: >-
+      By drawing upon the elements, you are capable of defending against energy
+      effects.
+
+- id: ORCUS_POWER_FLUCTUATION_MOVEMENT
+  name: "Fluctuation Movement"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Stance, Flux"
+    Target: "Self"
+    Effect: >-
+      You get a benefit based on your [flux]: ● Acid: Ignore difficult terrain
+      until the end of your next turn. ● Cold: Until the end of your next turn,
+      when you charge you can move however you like (not just in a straight
+      line). ● Fire: Your speed increases by +2 until the end of your next turn.
+      ● Lightning: Make a jump as a free action, with a +10 bonus to Athletics.
+      ● Thunder: Until the end of your next turn, whenever you are subject to
+      unwilling movement you can shift 1 at the end of the move.
+    Flavor: >-
+      Coating your feet in the power of the elements, you alter your movement to
+      grant you a burst of speed and maneuverability.
+
+- id: ORCUS_POWER_ARCANE_SHIELD
+  name: "Arcane Shield"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Arcane"
+    Trigger: "You are hit by an attack."
+    Effect: "Attacker rerolls their attack."
+    Flavor: >-
+      You rely on your unique insight into eldritch powers to create a shield of
+      energy that protects you from an attack.
+
+- id: ORCUS_POWER_DEGRADE_RESISTANCE
+  name: "Degrade Resistance"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane"
+    Effect: >-
+      Until the end of your next turn, your attacks ignore the first 5 points of
+      energy resistance.
+    Maintain: "Swift The effect persists until the end of your next turn."
+    Flavor: >-
+      As a disciple of the Elemental Flux, you understand how to use elements to
+      assault those normally resistant to them.
+
+- id: ORCUS_POWER_ELEMENTAL_NIMBUS
+  name: "Elemental Nimbus"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Flux"
+    Target: "Self"
+    Effect: >-
+      Each attack you make until the end of your next turn inflicts +1d6 [flux]
+      damage on a hit. You can choose to daze a target that you hit until the
+      end of your next turn, but then this power ends.
+    Maintain: "Swift The effect persists until the end of your next turn."
+    Flavor: >-
+      Channeling the strength of the elements lends your attacks strength and
+      fury.
+
+- id: ORCUS_POWER_ELEMENTAL_REALIGNMENT
+  name: "Elemental Realignment"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Flux"
+    Target: "Self"
+    Effect: >-
+      Change your Flux energy. You gain resistance to [flux] 5 + your
+      Constitution modifier until the end of the encounter.
 
 - id: ORCUS_POWER_ELDRITCH_FANG
-  name: Eldritch Fang
+  name: "Eldritch Fang"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Flux, Weapon"
     Target: "Melee or Ranged weapon, one target"
     Attack: "Intelligence vs Fortitude"
-    Hit: "1dW + Intelligence modifier [flux] damage and the target is dazed until the end of your next turn."
-
-- id: ORCUS_POWER_LANCE_OF_POWER
-  name: Lance of Power
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Near arc 3, all creatures"
-    Attack: "Intelligence vs Fortitude"
-    Hit: >
-      1dW + Intelligence modifier [flux] damage and one option based on your flux energy:
-      ● Acid: Targets are slowed.
-      ● Cold: Targets must save or fall prone.
-      ● Fire: Take an additional 1d8 damage.
-      ● Lightning: Targets must save or drop what they are holding.
-      ● Thunder: Targets are deafened until the end of your next turn.
-
-- id: ORCUS_POWER_ARCANE_TORRENT
-  name: Arcane Torrent
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
-  fields:
-    Level: "13"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Near arc 3, all creatures"
-    Attack: "Intelligence vs Fortitude"
-    Hit: "2dW + Intelligence modifier [flux] damage and push 3."
-
-- id: ORCUS_POWER_CHAOTIC_BLOW
-  name: Chaotic Blow
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
-  fields:
-    Level: "17"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one target"
-    Attack: "Intelligence vs AC"
-    Hit: "3dW + Intelligence modifier [flux] damage."
-
-- id: ORCUS_POWER_ENTER_THE_VORTEX
-  name: Enter the Vortex
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
-  fields:
-    Level: "23"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one target"
-    Attack: "Intelligence vs AC"
-    Hit: "4dW + Intelligence modifier [flux] damage."
-    Effect: >
-      You get a benefit until the end of the encounter based on your [flux]:
-      ● Acid: You get a burrow speed of 4 and tremorsense 6.
-      ● Cold: You get a swim speed of 12. Any time you are subject to unwilling movement, you can instead shift that distance.
-      ● Fire: Your speed increases by 4, and your initiative score for this encounter increases by +4.
-      ● Lightning: You can teleport 4 as a move action.
-      ● Thunder: You get a fly speed of 8.
-
-- id: ORCUS_POWER_ELDRITCH_ENERGY_HAMMER
-  name: Eldritch Energy Hammer
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
-  fields:
-    Level: "27"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one zone, summon or conjuration in range"
-    Attack: "Intelligence vs Will (power's user)"
-    Hit: >
-      The conjuration or zone is destroyed, or the summon takes 5dW + Intelligence
-      modifier [flux] damage. Enemies within the zone, or enemies within Near burst 3
-      of the summon (if destroyed) or conjuration are subject to a secondary attack.
-      Secondary Attack: Intelligence vs Will; 3dW + Intelligence modifier [flux] damage.
-
-# --- Daily attack powers ------------------------------------------------------
-- id: ORCUS_POWER_VARIABLE_FLUX
-  name: Variable Flux
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one target"
-    Attack: "Intelligence vs AC"
-    Hit: >
-      1dW + Intelligence modifier [flux] damage, and the target is subject to one of
-      the following until the end of your next turn.
-      ● Acid: Slowed.
-      ● Cold: Vulnerability to lightning and cold 5.
-      ● Fire: Persistent fire damage equal to your Constitution modifier.
-      ● Lightning: Rattled.
-      ● Thunder: Dazed.
-    Miss: "Half damage, and no additional effect."
+    Hit: >-
+      1dW + Intelligence modifier [flux] damage and the target is dazed until
+      the end of your next turn.
+    Flavor: >-
+      You fill your strike with eldritch energy that overwhelms the senses of
+      your target.
 
 - id: ORCUS_POWER_ELEMENTAL_STRIKE
-  name: Elemental Strike
+  name: "Elemental Strike"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Flux, Weapon"
     Target: "Melee or Ranged weapon, one target"
     Attack: "Intelligence vs Fortitude"
-    Hit: >
-      2dW + Intelligence modifier [flux] damage, and the target is subject to one of
-      the following based on your flux energy.
-      ● Acid: Weakened (end of your next turn).
-      ● Thunder: Immobile (end of your next turn).
-      ● Fire: Blinded (end of your next turn).
-      ● Cold: Knocked prone.
-      ● Lightning: Dazed (end of your next turn).
+    Hit: >-
+      2dW + Intelligence modifier [flux] damage, and the target is subject to
+      one of the following based on your flux energy. ● Acid: Weakened (end of
+      your next turn). ● Thunder: Immobile (end of your next turn). ● Fire:
+      Blinded (end of your next turn). ● Cold: Knocked prone. ● Lightning: Dazed
+      (end of your next turn).
     Miss: "Half damage, and no additional effect."
+    Flavor: >-
+      You channel the fluctuating power of the elements to land an empowered
+      blow.
 
 - id: ORCUS_POWER_ENERGY_SPARK
-  name: Energy Spark
+  name: "Energy Spark"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Arcane, Flux, Focus"
     Target: "Ranged 10"
     Attack: "Intelligence vs Reflex"
-    Hit: "4d10 + Intelligence modifier [flux] damage."
-
-- id: ORCUS_POWER_RAGING_FLUX
-  name: Raging Flux
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon, Zone"
-    Target: "Far burst 3 within range 10, all creatures"
-    Attack: "Intelligence vs Fortitude"
-    Hit: "3dW + Intelligence modifier [flux] damage."
-    Effect: >
-      Creates a zone in the area of effect, until the end of the encounter. Creatures
-      that enter the zone take 1d6 + Intelligence modifier [flux] damage. At the
-      beginning of each of your turns, creatures in the zone take 1d6 + your
-      Intelligence modifier [flux] damage. While the zone persists, you can change
-      your flux energy once each time a creature is damaged by your raging flux.
-
-- id: ORCUS_POWER_ENERGY_HAMMER
-  name: Energy Hammer
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "15"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Near arc 3, all creatures"
-    Attack: "Intelligence vs AC"
-    Hit: >
-      2dW + Intelligence modifier [flux] damage and one of the following based on your [flux]:
-      ● Acid: Target takes 5 persistent acid damage (save ends).
-      ● Cold: Target is immobile (save ends).
-      ● Fire: Target is blinded (save ends).
-      ● Lightning: Target is stunned until the end of your next turn.
-      ● Thunder: Target is deafened and dazed (save ends both).
-    Miss: "Half damage, and no additional effect."
-
-- id: ORCUS_POWER_ELEMENTAL_DRIVE
-  name: Elemental Drive
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "19"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Free Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: Self
-    Trigger: "You make an attack after a charge."
-    Effect: >
-      Whether or not you hit, you do an additional 3dW + Intelligence modifier [flux]
-      damage and push them squares equal to your Constitution modifier.
-
-- id: ORCUS_POWER_CASCADE_OF_ELEMENTAL_WRATH
-  name: Cascade of Elemental Wrath
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one to three targets"
-    Attack: "Intelligence vs AC"
-    Hit: "Three attacks. 2dW + Intelligence modifier damage. You can change your flux energy before each attack."
-
-- id: ORCUS_POWER_ELEMENTAL_VORTEX
-  name: Elemental Vortex
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Conjuration, Flux, Weapon"
-    Target: "Near burst 1, all creatures"
-    Attack: "Intelligence vs AC"
-    Hit: "3dW + Intelligence modifier [flux] damage."
-    Effect: >
-      You conjure a Medium flux vortex in an adjacent square, which lasts till the end
-      of the encounter. Once per turn, you can shunt the vortex up to 6 squares as a
-      swift action. At the end of each of your turns, including the turn in which the
-      vortex was created, enemies adjacent to the vortex demon take 3d10 [flux] damage.
-
-- id: ORCUS_POWER_ZEPHYR_FLUX
-  name: Zephyr Flux
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "25"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, multiple targets"
-    Attack: "Intelligence vs AC"
-    Hit: "3dW + Intelligence modifier [flux] damage."
-    Special: >
-      When you use this power, shift up to your speed. Make the attack against each
-      enemy you are adjacent to at some point during your shift.
-
-- id: ORCUS_POWER_ELEMENTAL_DESTRUCTION_RING
-  name: Elemental Destruction Ring
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "29"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Zone, Weapon"
-    Target: "Near burst 3, all enemies"
-    Attack: "Intelligence vs Fortitude"
-    Hit: "4dW + Intelligence modifier [flux] damage."
-    Effect: >
-      You have an aura 1, which persists until the end of your next turn. At the end of
-      your turn, enemies within the aura experience an effect based on your flux:
-      ● Lightning: Secondary Attack: Intelligence vs Fortitude; the target is blinded until the end of your next turn.
-      ● Acid: 10 acid damage, and the target is rattled until the end of your next turn.
-      ● Thunder: The target is knocked prone.
-      ● Cold: The target is slowed until the end of your next turn.
-      ● Fire: The target is dazed until the end of your next turn.
-    Maintain: "Swift: The aura persists until the end of your next turn."
-
-- id: ORCUS_POWER_STRIKE_OF_ELEMENTAL_DEVASTATION
-  name: Strike of Elemental Devastation
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
-  fields:
-    Level: "29"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Arcane, Flux, Weapon"
-    Target: "Melee or Ranged weapon, one target"
-    Attack: "Intelligence vs AC"
-    Hit: "7dW + Intelligence modifier [flux] damage."
-    Effect: >
-      All enemies within a number of squares of the target equal to your Constitution
-      modifier gain vulnerability to [flux] 15.
-
-# --- Utility powers -----------------------------------------------------------
-- id: ORCUS_POWER_ELDRITCH_SHIELD
-  name: Eldritch Shield
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: "Arcane, Flux"
-    Target: Self
-    Trigger: "You are about to take damage."
-    Effect: "You gain resistance to [flux] 5 + your Constitution modifier, for that attack."
-
-- id: ORCUS_POWER_FLUCTUATION_MOVEMENT
-  name: Fluctuation Movement
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: "Arcane, Stance, Flux"
-    Target: Self
-    Effect: >
-      You get a benefit based on your [flux]:
-      ● Acid: Ignore difficult terrain until the end of your next turn.
-      ● Cold: Until the end of your next turn, when you charge you can move however you like (not just in a straight line).
-      ● Fire: Your speed increases by +2 until the end of your next turn.
-      ● Lightning: Make a jump as a free action, with a +10 bonus to Athletics.
-      ● Thunder: Until the end of your next turn, whenever you are subject to unwilling movement you can shift 1 at the end of the move.
-
-- id: ORCUS_POWER_ARCANE_SHIELD
-  name: Arcane Shield
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Arcane
-    Trigger: "You are hit by an attack."
-    Effect: "Attacker rerolls their attack."
-
-- id: ORCUS_POWER_DEGRADE_RESISTANCE
-  name: Degrade Resistance
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Arcane
-    Effect: "Until the end of your next turn, your attacks ignore the first 5 points of energy resistance."
-    Maintain: "Swift: The effect persists until the end of your next turn."
-
-- id: ORCUS_POWER_ELEMENTAL_NIMBUS
-  name: Elemental Nimbus
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: "Arcane, Flux"
-    Target: Self
-    Effect: >
-      Each attack you make until the end of your next turn inflicts +1d6 [flux] damage
-      on a hit. You can choose to daze a target that you hit until the end of your next
-      turn, but then this power ends.
-    Maintain: "Swift: The effect persists until the end of your next turn."
-
-- id: ORCUS_POWER_ELEMENTAL_REALIGNMENT
-  name: Elemental Realignment
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
-  fields:
-    Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: "Arcane, Flux"
-    Target: Self
-    Effect: "Change your Flux energy. You gain resistance to [flux] 5 + your Constitution modifier until the end of the encounter."
+    Hit: "4d10 + Intelligence modifier [flux] damage"
+    Flavor: >-
+      You fill the air with elemental energy, which explodes as you strike your
+      target.
 
 - id: ORCUS_POWER_ELEMENTAL_FLUX_STANCE
-  name: Elemental Flux Stance
+  name: "Elemental Flux Stance"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Keywords: "Arcane, Flux, Stance"
     Target: "Near burst 3, all allies"
-    Effect: >
-      Yourself and allies within range get one based on your [flux], until the end of your next turn:
-      ● Acid: Ignore the first 1 square of unwilling movement.
-      ● Cold: Take a +2 bonus on all saving throws.
-      ● Fire: Heal an additional +1d6 damage each time they would heal.
-      ● Lightning: +2 bonus to speed.
-      ● Thunder: One hit on an attack per turn pushes 1.
+    Effect: >-
+      Yourself and allies within range get one based on your [flux], until the
+      end of your next turn: ● Acid: Ignore the first 1 square of unwilling
+      movement. ● Cold: Take a +2 bonus on all saving throws. ● Fire: Heal an
+      additional +1d6 damage each time they would heal. ● Lightning: +2 bonus to
+      speed. ● Thunder: One hit on an attack per turn pushes 1.
+    Flavor: >-
+      Filling both your body and soul with the power of the elements, you open
+      yourself up to new powers.
+
+- id: ORCUS_POWER_LANCE_OF_POWER
+  name: "Lance of Power"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Near arc 3, all creatures"
+    Attack: "Intelligence vs Fortitude"
+    Hit: >-
+      1dW + Intelligence modifier [flux] damage and one option based on your
+      flux energy: ● Acid: Targets are slowed. ● Cold: Targets must save or fall
+      prone. ● Fire: Take an additional 1d8 damage. ● Lightning: Targets must
+      save or drop what they are holding. ● Thunder: Targets are deafened until
+      the end of your next turn.
+    Flavor: >-
+      With a swing of your blade, you release a rippling line of elemental
+      energy.
+
+- id: ORCUS_POWER_RAGING_FLUX
+  name: "Raging Flux"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon, Zone"
+    Target: "Far burst 3 within range 10, all creatures"
+    Attack: "Intelligence vs Fortitude"
+    Hit: "3dW + Intelligence modifier [flux] damage."
+    Effect: >-
+      Creates a zone in the area of effect, until the end of the encounter.
+      Creatures that enter the zone take 1d6 + Intelligence modifier [flux]
+      damage. At the beginning of each of your turns, creatures in the zone take
+      1d6 + your Intelligence modifier [flux] damage. While the zone persists,
+      you can change your flux energy once each time a creature is damaged by
+      your raging flux.
+    Flavor: >-
+      You know how to strike with such eldritch force that it drives your foes
+      backwards.
 
 - id: ORCUS_POWER_ASSAY_RESISTANCE
-  name: Assay Resistance
+  name: "Assay Resistance"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Keywords: "Arcane, Flux"
     Target: "Near burst 5, one creature"
-    Effect: >
-      You learn the target's resistances, immunities and vulnerabilities. Until the end
-      of your next turn, the target gains vulnerability to [flux] 5 + your Constitution modifier.
-    Boost: "Level 22: Targets all creatures in area of effect; the target gains vulnerability to [flux] 10 + your Constitution modifier."
+    Effect: >-
+      You learn the target’s resistances, immunities and vulnerabilities. Until
+      the end of your next turn, the target gains vulnerability to [flux] 5 +
+      your Constitution modifier.
+    Boost: >-
+      Level 22 Targets all creatures in area of effect; the target gains
+      vulnerability to [flux] 10 + your Constitution modifier.
+    Flavor: >-
+      By directly targeting the elemental essence that suffuses all creatures,
+      you overcome an opponent’s defenses with a powerful attack.
+
+- id: ORCUS_POWER_ARCANE_TORRENT
+  name: "Arcane Torrent"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Near arc 3, all creatures"
+    Attack: "Intelligence vs Fortitude"
+    Hit: "2dW + Intelligence modifier [flux] damage and push 3."
+    Flavor: >-
+      You unleash a sudden burst of eldritch energy that surges towards a
+      distant foe.
+
+- id: ORCUS_POWER_ENERGY_HAMMER
+  name: "Energy Hammer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Near arc 3, all creatures"
+    Attack: "Intelligence vs AC"
+    Hit: >-
+      2dW + Intelligence modifier [flux] damage and one of the following based
+      on your [flux]: ● Acid: Target takes 5 persistent acid damage (save ends).
+      ● Cold: Target is immobile (save ends). ● Fire: Target is blinded (save
+      ends). ● Lightning: Target is stunned until the end of your next turn. ●
+      Thunder: Target is deafened and dazed (save ends both).
+    Miss: "Half damage, and no additional effect."
+    Flavor: >-
+      As you advance your training, you learn to unleash ever more powerful
+      bursts of energy.
 
 - id: ORCUS_POWER_ELDRITCH_CONSUMPTION
-  name: Eldritch Consumption
+  name: "Eldritch Consumption"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "16"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Flux"
-    Target: Self
+    Target: "Self"
     Trigger: "You take damage from an energy source."
-    Effect: "Spend a recovery to heal your recovery value + your Constitution modifier. You may change your flux energy if you like."
+    Effect: >-
+      Spend a recovery to heal your recovery value + your Constitution modifier.
+      You may change your flux energy if you like.
+    Flavor: >-
+      You have such an intimate understanding of the underlying nature of magic
+      that you can capture its essence and feast on it to rejuvenate yourself.
+
+- id: ORCUS_POWER_CHAOTIC_BLOW
+  name: "Chaotic Blow"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "3dW + Intelligence modifier [flux] damage."
+
+- id: ORCUS_POWER_ELEMENTAL_DRIVE
+  name: "Elemental Drive"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Self"
+    Trigger: "You make an attack after a charge."
+    Effect: >-
+      Whether or not you hit, you do an additional 3dW + Intelligence modifier
+      [flux] damage and push them squares equal to your Constitution modifier.
+    Flavor: >-
+      You charge your weapon with kinetic and elemental energy, driving them
+      back with a wave of elemental power.
 
 - id: ORCUS_POWER_REDIRECTING_FLUX
-  name: Redirecting Flux
+  name: "Redirecting Flux"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Flux"
     Target: "Near burst 10, one power"
-    Trigger: "A creature uses a near or far power that targets you and/or an ally."
-    Effect: >
-      Choose a creature within the area of effect. That creature is no longer a target
-      of the attack. Choose an enemy within near burst 10 that is not already a target
-      of the attack. That creature becomes a target of the attack, even if they are not
-      within the area of effect.
+    Trigger: >-
+      A creature uses a near or far power that targets you and/or an ally.
+    Effect: >-
+      Choose a creature within the area of effect. That creature is no longer a
+      target of the attack. Choose an enemy within near burst 10 that is not
+      already a target of the attack. That creature becomes a target of the
+      attack, even if they are not within the area of effect.
+    Flavor: "You can read and alter the flow of magical energy."
 
 - id: ORCUS_POWER_ELEMENTAL_ABSORPTION
-  name: Elemental Absorption
+  name: "Elemental Absorption"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Counter Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Flux"
-    Target: Self
+    Target: "Self"
     Trigger: "You are about to take energy damage."
-    Effect: >
-      Set your flux energy to the energy of your choice. Until the end of the encounter,
-      you are immune to [flux] damage, and heal your level + your Constitution modifier
-      each time you are subject to [flux] damage.
+    Effect: >-
+      Set your flux energy to the energy of your choice. Until the end of the
+      encounter, you are immune to [flux] damage, and heal your level + your
+      Constitution modifier each time you are subject to [flux] damage.
+    Flavor: >-
+      You learn to suffuse your being with an element to such a degree that its
+      presence heals you instead of harming you.
 
 - id: ORCUS_POWER_NEXUS_OF_ELEMENTAL_RETRIBUTION
-  name: Nexus of Elemental Retribution
+  name: "Nexus of Elemental Retribution"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Keywords: "Arcane, Flux, Stance"
-    Target: Self
-    Effect: >
-      You gain resistance 15 to acid, cold, fire, lightning and thunder. Each time you
-      are the target of an attack that does acid, cold, fire, lightning or thunder
-      damage, you can make a basic melee or ranged attack that does additional [flux]
-      damage equal to your Constitution modifier.
+    Target: "Self"
+    Hit: >-
+      You gain resistance 15 to acid, cold, fire, lightning and thunder. Each
+      time you are the target of an attack that does acid, cold, fire, lightning
+      or thunder damage, you can make a basic melee or ranged attack that does
+      additional [flux] damage equal to your Constitution modifier.
+    Flavor: >-
+      You can absorb and redirect the flow of elemental power, syphoning away
+      energies that would harm you and making them your own.
+
+- id: ORCUS_POWER_ENTER_THE_VORTEX
+  name: "Enter the Vortex"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "4dW + Intelligence modifier [flux] damage."
+    Effect: >-
+      You get a benefit until the end of the encounter based on your [flux]: ●
+      Acid: You get a burrow speed of 4 and tremorsense 6. ● Cold: You get a
+      swim speed of 12. Any time you are subject to unwilling movement, you can
+      instead shift that distance. ● Fire: Your speed increases by 4, and your
+      initiative score for this encounter increases by +4. ● Lightning: You can
+      teleport 4 as a move action. ● Thunder: You get a fly speed of 8.
+    Flavor: >-
+      Riding on the currents of elemental energy, you gain the benefit of a new
+      form of movement.
+
+- id: ORCUS_POWER_CASCADE_OF_ELEMENTAL_WRATH
+  name: "Cascade of Elemental Wrath"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one to three targets"
+    Attack: "Intelligence vs AC"
+    Hit: >-
+      Three attacks. 2dW + Intelligence modifier damage. You can change your
+      flux energy before each attack.
+    Flavor: >-
+      Each slash of your blade releases more and more eldritch power,
+      overwhelming your enemies with the power of your strikes.
+
+- id: ORCUS_POWER_ELEMENTAL_VORTEX
+  name: "Elemental Vortex"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Conjuration, Flux, Weapon"
+    Target: "Near burst 1, all creatures"
+    Attack: "Intelligence vs AC"
+    Hit: "3dW + Intelligence modifier [flux] damage."
+    Effect: >-
+      You conjure a Medium flux vortex in an adjacent square, which lasts till
+      the end of the encounter. Once per turn, you can shunt the vortex up to 6
+      squares as a swift action. At the end of each of your turns, including the
+      turn in which the vortex was created, enemies adjacent to the vortex demon
+      take 3d10 [flux] damage.
+    Flavor: >-
+      A whirling vortex of elemental energy engulfs your foe just as your blade
+      lands.
+
+- id: ORCUS_POWER_ZEPHYR_FLUX
+  name: "Zephyr Flux"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, multiple targets"
+    Attack: "Intelligence vs AC"
+    Hit: "3dW + Intelligence modifier [flux] damage."
+    Special: >-
+      When you use this power, shift up to your speed. Make the attack against
+      each enemy you are adjacent to at some point during your shift.
+    Flavor: >-
+      You may transmute your entire being into elemental energy and travel in
+      the blink of an eye across the battlefield, leaving a wake of devastation
+      behind you.
+
+- id: ORCUS_POWER_ELDRITCH_ENERGY_HAMMER
+  name: "Eldritch Energy Hammer"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one zone, summon or conjuration in range"
+    Attack: "Intelligence vs Will (power’s user)"
+    Hit: >-
+      The conjuration or zone is destroyed, or the summon takes 5dW +
+      Intelligence modifier [flux] damage. Enemies within the zone, or enemies
+      within Near burst 3 of the summon (if destroyed) or conjuration are
+      subject to a secondary attack. Secondary Attack: Intelligence vs Will; 3dW
+      + Intelligence modifier [flux] damage.
+    Flavor: >-
+      You know how to destroy the bonds that hold magic together just as easily
+      as you can forge them.
+
+- id: ORCUS_POWER_ELEMENTAL_DESTRUCTION_RING
+  name: "Elemental Destruction Ring"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Zone, Weapon"
+    Target: "Near burst 3, all enemies"
+    Attack: "Intelligence vs Fortitude"
+    Hit: "4dW + Intelligence modifier [flux] damage."
+    Effect: >-
+      You have an aura 1, which persists until the end of your next turn. At the
+      end of your turn, enemies within the aura experience an effect based on
+      your flux: ● Lightning: Secondary Attack: Intelligence vs Fortitude; the
+      target is blinded until the end of your next turn. ● Acid: 10 acid damage,
+      and the target is rattled until the end of your next turn. ● Thunder: The
+      target is knocked prone. ● Cold: The target is slowed until the end of
+      your next turn. ● Fire: The target is dazed until the end of your next
+      turn.
+    Maintain: "Swift The aura persists until the end of your next turn."
+    Flavor: >-
+      You whip the elements around you into a fury, then unleash the energy at
+      all the foes who surround you.
+
+- id: ORCUS_POWER_STRIKE_OF_ELEMENTAL_DEVASTATION
+  name: "Strike of Elemental Devastation"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Flux, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Intelligence vs AC"
+    Hit: "7dW + Intelligence modifier [flux] damage."
+    Effect: >-
+      All enemies within a number of squares of the target equal to your
+      Constitution modifier gain vulnerability to [flux] 15.
+    Flavor: "You crush your opponents under a fierce magical assault."
+

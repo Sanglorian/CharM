@@ -1,187 +1,401 @@
-# Rapier's Point discipline (Exemplar). A graceful duelist's powers. Key ability
-# Dexterity (Exemplar class key). Same tagging contract as the other disciplines:
-# [disciplineId, <frequency>] (+ `ability-swap` on the character's own attacks).
-# Levels 1-10 transcribed (enough for the full class power progression).
+# Rapier's Point discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_RAPIERS_POINT
-  name: Rapier's Point
+  name: "Rapier's Point"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Dexterity
-    "Secondary Ability": Charisma
+    "Key Ability": "Dexterity"
+    "Secondary Ability": "Charisma"
     Sources: "Exemplar (class)"
-    Description: "You are a graceful, skilled duelist."
+    Description: >-
+      You are a graceful, skilled duelist. If you do gain momentum from a power,
+      the same rule for losing momentum applies as for the Exemplar: you lose it
+      if you are hit by any attack.
+    Note: >-
+      Other than the powers of the Rapier’s Point and Blades in the Dark
+      Discipline, the main ways to gain momentum are the features of the
+      Exemplar class. Powers that involve momentum may be of limited use to
+      non-Exemplars.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_DANCE_OF_BLADES
-  name: Dance of Blades
+  name: "Dance of Blades"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one target"
     Attack: "Dexterity vs AC"
-    Hit: "1dW + Dexterity modifier damage and you swap places with the target. Level 21: 2dW + Dexterity modifier damage."
+    Hit: >-
+      1dW + Dexterity modifier and you swap places with the target. Level 21:
+      2dW + Dexterity modifier damage.
 
-- id: ORCUS_POWER_GENTLEFOLKS_CHALLENGE
-  name: Gentlefolk's Challenge
+- id: ORCUS_POWER_GENTLEFOLK_S_CHALLENGE
+  name: "Gentlefolk’s Challenge"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one target"
     Attack: "Dexterity vs AC"
-    Hit: "1dW + Dexterity modifier damage. Level 21: 2dW + Dexterity modifier damage."
+    Hit: >-
+      1dW + Dexterity modifier damage. Level 21: 2dW + Dexterity modifier
+      damage.
     Effect: "The target is marked."
 
-# --- Encounter attack powers --------------------------------------------------
 - id: ORCUS_POWER_SURE_THING
-  name: Sure Thing
+  name: "Sure Thing"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one target"
     Attack: "Dexterity +2 vs Reflex"
     Hit: "1dW + Dexterity modifier damage."
 
-- id: ORCUS_POWER_LUNGING_DRAW
-  name: Lunging Draw
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
-  fields:
-    Level: "3"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee weapon +1 reach, one target"
-    Attack: "Dexterity vs Will"
-    Hit: "2dW + Dexterity modifier damage and pull 1."
-
-- id: ORCUS_POWER_THROUGH_THE_FOOT
-  name: Through the Foot
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
-  fields:
-    Level: "7"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee weapon, one target"
-    Attack: "Dexterity vs AC"
-    Hit: "1dW + Dexterity modifier damage and the target is immobile until the end of your next turn."
-
-# --- Daily attack powers ------------------------------------------------------
 - id: ORCUS_POWER_ONLY_FOOLING
-  name: Only Fooling
+  name: "Only Fooling"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee weapon, one target"
     Trigger: "You are prone, immobile, restrained, grappled or slowed."
     Attack: "Dexterity vs Reflex"
     Hit: "2dW + Dexterity modifier damage."
-    Special: "You lose one condition that triggers this power, or stand up from prone. Move up to your speed before making your attack."
+    Special: >-
+      You lose one condition that triggers this power, or you stand up from
+      prone. Move up to your speed before making your attack.
 
-- id: ORCUS_POWER_CALLING_CARD
-  name: Calling Card
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
-  fields:
-    Level: "5"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee weapon, one target"
-    Attack: "Dexterity vs AC"
-    Hit: "2dW + Dexterity modifier damage."
-    Effect: "Until the end of your next turn, your allies get a +2 bonus on attack rolls against the target."
-    Special: "Maintain Swift: the effect persists until the end of your next turn."
-
-- id: ORCUS_POWER_CERTAIN_STRIKE
-  name: Certain Strike
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
-  fields:
-    Level: "9"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Martial, Weapon"
-    Target: "Melee weapon, one target"
-    Attack: "Dexterity vs AC"
-    Hit: "2dW + Dexterity modifier damage. On this attack, you can score a critical hit on a 16-20."
-    Miss: "This power is not expended."
-
-# --- Utility powers -----------------------------------------------------------
 - id: ORCUS_POWER_SCORNFUL_LAUGH
-  name: Scornful Laugh
+  name: "Scornful Laugh"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "2"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Reaction Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
     Target: "Near burst 10"
     Trigger: "An enemy misses you with an attack."
-    Effect: "The enemy takes a -4 penalty on attack rolls until the end of your next turn."
+    Effect: >-
+      The enemy takes a -4 penalty on attack rolls until the end of your next
+      turn.
+
+- id: ORCUS_POWER_LUNGING_DRAW
+  name: "Lunging Draw"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon +1 reach, one target"
+    Attack: "Dexterity vs Will"
+    Hit: "2dW + Dexterity modifier damage and pull 1."
+
+- id: ORCUS_POWER_CALLING_CARD
+  name: "Calling Card"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Effect: >-
+      Until the end of your next turn, your allies get a +2 bonus on attack
+      rolls against the target.
+    Maintain: "Swift The effect persists until the end of your next turn."
 
 - id: ORCUS_POWER_THROW_OFF
-  name: Throw Off
+  name: "Throw Off"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
     Target: "Near burst 5, one enemy"
-    Effect: "The target grants combat advantage until the end of your next turn."
+    Effect: >-
+      The target grants combat advantage until the end of your next turn.
+
+- id: ORCUS_POWER_THROUGH_THE_FOOT
+  name: "Through the Foot"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      1dW + Dexterity modifier damage and the target is immobile until the end
+      of your next turn.
+
+- id: ORCUS_POWER_CERTAIN_STRIKE
+  name: "Certain Strike"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      2dW + Dexterity modifier damage. On this attack, you can score a critical
+      hit on a 16-20.
+    Miss: "This power is not expended."
 
 - id: ORCUS_POWER_BRAVADO
-  name: Bravado
+  name: "Bravado"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "10"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
-    Target: Self
-    Effect: "An attack against your Fortitude, Reflex or Will is instead made against your Armor Class."
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      An attack against your Fortitude, Reflex or Will is instead made against
+      your Armor Class.
+
+- id: ORCUS_POWER_FEND_OFF_HORDE
+  name: "Fend Off Horde"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 1, all enemies"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      2dW + Dexterity modifier damage and push a number of squares equal to your
+      Charisma modifier.
+    Boost: >-
+      Level 23 3dW + Dexterity modifier damage, and the target is also knocked
+      prone.
+
+- id: ORCUS_POWER_BLUR_OF_CLOAKS
+  name: "Blur of Cloaks"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+    Effect: >-
+      Until the end of your next turn, the target cannot target you with
+      attacks. Even its near and far attacks ignore you.
+
+- id: ORCUS_POWER_HARMLESS_MISDIRECTION
+  name: "Harmless Misdirection"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You miss with a melee attack."
+    Effect: >-
+      You turn invisible until the end of your turn. Lose momentum: Until the
+      start of your next turn.
+
+- id: ORCUS_POWER_PRESS_THE_ADVANTAGE
+  name: "Press the Advantage"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage and push 1. You shift 1."
+    Effect: >-
+      Make a secondary attack against the same target. Secondary Attack:
+      Dexterity vs AC; 1dW + Dexterity modifier damage and push 1. You shift 1.
+    Boost: >-
+      Level 27 Do 2dW + Dexterity modifier damage with each attack, and you push
+      and shift a number of squares equal to your Charisma modifier.
+
+- id: ORCUS_POWER_CALL_BID
+  name: "Call Bid"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "2dW + Dexterity modifier damage."
+    Effect: >-
+      Make a number of secondary attacks against the target equal to the number
+      of times you declared that you would hit the target. Secondary Attack:
+      Dexterity vs AC. 2dW + Dexterity modifier damage.
+    Special: >-
+      Before you use this power, announce how many times you will hit the
+      target, between one and five. You can make this many secondary attacks.
+      Count up all hits (including from your primary attack). For each attack
+      you are short your bid, your enemy can make that many basic attacks
+      against you.
+
+- id: ORCUS_POWER_RESCUING_INTERCEPT
+  name: "Rescuing Intercept"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Melee weapon, one target"
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage."
+    Special: >-
+      Before your attack, an ally within Near range 10 shifts squares equal to
+      your Charisma modifier. Then you teleport into their original space.
+
+- id: ORCUS_POWER_DODGE_WITH_PANACHE
+  name: "Dodge with Panache"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self and allies"
+    Trigger: "You are the target of an attack"
+    Effect: >-
+      The attacker must roll twice against you and every ally who is a target of
+      the attack, taking the lower result each time.
+
+- id: ORCUS_POWER_SWIFT_RIPOSTE
+  name: "Swift Riposte"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Each time you are the target of an attack, you can make a basic melee or
+      ranged attack against the attacker as an immediate (counter) action. This
+      effect lasts until the end of your next turn.
+    Maintain: "Swift The effect persists until the end of your next turn."
+
+- id: ORCUS_POWER_LETHAL_MISDIRECTION
+  name: "Lethal Misdirection"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Trigger: >-
+      An enemy makes an attack that includes you as a target, and at least one
+      creature, not including that enemy, is adjacent to you and is not
+      currently a target of the attack.
+    Attack: "Dexterity vs AC, against the adjacent creature"
+    Hit: "3dW + Dexterity modifier damage."
+    Effect: >-
+      The enemy’s attack is resolved against the creature adjacent to you
+      instead of you.
+
+- id: ORCUS_POWER_DEFLECT_ATTACK
+  name: "Deflect Attack"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one target"
+    Trigger: "An enemy in reach targets you with an attack."
+    Attack: "Dexterity vs AC"
+    Hit: "3dW + Dexterity modifier damage and the attack misses."
+    Miss: "Your attack does half damage. Resolve the enemy’s attack normally."
+

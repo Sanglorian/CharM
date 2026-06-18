@@ -1,9 +1,9 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 4
-- YAML elements loaded: 1463
-- Prose fields scanned: 3159; flagged: 696
-- Flavor fields: 58 faithful, 32 INVENTED
+- YAML elements loaded: 1597
+- Prose fields scanned: 4100; flagged: 602
+- Flavor fields: 401 faithful, 12 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -21,26 +21,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 - classes/priest.yaml :: Priest :: "You channel the will of the gods to mend, ward and rally."
 - classes/reaper.yaml :: Reaper :: "You loose rains of arrows and bind the battlefield with willing spirits."
 - classes/sylvan.yaml :: Sylvan :: "You wear the shapes of beasts and run with a companion at your side."
-- disciplines/angels-trumpet.yaml :: Golden Commander Stance :: "Through your superior tactical ability, you direct your allies for maximum effectiveness."
-- disciplines/art-of-war.yaml :: Idle Hands :: "Your limbs seemingly act on their own as you concentrate on other matters."
-- disciplines/golden-lion.yaml :: Charge of the Battle Cat :: "Like the charge of the mighty lion, you crash into your chosen foe and knock them to the ground."
-- disciplines/golden-lion.yaml :: Defending the Pride :: "With a cry to defend themselves, your inspirational words aid your allies in your defense."
-- disciplines/golden-lion.yaml :: Direct the Pride :: "Through your knowledge of tactics, you direct an ally to greater effectiveness."
-- disciplines/golden-lion.yaml :: Distracting Strike :: "A well-placed, vicious blow attracts your foe's attention, weakening them to the predations of your allies."
-- disciplines/golden-lion.yaml :: Golden General's Stance :: "A beacon of victory upon the field, you personify glory in combat."
-- disciplines/golden-lion.yaml :: Golden Swipe :: "With a series of furious blows, you batter your foe into the waiting blades of your allies."
-- disciplines/golden-lion.yaml :: Guard the Pride :: "You trust your heavenly sense of the battle to see where the next attack is coming."
-- disciplines/golden-lion.yaml :: Kill the Wounded :: "You make a ferocious assault, opening the enemy's defenses to the attacks of your allies."
-- disciplines/golden-lion.yaml :: Lion Lord's Agony :: "With a fury born of desperation, you pour your pain into your swings."
-- disciplines/golden-lion.yaml :: Lord of the Pridelands :: "Proving you are the undisputed master of war, you call for crushing victory through overwhelming numbers."
-- disciplines/golden-lion.yaml :: Pack Pounce :: "By capitalizing on the opportunities granted by your attacking allies, your lethality increases dramatically through your knowledge of pack tactics."
-- disciplines/golden-lion.yaml :: Pride Movement :: "With a watchful eye on the flow of combat, you know when to spur an ally into a better position."
-- disciplines/golden-lion.yaml :: Pyrite Swipe :: "With a powerful strike, you push your foe into the waiting blades of your allies."
-- disciplines/golden-lion.yaml :: Roar of Battle :: "You deliver a telling blow, opening vital places for your allies to gain purchase."
-- disciplines/golden-lion.yaml :: Tactical Strike :: "Any commander knows that in battle, footwork is key - and you help your comrades understand it too."
-- disciplines/golden-lion.yaml :: Triumphant Lion's Leadership :: "The power and majesty of the lion lords lives within you - your victories are a victory for your allies."
-- disciplines/golden-lion.yaml :: War Lion's Charge :: "With the ferocity of an angered lion, you race across the battlefield to bear down on a single enemy."
-- disciplines/juggernautical.yaml :: The Behemoth :: "You lift up a few inches and widen your stance, finding a newly found surge of adrenaline."
 - paths/epic.yaml :: For the Sake of the Team :: "You give an ally the precious time they need to complete the task."
 - paths/epic.yaml :: Not Tolerate Losing :: "You make every ally fear you more than the enemy."
 
@@ -276,214 +256,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ Worshippers bolster their healing and guard the dying
   [Deity] God of Tyranny — field 'Description':
       ✗ Worshippers cow their foes and drive their allies on
-```
-### disciplines/angels-trumpet.yaml
-```
-  [Power] Rallying Instruction — field 'Effect':
-      ✗ The target can make a basic melee or ranged attack, dealing +2dW damage if they hit
-```
-### disciplines/art-of-war.yaml
-```
-  [Power] All or Nothing — field 'Effect':
-      ✗ Boost (Level 15): the target takes 3dW extra damage and is knocked prone
-  [Power] False Strike — field 'Miss':
-      ✗ Do not repeat if you miss with the second attack
-```
-### disciplines/blades-in-the-dark.yaml
-```
-  [Power] Flying Blade — field 'Hit':
-      ✗ 1dW + Dexterity modifier damage and you gain momentum
-  [Power] Sure Cut — field 'Miss':
-      ✗ If you have momentum, you lose it but the target takes damage equal to your Triumphant Strike value
-  [Power] Sloppy Strike — field 'Hit':
-      ✗ The next time the target attacks you, you can make a secondary attack (Dexterity vs AC
-      ✗ 2dW + Dexterity modifier and slowed until the end of your next turn) as an immediate counter action
-  [Power] Retort — field 'Effect':
-      ✗ Make a secondary attack against the same target (Dexterity vs AC): 1dW + Dexterity modifier, or 2dW + Dexterity modifier if you gained momentum this turn
-  [Power] Attack from the Blue — field 'Special':
-      ✗ If you moved less than your speed, you can shift up to the difference after your attack
-  [Power] Pocket of Sand — field 'Special':
-      ✗ If you have momentum and an enemy targets you, you can lose momentum to use this as a reaction against that enemy
-  [Power] Double Down — field 'Effect':
-      ✗ If it still misses or fails, you are dazed until the end of your next turn
-```
-### disciplines/cup-of-brimstone.yaml
-```
-  [Power] Burn It Off — field 'Special':
-      ✗ Can be used as a basic ranged attack
-  [Power] Redoubled Misery — field 'Hit':
-      ✗ 2d6 + Charisma modifier damage and -2 to saving throws until the end of your next turn
-  [Power] Everburn — field 'Hit':
-      ✗ persistent 5 fire and vulnerability to fire 5 (save ends both)
-  [Power] Minor Binding — field 'Effect':
-      ✗ Summon a Medium burner demon or Medium hellhound until the end of the encounter (hellhound gains a quarry)
-  [Power] Perverse Blessing — field 'Effect':
-      ✗ Gain +2 to defenses
-      ✗ when hit you lose it and instead take -1 to defenses, switching each time you are hit while in the stance
-  [Power] Flaming Teleport — field 'Effect':
-      ✗ Teleport to an unoccupied space adjacent to a creature taking persistent fire damage
-```
-### disciplines/elemental-flux.yaml
-```
-  [Discipline] Elemental Flux — field 'Description':
-      ✗ (Flux powers take a chosen energy: lightning, acid, cold, fire or thunder
-```
-### disciplines/golden-lion.yaml
-```
-  [Power] Pyrite Swipe — field 'Hit':
-      ✗ Each ally in reach of the target at some point during its move may make a melee basic attack against it
-  [Power] Golden Swipe — field 'Effect':
-      ✗ Each ally in reach of the target at some point during its move may make a melee basic attack against it
-  [Power] Triumphant Lion's Leadership — field 'Effect':
-      ✗ The triggering ally can spend a recovery to heal their recovery value
-```
-### disciplines/juggernautical.yaml
-```
-  [Power] I'm the Juggernaut — field 'Effect':
-      ✗ Non-creature obstructions in squares you attempt to enter take damage equal to 5 x your Strength modifier
-  [Power] The Behemoth — field 'Special':
-      ✗ Use a standard action and a move action instead of a swift action with this power to gain temporary hit points equal to twice your Constitution and Strength modifiers
-```
-### disciplines/last-laugh.yaml
-```
-  [Power] Destructive Criticism — field 'Hit':
-      ✗ or one condition with a finite duration that the target is suffering lasts an additional round
-  [Power] I Know This Trick — field 'Trigger':
-      ✗ You are affected by one of the following conditions that a save can end: dazed, marked, slowed, or stunned
-```
-### disciplines/puppeteers-string.yaml
-```
-  [Power] Instant Friends — field 'Hit':
-      ✗ The target treats you as a friend and cannot attack you until the end of your next turn (ends if you damage it)
-      ✗ You may use Bluff to convince it to help you
-  [Power] Cut the Strings — field 'Hit':
-      ✗ The target falls unconscious until the end of your next turn (wakes if it takes damage)
-  [Power] Recall Probe — field 'Hit':
-      ✗ 2d4 + Wisdom modifier psychic damage and the target is dazed until the end of your next turn
-      ✗ search its mind for a memory (Arcana check)
-  [Power] Direct Manipulation — field 'Special':
-      ✗ Maintain Standard: repeat the attack against the same target (out of combat, one hour per maintain)
-  [Power] Making Matters Worse — field 'Target':
-      ✗ Unlimited range, one creature that just took damage from a Psychic power you used
-  [Power] Dreamtrancer — field 'Effect':
-      ✗ you may attempt to take control of it (Wisdom vs Will)
-  [Power] Imprint — field 'Effect':
-      ✗ Make one object look like another of similar size and shape (visual only)
-      ✗ Perception vs your Bluff to see through it
-  [Power] Indirect Camouflage — field 'Effect':
-      ✗ Disguise your appearance until the end of your next turn (+5 to related Bluff checks)
-  [Power] Deep Scan — field 'Effect':
-      ✗ Scan the target's surface thoughts (Wisdom vs Will
-      ✗ no attack vs a willing target), revealing its location and activity
-```
-### disciplines/rapiers-point.yaml
-```
-  [Power] Dance of Blades — field 'Hit':
-      ✗ 1dW + Dexterity modifier damage and you swap places with the target
-  [Power] Only Fooling — field 'Special':
-      ✗ You lose one condition that triggers this power, or stand up from prone
-```
-### disciplines/seershot.yaml
-```
-  [Power] Sharpshooter — field 'Hit':
-      ✗ 1dW + Dexterity modifier damage and choose one: the target is slowed until the end of your next turn, or suffers -2 to defenses until the end of your next turn
-  [Power] Snap-Shot — field 'Hit':
-      ✗ 1dW + Dexterity modifier damage and choose one: the target is marked until the end of your next turn, or is knocked prone
-  [Power] Snap-Shot — field 'Special':
-      ✗ If a creature you marked with snap-shot attacks without including you, you may make a snap-shot against it as a counter
-  [Power] Hold The Breath, Skip A Beat — field 'Effect':
-      ✗ Gain a +4 power bonus to your next attack roll
-  [Power] Check the Wind — field 'Effect':
-      ✗ Your weapon's long range doubles for your next ranged attack and you gain +2 to the attack roll
-  [Power] Failure Is Not an Option — field 'Trigger':
-      ✗ You make a ranged attack roll and dislike the result
-  [Power] Sharpshooter's Aim — field 'Effect':
-      ✗ Double your weapon's normal and long range
-      ✗ Until the end of your next turn, your attacks with it can crit on a natural 18-20
-```
-### disciplines/spells-of-ice-and-fire.yaml
-```
-  [Discipline] Spells of Ice and Fire — field 'Description':
-      ✗ (Flux powers take a chosen energy: lightning, acid, cold, fire or thunder
-  [Power] Bottled Thermodynamic Transfer — field 'Effect':
-      ✗ Make either a second attack against the target or attack each enemy adjacent to it (secondary hit: 1d8 + Dexterity modifier)
-  [Power] Entropic Burst — field 'Hit':
-      ✗ 1d6 + Dexterity modifier [flux] damage, and the target is pushed to the nearest square outside the burst (knocked prone if it hits an obstruction)
-  [Power] Elemental Restraint — field 'Hit':
-      ✗ 1d6 + Dexterity modifier [flux] damage, plus a flux effect — Cold: caged/immobile until it deals enough damage to the ice
-      ✗ Fire: extra damage equal to your level and shunt up to your Dexterity modifier
-  [Power] Broken Equilibrium — field 'Hit':
-      ✗ Cold: target slowed until the end of your next turn
-      ✗ Fire: if it moves more than two squares next turn it takes 5 fire damage
-  [Power] Resonant Ray — field 'Hit':
-      ✗ 2d8 + Dexterity modifier [flux] damage, and until the end of your next turn the target is immobile (cold) or weakened (fire)
-  [Power] Expanding Phase Transition — field 'Effect':
-      ✗ A flux zone: Cold creates smooth ice (enterers fall prone) or ice spikes (difficult terrain, 1d4 + Dexterity modifier damage)
-      ✗ Fire makes difficult terrain dealing 1d6 + Dexterity modifier to enterers
-  [Power] Dynamic Tempest — field 'Effect':
-      ✗ A localized storm (until the end of your next turn) grants concealment
-      ✗ creatures other than you starting their turn in it take cold damage equal to your level and are slowed
-      ✗ It moves with you
-  [Power] Halo of Fire — field 'Hit':
-      ✗ 3d6 + Dexterity modifier fire damage, and the target is pulled 2 toward the center or takes an additional 3d6 fire damage (their choice)
-  [Power] Thermal Absorption — field 'Effect':
-      ✗ You take no damage and recover hit points up to your recovery value or the damage prevented (whichever is less)
-  [Power] Frozen Creation — field 'Effect':
-      ✗ Create simple ice objects (bridges, walls, pillars, furniture) supporting 500 lbs/square that shatter after 10 damage
-      ✗ They persist until the end of your next turn
-  [Power] Thermal Wall — field 'Effect':
-      ✗ Erect a 2-square-high wall that blocks line of sight
-      ✗ Cold: solid, grants cover, withstands 50 damage
-      ✗ Fire: grants resistance 3 behind it and deals 3d6 fire to creatures in it (until the end of your next turn)
-  [Power] Thermal Shield — field 'Effect':
-      ✗ A 2-square-radius dome blocking line of sight
-      ✗ Cold: solid (100 damage), trapping those inside
-      ✗ Fire: outer wall grants resistance 3 inside and deals 4d6 fire to enterers
-  [Power] Rocket Propulsion — field 'Effect':
-      ✗ creatures adjacent to your launch square take 5 fire damage
-  [Power] Rocket Propulsion — field 'Special':
-      ✗ Maintain Swift: the fly speed persists
-      ✗ if you do not maintain and remain aloft, you fall
-  [Power] Ice Castle — field 'Effect':
-      ✗ Create a single-room ice structure (up to 16 squares, 4 tall) with any entrances
-      ✗ Persists indefinitely below freezing, else 24 hours
-      ✗ Each square withstands 50 damage
-```
-### disciplines/starfall.yaml
-```
-  [Discipline] Starfall — field 'Description':
-      ✗ You are a one-person siege weapon, firing rains of arrows that force your foes to duck for cover
-  [Power] Attack of Necessity — field 'Hit':
-      ✗ the target is pushed to the nearest empty square outside the blast (if it can't, it takes Dexterity modifier extra damage)
-  [Power] Micro Burst — field 'Special':
-      ✗ If you do not move this turn, deal your Dexterity modifier in damage instead
-  [Power] Potential Push — field 'Hit':
-      ✗ 1dW + Dexterity modifier damage and push 1 (if it can't be pushed, +Intelligence modifier damage)
-  [Power] Potential Push — field 'Special':
-      ✗ If you do not move this turn, push 2 instead
-  [Power] Pinning Shot — field 'Special':
-      ✗ Maintain Standard: repeat the attack (once)
-  [Power] Covering Shot — field 'Effect':
-      ✗ If you do not move this turn, the target is rattled until the start of your next turn (no hit required)
-  [Power] The Killing Field — field 'Effect':
-      ✗ Create a zone (until end of your next turn) that is difficult terrain except for you
-      ✗ As an opportunity action, attack any creature that enters: Dexterity vs AC, 1dW + Dexterity modifier damage
-  [Power] The Killing Field — field 'Special':
-      ✗ Maintain Standard: the zone persists and can be moved within range
-  [Power] Shot on the Run — field 'Effect':
-      ✗ Before the attack you may run, shift or walk as a move action without weapon move penalties
-  [Power] Force Back — field 'Special':
-      ✗ you can shift the barrage up to 3 squares each turn
-  [Power] Barbed Arrows — field 'Effect':
-      ✗ Each creature you hit takes an additional 5 damage
-  [Power] Chain Shots — field 'Effect':
-      ✗ Until the end of your next turn, roll twice for every attack roll (spending ammunition for each) and take the higher result
-  [Power] To the Rescue! — field 'Effect':
-      ✗ Enemies cannot make ranged or melee attacks against the target, and it gains +3 to defenses vs area attacks, until the end of your next turn / it stands / you leave its square
-  [Power] Machine of Destruction — field 'Effect':
-      ✗ Until the end of your next turn, you are immobile and any basic attack or at-will power's action is reduced (standard to move, move to swift)
-  [Power] Bandit's Yell — field 'Trigger':
-      ✗ You are affected by blinded, dazed, marked, slowed, stunned or weakened (save ends)
 ```
 ### equipment/gear.yaml
 ```
@@ -1758,18 +1530,18 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 
 | Discipline | source | transcribed | missing (omitted) |
 |---|--:|--:|---|
-| Art of War | 18 | 11 | Reflex Shot, Swell of Discipline, Nerve Cluster, An Unwise Action, Strike and Slip Away, Attack Deflection, Delayed Death Touch |
-| Blades in the Dark | 23 | 11 | Bleeding Strike, Kip-Up, Deflection, Slick Feint, Thief’s Strike, Assassin’s Gambit, Spikey Bastard, I’ll Take It, True Targeting, Death’s Twin, Twirling Towards Freedom, End of the Beginning |
-| Cup of Brimstone | 25 | 14 | Demonic Explosion, Sadistic Shot, Prestige Binding, Keep Burning Please, Rabble Babble, Advanced Binding, Golden Claw, Carrion Screech, Greater Binding, Killing Doubt, Ultimate Binding |
+| Art of War | 18 | 18 | — |
+| Blades in the Dark | 23 | 23 | — |
+| Cup of Brimstone | 25 | 25 | — |
 | Elemental Flux | 31 | 31 | — |
 | Frontline Fighting | 37 | 37 | — |
 | Golden Lion | 24 | 24 | — |
-| Juggernautical | 21 | 10 | The Bulldozer, In The Face, He Ain’t Heavy, Like An Elephant, Down Fighting, The Fortress, Nosebleed, Just Got the Wind Knocked, Just Walk It Off, Blatant Disregard for Personal Safety, Behind Me! |
+| Juggernautical | 21 | 21 | — |
 | Last Laugh | 35 | 35 | — |
 | Red in Tooth and Claw | 71 | 71 | — |
-| Seershot | 30 | 15 | Batter The Target, Nock Three Arrows, Act of God, Careful Targeting, Eye Shot, No Exit Wound, Deep Cover, Found the Sweet Spot, Go for the Kill, Internal Ricochet, Ghostly Form, Accompanying Elfshot, Assassin’s Arrow, Guide My Hand, Clean Kill |
-| Spells of Ice and Fire | 18 | 16 | Thermal Isolation, Blood Tell |
-| Starfall | 42 | 20 | Eye the Enemy, Distracting Arrow, Battle Position, Clearing the Room, Stacked Volleys, Tracking Shots, Wildfire Blitz, Flurry of Arrows, Mosquito’s Nip, Mindless Mayhem, Suppressing Shots, New Position, Behemoth-Killer, Clear the Ground, Cloud of Hellfire, Cone of Barbs, One on One, Overwatch, Finish the Job, Selective Shots, Fall of Heaven, Measured Response |
+| Seershot | 30 | 30 | — |
+| Spells of Ice and Fire | 18 | 18 | — |
+| Starfall | 42 | 42 | — |
 | Strong Bidding | 14 | 14 | — |
 | Veiled Moon | 32 | 32 | — |
 

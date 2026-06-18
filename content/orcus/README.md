@@ -24,24 +24,24 @@ for the format.
 | `companions.yaml` | 13 animal companions (`Companion` type) selectable via the Sylvan's Animal Companion wild gift |
 | `classes/harlequin.yaml` | Harlequin (Controller, Martial, Charisma): Fixer/Jester/Saboteur/Scout aura talents, Clever Fellow feature powers, Impudent Flourish, selects to 30 |
 | `classes/mageblade.yaml` | Mageblade (Defender, Arcane, Intelligence): Mageblade's Sigil, Illusion/Martyr/Punishment/Rush sigil talents, Shimmering Shield (+2 AC), selects to 30 |
-| `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) + powers across the level range |
-| `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) + powers across the level range |
-| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) + powers across the level range |
-| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) — **all** powers, levels 1–29 |
-| `disciplines/rapiers-point.yaml` | Rapier's Point discipline (Exemplar) + levels 1–10 powers |
-| `disciplines/blades-in-the-dark.yaml` | Blades in the Dark discipline (Exemplar) + levels 1–7 powers |
-| `disciplines/spells-of-ice-and-fire.yaml` | Spells of Ice and Fire discipline (Magician) + levels 1–22 powers |
-| `disciplines/cup-of-brimstone.yaml` | Cup of Brimstone discipline (Magician) — fiend summons + demonic attacks, levels 1–16 |
-| `disciplines/puppeteers-string.yaml` | Puppeteer's String discipline (Magician) — psychic control, levels 1–7 |
-| `disciplines/starfall.yaml` | Starfall discipline (Reaper) + levels 1–16 powers |
-| `disciplines/seershot.yaml` | Seershot discipline (Reaper) — precision sharpshooting, levels 1–16 |
-| `disciplines/red-in-tooth-and-claw.yaml` | Red in Tooth and Claw discipline (Sylvan) — wild-shape beast combat, levels 1–29 (all 71 powers; machine-generated from the book and round-trip verified) |
-| `disciplines/frontline-fighting.yaml` | Frontline Fighting discipline (Sylvan) — brawler weapon combat, levels 1–29 (37 powers) |
-| `disciplines/strong-bidding.yaml` | Strong Bidding discipline (Sylvan / Binds Familiar) — fight-as-one companion powers, levels 1–19 (14 powers) |
-| `disciplines/last-laugh.yaml` | Last Laugh discipline (Harlequin) — taunts, marks and misdirection, levels 1–29 |
-| `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation, levels 1–29 |
-| `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana, levels 1–29 |
-| `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers, levels 1–29 |
+| `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) — all 18 powers |
+| `disciplines/juggernautical.yaml` | Juggernautical discipline (Guardian) — all 21 powers |
+| `disciplines/angels-trumpet.yaml` | Angel's Trumpet discipline (Commander/Priest) — all 47 powers |
+| `disciplines/golden-lion.yaml` | Golden Lion discipline (Commander) — all 24 powers |
+| `disciplines/rapiers-point.yaml` | Rapier's Point discipline (Exemplar) — all 21 powers |
+| `disciplines/blades-in-the-dark.yaml` | Blades in the Dark discipline (Exemplar) — all 23 powers |
+| `disciplines/spells-of-ice-and-fire.yaml` | Spells of Ice and Fire discipline (Magician) — all 18 powers |
+| `disciplines/cup-of-brimstone.yaml` | Cup of Brimstone discipline (Magician) — demonic attacks; all 25 powers |
+| `disciplines/puppeteers-string.yaml` | Puppeteer's String discipline (Magician) — psychic control; all 27 powers |
+| `disciplines/starfall.yaml` | Starfall discipline (Reaper) — all 42 powers |
+| `disciplines/seershot.yaml` | Seershot discipline (Reaper) — precision sharpshooting; all 30 powers |
+| `disciplines/red-in-tooth-and-claw.yaml` | Red in Tooth and Claw discipline (Sylvan) — wild-shape beast combat; all 71 powers |
+| `disciplines/frontline-fighting.yaml` | Frontline Fighting discipline (Sylvan) — brawler weapon combat; all 37 powers |
+| `disciplines/strong-bidding.yaml` | Strong Bidding discipline (Sylvan / Binds Familiar) — fight-as-one companion powers; all 14 powers |
+| `disciplines/last-laugh.yaml` | Last Laugh discipline (Harlequin) — taunts, marks and misdirection; all 35 powers |
+| `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation; all 41 powers |
+| `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana; all 31 powers |
+| `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers; all 32 powers |
 | `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
@@ -55,7 +55,13 @@ for the format.
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 | `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **1463 elements across 33 types**, no warnings.
+Compiles to **1597 elements across 33 types**, no warnings.
+
+> **Discipline content is machine-generated.** Every `disciplines/*.yaml` file is
+> produced verbatim from the source rulebooks by `tools/CharM.Orcus.Import` and
+> passes its round-trip fidelity gate (no fabrication, no omission); each is
+> transcribed in full. The engine semantics (`id`/`type`/`categories`/`level`)
+> are derived mechanically; only the real source flavor is kept, in its own field.
 
 ### Animal companions
 The Sylvan introduces companion mechanics. Its **Animal Companion** wild gift
