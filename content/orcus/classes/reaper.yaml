@@ -17,7 +17,6 @@
     "Armor Proficiencies": "Cloth, leather"
     "Weapon Proficiencies": "Simple melee, simple ranged, martial ranged"
     "Class Skills": "Acrobatics, Athletics, Endure, Heal, Insight, Intimidate, Nature, Perception, Stealth"
-    Flavor: "You loose rains of arrows and bind the battlefield with willing spirits."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_REAPER
       type: Grants
@@ -173,7 +172,12 @@
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Once per encounter, entreat the spirits for one of: grasping vines, spirit's prank or unleashed spirit. (Action Recharge can refresh it.)"
+    Description: >-
+      You gain the ability to entreat the spirits for a favor. You start with
+      access to three such effects: grasping vines, spirit’s prank and unleashed
+      spirit. When you use your Spirit Entreaty, you choose which effect to
+      create. By default, you can use Spirit Entreaty once per encounter
+      (although see Action Recharge).
   rules:
     - grant: ORCUS_POWER_GRASPING_VINES
       type: Power
@@ -187,8 +191,10 @@
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "When you spend an action point, you recover the use of Spirit Entreaty for the encounter."
 
+    Description: >-
+      When you spend an action point, you recover the use of Spirit Entreaty for
+      the encounter.
 # --- Feature powers -----------------------------------------------------------
 - id: ORCUS_POWER_SPROUTING_OVERWATCH
   name: Sprouting Overwatch
@@ -196,26 +202,34 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Move Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
     Keywords: "Spirit, Weapon, Zone"
     Target: "Far burst 1 within range 10"
-    Effect: "Until the start of your next turn, make a ranged basic attack (immediate interrupt) against a creature that enters the area; afterward enemies treat the area as difficult terrain until the start of your next turn."
-
+    Effect: >-
+      You can make a regular ranged basic attack against one creature that
+      enters any square of the target area as an immediate interrupt until the
+      start of your next turn. After you make this attack, all enemies treat the
+      area as difficult terrain until the start of your next turn.
+    Flavor: >-
+      You cover a person or area and attack anything that gets too close.
 - id: ORCUS_POWER_GRASPING_VINES
   name: Grasping Vines
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Swift Action
-    Keywords: Spirit
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
     Target: "Near burst 1, all enemies"
-    Effect: "The target is pushed 1 and slowed until the end of your next turn. Level 11: burst 2. Level 21: burst 3."
-
+    Effect: "The target is pushed 1 and slowed until the end of your next turn."
+    Special: >-
+      Level 11: Range is now burst 2. Level 21: Range is now burst 3.
 - id: ORCUS_POWER_SPIRITS_PRANK
   name: Spirit's Prank
   type: Power
@@ -236,14 +250,14 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Reaction Action
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
     Keywords: "Spirit, Weapon"
     Target: "Melee weapon, the triggering enemy"
     Trigger: "A melee attack misses you."
     Hit: "1dW + Strength modifier damage and push 1."
-
 # --- Talents ------------------------------------------------------------------
 - id: ORCUS_TALENT_PAVISER
   name: Paviser
@@ -252,7 +266,11 @@
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Constitution
-    Description: "If you don't move on your turn, reduce unwilling movement by 1 and gain +1 AC until your next turn. Proficient with hide and chainmail. Secondary ability: Constitution."
+    Description: >-
+      If you don’t move on your turn, you reduce all unwilling movement you
+      experience by 1 square, and get a +1 bonus to AC until the start of your
+      next turn. You are proficient in hide and chainmail armor. Your secondary
+      ability is Constitution.
   rules:
     - grant: ORCUS_SECSWAP_PAVISER_CONSTITUTION
       type: Secondary Ability Swap
@@ -266,7 +284,13 @@
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "+1 to attacks with thrown weapons, which return to your hand. In light or no armor, add Strength to AC instead of Dex/Int if higher. Secondary ability: Strength."
+    Description: >-
+      You get a +1 bonus to attacks with weapons with the thrown (light) or
+      thrown (heavy) property. Weapons that you throw are transported back into
+      your hand by the spirits immediately after you make the attack. While
+      wearing light or no armor, add your Strength to Armor Class instead of
+      Dexterity/Intelligence if it is higher. Your secondary ability is
+      Strength.
   rules:
     - grant: ORCUS_SECSWAP_PELTAST_STRENGTH
       type: Secondary Ability Swap
@@ -278,7 +302,9 @@
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Intelligence
-    Description: "+1 to attack rolls against targets 6 or more squares away. Secondary ability: Intelligence."
+    Description: >-
+      You get a +1 bonus to attack rolls against targets that are 6 or more
+      squares away. Your secondary ability is Intelligence.
   rules:
     - grant: ORCUS_SECSWAP_SHARPSHOOTER_INTELLIGENCE
       type: Secondary Ability Swap

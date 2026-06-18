@@ -16,7 +16,6 @@
     "Armor Proficiencies": "Cloth, leather, hide, chainmail, scale; light shield, heavy shield"
     "Weapon Proficiencies": "Simple melee, martial melee, simple ranged, martial ranged"
     "Class Skills": "Athletics, Endure, Heal, Intimidate, Streetsmarts"
-    Flavor: "You stand where the line must hold, and you do not move."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_GUARDIAN
       type: Grants
@@ -170,18 +169,20 @@
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: >
+
+    Description: >-
       You can choose to emit an aura 1 of combat dominance. While you do so,
       creatures in the aura who are not marked by anyone else are marked by you.
       A creature that leaves your aura is no longer marked.
-
 - id: ORCUS_FEATURE_VETERAN_OPPORTUNIST
   name: Veteran Opportunist
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Add your Wisdom modifier to your attack rolls when making opportunity attacks."
 
+    Description: >-
+      Add your Wisdom modifier to your attack rolls when making opportunity
+      attacks.
 - id: ORCUS_FEATURE_SAVVY_COMBATANT
   name: Savvy Combatant
   type: Class Feature
@@ -202,7 +203,9 @@
   categories: [ORCUS_GUARDIAN_TALENT]
   fields:
     "Secondary Ability": Constitution
-    Description: "You get a +1 bonus on attack rolls with two-handed weapons. Your secondary ability is Constitution."
+    Description: >-
+      You get a +1 bonus on attack rolls with two-handed weapons. Your secondary
+      ability is Constitution.
   rules:
     # Talent secondary substitution: use Constitution in place of a discipline
     # power's printed secondary ability (Art of War secondary = Dexterity) when higher.
@@ -216,7 +219,9 @@
   categories: [ORCUS_GUARDIAN_TALENT]
   fields:
     "Secondary Ability": "Dexterity or Wisdom"
-    Description: "You get a +1 bonus on attack rolls with one-handed weapons. Your secondary ability is Dexterity OR Wisdom (your choice)."
+    Description: >-
+      You get a +1 bonus on attack rolls with one-handed weapons. Your secondary
+      ability is Dexterity OR Wisdom (your choice).
   rules:
     # Protection's secondary is Dexterity OR Wisdom (the player's choice at
     # creation), modelled as a one-of select between two Secondary Ability Swap
@@ -235,27 +240,33 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Trigger: "A creature is hit by your opportunity attack, and the opportunity attack was provoked by movement."
-    Effect: "Their movement stops for this action. They may attempt to move again using another action, if applicable."
-
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Trigger: >-
+      A creature is hit by your opportunity attack, and the opportunity attack
+      was provoked by movement.
+    Effect: >-
+      Their movement stops for this action. They may attempt to move again using
+      another action, if applicable.
 - id: ORCUS_POWER_PUNISH_COWARDICE
   name: Punish Cowardice
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Counter Action
-    Keywords: Martial
-    Trigger: "An adjacent creature you have marked shifts or makes an attack that does not include you."
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Trigger: >-
+      An adjacent creature you have marked shifts or makes an attack that does
+      not include you.
     Effect: "Make a basic melee attack against the triggering creature."
     Special: "This is not an opportunity attack."
-
 # --- Ability-swap markers (Orcus class-key / talent-secondary substitution) ---
 - id: ORCUS_KEYSWAP_GUARDIAN_STRENGTH
   name: Guardian Key Strength

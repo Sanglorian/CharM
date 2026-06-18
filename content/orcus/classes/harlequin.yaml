@@ -17,7 +17,6 @@
     "Weapon Proficiencies": "Simple melee, simple ranged"
     "Focus Proficiencies": "Martial focus"
     "Class Skills": "Bluff, Diplomacy, Heal, History, Insight, Intimidate, Perception, Religion, Streetsmarts, Thievery"
-    Flavor: "A trickster who controls the battlefield with auras, taunts and misdirection."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_HARLEQUIN
       type: Grants
@@ -155,7 +154,9 @@
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Dexterity
-    Description: "Demoralizing Presence aura 2: enemies in the aura take a -2 penalty to all saving throws. Secondary ability: Dexterity."
+    Description: >-
+      Demoralizing Presence aura 2; enemies in the aura suffer a -2 penalty to
+      all saving throws. Your secondary ability is Dexterity.
   rules:
     - grant: ORCUS_SECSWAP_FIXER_DEXTERITY
       type: Secondary Ability Swap
@@ -167,7 +168,11 @@
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Wisdom
-    Description: "Attention Grabber aura 2: you can mark an enemy in the aura as a swift action; enemies you marked inside the aura take an extra -1 to attacks that don't include you. Secondary ability: Wisdom."
+    Description: >-
+      Attention Grabber aura 2; you can mark an enemy in this aura as a swift
+      action. Enemies you have marked inside the aura suffer an additional -1
+      penalty to attacks that don’t include you. Your secondary ability is
+      Wisdom.
   rules:
     - grant: ORCUS_SECSWAP_JESTER_WISDOM
       type: Secondary Ability Swap
@@ -179,7 +184,9 @@
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Intelligence
-    Description: "Threatened Footfalls aura 2: enemies treat the area within the aura as difficult terrain. Secondary ability: Intelligence."
+    Description: >-
+      Threatened Footfalls aura 2; enemies treat the area within the aura as
+      difficult terrain. Your secondary ability is Intelligence.
   rules:
     - grant: ORCUS_SECSWAP_SABOTEUR_INTELLIGENCE
       type: Secondary Ability Swap
@@ -191,7 +198,9 @@
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Constitution
-    Description: "Watchful aura 2: you do not grant combat advantage to enemies inside the aura. Secondary ability: Constitution."
+    Description: >-
+      Watchful aura 2; you do not grant combat advantage to enemies inside the
+      aura. Your secondary ability is Constitution.
   rules:
     - grant: ORCUS_SECSWAP_SCOUT_CONSTITUTION
       type: Secondary Ability Swap
@@ -203,26 +212,28 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
     Target: "Near 5, one creature marked by yourself or one of your allies"
-    Effect: "The target is no longer marked by that character, and is instead marked by yourself or the ally of your choice until the end of your next turn."
-
+    Effect: >-
+      The target is no longer marked by that character, and is instead marked by
+      yourself or the ally of your choice until the end of your next turn.
 - id: ORCUS_POWER_HASTY_RETREAT
   name: Hasty Retreat
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
     Effect: "Shift 1."
-
 # --- Ability-swap markers -----------------------------------------------------
 - id: ORCUS_KEYSWAP_HARLEQUIN_CHARISMA
   name: Harlequin Key Charisma

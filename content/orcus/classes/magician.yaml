@@ -18,7 +18,6 @@
     "Weapon Proficiencies": "Simple melee"
     "Focus Proficiencies": "Orb, staff, wand, rod, book"
     "Class Skills": "Arcana, Diplomacy, Dungeoneering, History, Insight, Nature, Religion"
-    Flavor: "You bend the elements and the minds of others to your will."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_MAGICIAN
       type: Grants
@@ -164,14 +163,16 @@
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You gain the Athame feat or a feat from the Art Feats section (your choice)."
+    Description: >-
+      You gain the Athame feat or a feat from the Art Feats section (your
+      choice).
 - id: ORCUS_FEATURE_CANTRIPS
   name: Cantrips
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You gain the Cantrip Master feat (three powers from the Cantrips discipline)."
 
+    Description: "You gain the Cantrip Master feat."
 # --- Talents (schools of magic) -----------------------------------------------
 - id: ORCUS_TALENT_CONJURER
   name: Conjurer
@@ -180,7 +181,15 @@
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Constitution
-    Description: "Active daily Summon powers are not expended when an encounter ends (re-summoning restores the creature's prior state but refreshes its encounter powers). Secondary ability: Constitution."
+    Description: >-
+      When an encounter ends and you have one or more daily powers with the
+      Summon tag still active, those daily powers are not expended. However, if
+      you use them again, the summoned creatures appear in the exact state they
+      were when their last summoning ended (current HP, conditions, etc.) except
+      that they can use their encounter powers again even if already used
+      before. If you complete a long rest, all your daily powers reset and if
+      you use them from then on a “fresh” creature will be summoned. Your
+      secondary ability is Constitution.
   rules:
     - grant: ORCUS_SECSWAP_CONJURER_CONSTITUTION
       type: Secondary Ability Swap
@@ -191,7 +200,11 @@
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "When a Psychic power would deal damage, you may instead deal none to your enemy targets for a +2 bonus on the attack roll. Secondary ability: Charisma."
+    Description: >-
+      When you use a power with the Psychic tag that does damage on a hit, you
+      can choose for the power to do no damage to any enemies you target. If so,
+      you gain a +2 bonus on the attack roll. Your secondary ability is
+      Charisma.
   rules:
     - grant: ORCUS_SECSWAP_ENCHANTER_CHARISMA
       type: Secondary Ability Swap
@@ -202,7 +215,12 @@
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Dexterity
-    Description: "Increase the area of a near/far Acid, Cold, Fire, Flux, Lightning or Thunder power by 1; change your flux energy as a swift action. Secondary ability: Dexterity."
+    Description: >-
+      If you wish, a near or far power you use with the Acid, Cold, Fire, Flux,
+      Lightning or Thunder tags has its area increased by 1 (from Near arc 2 to
+      Near arc 3, for example). Also, you can change your flux energy as a swift
+      action (see the Elemental Flux discipline for a description of flux
+      energy). Your secondary ability is Dexterity.
   rules:
     - grant: ORCUS_SECSWAP_EVOKER_DEXTERITY
       type: Secondary Ability Swap
@@ -214,15 +232,31 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
   fields:
-    Description: "Your class encounter attack powers gain a Miss entry if they lack one: half damage, and a hit's condition is downgraded (e.g. stunned -> dazed, immobile -> slowed)."
+    Description: >-
+      Encounter attack powers from your class disciplines gain the following
+      Miss entry if they do not have one: Miss: Half damage, and if a hit would
+      have imposed a condition, the target experiences the following (same
+      duration). Blinded: The target is rattled. Controlled: The target is
+      dazed. Immobile: The target is slowed. Persistent damage 10 or more:
+      Persistent damage 5. Stunned: The target is dazed. Weakened: The target
+      suffers a -4 penalty to damage. Unwilling movement 3 or more: Unwilling
+      movement of the same variety 1.
 - id: ORCUS_FEATURE_ARCANE_SUSTENANCE
   name: Arcane Sustenance
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
   fields:
-    Description: "At the start of each turn, freely Maintain one active power or give one of your companions an action (without spending your own)."
 
+    Description: >-
+      At the start of each of your turns, choose one power you have active that
+      requires an action to Maintain or choose a companion of yours (a summon,
+      familiar, etc.). If you choose the Maintain power, the power is Maintained
+      as if you spent the relevant action on it. If you choose the creature, it
+      can take an action of your choice without you spending an action on it.
+      This does not allow it to exceed its total actions, so for example if you
+      choose for it to take a standard action, you cannot also spend your
+      standard action to have it take another standard action.
 # --- Ability-swap markers -----------------------------------------------------
 - id: ORCUS_KEYSWAP_MAGICIAN_INTELLIGENCE
   name: Magician Key Intelligence

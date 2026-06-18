@@ -18,7 +18,6 @@
     "Armor Proficiencies": "Cloth, leather; light shield"
     "Weapon Proficiencies": "Simple melee, martial melee, simple ranged"
     "Class Skills": "Acrobatics, Athletics, Bluff, Diplomacy, Insight, Intimidate, Perception, Stealth, Streetsmarts, Sleight of Hand"
-    Flavor: "You are a duelist who turns momentum into a killing edge."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_EXEMPLAR
       type: Grants
@@ -163,29 +162,41 @@
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "When you hit an enemy with a melee attack and don't already have momentum, you gain momentum. You lose it when you are hit by any attack. Momentum has no effect on its own but is required by Triumphant Strike and Bide Your Time and referenced by some powers."
 
+    Description: >-
+      When you hit an enemy with a melee attack, and do not already have
+      momentum, you gain momentum. When you are hit by any kind of attack, you
+      lose momentum. Momentum has no effect on its own, but it is required for
+      your Triumphant Strike and Bide Your Time features and is referenced by
+      some powers.
 - id: ORCUS_FEATURE_TRIUMPHANT_STRIKE
   name: Triumphant Strike
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "While you have momentum, once per turn you can add +1dW damage to any attack. Level 11: +2dW. Level 21: +3dW."
 
+    Description: >-
+      While you have momentum, once per turn you can add +1dW damage to any kind
+      of attack. Level 11: +2dW damage. Level 21: +3dW damage.
 - id: ORCUS_FEATURE_BIDE_YOUR_TIME
   name: Bide Your Time
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "If you use an encounter attack power and hit no targets, you can lose your momentum to keep the power (it is not expended). Requires momentum."
 
+    Description: >-
+      If you use an encounter attack power and do not hit any targets, you can
+      lose your momentum to keep the encounter power (it is not expended). You
+      can only use this feature if you have momentum.
 - id: ORCUS_FEATURE_NICK_OF_TIME
   name: Nick of Time
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You get a +2 bonus on attack rolls you make outside of your turn (opportunity attacks, immediate actions)."
 
+    Description: >-
+      You get a +2 bonus on attack rolls you make outside of your turn (for
+      example, opportunity attacks and immediate actions).
 # --- Talents (chosen via the Exemplar Talent select) --------------------------
 - id: ORCUS_TALENT_GLADIATOR
   name: Gladiator
@@ -194,7 +205,9 @@
   categories: [ORCUS_EXEMPLAR_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "Once per turn when you shift, you can shunt an adjacent enemy 1 at one point during your movement. Your secondary ability is Strength."
+    Description: >-
+      Once per turn, when you shift, you can shunt an adjacent enemy 1 at one
+      point during your movement. Your secondary ability is Strength.
   rules:
     - grant: ORCUS_SECSWAP_GLADIATOR_STRENGTH
       type: Secondary Ability Swap
@@ -206,7 +219,10 @@
   categories: [ORCUS_EXEMPLAR_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "Your Triumphant Strike deals additional damage equal to your Charisma modifier against a marked enemy. Your secondary ability is Charisma."
+    Description: >-
+      Your Triumphant Strike does additional damage equal to your Charisma
+      modifier when you attack a marked enemy. Your secondary ability is
+      Charisma.
   rules:
     - grant: ORCUS_SECSWAP_SWASHBUCKLER_CHARISMA
       type: Secondary Ability Swap

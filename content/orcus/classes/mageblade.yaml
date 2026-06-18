@@ -17,7 +17,6 @@
     "Weapon Proficiencies": "Simple melee, martial melee, simple ranged"
     "Focus Proficiencies": "See Athame feature"
     "Class Skills": "Arcana, Acrobatics, Athletics, Diplomacy, Endure, History, Insight, Intimidate"
-    Flavor: "A warrior-mage who binds enemies with an arcane sigil and strikes with elemental steel."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_MAGEBLADE
       type: Grants
@@ -165,7 +164,8 @@
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Dexterity
-    Description: "You gain the blurring sigil power. Secondary ability: Dexterity."
+    Description: >-
+      You can use the blurring sigil power. Your secondary ability is Dexterity.
   rules:
     - grant: ORCUS_POWER_BLURRING_SIGIL
       type: Power
@@ -179,7 +179,9 @@
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Constitution
-    Description: "You gain the vortex sigil power. Secondary ability: Constitution."
+    Description: >-
+      You can use the vortex sigil power. Your secondary ability is
+      Constitution.
   rules:
     - grant: ORCUS_POWER_VORTEX_SIGIL
       type: Power
@@ -193,7 +195,8 @@
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "You gain the fiery sigil power. Secondary ability: Charisma."
+    Description: >-
+      You can use the fiery sigil power. Your secondary ability is Charisma.
   rules:
     - grant: ORCUS_POWER_FIERY_SIGIL
       type: Power
@@ -207,7 +210,8 @@
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "You gain the beacon sigil power. Secondary ability: Strength."
+    Description: >-
+      You can use the beacon sigil power. Your secondary ability is Strength.
   rules:
     - grant: ORCUS_POWER_BEACON_SIGIL
       type: Power
@@ -234,56 +238,75 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Reaction Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
     Keywords: "Arcane, Teleport, Weapon"
     Target: "Near burst 5, the triggering enemy"
-    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
-    Effect: "Teleport to an unoccupied square adjacent to the target and make a basic melee attack against them."
-
+    Trigger: >-
+      A creature marked by your sigil makes an attack that does not include you
+      as a target
+    Effect: >-
+      Teleport to an unoccupied square adjacent to the target and make a basic
+      melee attack against them.
 - id: ORCUS_POWER_BLURRING_SIGIL
   name: Blurring Sigil
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Counter Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Weapon"
     Target: "Near burst 10, the triggering enemy"
-    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
-    Effect: "Any one target of the triggering creature's attack gains resistance to all damage equal to your level + your Dexterity modifier, until the end of the current turn."
-
+    Trigger: >-
+      A creature marked by your sigil makes an attack that does not include you
+      as a target
+    Effect: >-
+      Any one target of the triggering creature’s attack gains resistance to all
+      damage equal to your level + your Dexterity modifier, until the end of the
+      current turn.
 - id: ORCUS_POWER_FIERY_SIGIL
   name: Fiery Sigil
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Reaction Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
     Keywords: "Arcane, Fire, Weapon"
     Target: "Near burst 10, the triggering enemy"
-    Trigger: "A creature marked by your sigil makes an attack that does not include you as a target."
-    Effect: "The triggering creature takes 1d6 + your Charisma modifier fire damage. Level 11: 2d6 + your Charisma modifier. Level 21: 3d6 + your Charisma modifier."
-
+    Trigger: >-
+      A creature marked by your sigil makes an attack that does not include you
+      as a target
+    Effect: >-
+      The triggering creature takes 1d6 + your Charisma modifier fire damage.
+      Level 11: 2d6 + your Charisma modifier damage. Level 21: 3d6 + your
+      Charisma modifier damage.
 - id: ORCUS_POWER_VORTEX_SIGIL
   name: Vortex Sigil
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": At-Will
-    "Power Type": Utility
-    "Action Type": Counter Action
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Teleport, Weapon"
     Target: "Near burst 5, the triggering enemy"
-    Trigger: "A creature marked by your sigil attempts to make an attack that does not include you as a target."
-    Effect: "The triggering creature teleports to an unoccupied square of your choice adjacent to you. If it now arranges the attack so that it includes you as a target, the attack goes ahead. Otherwise it misses all targets."
-
+    Trigger: >-
+      A creature marked by your sigil attempts to make an attack that does not
+      include you as a target
+    Effect: >-
+      The triggering creature teleports to an unoccupied square of your choice
+      adjacent to you. If it now arranges the attack so that it includes you as
+      a target, the attack goes ahead. Otherwise it misses all targets.
 # --- Ability-swap markers -----------------------------------------------------
 - id: ORCUS_KEYSWAP_MAGEBLADE_INTELLIGENCE
   name: Mageblade Key Intelligence

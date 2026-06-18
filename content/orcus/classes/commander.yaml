@@ -16,7 +16,6 @@
     "Weapon Proficiencies": "Simple melee, martial melee; simple ranged"
     "Focus Proficiencies": "Martial focus"
     "Class Skills": "Athletics, Diplomacy, Endure, Heal, History, Intimidate, Religion"
-    Flavor: "Battles are won by those who can make others fight as one."
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_COMMANDER
       type: Grants
@@ -174,13 +173,15 @@
   categories: [feature]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Healing"
-    Target: "Near burst 5 (10 at level 11, 15 at level 21), one ally or yourself"
-    Effect: "The target spends a recovery and heals their recovery value plus your Charisma modifier."
-
+    Target: >-
+      Near burst 5 (10 at level 11, 15 at level 21), one ally or yourself
+    Effect: >-
+      The target spends a recovery and heals their recovery value plus your
+      Charisma modifier.
 # --- Talents (chosen via the Commander Talent select) -------------------------
 - id: ORCUS_TALENT_STORMTROOPER_TACTICS
   name: Stormtrooper Tactics
@@ -189,7 +190,9 @@
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Dexterity
-    Description: "Once per turn, an ally targeted by one of your powers can shift 1 as a free action."
+    Description: >-
+      Once per turn, an ally that is the target of one of your powers can shift
+      1 as a free action. Your secondary ability is Dexterity.
   rules:
     # Talent secondary substitution (Orcus): use Dexterity for a discipline
     # power's printed secondary ability when higher.
@@ -203,7 +206,10 @@
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Wisdom
-    Description: "Once per turn, an ally targeted by one of your powers gains temporary hit points equal to your Wisdom modifier."
+    Description: >-
+      Once per turn, an ally that is the target of one of your powers receives
+      temporary hit points equal to your Wisdom modifier (double at level 11,
+      triple at level 21). Your secondary ability is Wisdom.
   rules:
     - grant: ORCUS_SECSWAP_SIEGE_WISDOM
       type: Secondary Ability Swap
@@ -215,7 +221,10 @@
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Intelligence
-    Description: "Once per turn, an ally targeted by one of your powers makes a saving throw against one save-ends condition."
+    Description: >-
+      Once per turn, an ally that is the target of one of your powers
+      immediately makes a saving throw against one save ends condition they are
+      subject to. Your secondary ability is Intelligence.
   rules:
     - grant: ORCUS_SECSWAP_RESILIENCE_INTELLIGENCE
       type: Secondary Ability Swap
@@ -227,7 +236,10 @@
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "Once per turn, an ally targeted by one of your powers gains a +2 power bonus to their next attack roll."
+    Description: >-
+      Once per turn, an ally that is the target of one of your powers receives a
+      +2 power bonus to their next attack roll. Your secondary ability is
+      Strength.
   rules:
     - grant: ORCUS_SECSWAP_INSPIRING_STRENGTH
       type: Secondary Ability Swap
@@ -239,7 +251,7 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_COMMANDER_ARMAMENT]
   fields:
-    Description: "Proficiency with martial ranged weapons; you may use Strength instead of Dexterity for basic ranged attacks."
+    Description: "Proficiency with martial ranged weapons. You may use Strength instead of Dexterity for attack and damage rolls on basic ranged attacks."
 
 - id: ORCUS_ARMAMENT_HEAVY
   name: "Armament: Heavy Armor"

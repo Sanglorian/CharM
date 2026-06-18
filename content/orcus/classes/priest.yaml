@@ -21,7 +21,6 @@
     "Weapon Proficiencies": "Simple melee, simple ranged"
     "Focus Proficiencies": "Holy symbol"
     "Class Skills": "Arcana, Diplomacy, Heal, History, Insight, Religion"
-    Flavor: "You channel the will of the gods to mend, ward and rally."
   rules:
     # Orcus key-ability substitution: the Priest may use Wisdom (its class key)
     # in place of a discipline power's printed key ability. The engine adds
@@ -150,7 +149,7 @@
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "Your healing powers are bolstered by the god of life. Secondary ability: Charisma."
+    Description: "Your secondary ability is Charisma."
   rules:
     # Talent secondary substitution (Orcus): use Charisma for a discipline
     # power's printed secondary ability when higher.
@@ -164,7 +163,7 @@
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Charisma
-    Description: "You ward and protect your allies. Secondary ability: Charisma."
+    Description: "Your secondary ability is Charisma."
   rules:
     - grant: ORCUS_SECSWAP_GOD_OF_PEACE_CHARISMA
       type: Secondary Ability Swap
@@ -176,7 +175,7 @@
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "You command through fear and dominion. Secondary ability: Strength."
+    Description: "Your secondary ability is Strength."
   rules:
     - grant: ORCUS_SECSWAP_GOD_OF_TYRANNY_STRENGTH
       type: Secondary Ability Swap
@@ -188,7 +187,10 @@
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Strength
-    Description: "You lead the faithful into battle. Secondary ability: Strength."
+    Description: >-
+      Your secondary ability is Strength. If you acquire Worships ... kits
+      through other ways, you get their benefits as usual but they do not change
+      your secondary ability.
   rules:
     - grant: ORCUS_SECSWAP_GOD_OF_WAR_STRENGTH
       type: Secondary Ability Swap

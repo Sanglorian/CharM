@@ -2,8 +2,8 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1597
-- Prose fields scanned: 4102; flagged: 595
-- Flavor fields: 401 faithful, 11 INVENTED
+- Prose fields scanned: 4096; flagged: 555
+- Flavor fields: 402 faithful, 3 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -12,14 +12,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 ## Invented Flavor fields (not in any source) — to be removed
 
 - ancestry.yaml :: Violent Rush :: "You press the advantage before the enemy can recover."
-- classes/commander.yaml :: Commander :: "Battles are won by those who can make others fight as one."
-- classes/exemplar.yaml :: Exemplar :: "You are a duelist who turns momentum into a killing edge."
-- classes/guardian.yaml :: Guardian :: "You stand where the line must hold, and you do not move."
-- classes/harlequin.yaml :: Harlequin :: "A trickster who controls the battlefield with auras, taunts and misdirection."
-- classes/mageblade.yaml :: Mageblade :: "A warrior-mage who binds enemies with an arcane sigil and strikes with elemental steel."
-- classes/magician.yaml :: Magician :: "You bend the elements and the minds of others to your will."
-- classes/priest.yaml :: Priest :: "You channel the will of the gods to mend, ward and rally."
-- classes/reaper.yaml :: Reaper :: "You loose rains of arrows and bind the battlefield with willing spirits."
 - paths/epic.yaml :: For the Sake of the Team :: "You give an ally the precious time they need to complete the task."
 - paths/epic.yaml :: Not Tolerate Losing :: "You make every ally fear you more than the enemy."
 
@@ -79,100 +71,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ Your family belonged to a forbidden religion, exposing you to constant persecution
   [Power] Barrel Along — field 'Effect':
       ✗ You gain a +2 bonus to speed and to damage rolls until the end of the encounter
-```
-### classes/commander.yaml
-```
-  [Class Feature] Stormtrooper Tactics — field 'Description':
-      ✗ Once per turn, an ally targeted by one of your powers can shift 1 as a free action
-  [Class Feature] Siege Tactics — field 'Description':
-      ✗ Once per turn, an ally targeted by one of your powers gains temporary hit points equal to your Wisdom modifier
-  [Class Feature] Resilience Tactics — field 'Description':
-      ✗ Once per turn, an ally targeted by one of your powers makes a saving throw against one save-ends condition
-  [Class Feature] Inspiring Tactics — field 'Description':
-      ✗ Once per turn, an ally targeted by one of your powers gains a +2 power bonus to their next attack roll
-  [Class Feature] Armament: Martial Ranged — field 'Description':
-      ✗ you may use Strength instead of Dexterity for basic ranged attacks
-```
-### classes/exemplar.yaml
-```
-  [Class Feature] Momentum — field 'Description':
-      ✗ When you hit an enemy with a melee attack and don't already have momentum, you gain momentum
-      ✗ You lose it when you are hit by any attack
-      ✗ Momentum has no effect on its own but is required by Triumphant Strike and Bide Your Time and referenced by some powers
-  [Class Feature] Triumphant Strike — field 'Description':
-      ✗ While you have momentum, once per turn you can add +1dW damage to any attack
-  [Class Feature] Bide Your Time — field 'Description':
-      ✗ If you use an encounter attack power and hit no targets, you can lose your momentum to keep the power (it is not expended)
-  [Class Feature] Nick of Time — field 'Description':
-      ✗ You get a +2 bonus on attack rolls you make outside of your turn (opportunity attacks, immediate actions)
-  [Class Feature] Swashbuckler — field 'Description':
-      ✗ Your Triumphant Strike deals additional damage equal to your Charisma modifier against a marked enemy
-```
-### classes/harlequin.yaml
-```
-  [Class Feature] Fixer — field 'Description':
-      ✗ Demoralizing Presence aura 2: enemies in the aura take a -2 penalty to all saving throws
-  [Class Feature] Jester — field 'Description':
-      ✗ Attention Grabber aura 2: you can mark an enemy in the aura as a swift action
-      ✗ enemies you marked inside the aura take an extra -1 to attacks that don't include you
-```
-### classes/mageblade.yaml
-```
-  [Class Feature] Illusion Specialist — field 'Description':
-      ✗ You gain the blurring sigil power
-  [Class Feature] Martyr Specialist — field 'Description':
-      ✗ You gain the vortex sigil power
-  [Class Feature] Punishment Specialist — field 'Description':
-      ✗ You gain the fiery sigil power
-  [Class Feature] Rush Specialist — field 'Description':
-      ✗ You gain the beacon sigil power
-```
-### classes/magician.yaml
-```
-  [Class Feature] Cantrips — field 'Description':
-      ✗ You gain the Cantrip Master feat (three powers from the Cantrips discipline)
-  [Class Feature] Conjurer — field 'Description':
-      ✗ Active daily Summon powers are not expended when an encounter ends (re-summoning restores the creature's prior state but refreshes its encounter powers)
-  [Class Feature] Enchanter — field 'Description':
-      ✗ When a Psychic power would deal damage, you may instead deal none to your enemy targets for a +2 bonus on the attack roll
-  [Class Feature] Evoker — field 'Description':
-      ✗ Increase the area of a near/far Acid, Cold, Fire, Flux, Lightning or Thunder power by 1
-  [Class Feature] Arcane Overflow — field 'Description':
-      ✗ Your class encounter attack powers gain a Miss entry if they lack one: half damage, and a hit's condition is downgraded (e
-      ✗ stunned -> dazed, immobile -> slowed)
-  [Class Feature] Arcane Sustenance — field 'Description':
-      ✗ At the start of each turn, freely Maintain one active power or give one of your companions an action (without spending your own)
-```
-### classes/priest.yaml
-```
-  [Class Feature] Worships the God of Life — field 'Description':
-      ✗ Your healing powers are bolstered by the god of life
-  [Class Feature] Worships the God of Peace — field 'Description':
-      ✗ You ward and protect your allies
-  [Class Feature] Worships the God of Tyranny — field 'Description':
-      ✗ You command through fear and dominion
-  [Class Feature] Worships the God of War — field 'Description':
-      ✗ You lead the faithful into battle
-```
-### classes/reaper.yaml
-```
-  [Class Feature] Spirit Entreaty — field 'Description':
-      ✗ Once per encounter, entreat the spirits for one of: grasping vines, spirit's prank or unleashed spirit
-      ✗ (Action Recharge can refresh it
-  [Power] Sprouting Overwatch — field 'Effect':
-      ✗ Until the start of your next turn, make a ranged basic attack (immediate interrupt) against a creature that enters the area
-      ✗ afterward enemies treat the area as difficult terrain until the start of your next turn
-  [Power] Grasping Vines — field 'Effect':
-      ✗ Level 11: burst 2
-      ✗ Level 21: burst 3
-  [Class Feature] Paviser — field 'Description':
-      ✗ If you don't move on your turn, reduce unwilling movement by 1 and gain +1 AC until your next turn
-      ✗ Proficient with hide and chainmail
-  [Class Feature] Peltast — field 'Description':
-      ✗ +1 to attacks with thrown weapons, which return to your hand
-      ✗ In light or no armor, add Strength to AC instead of Dex/Int if higher
-  [Class Feature] Sharpshooter — field 'Description':
-      ✗ +1 to attack rolls against targets 6 or more squares away
 ```
 ### companions.yaml
 ```
