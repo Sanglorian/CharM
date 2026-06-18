@@ -1,255 +1,1442 @@
-# Red in Tooth and Claw discipline (Sylvan / Eats Monster Hearts, Takes Bestial
-# Form kits). Wild-shape beast combat. Key Constitution / secondary Wisdom; the
-# Sylvan class key (Constitution) substitutes via `ability-swap`. Implement/Focus
-# powers (Con-based, fixed dice). A representative set across levels 1-10.
+# Red in Tooth and Claw discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
 
 - id: ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW
-  name: Red in Tooth and Claw
+  name: "Red in Tooth and Claw"
   type: Discipline
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    "Key Ability": Constitution
-    "Secondary Ability": Wisdom
-    Sources: "Sylvan (class); Eats Monster Hearts, Takes Bestial Form (kits)"
-    Description: "You take the form of wild beasts, or take on their characteristics while keeping your own form."
+    "Key Ability": "Constitution"
+    "Secondary Ability": "Wisdom"
+    Sources: "Sylvan (class), Eats Monster Hearts, Takes Bestial Form (kits)"
+    Description: >-
+      You can take the form of wild beasts, or take on their characteristics
+      while keeping your own form.
+    Note: >-
+      See the Tags rules for details on how Form and Wild Shape tagged powers
+      work.
 
-# --- At-Will attack powers (level 1) ------------------------------------------
 - id: ORCUS_POWER_BLOOD_LUST
-  name: Blood Lust
+  name: "Blood Lust"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Spirit, Wild Shape"
     Target: "Melee 1, one enemy"
     Attack: "Constitution vs AC"
-    Hit: "1d8 + Constitution modifier damage, and you gain temporary hit points equal to your Wisdom modifier. Level 21: 2d8 + Constitution modifier."
-    Special: "Can be used as a basic melee attack."
-
-- id: ORCUS_POWER_POWERFUL_SWIPE
-  name: Powerful Swipe
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
-  fields:
-    Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Focus, Spirit, Wild Shape"
-    Target: "Melee 1, one enemy"
-    Attack: "Constitution vs AC"
-    Hit: "1d12 + Constitution modifier damage. Level 21: 2d12 + Constitution modifier."
-    Special: "Can be used as a basic melee attack."
-
-- id: ORCUS_POWER_KNOCKBACK
-  name: Knockback
-  type: Power
-  source: "Orcus (Outlaw Kingdoms)"
-  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
-  fields:
-    Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
-    Keywords: "Focus, Spirit, Wild Shape"
-    Target: "Melee 1, one enemy"
-    Attack: "Constitution vs AC"
-    Hit: "1d8 + Constitution modifier damage and the target is pushed 1. Level 21: 2d8, push Wisdom modifier squares."
+    Hit: >-
+      1d8 + Constitution modifier damage, and you gain temporary hit points
+      equal to your Wisdom modifier. Level 21: 2d8 + Constitution modifier
+      damage, and you gain temporary hit points equal to double your Wisdom
+      modifier.
     Special: "Can be used as a basic melee attack."
 
 - id: ORCUS_POWER_BOB_AND_WEAVE
-  name: Bob and Weave
+  name: "Bob and Weave"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": At-Will
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Spirit, Wild Shape"
     Target: "Melee 1, one enemy"
     Attack: "Constitution vs AC"
-    Hit: "1d6 + Constitution modifier damage, and you shift 1 square. Level 21: 2d6 + Constitution modifier."
+    Hit: >-
+      1d6 + Constitution modifier damage, and you shift 1 square. Level 21: 2d6
+      + Constitution modifier damage.
+    Special: "Can be used as a basic melee attack."
+    Flavor: "You bob and weave through combat with the grace of a cat."
+
+- id: ORCUS_POWER_STOUT_REBUFF
+  name: "Stout Rebuff"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage, and the target is rattled until the
+      end of your next turn. Level 21: 2d8 + Constitution modifier damage.
     Special: "Can be used as a basic melee attack."
 
-# --- Encounter attack powers --------------------------------------------------
+- id: ORCUS_POWER_KNOCKBACK
+  name: "Knockback"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage and the target is pushed 1. Level 21:
+      2d8 + Constitution modifier damage and the target is pushed a number of
+      squares equal to your Wisdom modifier.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_MAD_RUSH
+  name: "Mad Rush"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage. Level 21: 2d8 + Constitution modifier
+      damage.
+    Special: >-
+      If used as part of a charge, increase your speed by 2 for the charge and
+      do additional damage equal to your Wisdom modifier. Can be used as a basic
+      melee attack.
+
+- id: ORCUS_POWER_POWERFUL_SWIPE
+  name: "Powerful Swipe"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d12 + Constitution modifier damage. Level 21: 2d12 + Constitution
+      modifier damage.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_SIC_EM
+  name: "Sic ’Em"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage, and the target is marked. Level 21:
+      2d8 + Constitution modifier damage.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_SNEAKY_STRIKE
+  name: "Sneaky Strike"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage. If you have combat advantage against
+      the target, do additional damage equal to your Wisdom modifier. Level 21:
+      2d8 + Constitution modifier damage, and if you have combat advantage
+      against the target, do additional damage equal to double your Wisdom
+      modifier.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_TONGUE_LASH
+  name: "Tongue Lash"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 2, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage and the target is pulled 1. Level 21:
+      Reach 2; 2d8 + Constitution modifier damage and the target is pulled 2.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_VENOMOUS_STRIKE
+  name: "Venomous Strike"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Poison, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier poison damage. If the creature moves before
+      the end of its next turn, it takes additional poison damage equal to your
+      Wisdom modifier. Level 21: 2d8 + Constitution modifier damage, and if the
+      creature moves before the end of its next turn, it takes additional poison
+      damage equal to double your Wisdom modifier.
+    Special: "Can be used as a basic melee attack."
+
+- id: ORCUS_POWER_DRAG_DOWN
+  name: "Drag Down"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit, Wild Shape"
+    Target: "Melee 1, one enemy"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      1d8 + Constitution modifier damage, and the target falls prone. Level 21:
+      2d8 + Constitution modifier damage.
+    Special: "Can be used as a basic melee attack."
+
 - id: ORCUS_POWER_CHOPPERS
-  name: Choppers
+  name: "Choppers"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Consistent, Focus, Spirit"
     Target: "Melee touch, one target"
     Attack: "Constitution vs AC"
-    Hit: "2d6 + Constitution modifier damage, and the target is weakened until the start of your next turn."
+    Hit: >-
+      2d6 + Constitution modifier damage, and the target is weakened until the
+      start of your next turn.
+    Boost: >-
+      Level 13 4d6 + Strength modifier damage. Level 27 6d6 + Strength modifier
+      damage.
+    Flavor: "Your opponent wasn’t expecting you to use your teeth."
 
 - id: ORCUS_POWER_FLAILING_ATTACKS
-  name: Flailing Attacks
+  name: "Flailing Attacks"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Spirit"
     Target: "Melee touch, one target"
     Attack: "Constitution vs AC"
     Hit: "1d8 + Constitution modifier damage."
-    Miss: "Make a secondary attack against the same or a different target (Constitution vs AC; 1d8 + Constitution modifier)."
+    Miss: >-
+      Make a secondary attack against the same or a different target. Secondary
+      Attack: Constitution vs AC; 1d8 + Constitution modifier damage.
 
 - id: ORCUS_POWER_RAKE
-  name: Rake
+  name: "Rake"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
     Keywords: "Focus, Spirit"
     Target: "Melee touch, one target"
     Trigger: "You hit on an attack."
     Attack: "Same target; Constitution vs AC"
-    Hit: "1d8 + Constitution modifier damage and 5 persistent damage (save ends)."
+    Hit: >-
+      1d8 + Constitution modifier damage and 5 persistent damage (save ends).
 
 - id: ORCUS_POWER_WILD_SWINGS
-  name: Wild Swings
+  name: "Wild Swings"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Focus, Spirit"
     Target: "Near burst 1, all enemies"
     Hit: "1d6 + Constitution modifier damage."
 
-# --- Daily attack powers (Wild Shape forms) -----------------------------------
-- id: ORCUS_POWER_SHAPE_OF_THE_BEAR
-  name: Shape of the Bear
+- id: ORCUS_POWER_SHAPE_OF_THE_BADGER
+  name: "Shape of the Badger"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Form, Polymorph, Spirit"
-    Target: Self
-    Effect: "Become a Large bear (low-light vision, climb 2); you gain the blood lust at-will power. Form Attack (standard, Focus): Melee 1, Con vs AC, 2d8 + Constitution modifier and the target is grappled; half damage on a miss."
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small badger, wolverine or dire weasel, with a
+      burrow speed of 2 and blindsense. As an immediate reaction after you are
+      hit by an attack, you can shift 1 square. While in this form, you gain the
+      sic ’em at-will power. You remain in the form until you are reduced to 0
+      HP or below, take a long rest or take a new form. You can return to your
+      original form as a swift action. Once during your time in this form, you
+      can make the following attack: Form Attack (standard action) ● Focus Melee
+      1; Con vs AC; 2d8 + Constitution modifier damage, or 3d8 + Constitution
+      modifier if you are staggered; on a miss, the target takes half damage.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_BEAR
+  name: "Shape of the Bear"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large bear, with low-light vision and climb 2.
+      While in this form, you gain the blood lust at-will power. You remain in
+      the form until you are reduced to 0 HP or below, take a long rest or take
+      a new form. You can return to your original form as a swift action. Once
+      during your time in this form, you can make the following attack: Form
+      Attack (standard action) ● Focus Melee 1; Con vs AC; 2d8 + Constitution
+      modifier damage and the target is grappled; half damage on a miss.
 
 - id: ORCUS_POWER_SHAPE_OF_THE_CAT
-  name: Shape of the Cat
+  name: "Shape of the Cat"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Form, Polymorph, Spirit"
-    Target: Self
-    Effect: "Become a cat/big cat (low-light vision, +2 speed; shift 1 when an adjacent enemy misses you); you gain bob and weave. Form Attack: Melee 1, Con vs AC, 3d8 + Constitution modifier and hide as a free action; half on a miss."
+    Target: "Self"
+    Effect: >-
+      You take the form of a Tiny cat or Medium big cat, with low-light vision
+      and a +2 bonus to your speed. Each time an adjacent enemy misses you with
+      an attack, you can shift 1 square. Treat any fall as if it were 6 squares
+      shorter, and you land on your feet even if you take damage. While in this
+      form, you gain the bob and weave at-will power. You remain in the form
+      until you are reduced to 0 HP or below, take a long rest or take a new
+      form. You can return to your original form as a swift action. Once during
+      your time in this form, you can make the following attack: Form Attack
+      (standard action) ● Focus Melee 1; Con vs AC; 3d8 + Constitution modifier
+      damage, and you can make a Stealth check to hide as a free action; on a
+      miss, the target takes half damage.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_DIRE_RAT
+  name: "Shape of the Dire Rat"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small dire rat, with climb speed 4 and swim speed
+      2. While in this form, you gain the sneaky strike at-will power. You
+      remain in the form until you are reduced to 0 HP or below, take a long
+      rest or take a new form. You can return to your original form as a swift
+      action. Once during your time in this form, you can make the following
+      attack: Form Attack (standard action) ● Focus Melee 1; Con vs AC; 1d8 +
+      Constitution modifier damage and the target is blinded until the end of
+      your next turn.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_ELK
+  name: "Shape of the Elk"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large elk, with a +2 bonus to speed and the
+      woodland stride feature. While in this form, you gain the mad rush at-will
+      power. You remain in the form until you are reduced to 0 HP or below, take
+      a long rest or take a new form. You can return to your original form as a
+      swift action. Once during your time in this form, you can make the
+      following attack: Form Attack (standard action) ● Focus Melee 1; Con vs
+      AC; you may shift 2 before this attack; Constitution modifier damage and
+      the target takes 10 persistent damage (save ends); the target takes 5
+      persistent damage on a miss.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_TORTOISE
+  name: "Shape of the Tortoise"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small or Medium tortoise, with resistance to
+      untyped damage 3 (5 at level 11, 7 at level 21). You also reduce any
+      unwilling movement you are subject to by 1 square. While in this form, you
+      gain the stout rebuff at-will power. You remain in the form until you are
+      reduced to 0 HP or below, take a long rest or take a new form. You can
+      return to your original form as a swift action. Once during your time in
+      this form, you can make the following attack: Form Attack (standard
+      action) ● Focus, Healing Melee 1; Con vs AC; 2d8 + Constitution modifier
+      damage and you may spend a recovery to heal your recovery value in hit
+      points; half damage on a miss.
 
 - id: ORCUS_POWER_SHAPE_OF_THE_WOLF
-  name: Shape of the Wolf
+  name: "Shape of the Wolf"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
   fields:
     Level: "1"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Form, Polymorph, Spirit"
-    Target: Self
-    Effect: "Become a Medium wolf (+2 speed; +2 vs prone targets); you gain drag down. Form Attack: Melee 1, Con vs AC, 2d8 + Constitution modifier and grapple a prone target; then move up to half your speed, pulling one adjacent enemy."
+    Target: "Self"
+    Effect: >-
+      You take the form of a Medium wolf, with a +2 bonus to speed. You gain a
+      +2 power bonus to attacks against prone targets. While in this form, you
+      gain the drag down at-will power. You remain in the form until you are
+      reduced to 0 HP or below, take a long rest or take a new form. You can
+      return to your original form as a swift action. Once during your time in
+      this form, you can make the following attack: Form Attack (standard
+      action) ● Focus Melee 1; Con vs AC; 2d8 + Constitution modifier damage,
+      and if the target is prone you grapple them; on a miss, the target takes
+      half damage. Effect: After the attack, move up to half your speed. You may
+      pull one adjacent enemy of size Large or smaller behind you.
 
-# --- Utility powers -----------------------------------------------------------
-- id: ORCUS_POWER_AGILE_ANIMUS
-  name: Agile Animus
+- id: ORCUS_POWER_ALL_FOURS
+  name: "All Fours"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
   fields:
     Level: "2"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Spirit
-    Target: Self
-    Effect: "Until the end of your next turn, +1 speed, +2 AC and Reflex, +3 Acrobatics and Stealth. Maintain Special: save at the end of each turn to extend."
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Spirit, Wild Shape"
+    Target: "Self"
+    Effect: >-
+      You gain a +1 bonus to speed and Reflex defense, and you gain a +2 bonus
+      to Acrobatics and Athletics checks. You also suffer a -4 penalty to ranged
+      attacks. The effect lasts until you end it with a move action.
+    Flavor: >-
+      Your spine makes a slight adjustment and you become a much faster runner.
+
+- id: ORCUS_POWER_BRAMBLE_STEP
+  name: "Bramble Step"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Focus, Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, you get the woodland stride feature
+      (ignore difficult terrain from shrubbery, trees or plants).
+
+- id: ORCUS_POWER_QUICK_CHANGE_ARTIST
+  name: "Quick Change Artist"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Use a shape of the X power that you know, if you have one that is not
+      expended.
+
+- id: ORCUS_POWER_WILD_EMPATHY
+  name: "Wild Empathy"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter, you get a +4 bonus on Diplomacy, Bluff,
+      Intimidate and Insight checks against creatures with the beast type.
+
+- id: ORCUS_POWER_AGILE_ANIMUS
+  name: "Agile Animus"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, you channel your inner beast. You gain a
+      +1 power bonus to speed, a +2 power bonus to AC and Reflex defense, and a
+      +3 power bonus to Acrobatics and Stealth checks.
+    Maintain: >-
+      Special At the end of each of your turns during which this power is in
+      effect, make a saving throw. If you succeed, the effect persists until the
+      end of your next turn.
+    Flavor: "The line between human and beast begins to blur."
 
 - id: ORCUS_POWER_FORCEFUL_ANIMUS
-  name: Forceful Animus
+  name: "Forceful Animus"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, you channel your inner beast. You gain a
+      +2 power bonus to all damage rolls and to AC and Fortitude defense, and a
+      +3 power bonus to Athletics and Endurance checks.
+    Maintain: >-
+      Special At the end of each of your turns during which this power is in
+      effect, make a saving throw. If you succeed, the effect persists until the
+      end of your next turn.
+    Flavor: "The line between human and beast begins to blur."
+
+- id: ORCUS_POWER_FULL_MOON_STANCE
+  name: "Full Moon Stance"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit, Stance"
+    Target: "Self"
+    Effect: >-
+      At the end of each of your turns, if you are staggered you regenerate
+      damage equal to your Wisdom modifier. This lasts until the end of the
+      encounter.
+
+- id: ORCUS_POWER_SCOUT_FORM
+  name: "Scout Form"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Tiny land or aquatic animal, like a cat, salmon or
+      ferret. Your equipment and anything you are wearing merges into your body,
+      but you keep the same statistics and benefit from any bonuses that, for
+      example, magic items give you. You cannot talk in this form. While in this
+      form you cannot use powers unless they have the Wild Shape tag, and you
+      cannot make attacks or use attack powers. You remain in this form until
+      the end of your next turn. Pick one: ● Your speed becomes 8 ● Your speed
+      becomes 2, and you get a swim speed of 8 ● Your speed becomes 6 and you
+      get darkvision ● Your speed becomes 4 and you get blindsight range 6 ●
+      Your speed becomes 4 and you can squeeze through gaps as if you were a
+      Diminutive creature
+    Maintain: "Swift You remain in this form until the end of your next turn."
+
+- id: ORCUS_POWER_BEAR_HUG
+  name: "Bear Hug"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit"
+    Target: "Melee touch, one target"
+    Attack: "Constitution vs AC"
+    Hit: "1d8 + Constitution modifier damage and the target is grappled."
+
+- id: ORCUS_POWER_FEARSOME_ROAR
+  name: "Fearsome Roar"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Psychic, Spirit"
+    Target: "Near burst 2"
+    Attack: "Constitution vs Will"
+    Hit: >-
+      1d8 + Constitution modifier psychic damage, and the target suffers a -4
+      penalty on attacks against you until the end of your next turn.
+
+- id: ORCUS_POWER_HARD_TO_MISS
+  name: "Hard to Miss"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Spirit"
+    Target: "Near burst 5, all enemies"
+    Effect: >-
+      The target is marked until they inflict damage on you. You gain combat
+      advantage against each marked target until the end of your next turn. If
+      you take damage from a target while it is marked, as a reaction you may
+      shift up to 5 squares and then make a basic attack against the target.
+    Maintain: >-
+      Move The effect persists against marked targets until the end of your next
+      turn.
+    Flavor: "Of all the opponents to target, you’re the one that stands out."
+
+- id: ORCUS_POWER_ILLOGICAL_RAGE
+  name: "Illogical Rage"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Trigger: "You are staggered."
+    Effect: >-
+      Until you are no longer staggered or until you fall unconscious, you gain
+      a +4 power bonus to all damage rolls. If you don’t hit with any attack on
+      your turn, you gain a +2 bonus to damage on your next hit. This bonus is
+      cumulative every round until you hit. If you do not hit an enemy before
+      the bonus reaches +14, you must make a melee basic attack against the
+      nearest creature on your turn.
+    Flavor: >-
+      You’ve stopped listening to reason. The best thing your allies can do is
+      give you a direction a step back.
+
+- id: ORCUS_POWER_PANICKED_SWITCH
+  name: "Panicked Switch"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Polymorph, Focus, Form, Spirit"
+    Target: "Near burst 5, one enemy"
+    Attack: "Constitution vs Will"
+    Hit: >-
+      3d10 + your Intelligence modifier damage and shunt the target 2. They are
+      helpless and size Small (save ends both). Until they make their saving
+      throw, you can use a move action to shunt them 2.
+    Flavor: "You turn the target into a small, defenseless animal."
+
+- id: ORCUS_POWER_SHAPE_OF_THE_FROG
+  name: "Shape of the Frog"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large frog, with a swim speed of 4. While in this
+      form, you gain the tongue lash at-will power. You remain in the form until
+      you are reduced to 0 HP or below, take a long rest or take a new form. You
+      can return to your original form as a swift action. Once during your time
+      in this form, you can make the following attack: Form Attack (swift
+      action) ● Focus Melee 1; Con vs Reflex; the target is grappled. Make a
+      secondary attack against the target. Secondary Attack: Melee 1; Con vs
+      Fortitude, must be grappling the target, the target must be Medium or
+      smaller; the target is swallowed. While the target is swallowed, it is
+      restrained and takes 5 damage plus 5 acid damage at the start of each of
+      its turns. The swallowed creature can make basic melee attacks against you
+      with one-handed or natural weapons. You may release the creature as a
+      swift action. If the creature succeeds at an escape a grapple action with
+      a -4 penalty, it escapes your stomach and appears in an unoccupied space
+      of its choice adjacent to you.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_TOAD
+  name: "Shape of the Toad"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Medium toad, with a swim speed of 4 and resistance
+      to poison 5 (10 at level 11, 15 at level 21). While in this form, you gain
+      the knockback at-will power. You remain in the form until you are reduced
+      to 0 HP or below, take a long rest or take a new form. You can return to
+      your original form as a swift action. Once during your time in this form,
+      you can make the following attack: Form Attack (swift action) ● Focus,
+      Poison Near arc 3; Con vs Fortitude; 2d6 + Constitution modifier poison
+      damage and the target grants combat advantage until the end of your next
+      turn.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_SERPENT
+  name: "Shape of the Serpent"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small, Medium or Large snake, with a swim speed of
+      4 and the ability to squeeze through gaps as if you were one size smaller.
+      While in this form, you gain the powerful swipe at-will power. You remain
+      in the form until you are reduced to 0 HP or below, take a long rest or
+      take a new form. You can return to your original form as a swift action.
+      Once during your time in this form, you can make the following attack:
+      Form Attack (swift action) ● Focus, Poison Melee 2; Con vs Fortitude; 2d6
+      + Constitution modifier poison damage, and the target takes persistent 10
+      poison damage (save ends); on a miss, the target takes half damage and
+      persistent 5 poison damage (save ends).
+
+- id: ORCUS_POWER_SHAPE_OF_THE_WEAVER
+  name: "Shape of the Weaver"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small spider, with a climb speed of 4 and the web
+      stride feature. While in this form, you gain the venomous strike at-will
+      power. You remain in the form until you are reduced to 0 HP or below, take
+      a long rest or take a new form. You can return to your original form as a
+      swift action. Once during your time in this form, you can make the
+      following attack: Form Attack (swift action) ● Focus Ranged 5; Con vs
+      Reflex; the target is restrained (save ends); on a miss, the target is
+      slowed (save ends).
+
+- id: ORCUS_POWER_ANIMAL_INSTINCTS
+  name: "Animal Instincts"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Move Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter, you get a +2 bonus on Athletics,
+      Acrobatics, Endure, Stealth and Nature checks. End this power early to
+      reroll an Athletics, Acrobatics, Endure, Stealth or Nature check and take
+      the second result.
+
+- id: ORCUS_POWER_REGENESIS
+  name: "Regenesis"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
     Keywords: "Healing, Spirit"
-    Target: Self
+    Target: "Self"
     Effect: "You gain regeneration 3 until the end of the encounter."
+    Flavor: >-
+      Your injuries knit in seconds to the shock of those around. You assure
+      them it still hurts like hell.
 
 - id: ORCUS_POWER_RHINOHIDE
-  name: Rhinohide
+  name: "Rhinohide"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
   fields:
     Level: "6"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Spirit
-    Target: Self
-    Effect: "You gain resistance 3 to all damage until the end of the encounter."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      You gain resistance 3 to all damage until the end of the encounter.
+    Flavor: >-
+      Your skin becomes thick and leathery, able to withstand considerable
+      punishment.
 
 - id: ORCUS_POWER_SCENT
-  name: Scent
+  name: "Scent"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: "You have truesight 6."
+
+- id: ORCUS_POWER_FRENZY
+  name: "Frenzy"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Consistent, Spirit"
+    Target: "Self"
+    Trigger: "You are hit by an attack."
+    Effect: >-
+      Shift your speed toward the triggering creature and make a melee basic
+      attack against it.
+    Flavor: "Your opponent scores a hit; you growl back."
+
+- id: ORCUS_POWER_SHAPE_OF_THE_BAT
+  name: "Shape of the Bat"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small bat, with a land speed of 2, a fly speed of
+      6, darkvision and blindsense. While in this form, you gain the blood lust
+      at-will power. You remain in the form until you are reduced to 0 HP or
+      below, take a long rest or take a new form. You can return to your
+      original form as a swift action. Once during your time in this form, you
+      can make the following attack: Form Attack (standard action) ● Focus Melee
+      1; Con vs AC; you may shift 2 before this attack and after this attack;
+      1d8 + Constitution modifier damage and the target takes 10 persistent
+      damage (save ends); the target takes 5 persistent damage on a miss.
+      Effect: Each time the target takes persistent damage from this attack, you
+      heal 5 damage.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_EAGLE
+  name: "Shape of the Eagle"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large eagle, hawk or other raptor, with a land
+      speed of 2 and a fly speed of 8. While in this form, you gain the mad rush
+      at-will power. You remain in the form until you are reduced to 0 HP or
+      below, take a long rest or take a new form. You can return to your
+      original form as a swift action. Once during your time in this form, you
+      can make the following attack: Form Attack (standard action) ● Focus Melee
+      1; Con vs AC; you may shift 2 before this attack and after this attack;
+      2d8 + Constitution modifier damage.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_SHARK
+  name: "Shape of the Shark"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Medium or Large shark, with a swim speed of 10 and
+      no land speed. You can breathe underwater while in this form. While in
+      this form, you gain the blood lust at-will power. You remain in the form
+      until you are reduced to 0 HP or below, take a long rest or take a new
+      form. You can return to your original form as a swift action. Once during
+      your time in this form, you can make the following attack: Form Attack
+      (swift action) ● Focus Melee 1; Con vs AC; 3d8 + Constitution modifier
+      damage; on a miss, the target takes half damage. Effect: Shift a number of
+      squares up to your Wisdom modifier. Drag the target behind you.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_WYRMLING
+  name: "Shape of the Wyrmling"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Medium dragon, with darkvision. Choose a damage
+      type (acid, cold, fire, lightning, poison or thunder). You gain resistance
+      5 to that damage type (10 at level 11, 15 at level 21). While in this
+      form, you gain the knockback at-will power. You remain in the form until
+      you are reduced to 0 HP or below, take a long rest or take a new form. You
+      can return to your original form as a swift action. Once during your time
+      in this form, you can make the following attack: Form Attack (swift
+      action) ● Focus, [energy type] Near arc 3; Con vs Fortitude; 2d8 +
+      Constitution modifier damage of the energy type you chose.
+
+- id: ORCUS_POWER_YOU_AFRAID
+  name: "You, Afraid?"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Near burst 10, one creature"
+    Effect: >-
+      The target is marked and you gain a +1 bonus to attack and a +2 bonus to
+      damage against the target. You are also immune to any fear effects from
+      the target. This effect persists until the end of the encounter.
+    Flavor: "The bigger they are…"
+
+- id: ORCUS_POWER_ACTIVE_CAMOUFLAGE
+  name: "Active Camouflage"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
   fields:
     Level: "10"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Spirit
-    Target: Self
-    Effect: "+15 to your next Stealth check; until you leave cover, attacking from hiding does not reveal you."
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Spirit,"
+    Target: "Self"
+    Effect: >-
+      You gain a +15 bonus to your next Stealth check and until you leave cover,
+      if you make a melee or ranged attack from hiding, you are still considered
+      to be hiding.
+    Flavor: >-
+      Whether it be a natural ability of your skin or an acute sense of your
+      surroundings, hiding has never been difficult for you.
 
 - id: ORCUS_POWER_BLOODHOUND
-  name: Bloodhound
+  name: "Bloodhound"
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
   fields:
     Level: "10"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Spirit
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Spirit"
+    Target: "Self"
     Effect: "Gain a +10 power bonus to your next Insight or Perception check."
+    Flavor: "They don’t call it a detective’s nose for nothing."
+
+- id: ORCUS_POWER_FLITTERING_FORM
+  name: "Flittering Form"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Tiny flying animal, like a bird or a bat. You
+      cannot talk in this form. While in this form you cannot use powers unless
+      they have the Wild Shape tag, and you cannot make attacks or use attack
+      powers. Your speed becomes 4 but you get a fly speed of 8. You remain in
+      this form until the end of your next turn.
+    Maintain: "Swift You remain in this form until the end of your next turn."
+
+- id: ORCUS_POWER_SURVIVOR
+  name: "Survivor"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      You may spend a recovery. If you do so, you heal your recovery value plus
+      additional hit points and gain a +10 bonus to Endurance checks for one
+      hour.
+
+- id: ORCUS_POWER_TENACITY
+  name: "Tenacity"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Trigger: "You fall to 0 HP or below."
+    Effect: >-
+      Until the end of the encounter, you do not fall unconscious from being at
+      0 HP or below, or make death saves. At the end of the encounter, if you
+      are still at 0 HP or below, you immediately fall unconscious and start
+      making death saves.
+
+- id: ORCUS_POWER_THROUGH_NEW_EYES
+  name: "Through New Eyes"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Focus, Spirit"
+    Target: "Self"
+    Trigger: "You change form or return to your original form."
+    Effect: >-
+      Reroll your initiative with a +4 bonus. You use that initiative from next
+      round onwards.
+
+- id: ORCUS_POWER_DEIMATIC_DISPLAY
+  name: "Deimatic Display"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit"
+    Target: "Near burst 10, one creature"
+    Attack: "Constitution vs Will"
+    Hit: >-
+      2d10 + Constitution modifier psychic damage, and the creature cannot
+      willingly move closer to you until the end of your next turn.
+    Boost: "Level 27 Range becomes Near burst 10, all enemies"
+
+- id: ORCUS_POWER_FEROCIOUS_FELINE
+  name: "Ferocious Feline"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter you gain a +2 power bonus to
+      Dexterity-based checks and to AC and Reflex defense, and a +1 bonus to
+      speed.
+    Boost: >-
+      Level 29 Make a basic melee attack when you use this power. Also, you
+      receive a +4 power bonus to Dexterity-based checks and to AC and Reflex
+      defense, and a +2 bonus to speed, instead of the bonuses listed under
+      Effect.
+    Flavor: >-
+      You jump all limbs forward toward the enemy with such speed, no one can
+      prepare for a defense.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_MANTICORE
+  name: "Shape of the Manticore"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large manticore, with darkvision and a fly speed of
+      6 squares. Each time you are hit by a melee attack, do damage equal to
+      your Wisdom modifier to the attacker. While in this form, you gain the
+      drag down at-will power. You remain in the form until you are reduced to 0
+      HP or below, take a long rest or take a new form. You can return to your
+      original form as a swift action. Once during your time in this form, you
+      can make the following attack: Form Attack (swift action) ● Focus Near arc
+      3; Con vs Reflex; 2d8 + Constitution modifier damage and the target is
+      immobile (save ends).
+
+- id: ORCUS_POWER_SHAPE_OF_THE_RAPTOR
+  name: "Shape of the Raptor"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Small velociraptor or Large deinonychus, with a +2
+      bonus to your speed. While in this form, you score critical hits on a roll
+      of 19 as well as 20. While in this form, you gain the drag down at-will
+      power. You remain in the form until you are reduced to 0 HP or below, take
+      a long rest or take a new form. You can return to your original form as a
+      swift action. Once during your time in this form, you can make the
+      following attack: Form Attack (swift action) ● Focus Melee 1; Con vs
+      Reflex, two attacks; 2d8 + Constitution modifier damage. If both attacks
+      hit, the target is knocked prone.
+
+- id: ORCUS_POWER_PERFECT_FORM
+  name: "Perfect Form"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Form, Spirit, Stance"
+    Target: "Self"
+    Effect: >-
+      You can alter your physical form to take on the appearance of any natural
+      beast of your level or lower. You gain the beast’s attacks and special
+      abilities, but you use your attack bonuses for the attacks. You retain
+      your statistics, including current HP. The effect persists until you end
+      it with a swift action or until you fall unconscious. While in this form
+      you cannot use powers unless they have the Wild Shape tag.
+    Flavor: >-
+      It’s not a pleasant process to watch, and you may require a new set of
+      clothes if you didn’t think ahead.
+
+- id: ORCUS_POWER_THREAT_DISCOURAGEMENT
+  name: "Threat Discouragement"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Spirit"
+    Target: "Self"
+    Effect: >-
+      You gain temporary hit points equal to the sum of your Strength,
+      Constitution, and Dexterity bonuses + your level. All adjacent enemies are
+      dazed until the start of your next turn.
+    Flavor: >-
+      You actually appear to get a little bigger. It’s probably an illusion.
+
+- id: ORCUS_POWER_INTO_THE_FRAY
+  name: "Into the Fray"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit"
+    Target: "Melee touch, one target"
+    Attack: "Constitution vs AC"
+    Hit: "2d10 + Constitution modifier damage."
+    Effect: >-
+      Before your attack, teleport double your speed to a square in line of
+      sight.
+    Flavor: >-
+      You would look like someone flying if your legs and arms weren’t all
+      pointing forward.
+
+- id: ORCUS_POWER_BAD_BEAR
+  name: "Bad Bear"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter you gain a +2 power bonus to your Strength
+      and Constitution-based checks, attack and damage rolls and Fortitude
+      defense, and 2 temporary hit points per level.
+    Flavor: >-
+      As you let go of your emotional control, your body begins to take on a
+      shape reflective of your mood.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_DRAGON
+  name: "Shape of the Dragon"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large dragon, with darkvision and a fly speed of 8
+      squares. Choose a damage type (acid, cold, fire, lightning, poison or
+      thunder). You gain resistance 10 to that damage type (15 at level 21).
+      While in this form, you gain the knockback at-will power. You remain in
+      the form until you are reduced to 0 HP or below, take a long rest or take
+      a new form. You can return to your original form as a swift action. Once
+      during your time in this form, you can make the following attack: Form
+      Attack (swift action) ● Focus, [energy type] Near arc 5; Con vs Fortitude;
+      4d8 + Constitution modifier damage of the energy type you chose.
+
+- id: ORCUS_POWER_FELINE_LIKE_GRACE
+  name: "Feline-Like Grace"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Spirit"
+    Target: "Self"
+    Effect: >-
+      Until the end of your turn, all movement is considered a shift, regardless
+      of the distance or the abilities used.
+    Flavor: "No one knows how you got from there to here without a scratch."
+
+- id: ORCUS_POWER_INSTANT_REGENERATION
+  name: "Instant Regeneration"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Healing, Spirit"
+    Target: "Self"
+    Effect: "Until the start of your next turn, you take no damage of any kind."
+    Maintain: >-
+      Swift You gain resistance to all damage 15 until the start of your next
+      turn.
+    Flavor: >-
+      Wounds knit it in seconds, almost as if someone had cast a spell on you.
+
+- id: ORCUS_POWER_SHAKE_IT_OFF
+  name: "Shake It Off"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Spirit, Wild Shape"
+    Target: "Self"
+    Trigger: "You are hit by an attack."
+    Effect: >-
+      You immediately return to your original form. Instead of the normal damage
+      done by the attack, you take 3d6 damage. However, other conditions and
+      effects of the attack (including persistent damage) still apply.
+
+- id: ORCUS_POWER_STAMPEDE
+  name: "Stampede"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit"
+    Target: "Near arc 5, all enemies"
+    Attack: "Constitution vs AC"
+    Hit: >-
+      2d10 + Constitution modifier thunder damage, and the target falls prone.
+
+- id: ORCUS_POWER_SCRATCHING_TEMPEST
+  name: "Scratching Tempest"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus, Spirit"
+    Target: "Near burst 2, all enemies"
+    Attack: "Constitution vs AC"
+    Hit: "4d6 + Constitution modifier damage."
+    Effect: "Until the end of the encounter, your reach increases by 1."
+
+- id: ORCUS_POWER_SHAPE_OF_THE_CHIMERA
+  name: "Shape of the Chimera"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Large chimera, with darkvision and a fly speed of 6
+      squares. If you spend a swift action on your turn, you can take a second
+      immediate action between that turn and your next. While in this form, you
+      gain the mad rush at-will power. You remain in the form until you are
+      reduced to 0 HP or below, take a long rest or take a new form. You can
+      return to your original form as a swift action. Once during your time in
+      this form, you can make the following attack: Form Attack (swift action) ●
+      Fire, Focus Near arc 5; Con vs Fortitude; 5d8 + Constitution modifier fire
+      damage.
+
+- id: ORCUS_POWER_SHAPE_OF_THE_GREAT_WYRM
+  name: "Shape of the Great Wyrm"
+  type: Power
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_DISCIPLINE_RED_IN_TOOTH_AND_CLAW, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Form, Polymorph, Spirit"
+    Target: "Self"
+    Effect: >-
+      You take the form of a Huge dragon, with darkvision, truesight 12 and a
+      fly speed of 8 squares. Choose a damage type (acid, cold, fire, lightning,
+      poison or thunder). You are immune to that damage type. While in this
+      form, you gain the knockback at-will power. You remain in the form until
+      you are reduced to 0 HP or below, take a long rest or take a new form. You
+      can return to your original form as a swift action. Once during your time
+      in this form, you can make the following attack: Form Attack (swift
+      action) ● Focus, [energy type] Near arc 7 or Ranged 7; Con vs Fortitude;
+      6d8 + Constitution modifier damage of the energy type you chose.
+

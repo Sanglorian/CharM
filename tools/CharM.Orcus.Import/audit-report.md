@@ -1,9 +1,9 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 4
-- YAML elements loaded: 1408
-- Prose fields scanned: 2935; flagged: 704
-- Flavor fields: 37 faithful, 32 INVENTED
+- YAML elements loaded: 1463
+- Prose fields scanned: 3159; flagged: 696
+- Flavor fields: 58 faithful, 32 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -382,36 +382,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ 1dW + Dexterity modifier damage and you swap places with the target
   [Power] Only Fooling — field 'Special':
       ✗ You lose one condition that triggers this power, or stand up from prone
-```
-### disciplines/red-in-tooth-and-claw.yaml
-```
-  [Discipline] Red in Tooth and Claw — field 'Description':
-      ✗ You take the form of wild beasts, or take on their characteristics while keeping your own form
-  [Power] Knockback — field 'Hit':
-      ✗ Level 21: 2d8, push Wisdom modifier squares
-  [Power] Flailing Attacks — field 'Miss':
-      ✗ Make a secondary attack against the same or a different target (Constitution vs AC
-  [Power] Shape of the Bear — field 'Effect':
-      ✗ Become a Large bear (low-light vision, climb 2)
-      ✗ Form Attack (standard, Focus): Melee 1, Con vs AC, 2d8 + Constitution modifier and the target is grappled
-  [Power] Shape of the Cat — field 'Effect':
-      ✗ Become a cat/big cat (low-light vision, +2 speed
-      ✗ shift 1 when an adjacent enemy misses you)
-      ✗ you gain bob and weave
-      ✗ Form Attack: Melee 1, Con vs AC, 3d8 + Constitution modifier and hide as a free action
-      ✗ half on a miss
-  [Power] Shape of the Wolf — field 'Effect':
-      ✗ Become a Medium wolf (+2 speed
-      ✗ +2 vs prone targets)
-      ✗ you gain drag down
-      ✗ Form Attack: Melee 1, Con vs AC, 2d8 + Constitution modifier and grapple a prone target
-      ✗ then move up to half your speed, pulling one adjacent enemy
-  [Power] Agile Animus — field 'Effect':
-      ✗ Until the end of your next turn, +1 speed, +2 AC and Reflex, +3 Acrobatics and Stealth
-      ✗ Maintain Special: save at the end of each turn to extend
-  [Power] Scent — field 'Effect':
-      ✗ +15 to your next Stealth check
-      ✗ until you leave cover, attacking from hiding does not reveal you
 ```
 ### disciplines/seershot.yaml
 ```
@@ -1796,7 +1766,7 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 | Golden Lion | 24 | 24 | — |
 | Juggernautical | 21 | 10 | The Bulldozer, In The Face, He Ain’t Heavy, Like An Elephant, Down Fighting, The Fortress, Nosebleed, Just Got the Wind Knocked, Just Walk It Off, Blatant Disregard for Personal Safety, Behind Me! |
 | Last Laugh | 35 | 35 | — |
-| Red in Tooth and Claw | 71 | 16 | Stout Rebuff, Mad Rush, Sic ’Em, Sneaky Strike, Tongue Lash, Venomous Strike, Drag Down, Shape of the Badger, Shape of the Dire Rat, Shape of the Elk, Shape of the Tortoise, All Fours, Bramble Step, Quick Change Artist, Wild Empathy, Full Moon Stance, Scout Form, Bear Hug, Fearsome Roar, Hard to Miss, Illogical Rage, Panicked Switch, Shape of the Frog, Shape of the Toad, Shape of the Serpent, Shape of the Weaver, Animal Instincts, Regenesis, Frenzy, Shape of the Bat, Shape of the Eagle, Shape of the Shark, Shape of the Wyrmling, You, Afraid?, Active Camouflage, Flittering Form, Survivor, Tenacity, Through New Eyes, Deimatic Display, Ferocious Feline, Shape of the Manticore, Shape of the Raptor, Perfect Form, Threat Discouragement, Into the Fray, Bad Bear, Shape of the Dragon, Feline-Like Grace, Instant Regeneration, Shake It Off, Stampede, Scratching Tempest, Shape of the Chimera, Shape of the Great Wyrm |
+| Red in Tooth and Claw | 71 | 71 | — |
 | Seershot | 30 | 15 | Batter The Target, Nock Three Arrows, Act of God, Careful Targeting, Eye Shot, No Exit Wound, Deep Cover, Found the Sweet Spot, Go for the Kill, Internal Ricochet, Ghostly Form, Accompanying Elfshot, Assassin’s Arrow, Guide My Hand, Clean Kill |
 | Spells of Ice and Fire | 18 | 16 | Thermal Isolation, Blood Tell |
 | Starfall | 42 | 20 | Eye the Enemy, Distracting Arrow, Battle Position, Clearing the Room, Stacked Volleys, Tracking Shots, Wildfire Blitz, Flurry of Arrows, Mosquito’s Nip, Mindless Mayhem, Suppressing Shots, New Position, Behemoth-Killer, Clear the Ground, Cloud of Hellfire, Cone of Barbs, One on One, Overwatch, Finish the Job, Selective Shots, Fall of Heaven, Measured Response |

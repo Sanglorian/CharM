@@ -11,10 +11,46 @@ using CharM.Orcus.Import;
 //   * FLAVOR    — each Flavor field labelled FAITHFUL (in source) or INVENTED.
 
 string mode = args.Length > 0 ? args[0] : "audit";
+
+if (mode == "generate-discipline")
+{
+    // generate-discipline <repo-root> "<Discipline Name>" <DISCIPLINE_ID> <ID_SUFFIX> <out.yaml>
+    string gRoot = args[1];
+    string discName = args[2];
+    string discId = args[3];
+    string suffix = args[4];
+    string outPath = args[5];
+
+    string book = Directory.EnumerateFiles(gRoot, "Orcus Classes and Powers*.md").Single();
+    var parsed = Phase2.Parse(book, discName);
+    Console.WriteLine($"Parsed '{discName}': {parsed.Powers.Count} powers; key {parsed.KeyAbility}/{parsed.SecondaryAbility}.");
+
+    // Collect ids already used elsewhere, so generated ids don't collide.
+    var others = YamlLoader.LoadDir(Path.Combine(gRoot, "content/orcus"))
+        .Where(e => e.Id != null && Path.GetFileName(outPath) != Path.GetFileName(e.File))
+        .Select(e => e.Id!).ToHashSet();
+
+    string yaml = Phase2.GenerateYaml(parsed, discId, suffix, others);
+    Directory.CreateDirectory(Path.GetDirectoryName(outPath)!);
+    File.WriteAllText(outPath, yaml);
+    Console.WriteLine($"Wrote {outPath}");
+
+    var (pass, failures) = Phase2.RoundTrip(parsed);
+    Console.WriteLine($"\nRound-trip gate: {pass}/{parsed.Powers.Count} powers verbatim & complete.");
+    if (failures.Count > 0)
+    {
+        Console.WriteLine("FAILURES (text not verbatim in source, or source words dropped):");
+        foreach (var f in failures) Console.WriteLine(f);
+        return 2;
+    }
+    Console.WriteLine("All powers passed the round-trip gate (no fabrication, no omission).");
+    return 0;
+}
+
 string root = args.Length > 1 ? args[1] : Directory.GetCurrentDirectory();
 string reportPath = args.Length > 2 ? args[2] : Path.Combine(root, "tools/CharM.Orcus.Import/audit-report.md");
 
-if (mode != "audit") { Console.Error.WriteLine("only 'audit' mode is implemented"); return 1; }
+if (mode != "audit") { Console.Error.WriteLine("unknown mode; use 'audit' or 'generate-discipline'"); return 1; }
 
 var sourceFiles = Directory.EnumerateFiles(root, "Orcus*.md", SearchOption.TopDirectoryOnly)
     .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase))
