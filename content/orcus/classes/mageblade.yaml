@@ -150,11 +150,12 @@
       type: Skill Training
     - grant: ORCUS_KEYSWAP_MAGEBLADE_INTELLIGENCE
       type: Key Ability Swap
-    # Proficiencies: simple & martial melee, simple ranged; cloth, leather.
+    # Proficiencies: simple & martial melee, simple ranged; cloth, leather (no hide).
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
-    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+    - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+    - { grant: ORCUS_APROF_LEATHER, type: Proficiency }
 
 # --- Talents (each grants a sigil power + sets the secondary ability) ----------
 - id: ORCUS_TALENT_ILLUSION_SPECIALIST

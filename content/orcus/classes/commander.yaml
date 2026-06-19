@@ -150,6 +150,7 @@
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    # Armor: cloth, leather, hide, chainmail, scale; light shields.
     - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
     - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
     - { grant: ORCUS_APROF_SCALE, type: Proficiency }

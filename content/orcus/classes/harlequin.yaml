@@ -36,10 +36,15 @@
     - statadd: Will Defense
       value: +2
       bonusType: Class
-    # Trained in Bluff or Diplomacy + 4 others from class skills (5 total).
+    # Trained in Bluff or Diplomacy (forced) + 4 other skills from class skills.
     - select:
         type: Skill Training
-        number: 5
+        number: 1
+        category: ORCUS_HARLEQUIN_CORE_SKILLS
+        name: Harlequin Core Skill
+    - select:
+        type: Skill Training
+        number: 4
         category: ORCUS_HARLEQUIN_SKILLS
         name: Harlequin Trained Skills
     # Clever Fellow: gain the general confusion and hasty retreat powers.
@@ -141,10 +146,11 @@
   rules:
     - grant: ORCUS_KEYSWAP_HARLEQUIN_CHARISMA
       type: Key Ability Swap
-    # Proficiencies: simple melee & ranged weapons; cloth, leather.
+    # Proficiencies: simple melee & ranged weapons; cloth, leather (no hide).
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
-    - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
+    - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+    - { grant: ORCUS_APROF_LEATHER, type: Proficiency }
 
 # --- Talents (auras; each sets the secondary ability) -------------------------
 - id: ORCUS_TALENT_FIXER
