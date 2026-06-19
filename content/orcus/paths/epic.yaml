@@ -10,8 +10,12 @@
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You travel across the planes, locating and acquiring whatever your patrons need."
     Immortality: "Corner of the World's Eye: you fade from public view, but no one can ever confirm your death."
+    Description: >-
+      Elemental tyrants, the heralds of the gods, the voices between the planets
+      – they all have peculiar needs, and the agents retriever cater to them.
+      You travel across the planes, locating and acquiring whatever your patrons
+      need.
   rules:
     - { grant: ORCUS_FEATURE_APPROPRIATION, type: Class Feature }
     - { grant: ORCUS_FEATURE_INTERPLANAR_CONTINGENCIES, type: Class Feature, level: 24 }
@@ -41,21 +45,29 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Counter Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
     Keywords: "Arcane, Force, Zone"
     Target: "Near burst X"
-    Effect: "Create an impenetrable sphere of force in a near burst between 1 and 5 squares in radius (your choice). The zone persists until the end of your next turn."
-    Special: "Maintain Swift: the zone persists until the end of your next turn."
-
+    Effect: >-
+      Create a sphere of force in a near burst between 1 and 5 squares in radius
+      (your choice). The sphere is impenetrable by any means. The zone persists
+      until the end of your next turn.
+    Maintain: "Swift The zone persists until the end of your next turn."
 # === Master ===================================================================
 - id: ORCUS_EPIC_MASTER
   name: Master
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You are the single greatest expert on the planet on a specific subject. All others bend to your word."
+    Description: >-
+      You are the single greatest expert on the planet on a specific subject.
+      All others bend to your word. Long after you have passed on, your papers
+      and essays will be analyzed for hidden truths previously undiscovered.
+      Your name will be uttered in the same breaths of legends from centuries
+      past. Whatever vocation you have chosen, competitors and publishers will
+      jostle for your contract should you leave your present employment.
   rules:
     - { grant: ORCUS_FEATURE_OUT_OF_ANYONES_LEAGUE, type: Class Feature }
     - { grant: ORCUS_FEATURE_AGAINST_THE_LAWS_OF_PHYSICS, type: Class Feature, level: 24 }
@@ -85,22 +97,31 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
-    Effect: "You heal damage equal to double your recovery value. You recover all your used encounter powers."
-    Special: "Once you use this power, you cannot recover it except by taking a long rest."
-    Flavor: "You're not tired. You're just getting warmed up."
-
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      You heal damage equal to double your recovery value. You recover all your
+      used encounter powers.
+    Special: >-
+      Once you use this power, you cannot recover it except by taking a long
+      rest.
 # === Most Dangerous ===========================================================
 - id: ORCUS_EPIC_MOST_DANGEROUS
   name: Most Dangerous
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "No one who hunts you knows your real name. You're a ghost, one of the most wanted individuals on the planet."
+    Description: >-
+      No one who hunts you knows your real name. You’re a ghost. Enemies and
+      allies don’t have just one nickname for you; there are several. Few are
+      aware of all your accomplishments. Most of these victories were erased or
+      never directly connected to you. Others you must deny. You career might
+      never have existed at all. Missions that you took were probably illegal,
+      extremely difficult, with no room for failure. Your handle or moniker
+      labels you as one of the most wanted individuals on the planet.
   rules:
     - { grant: ORCUS_FEATURE_SECOND_NATURE, type: Class Feature }
     - { grant: ORCUS_FEATURE_IMPLAUSIBLE_SPEED, type: Class Feature, level: 24 }
@@ -130,21 +151,25 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
     Effect: "You gain two action points."
-    Flavor: "Your enemy will soon discover why your name is so feared."
-
 # === Respected ================================================================
 - id: ORCUS_EPIC_RESPECTED
   name: Respected
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Every soldier knows your face. You don't win battles - you win wars."
+    Description: >-
+      Your uniform weighs you down with the number of medals and honors
+      bestowed. You have reached the point where brandishing such decorations is
+      meaningless. Every soldier that passes you knows your face and gives you
+      the courtesy you have earned. You can sway thousands by your command. Your
+      advice is taken to heart by high priests, archmages, and kings. You don’t
+      win battles. You win wars.
   rules:
     - { grant: ORCUS_FEATURE_TRY_AGAIN_AIM_THIS_TIME, type: Class Feature }
     - { grant: ORCUS_FEATURE_SACRIFICE_PLAY, type: Class Feature, level: 24 }
@@ -174,21 +199,26 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Standard Action
-    Keywords: Martial
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
     Target: "Near burst 10, all allies"
     Effect: "The target regains one expended encounter power."
-    Flavor: "You make every ally fear you more than the enemy."
-
 # === Team =====================================================================
 - id: ORCUS_EPIC_TEAM
   name: Team
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "It was always, and will always be, about the team."
+    Description: >-
+      It has never been about personal glory or selfish ideals. From the
+      beginning, you have stood tall among others you have treated as equals,
+      others that have returned that honor a hundred times over. You have all
+      lost count how many engagements you have shared, the taken bullets, the
+      close calls. It was always, and will always be, about the team. It’s been
+      years or even decades and none of you will quit until the others do. You
+      each push to be the best and as a result, you all are.
   rules:
     - { grant: ORCUS_FEATURE_TEAM_SUPPORT, type: Class Feature }
     - { grant: ORCUS_FEATURE_WHERE_THE_NEED_IS_GREATEST, type: Class Feature, level: 24 }
@@ -218,21 +248,23 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Free Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
     Target: "Near burst 10, one ally"
     Effect: "The target takes one standard action."
-    Flavor: "You give an ally the precious time they need to complete the task."
-
 # === Ultimate =================================================================
 - id: ORCUS_EPIC_ULTIMATE
   name: Ultimate
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "As the legendary fighter, you have too many laurels to count. You have the blood of kings."
+    Description: >-
+      As the legendary fighter, you have too many laurels to count. In the old
+      age, you would have been given freedom by the Caesar or awarded a lordship
+      and a manor for your deeds. You have the blood of kings. History is
+      written by the winners and you have seldom seen defeat.
   rules:
     - { grant: ORCUS_FEATURE_WHY_WONT_YOU_DIE, type: Class Feature }
     - { grant: ORCUS_FEATURE_GLORY_OF_THE_FIGHT, type: Class Feature, level: 24 }
@@ -262,15 +294,20 @@
   categories: [feature]
   fields:
     Level: "26"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": No Action
-    Keywords: Martial
-    Target: Self
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
     Trigger: "You begin dying."
-    Effect: >
-      You regain consciousness and stand up. You can take a single action on your
-      turn (plus free/immediate actions and opportunity attacks), gaining a +2
-      bonus to attack rolls and +5 to damage rolls until the end of the encounter.
-      You cannot be healed and do not make death saves until then, when you fall
+    Effect: >-
+      You regain consciousness and stand up. You can take a single action on
+      your turn, losing all other actions except free actions. You can still
+      take immediate actions and opportunity attacks. You gain a +2 bonus to all
+      attack rolls and a +5 bonus to all damage rolls until the end of the
+      encounter. You cannot be healed until the end of the encounter, and do not
+      make death saves until then. At the end of the encounter, you fall
       unconscious and begin making death saves as normal.
+    Flavor: >-
+      You are prepared to die, but you will be damned if you will let this
+      opponent get away with what it just did.

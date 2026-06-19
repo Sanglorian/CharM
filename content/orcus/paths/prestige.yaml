@@ -14,9 +14,11 @@
   source: "Orcus (Outlaw Kingdoms)"
   fields:
     Requirements: "Proficiency with simple melee and ranged weapons."
-    Description: >
-      Someone hands you an image, an address, or just a name. You move in quickly
-      and quietly, dispatch the target, and vanish into the shadows.
+    Description: >-
+      Someone hands you an image, an address, or just a name. You move in
+      quickly and quietly, eliminating defenses that lay in your path. You
+      dispatch the enemy efficiently and vanish into the shadows, leaving
+      onlookers wondering who ordered the hit and why.
   rules:
     - { grant: ORCUS_FEATURE_TWICE_IN_THE_CHEST, type: Class Feature }
     - { grant: ORCUS_FEATURE_ONCE_IN_THE_HEAD, type: Class Feature }
@@ -56,7 +58,6 @@
     Trigger: "You stagger a creature with a one-handed weapon."
     Attack: "Strength or Dexterity (your choice) vs AC"
     Hit: "2dW + Strength or Dexterity (your choice) modifier damage."
-    Flavor: "Otherwise you don't get paid..."
 - id: ORCUS_POWER_THE_PROFESSIONAL
   name: The Professional
   type: Power
@@ -64,15 +65,17 @@
   categories: [feature]
   fields:
     Level: "12"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Swift Action
-    Keywords: Martial
-    Target: Self
-    Effect: >
-      Until the end of the encounter, when you are granted a basic attack outside
-      of your turn, you do additional damage equal to your Dexterity modifier +2
-      if you hit. Level 21: additional damage equal to your Dexterity modifier +5.
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter, when you are granted a basic attack
+      outside of your turn (from an opportunity action, ally power, etc.), you
+      do additional damage equal to your Dexterity modifier +2 if you hit. Level
+      21: You do additional damage equal to your Dexterity modifier +5 if you
+      hit.
 - id: ORCUS_POWER_LIKE_A_GHOST
   name: Like a Ghost
   type: Power
@@ -80,16 +83,15 @@
   categories: [feature]
   fields:
     Level: "20"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
     Target: "Melee or Ranged weapon, one creature granting you combat advantage"
     Attack: "Strength or Dexterity (your choice) vs AC"
     Hit: "4dW + Strength or Dexterity (your choice) modifier damage."
     Miss: "Half damage."
     Effect: "Shift up to 10 squares."
-
 # === Battlefield Healer =======================================================
 - id: ORCUS_PRESTIGE_BATTLEFIELD_HEALER
   name: Battlefield Healer
@@ -97,9 +99,10 @@
   source: "Orcus (Outlaw Kingdoms)"
   fields:
     Requirements: "Trained in Heal."
-    Description: >
-      You specialise in impromptu medical care, in the field, under the pressures
-      of combat - still armed, protecting your team with blades and bandages.
+    Description: >-
+      You exist for the betterment of others. You specialize in impromptu
+      medical care, in the field, under the pressures of combat. You’re still
+      armed and protect your team with blades and bandages.
   rules:
     - { grant: ORCUS_FEATURE_A_TRUE_HEALER, type: Class Feature }
     - { grant: ORCUS_FEATURE_HEAL_THY_SELF, type: Class Feature }
@@ -131,16 +134,16 @@
   categories: [feature]
   fields:
     Level: "11"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Reaction Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
     Keywords: "Healing, Martial, Weapon"
     Target: "Near burst 5, the triggering ally"
     Trigger: "One ally in burst you can see is staggered by an attack."
-    Effect: >
+    Effect: >-
       The triggering enemy is pushed 2 squares, and you make a basic attack
       against it (in either order). Shift into a square adjacent to the target.
-      The target ally can spend a recovery and regain its recovery value plus 3d6
+      The target can spend a recovery and regain its recovery value plus 3d6
       additional hit points.
 - id: ORCUS_POWER_IMPROMPTU_SURGERY
   name: Impromptu Surgery
@@ -149,12 +152,14 @@
   categories: [feature]
   fields:
     Level: "12"
-    "Power Usage": Daily
-    "Power Type": Utility
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
     Keywords: "Healing, Martial"
     Target: "Melee touch, one staggered ally"
-    Effect: "The target automatically succeeds on one saving throw and can spend up to two recoveries to heal its recovery value that many times."
+    Effect: >-
+      The target automatically succeeds on one saving throw and can spend up to
+      two recoveries to heal its recovery value that many times.
 - id: ORCUS_POWER_NO_LONGER_CIVILIZED
   name: No Longer Civilized
   type: Power
@@ -162,24 +167,32 @@
   categories: [feature]
   fields:
     Level: "20"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Standard Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
     Keywords: "Martial, Weapon"
-    Target: "Melee or Ranged weapon, one creature that has reduced an ally in line of sight to 0 hit points or below"
+    Target: >-
+      Melee or Ranged weapon, one creature that has reduced an ally in line of
+      sight to 0 hit points or below.
     Attack: "Wisdom vs AC"
-    Hit: "4dW + Wisdom modifier damage, and the target is pushed a number of squares equal to your Wisdom modifier."
-    Miss: "Repeat the attack against the same target at -2 to the attack roll but +1dW damage on a hit. If you still miss, the target takes half damage and is pushed one square."
-
+    Hit: >-
+      4dW + Wisdom modifier damage, and the target is pushed a number of squares
+      equal to your Wisdom modifier.
+    Miss: >-
+      Repeat the attack against the same target. The second attack suffers a -2
+      to the attack roll but deals +1dW damage on a hit. If you still miss, the
+      target takes half damage and is pushed one square.
 # === Bounty Hunter ============================================================
 - id: ORCUS_PRESTIGE_BOUNTY_HUNTER
   name: Bounty Hunter
   type: Prestige Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: >
-      You analyse the actions and motivations of individuals, pinpoint specific
-      threats, and coordinate others to remove them - with weapons as a backup.
+    Description: >-
+      You don’t analyze the patterns of combat but the actions and motivations
+      of individuals, their goals and intents. You can pinpoint specific threats
+      and coordinate others to properly remove this threat without firing a
+      shot. Thankfully, you have weapons as a backup.
   rules:
     - { grant: ORCUS_FEATURE_TARGET_FOCUS, type: Class Feature }
     - { grant: ORCUS_FEATURE_ALL_IN, type: Class Feature }
@@ -211,13 +224,15 @@
   categories: [feature]
   fields:
     Level: "11"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Consistent"
     Target: "Near burst 10, a creature you have marked"
     Attack: "Intelligence +2 vs Will"
-    Hit: "The target is rattled and grants combat advantage to all allies in sight until the end of your next turn."
+    Hit: >-
+      The target is rattled and grants combat advantage to all allies in sight
+      until the end of your next turn.
     Flavor: "You predict where the enemy will move."
 - id: ORCUS_POWER_MENTAL_PREDICTION
   name: Mental Prediction
@@ -226,13 +241,20 @@
   categories: [feature]
   fields:
     Level: "12"
-    "Power Usage": Encounter
-    "Power Type": Utility
-    "Action Type": Move Action
-    Keywords: Martial
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
     Target: "Near earshot, you and up to four allies"
-    Effect: "The target gains a +2 power bonus to AC and Reflex defense against creatures you have marked until the start of your next turn."
-    Special: "Maintain Swift: the effect persists until the start of your next turn. You can maintain only once."
+    Effect: >-
+      The target gains a +2 power bonus to AC and Reflex defense against
+      creatures you have marked until the start of your next turn.
+    Maintain: >-
+      Swift The effect persists until the start of your next turn. You can
+      maintain only once.
+    Flavor: >-
+      Your knowledge of the enemy runs deep, beyond what your allies or even
+      enemies know.
 - id: ORCUS_POWER_THIS_ONE_ESPECIALLY
   name: This One Especially
   type: Power
@@ -240,10 +262,13 @@
   categories: [feature]
   fields:
     Level: "20"
-    "Power Usage": Daily
-    "Power Type": Attack
-    "Action Type": Swift Action
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Martial, Weapon"
     Target: "Near earshot, you and up to four allies"
-    Effect: "Choose a creature you have marked. Each target makes a basic attack against that creature."
-    Flavor: "Of all the targets, this is the one that must be taken down immediately."
+    Effect: >-
+      Choose a creature you have marked. Each target makes a basic attack
+      against that creature.
+    Flavor: >-
+      Of all the targets, this is the one that must be taken down immediately.

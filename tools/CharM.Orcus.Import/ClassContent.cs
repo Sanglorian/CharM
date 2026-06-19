@@ -37,25 +37,39 @@ public sealed class ClassContent
     public static ClassContent Parse(string sourceFile, string className)
     {
         var lines = File.ReadAllLines(sourceFile);
-        int start = -1, end = lines.Length;
+        int start = -1, end = lines.Length, foundLevel = 0;
         for (int i = 0; i < lines.Length; i++)
         {
             var m = Heading.Match(lines[i]);
-            if (!m.Success || m.Groups[1].Value.Length != 1) continue; // single '#'
+            if (!m.Success) continue;
+            int level = m.Groups[1].Value.Length;
             var name = HttpUtility.HtmlDecode(m.Groups[2].Value).Trim();
-            if (start < 0 && Same(name, className)) start = i;
-            else if (start >= 0) { end = i; break; }
+            if (start < 0)
+            {
+                if (level <= 2 && Same(name, className)) { start = i; foundLevel = level; }
+            }
+            else if (level <= foundLevel) { end = i; break; }
         }
-        if (start < 0) throw new Exception($"class '{className}' not found in {sourceFile}");
+        if (start < 0) throw new Exception($"section '{className}' not found in {sourceFile}");
 
         var cc = new ClassContent();
-        string? curName = null;
+        // The section's intro prose (before the first feature) is keyed by the
+        // section name itself, so an "Epic Path"/"Prestige Path" intro can be patched.
+        string? curName = className;
         var buf = new StringBuilder();
 
         void Flush()
         {
             if (curName != null)
-                cc.FeatureText[curName] = CollapseSpaces(buf.ToString());
+            {
+                var txt = CollapseSpaces(buf.ToString());
+                cc.FeatureText[curName] = txt;
+                // Also index without a trailing "(21st level)"/"(Level X)" tag, so a
+                // YAML element named "Second Nature" matches "Second Nature (21st level)".
+                var stripped = Regex.Replace(curName, @"\s*\([^)]*\)\s*$", "").Trim();
+                if (stripped.Length > 0 && stripped != curName && !cc.FeatureText.ContainsKey(stripped))
+                    cc.FeatureText[stripped] = txt;
+            }
             curName = null; buf.Clear();
         }
 

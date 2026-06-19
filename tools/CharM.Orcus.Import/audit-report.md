@@ -2,8 +2,8 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1557
-- Prose fields scanned: 4050; flagged: 71
-- Flavor fields: 402 faithful, 3 INVENTED
+- Prose fields scanned: 4047; flagged: 59
+- Flavor fields: 401 faithful, 1 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -12,8 +12,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 ## Invented Flavor fields (not in any source) — to be removed
 
 - ancestry.yaml :: Violent Rush :: "You press the advantage before the enemy can recover."
-- paths/epic.yaml :: For the Sake of the Team :: "You give an ally the precious time they need to complete the task."
-- paths/epic.yaml :: Not Tolerate Losing :: "You make every ally fear you more than the enemy."
 
 ## Fidelity flags — reworded / fabricated prose, by file
 
@@ -137,20 +135,14 @@ source book. Such text was reworded, fabricated, or otherwise altered.
   [Class Feature] The Economic Flow — field 'Description':
       ✗ If something is for sale anywhere in the planes, you can purchase it as a free action
       ✗ the object appears and the payment (which must be on your person) disappears
-  [Power] Force Sphere — field 'Effect':
-      ✗ Create an impenetrable sphere of force in a near burst between 1 and 5 squares in radius (your choice)
   [Class Feature] Against the Laws of Physics — field 'Description':
       ✗ Pick one of your daily utility powers
   [Class Feature] Beyond Impossible — field 'Description':
       ✗ instead, gain a +20 power bonus to your next skill roll with the skill you selected with Out of Anyone's League
-  [Epic Path] Most Dangerous — field 'Description':
-      ✗ You're a ghost, one of the most wanted individuals on the planet
   [Class Feature] Second Nature — field 'Description':
       ✗ You reroll natural 1s and 2s on attack rolls and skill checks, but must take the second result even if it is another 1 or a 2
   [Class Feature] Implausible Speed — field 'Description':
       ✗ You can use two action points per encounter, and gain two action points when you reach a streak
-  [Epic Path] Respected — field 'Description':
-      ✗ Every soldier knows your face
   [Class Feature] Sacrifice Play — field 'Description':
       ✗ As an immediate reaction once per encounter, when an ally is reduced below 0 hit points, you can grant any other ally in line of sight a standard, a move and a swift action
   [Class Feature] Master Tactician — field 'Description':
@@ -164,25 +156,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ Attacks cannot score critical hits against you (you take normal damage instead)
   [Class Feature] Risky Maneuver — field 'Description':
       ✗ As a swift action, reduce all your defense values to 1 until the start of your next turn
-  [Power] Lasting Image — field 'Effect':
-      ✗ You can take a single action on your turn (plus free/immediate actions and opportunity attacks), gaining a +2 bonus to attack rolls and +5 to damage rolls until the end of the encounter
-      ✗ You cannot be healed and do not make death saves until then, when you fall unconscious and begin making death saves as normal
-```
-### paths/prestige.yaml
-```
-  [Prestige Path] Assassin — field 'Description':
-      ✗ You move in quickly and quietly, dispatch the target, and vanish into the shadows
-  [Power] The Professional — field 'Effect':
-      ✗ Until the end of the encounter, when you are granted a basic attack outside of your turn, you do additional damage equal to your Dexterity modifier +2 if you hit
-      ✗ Level 21: additional damage equal to your Dexterity modifier +5
-  [Prestige Path] Battlefield Healer — field 'Description':
-      ✗ You specialise in impromptu medical care, in the field, under the pressures of combat - still armed, protecting your team with blades and bandages
-  [Power] Race to the Fallen — field 'Effect':
-      ✗ The target ally can spend a recovery and regain its recovery value plus 3d6 additional hit points
-  [Power] No Longer Civilized — field 'Miss':
-      ✗ Repeat the attack against the same target at -2 to the attack roll but +1dW damage on a hit
-  [Prestige Path] Bounty Hunter — field 'Description':
-      ✗ You analyse the actions and motivations of individuals, pinpoint specific threats, and coordinate others to remove them - with weapons as a backup
 ```
 
 ## Coverage — transcribed vs source, by discipline
