@@ -20,9 +20,12 @@
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Charisma"
     Languages: "Common and one other"
     "Heart of the Legion": "When adjacent to at least two allies, you receive a +1 power bonus to all defenses."
-    Description: >
-      Humanoids reminiscent of gorillas, orang-utans and chimpanzees, apefolk
-      prize legacy and enduring might.
+    Description: >-
+      Medium natural humanoid Apefolk are humanoids reminiscent of humankind’s
+      closest relatives: gorillas, orang utans and chimpanzees. Most apefolk
+      take a particular pride in legacy and enduring might: memorizing their
+      genealogy, celebrating the history of their centuries-old city-states and
+      seeking personal glory.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -55,25 +58,28 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature, ORCUS_APEFOLK_POWER]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Standard Action
-    "Power Type": Attack
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Target: "Self"
     Effect: "Make two basic attacks against a staggered target."
-
 - id: ORCUS_POWER_RALLY_THE_TROOPS
   name: Rally the Troops
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature, ORCUS_APEFOLK_POWER]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
-    "Power Type": Utility
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Target: "Near burst 5, one ally"
-    Effect: "The target can take the rally action as a free action, if they are eligible to do so."
-    Special: "This does not count against the maximum number of times a character can use the rally action in an encounter."
-
+    Effect: >-
+      The target can take the rally action as a free action, if they are
+      eligible to do so.
+    Special: >-
+      This power does not affect the normal limitation that a character can only
+      take the rally action once per combat.
 # === Automaton ===============================================================
 - id: ORCUS_RACE_AUTOMATON
   name: Automaton
@@ -88,9 +94,10 @@
     Languages: "Common and one other"
     "Relentless Endurance": "The first time in an encounter that you are staggered, you gain temporary HP equal to your level."
     "Made of Metal": "You do not make death saving throws. You still die if reduced to negative hit points equal to your maximum hit points. You do not sleep, breathe, eat or drink."
-    Description: >
-      Created beings of brass, clockwork and a pinch of sorcery, the automatons
-      are a relatively new people still finding their place in the world.
+    Description: >-
+      Medium natural automaton (construct) Created beings of brass, clockwork
+      and a pinch of sorcery, the automatons are a relatively new people, one
+      still finding their place in the world.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -128,9 +135,10 @@
     Languages: "Common, Primordial"
     "Resistance to Fire": "You gain resistance to fire equal to 5 + half your level."
     "Minor Magics": "You know the fiery spirit power from the Cantrips discipline."
-    Description: >
-      Stout beings who resemble dwarves with hair of fire, azer are often skilled
-      artisans organised on quasi-military lines.
+    Description: >-
+      Medium elemental humanoid (fire) Stout beings who resemble dwarves with
+      hair of fire, azer are often skilled artisans. Their clans are organized
+      on quasi-military lines.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -171,6 +179,7 @@
       Level 11: 2d6 + Intelligence OR Charisma modifier. Level 21: 3d6 +
       Intelligence OR Charisma modifier.
 
+    Description: "You have the vengeance of the pit power."
 # === Catfolk ==================================================================
 - id: ORCUS_RACE_CATFOLK
   name: Catfolk
@@ -186,9 +195,10 @@
     "Natural Weapon - Claws": "You are proficient with your claws: a martial side weapon in the light blades category (proficiency +3, 1d6 damage), though they cannot be thrown."
     "Balance Guidance": "Allies within 10 receive a +1 ancestry bonus to Acrobatics."
     Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
-    Description: >
-      Playful, lithe humanoids with feline heads and short fur, different catfolk
-      clans resemble different breeds of big cat.
+    Description: >-
+      Medium natural humanoid Catfolk are playful humanoids with short fur all
+      over their lithe bodies. They have feline heads, with different clans
+      tending to resemble different breeds of big cat.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -218,12 +228,12 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Move Action
-    "Power Type": Utility
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Target: "Self"
     Effect: "Shift up to your speed."
-
 # === Deepfolk =================================================================
 - id: ORCUS_RACE_DEEPFOLK
   name: Deepfolk
@@ -236,9 +246,10 @@
     Vision: Darkvision
     "Ability Scores": "Pick two of +2 Dexterity, +2 Wisdom and +2 Charisma"
     Languages: "Common, Deep Speech"
-    Description: >
-      Amphibious humanoids with fish-like features, deepfolk are skilled in
-      underwater combat and wield weapons of coral and obsidian.
+    Description: >-
+      Medium cosmic humanoid Deepfolk are amphibious humanoids with fish-like
+      features, skilled in underwater combat and wielding weapons crafted from
+      coral and obsidian.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -268,14 +279,14 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Standard Action
-    Keywords: Focus
-    "Power Type": Attack
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus"
     Target: "Ranged 5, one creature"
-    Attack: "Dexterity, Wisdom or Charisma (your choice) vs Reflex"
+    Attack: "Dex, Wis or Cha (your choice) vs Reflex"
     Hit: "The target is blinded until the end of your next turn."
-
 # === Dromite ==================================================================
 - id: ORCUS_RACE_DROMITE
   name: Dromite
@@ -289,9 +300,11 @@
     "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Charisma"
     Languages: "Common, Deep Speech"
     "Blast Shard": "You gain Blast Shard as a bonus feat."
-    Description: >
-      Small insect-like humanoids who form cooperative colonies in great earthen
-      mounds; their powerful legs let them leap great distances.
+    Description: >-
+      Small cosmic humanoid Dromite are small insect-like humanoids that form
+      cooperative colonies in gigantic mounds of heaped earth. Their powerful
+      legs allow them to leap great distances, and they can shoot beams of
+      energy from their multi-faceted eyes.
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -321,13 +334,15 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Move Action
-    Keywords: Psychic
-    "Power Type": Utility
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Psychic"
     Target: "Near burst 5, self or one ally"
-    Effect: "The target jumps up to 3 squares. This movement does not provoke opportunity attacks."
-
+    Effect: >-
+      The target jumps up to 3 squares. This movement does not provoke
+      opportunity attacks.
 # === Frogfolk =================================================================
 - id: ORCUS_RACE_FROGFOLK
   name: Frogfolk
@@ -342,9 +357,10 @@
     Languages: "Common and one other"
     "Hide in a Flash": "When you make an initiative check, if you are in cover or concealment, you can make a Stealth check to hide (no action)."
     Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
-    Description: >
-      Amphibious humanoids with webbed hands, sticky tongues and a cheery,
-      adventurous streak that sours fast if their skin dries out.
+    Description: >-
+      Small natural humanoid Frogfolk are amphibious humanoids, with webbed feet
+      and hands and long, sticky tongues. Frogfolk tend to be cheery and
+      adventurous, although their mood quickly turns if their skin dries out.
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -374,13 +390,13 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Counter Action
-    "Power Type": Utility
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Target: "Self"
     Trigger: "An attack hits you."
     Effect: "The opponent must reroll that attack and take the second result."
-
 # === Gnoll ====================================================================
 - id: ORCUS_RACE_GNOLL
   name: Gnoll
@@ -395,9 +411,11 @@
     Languages: "Common, Abyssal"
     Vigor: "Add your Constitution modifier to your recovery value."
     "Natural Weapon - Bite": "You are proficient with your bite: a martial one-handed weapon in the heavy blades category (proficiency +3, 1d8 damage), requiring no hands to use."
-    Description: >
-      Humanoid hyenas known for wildness and cunning, fiercely loyal to their
-      pack but with little patience for fools.
+    Description: >-
+      Medium natural humanoid Gnolls are humanoid hyenas with a reputation for
+      wildness and cunning. Gnolls often exhibit a strong sense of loyalty to
+      their pack (including their "chosen pack", which can include non-gnolls),
+      valuing camaraderie but with little patience for fools and the naive.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -435,9 +453,11 @@
     Languages: "Common, Giant"
     "Powerful Build": "+2 ancestry bonus to checks to escape a grapple. Against attacks that vary by target size, you may be treated as Large instead of Medium."
     Unmoved: "Reduce any unwilling movement you are subject to by 1 square. When you would fall prone as the result of an attack, make a saving throw; on a success you do not fall."
-    Description: >
-      Seven- to eight-foot-tall humanoids who are their own people (not the
-      offspring of giants), proud and inclined to see themselves as leaders.
+    Description: >-
+      Medium natural humanoid (giant) Half-giants typically stand from 7 feet to
+      nearly 8 feet tall. Despite their name, they are their own people and not
+      the product of relations between giants and other humanoids. Half-giants
+      tend to be proud, and see themselves as natural leaders.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -467,14 +487,14 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Standard Action
-    Keywords: Focus
-    "Power Type": Attack
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Focus"
     Target: "Near burst 1, all creatures"
-    Attack: "Strength, Constitution or Wisdom (your choice) vs Fortitude"
+    Attack: "Str, Con or Wis (your choice) vs Fortitude"
     Hit: "The target falls prone."
-
 # === Hobgoblin ================================================================
 - id: ORCUS_RACE_HOBGOBLIN
   name: Hobgoblin
@@ -489,9 +509,10 @@
     Languages: "Common, Goblin"
     "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
     "Heavy Blade Weapon Proficiency": "You have proficiency with martial weapons in the heavy blades category."
-    Description: >
-      Bright-skinned humanoids with pointed ears and heavy brows, known for
-      discipline, honour and rigid hierarchical societies.
+    Description: >-
+      Medium natural humanoid (goblinoid) Hobgoblins are bright-skinned (often
+      red or blue) humanoids with pointed ears and heavy brows. They are known
+      for their discipline, honor and rigid hierarchical societies.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -521,13 +542,13 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Free Action
-    "Power Type": Utility
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Target: "Self"
     Trigger: "You just made an attack roll."
     Effect: "Reroll the attack roll and take the new result."
-
 # === Mephit ===================================================================
 - id: ORCUS_RACE_MEPHIT
   name: Mephit
@@ -542,9 +563,14 @@
     Languages: "Common, Primordial"
     "Under-Developed Wings": "You have a fly speed of 6, but you fall at the end of your turn and your maximum altitude is 1."
     "Resistance to X": "Resistance 5 + half your level to your element's damage type. Air: lightning and thunder. Ice: cold. Earth: acid. Fire: fire."
-    Description: >
-      Small, winged imps from the elemental planes - mischievous, clever and
-      talkative, delighting in their associated element.
+    Description: >-
+      Small elemental humanoid (air, cold, earth, fire) Mephits are small,
+      winged imps from the elemental planes. They are mischevious and clever,
+      and often talkative to a fault among strangers and friends alike. Mephits
+      delight in wallowing in the element with which they are associated. Air
+      mephits are resistant to lightning and thunder. Ice mephits are resistant
+      to cold. Earth mephits are resistant to acid. Fire mephits are resistant
+      to fire.
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -574,17 +600,17 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Focus, [Energy]"
-    "Power Type": Attack
-    Target: "Near arc 3, all targets"
-    Attack: "Highest of Strength, Constitution or Dexterity vs Reflex"
-    Hit: >
-      1d6 + Constitution modifier. Level 11: 2d6 + Constitution modifier.
-      Level 21: 3d6 + Constitution modifier.
+    Target: "Near arc 3, targets all"
+    Attack: "(Highest of Strength, Constitution, Dexterity) vs Reflex"
+    Hit: >-
+      1d6 + Constitution modifier. Level 11: 2d6 + Constitution modifier. Level
+      21: 3d6 + Constitution modifier.
     Special: "This power has the same damage type as your resistance."
-
 # === Minotaur =================================================================
 - id: ORCUS_RACE_MINOTAUR
   name: Minotaur
@@ -599,9 +625,11 @@
     Languages: "Common and one other"
     "Maze Mind": "When you are the target of an attack with the Psychic tag, the attacker is rattled (save ends)."
     "Wandering Charge": "When you charge, you do not need to move in a straight line."
-    Description: >
-      Strong, imposing half-bull half-humans, marked by courage and a struggle
-      to reconcile fierce instincts with human emotion.
+    Description: >-
+      Medium natural humanoid Strong and imposing half-bull, half-humans,
+      minotaurs are often characterized by their courage, determination, and
+      sometimes a struggle to reconcile their fierce instincts with their
+      human-like emotions.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -631,13 +659,14 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Free Action
-    "Power Type": Attack
-    Target: Self
-    Requirements: "You have made an attack after moving at least two squares this turn."
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Target: "Self"
+    Requirements: >-
+      You have made an attack after moving at least two spaces this turn.
     Effect: "If your attack hits, the target also falls prone."
-
 # === Shadow Elf ===============================================================
 - id: ORCUS_RACE_SHADOW_ELF
   name: Shadow Elf
@@ -652,9 +681,11 @@
     Languages: "Common, Elven"
     "Minor Magics": "You know the ghost sound power from the Cantrips discipline."
     Trance: "You don't sleep; a 4-hour meditative trance has the same effect as a 6-hour long rest."
-    Description: >
-      Enigmatic descendants of refugees from the Seelie-Unseelie wars, shadow
-      elves are known for haunting beauty and a taste for secrecy and intrigue.
+    Description: >-
+      Medium shadow humanoid Shadow elves are enigmatic beings from the Plane of
+      Shadow, the descendents of refugees from the Seelie–Unseelie wars on the
+      Plane of Faerie. They are known for their haunting beauty and inclination
+      towards secrecy and intrigue.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -684,13 +715,13 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Move Action
-    Keywords: Teleport
-    "Power Type": Utility
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Teleport"
+    Target: "Self"
     Effect: "Teleport up to 5."
-
 # === Vishya ===================================================================
 - id: ORCUS_RACE_VISHYA
   name: Vishya
@@ -706,9 +737,11 @@
     "Hold Breath": "+5 ancestry bonus to Endure checks to hold your breath."
     "Swamp Stride": "Mud, marsh and shallows are not difficult terrain for you."
     Whistle: "You can communicate using high-pitched whistles that adults cannot hear but dogs and children can."
-    Description: >
-      Graceful humanoids with venomous fangs, serpentine eyes and supple,
-      lightly scaled skin often patterned like a serpent's.
+    Description: >-
+      Medium natural humanoid (reptile) Vishyas are graceful humanoids with
+      venomous fangs and serpentine eyes. Their supple skin is covered with tiny
+      scales, often of a light green, which are sometimes arrayed in patterns
+      not unlike those of a serpent.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -738,13 +771,15 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
     Keywords: "Focus, Poison"
-    "Power Type": Attack
     Target: "Melee 1, one target"
     Attack: "Dexterity or Constitution vs AC"
-    Hit: >
-      1d8 + your Dexterity or Constitution modifier poison damage.
-      Level 11: attack bonus increases to +4, 2d8 + modifier damage.
-      Level 21: attack bonus increases to +6, 3d8 + modifier damage.
+    Hit: >-
+      1d8 + your Dexterity or Constitution modifier poison damage. Level 11:
+      Attack bonus increases to +4. 2d8 + modifier damage. Level 21: Attack
+      bonus increases to +6. 3d8 + modifier damage.
+    Flavor: "Your fangs excrete a mild poison."

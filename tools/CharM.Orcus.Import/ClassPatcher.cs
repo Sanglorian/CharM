@@ -10,9 +10,14 @@ namespace CharM.Orcus.Import;
 /// </summary>
 public static class ClassPatcher
 {
-    public static int Patch(string sourceFile, string classFile, string className)
+    public static int Patch(string sourceFile, string classFile, string className) =>
+        PatchWith(ClassContent.Parse(sourceFile, className), classFile);
+
+    public static int PatchGlobal(string sourceFile, string classFile) =>
+        PatchWith(ClassContent.ParseAll(sourceFile), classFile);
+
+    static int PatchWith(ClassContent content, string classFile)
     {
-        var content = ClassContent.Parse(sourceFile, className);
         var lines = File.ReadAllLines(classFile).ToList();
 
         // Split into element blocks (each begins with a top-level "- " line).
@@ -58,7 +63,7 @@ public static class ClassPatcher
             if (RemoveField(block, "Flavor")) flavorsRemoved++;
 
             bool isFeaturePower = type == "Power" && cats.Contains("feature");
-            if (isFeaturePower && content.FeaturePowers.TryGetValue(name, out var pw))
+            if (isFeaturePower && (content.GetPower(name) is { } pw))
             {
                 var probs = Phase2.CheckPower(pw);
                 if (probs.Count > 0)

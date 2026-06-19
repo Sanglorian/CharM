@@ -50,14 +50,15 @@
   categories: [feature]
   fields:
     Level: "11"
-    "Power Usage": Encounter
-    "Power Type": Attack
-    "Action Type": Free Action
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
     Keywords: "Martial, Consistent, Weapon"
     Target: "Near burst 5, the triggering creature"
     Trigger: "You stagger a creature with a one-handed weapon."
     Attack: "Strength or Dexterity (your choice) vs AC"
     Hit: "2dW + Strength or Dexterity (your choice) modifier damage."
+    Flavor: "Otherwise you don’t get paid …"
 - id: ORCUS_POWER_THE_PROFESSIONAL
   name: The Professional
   type: Power
@@ -76,6 +77,7 @@
       do additional damage equal to your Dexterity modifier +2 if you hit. Level
       21: You do additional damage equal to your Dexterity modifier +5 if you
       hit.
+    Flavor: "No emotions. No investments. No hesitation."
 - id: ORCUS_POWER_LIKE_A_GHOST
   name: Like a Ghost
   type: Power
@@ -92,6 +94,7 @@
     Hit: "4dW + Strength or Dexterity (your choice) modifier damage."
     Miss: "Half damage."
     Effect: "Shift up to 10 squares."
+    Flavor: "You move like the wind and strike like lightning."
 # === Battlefield Healer =======================================================
 - id: ORCUS_PRESTIGE_BATTLEFIELD_HEALER
   name: Battlefield Healer
@@ -145,6 +148,9 @@
       against it (in either order). Shift into a square adjacent to the target.
       The target can spend a recovery and regain its recovery value plus 3d6
       additional hit points.
+    Flavor: >-
+      An ally falls from a heavy blow. You race to their aid, attacking the
+      enemy desperately in hopes it will back off.
 - id: ORCUS_POWER_IMPROMPTU_SURGERY
   name: Impromptu Surgery
   type: Power
@@ -160,6 +166,9 @@
     Effect: >-
       The target automatically succeeds on one saving throw and can spend up to
       two recoveries to heal its recovery value that many times.
+    Flavor: >-
+      A foreign implement is causing internal bleeding. You fish it out and try
+      to close the wound.
 - id: ORCUS_POWER_NO_LONGER_CIVILIZED
   name: No Longer Civilized
   type: Power
@@ -182,6 +191,9 @@
       Repeat the attack against the same target. The second attack suffers a -2
       to the attack roll but deals +1dW damage on a hit. If you still miss, the
       target takes half damage and is pushed one square.
+    Flavor: >-
+      An ally succumbs to their injuries. You can no longer be a healer. You
+      must be a protector.
 # === Bounty Hunter ============================================================
 - id: ORCUS_PRESTIGE_BOUNTY_HUNTER
   name: Bounty Hunter

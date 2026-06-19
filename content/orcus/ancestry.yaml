@@ -14,10 +14,11 @@
     Vision: Normal
     "Ability Scores": "+2 to two ability scores of your choice"
     Languages: "Common and one other"
-    Description: >
-      The default Orcus ancestry: heroes defined by the moment that marked them
-      (their crux) and the culture they came from (their heritage), rather than
-      by species.
+    Description: >-
+      Not all heroes in the Outlaw Kingdoms are human, but the differences
+      between species matter less than the background that a hero comes from and
+      the moment that marked them for greatness. All heroes have the following
+      traits:
   rules:
     - grant: ORCUS_INTERNAL_GRANTS_HUMANITY
       type: Grants
@@ -56,13 +57,13 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: >
-      You risked your own life to defend something precious: perhaps a loved one,
-      a vital military position or a secret.
     Unmoved: >
       Reduce any unwilling movement you are subject to by 1 square. When you would
       fall prone as the result of an attack, make a saving throw; on a success you
       do not fall.
+    Description: >-
+      You risked your own life to defend something precious: perhaps a loved
+      one, a vital military position or a secret. +2 Athletics
   rules:
     - statadd: Athletics
       value: +2
@@ -75,9 +76,9 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: >
+    Description: >-
       Through knowledge, practice and experience, you provided sage advice that
-      prevented the unthinkable.
+      prevented the unthinkable. +2 Perception
   rules:
     - statadd: Perception
       value: +2
@@ -96,7 +97,9 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You are a patrician, and believe yourself to be one of a finer class of people."
+    Description: >-
+      You are a patrician, and believe yourself to be one of a finer class of
+      people. +2 Intimidate
   rules:
     - statadd: Intimidate
       value: +2
@@ -110,7 +113,7 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You grew up on boats or ships."
+    Description: "You grew up on boats or ships. +2 Athletics"
   rules:
     - statadd: Athletics
       value: +2
@@ -126,31 +129,29 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Free Action
-    Keywords: Martial
-    "Power Type": Utility
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Target: "Self"
     Trigger: "You hit with an attack."
     Effect: "Attack does +1dW. If attack was not with a weapon, +1d8 instead."
-    Flavor: "You press the advantage before the enemy can recover."
-
 - id: ORCUS_POWER_INGENUITY
   name: Ingenuity
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
-    Keywords: Martial
-    "Power Type": Utility
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
     Target: "Near burst 5, self or one ally"
-    Effect: >
-      Choose one: target shifts up to 2 as a free action; target makes a saving
-      throw; target gets +2 power bonus to next attack roll; or target gets +4
+    Effect: >-
+      Choose one: target shifts up to 2 as a free action, target makes a saving
+      throw, target gets +2 power bonus to next attack roll or target gets +4
       power bonus to next skill check. Power bonuses expire at the end of your
-      next turn if not used.
-
+      next turn if not already used.
 # === Remaining Cruxes (Player Options) ========================================
 # Hero and Sage are above. Each crux gives a +2 skill, some always-on traits
 # (descriptive) and usually a feature power. Several powers are shared with the
@@ -160,9 +161,11 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You betrayed someone or something you once held dear, and it forever left its mark on you."
     "Resistance to Poison": "Resistance to poison damage 5 + half your level."
     "Hold Breath": "+5 ancestry bonus to Endure checks to hold your breath."
+    Description: >-
+      You betrayed someone or something you once held dear, and it forever left
+      its mark on you. +2 Bluff
   rules:
     - { statadd: Bluff, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_POISONOUS_NIP, type: Power }
@@ -172,8 +175,8 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Someone destroyed everyone and everything you loved."
     "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
+    Description: "Someone destroyed everyone and everything you loved. +2 Heal"
   rules:
     - { statadd: Heal, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_VENGEANCE_OF_THE_PIT, type: Power }
@@ -183,9 +186,11 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Some great event or portent at your birth set your heroism in motion, through no choice of your own."
     "Face the Elements": "Resistance to fire and cold damage 5 + half your level."
     Dabbler: "Choose a level 1 at-will attack power from any class. It is an encounter power for you."
+    Description: >-
+      Some great event or portent at your birth set your heroism in motion,
+      through no choice of your own. +2 History
   rules:
     - { statadd: History, value: +2, bonusType: Ancestry }
 
@@ -194,9 +199,11 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You were imprisoned, trapped or otherwise doomed - but you somehow slipped away."
     "Hide in a Flash": "When you make an initiative check, if you are in cover or concealment, you can make a Stealth check to hide (no action)."
     "Web Stride": "Webs are not difficult terrain for you."
+    Description: >-
+      You were imprisoned, trapped, in check or otherwise in a situation that
+      seemed to spell certain doom – but you somehow slipped away. +2 Acrobatics
   rules:
     - { statadd: Acrobatics, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_DISAPPEARING_ACT, type: Power }
@@ -206,8 +213,10 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You discovered that perched in your family tree is a dragon, and its greatness courses in your veins."
     "Minor Magics": "You know one power from the Cantrips discipline."
+    Description: >-
+      You discovered that perched in your family tree is a dragon, and its
+      greatness courses in your veins. +2 Insight
   rules:
     - { statadd: Insight, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_BREATH_WEAPON, type: Power }
@@ -217,8 +226,10 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Through sheer chutzpah and unbelievable luck, you have survived ordeals that would have left anyone else dead eight times over."
     "Eager Charge": "Your speed increases by +2 when you charge."
+    Description: >-
+      Through sheer chutzpah and unbelievable luck, you have survived ordeals
+      that would have left anyone else dead eight times over. +2 Sleight of Hand
   rules:
     - { statadd: Sleight of Hand, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_LUCKY, type: Power }
@@ -228,8 +239,10 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You come from another place or time, or are destined to leave this one in time."
     Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
+    Description: >-
+      You come from another place or time, or are destined to leave this one in
+      time. +2 Stealth
   rules:
     - { statadd: Stealth, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_HIGHBLOOD_TELEPORT, type: Power }
@@ -239,9 +252,11 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You survived impossible peril, physical harm or terror, and came back of your own volition."
     "Injured Rage": "+1 ancestry bonus on attack rolls while staggered."
     "Shake Off Fear": "+5 ancestry bonus on saving throws against Fear powers and effects."
+    Description: >-
+      You survived impossible peril, physical harm or terror, and came back of
+      your own volition. +2 Endure
   rules:
     - { statadd: Endure, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_TOUGH_AS_NAILS, type: Power }
@@ -251,9 +266,11 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You experienced something that opened your mind to something beyond this physical world."
     "Shared Mind": "You gain telepathy 5 (mental communication with creatures within 5 squares that share a language)."
     "Shake Off Illusion": "+5 ancestry bonus on saving throws against Illusion powers and effects."
+    Description: >-
+      You experienced something that opened your mind to something beyond this
+      physical world. +2 Arcana
   rules:
     - { statadd: Arcana, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_CAREFUL_FOCUS, type: Power }
@@ -263,9 +280,9 @@
   type: Crux
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You were abandoned to the wilderness."
     "Versatile Stride": "You ignore difficult terrain."
     "Low-Light Vision": "You can see in dim light as if it were bright light."
+    Description: "You were abandoned to the wilderness. +2 Nature"
   rules:
     - { statadd: Nature, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_BARREL_ALONG, type: Power }
@@ -277,8 +294,10 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Your family belonged to a forbidden religion, exposing you to constant persecution."
     "Focus Proficiency": "You have proficiency with orbs, staffs and wands."
+    Description: >-
+      Your family belonged to a forbidden religion, which exposed you to the
+      constant threat of persecution. +2 Religion
   rules:
     - { statadd: Religion, value: +2, bonusType: Ancestry }
 
@@ -287,7 +306,7 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You come from an isolated town in the mountains."
+    Description: "You come from an isolated town in the mountains. +2 Dungeoneering"
   rules:
     - { statadd: Dungeoneering, value: +2, bonusType: Ancestry }
     - { grant: ORCUS_POWER_RELENTLESS_ENDURANCE, type: Power }
@@ -297,7 +316,9 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "Your family moved about a lot, whether out of wanderlust or necessity."
+    Description: >-
+      Your family moved about a lot, whether out of wanderlust or necessity. +2
+      Diplomacy
   rules:
     - { statadd: Diplomacy, value: +2, bonusType: Ancestry }
     - { statadd: Speed, value: +1, bonusType: Ancestry }
@@ -307,8 +328,10 @@
   type: Heritage
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Description: "You grew up on the streets, without parents - or without parents worth speaking of."
     "Light Blade Weapon Proficiency": "You have proficiency with martial weapons in the light blades group."
+    Description: >-
+      You grew up on the streets, without parents – or without parents worth
+      speaking of. +2 Streetsmarts
   rules:
     - { statadd: Streetsmarts, value: +2, bonusType: Ancestry }
 
@@ -319,51 +342,52 @@
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Reaction Action
-    "Power Type": Utility
-    Keywords: Martial
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Reaction Action"
+    Target: "Self"
     Trigger: "You take damage."
-    Effect: "Become invisible until the end of your next turn, or until you make an attack (whichever comes sooner)."
-
+    Effect: >-
+      Become invisible until the end of your next turn, or until you make an
+      attack (whichever comes sooner).
 - id: ORCUS_POWER_TOUGH_AS_NAILS
   name: Tough as Nails
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
-    "Power Type": Utility
-    Keywords: Martial
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Target: "Self"
     Effect: "You rally."
-
 - id: ORCUS_POWER_BARREL_ALONG
   name: Barrel Along
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Swift Action
-    "Power Type": Utility
-    Keywords: Martial
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Target: "Self"
     Trigger: "You are staggered."
-    Effect: "You gain a +2 bonus to speed and to damage rolls until the end of the encounter."
-
+    Effect: >-
+      You have a +2 bonus to speed and to damage rolls until the end of the
+      encounter.
 - id: ORCUS_POWER_RELENTLESS_ENDURANCE
   name: Relentless Endurance
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Counter Action
-    "Power Type": Utility
-    Keywords: Martial
-    Target: Self
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Target: "Self"
     Trigger: "You become staggered."
     Effect: "Gain temporary hit points equal to your level."

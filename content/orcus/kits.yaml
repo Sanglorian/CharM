@@ -45,7 +45,10 @@
   source: "Orcus (Outlaw Kingdoms)"
   fields:
     "Associated Discipline": Juggernautical
-    Description: "You are a beast - an imposing behemoth or a gentle giant who raises a hand only when necessary."
+    Description: >-
+      You are a beast. You might have earned a name in a ring or on the combat
+      field. You could be an imposing behemoth or a gentle giant, only raising
+      your hand when necessary.
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_DISCACCESS_JUGGERNAUTICAL, type: Discipline Access }
@@ -57,17 +60,17 @@
   name: Full Torque
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "Use Strength in place of Dexterity for attack and damage rolls with thrown (light) weapons and with sling and bow weapons. Use Strength in place of Charisma for Intimidate checks." }
+  fields: { Level: "1", Description: "You can use Strength in place of Dexterity for all attack and damage rolls with weapons with the thrown (light) property and with weapons from the slings and bows weapon groups. You can use Strength in place of Charisma when making Intimidate checks." }
 - id: ORCUS_KITF_NO_TIME_FOR_PAIN
   name: No Time for Pain
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "5", Description: "While staggered, add your Strength modifier to your recovery value." }
+  fields: { Level: "5", Description: "If you are staggered, add your Strength modifier to your recovery value." }
 - id: ORCUS_KITF_COMICAL_REACTION
   name: Comical Reaction
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "10", Description: "When you succeed on a saving throw against blinded, dazed, deafened, slowed, stunned or weakened, you gain a basic attack as a free action." }
+  fields: { Level: "10", Description: "If you succeed on a saving throw for the following conditions, you gain a basic attack as a free action: blinded, dazed, deafened, slowed, stunned, or weakened." }
 
 - id: ORCUS_KIT_EMBODIES_SPEED
   name: Embodies Speed
@@ -75,7 +78,13 @@
   source: "Orcus (Outlaw Kingdoms)"
   fields:
     "Associated Discipline": Born to Run
-    Description: "You have perfected a body designed for raw speed and agility, keeping an entire landscape of paths and escape routes in mind."
+    Description: >-
+      With unmatched physical discipline, you have perfected a body designed for
+      raw speed and agility. It’s not enough just to be athletic: you have to
+      keep your eyes and mind sharp, to gauge distances, crawlspaces, and the
+      shortest possible route even if it involves some death-defying feat of
+      acrobatic skill. You can keep an entire landscape in mind, analyzing paths
+      and routes of escape, even when everyone else just sees walls.
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_KITF_POWER_TO_WEIGHT, type: Class Feature }
@@ -86,17 +95,17 @@
   name: Power To Weight Ratio
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "Use Dexterity in place of Strength for Athletics climb/jump checks and for attack and damage with unarmed attacks, one-handed melee weapons and grapples. You do not grant combat advantage while balancing." }
+  fields: { Level: "1", Description: "You can use Dexterity in place of Strength for Athletics checks when performing a climb or a jump. You can also use Dexterity in place of Strength for attack and damage rolls with unarmed attacks, one-handed melee weapons, and grapples. You do not grant combat advantage while balancing." }
 - id: ORCUS_KITF_SPEED_VAULT
   name: Speed Vault
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "5", Description: "If you move at least 2 squares running toward a wall, you gain a climb speed equal to your remaining movement." }
+  fields: { Level: "5", Description: "If you move at least 2 squares while running toward a wall, you gain a climb speed equal to your remaining movement. If you have not cleared the wall by the end of your movement, you must make an Athletics check to climb normally." }
 - id: ORCUS_KITF_SPLIT_SLIDE
   name: Split-Slide
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "10", Description: "Once per round as a swift action, choose one enemy in line of sight; you do not provoke opportunity attacks from it and can move through its square (not ending there)." }
+  fields: { Level: "10", Description: "Once per round, as a swift action, you can select one enemy in line of sight. You do not provoke opportunity attacks from that enemy and can pass through the enemy’s square as if it wasn’t occupied. You cannot end your movement in the square." }
 
 # === Worships the God of ... (deity kits) =====================================
 # Each grants Channel Divinity (once/encounter) and a Blessing of the God feat,
@@ -108,7 +117,10 @@
   fields:
     "Associated Discipline": Art of War
     Deity: "God of War"
-    Description: "You worship a god devoted to conflict and combat, and gain their blessings."
+    Description: >-
+      Your secondary ability is Strength. If you acquire Worships ... kits
+      through other ways, you get their benefits as usual but they do not change
+      your secondary ability.
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_DISCACCESS_ART_OF_WAR, type: Discipline Access }
@@ -130,7 +142,7 @@
   name: Brothers in Arms
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "10", Description: "When you are a target of a Near or Far attack, you and all allied targets gain a bonus to defense against it equal to the number of allied targets." }
+  fields: { Level: "10", Description: "When you are a target of a Near or Far attack, you and all allies that are targets get a bonus to defense against that attack equal to the number of allies that are targets. You are not an ally of yourself, so for example you would get a +1 bonus to defense against an attack that targets you and one ally." }
 
 - id: ORCUS_KIT_WORSHIPS_PEACE
   name: Worships the God of Peace
@@ -139,7 +151,7 @@
   fields:
     "Associated Discipline": "Angel's Trumpet"
     Deity: "God of Peace"
-    Description: "You worship a god devoted to peace and protection, and gain their blessings."
+    Description: "Your secondary ability is Charisma."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_DISCACCESS_ANGELS_TRUMPET, type: Discipline Access }
@@ -170,7 +182,7 @@
   fields:
     "Associated Discipline": Radiant Dawn
     Deity: "God of Life"
-    Description: "You worship a god devoted to life and healing, and gain their blessings."
+    Description: "Your secondary ability is Charisma."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_KITF_CD_GUIDANCE, type: Class Feature }
@@ -186,7 +198,7 @@
   name: Disciple of Life
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "5", Description: "Add your Wisdom modifier to the amount you heal with powers that have the Healing tag." }
+  fields: { Level: "5", Description: "Add your Wisdom modifier to the amount you heal with powers with the Healing tag." }
 - id: ORCUS_KITF_TOWARDS_THE_LIGHT
   name: Towards the Light
   type: Class Feature
@@ -200,7 +212,7 @@
   fields:
     "Associated Discipline": "Puppeteer's String"
     Deity: "God of Tyranny"
-    Description: "You worship a god devoted to domination and pain, and gain their blessings."
+    Description: "Your secondary ability is Strength."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
     - { grant: ORCUS_KITF_CD_SPUR_ON, type: Class Feature }
@@ -216,7 +228,7 @@
   name: Disciple of Tyranny
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "5", Description: "You are trained in Intimidate (if not already)." }
+  fields: { Level: "5", Description: "You are trained in Intimidate." }
 - id: ORCUS_KITF_DIG_DEEPER
   name: Dig Deeper
   type: Class Feature

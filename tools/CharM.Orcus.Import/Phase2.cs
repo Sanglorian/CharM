@@ -61,6 +61,10 @@ public static class Phase2
     static readonly Regex HeaderInner = new(
         @"^(?<usage>At-Will|Encounter|Daily)\s+(?<type>Attack|Utility)\s+(?<level>Feature|\d+)\s*\(\s*(?<action>[^)]+?)\s*\)\s*$",
         RegexOptions.Compiled);
+    // Racial/feature powers omit the level token: **Encounter** **Utility** (**Swift Action**)
+    static readonly Regex HeaderNoLevel = new(
+        @"^\*\*(?<usage>[^*]+?)\*\*\s+\*\*(?<type>[^*]+?)\*\*\s+\(\s*\*?\*?(?<action>[^*)]+?)\*?\*?\s*\)\s*(?:●\s*\*\*(?<kw>[^*]+?)\*\*)?\s*$",
+        RegexOptions.Compiled);
 
     // ------------------------------------------------------------------ parsing
     public static ParsedDiscipline Parse(string sourceFile, string disciplineName)
@@ -178,6 +182,17 @@ public static class Phase2
                         headerSeen = true;
                         continue;
                     }
+                }
+                var mn = HeaderNoLevel.Match(line);
+                if (mn.Success && (mn.Groups["usage"].Value.Trim() is "At-Will" or "Encounter" or "Daily"))
+                {
+                    pw.Usage = mn.Groups["usage"].Value.Trim();
+                    pw.Type = mn.Groups["type"].Value.Trim();
+                    pw.Level = "";
+                    pw.Action = mn.Groups["action"].Value.Trim();
+                    pw.Keywords = mn.Groups["kw"].Success ? mn.Groups["kw"].Value.Trim() : "";
+                    headerSeen = true;
+                    continue;
                 }
                 // Pre-header italic line == flavor.
                 if (line.StartsWith("*") && !line.StartsWith("**") && line.EndsWith("*"))
@@ -448,7 +463,7 @@ public static class Phase2
     {
         string pad = new string(' ', indent);
         var sb = new StringBuilder();
-        sb.AppendLine($"{pad}Level: \"{pw.Level}\"");
+        if (pw.Level.Length > 0) sb.AppendLine($"{pad}Level: \"{pw.Level}\"");
         sb.AppendLine($"{pad}\"Power Usage\": {Scalar(pw.Usage)}");
         sb.AppendLine($"{pad}\"Power Type\": {Scalar(pw.Type)}");
         if (pw.Action.Length > 0) sb.AppendLine($"{pad}\"Action Type\": {Scalar(pw.Action)}");

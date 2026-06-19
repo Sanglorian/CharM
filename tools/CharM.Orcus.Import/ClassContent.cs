@@ -63,11 +63,11 @@ public sealed class ClassContent
             if (curName != null)
             {
                 var txt = CollapseSpaces(buf.ToString());
-                cc.FeatureText[curName] = txt;
+                cc.FeatureText[NormKey(curName)] = txt;
                 // Also index without a trailing "(21st level)"/"(Level X)" tag, so a
                 // YAML element named "Second Nature" matches "Second Nature (21st level)".
-                var stripped = Regex.Replace(curName, @"\s*\([^)]*\)\s*$", "").Trim();
-                if (stripped.Length > 0 && stripped != curName && !cc.FeatureText.ContainsKey(stripped))
+                var stripped = NormKey(Regex.Replace(curName, @"\s*\([^)]*\)\s*$", "").Trim());
+                if (stripped.Length > 0 && stripped != NormKey(curName) && !cc.FeatureText.ContainsKey(stripped))
                     cc.FeatureText[stripped] = txt;
             }
             curName = null; buf.Clear();
@@ -91,7 +91,7 @@ public sealed class ClassContent
                     if (lines[j].TrimStart().StartsWith("<figure")) continue;
                     block.Add(lines[j]);
                 }
-                cc.FeaturePowers[pname] = Phase2.ParsePowerBlock(pname, block);
+                cc.FeaturePowers[NormKey(pname)] = Phase2.ParsePowerBlock(pname, block);
                 i = j - 1;
                 continue;
             }
@@ -134,16 +134,88 @@ public sealed class ClassContent
 
     /// <summary>Resolve a YAML element name (e.g. "Wild Gift: Skinchanger") to the
     /// source feature key ("Skinchanger").</summary>
+    public static string NormKey(string s) => s.Replace('’', '\'').Replace('‘', '\'').Trim();
+
     public string? ResolveFeatureKey(string yamlName)
     {
-        if (FeatureText.ContainsKey(yamlName)) return yamlName;
-        int idx = yamlName.LastIndexOf(": ", StringComparison.Ordinal);
+        var n = NormKey(yamlName);
+        if (FeatureText.ContainsKey(n)) return n;
+        int idx = n.LastIndexOf(": ", StringComparison.Ordinal);
         if (idx >= 0)
         {
-            var tail = yamlName[(idx + 2)..].Trim();
+            var tail = n[(idx + 2)..].Trim();
             if (FeatureText.ContainsKey(tail)) return tail;
         }
         return null;
+    }
+
+    public ParsedPower? GetPower(string yamlName) =>
+        FeaturePowers.TryGetValue(NormKey(yamlName), out var pw) ? pw : null;
+
+    /// <summary>Parse an entire book into a global feature/power/intro index, for
+    /// patching files whose elements come from many sections (kits, ancestries…).</summary>
+    public static ClassContent ParseAll(string sourceFile)
+    {
+        var lines = File.ReadAllLines(sourceFile);
+        var cc = new ClassContent();
+        string? curName = null;
+        var buf = new StringBuilder();
+
+        void Flush()
+        {
+            if (curName != null)
+            {
+                var txt = CollapseSpaces(buf.ToString());
+                if (txt.Length > 0)
+                {
+                    cc.FeatureText[NormKey(curName)] = txt;
+                    var stripped = NormKey(Regex.Replace(curName, @"\s*\([^)]*\)\s*$", "").Trim());
+                    if (stripped.Length > 0 && stripped != NormKey(curName) && !cc.FeatureText.ContainsKey(stripped))
+                        cc.FeatureText[stripped] = txt;
+                }
+            }
+            curName = null; buf.Clear();
+        }
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var raw = lines[i];
+            if (raw.TrimStart().StartsWith("<figure")) continue;
+            var mh4 = H4.Match(raw);
+            if (mh4.Success)
+            {
+                Flush();
+                string pname = HttpUtility.HtmlDecode(mh4.Groups[1].Value.Replace("*", "")).Trim();
+                int j = i + 1; var block = new List<string>();
+                for (; j < lines.Length; j++)
+                {
+                    if (H4.IsMatch(lines[j]) || Heading.IsMatch(lines[j])) break;
+                    if (lines[j].TrimStart().StartsWith("<figure")) continue;
+                    block.Add(lines[j]);
+                }
+                cc.FeaturePowers[NormKey(pname)] = Phase2.ParsePowerBlock(pname, block);
+                i = j - 1; continue;
+            }
+            var mhead = Heading.Match(raw);
+            if (mhead.Success)
+            {
+                Flush();
+                var name = HttpUtility.HtmlDecode(mhead.Groups[2].Value).Trim();
+                if (!SkipHeadings.Contains(name)) curName = name;
+                continue;
+            }
+            var mb = Bullet.Match(raw);
+            var ml = mb.Success ? mb : BoldLed.Match(raw);
+            if (ml.Success)
+            {
+                var name = HttpUtility.HtmlDecode(ml.Groups["n"].Value).Trim();
+                if (!SkipDefs.Contains(name)) { Flush(); curName = name; buf.Append(Unwrap(ml.Groups["r"].Value)); continue; }
+                Flush(); continue;
+            }
+            if (curName != null) { var t = Unwrap(raw); if (t.Length > 0) { if (buf.Length > 0) buf.Append(' '); buf.Append(t); } }
+        }
+        Flush();
+        return cc;
     }
 
     static bool Same(string a, string b)

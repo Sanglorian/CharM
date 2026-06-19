@@ -74,6 +74,16 @@ if (mode == "generate-boosts")
     return Boosts.Generate(advBook, outP);
 }
 
+if (mode == "patch-global")
+{
+    // patch-global <repo-root> <file.yaml> <bookGlob>
+    string gRoot2 = args[1];
+    string file2 = args[2];
+    string bookGlob = args[3];
+    string book2 = Directory.EnumerateFiles(gRoot2, bookGlob).First();
+    return ClassPatcher.PatchGlobal(book2, file2);
+}
+
 if (mode == "patch-class")
 {
     // patch-class <repo-root> <classFile.yaml> "<Class Name>"

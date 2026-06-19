@@ -108,6 +108,7 @@
     Special: >-
       Once you use this power, you cannot recover it except by taking a long
       rest.
+    Flavor: "You’re not tired. You’re just getting warmed up."
 # === Most Dangerous ===========================================================
 - id: ORCUS_EPIC_MOST_DANGEROUS
   name: Most Dangerous
@@ -157,6 +158,7 @@
     Keywords: "Martial"
     Target: "Self"
     Effect: "You gain two action points."
+    Flavor: "Your enemy will soon discover why your name is so feared."
 # === Respected ================================================================
 - id: ORCUS_EPIC_RESPECTED
   name: Respected
@@ -205,6 +207,9 @@
     Keywords: "Martial"
     Target: "Near burst 10, all allies"
     Effect: "The target regains one expended encounter power."
+    Flavor: >-
+      You make every ally in the battle know how you feel about defeat. You make
+      them fear you more than the enemy.
 # === Team =====================================================================
 - id: ORCUS_EPIC_TEAM
   name: Team
@@ -254,6 +259,7 @@
     Keywords: "Martial"
     Target: "Near burst 10, one ally"
     Effect: "The target takes one standard action."
+    Flavor: "You give an ally the precious time they need complete the task."
 # === Ultimate =================================================================
 - id: ORCUS_EPIC_ULTIMATE
   name: Ultimate
@@ -275,7 +281,7 @@
   name: "Why Won't You Die?"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "21", Description: "Attacks cannot score critical hits against you (you take normal damage instead)." }
+  fields: { Level: "21", Description: "Attacks cannot score critical hits against you (take normal damage)." }
 - id: ORCUS_FEATURE_GLORY_OF_THE_FIGHT
   name: Glory of the Fight
   type: Class Feature
