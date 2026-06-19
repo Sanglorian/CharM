@@ -12,7 +12,6 @@
     Domain: War
     Kit: "Worships the God of War"
     "Channel Divinity": "Shielded Soul"
-    Description: "A god devoted to conflict and combat. Worshippers gain the Art of War discipline and martial blessings."
 
 - id: ORCUS_DEITY_PEACE
   name: God of Peace
@@ -22,7 +21,6 @@
     Domain: Peace
     Kit: "Worships the God of Peace"
     "Channel Divinity": "Light Ward"
-    Description: "A god devoted to peace and protection. Worshippers ward and shield their allies."
 
 - id: ORCUS_DEITY_LIFE
   name: God of Life
@@ -32,7 +30,6 @@
     Domain: Life
     Kit: "Worships the God of Life"
     "Channel Divinity": "Guidance"
-    Description: "A god devoted to life and healing. Worshippers bolster their healing and guard the dying."
 
 - id: ORCUS_DEITY_TYRANNY
   name: God of Tyranny
@@ -42,4 +39,3 @@
     Domain: Tyranny
     Kit: "Worships the God of Tyranny"
     "Channel Divinity": "Spur On"
-    Description: "A god devoted to domination and pain. Worshippers cow their foes and drive their allies on."

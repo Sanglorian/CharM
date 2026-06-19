@@ -163,23 +163,22 @@
       type: Power
 
 - id: ORCUS_POWER_VENGEANCE_OF_THE_PIT
-  name: Vengeance of the Pit
+  name: Vengeance of the Pits
   type: Power
   source: "Orcus (Outlaw Kingdoms)"
   categories: [feature]
   fields:
-    "Power Usage": Encounter
-    "Action Type": Free Action
-    Keywords: Fire
-    "Power Type": Attack
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Fire"
     Target: "Near burst 10, one enemy"
     Trigger: "An attack by that enemy hits you."
-    Effect: >
+    Effect: >-
       The target takes 1d6 + Intelligence OR Charisma modifier fire damage.
       Level 11: 2d6 + Intelligence OR Charisma modifier. Level 21: 3d6 +
       Intelligence OR Charisma modifier.
-
-    Description: "You have the vengeance of the pit power."
 # === Catfolk ==================================================================
 - id: ORCUS_RACE_CATFOLK
   name: Catfolk

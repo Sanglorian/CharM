@@ -134,7 +134,13 @@ public sealed class ClassContent
 
     /// <summary>Resolve a YAML element name (e.g. "Wild Gift: Skinchanger") to the
     /// source feature key ("Skinchanger").</summary>
-    public static string NormKey(string s) => s.Replace('’', '\'').Replace('‘', '\'').Trim();
+    public static string NormKey(string s) =>
+        s.Replace('’', '\'').Replace('‘', '\'').Replace('–', '-').Replace('—', '-').Trim();
+
+    // Bold-def labels that, under an open feature heading, are part of that
+    // feature's text (e.g. a feat's "**Benefit:**" / "**Special:**" lines).
+    static readonly HashSet<string> ContinueDefs = new(StringComparer.OrdinalIgnoreCase)
+    { "Benefit", "Special", "Prerequisite", "Requirement", "Requirements" };
 
     public string? ResolveFeatureKey(string yamlName)
     {
@@ -209,6 +215,11 @@ public sealed class ClassContent
             if (ml.Success)
             {
                 var name = HttpUtility.HtmlDecode(ml.Groups["n"].Value).Trim();
+                if (ContinueDefs.Contains(name))
+                {
+                    if (curName != null) { var add = Unwrap(name + ": " + ml.Groups["r"].Value); if (buf.Length > 0) buf.Append(' '); buf.Append(add); }
+                    continue;
+                }
                 if (!SkipDefs.Contains(name)) { Flush(); curName = name; buf.Append(Unwrap(ml.Groups["r"].Value)); continue; }
                 Flush(); continue;
             }

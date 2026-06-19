@@ -55,7 +55,11 @@ public static class ClassPatcher
                 if (after != before) flavorsRemoved++;
                 var ikey = content.ResolveFeatureKey(name);
                 if (ikey != null && !string.IsNullOrWhiteSpace(content.FeatureText[ikey]))
-                { after = SetInlineDescription(after, content.FeatureText[ikey]); descsFixed++; }
+                {
+                    string fld = TargetField(type);
+                    after = SetInlineField(after, fld, StripLabel(fld, content.FeatureText[ikey]));
+                    descsFixed++;
+                }
                 block[inlineIdx] = after;
                 continue;
             }
@@ -81,7 +85,8 @@ public static class ClassPatcher
             {
                 var text = content.FeatureText[key];
                 if (string.IsNullOrWhiteSpace(text)) continue;
-                SetField(block, "Description", Phase2.EmitFieldLines("Description", text, 4));
+                string fld = TargetField(type);
+                SetField(block, fld, Phase2.EmitFieldLines(fld, StripLabel(fld, text), 4));
                 descsFixed++;
             }
         }
@@ -185,18 +190,22 @@ public static class ClassPatcher
         return s;
     }
 
-    static string SetInlineDescription(string line, string text)
+    static string SetInlineField(string line, string field, string text)
     {
         string q = "\"" + Esc(text) + "\"";
-        if (Regex.IsMatch(line, @"\bDescription:\s*""(?:[^""\\]|\\.)*"""))
-            return Regex.Replace(line, @"(\bDescription:\s*)""(?:[^""\\]|\\.)*""", "$1" + q.Replace("$", "$$"));
+        if (Regex.IsMatch(line, @"\b" + field + @":\s*""(?:[^""\\]|\\.)*"""))
+            return Regex.Replace(line, @"(\b" + field + @":\s*)""(?:[^""\\]|\\.)*""", "$1" + q.Replace("$", "$$"));
         // Insert before the closing brace.
         int brace = line.LastIndexOf('}');
         if (brace < 0) return line;
         string head = line.Substring(0, brace).TrimEnd();
         string sep = head.TrimEnd().EndsWith("{") ? " " : ", ";
-        return head + sep + "Description: " + q + " }";
+        return head + sep + field + ": " + q + " }";
     }
+
+    static string TargetField(string? type) => type == "Feat" ? "Benefit" : "Description";
+    static string StripLabel(string field, string text) =>
+        field == "Benefit" ? Regex.Replace(text, @"^Benefit:\s*", "") : text;
 
     static string? FieldValue(List<string> block, string topKey)
     {

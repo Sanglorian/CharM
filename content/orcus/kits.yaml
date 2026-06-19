@@ -132,7 +132,7 @@
   name: "Channel Divinity - Shielded Soul"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (War) feat." }
+  fields: { Level: "1", Description: "If you do not already have the ability to Channel Divinity, you gain the ability to Channel Divinity once per encounter, choosing any Channel Divinity power that you know. You also gain the Blessing of the God (War) feat." }
 - id: ORCUS_KITF_DISCIPLE_OF_WAR
   name: Disciple of War
   type: Class Feature
@@ -163,7 +163,7 @@
   name: "Channel Divinity - Light Ward"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Peace) feat." }
+  fields: { Level: "1", Description: "If you do not already have the ability to Channel Divinity, you gain the ability to Channel Divinity once per encounter, choosing any Channel Divinity power that you know. You also gain the Blessing of the God (Peace) feat." }
 - id: ORCUS_KITF_DISCIPLE_OF_PEACE
   name: Disciple of Peace
   type: Class Feature
@@ -193,7 +193,7 @@
   name: "Channel Divinity - Guidance"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Life) feat." }
+  fields: { Level: "1", Description: "If you do not already have the ability to Channel Divinity, you gain the ability to Channel Divinity once per encounter, choosing any Channel Divinity power that you know. You also gain the Blessing of the God (Life) feat." }
 - id: ORCUS_KITF_DISCIPLE_OF_LIFE
   name: Disciple of Life
   type: Class Feature
@@ -223,7 +223,7 @@
   name: "Channel Divinity - Spur On"
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "1", Description: "If you cannot already Channel Divinity, you gain it once per encounter (any Channel Divinity power you know). You also gain the Blessing of the God (Tyranny) feat." }
+  fields: { Level: "1", Description: "If you do not already have the ability to Channel Divinity, you gain the ability to Channel Divinity once per encounter, choosing any Channel Divinity power that you know. You also gain the Blessing of the God (Tyranny) feat." }
 - id: ORCUS_KITF_DISCIPLE_OF_TYRANNY
   name: Disciple of Tyranny
   type: Class Feature
