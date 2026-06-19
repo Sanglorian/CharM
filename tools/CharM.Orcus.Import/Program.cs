@@ -47,6 +47,15 @@ if (mode == "generate-discipline")
     return 0;
 }
 
+if (mode == "generate-boosts")
+{
+    // generate-boosts <repo-root> <out.yaml>
+    string bRoot = args[1];
+    string outP = args[2];
+    string advBook = Directory.EnumerateFiles(bRoot, "Orcus Advanced Options*.md").Single();
+    return Boosts.Generate(advBook, outP);
+}
+
 if (mode == "patch-class")
 {
     // patch-class <repo-root> <classFile.yaml> "<Class Name>"
