@@ -32,7 +32,6 @@
   fields:
     "Focus Type": "Holy symbol"
     "Item Slot": Neck
-    Description: "A representation of a god or pantheon. Channels divine powers with the Focus tag. Does not require a hand to use."
     Cost: "10 gp"
 
 - id: ORCUS_FOCUS_MARTIAL
@@ -41,7 +40,6 @@
   source: "Orcus (Outlaw Kingdoms)"
   fields:
     "Focus Type": "Martial focus"
-    Description: "An item that inspires or focuses the mind for battle (a banner, a book of strategies, hand wraps). Channels martial powers with the Focus tag. Does not require a hand to use."
     Cost: "10 gp"
 
 - id: ORCUS_FOCUS_ORB
@@ -51,7 +49,6 @@
   fields:
     "Focus Type": "Orb"
     "Item Slot": Main Hand
-    Description: "An arcane focus. Channels arcane powers with the Focus tag. Requires a hand to use."
     Cost: "15 gp"
 
 - id: ORCUS_FOCUS_WAND
@@ -61,5 +58,4 @@
   fields:
     "Focus Type": "Wand"
     "Item Slot": Main Hand
-    Description: "An arcane focus. Channels arcane powers with the Focus tag. Requires a hand to use."
     Cost: "15 gp"

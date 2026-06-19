@@ -1,293 +1,218 @@
-# Consumable magic items (Orcus Advanced Options). Consumables are one-use items;
-# they carry no passive stat bonus, so these are descriptive `Magic Item` elements
-# (Item Type: Consumable) with level and cost. Items that scale come in the six
-# +1..+6 versions at levels 1/6/11/16/21/26 (oils and tonics); the rest are
-# fixed-level (some with a few tiers).
+# Magic consumables (oils, potions, tonics, scrolls, …) (Orcus Advanced Options) — generated verbatim by
+# tools/CharM.Orcus.Import (generate-misc). Property is copied from the book;
+# Item Level/Cost are filled only for a clean single "*Level N*" (Cost from the
+# Magic Item Prices table). Ambiguous levels are left verbatim in Property with
+# no derived Level/Cost. Do not hand-edit; regenerate instead.
 
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_1
-  name: "Oil of Sharpness +1"
+- id: ORCUS_MAGIC_INCANTATION_SCROLL
+  name: "Incantation Scroll"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_2
-  name: "Oil of Sharpness +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_3
-  name: "Oil of Sharpness +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_4
-  name: "Oil of Sharpness +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_5
-  name: "Oil of Sharpness +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_SHARPNESS_6
-  name: "Oil of Sharpness +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Apply to a mundane weapon (standard action): it becomes an enchanted weapon with this bonus until the end of the encounter." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_1
-  name: "Tonic of Agility +1"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_2
-  name: "Tonic of Agility +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_3
-  name: "Tonic of Agility +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_4
-  name: "Tonic of Agility +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_5
-  name: "Tonic of Agility +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_AGILITY_6
-  name: "Tonic of Agility +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Swift action, lasts 5 minutes: +X item bonus to Reflex and Acrobatics; +1 speed; stand from prone as a free action (ends effect); reroll an Acrobatics check (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_1
-  name: "Tonic of Alertness +1"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_2
-  name: "Tonic of Alertness +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_3
-  name: "Tonic of Alertness +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_4
-  name: "Tonic of Alertness +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_5
-  name: "Tonic of Alertness +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ALERTNESS_6
-  name: "Tonic of Alertness +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Swift action, lasts 5 minutes: +X item bonus to Will and Perception; +1 item bonus to initiative." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_1
-  name: "Tonic of Endurance +1"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_2
-  name: "Tonic of Endurance +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_3
-  name: "Tonic of Endurance +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_4
-  name: "Tonic of Endurance +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_5
-  name: "Tonic of Endurance +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_ENDURANCE_6
-  name: "Tonic of Endurance +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Swift action, lasts 5 minutes: +X item bonus to Fortitude and Endure; resistance to poison 5 (10 at L11, 15 at L21); spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_1
-  name: "Tonic of Regeneration +1"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_2
-  name: "Tonic of Regeneration +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_3
-  name: "Tonic of Regeneration +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_4
-  name: "Tonic of Regeneration +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_5
-  name: "Tonic of Regeneration +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_REGENERATION_6
-  name: "Tonic of Regeneration +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Swift action, lasts 5 minutes: +X item bonus to recovery value and regeneration X; spend a recovery to heal (ends effect)." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_1
-  name: "Tonic of Strength +1"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "1", Cost: "14 gp", Enhancement: "+1", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_2
-  name: "Tonic of Strength +2"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "6", Cost: "72 gp", Enhancement: "+2", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_3
-  name: "Tonic of Strength +3"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "11", Cost: "360 gp", Enhancement: "+3", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_4
-  name: "Tonic of Strength +4"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "16", Cost: "1,800 gp", Enhancement: "+4", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_5
-  name: "Tonic of Strength +5"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "21", Cost: "9,000 gp", Enhancement: "+5", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_TONIC_OF_STRENGTH_6
-  name: "Tonic of Strength +6"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "26", Cost: "45,000 gp", Enhancement: "+6", Description: "Swift action, lasts 5 minutes: +X item bonus to melee damage rolls, Athletics and Strength checks." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEROISM_LEVEL_9
-  name: "Potion of Heroism (Level 9)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "9", Cost: "168 gp", Description: "Swift action: spend a recovery and un-expend one daily or encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEROISM_LEVEL_19
-  name: "Potion of Heroism (Level 19)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "19", Cost: "4,200 gp", Description: "Swift action: spend a recovery and un-expend one daily or encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEROISM_LEVEL_29
-  name: "Potion of Heroism (Level 29)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "29", Cost: "105,000 gp", Description: "Swift action: spend a recovery and un-expend one daily or encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_VITALITY_LEVEL_7
-  name: "Potion of Vitality (Level 7)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "7", Cost: "104 gp", Description: "Swift action: spend a recovery and un-expend one encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_VITALITY_LEVEL_17
-  name: "Potion of Vitality (Level 17)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "17", Cost: "2,600 gp", Description: "Swift action: spend a recovery and un-expend one encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_VITALITY_LEVEL_27
-  name: "Potion of Vitality (Level 27)"
-  type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "27", Cost: "65,000 gp", Description: "Swift action: spend a recovery and un-expend one encounter power (attack or utility) of the potion's level or lower." }
-
-- id: ORCUS_CONSUMABLE_OIL_OF_DULLNESS
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      An incantation scroll allows anyone to perform the incantation written on
+      it, whether they know the incantation already or not. An incantation
+      scroll is of the level of the incantation written on it, and its cost is
+      equal to that of a consumable item of the same level or the component cost
+      of the incantation (whichever is higher).
+- id: ORCUS_MAGIC_OIL_OF_DULLNESS
   name: "Oil of Dullness"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "5", Cost: "40 gp", Description: "Standard action: apply to a magic item; it becomes mundane (no magic) until thoroughly cleaned." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEALING
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "5"
+    Cost: "40 gp"
+    Property: >-
+      As a standard action, you can apply the oil to a magic item in your
+      possession. That item turns into a mundane item with no magical effects
+      until it is thoroughly cleaned.
+- id: ORCUS_MAGIC_OIL_OF_SHARPNESS
+  name: "Oil of Sharpness"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a standard action, you can apply the oil to a mundane weapon in
+      your possession. That item turns into an enchanted weapon, with a bonus
+      depending on the level of the oil of sharpness. The effect lasts until the
+      end of the encounter.
+- id: ORCUS_MAGIC_POTION_OF_HEALING
   name: "Potion of Healing"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "5", Cost: "40 gp", Description: "Swift action: the user spends a recovery and the target heals 10 HP." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEALING_AND_RESCUE
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "5"
+    Cost: "40 gp"
+    Property: >-
+      As a swift action, you can drink the potion or administer it to a creature
+      within reach. The user spends a recovery and the target heals 10 HP.
+- id: ORCUS_MAGIC_POTION_OF_HEALING_AND_RESCUE
   name: "Potion of Healing and Rescue"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "15", Cost: "1,000 gp", Description: "Swift action: the user spends a recovery; the target heals 25 HP and makes a saving throw against a save-ends effect." }
-
-- id: ORCUS_CONSUMABLE_POTION_OF_HEALING_AND_RESCUE_ADVANCED
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "1,000 gp"
+    Property: >-
+      As a swift action, you can drink the potion or administer it to a creature
+      within reach. The user spends a recovery and the target heals 25 HP and
+      makes one saving throw against a save ends effect.
+- id: ORCUS_MAGIC_POTION_OF_HEALING_AND_RESCUE_ADVANCED
   name: "Potion of Healing and Rescue (Advanced)"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "25", Cost: "25,000 gp", Description: "Swift action: the user spends a recovery; the target heals 50 HP and makes a saving throw against a save-ends effect." }
-
-- id: ORCUS_CONSUMABLE_SALVE_OF_RESURRECTION
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "25"
+    Cost: "25,000 gp"
+    Property: >-
+      As a swift action, you can drink the potion or administer it to a creature
+      within reach. The user spends a recovery and the target heals 50 HP and
+      makes one saving throw against a save ends effect.
+- id: ORCUS_MAGIC_POTION_OF_HEROISM
+  name: "Potion of Heroism"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 9, Level 19 or Level 29 As a swift action, you can drink the potion
+      or administer it to a creature within reach. The user spends a recovery
+      and chooses an expended daily or encounter power (attack or utility) of
+      the potion's level or lower. That power is no longer expended.
+- id: ORCUS_MAGIC_POTION_OF_VITALITY
+  name: "Potion of Vitality"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 7, Level 17 or Level 27 As a swift action, you can drink the potion
+      or administer it to a creature within reach. The user spends a recovery
+      and chooses an expended encounter power (attack or utility) of the
+      potion's level or lower. That power is no longer expended.
+- id: ORCUS_MAGIC_PRACTICE_MANUAL
+  name: "Practice Manual"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      A practice manual allows anyone to perform the practice written on it,
+      whether they know the practice already or not. A practice manual is of the
+      level of the practice written on it, and its cost is equal to that of a
+      consumable item of the same level or the component cost of the practice
+      (whichever is higher).
+- id: ORCUS_MAGIC_SALVE_OF_RESURRECTION
   name: "Salve of Resurrection"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "30", Cost: "125,000 gp", Description: "Standard action: apply to an adjacent creature that died within the last round; it is resurrected and healed 50 HP." }
-
-- id: ORCUS_CONSUMABLE_SKELETON_KEY
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "30"
+    Cost: "125,000 gp"
+    Property: >-
+      As a standard action, you can apply the salve to an adjacent creature that
+      died within the last round. That creature is resurrected and they are
+      healed 50 HP.
+- id: ORCUS_MAGIC_SKELETON_KEY
   name: "Skeleton Key"
   type: Magic Item
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { "Item Type": Consumable, "Item Level": "15", Cost: "1,000 gp", Description: "Swift action: insert into any lock; if it would open on a Sleight of Hand result of 30, it opens and the key turns to dust." }
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "1,000 gp"
+    Property: >-
+      As a swift action, you can insert the skeleton key into any lock. If the
+      lock would open with a Sleight of Hand result of 30, the lock opens and
+      the skeleton key turns to dust. Otherwise the lock remains closed, but the
+      skeleton key is unharmed.
+- id: ORCUS_MAGIC_TONIC_OF_AGILITY
+  name: "Tonic of Agility"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a swift action, you can drink the tonic or administer it to a
+      creature within reach. Its effect lasts for five minutes. Gain the listed
+      item bonus to Reflex defense and Acrobatics checks. Your speed increases
+      by 1. You can stand up from prone as a free action, but this immediately
+      ends the effects of the tonic. You can reroll an Acrobatics check and use
+      the result of your choice, but this immediately ends the effects of the
+      tonic.
+- id: ORCUS_MAGIC_TONIC_OF_ALERTNESS
+  name: "Tonic of Alertness"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a swift action, you can drink the tonic or administer it to a
+      creature within reach. Its effect lasts for five minutes. Gain the listed
+      item bonus to Will defense and Perception checks. You gain a +1 item bonus
+      to initiative.
+- id: ORCUS_MAGIC_TONIC_OF_ENDURANCE
+  name: "Tonic of Endurance"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a swift action, you can drink the tonic or administer it to a
+      creature within reach. Its effect lasts for five minutes. Gain the listed
+      item bonus to Fortitude defense and Endure checks. You gain resistance to
+      poison 5 (10 at level 11, 15 at level 21). You may spend a recovery to
+      heal your recovery value, but this immediately ends the effects of the
+      tonic.
+- id: ORCUS_MAGIC_TONIC_OF_REGENERATION
+  name: "Tonic of Regeneration"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a swift action, you can drink the tonic or administer it to a
+      creature within reach. Its effect lasts for five minutes. Gain the listed
+      item bonus to your recovery value. You gain regeneration equal to the
+      listed bonus. You can spend a recovery to heal your recovery value, but
+      this immediately ends the effects of the potion.
+- id: ORCUS_MAGIC_TONIC_OF_STRENGTH
+  name: "Tonic of Strength"
+  type: Magic Item
+  source: "Orcus (Outlaw Kingdoms)"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    Property: >-
+      Level 1: +1, Level 6: +2, Level 11: +3 Level 16: +4, Level 21: +5, Level
+      26: +6 As a swift action, you can drink the tonic or administer it to a
+      creature within reach. Its effect lasts for five minutes. Gain the listed
+      item bonus to melee damage rolls, Athletics checks and Strength ability
+      checks.

@@ -47,6 +47,16 @@ if (mode == "generate-discipline")
     return 0;
 }
 
+if (mode == "generate-misc")
+{
+    // generate-misc <repo-root>
+    string mRoot = args[1];
+    string adv = Directory.EnumerateFiles(mRoot, "Orcus Advanced Options*.md").Single();
+    return MiscItems.Generate(adv,
+        Path.Combine(mRoot, "content/orcus/equipment/magic-items-wondrous.yaml"),
+        Path.Combine(mRoot, "content/orcus/equipment/magic-items-consumables.yaml"));
+}
+
 if (mode == "generate-boosts")
 {
     // generate-boosts <repo-root> <out.yaml>

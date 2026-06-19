@@ -19,7 +19,7 @@
     Enhancement: "+1"
     "Item Level": "1"
     Cost: "360 gp"
-    Description: "+1 enhancement bonus to attack and damage rolls with that weapon; +1d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS1
   name: "Enchanted Focus +1"
@@ -31,7 +31,7 @@
     Enhancement: "+1"
     "Item Level": "1"
     Cost: "360 gp"
-    Description: "+1 enhancement bonus to attack and damage rolls with that focus; +1d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS1
   name: "Enchanted Armor +1"
@@ -43,7 +43,7 @@
     Enhancement: "+1"
     "Item Level": "1"
     Cost: "360 gp"
-    Description: "+1 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 1, bonusType: Enhancement }
 
@@ -57,7 +57,7 @@
     Enhancement: "+1"
     "Item Level": "1"
     Cost: "360 gp"
-    Description: "+1 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 1, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 1, bonusType: Enhancement }
@@ -73,7 +73,7 @@
     Enhancement: "+2"
     "Item Level": "6"
     Cost: "1,800 gp"
-    Description: "+2 enhancement bonus to attack and damage rolls with that weapon; +2d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS2
   name: "Enchanted Focus +2"
@@ -85,7 +85,7 @@
     Enhancement: "+2"
     "Item Level": "6"
     Cost: "1,800 gp"
-    Description: "+2 enhancement bonus to attack and damage rolls with that focus; +2d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS2
   name: "Enchanted Armor +2"
@@ -97,7 +97,7 @@
     Enhancement: "+2"
     "Item Level": "6"
     Cost: "1,800 gp"
-    Description: "+2 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 2, bonusType: Enhancement }
 
@@ -111,7 +111,7 @@
     Enhancement: "+2"
     "Item Level": "6"
     Cost: "1,800 gp"
-    Description: "+2 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 2, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 2, bonusType: Enhancement }
@@ -127,7 +127,7 @@
     Enhancement: "+3"
     "Item Level": "11"
     Cost: "9,000 gp"
-    Description: "+3 enhancement bonus to attack and damage rolls with that weapon; +3d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS3
   name: "Enchanted Focus +3"
@@ -139,7 +139,7 @@
     Enhancement: "+3"
     "Item Level": "11"
     Cost: "9,000 gp"
-    Description: "+3 enhancement bonus to attack and damage rolls with that focus; +3d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS3
   name: "Enchanted Armor +3"
@@ -151,7 +151,7 @@
     Enhancement: "+3"
     "Item Level": "11"
     Cost: "9,000 gp"
-    Description: "+3 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 3, bonusType: Enhancement }
 
@@ -165,7 +165,7 @@
     Enhancement: "+3"
     "Item Level": "11"
     Cost: "9,000 gp"
-    Description: "+3 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 3, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 3, bonusType: Enhancement }
@@ -181,7 +181,7 @@
     Enhancement: "+4"
     "Item Level": "16"
     Cost: "45,000 gp"
-    Description: "+4 enhancement bonus to attack and damage rolls with that weapon; +4d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS4
   name: "Enchanted Focus +4"
@@ -193,7 +193,7 @@
     Enhancement: "+4"
     "Item Level": "16"
     Cost: "45,000 gp"
-    Description: "+4 enhancement bonus to attack and damage rolls with that focus; +4d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS4
   name: "Enchanted Armor +4"
@@ -205,7 +205,7 @@
     Enhancement: "+4"
     "Item Level": "16"
     Cost: "45,000 gp"
-    Description: "+4 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 4, bonusType: Enhancement }
 
@@ -219,7 +219,7 @@
     Enhancement: "+4"
     "Item Level": "16"
     Cost: "45,000 gp"
-    Description: "+4 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 4, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 4, bonusType: Enhancement }
@@ -235,7 +235,7 @@
     Enhancement: "+5"
     "Item Level": "21"
     Cost: "225,000 gp"
-    Description: "+5 enhancement bonus to attack and damage rolls with that weapon; +5d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS5
   name: "Enchanted Focus +5"
@@ -247,7 +247,7 @@
     Enhancement: "+5"
     "Item Level": "21"
     Cost: "225,000 gp"
-    Description: "+5 enhancement bonus to attack and damage rolls with that focus; +5d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS5
   name: "Enchanted Armor +5"
@@ -259,7 +259,7 @@
     Enhancement: "+5"
     "Item Level": "21"
     Cost: "225,000 gp"
-    Description: "+5 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 5, bonusType: Enhancement }
 
@@ -273,7 +273,7 @@
     Enhancement: "+5"
     "Item Level": "21"
     Cost: "225,000 gp"
-    Description: "+5 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 5, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 5, bonusType: Enhancement }
@@ -289,7 +289,7 @@
     Enhancement: "+6"
     "Item Level": "26"
     Cost: "1,125,000 gp"
-    Description: "+6 enhancement bonus to attack and damage rolls with that weapon; +6d6 damage on a critical hit. (Bindings enchant unarmed/natural attacks the same way.)"
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that weapon. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_FOCUS_PLUS6
   name: "Enchanted Focus +6"
@@ -301,7 +301,7 @@
     Enhancement: "+6"
     "Item Level": "26"
     Cost: "1,125,000 gp"
-    Description: "+6 enhancement bonus to attack and damage rolls with that focus; +6d6 damage on a critical hit."
+    Description: "+X enhancement bonus to attack rolls and damage rolls with that focus. On a critical hit, do a further +Xd6 damage."
 
 - id: ORCUS_MAGIC_ARMOR_PLUS6
   name: "Enchanted Armor +6"
@@ -313,7 +313,7 @@
     Enhancement: "+6"
     "Item Level": "26"
     Cost: "1,125,000 gp"
-    Description: "+6 enhancement bonus to Armor Class. Light armor gives +1 more in the prestige tier and +1 again in the epic tier; heavy armor gives double this bonus."
+    Description: "At least a +X enhancement bonus to Armor Class while wearing that armor."
   rules:
     - { statadd: AC, value: 6, bonusType: Enhancement }
 
@@ -327,7 +327,7 @@
     Enhancement: "+6"
     "Item Level": "26"
     Cost: "1,125,000 gp"
-    Description: "+6 enhancement bonus to Fortitude, Reflex and Will defenses. Includes amulets, necklaces and talismans."
+    Description: "Cloaks or amulets worn about the neck, which increase Fortitude, Reflex and Will defenses."
   rules:
     - { statadd: Fortitude Defense, value: 6, bonusType: Enhancement }
     - { statadd: Reflex Defense, value: 6, bonusType: Enhancement }
