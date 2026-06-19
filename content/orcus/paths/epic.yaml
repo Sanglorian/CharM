@@ -26,17 +26,17 @@
   name: Appropriation
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "21", Description: "After a long rest, choose any magic item of your level or lower; it appears under your bedroll, ready for use, and disappears when you begin your next long rest. The item is summoned, not created." }
+  fields: { Level: "21", Description: "Each night, you dream of a magic item. After a long rest, choose any magic item of your level or lower. That magic item appears under your bedroll, ready for use. It disappears when you begin your next long rest. The magic item is not created, it is summoned. The GM may want to identify which creature’s possession the magic item was summoned from, and whether there are any hints to your identity when it arrives back in their possession the following day." }
 - id: ORCUS_FEATURE_INTERPLANAR_CONTINGENCIES
   name: Interplanar Contingencies
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "24", Description: "Once per day, when you die, you appear the following round with half your maximum HP and slowed, in an unoccupied space at least 6 squares from your body, with copies of your equipment. Merge the bodies with a swift action while adjacent to your corpse." }
+  fields: { Level: "24", Description: "Once per day, when you die, you appear the following round on your initiative count with half your maximum HP and under the slowed condition, in an unoccupied space of your choice at least 6 squares from your dead body. You cannot use any attack powers or recoveries, but you can make basic attacks and you have all the equipment and magic items that were on your person when you died. The equipment and magic items that are actually on your body become shimmering and insubstantial, and cannot be used or picked up. When you are adjacent to your corpse, you can use a swift action to merge the old and new bodies. You can now use attack powers and recoveries, although you do not recover any powers or recoveries that were already spent. You lose the slowed condition, but otherwise keep the HP and any conditions, persistent damage, etc., of your new body. Choose which square your merged body appears in." }
 - id: ORCUS_FEATURE_THE_ECONOMIC_FLOW
   name: The Economic Flow
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "30", Description: "If something is for sale anywhere in the planes, you can purchase it as a free action; the object appears and the payment (which must be on your person) disappears." }
+  fields: { Level: "30", Description: "You are at the center of a vast trade network. If something is for sale anywhere in the planes, for any price, you can purchase it with a snap of your fingers (free action). The object appears in your hand or on your person, if feasible, or otherwise in the nearest unoccupied space(s) that can hold it. The payment price must be on your person (for example, a pouch of gold pieces on your belt) – it disappears at the same time as the purchased object appears." }
 
 - id: ORCUS_POWER_FORCE_SPHERE
   name: Force Sphere
@@ -83,12 +83,12 @@
   name: Against the Laws of Physics
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "24", Description: "Pick one of your daily utility powers. It is now an encounter power." }
+  fields: { Level: "24", Description: "Pick one your daily utility powers. It is now an encounter power." }
 - id: ORCUS_FEATURE_BEYOND_IMPOSSIBLE
   name: Beyond Impossible
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "30", Description: "Spend a recovery as a swift action but regain no hit points; instead, gain a +20 power bonus to your next skill roll with the skill you selected with Out of Anyone's League." }
+  fields: { Level: "30", Description: "Spend a recovery as a swift action but regain no hit points; instead, you gain a +20 power bonus to your next skill roll with the skill you selected with Out of Anyone’s League." }
 
 - id: ORCUS_POWER_PIONEER
   name: Pioneer
@@ -132,12 +132,12 @@
   name: Second Nature
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "21", Description: "You reroll natural 1s and 2s on attack rolls and skill checks, but must take the second result even if it is another 1 or a 2." }
+  fields: { Level: "21", Description: "You reroll natural 1s and 2s on attack rolls and skill checks, but you must take the second result even if it is another 1 or a 2." }
 - id: ORCUS_FEATURE_IMPLAUSIBLE_SPEED
   name: Implausible Speed
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "24", Description: "You can use two action points per encounter, and gain two action points when you reach a streak. You cannot use more than one action point per round." }
+  fields: { Level: "24", Description: "You can use two action points per encounter and if you reach a streak, you gain two action points. You cannot use more than one action point per round." }
 - id: ORCUS_FEATURE_VORPAL_WAYS
   name: Vorpal Ways
   type: Class Feature
@@ -185,12 +185,12 @@
   name: Sacrifice Play
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "24", Description: "As an immediate reaction once per encounter, when an ally is reduced below 0 hit points, you can grant any other ally in line of sight a standard, a move and a swift action." }
+  fields: { Level: "24", Description: "As an immediate (react) action once per encounter, when an ally is reduced to below 0 hit points, you can grant any other ally in line of sight a standard , a move, and a swift action." }
 - id: ORCUS_FEATURE_MASTER_TACTICIAN
   name: Master Tactician
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "30", Description: "Once per encounter, as a standard action, give one swift, one move and one standard action to be split among up to three allies of your choice in line of sight." }
+  fields: { Level: "30", Description: "Once per encounter, as a standard action, you can give one swift action, one move action, and one standard action to be split among up to three allies of your choice in line of sight." }
 
 - id: ORCUS_POWER_NOT_TOLERATE_LOSING
   name: Not Tolerate Losing
@@ -229,12 +229,12 @@
   name: Team Support
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "21", Description: "Each time you spend a recovery for any purpose, choose one ally within line of sight; that ally immediately saves against one effect a save can end (except dying)." }
+  fields: { Level: "21", Description: "Each time you spend a recovery for any purpose, choose one ally within line of sight. The ally immediately saves against one effect a save can end (except dying)." }
 - id: ORCUS_FEATURE_WHERE_THE_NEED_IS_GREATEST
   name: Where the Need is Greatest
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "24", Description: "As a swift action, choose an ally (or yourself) to lose one recovery; then choose an ally (or yourself) to gain one recovery." }
+  fields: { Level: "24", Description: "As a swift action, choose an ally (or yourself). The target loses one recovery. If you do so, choose an ally (or yourself). The target gains one recovery." }
 - id: ORCUS_FEATURE_BROTHERS_AND_SISTERS_OF_BLOOD
   name: Brothers and Sisters of Blood
   type: Class Feature
@@ -285,7 +285,7 @@
   name: Risky Maneuver
   type: Class Feature
   source: "Orcus (Outlaw Kingdoms)"
-  fields: { Level: "30", Description: "As a swift action, reduce all your defense values to 1 until the start of your next turn. On your next turn, the first attack you make is an automatic critical hit." }
+  fields: { Level: "30", Description: "As a swift action, you can reduce all your defense values to 1 until the start of your next turn. On your next turn, the first attack you make is an automatic critical hit." }
 
 - id: ORCUS_POWER_LASTING_IMAGE
   name: Lasting Image

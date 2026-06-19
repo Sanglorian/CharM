@@ -2,7 +2,7 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1557
-- Prose fields scanned: 4047; flagged: 59
+- Prose fields scanned: 4047; flagged: 47
 - Flavor fields: 401 faithful, 1 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
@@ -126,36 +126,8 @@ source book. Such text was reworded, fabricated, or otherwise altered.
 ```
 ### paths/epic.yaml
 ```
-  [Class Feature] Appropriation — field 'Description':
-      ✗ it appears under your bedroll, ready for use, and disappears when you begin your next long rest
-      ✗ The item is summoned, not created
-  [Class Feature] Interplanar Contingencies — field 'Description':
-      ✗ Once per day, when you die, you appear the following round with half your maximum HP and slowed, in an unoccupied space at least 6 squares from your body, with copies of your equipment
-      ✗ Merge the bodies with a swift action while adjacent to your corpse
-  [Class Feature] The Economic Flow — field 'Description':
-      ✗ If something is for sale anywhere in the planes, you can purchase it as a free action
-      ✗ the object appears and the payment (which must be on your person) disappears
-  [Class Feature] Against the Laws of Physics — field 'Description':
-      ✗ Pick one of your daily utility powers
-  [Class Feature] Beyond Impossible — field 'Description':
-      ✗ instead, gain a +20 power bonus to your next skill roll with the skill you selected with Out of Anyone's League
-  [Class Feature] Second Nature — field 'Description':
-      ✗ You reroll natural 1s and 2s on attack rolls and skill checks, but must take the second result even if it is another 1 or a 2
-  [Class Feature] Implausible Speed — field 'Description':
-      ✗ You can use two action points per encounter, and gain two action points when you reach a streak
-  [Class Feature] Sacrifice Play — field 'Description':
-      ✗ As an immediate reaction once per encounter, when an ally is reduced below 0 hit points, you can grant any other ally in line of sight a standard, a move and a swift action
-  [Class Feature] Master Tactician — field 'Description':
-      ✗ Once per encounter, as a standard action, give one swift, one move and one standard action to be split among up to three allies of your choice in line of sight
-  [Class Feature] Team Support — field 'Description':
-      ✗ that ally immediately saves against one effect a save can end (except dying)
-  [Class Feature] Where the Need is Greatest — field 'Description':
-      ✗ As a swift action, choose an ally (or yourself) to lose one recovery
-      ✗ then choose an ally (or yourself) to gain one recovery
   [Class Feature] Why Won't You Die? — field 'Description':
       ✗ Attacks cannot score critical hits against you (you take normal damage instead)
-  [Class Feature] Risky Maneuver — field 'Description':
-      ✗ As a swift action, reduce all your defense values to 1 until the start of your next turn
 ```
 
 ## Coverage — transcribed vs source, by discipline

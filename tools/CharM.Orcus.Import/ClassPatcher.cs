@@ -41,6 +41,20 @@ public static class ClassPatcher
             string cats = RawLine(block, "categories") ?? "";
             if (name == null) continue;
 
+            // Inline flow-mapping form: `  fields: { Level: "21", Description: "..." }`.
+            int inlineIdx = block.FindIndex(l => Regex.IsMatch(l, @"^\s*fields:\s*\{"));
+            if (inlineIdx >= 0)
+            {
+                string before = block[inlineIdx];
+                string after = RemoveInlineField(before, "Flavor");
+                if (after != before) flavorsRemoved++;
+                var ikey = content.ResolveFeatureKey(name);
+                if (ikey != null && !string.IsNullOrWhiteSpace(content.FeatureText[ikey]))
+                { after = SetInlineDescription(after, content.FeatureText[ikey]); descsFixed++; }
+                block[inlineIdx] = after;
+                continue;
+            }
+
             if (RemoveField(block, "Flavor")) flavorsRemoved++;
 
             bool isFeaturePower = type == "Power" && cats.Contains("feature");
@@ -154,6 +168,29 @@ public static class ClassPatcher
     {
         var l = block.FirstOrDefault(x => x.TrimStart().StartsWith(key + ":"));
         return l;
+    }
+
+    static string Esc(string v) => v.Replace("\\", "\\\\").Replace("\"", "\\\"");
+
+    static string RemoveInlineField(string line, string key)
+    {
+        // Drop `key: "..."` (with an adjacent comma) from an inline flow map.
+        string s = Regex.Replace(line, @"\s*,?\s*" + Regex.Escape(key) + @":\s*""(?:[^""\\]|\\.)*""", "");
+        s = s.Replace("{ ,", "{").Replace("{,", "{");
+        return s;
+    }
+
+    static string SetInlineDescription(string line, string text)
+    {
+        string q = "\"" + Esc(text) + "\"";
+        if (Regex.IsMatch(line, @"\bDescription:\s*""(?:[^""\\]|\\.)*"""))
+            return Regex.Replace(line, @"(\bDescription:\s*)""(?:[^""\\]|\\.)*""", "$1" + q.Replace("$", "$$"));
+        // Insert before the closing brace.
+        int brace = line.LastIndexOf('}');
+        if (brace < 0) return line;
+        string head = line.Substring(0, brace).TrimEnd();
+        string sep = head.TrimEnd().EndsWith("{") ? " " : ", ";
+        return head + sep + "Description: " + q + " }";
     }
 
     static string? FieldValue(List<string> block, string topKey)
