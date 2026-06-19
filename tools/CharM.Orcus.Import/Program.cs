@@ -47,6 +47,14 @@ if (mode == "generate-discipline")
     return 0;
 }
 
+if (mode == "generate-companions")
+{
+    // generate-companions <repo-root>
+    string cRoot = args[1];
+    string cp = Directory.EnumerateFiles(cRoot, "Orcus Classes and Powers*.md").Single();
+    return CompanionGen.Generate(cp, Path.Combine(cRoot, "content/orcus/companions.yaml"));
+}
+
 if (mode == "generate-misc")
 {
     // generate-misc <repo-root>

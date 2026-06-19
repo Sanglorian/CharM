@@ -2,7 +2,7 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1557
-- Prose fields scanned: 4052; flagged: 86
+- Prose fields scanned: 4050; flagged: 71
 - Flavor fields: 402 faithful, 3 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
@@ -71,54 +71,6 @@ source book. Such text was reworded, fabricated, or otherwise altered.
       ✗ Your family belonged to a forbidden religion, exposing you to constant persecution
   [Power] Barrel Along — field 'Effect':
       ✗ You gain a +2 bonus to speed and to damage rolls until the end of the encounter
-```
-### companions.yaml
-```
-  [Companion] Ape — field 'Attack':
-      ✗ Stone (ranged 5/10): your level +4 vs AC, 1d8 + your level
-  [Companion] Ape — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ Could also be a yeti
-  [Companion] Arboreal Sapling — field 'Attack':
-      ✗ Branch (standard, at-will): your level +3 vs AC, 1d10 + your level
-  [Companion] Arboreal Sapling — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ Could also be a wood golem
-  [Companion] Bear — field 'Description':
-      ✗ Sturdy: starts each battle with temporary HP equal to double its level
-      ✗ AC/defenses are the listed value + your level
-  [Companion] Big Cat — field 'Description':
-      ✗ Greased Lightning: on the first round, combat advantage against any creature that has not yet acted
-      ✗ AC/defenses are the listed value + your level
-      ✗ A lion, tiger, jaguar, leopard or cougar
-  [Companion] Blink Dog — field 'Description':
-      ✗ Jolt Back: after being hit by an attack, it can teleport 2
-      ✗ AC/defenses are the listed value + your level
-  [Companion] Bull — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ A bull, buffalo, cow, yak or boar
-  [Companion] Giant Bat — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-  [Companion] Giant Lizard — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ A cave gecko, giant iguana
-  [Companion] Giant Raptor — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ A hawk, eagle, owl or falcon
-  [Companion] Giant Snake — field 'Description':
-      ✗ Venomous Snap: opportunity attacks also deal 2 persistent poison (save ends)
-      ✗ 4 at level 11, 6 at level 21
-      ✗ AC/defenses are the listed value + your level
-      ✗ A venomous snake, spider, toad or Gila monster
-  [Companion] Horse — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-  [Companion] Hound — field 'Description':
-      ✗ Combat Advantage: +2 damage when it has combat advantage
-      ✗ +4 at level 11, +6 at level 21
-      ✗ AC/defenses are the listed value + your level
-  [Companion] Hunting Spider — field 'Description':
-      ✗ AC/defenses are the listed value + your level
-      ✗ A web-throwing spider, chameleon or giant frog
 ```
 ### deities.yaml
 ```
