@@ -6,7 +6,7 @@
 - id: ORCUS_WEAPON_DART
   name: "Dart"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -22,7 +22,7 @@
 - id: ORCUS_WEAPON_KNIFE
   name: "Knife"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -38,7 +38,7 @@
 - id: ORCUS_WEAPON_CLUB
   name: "Club"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -53,7 +53,7 @@
 - id: ORCUS_WEAPON_SHORTSPEAR
   name: "Shortspear"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -68,7 +68,7 @@
 - id: ORCUS_WEAPON_SICKLE
   name: "Sickle"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -83,7 +83,7 @@
 - id: ORCUS_WEAPON_GREATCLUB
   name: "Greatclub"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -98,7 +98,7 @@
 - id: ORCUS_WEAPON_QUARTERSTAFF
   name: "Quarterstaff"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -113,7 +113,7 @@
 - id: ORCUS_WEAPON_SCYTHE
   name: "Scythe"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Simple Melee"
@@ -128,7 +128,7 @@
 - id: ORCUS_WEAPON_FORK
   name: "Fork"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -144,7 +144,7 @@
 - id: ORCUS_WEAPON_HANDAXE
   name: "Handaxe"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -160,7 +160,7 @@
 - id: ORCUS_WEAPON_JUGGLING_CLUB
   name: "Juggling club"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -176,7 +176,7 @@
 - id: ORCUS_WEAPON_LIGHT_PICK
   name: "Light pick"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -192,7 +192,7 @@
 - id: ORCUS_WEAPON_SHORTSWORD
   name: "Shortsword"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -208,7 +208,7 @@
 - id: ORCUS_WEAPON_BATTLEAXE
   name: "Battleaxe"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -223,7 +223,7 @@
 - id: ORCUS_WEAPON_LIGHT_FLAIL
   name: "Light flail"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -239,7 +239,7 @@
 - id: ORCUS_WEAPON_LIGHT_MACE
   name: "Light mace"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -254,7 +254,7 @@
 - id: ORCUS_WEAPON_LONGSWORD
   name: "Longsword"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -269,7 +269,7 @@
 - id: ORCUS_WEAPON_RAPIER
   name: "Rapier"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -284,7 +284,7 @@
 - id: ORCUS_WEAPON_WARHAMMER
   name: "Warhammer"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -300,7 +300,7 @@
 - id: ORCUS_WEAPON_BO_STAFF
   name: "Bo staff"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -316,7 +316,7 @@
 - id: ORCUS_WEAPON_GLAIVE
   name: "Glaive"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -332,7 +332,7 @@
 - id: ORCUS_WEAPON_GREATAXE
   name: "Greataxe"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -347,7 +347,7 @@
 - id: ORCUS_WEAPON_GREATSWORD
   name: "Greatsword"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -362,7 +362,7 @@
 - id: ORCUS_WEAPON_HALBERD
   name: "Halberd"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -378,7 +378,7 @@
 - id: ORCUS_WEAPON_HEAVY_FLAIL
   name: "Heavy flail"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -394,7 +394,7 @@
 - id: ORCUS_WEAPON_HEAVY_MACE
   name: "Heavy mace"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -409,7 +409,7 @@
 - id: ORCUS_WEAPON_LONGSPEAR
   name: "Longspear"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -425,7 +425,7 @@
 - id: ORCUS_WEAPON_MAUL
   name: "Maul"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Martial Melee"
@@ -441,7 +441,7 @@
 - id: ORCUS_WEAPON_KUKRI
   name: "Kukri"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -457,7 +457,7 @@
 - id: ORCUS_WEAPON_NUNCHAKU
   name: "Nunchaku"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -473,7 +473,7 @@
 - id: ORCUS_WEAPON_DWARVEN_SPEAR_AXE
   name: "Dwarven spear-axe"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -488,7 +488,7 @@
 - id: ORCUS_WEAPON_HOOKED_HAMMER
   name: "Hooked hammer"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -504,7 +504,7 @@
 - id: ORCUS_WEAPON_KHOPESH
   name: "Khopesh"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -519,7 +519,7 @@
 - id: ORCUS_WEAPON_SPIKED_CHAIN
   name: "Spiked chain"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -535,7 +535,7 @@
 - id: ORCUS_WEAPON_TWO_BLADED_SWORD
   name: "Two-bladed sword"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Exotic Melee"
@@ -550,7 +550,7 @@
 - id: ORCUS_WEAPON_LIGHT_CROSSBOW
   name: "Light crossbow"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Simple Ranged"
@@ -567,7 +567,7 @@
 - id: ORCUS_WEAPON_SLING
   name: "Sling"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Simple Ranged"
@@ -584,7 +584,7 @@
 - id: ORCUS_WEAPON_HEAVY_CROSSBOW
   name: "Heavy crossbow"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Simple Ranged"
@@ -601,7 +601,7 @@
 - id: ORCUS_WEAPON_LONGBOW
   name: "Longbow"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Martial]
   fields:
     "Weapon Category": "Martial Ranged"
@@ -618,7 +618,7 @@
 - id: ORCUS_WEAPON_COMPOSITE_BOW
   name: "Composite bow"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Exotic]
   fields:
     "Weapon Category": "Exotic Ranged"
@@ -635,7 +635,7 @@
 - id: ORCUS_WEAPON_DIRE_CROSSBOW
   name: "Dire crossbow"
   type: Weapon
-  source: "Orcus Original"
+  source: "Orcus Basic"
   categories: [Ranged, Exotic]
   fields:
     "Weapon Category": "Exotic Ranged"

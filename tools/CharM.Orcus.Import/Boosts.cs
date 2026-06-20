@@ -143,7 +143,11 @@ public static class Boosts
             sb.AppendLine($"  type: Magic Item");
             sb.AppendLine($"  source: \"Orcus Original\"");
             sb.AppendLine($"  fields:");
-            sb.AppendLine($"    \"Item Slot\": {cat.Slot}");
+            // Weapon/Armor boosts are enchantments (require a base) — they leave
+            // Item Slot empty so the magic-item builder pairs them with a base.
+            // Focus/Neck boosts are standalone slot items and keep their slot.
+            if (cat.Type != "Weapon" && cat.Type != "Armor")
+                sb.AppendLine($"    \"Item Slot\": {cat.Slot}");
             sb.AppendLine($"    \"Magic Item Type\": {cat.Type}");
             sb.AppendLine($"    Enhancement: \"+{x}\"");
             sb.AppendLine($"    \"Item Level\": \"{level}\"");

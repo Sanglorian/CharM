@@ -14,7 +14,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "1"
@@ -38,7 +37,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "1"
@@ -68,7 +66,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "6"
@@ -92,7 +89,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "6"
@@ -122,7 +118,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "11"
@@ -146,7 +141,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "11"
@@ -176,7 +170,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "16"
@@ -200,7 +193,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "16"
@@ -230,7 +222,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "21"
@@ -254,7 +245,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "21"
@@ -284,7 +274,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "26"
@@ -308,7 +297,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "26"

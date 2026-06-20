@@ -53,7 +53,7 @@ for x in weapons:
     w.append(f"- id: {wid}")
     w.append(f"  name: {q(x['name'])}")
     w.append(f"  type: Weapon")
-    w.append(f'  source: "Orcus Original"')
+    w.append(f'  source: "Orcus Basic"')
     w.append(f"  categories: [{x['kind']}, {x['tier']}]")
     w.append(f"  fields:")
     w.append(f'    "Weapon Category": {q(x["cat"])}')
@@ -76,7 +76,7 @@ p=["# Weapon & armor proficiencies. Weapon part generated from Basic.html by",
 p.append("# === Weapon proficiency elements ==============================================")
 for x in weapons:
     pid="ORCUS_WPROF_"+slug(x["name"])
-    p.append(f'- {{ id: {pid}, name: "Weapon Proficiency ({x["name"]})", type: Proficiency, source: "Orcus Original" }}')
+    p.append(f'- {{ id: {pid}, name: "Weapon Proficiency ({x["name"]})", type: Proficiency, source: "Orcus Basic" }}')
 p.append("")
 # bundles by category
 bundles={"Simple Melee":"ORCUS_PROFGRANT_SIMPLE_MELEE","Martial Melee":"ORCUS_PROFGRANT_MARTIAL_MELEE",
@@ -91,7 +91,7 @@ for cat,bid in bundles.items():
     p.append(f"- id: {bid}")
     p.append(f'  name: "{names[cat]} Weapon Proficiency"')
     p.append(f"  type: Grants")
-    p.append(f'  source: "Orcus Original"')
+    p.append(f'  source: "Orcus Basic"')
     p.append(f"  rules:")
     for x in members:
         p.append(f'    - {{ grant: ORCUS_WPROF_{slug(x["name"])}, type: Proficiency }}')

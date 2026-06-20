@@ -1500,7 +1500,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "2"
@@ -1519,7 +1518,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "7"
@@ -1538,7 +1536,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "12"
@@ -1557,7 +1554,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "17"
@@ -1576,7 +1572,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "22"
@@ -1595,7 +1590,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "27"
@@ -1614,7 +1608,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "3"
@@ -1628,7 +1621,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "8"
@@ -1642,7 +1634,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "13"
@@ -1656,7 +1647,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "18"
@@ -1670,7 +1660,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "23"
@@ -1684,7 +1673,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "28"
@@ -1698,7 +1686,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "4"
@@ -1710,7 +1697,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "9"
@@ -1722,7 +1708,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "14"
@@ -1734,7 +1719,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "19"
@@ -1746,7 +1730,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "24"
@@ -1758,7 +1741,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "29"
@@ -1770,7 +1752,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "5"
@@ -1787,7 +1768,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "10"
@@ -1804,7 +1784,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "15"
@@ -1821,7 +1800,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "20"
@@ -1838,7 +1816,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "25"
@@ -1855,7 +1832,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "30"
@@ -1872,7 +1848,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "4"
@@ -1887,7 +1862,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "9"
@@ -1902,7 +1876,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "14"
@@ -1917,7 +1890,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "19"
@@ -1932,7 +1904,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "24"
@@ -1947,7 +1918,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "29"
@@ -1962,7 +1932,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "4"
@@ -1978,7 +1947,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "9"
@@ -1994,7 +1962,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "14"
@@ -2010,7 +1977,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "19"
@@ -2026,7 +1992,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "24"
@@ -2042,7 +2007,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "29"
@@ -2058,7 +2022,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "5"
@@ -2078,7 +2041,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "10"
@@ -2098,7 +2060,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "15"
@@ -2118,7 +2079,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "20"
@@ -2138,7 +2098,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "25"
@@ -2158,7 +2117,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "30"
@@ -2178,7 +2136,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "5"
@@ -2196,7 +2153,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "10"
@@ -2214,7 +2170,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "15"
@@ -2232,7 +2187,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "20"
@@ -2250,7 +2204,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "25"
@@ -2268,7 +2221,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "30"
@@ -2286,7 +2238,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "2"
@@ -2301,7 +2252,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "7"
@@ -2316,7 +2266,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "12"
@@ -2331,7 +2280,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "17"
@@ -2346,7 +2294,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "22"
@@ -2361,7 +2308,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "27"
@@ -2376,7 +2322,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "4"
@@ -2392,7 +2337,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "9"
@@ -2408,7 +2352,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "14"
@@ -2424,7 +2367,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "19"
@@ -2440,7 +2382,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "24"
@@ -2456,7 +2397,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "29"
@@ -2472,7 +2412,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "5"
@@ -2487,7 +2426,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "10"
@@ -2502,7 +2440,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "15"
@@ -2517,7 +2454,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "20"
@@ -2532,7 +2468,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "25"
@@ -2547,7 +2482,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "30"
@@ -2562,7 +2496,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "3"
@@ -2575,7 +2508,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "8"
@@ -2588,7 +2520,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "13"
@@ -2601,7 +2532,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "18"
@@ -2614,7 +2544,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "23"
@@ -2627,7 +2556,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "28"
@@ -2640,7 +2568,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "2"
@@ -2659,7 +2586,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "7"
@@ -2678,7 +2604,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "12"
@@ -2697,7 +2622,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "17"
@@ -2716,7 +2640,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "22"
@@ -2735,7 +2658,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "27"
@@ -2754,7 +2676,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "2"
@@ -2766,7 +2687,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "7"
@@ -2778,7 +2698,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "12"
@@ -2790,7 +2709,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "17"
@@ -2802,7 +2720,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "22"
@@ -2814,7 +2731,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "27"
@@ -2826,7 +2742,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "20"
@@ -2847,7 +2762,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "25"
@@ -2868,7 +2782,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "30"
@@ -2889,7 +2802,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "3"
@@ -2905,7 +2817,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "8"
@@ -2921,7 +2832,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "13"
@@ -2937,7 +2847,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "18"
@@ -2953,7 +2862,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "23"
@@ -2969,7 +2877,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "28"
@@ -2985,7 +2892,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+1"
     "Item Level": "3"
@@ -2999,7 +2905,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+2"
     "Item Level": "8"
@@ -3013,7 +2918,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+3"
     "Item Level": "13"
@@ -3027,7 +2931,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+4"
     "Item Level": "18"
@@ -3041,7 +2944,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+5"
     "Item Level": "23"
@@ -3055,7 +2957,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Weapon
     "Magic Item Type": Weapon
     Enhancement: "+6"
     "Item Level": "28"
@@ -5037,7 +4938,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "5"
@@ -5053,7 +4953,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "10"
@@ -5069,7 +4968,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "15"
@@ -5085,7 +4983,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -5101,7 +4998,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -5117,7 +5013,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -5133,7 +5028,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "5"
@@ -5153,7 +5047,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "10"
@@ -5173,7 +5066,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "15"
@@ -5193,7 +5085,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -5213,7 +5104,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -5233,7 +5123,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -5253,7 +5142,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "4"
@@ -5269,7 +5157,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "9"
@@ -5285,7 +5172,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "14"
@@ -5301,7 +5187,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "19"
@@ -5317,7 +5202,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "24"
@@ -5333,7 +5217,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "29"
@@ -5349,7 +5232,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -5367,7 +5249,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -5385,7 +5266,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -5403,7 +5283,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "2"
@@ -5424,7 +5303,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "7"
@@ -5445,7 +5323,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "12"
@@ -5466,7 +5343,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "17"
@@ -5487,7 +5363,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "22"
@@ -5508,7 +5383,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "27"
@@ -5529,7 +5403,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "3"
@@ -5551,7 +5424,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "8"
@@ -5573,7 +5445,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "13"
@@ -5595,7 +5466,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "18"
@@ -5617,7 +5487,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "23"
@@ -5639,7 +5508,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "28"
@@ -5661,7 +5529,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "2"
@@ -5675,7 +5542,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "7"
@@ -5689,7 +5555,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "12"
@@ -5703,7 +5568,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "17"
@@ -5717,7 +5581,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "22"
@@ -5731,7 +5594,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "27"
@@ -5745,7 +5607,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "4"
@@ -5774,7 +5635,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "9"
@@ -5803,7 +5663,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "14"
@@ -5832,7 +5691,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "19"
@@ -5861,7 +5719,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "24"
@@ -5890,7 +5747,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "29"
@@ -5919,7 +5775,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "3"
@@ -5935,7 +5790,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "8"
@@ -5951,7 +5805,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "13"
@@ -5967,7 +5820,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "18"
@@ -5983,7 +5835,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "23"
@@ -5999,7 +5850,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "28"
@@ -6015,7 +5865,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "4"
@@ -6031,7 +5880,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "9"
@@ -6047,7 +5895,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "14"
@@ -6063,7 +5910,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "19"
@@ -6079,7 +5925,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "24"
@@ -6095,7 +5940,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "29"
@@ -6111,7 +5955,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "2"
@@ -6130,7 +5973,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "7"
@@ -6149,7 +5991,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "12"
@@ -6168,7 +6009,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "17"
@@ -6187,7 +6027,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "22"
@@ -6206,7 +6045,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "27"
@@ -6225,7 +6063,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "5"
@@ -6245,7 +6082,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "10"
@@ -6265,7 +6101,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "15"
@@ -6285,7 +6120,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -6305,7 +6139,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -6325,7 +6158,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -6345,7 +6177,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "5"
@@ -6362,7 +6193,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "10"
@@ -6379,7 +6209,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "15"
@@ -6396,7 +6225,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -6413,7 +6241,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -6430,7 +6257,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -6447,7 +6273,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "5"
@@ -6463,7 +6288,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "10"
@@ -6479,7 +6303,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "15"
@@ -6495,7 +6318,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "20"
@@ -6511,7 +6333,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "25"
@@ -6527,7 +6348,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "30"
@@ -6543,7 +6363,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "3"
@@ -6559,7 +6378,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "8"
@@ -6575,7 +6393,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "13"
@@ -6591,7 +6408,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "18"
@@ -6607,7 +6423,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "23"
@@ -6623,7 +6438,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "28"
@@ -6639,7 +6453,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "2"
@@ -6658,7 +6471,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "7"
@@ -6677,7 +6489,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "12"
@@ -6696,7 +6507,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "17"
@@ -6715,7 +6525,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "22"
@@ -6734,7 +6543,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "27"
@@ -6753,7 +6561,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+1"
     "Item Level": "3"
@@ -6769,7 +6576,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+2"
     "Item Level": "8"
@@ -6785,7 +6591,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+3"
     "Item Level": "13"
@@ -6801,7 +6606,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+4"
     "Item Level": "18"
@@ -6817,7 +6621,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+5"
     "Item Level": "23"
@@ -6833,7 +6636,6 @@
   type: Magic Item
   source: "Orcus Original"
   fields:
-    "Item Slot": Body
     "Magic Item Type": Armor
     Enhancement: "+6"
     "Item Level": "28"
