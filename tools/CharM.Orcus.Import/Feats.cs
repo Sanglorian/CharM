@@ -52,6 +52,7 @@ public static class Feats
     static readonly Dictionary<string, string[]> RulesOverlay = new()
     {
         ["ORCUS_FEAT_ALERTNESS"] = new[] { "{ statadd: Perception, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_ARMOR_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_ARMOR_PROFS, name: Armor Proficiency } }" },
         ["ORCUS_FEAT_GREAT_FORTITUDE"] = new[]
         {
             "{ statadd: Fortitude Defense, value: 2, bonusType: Feat }",
@@ -83,8 +84,10 @@ public static class Feats
             "{ statadd: Reflex Defense, value: 3, bonusType: Feat, level: 11 }",
             "{ statadd: Reflex Defense, value: 4, bonusType: Feat, level: 21 }",
         },
+        ["ORCUS_FEAT_SHIELD_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_SHIELD_PROFS, name: Shield Proficiency } }" },
         ["ORCUS_FEAT_SKILL_TRAINING"] = new[] { "{ select: { type: Skill Training, number: 1, name: Skill Training } }" },
         ["ORCUS_FEAT_TALENTED_HEALER"] = new[] { "{ statadd: Heal, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_WEAPON_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_WEAPON_PROFS, name: Weapon Proficiency } }" },
         ["ORCUS_FEAT_TOUGHNESS"] = new[] { "{ statadd: Hit Points, value: { statref: Level }, bonusType: Feat }" },
     };
 

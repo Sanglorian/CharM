@@ -69,6 +69,8 @@
     Special: >-
       You can gain Armor Proficiency multiple times. Each time you take the
       feat, it applies to a new type of armor.
+  rules:
+    - { select: { type: Proficiency, number: 1, category: ORCUS_ARMOR_PROFS, name: Armor Proficiency } }
 
 - id: ORCUS_FEAT_ATHAME
   name: "Athame"
@@ -482,6 +484,8 @@
     Special: >-
       You can gain Shield Proficiency a second time to gain proficiency with
       heavy shields.
+  rules:
+    - { select: { type: Proficiency, number: 1, category: ORCUS_SHIELD_PROFS, name: Shield Proficiency } }
 
 - id: ORCUS_FEAT_SKILL_FOCUS
   name: "Skill Focus"
@@ -662,6 +666,8 @@
     Special: >-
       You can gain this feat multiple times. Its effects do not stack. Each time
       you take the feat, it applies to a new type of weapon.
+  rules:
+    - { select: { type: Proficiency, number: 1, category: ORCUS_WEAPON_PROFS, name: Weapon Proficiency } }
 
 - id: ORCUS_FEAT_WEAPON_SPECIALIZATION
   name: "Weapon Specialization"

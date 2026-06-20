@@ -76,7 +76,7 @@ p=["# Weapon & armor proficiencies. Weapon part generated from Basic.html by",
 p.append("# === Weapon proficiency elements ==============================================")
 for x in weapons:
     pid="ORCUS_WPROF_"+slug(x["name"])
-    p.append(f'- {{ id: {pid}, name: "Weapon Proficiency ({x["name"]})", type: Proficiency, source: "Orcus Basic" }}')
+    p.append(f'- {{ id: {pid}, name: "Weapon Proficiency ({x["name"]})", type: Proficiency, source: "Orcus Basic", categories: [ORCUS_WEAPON_PROFS] }}')
 p.append("")
 # bundles by category
 bundles={"Simple Melee":"ORCUS_PROFGRANT_SIMPLE_MELEE","Martial Melee":"ORCUS_PROFGRANT_MARTIAL_MELEE",
@@ -99,7 +99,11 @@ for cat,bid in bundles.items():
 # armor proficiency elements + light bundle (preserved)
 p.append("# === Armor proficiency elements ===============================================")
 for a in ["Cloth","Leather","Hide","Chainmail","Scale","Plate","Light Shield","Heavy Shield"]:
-    p.append(f'- {{ id: ORCUS_APROF_{slug(a)}, name: "Armor Proficiency ({a})", type: Proficiency, source: "Orcus Original" }}')
+    # Selectable categories scope the Armor/Shield Proficiency feat menus. Cloth
+    # is universal (everyone is proficient), so it is not an offerable choice.
+    cat = "ORCUS_SHIELD_PROFS" if "Shield" in a else ("" if a == "Cloth" else "ORCUS_ARMOR_PROFS")
+    catpart = f", categories: [{cat}]" if cat else ""
+    p.append(f'- {{ id: ORCUS_APROF_{slug(a)}, name: "Armor Proficiency ({a})", type: Proficiency, source: "Orcus Original"{catpart} }}')
 p.append("")
 p.append("- id: ORCUS_PROFGRANT_ARMOR_LIGHT")
 p.append('  name: Light Armor Proficiency')
