@@ -15,6 +15,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Light
+    "Armor Category": Cloth
     "Item Slot": Body
     "Base AC": "10"
     Cost: "1 gp"
@@ -27,6 +28,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Light
+    "Armor Category": Leather
     "Item Slot": Body
     "Base AC": "12"
     Cost: "25 gp"
@@ -40,6 +42,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Light
+    "Armor Category": Hide
     "Item Slot": Body
     "Base AC": "13"
     "Armor Check Penalty": "-1"
@@ -60,6 +63,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Heavy
+    "Armor Category": Chainmail
     "Item Slot": Body
     "Base AC": "16"
     "Armor Check Penalty": "-1"
@@ -81,6 +85,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Heavy
+    "Armor Category": Scale
     "Item Slot": Body
     "Base AC": "17"
     "Speed Penalty": "-1"
@@ -96,6 +101,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Heavy
+    "Armor Category": Plate
     "Item Slot": Body
     "Base AC": "18"
     "Armor Check Penalty": "-2"
@@ -118,6 +124,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Shield
+    "Armor Category": Light Shield
     "Item Slot": Off-hand
     "Shield Bonus": "+1"
     Cost: "5 gp"
@@ -132,6 +139,7 @@
   source: "Orcus Original"
   fields:
     "Armor Type": Shield
+    "Armor Category": Heavy Shield
     "Item Slot": Off-hand
     "Shield Bonus": "+2"
     "Armor Check Penalty": "-2"
