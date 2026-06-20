@@ -117,6 +117,14 @@ if (mode == "generate-misc")
         Path.Combine(mRoot, "content/orcus/equipment/magic-items-consumables.yaml"));
 }
 
+if (mode == "generate-feats")
+{
+    // generate-feats <repo-root>
+    string fRoot = args[1];
+    string playerOpts = Directory.EnumerateFiles(fRoot, "Orcus Player Options*.md").Single();
+    return Feats.Generate(playerOpts, Path.Combine(fRoot, "content/orcus/feats.yaml"));
+}
+
 if (mode == "generate-boosts")
 {
     // generate-boosts <repo-root> <out.yaml>

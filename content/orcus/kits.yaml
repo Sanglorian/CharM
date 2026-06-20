@@ -41,10 +41,6 @@
   type: Class Feature
   source: "Orcus Original"
   categories: [ORCUS_HEROIC_CHOICE]
-  fields:
-    Description: >-
-      You gain a feat at 1st level and at every even-numbered level through the
-      heroic tier (levels 1, 2, 4, 6, 8 and 10) instead of a kit.
   rules:
     - { grant: ORCUS_MARKER_HEROIC_FEATS, type: Marker }
 
@@ -53,10 +49,6 @@
   type: Class Feature
   source: "Orcus Original"
   categories: [ORCUS_HEROIC_CHOICE]
-  fields:
-    Description: >-
-      You take a kit, gaining its features at levels 1, 5 and 10, instead of the
-      six heroic-tier feats.
   rules:
     - { grant: ORCUS_MARKER_KIT_PATH, type: Marker }
 
