@@ -124,7 +124,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **1727 elements, 33 types, 0 audit flags, 0 invented.**
+Current state: **1845 elements, 33 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 
@@ -138,11 +138,20 @@ Current state: **1727 elements, 33 types, 0 audit flags, 0 invented.**
 
 ## 9. Still open / possible follow-ups
 
-- Feat *mechanical* wiring is intentionally minimal (7 feats). Most feats are
-  text-only; wiring more would be a curated `RulesOverlay` expansion in
-  `Feats.cs` (keep text generation untouched).
-- 11th/21st-level scaling on defense feats is described in Benefit text but not
-  yet applied as a scaling bonus.
+- Feat *mechanical* wiring now covers 9 feats via the curated `RulesOverlay` in
+  `Feats.cs` (text generation untouched): Alertness, Great Fortitude, Iron Will,
+  Lightning Reflexes, Keen Defenses (each with 11th/21st scaling), Improved
+  Initiative, Skill Training (a category-less `Skill Training` select), Talented
+  Healer, Toughness. Still text-only and worth wiring next: the proficiency feats
+  (Weapon/Armor/Shield Proficiency) — these need a *scoped* `select` of
+  `Proficiency` elements, but `equipment/proficiencies.yaml` currently has no
+  weapon-only / armor-only / shield-only category to select against; and the
+  *targeted* feats (Skill Focus → +3 to a chosen skill, Weapon Focus /
+  Specialization → +1 atk/dmg with a chosen weapon group), which need a way to
+  apply a bonus to a selected element / weapon group.
+- Initiative is now modelled (Dex mod + Level Bonus, in `_internal/level.yaml`),
+  so Improved Initiative reads meaningfully. **Passive Perception and Passive
+  Insight are still unmodelled** (the UI shows them, but no content builds them).
 - Kit "associated discipline" is wired via `$$KITDISC` only for disciplines that
   exist in this content; others are descriptive.
 - The app's Theme-is-skippable ordering (see §5) is unaddressed by design.

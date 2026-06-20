@@ -2,8 +2,9 @@
 # tools/CharM.Orcus.Import (generate-feats). One element per feat; text fields
 # (Flavor/Prerequisite/Benefit/Special/…) are copied from the source and round-
 # trip checked against it. "Feat Category" records the source sub-heading. A
-# small curated rules overlay re-applies the mechanical bonuses (defenses,
-# Perception, Heal, HP); other feats carry their text only. Characters gain a
+# small curated rules overlay re-applies the mechanical bonuses (defenses and
+# their 11th/21st scaling, Perception, Heal, HP, initiative, the Skill Training
+# select); other feats carry their text only. Characters gain a
 # feat per the level slots in _internal/level.yaml. Do not hand-edit; regenerate.
 
 # === Variant: Bonus Feats ===
@@ -259,6 +260,8 @@
       increases to +3. At level 21, this bonus increases to +4.
   rules:
     - { statadd: Fortitude Defense, value: 2, bonusType: Feat }
+    - { statadd: Fortitude Defense, value: 3, bonusType: Feat, level: 11 }
+    - { statadd: Fortitude Defense, value: 4, bonusType: Feat, level: 21 }
 
 - id: ORCUS_FEAT_HUNKER_DOWN
   name: "Hunker Down"
@@ -280,6 +283,8 @@
   fields:
     "Feat Category": "General Feats"
     Benefit: "You get a +4 feat bonus on initiative checks."
+  rules:
+    - { statadd: Initiative, value: 4, bonusType: Feat }
 
 - id: ORCUS_FEAT_IRON_WILL
   name: "Iron Will"
@@ -292,6 +297,8 @@
       to +3. At level 21, this bonus increases to +4.
   rules:
     - { statadd: Will Defense, value: 2, bonusType: Feat }
+    - { statadd: Will Defense, value: 3, bonusType: Feat, level: 11 }
+    - { statadd: Will Defense, value: 4, bonusType: Feat, level: 21 }
 
 - id: ORCUS_FEAT_KEEN_DEFENSES
   name: "Keen Defenses"
@@ -306,6 +313,12 @@
     - { statadd: Fortitude Defense, value: 1, bonusType: Feat }
     - { statadd: Reflex Defense, value: 1, bonusType: Feat }
     - { statadd: Will Defense, value: 1, bonusType: Feat }
+    - { statadd: Fortitude Defense, value: 2, bonusType: Feat, level: 11 }
+    - { statadd: Reflex Defense, value: 2, bonusType: Feat, level: 11 }
+    - { statadd: Will Defense, value: 2, bonusType: Feat, level: 11 }
+    - { statadd: Fortitude Defense, value: 3, bonusType: Feat, level: 21 }
+    - { statadd: Reflex Defense, value: 3, bonusType: Feat, level: 21 }
+    - { statadd: Will Defense, value: 3, bonusType: Feat, level: 21 }
 
 - id: ORCUS_FEAT_LIGHTNING_REFLEXES
   name: "Lightning Reflexes"
@@ -318,6 +331,8 @@
       increases to +3. At level 21, this bonus increases to +4.
   rules:
     - { statadd: Reflex Defense, value: 2, bonusType: Feat }
+    - { statadd: Reflex Defense, value: 3, bonusType: Feat, level: 11 }
+    - { statadd: Reflex Defense, value: 4, bonusType: Feat, level: 21 }
 
 - id: ORCUS_FEAT_LINGUISTIC_SAVANT
   name: "Linguistic Savant"
@@ -490,6 +505,8 @@
     "Feat Category": "General Feats"
     Benefit: >-
       Each time you take this feat, you gain training in an additional skill.
+  rules:
+    - { select: { type: Skill Training, number: 1, name: Skill Training } }
 
 - id: ORCUS_FEAT_SWORDS_OF_GRACE
   name: "Swords of Grace"

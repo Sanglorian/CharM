@@ -13,7 +13,8 @@ namespace CharM.Orcus.Import;
 /// label becomes the Flavor field. Every emitted field value is round-trip checked
 /// (a subsequence of the feat's own source block) so nothing is reworded or
 /// invented. A small curated rules overlay re-applies the mechanical bonuses for
-/// the handful of feats that have them (defenses, Perception, Heal, HP); the rest
+/// the feats the engine can express (defenses incl. their 11th/21st scaling,
+/// Perception, Heal, HP, initiative, and the Skill Training select); the rest
 /// carry their text only. Do not hand-edit; regenerate instead.
 /// </summary>
 public static class Feats
@@ -43,19 +44,46 @@ public static class Feats
         { "Prerequisite", "Benefit", "Special", "Proficiency", "Damage", "Range", "Retraining" };
 
     // Curated mechanical wiring for the feats whose bonus the engine can apply.
-    // (The 11th/21st-level scaling stays described in the Benefit text, as before.)
+    // Each value is a `rules:` directive emitted verbatim under the feat. The
+    // copied text fields are never touched. Scaling feats ("+2 … +3 at 11 … +4
+    // at 21") emit one statadd per tier, level-gated; because same-type ("Feat")
+    // bonuses don't stack (highest wins), the higher tier simply supersedes the
+    // lower once the character reaches that level.
     static readonly Dictionary<string, string[]> RulesOverlay = new()
     {
         ["ORCUS_FEAT_ALERTNESS"] = new[] { "{ statadd: Perception, value: 2, bonusType: Feat }" },
-        ["ORCUS_FEAT_GREAT_FORTITUDE"] = new[] { "{ statadd: Fortitude Defense, value: 2, bonusType: Feat }" },
-        ["ORCUS_FEAT_IRON_WILL"] = new[] { "{ statadd: Will Defense, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_GREAT_FORTITUDE"] = new[]
+        {
+            "{ statadd: Fortitude Defense, value: 2, bonusType: Feat }",
+            "{ statadd: Fortitude Defense, value: 3, bonusType: Feat, level: 11 }",
+            "{ statadd: Fortitude Defense, value: 4, bonusType: Feat, level: 21 }",
+        },
+        ["ORCUS_FEAT_IMPROVED_INITIATIVE"] = new[] { "{ statadd: Initiative, value: 4, bonusType: Feat }" },
+        ["ORCUS_FEAT_IRON_WILL"] = new[]
+        {
+            "{ statadd: Will Defense, value: 2, bonusType: Feat }",
+            "{ statadd: Will Defense, value: 3, bonusType: Feat, level: 11 }",
+            "{ statadd: Will Defense, value: 4, bonusType: Feat, level: 21 }",
+        },
         ["ORCUS_FEAT_KEEN_DEFENSES"] = new[]
         {
             "{ statadd: Fortitude Defense, value: 1, bonusType: Feat }",
             "{ statadd: Reflex Defense, value: 1, bonusType: Feat }",
             "{ statadd: Will Defense, value: 1, bonusType: Feat }",
+            "{ statadd: Fortitude Defense, value: 2, bonusType: Feat, level: 11 }",
+            "{ statadd: Reflex Defense, value: 2, bonusType: Feat, level: 11 }",
+            "{ statadd: Will Defense, value: 2, bonusType: Feat, level: 11 }",
+            "{ statadd: Fortitude Defense, value: 3, bonusType: Feat, level: 21 }",
+            "{ statadd: Reflex Defense, value: 3, bonusType: Feat, level: 21 }",
+            "{ statadd: Will Defense, value: 3, bonusType: Feat, level: 21 }",
         },
-        ["ORCUS_FEAT_LIGHTNING_REFLEXES"] = new[] { "{ statadd: Reflex Defense, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_LIGHTNING_REFLEXES"] = new[]
+        {
+            "{ statadd: Reflex Defense, value: 2, bonusType: Feat }",
+            "{ statadd: Reflex Defense, value: 3, bonusType: Feat, level: 11 }",
+            "{ statadd: Reflex Defense, value: 4, bonusType: Feat, level: 21 }",
+        },
+        ["ORCUS_FEAT_SKILL_TRAINING"] = new[] { "{ select: { type: Skill Training, number: 1, name: Skill Training } }" },
         ["ORCUS_FEAT_TALENTED_HEALER"] = new[] { "{ statadd: Heal, value: 2, bonusType: Feat }" },
         ["ORCUS_FEAT_TOUGHNESS"] = new[] { "{ statadd: Hit Points, value: { statref: Level }, bonusType: Feat }" },
     };
@@ -80,8 +108,9 @@ public static class Feats
         sb.AppendLine("# tools/CharM.Orcus.Import (generate-feats). One element per feat; text fields");
         sb.AppendLine("# (Flavor/Prerequisite/Benefit/Special/…) are copied from the source and round-");
         sb.AppendLine("# trip checked against it. \"Feat Category\" records the source sub-heading. A");
-        sb.AppendLine("# small curated rules overlay re-applies the mechanical bonuses (defenses,");
-        sb.AppendLine("# Perception, Heal, HP); other feats carry their text only. Characters gain a");
+        sb.AppendLine("# small curated rules overlay re-applies the mechanical bonuses (defenses and");
+        sb.AppendLine("# their 11th/21st scaling, Perception, Heal, HP, initiative, the Skill Training");
+        sb.AppendLine("# select); other feats carry their text only. Characters gain a");
         sb.AppendLine("# feat per the level slots in _internal/level.yaml. Do not hand-edit; regenerate.");
         sb.AppendLine();
 

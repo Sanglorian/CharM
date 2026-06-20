@@ -182,6 +182,10 @@
     - { statadd: Streetsmarts, value: { abilmod: Charisma } }
     - { statadd: Streetsmarts, value: { statref: HALF-LEVEL } }
     - { statadd: Streetsmarts, value: { statref: Streetsmarts Trained } }
+    # Initiative = Dexterity modifier + Level Bonus (half level). Feat/other
+    # bonuses (e.g. Improved Initiative) add on top.
+    - { statadd: Initiative, value: { abilmod: Dexterity } }
+    - { statadd: Initiative, value: { statref: HALF-LEVEL } }
 
 # Higher-level bootstraps. Each is added cumulatively (the engine processes
 # ID_INTERNAL_LEVEL_1..N), so they apply *increments*: Level rises by 1 each
@@ -191,7 +195,8 @@
 #   - "Increase two by +1" ability bumps at 4, 8, 14, 18, 24 and 28 (a select);
 #   - "Increase all by +1" at 11 and 21 (a granted bundle);
 #   - a prestige path at 11 and an epic path at 21 (a select).
-# Feats (gained at every even level) are not modelled yet: no feat content exists.
+# Feats are modelled (content/orcus/feats.yaml); the level-1 + even-level feat
+# slots all live in ID_INTERNAL_LEVEL_1 above, each gated by `level:`.
 - id: ID_INTERNAL_LEVEL_2
   name: Level 2
   type: Level
