@@ -40,6 +40,11 @@
     - { select: { type: Feat, number: 1, name: "Feat (Lv 1)", requires: "(!Has Kit) | Feats and Kits" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2, requires: "(!Has Kit) | Feats and Kits" } }
     - { select: { type: Theme, number: 1, name: "Kit", optional: true } }
+    # Elemental Flux energy (lightning/acid/cold/fire/thunder). Offered to any
+    # character with Elemental Flux access — gated on the "Elemental Flux Access"
+    # marker granted by whatever provides it (class/kit/feat), so it is not tied
+    # to one class. See flux.yaml.
+    - { select: { type: Class Feature, number: 1, category: ORCUS_FLUX_ENERGY, name: "Flux Energy", requires: "Elemental Flux Access" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4, requires: "(!Has Kit) | Feats and Kits" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6, requires: "(!Has Kit) | Feats and Kits" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8, requires: "(!Has Kit) | Feats and Kits" } }

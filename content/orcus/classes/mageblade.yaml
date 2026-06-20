@@ -60,13 +60,6 @@
         number: 1
         category: ORCUS_MAGEBLADE_TALENT
         name: Mageblade Talent
-    # Elemental Flux: choose your flux energy (lightning/acid/cold/fire/thunder).
-    # Powers with the Flux tag use this as their [flux] element.
-    - select:
-        type: Class Feature
-        number: 1
-        category: ORCUS_FLUX_ENERGY
-        name: Flux Energy
     # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
     - select:
         type: Power
@@ -157,6 +150,9 @@
       type: Skill Training
     - grant: ORCUS_KEYSWAP_MAGEBLADE_INTELLIGENCE
       type: Key Ability Swap
+    # Elemental Flux access -> enables the "Flux Energy" choice (see flux.yaml).
+    - grant: ORCUS_MARKER_FLUX_ACCESS
+      type: Marker
     # Proficiencies: simple & martial melee, simple ranged; cloth, leather (no hide).
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
