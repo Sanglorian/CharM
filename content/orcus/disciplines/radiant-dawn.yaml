@@ -1,0 +1,674 @@
+# Radiant Dawn discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
+
+- id: ORCUS_DISCIPLINE_RADIANT_DAWN
+  name: "Radiant Dawn"
+  type: Discipline
+  source: "Orcus Original"
+  fields:
+    "Key Ability": "Wisdom"
+    "Secondary Ability": "Charisma"
+    Sources: "Worships the God of Life (kit)"
+    Description: >-
+      You use the divine power of the sun to blast and dazzle your enemies and
+      heal your allies.
+
+- id: ORCUS_POWER_DISMISS
+  name: "Dismiss"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: >-
+      1dW + Wisdom modifier radiant damage and the target is pushed 2 squares.
+      Level 21: 2dW + Wisdom modifier radiant damage and the target is pushed 2
+      squares.
+    Special: >-
+      If the target is undead, they are pushed 4 squares on a hit instead.
+    Flavor: "This attack ‘softly’ removes an enemy from your presence."
+
+- id: ORCUS_POWER_EXPOSE_WEAKNESS
+  name: "Expose Weakness"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus"
+    Target: "Ranged 10, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: "The creature is weakened and slowed (save ends both)."
+    Flavor: >-
+      You strike with a weak, but swift, attack that hampers an opponent.
+
+- id: ORCUS_POWER_STAUNCHING_STRIKE
+  name: "Staunching Strike"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant, Healing"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: >-
+      2dW + Wisdom modifier radiant damage. You or an ally within sight can
+      spend a recovery to heal their recovery value.
+    Flavor: >-
+      To help your allies and harm your enemies is the most basic tenet of the
+      Radiant Dawn discipline.
+
+- id: ORCUS_POWER_SPOILS_OF_WAR
+  name: "Spoils of War"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus, Radiant"
+    Target: "Near burst 3, all enemies"
+    Attack: "Wisdom vs Fortitude"
+    Hit: "2d8 + Wisdom modifier damage."
+    Effect: >-
+      Until the end of the encounter, each time an ally within 3 hits with an
+      attack, they heal damage equal to your Wisdom modifier.
+    Flavor: "Might makes right."
+
+- id: ORCUS_POWER_DECREE_OF_MERCY
+  name: "Decree of Mercy"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Divine"
+    Target: "Near burst 5, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      Attacks the target makes until the end of your next turn are nonlethal.
+    Flavor: "A simple look and gesture can weaken one’s resolve to kill."
+
+- id: ORCUS_POWER_BOLSTER
+  name: "Bolster"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Divine"
+    Target: "Near burst 5, one ally"
+    Effect: >-
+      The ally gains resistance to all 5 until the end of your next turn. Level
+      11: 10. Level 21: 15.
+    Flavor: >-
+      You fortify an ally with akasha, hardening their skin like the scales of a
+      dragon.
+
+- id: ORCUS_POWER_THE_CAGED_SUN
+  name: "The Caged Sun"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Divine, Stance, Healing"
+    Target: "Self"
+    Effect: >-
+      You cannot heal creatures other than yourself, or enable other creatures
+      to spend recoveries. However, all healing you receive is doubled. If you
+      receive healing but are already at maximum HP, you gain that amount as
+      temporary HP instead.
+    Special: "If you are staggered, you can enter this stance as a reaction."
+
+- id: ORCUS_POWER_CURATE_S_STRIKE
+  name: "Curate’s Strike"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus, Radiant, Healing"
+    Target: "Ranged 5, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: >-
+      2d8 + Wisdom modifier radiant damage. You or an ally within sight can
+      spend a recovery to heal their recovery value. They also gain a +2 bonus
+      on saving throws until the end of your next turn.
+    Flavor: >-
+      This strike was created by a kobold leader to fight both controlling
+      magics and vicious wounds.
+
+- id: ORCUS_POWER_DECREE_OF_PURITY
+  name: "Decree of Purity"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Divine, Healing"
+    Target: "Ranged 5, one ally"
+    Effect: >-
+      The target makes a saving throw against persistent damage or a condition
+      with a save ends duration.
+    Flavor: >-
+      A single word and a wave of the hand purifies those who would stand with
+      you.
+
+- id: ORCUS_POWER_HEALER_S_BANE
+  name: "Healer’s Bane"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Divine, Healing"
+    Target: "Near burst 10, one creature"
+    Trigger: "The creature is about to heal."
+    Effect: >-
+      The creature does not heal, but does lose a recovery. Pick an ally within
+      range. They heal equal to their recovery value.
+    Flavor: "You hijack healing for your own purpose."
+
+- id: ORCUS_POWER_WITNESS_TO_GLORY
+  name: "Witness to Glory"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Divine"
+    Target: "Near burst 10, one ally"
+    Trigger: "Initiative is rolled."
+    Effect: >-
+      The ally receives a +4 power bonus to initiative. They add your Wisdom
+      modifier to their speed until the end of your next turn.
+    Flavor: "With a surge of akasha, you spur an ally into battle."
+
+- id: ORCUS_POWER_ARMAMENTS_OF_THE_EMPIRE
+  name: "Armaments of the Empire"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: "2dW + Wisdom modifier damage."
+    Effect: >-
+      Until the end of your next turn, all allies within 5 squares gain a +2
+      power bonus on attack rolls.
+    Flavor: >-
+      A thin layer of akasha flows forth from you and covers your and your
+      allies’ weapons.
+
+- id: ORCUS_POWER_DECREE_OF_DEATH
+  name: "Decree of Death"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Radiant, Focus"
+    Target: "Far burst 1 within range 5, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      1d8 + Wisdom modifier radiant damage and the target grants combat
+      advantage until the end of your next turn.
+    Flavor: "You single out targets for execution."
+
+- id: ORCUS_POWER_DISRUPT_ESSENCE
+  name: "Disrupt Essence"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: >-
+      2dW + Wisdom modifier damage and the target cannot use encounter, daily or
+      refresh powers until the end of your next turn.
+    Flavor: >-
+      A powerful blow that disrupts one’s essence, inhibiting the use of
+      abilities.
+
+- id: ORCUS_POWER_LIFEBURST_STRIKE
+  name: "Lifeburst Strike"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Healing, Radiant, Focus"
+    Target: "Near burst 1, all enemies"
+    Attack: "Wisdom vs Fortitude"
+    Hit: >-
+      2d8 + Wisdom modifier radiant damage. Until the end of your next turn, if
+      an ally of yours hits the target, the ally heals 10 damage.
+    Miss: "Half damage, and no healing effect."
+    Maintain: "Swift The healing effect persists until the end of your next turn."
+    Flavor: >-
+      You strike out with a simple blow with an uncanny power to heal and harm.
+
+- id: ORCUS_POWER_DECREE_OF_SILENCE
+  name: "Decree of Silence"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Divine"
+    Target: "Near burst 1, self and all allies"
+    Trigger: "You are the target of a near or far attack."
+    Effect: >-
+      Creatures in the area of this power cannot be targeted by the attack.
+    Flavor: "Your presence demands silence."
+
+- id: ORCUS_POWER_LIFEBURST_IMBUEMENT
+  name: "Lifeburst Imbuement"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "13"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Radiant"
+    Target: "Near burst 5, one ally"
+    Effect: >-
+      The next attack the ally makes has combat advantage, and does 3d8
+      additional radiant damage on a hit.
+    Flavor: "This maneuver imbues another to carry out your will."
+
+- id: ORCUS_POWER_SUNSTROKE
+  name: "Sunstroke"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "15"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Fire, Radiant, Focus"
+    Target: "Far burst 2 within range 10, all enemies"
+    Attack: "Wisdom vs Reflex"
+    Hit: >-
+      2d10 + Wisdom modifier radiant and fire damage and persistent fire damage
+      10 (save ends).
+    Miss: "Half damage, and no persistent damage."
+    Effect: >-
+      One ally in the burst can spend a recovery to heal their recovery value.
+    Flavor: "Your akasha shapes an attack into a powerful solar flare."
+
+- id: ORCUS_POWER_SHATTER_SPELL
+  name: "Shatter Spell"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Divine"
+    Target: "Ranged 10, one persisting power"
+    Attack: "Wisdom vs Will (power’s user)"
+    Effect: "The power comes to an end."
+    Flavor: "You bring a spell or other magical effect to an unceremonious end."
+
+- id: ORCUS_POWER_SUNLIGHT_SHIELDS
+  name: "Sunlight Shields"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Divine, Radiant, Conjuration"
+    Target: "Far wall 1 within range 10"
+    Effect: >-
+      Allies in or adjacent to the wall get a +2 power bonus to AC. An enemy
+      that moves into the wall stops moving immediately and cannot move for the
+      rest of the turn. Walls created last until the end of your next turn.
+    Maintain: >-
+      Swift Conjure a new wall within range, which lasts until the end of your
+      next turn. This does not prolong the duration of any existing walls you
+      conjured with this power. You cannot conjure the new wall in the same
+      location as an existing wall.
+    Flavor: >-
+      Your stance sits halfway between martial form and magic prowess, conjuring
+      shields of light to defend yourself and others.
+
+- id: ORCUS_POWER_DIVIDE_AND_CONQUER
+  name: "Divide and Conquer"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "17"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Fire, Focus"
+    Target: "Ranged 10, one creature"
+    Attack: "Wisdom vs Fortitude"
+    Hit: >-
+      3d8 + Wisdom modifier fire damage, and conjure an effigy of the target in
+      an unoccupied square in range. Any attack that targets the effigy targets
+      the target as well, even if the target would normally be out of range of
+      the attack. The target only gets targeted once by any given attack, even
+      if both the target and their effigy are in the area of effect.
+    Flavor: >-
+      This strike pulls essence from the target, creating an effigy of the
+      creature.
+
+- id: ORCUS_POWER_BATTLE_AGAINST_THE_SUN
+  name: "Battle Against the Sun"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Conjuration, Divine, Fire, Focus"
+    Target: "Ranged 10, an unoccupied square"
+    Effect: >-
+      You conjure a miniature sun, which occupies one square. The sun casts
+      bright light in a 2-square radius. The sun remains until the end of your
+      next turn. It makes a ranged attack in each of your turns where it exists,
+      including this turn. On your turns, you may spend a move action to move
+      the sun up to 4 squares. Attack: Ranged 5, one enemy; your Wisdom vs
+      Reflex; 2d10 + Wisdom modifier radiant damage.
+    Maintain: "Swift The sun remains until the end of your next turn."
+    Flavor: >-
+      To challenge you is to challenge the sun itself: An exercise in futility.
+
+- id: ORCUS_POWER_NOBLESSE_OBLIGE
+  name: "Noblesse Oblige"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "19"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Divine, Weapon, Radiant, Healing"
+    Target: "Near burst 10, the triggering enemy"
+    Trigger: "An enemy reduces your ally to 0 HP or below with an attack."
+    Hit: "3dW + Wisdom modifier radiant damage."
+    Effect: >-
+      The triggering ally can spend a recovery and heal 1 damage, plus they heal
+      equal to the damage done by your attack (if any).
+    Special: >-
+      Before the attack, you can shift up to your Strength modifier squares.
+    Flavor: "When all else fails, your allies turn to you to save them."
+
+- id: ORCUS_POWER_DECREE_OF_FREEDOM
+  name: "Decree of Freedom"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Divine, Healing"
+    Target: "Near burst 10, one ally"
+    Effect: >-
+      The target ignores all conditions and persistent damage it is affected by
+      until the end of your next turn. It can also ignore any zones or difficult
+      or hazardous terrain during the same period.
+    Flavor: >-
+      With a gesture and a single word, you cause a target’s essence to flare,
+      freeing them from their bonds.
+
+- id: ORCUS_POWER_AWAKEN_THE_SLEEPER
+  name: "Awaken the Sleeper"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine"
+    Target: "Near burst 10, one ally"
+    Effect: >-
+      Select one of your unexpended encounter or daily powers that takes a
+      standard, move, swift or free action. Your ally can use that power. They
+      also gain temporary HP equal to your recovery value.
+    Flavor: >-
+      It’s said that the soul of a mortal contains power that can rival the
+      gods, and this maneuver awakens a fraction of that power for a brief
+      moment.
+
+- id: ORCUS_POWER_KING_S_CASTLE
+  name: "King’s Castle"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Divine, Focus, Radiant"
+    Target: "Near burst 10, the triggering enemy"
+    Trigger: "An enemy within range hits your ally with an attack."
+    Attack: "Wisdom vs Will"
+    Hit: "4d10 + Wisdom radiant damage."
+    Effect: >-
+      You or a willing ally within range teleports to the triggering ally’s
+      space, and the triggering ally teleports to the space you/the other ally
+      just left. The one teleported to the space takes the hit instead of the
+      triggering ally.
+    Flavor: "Your faithful respond to your call for help."
+
+- id: ORCUS_POWER_SWORDS_TO_PLOUGHSHARES
+  name: "Swords to Ploughshares"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "23"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: "3dW + Wisdom modifier radiant damage."
+    Effect: >-
+      Until the end of your next turn, any ally of yours targeted by the
+      target’s attack can spend a recovery to heal up to their recovery value.
+    Maintain: "Swift Maintain the effect."
+    Flavor: >-
+      This blow marks an enemy with a simple brand that burrows into their
+      essence. Their strikes heal and harm in equal measure.
+
+- id: ORCUS_POWER_PATH_OF_THE_SUN
+  name: "Path of the Sun"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus, Fire, Radiant"
+    Target: "Near wall 10, all enemies in the wall"
+    Attack: "Wisdom vs Fortitude"
+    Hit: "3d8 + Wisdom modifier radiant and fire damage."
+    Effect: >-
+      The wall persists until the end of your next turn. Allies that move
+      through the wall only spend 1 movement for every 2 wall spaces moved
+      through. Make the attack against any enemy that enters a wall space or
+      ends its turn on a wall space. The wall persists until the end of your
+      next turn.
+    Maintain: "Swift The wall persists until the end of your next turn."
+    Flavor: >-
+      Coalesce the power of the sun into a powerful beam that washes over
+      enemies and allies alike, leaving behind thousands of motes of light.
+
+- id: ORCUS_POWER_PUSH_THE_ADVANTAGE
+  name: "Push the Advantage"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "25"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Near burst 10, one ally"
+    Trigger: "An ally reduces an enemy to 0 HP or below"
+    Effect: >-
+      The triggering ally can immediately take a move action and a standard
+      action, in either order. Also, if you spend a recovery all allies within
+      range heal equal to your recovery value.
+    Flavor: "With the enemy defeated, you spur an ally towards further glory."
+
+- id: ORCUS_POWER_DECREE_OF_VENGEANCE
+  name: "Decree of Vengeance"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine"
+    Target: "Near burst 5, all allies"
+    Effect: >-
+      Each ally in range may make a basic attack. If they do so, they heal equal
+      to their recovery value.
+    Flavor: "You and your allies rise in revenge against your assailants."
+
+- id: ORCUS_POWER_HARSH_LIGHT_OF_DAY
+  name: "Harsh Light of Day"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, encounter, ability-swap]
+  fields:
+    Level: "27"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus, Radiant"
+    Target: "Ranged 10, one enemy or square"
+    Attack: "Wisdom vs Reflex"
+    Hit: >-
+      3d10 + Wisdom modifier radiant damage and the target is dazed until the
+      end of your next turn.
+    Special: >-
+      Attack ignores all penalties from cover, concealment, invisibility, etc.
+      If you target a square, the attack is made against the nearest enemy to
+      that square, whether or not you are able to target them or even know that
+      they exist.
+    Flavor: >-
+      This attack brings with it a blast of light, making your enemies quail
+      before the light of judgement.
+
+- id: ORCUS_POWER_JUDGEMENT_DAY
+  name: "Judgement Day"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Radiant, Focus"
+    Target: "Far burst 2 within range 10, all enemies"
+    Attack: "Wisdom vs Fortitude"
+    Hit: >-
+      3d8 + Wisdom modifier radiant damage and they are blinded (save ends).
+    Effect: "Allies within the area heal equal to their recovery value."
+
+- id: ORCUS_POWER_TYRANT_S_END
+  name: "Tyrant’s End"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_RADIANT_DAWN, daily, ability-swap]
+  fields:
+    Level: "29"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Weapon, Radiant"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: "6dW + Wisdom modifier radiant damage."
+    Effect: >-
+      The creature loses all resistances and immunities until the end of your
+      next turn.
+    Flavor: "This powerful blow brings the end to tyrant’s reigns."
+

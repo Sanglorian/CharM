@@ -124,7 +124,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **1890 elements, 36 types, 0 audit flags, 0 invented.**
+Current state: **1946 elements, 36 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 
@@ -172,6 +172,11 @@ Current state: **1890 elements, 36 types, 0 audit flags, 0 invented.**
   the chosen skill", and the choice-dependent armor/shield-proficiency ability
   minimums. Two-Weapon Defense enforces only `Dex 13` (no Two-Weapon Fighting
   feat exists in Orcus).
-- Kit "associated discipline" is wired via `$$KITDISC` only for disciplines that
-  exist in this content; others are descriptive.
+- Kit "associated discipline" wiring is **complete**: all six kits grant a
+  `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
+  Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→
+  Angel's Trumpet, Life→Radiant Dawn, Tyranny→Puppeteer's String). Born to Run
+  and Radiant Dawn were transcribed for this (`generate-discipline`, 18/18 and
+  33/33 round-trip). Verified: each kit's discipline powers appear in the class
+  power-selection pool.
 - The app's Theme-is-skippable ordering (see §5) is unaddressed by design.

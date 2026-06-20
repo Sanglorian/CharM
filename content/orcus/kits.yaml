@@ -66,11 +66,14 @@
 # A kit's "associated discipline" is modelled as a Discipline Access element it
 # grants; the engine folds the `_Discipline` id into the $$KITDISC select variable,
 # and the class power selects OR that variable into their discipline pool — so the
-# kit's discipline becomes selectable in the normal class power slots. Only the
-# disciplines that exist in this content are wired (others are descriptive).
+# kit's discipline becomes selectable in the normal class power slots. All six
+# kits' associated disciplines are transcribed in this content and wired here.
 - { id: ORCUS_DISCACCESS_JUGGERNAUTICAL, name: "Discipline Access (Juggernautical)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_JUGGERNAUTICAL } }
 - { id: ORCUS_DISCACCESS_ART_OF_WAR, name: "Discipline Access (Art of War)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_ART_OF_WAR } }
 - { id: ORCUS_DISCACCESS_ANGELS_TRUMPET, name: "Discipline Access (Angel's Trumpet)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_ANGELS_TRUMPET } }
+- { id: ORCUS_DISCACCESS_BORN_TO_RUN, name: "Discipline Access (Born to Run)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_BORN_TO_RUN } }
+- { id: ORCUS_DISCACCESS_RADIANT_DAWN, name: "Discipline Access (Radiant Dawn)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_RADIANT_DAWN } }
+- { id: ORCUS_DISCACCESS_PUPPETEERS_STRING, name: "Discipline Access (Puppeteer's String)", type: Discipline Access, source: "Orcus Original", fields: { _Discipline: ORCUS_DISCIPLINE_PUPPETEERS_STRING } }
 
 # === Embodies kits ============================================================
 - id: ORCUS_KIT_EMBODIES_STRENGTH
@@ -111,7 +114,6 @@
   type: Theme
   source: "Orcus Original"
   fields:
-    "Associated Discipline": Born to Run
     Description: >-
       With unmatched physical discipline, you have perfected a body designed for
       raw speed and agility. It’s not enough just to be athletic: you have to
@@ -121,6 +123,7 @@
       and routes of escape, even when everyone else just sees walls.
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_BORN_TO_RUN, type: Discipline Access }
     - { grant: ORCUS_KITF_POWER_TO_WEIGHT, type: Class Feature }
     - { grant: ORCUS_KITF_SPEED_VAULT, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_SPLIT_SLIDE, type: Class Feature, level: 10 }
@@ -214,11 +217,11 @@
   type: Theme
   source: "Orcus Original"
   fields:
-    "Associated Discipline": Radiant Dawn
     Deity: "God of Life"
     Description: "Your secondary ability is Charisma."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_RADIANT_DAWN, type: Discipline Access }
     - { grant: ORCUS_KITF_CD_GUIDANCE, type: Class Feature }
     - { grant: ORCUS_KITF_DISCIPLE_OF_LIFE, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_TOWARDS_THE_LIGHT, type: Class Feature, level: 10 }
@@ -244,11 +247,11 @@
   type: Theme
   source: "Orcus Original"
   fields:
-    "Associated Discipline": "Puppeteer's String"
     Deity: "God of Tyranny"
     Description: "Your secondary ability is Strength."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_DISCACCESS_PUPPETEERS_STRING, type: Discipline Access }
     - { grant: ORCUS_KITF_CD_SPUR_ON, type: Class Feature }
     - { grant: ORCUS_KITF_DISCIPLE_OF_TYRANNY, type: Class Feature, level: 5 }
     - { grant: ORCUS_KITF_DIG_DEEPER, type: Class Feature, level: 10 }

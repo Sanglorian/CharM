@@ -1,9 +1,9 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 5
-- YAML elements loaded: 1890
-- Prose fields scanned: 4603; flagged: 0
-- Flavor fields: 490 faithful, 0 INVENTED
+- YAML elements loaded: 1946
+- Prose fields scanned: 4865; flagged: 0
+- Flavor fields: 539 faithful, 0 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any
@@ -23,12 +23,14 @@ _none_
 |---|--:|--:|---|
 | Art of War | 18 | 18 | — |
 | Blades in the Dark | 23 | 23 | — |
+| Born to Run | 18 | 18 | — |
 | Cup of Brimstone | 25 | 25 | — |
 | Elemental Flux | 31 | 31 | — |
 | Frontline Fighting | 37 | 37 | — |
 | Golden Lion | 24 | 24 | — |
 | Juggernautical | 21 | 21 | — |
 | Last Laugh | 35 | 35 | — |
+| Radiant Dawn | 33 | 33 | — |
 | Red in Tooth and Claw | 71 | 71 | — |
 | Seershot | 30 | 30 | — |
 | Spells of Ice and Fire | 18 | 18 | — |

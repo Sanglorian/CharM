@@ -43,6 +43,8 @@ for the format.
 | `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation; all 41 powers |
 | `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana; all 31 powers |
 | `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers; all 32 powers |
+| `disciplines/born-to-run.yaml` | Born to Run discipline (Embodies Speed kit) — speed/acrobatics; all 18 powers |
+| `disciplines/radiant-dawn.yaml` | Radiant Dawn discipline (Worships the God of Life kit) — divine radiant/healing; all 33 powers |
 | `paths/prestige.yaml` | All 20 prestige (paragon-tier) paths: 11th/16th class features + powers at 11/12/16/20. Generated verbatim by `generate-paths` |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |

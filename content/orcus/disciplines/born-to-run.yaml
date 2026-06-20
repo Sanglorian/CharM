@@ -1,0 +1,362 @@
+# Born to Run discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
+
+- id: ORCUS_DISCIPLINE_BORN_TO_RUN
+  name: "Born to Run"
+  type: Discipline
+  source: "Orcus Original"
+  fields:
+    "Key Ability": "Dexterity"
+    "Secondary Ability": "Constitution"
+    Sources: "Embodies Speed (kit)"
+    Description: "You are a master of agile, fast and unconventional movement."
+
+- id: ORCUS_POWER_BRILLIANT_DISPLAY
+  name: "Brilliant Display"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: "Gain a +2 power bonus to your next Acrobatics or Athletics check."
+    Flavor: "You prepare for an amazing feat of athleticism."
+
+- id: ORCUS_POWER_KINESICS
+  name: "Kinesics"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Focus, Martial"
+    Target: "Near burst 10, one creature you can see"
+    Attack: "Dexterity +2 vs Reflex"
+    Hit: >-
+      Until the end of your next turn, you can pass through the target’s square,
+      and the target cannot make opportunity attacks against you. If you end
+      your movement 3 or more squares from your starting point, you gain a +2
+      power bonus to AC and Reflex defense against the target.
+    Effect: "Move up to your speed -2."
+    Flavor: "You study an enemy’s movements and countermove to best avoid them."
+
+- id: ORCUS_POWER_FLIP_DODGE
+  name: "Flip Dodge"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You are hit by an attack."
+    Effect: >-
+      You gain a +2 power bonus to AC and Reflex defense against the attack. If
+      this causes the attack to miss, shift 1 square. If it still hits, you
+      recover the use of this power.
+    Flavor: >-
+      You throw your legs and toss yourself in the air, avoiding an enemy’s
+      attack. The level of flamboyance is up to you.
+
+- id: ORCUS_POWER_HEAD_DOWN
+  name: "Head Down"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Shift your speed. You gain a +4 power bonus to AC and Reflex defense until
+      the start of your next turn.
+    Flavor: "You keep your profile low and move defensively."
+
+- id: ORCUS_POWER_SLIPPERY_BASTARD
+  name: "Slippery Bastard"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Consistent"
+    Target: "Near burst 10, two creatures you can see"
+    Attack: "Dexterity +2 vs Reflex"
+    Hit: >-
+      The target cannot attack you until the start of your next turn. You can
+      pass through the target’s square.
+    Effect: "Shift your speed and ignore difficult terrain."
+    Flavor: >-
+      You employ all the tools your body gave you in order to evade enemy
+      attacks.
+
+- id: ORCUS_POWER_SINGLE_BOUND
+  name: "Single Bound"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Shift a number of squares equal to your Dexterity modifier. You can pass
+      through enemy occupied squares. All enemies in squares you pass through
+      and adjacent to squares you pass through cannot attack you until the start
+      of your next turn unless the attack targets at least one other creature.
+    Flavor: >-
+      You clear the heads of your opponents in a single jump, getting their
+      attention, but not their attacks.
+
+- id: ORCUS_POWER_ONLY_WAY_OUT_IS_THROUGH
+  name: "Only Way Out Is Through"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of this turn, all your movement is considered a shift. You
+      can pass through enemy occupied squares.
+    Flavor: >-
+      The only way to escape is through the enemy line. You analyze the position
+      of every opponent and plan a dash to avoid them.
+
+- id: ORCUS_POWER_STEP_ASIDE
+  name: "Step Aside"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Near burst 1, the triggering creature"
+    Trigger: >-
+      A creature enters an adjacent square as part of an attack against you.
+    Effect: >-
+      Shift a number of squares equal to 1+ your Dexterity modifier and the
+      target grants you combat advantage until the end of your next turn.
+    Flavor: >-
+      You don’t freak out. As the creature lunges forwards, you take an almost
+      casual sidestep.
+
+- id: ORCUS_POWER_SOMATIC_REFLEX_ARC
+  name: "Somatic Reflex Arc"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You start your first turn of the encounter."
+    Effect: >-
+      You gain a +2 power bonus to attack rolls and a +4 power bonus to damage
+      rolls until the end of your first turn or until you hit, whichever comes
+      last.
+    Flavor: "Weeks practicing in front of a mirror have finally paid off."
+
+- id: ORCUS_POWER_UNACHIEVABLE_TRANSITION
+  name: "Unachievable Transition"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Teleportation"
+    Target: "Near burst 10, one creature you can see"
+    Effect: >-
+      Until the end of your next turn, the target can only hit you with a
+      natural 20. You teleport up to 8 squares. You must have line of sight and
+      line of effect to the destination square.
+    Flavor: >-
+      Onlookers haven’t a clue how you got from here to there. It was almost as
+      if you walked on air or phased through matter.
+
+- id: ORCUS_POWER_MAD_DASH
+  name: "Mad Dash"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: "Double your speed until the end of your next turn."
+    Flavor: >-
+      Papers fly off shelves and bystanders are blown down as you race past them
+      all.
+
+- id: ORCUS_POWER_ABNORMALLY_FAST
+  name: "Abnormally Fast"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You roll initiative."
+    Effect: >-
+      Gain a standard action or two move actions and take them immediately.
+    Flavor: "You know there’s danger and jump into action."
+
+- id: ORCUS_POWER_INSTANT_RECOVERY
+  name: "Instant Recovery"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You make an Athletics or Acrobatics check and dislike the result."
+    Effect: "Either add +20 to the roll or gain a move action."
+    Flavor: >-
+      You stumble but your instincts take over and you recover to prevent
+      something catastrophic.
+
+- id: ORCUS_POWER_FOCUS_EVERYTHING
+  name: "Focus Everything"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: "Gain a +3 power bonus to your next Acrobatics or Athletics check."
+    Flavor: "Eyes on the target. Think of nothing else."
+
+- id: ORCUS_POWER_LOOSE_JOINTS
+  name: "Loose Joints"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Gain a +10 power bonus to escape from restraints or grapple. If escaping a
+      grapple, you cannot be grappled by the same creature until after the end
+      of your next turn.
+    Special: >-
+      If you don’t escape, you recover the use of this power, though it cannot
+      be used again this round.
+    Flavor: >-
+      You wriggle your way free and do so without knives, broken bones, or
+      untying any knots.
+
+- id: ORCUS_POWER_WHERE_THEY_DON_T_EXPECT_YOU
+  name: "Where They Don’t Expect You"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Near burst 5, the triggering enemy"
+    Trigger: "One enemy in range hits you with a melee or ranged attack."
+    Effect: >-
+      Take no damage. Shift to any unoccupied square within 2 squares of the
+      target. The target grants you combat advantage until the end of your next
+      turn.
+    Flavor: >-
+      You feint and slip under your opponent’s arm to position yourself behind
+      them.
+
+- id: ORCUS_POWER_I_CAN_HEAR_BELLS_RINGING
+  name: "I Can Hear Bells Ringing"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You are targeted by an area effect."
+    Effect: >-
+      Shift to the nearest unoccupied square outside the area. Gain a +5 power
+      bonus to AC and Reflex defense until the end of your next turn.
+    Flavor: "A blast occurs nearby. You narrowly escape its effects."
+
+- id: ORCUS_POWER_MOMENT_OF_TRUTH
+  name: "Moment of Truth"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_BORN_TO_RUN, utility]
+  fields:
+    Level: "22"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of your next turn, you gain a +10 power bonus to all
+      Athletics checks to jump, all your movement is treated as a shift, you
+      ignore difficult terrain, your speed is not reduced by crawling or
+      squeezing, you can stand up from prone as part of a move action, you
+      automatically succeed on Acrobatics checks to balance, and you can pass
+      through enemy occupied squares.
+    Special: "If you reach a streak, you recover the use of this power."
+    Flavor: >-
+      You slide like water with the speed of a cheetah, effortlessly avoiding
+      any attack, never losing an inch of momentum in your run.
+
