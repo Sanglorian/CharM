@@ -1,13 +1,19 @@
 # Kits ("themes") and the feats-vs-kits house rule (Orcus Classes and Powers).
 #
-# A kit is chosen at level 1. By DEFAULT a character takes a kit *instead of* the
-# six feats they would gain across the heroic tier (levels 1, 2, 4, 6, 8 and 10) —
-# kit XOR heroic feats. The house rule "Feats and Kits" lets a character have both.
+# At level 1 every character makes a COMPULSORY, mutually-exclusive choice: take
+# the heroic-tier feats OR take a kit (never neither; by default never both). The
+# house rule "Feats and Kits" lets a character have both.
 #
-# Mechanism: every kit grants the "Has Kit" marker; the six heroic-tier feat slots
-# (in _internal/level.yaml) carry `requires: "!Has Kit | Feats and Kits"`, so they
-# disappear once a kit is taken — unless the "Feats and Kits" House Rule element is
-# present, which re-enables them. Paragon/epic feats (levels 12+) are unaffected.
+# Mechanism (engine-level XOR; kits themselves are unchanged Theme elements):
+#   * The compulsory "Feat or Kit" meta-select (in _internal/level.yaml) offers
+#     the two ORCUS_HEROIC_CHOICE options below. One grants the "Heroic Feats"
+#     marker, the other the "Kit Path" marker. It is suppressed by the "Feats and
+#     Kits" House Rule (requires "(!Feats and Kits)").
+#   * The six heroic-tier feat slots carry `requires: "Heroic Feats | Feats and Kits"`.
+#   * The kit slot carries `requires: "Kit Path | Feats and Kits"`.
+# So exactly the chosen path's slot(s) appear — or both when the House Rule is on.
+# (The app still treats a Theme choice as skippable and orders it after powers;
+# that ordering/skippable behaviour is a known UI limitation we accept here.)
 #
 # Each kit grants features at levels 1/5/10 and names an associated discipline
 # (recorded as a field; letting a kit's discipline feed the class power selects is
@@ -15,6 +21,46 @@
 # this content (Juggernautical, Art of War, Angel's Trumpet) plus the four
 # "Worships the God of ..." deity kits.
 
+# --- Heroic-tier path: the compulsory "feat OR kit" meta-choice ---------------
+# Markers set by the meta-choice; the feat slots and kit slot gate on these.
+- id: ORCUS_MARKER_HEROIC_FEATS
+  name: Heroic Feats
+  type: Marker
+  source: "Orcus Original"
+
+- id: ORCUS_MARKER_KIT_PATH
+  name: Kit Path
+  type: Marker
+  source: "Orcus Original"
+
+# The two options offered by the "Feat or Kit" meta-select. Modelled as
+# categorized Class Features (like the Flux-energy choice) so the meta-choice is
+# a normal, non-Theme selection; picking one grants its path marker.
+- id: ORCUS_HEROIC_CHOICE_FEATS
+  name: "Take Heroic Feats"
+  type: Class Feature
+  source: "Orcus Original"
+  categories: [ORCUS_HEROIC_CHOICE]
+  fields:
+    Description: >-
+      You gain a feat at 1st level and at every even-numbered level through the
+      heroic tier (levels 1, 2, 4, 6, 8 and 10) instead of a kit.
+  rules:
+    - { grant: ORCUS_MARKER_HEROIC_FEATS, type: Marker }
+
+- id: ORCUS_HEROIC_CHOICE_KIT
+  name: "Take a Kit"
+  type: Class Feature
+  source: "Orcus Original"
+  categories: [ORCUS_HEROIC_CHOICE]
+  fields:
+    Description: >-
+      You take a kit, gaining its features at levels 1, 5 and 10, instead of the
+      six heroic-tier feats.
+  rules:
+    - { grant: ORCUS_MARKER_KIT_PATH, type: Marker }
+
+# Granted by every kit; kept as a general "this character has a kit" marker.
 - id: ORCUS_MARKER_HAS_KIT
   name: Has Kit
   type: Marker

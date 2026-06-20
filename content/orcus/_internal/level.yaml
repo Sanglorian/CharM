@@ -27,28 +27,37 @@
         type: Class
         number: 1
         name: Class
+    # HEROIC-TIER PATH: feats OR a kit (compulsory, exactly one). Every character
+    # makes this meta-choice at level 1; its two options grant either the "Heroic
+    # Feats" marker or the "Kit Path" marker (see kits.yaml). The "Feats and Kits"
+    # House Rule lets a character have both — while it is present this meta-choice
+    # is suppressed and both the feat slots and the kit slot are enabled directly
+    # via their "| Feats and Kits" alternative.
+    - { select: { type: Class Feature, number: 1, category: ORCUS_HEROIC_CHOICE, name: "Feat or Kit", requires: "(!Feats and Kits)" } }
     # Feats: one at level 1, then one at every even level (16 by level 30). The
     # slots live here with per-slot `level:` gates rather than in each LEVEL_n
     # element. Each is a single pick from the Feat pool (the engine consumes a
     # chosen feat globally, so every slot gets a distinct feat).
     #
     # The six HEROIC-tier feat slots (levels 1, 2, 4, 6, 8, 10) carry
-    # `requires: "(!Has Kit) | Feats and Kits"`: taking a kit grants the "Has Kit"
-    # marker, which removes them (kit XOR heroic feats) — unless the "Feats and
-    # Kits" House Rule element is present, which re-enables them. Paragon/epic feat
-    # slots (level 12+) are unaffected.
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 1)", requires: "(!Has Kit) | Feats and Kits" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2, requires: "(!Has Kit) | Feats and Kits" } }
-    - { select: { type: Theme, number: 1, name: "Kit", optional: true } }
+    # `requires: "Heroic Feats | Feats and Kits"`: they appear only when the
+    # "Heroic Feats" path was chosen above (or the "Feats and Kits" House Rule is
+    # on). Paragon/epic feat slots (level 12+) are unaffected.
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 1)", requires: "Heroic Feats | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 2)", level: 2, requires: "Heroic Feats | Feats and Kits" } }
+    # The kit slot (a Theme). Appears only on the "Kit Path" (or under the House
+    # Rule). It is not optional — once you are on the kit path a kit is compulsory.
+    # (The app still treats Theme choices as skippable and orders them after powers.)
+    - { select: { type: Theme, number: 1, name: "Kit", requires: "Kit Path | Feats and Kits" } }
     # Elemental Flux energy (lightning/acid/cold/fire/thunder). Offered to any
     # character with Elemental Flux access — gated on the "Elemental Flux Access"
     # marker granted by whatever provides it (class/kit/feat), so it is not tied
     # to one class. See flux.yaml.
     - { select: { type: Class Feature, number: 1, category: ORCUS_FLUX_ENERGY, name: "Flux Energy", requires: "Elemental Flux Access" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4, requires: "(!Has Kit) | Feats and Kits" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6, requires: "(!Has Kit) | Feats and Kits" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8, requires: "(!Has Kit) | Feats and Kits" } }
-    - { select: { type: Feat, number: 1, name: "Feat (Lv 10)", level: 10, requires: "(!Has Kit) | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 4)", level: 4, requires: "Heroic Feats | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 6)", level: 6, requires: "Heroic Feats | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 8)", level: 8, requires: "Heroic Feats | Feats and Kits" } }
+    - { select: { type: Feat, number: 1, name: "Feat (Lv 10)", level: 10, requires: "Heroic Feats | Feats and Kits" } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 12)", level: 12 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 14)", level: 14 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 16)", level: 16 } }
