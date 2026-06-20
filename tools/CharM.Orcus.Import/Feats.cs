@@ -94,6 +94,81 @@ public static class Feats
         ["ORCUS_FEAT_TOUGHNESS"] = new[] { "{ statadd: Hit Points, value: { statref: Level }, bonusType: Feat }" },
     };
 
+    // Curated machine-readable prerequisites for feats whose source Prerequisite
+    // text is expressible in the engine's PrereqParser grammar (ability score,
+    // "<n>th level", and named-element presence joined by ", " = AND). The
+    // verbatim Prerequisite field is left untouched (display); this drives
+    // selection legality. Requirements that can't be expressed yet (proficiency
+    // with a specific weapon/shield — Orcus proficiency element names don't match
+    // the parser's pattern; "psi focus power"; "you have a familiar"; low-light
+    // vision; the Channel Divinity feature; choice-dependent ranks; etc.) are
+    // intentionally omitted and stay descriptive in the Prerequisite text.
+    static readonly Dictionary<string, string> PrereqOverlay = new()
+    {
+        ["ORCUS_FEAT_ARMOR_GRACE"] = "Armor Focus",
+        ["ORCUS_FEAT_CROSSFIRE_IMPROVED"] = "21st level, Crossfire",
+        ["ORCUS_FEAT_FOCUSED_CASTER"] = "2nd level",
+        ["ORCUS_FEAT_MONSTER_EXPERT"] = "11th level",
+        ["ORCUS_FEAT_ROLLING_KIP"] = "11th level",
+        ["ORCUS_FEAT_TAG_TEAM"] = "11th level",
+        ["ORCUS_FEAT_THE_PRESENCE"] = "11th level, Charisma 16",
+        ["ORCUS_FEAT_TWO_WEAPON_DEFENSE"] = "Dex 13",   // "Two-Weapon Fighting" not in Orcus
+        ["ORCUS_FEAT_WEAPON_FOCUS"] = "2nd level",
+        ["ORCUS_FEAT_WEAPON_SPECIALIZATION"] = "2nd level",
+        ["ORCUS_FEAT_BALANCE_AND_DIRECTION"] = "Unarmed Combat",
+        ["ORCUS_FEAT_BEST_ON_THE_MAT"] = "Evolution of Pankration, Unarmed Combat",
+        ["ORCUS_FEAT_BOUNCING_COMBO"] = "21st level, Unarmed Combat",
+        ["ORCUS_FEAT_EARNED_THE_BELT"] = "11th level, Evolution of Pankration, Unarmed Combat",
+        ["ORCUS_FEAT_EVOLUTION_OF_PANKRATION"] = "Unarmed Combat",
+        ["ORCUS_FEAT_HAM_HANDS"] = "21st level, Unarmed Combat",
+        ["ORCUS_FEAT_JUMPING_KNEE"] = "Unarmed Combat, Unarmed Expanded Profile",
+        ["ORCUS_FEAT_KAYFABE_MANEUVER"] = "Superior Position",
+        ["ORCUS_FEAT_MASTER_DEGREE_MARTIAL_ARTIST"] = "21st level, Unarmed Combat",
+        ["ORCUS_FEAT_THE_RITUAL_OF_DANCE_AND_DAMAGE"] = "Unarmed Combat, Unarmed Expanded Profile",
+        ["ORCUS_FEAT_UNARMED_COMBAT_IMPROVED"] = "Unarmed Combat",
+        ["ORCUS_FEAT_UNARMED_COMBAT_MASTER"] = "11th level, Unarmed Combat, Unarmed Combat (Improved)",
+        ["ORCUS_FEAT_UNARMED_EXPANDED_PROFILE"] = "Unarmed Combat",
+        ["ORCUS_FEAT_AURA_SHARD"] = "Cha 13",
+        ["ORCUS_FEAT_BLASTING_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_EMPOWERING_AURA"] = "Aura Shard, Thieving Aura, Cha 13, 26th level",
+        ["ORCUS_FEAT_EXTENDED_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_FORCEFUL_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_HEALING_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_RESTORATIVE_AURA"] = "Aura Shard, Healing Aura, Cha 13",
+        ["ORCUS_FEAT_SHIFTING_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_SURGING_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_THIEVING_AURA"] = "Aura Shard, Cha 13",
+        ["ORCUS_FEAT_ACID_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_COLD_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_EMPOWERED_BLAST_SHARD"] = "Blast Shard",
+        ["ORCUS_FEAT_FAR_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_FIRE_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_IMPROVED_BLAST_SHARD"] = "Empowered Blast Shard, 11th level",
+        ["ORCUS_FEAT_LIGHTNING_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_MIND_BLAST"] = "Blast Shard",
+        ["ORCUS_FEAT_FORCE_SHIELD"] = "Shield Shard, 11th level",
+        ["ORCUS_FEAT_GREATER_SHIELD"] = "Shield Shard",
+        ["ORCUS_FEAT_GROUNDING_SHARD"] = "Shield Shard",
+        ["ORCUS_FEAT_IMMOVABLE_SHIELD"] = "Grounding Shard, Shield Shard",
+        ["ORCUS_FEAT_OFFENSIVE_SHIELD"] = "Shield Shard",
+        ["ORCUS_FEAT_REFRESHING_SHARD"] = "Shield Shard",
+        ["ORCUS_FEAT_AS_ONE"] = "Weapon Shard",   // "+ a martial power" not expressible
+        ["ORCUS_FEAT_ASSASSIN_S_WEAPON"] = "Slayer’s Weapon, Weapon Shard",
+        ["ORCUS_FEAT_EXTENDED_WEAPON"] = "Weapon Shard",
+        ["ORCUS_FEAT_GREATER_WEAPON_SHARD"] = "Improved Weapon Shard, Weapon Shard, 11th level",
+        ["ORCUS_FEAT_IMPROVED_WEAPON_SHARD"] = "Weapon Shard",
+        ["ORCUS_FEAT_MALLEABLE_WEAPON"] = "Weapon Shard",
+        ["ORCUS_FEAT_SLAYER_S_WEAPON"] = "Weapon Shard",
+        ["ORCUS_FEAT_STORMSHARD"] = "Weapon Shard",
+        ["ORCUS_FEAT_TWIN_WEAPON"] = "Weapon Shard",
+        ["ORCUS_FEAT_BATTLE_ADAPTATION_DUALCLASS"] = "Dualclass Recruit (Dualclass)",
+        ["ORCUS_FEAT_FUNCTIONAL_ADAPTATION_DUALCLASS"] = "Dualclass Recruit (Dualclass)",
+        ["ORCUS_FEAT_DAILY_ADAPTATION_DUALCLASS"] = "Dualclass Recruit (Dualclass)",
+        ["ORCUS_FEAT_KIT_STUDY"] = "11th level",
+        ["ORCUS_FEAT_KIT_STUDY_EXPERT"] = "15th level, Kit Study",
+        ["ORCUS_FEAT_KIT_STUDY_ADVANCED"] = "20th level, Kit Study",
+    };
+
     public static int Generate(string book, string outPath)
     {
         var lines = File.ReadAllLines(book);
@@ -211,6 +286,8 @@ public static class Feats
         sb.AppendLine($"  name: {Q(name)}");
         sb.AppendLine($"  type: Feat");
         sb.AppendLine($"  source: \"Orcus Original\"");
+        if (PrereqOverlay.TryGetValue(id, out var prereq))
+            sb.AppendLine($"  prereqs: {Q(prereq)}");
         sb.AppendLine($"  fields:");
         if (category.Length > 0) sb.AppendLine($"    \"Feat Category\": {Q(category)}");
         foreach (var (key, val) in emit)

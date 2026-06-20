@@ -155,6 +155,23 @@ Current state: **1890 elements, 36 types, 0 audit flags, 0 invented.**
 - Initiative (Dex mod + Level Bonus), Passive Perception and Passive Insight
   (10 + the skill's total, via `statref`) are now modelled in
   `_internal/level.yaml`, so Improved Initiative / Alertness read through to them.
+- **Prerequisites are enforced** where expressible in the engine's PrereqParser
+  grammar (ability score, `<n>th level`, named-element presence), via a curated
+  `prereqs:` overlay: 62 feats (`Feats.cs` `PrereqOverlay`) and 4 prestige paths
+  (`PathGen.cs` `PrereqOverlay`: Battlefield Healer→Heal, Shadowsneak→Stealth,
+  Silver Tongue→Diplomacy, Ring Fighter→Unarmed Combat). The verbatim
+  Prerequisite/Requirements text is left untouched; the `prereqs:` field gates
+  selection legality (verified: e.g. Evolution of Pankration needs Unarmed
+  Combat; The Presence needs 11th level + Cha 16). Still **not** enforced (kept
+  descriptive — not expressible / no matching element): proficiency-with-a-
+  specific-weapon/shield/focus (Orcus proficiency element names don't match the
+  parser's `proficient with X` lookup — singular/cased), "psi focus power" and
+  the psionic-power chains, "you have a familiar", low-light vision, "Channel
+  Divinity feature", "arcane class" / "a power with the Fire|Martial tag"
+  (Orcus classes/powers aren't tagged by power source), Skill Focus's "rank in
+  the chosen skill", and the choice-dependent armor/shield-proficiency ability
+  minimums. Two-Weapon Defense enforces only `Dex 13` (no Two-Weapon Fighting
+  feat exists in Orcus).
 - Kit "associated discipline" is wired via `$$KITDISC` only for disciplines that
   exist in this content; others are descriptive.
 - The app's Theme-is-skippable ordering (see §5) is unaddressed by design.

@@ -7,8 +7,9 @@
 # encounter, a 12th/16th-level power, a 20th-level daily) that do not count
 # against class power limits. Later-tier features/powers are gated with
 # `level:` so a character built below that level doesn't get them early.
-# Requirements are recorded descriptively (not enforced). All 20 published
-# paths are transcribed.
+# Requirements are verbatim in the Requirements field; those expressible in
+# the engine grammar (trained skill / named feat) also gate selection via a
+# `prereqs:` field. All 20 published paths are transcribed.
 
 # === Assassin =================================================================
 - id: ORCUS_PRESTIGE_ASSASSIN
@@ -118,6 +119,7 @@
   name: "Battlefield Healer"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Heal"
   fields:
     Requirements: "Trained in Heal."
     Description: >-
@@ -1214,6 +1216,7 @@
   name: "Ring Fighter"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Unarmed Combat"
   fields:
     Requirements: "Unarmed Combat feat."
     Description: >-
@@ -1538,6 +1541,7 @@
   name: "Shadowsneak"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Stealth"
   fields:
     Requirements: "Trained in Stealth."
     Description: >-
@@ -1648,6 +1652,7 @@
   name: "Silver Tongue"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Diplomacy"
   fields:
     Requirements: "Trained in Diplomacy."
     Description: >-

@@ -44,6 +44,7 @@
   name: "Armor Grace"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Armor Focus"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Armor Focus"
@@ -163,6 +164,7 @@
   name: "Crossfire, Improved"
   type: Feat
   source: "Orcus Original"
+  prereqs: "21st level, Crossfire"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "21st level, Crossfire"
@@ -219,6 +221,7 @@
   name: "Focused Caster"
   type: Feat
   source: "Orcus Original"
+  prereqs: "2nd level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Level 2"
@@ -365,6 +368,7 @@
   name: "Monster Expert"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "11th level"
@@ -434,6 +438,7 @@
   name: "Rolling Kip"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "11th level"
@@ -539,6 +544,7 @@
   name: "Tag Team"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "11th level"
@@ -563,6 +569,7 @@
   name: "The Presence"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level, Charisma 16"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "11th level, Charisma 16"
@@ -610,6 +617,7 @@
   name: "Two-Weapon Defense"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Dex 13"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Dex 13, Two-Weapon Fighting"
@@ -644,6 +652,7 @@
   name: "Weapon Focus"
   type: Feat
   source: "Orcus Original"
+  prereqs: "2nd level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Level 2"
@@ -677,6 +686,7 @@
   name: "Weapon Specialization"
   type: Feat
   source: "Orcus Original"
+  prereqs: "2nd level"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Level 2"
@@ -695,6 +705,7 @@
   name: "Balance and Direction"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Flavor: >-
@@ -710,6 +721,7 @@
   name: "Best on the Mat"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Evolution of Pankration, Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "Evolution of Pankration, Unarmed Combat"
@@ -722,6 +734,7 @@
   name: "Bouncing Combo"
   type: Feat
   source: "Orcus Original"
+  prereqs: "21st level, Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "21st level, Unarmed Combat"
@@ -735,6 +748,7 @@
   name: "Earned the Belt"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level, Evolution of Pankration, Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "11th level, Evolution of Pankration, Unarmed Combat"
@@ -747,6 +761,7 @@
   name: "Evolution of Pankration"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Flavor: "You are trained in a martial art involving pinning or submission."
@@ -763,6 +778,7 @@
   name: "Ham Hands"
   type: Feat
   source: "Orcus Original"
+  prereqs: "21st level, Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "21st level, Unarmed Combat"
@@ -775,6 +791,7 @@
   name: "Jumping Knee"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat, Unarmed Expanded Profile"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "Unarmed Combat, Unarmed Expanded Profile"
@@ -788,6 +805,7 @@
   name: "Kayfabe Maneuver"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Superior Position"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "Superior Position"
@@ -799,6 +817,7 @@
   name: "Master Degree Martial Artist"
   type: Feat
   source: "Orcus Original"
+  prereqs: "21st level, Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "21st level, Unarmed Combat"
@@ -822,6 +841,7 @@
   name: "The Ritual of Dance and Damage"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat, Unarmed Expanded Profile"
   fields:
     "Feat Category": "Martial Training Feats"
     Flavor: >-
@@ -852,6 +872,7 @@
   name: "Unarmed Combat (Improved)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "Unarmed Combat"
@@ -863,6 +884,7 @@
   name: "Unarmed Combat (Master)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level, Unarmed Combat, Unarmed Combat (Improved)"
   fields:
     "Feat Category": "Martial Training Feats"
     Prerequisite: "11th level, Unarmed Combat, Unarmed Combat (Improved)"
@@ -874,6 +896,7 @@
   name: "Unarmed Expanded Profile"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Unarmed Combat"
   fields:
     "Feat Category": "Martial Training Feats"
     Flavor: "Your legs become part of your unarmed attack profile."
@@ -1194,6 +1217,7 @@
   name: "Aura Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Cha 13"
   fields:
     "Feat Category": "Shard Feats"
     Flavor: >-
@@ -1282,6 +1306,7 @@
   name: "Blasting Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1302,6 +1327,7 @@
   name: "Empowering Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Thieving Aura, Cha 13, 26th level"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1317,6 +1343,7 @@
   name: "Extended Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1330,6 +1357,7 @@
   name: "Forceful Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1349,6 +1377,7 @@
   name: "Healing Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1364,6 +1393,7 @@
   name: "Restorative Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Healing Aura, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1380,6 +1410,7 @@
   name: "Shifting Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1398,6 +1429,7 @@
   name: "Surging Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1416,6 +1448,7 @@
   name: "Thieving Aura"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Aura Shard, Cha 13"
   fields:
     "Feat Category": "Aura Shard Feats"
     Flavor: >-
@@ -1433,6 +1466,7 @@
   name: "Acid Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1453,6 +1487,7 @@
   name: "Cold Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1474,6 +1509,7 @@
   name: "Empowered Blast Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1489,6 +1525,7 @@
   name: "Far Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1501,6 +1538,7 @@
   name: "Fire Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1520,6 +1558,7 @@
   name: "Improved Blast Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Empowered Blast Shard, 11th level"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1535,6 +1574,7 @@
   name: "Lightning Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1554,6 +1594,7 @@
   name: "Mind Blast"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Blast Shard"
   fields:
     "Feat Category": "Blast Shard Feats"
     Flavor: >-
@@ -1574,6 +1615,7 @@
   name: "Force Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Shield Shard, 11th level"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1593,6 +1635,7 @@
   name: "Greater Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Shield Shard"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1612,6 +1655,7 @@
   name: "Grounding Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Shield Shard"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1628,6 +1672,7 @@
   name: "Immovable Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Grounding Shard, Shield Shard"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1645,6 +1690,7 @@
   name: "Offensive Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Shield Shard"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1661,6 +1707,7 @@
   name: "Refreshing Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Shield Shard"
   fields:
     "Feat Category": "Shield Shard Feats"
     Flavor: >-
@@ -1677,6 +1724,7 @@
   name: "As One"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1693,6 +1741,7 @@
   name: "Assassin’s Weapon"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Slayer’s Weapon, Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1710,6 +1759,7 @@
   name: "Extended Weapon"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1723,6 +1773,7 @@
   name: "Greater Weapon Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Improved Weapon Shard, Weapon Shard, 11th level"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1736,6 +1787,7 @@
   name: "Improved Weapon Shard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1749,6 +1801,7 @@
   name: "Malleable Weapon"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1766,6 +1819,7 @@
   name: "Slayer’s Weapon"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1782,6 +1836,7 @@
   name: "Stormshard"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1796,6 +1851,7 @@
   name: "Twin Weapon"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Weapon Shard"
   fields:
     "Feat Category": "Weapon Shard Feats"
     Flavor: >-
@@ -1865,6 +1921,7 @@
   name: "Battle Adaptation (Dualclass)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Dualclass Recruit (Dualclass)"
   fields:
     "Feat Category": "Dualclassing"
     Prerequisite: "Dualclass Recruit"
@@ -1877,6 +1934,7 @@
   name: "Functional Adaptation (Dualclass)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Dualclass Recruit (Dualclass)"
   fields:
     "Feat Category": "Dualclassing"
     Prerequisite: "Dualclass Recruit"
@@ -1888,6 +1946,7 @@
   name: "Daily Adaptation (Dualclass)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Dualclass Recruit (Dualclass)"
   fields:
     "Feat Category": "Dualclassing"
     Prerequisite: "Dualclass Recruit"
@@ -1901,6 +1960,7 @@
   name: "Kit Study"
   type: Feat
   source: "Orcus Original"
+  prereqs: "11th level"
   fields:
     "Feat Category": "Kit Study Feats"
     Prerequisite: "Level 11"
@@ -1910,6 +1970,7 @@
   name: "Kit Study (Expert)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "15th level, Kit Study"
   fields:
     "Feat Category": "Kit Study Feats"
     Prerequisite: "Level 15, Kit Study"
@@ -1919,6 +1980,7 @@
   name: "Kit Study (Advanced)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "20th level, Kit Study"
   fields:
     "Feat Category": "Kit Study Feats"
     Prerequisite: "Level 20, Kit Study"

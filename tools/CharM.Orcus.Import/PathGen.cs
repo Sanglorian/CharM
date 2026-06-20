@@ -43,6 +43,21 @@ public static class PathGen
     static readonly Regex ReqLine = new(
         @"^\*\*(?:Requirements?|Prerequisite):\*\*\s*(?<val>.*)$", RegexOptions.Compiled);
 
+    // Machine-readable prerequisites for the prestige paths whose requirement is
+    // expressible in the PrereqParser grammar (a trained-skill element, or a named
+    // feat). The verbatim Requirements field is left untouched (display); this
+    // gates the level-11 Prestige Path selection. The other paths' requirements
+    // (weapon/crossbow/garrote proficiency, "psi focus", "channel divinity",
+    // "arcane class", "a power with the Fire/Martial tag") aren't expressible yet
+    // and stay descriptive.
+    static readonly Dictionary<string, string> PrereqOverlay = new()
+    {
+        ["ORCUS_PRESTIGE_BATTLEFIELD_HEALER"] = "Heal",          // Trained in Heal
+        ["ORCUS_PRESTIGE_SHADOWSNEAK"] = "Stealth",              // Trained in Stealth
+        ["ORCUS_PRESTIGE_SILVER_TONGUE"] = "Diplomacy",          // Trained in Diplomacy
+        ["ORCUS_PRESTIGE_RING_FIGHTER"] = "Unarmed Combat",      // Unarmed Combat feat
+    };
+
     public static int Generate(string sourceFile, string outPath, string contentDir)
     {
         var paths = Parse(sourceFile);
@@ -237,8 +252,9 @@ public static class PathGen
         sb.AppendLine("# encounter, a 12th/16th-level power, a 20th-level daily) that do not count");
         sb.AppendLine("# against class power limits. Later-tier features/powers are gated with");
         sb.AppendLine("# `level:` so a character built below that level doesn't get them early.");
-        sb.AppendLine("# Requirements are recorded descriptively (not enforced). All 20 published");
-        sb.AppendLine("# paths are transcribed.");
+        sb.AppendLine("# Requirements are verbatim in the Requirements field; those expressible in");
+        sb.AppendLine("# the engine grammar (trained skill / named feat) also gate selection via a");
+        sb.AppendLine("# `prereqs:` field. All 20 published paths are transcribed.");
         sb.AppendLine();
 
         foreach (var path in paths)
@@ -265,6 +281,8 @@ public static class PathGen
             sb.AppendLine($"  name: {Scalar(path.Name)}");
             sb.AppendLine($"  type: Prestige Path");
             sb.AppendLine($"  source: \"Orcus Original\"");
+            if (PrereqOverlay.TryGetValue(pathId, out var prereq))
+                sb.AppendLine($"  prereqs: {Scalar(prereq)}");
             sb.AppendLine($"  fields:");
             if (path.Requirements.Length > 0)
                 foreach (var l in Phase2.EmitFieldLines("Requirements", path.Requirements, 4)) sb.AppendLine(l);
