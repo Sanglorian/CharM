@@ -24,6 +24,42 @@ The first time you run CharM you'll be prompted to point it at your "rules.db" f
 
 If you don't know where you left those things, I am sure there are people on the internet willing to help you. Once you've created your rules.db file, make sure to back it up somewhere safe so you don't need to do this again in the future. Creating the rules db can take a while, especially if you're pulling an index from the internet.
 
+## The Orcus ruleset (homebrew, build from source)
+This repo also ships a complete transcription of the **Orcus (Outlaw Kingdoms)** ruleset as CharM YAML under `content/orcus/`, plus tooling under `tools/CharM.Orcus.Import/`. You don't need a WotC index for this — you build a standalone Orcus `rules.db` straight from the YAML and point CharM at it.
+
+**Prerequisites:** the [.NET 10 SDK](https://dotnet.microsoft.com/download) (`dotnet --version` should report `10.x`). For the desktop app only, also `dotnet workload install maui`.
+
+**Important — don't build inside a cloud‑synced folder.** Google Drive, OneDrive and Dropbox keep files memory‑mapped, which makes the .NET build fail with `CreateAppHost ... a file with a user-mapped section open`. Clone to a plain local path such as `C:\src\CharM`.
+
+Run all commands from the repo root (PowerShell):
+
+```powershell
+# 1. Compile the Orcus content into its own database
+dotnet run --project src/CharM.Authoring.Cli -- build content/orcus -o orcus-rules.db
+#    Expect: "Verified: <N> element(s) across <N> type(s) load cleanly."
+
+# 2. (optional) Headless sanity check — same engine the app uses
+dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class Sylvan --level 30
+
+# 3. Run the app and point it at orcus-rules.db
+dotnet run --project src/CharM.Web      # browser UI at the printed http://localhost:… URL
+#    or, on Windows desktop:
+dotnet run --project src/CharM.Maui     # first run prompts for a rules.db — choose orcus-rules.db
+```
+
+The Orcus database is a self‑contained homebrew ruleset, separate from any WotC `rules.db` — keep the two files distinct and load whichever you want.
+
+If a build ever fails with the `CreateAppHost` error above (e.g. the folder is still synced, or a previous run is still open), append `-p:UseAppHost=false` to the `dotnet run`/`dotnet build` command — the command‑line tools run via `dotnet` and don't need the native `.exe`. A `NU1903` SQLite advisory may also appear; it's a transitive‑dependency warning, not a build failure.
+
+To validate or regenerate the content against the source books (the `Orcus *.md` files at the repo root):
+
+```powershell
+dotnet run --project tools/CharM.Orcus.Import -- audit .        # fidelity + coverage report
+dotnet run --project tools/CharM.Orcus.Import -- audit-all .    # every field checked vs the source
+```
+
+See [`content/orcus/README.md`](content/orcus/README.md) for what's in the ruleset and how the generators/patchers work.
+
 ## Features
 - All 4th edition rulesxml elements covered (AFAICT) with close to perfect parity**
 - Modern UI for use as a digital character sheet
