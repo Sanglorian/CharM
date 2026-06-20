@@ -10,7 +10,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS1
   name: "+1 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -24,7 +24,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS2
   name: "+2 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -38,7 +38,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS3
   name: "+3 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -52,7 +52,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS4
   name: "+4 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -66,7 +66,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS5
   name: "+5 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -80,7 +80,7 @@
 - id: ORCUS_MAGIC_BLESSED_FOCUS_PLUS6
   name: "+6 blessed focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -94,7 +94,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS1
   name: "+1 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -108,7 +108,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS2
   name: "+2 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -122,7 +122,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS3
   name: "+3 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -136,7 +136,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS4
   name: "+4 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -150,7 +150,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS5
   name: "+5 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -164,7 +164,7 @@
 - id: ORCUS_MAGIC_BRILLIANT_FOCUS_PLUS6
   name: "+6 brilliant focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -178,7 +178,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS1
   name: "+1 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -192,7 +192,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS2
   name: "+2 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -206,7 +206,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS3
   name: "+3 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -220,7 +220,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS4
   name: "+4 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -234,7 +234,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS5
   name: "+5 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -248,7 +248,7 @@
 - id: ORCUS_MAGIC_COURAGEOUS_FOCUS_PLUS6
   name: "+6 courageous focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -262,7 +262,7 @@
 - id: ORCUS_MAGIC_DISMISSAL_FOCUS_PLUS5
   name: "+5 dismissal focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -279,7 +279,7 @@
 - id: ORCUS_MAGIC_DISMISSAL_FOCUS_PLUS6
   name: "+6 dismissal focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -296,7 +296,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS1
   name: "+1 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -311,7 +311,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS2
   name: "+2 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -326,7 +326,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS3
   name: "+3 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -341,7 +341,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS4
   name: "+4 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -356,7 +356,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS5
   name: "+5 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -371,7 +371,7 @@
 - id: ORCUS_MAGIC_DRAINING_FOCUS_PLUS6
   name: "+6 draining focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -386,7 +386,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS1
   name: "+1 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -401,7 +401,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS2
   name: "+2 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -416,7 +416,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS3
   name: "+3 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -431,7 +431,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS4
   name: "+4 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -446,7 +446,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS5
   name: "+5 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -461,7 +461,7 @@
 - id: ORCUS_MAGIC_ELEMENTAL_S_ALLY_FOCUS_PLUS6
   name: "+6 elemental's ally focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -476,7 +476,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS1
   name: "+1 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -491,7 +491,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS2
   name: "+2 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -506,7 +506,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS3
   name: "+3 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -521,7 +521,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS4
   name: "+4 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -536,7 +536,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS5
   name: "+5 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -551,7 +551,7 @@
 - id: ORCUS_MAGIC_ENERGY_ABSORBING_FOCUS_PLUS6
   name: "+6 energy absorbing focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -566,7 +566,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS1
   name: "+1 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -578,7 +578,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS2
   name: "+2 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -590,7 +590,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS3
   name: "+3 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -602,7 +602,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS4
   name: "+4 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -614,7 +614,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS5
   name: "+5 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -626,7 +626,7 @@
 - id: ORCUS_MAGIC_FINISHER_FOCUS_PLUS6
   name: "+6 finisher focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -638,7 +638,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS1
   name: "+1 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -652,7 +652,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS2
   name: "+2 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -666,7 +666,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS3
   name: "+3 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -680,7 +680,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS4
   name: "+4 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -694,7 +694,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS5
   name: "+5 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -708,7 +708,7 @@
 - id: ORCUS_MAGIC_FORCEFUL_FOCUS_PLUS6
   name: "+6 forceful focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -722,7 +722,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS1
   name: "+1 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -741,7 +741,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS2
   name: "+2 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -760,7 +760,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS3
   name: "+3 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -779,7 +779,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS4
   name: "+4 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -798,7 +798,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS5
   name: "+5 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -817,7 +817,7 @@
 - id: ORCUS_MAGIC_GROUNDED_FOCUS_PLUS6
   name: "+6 grounded focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -836,7 +836,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS1
   name: "+1 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -848,7 +848,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS2
   name: "+2 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -860,7 +860,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS3
   name: "+3 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -872,7 +872,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS4
   name: "+4 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -884,7 +884,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS5
   name: "+5 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -896,7 +896,7 @@
 - id: ORCUS_MAGIC_KEEN_FOCUS_PLUS6
   name: "+6 keen focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -908,7 +908,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS1
   name: "+1 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -922,7 +922,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS2
   name: "+2 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -936,7 +936,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS3
   name: "+3 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -950,7 +950,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS4
   name: "+4 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -964,7 +964,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS5
   name: "+5 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -978,7 +978,7 @@
 - id: ORCUS_MAGIC_MANA_BATTERY_FOCUS_PLUS6
   name: "+6 mana battery focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -992,7 +992,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS1
   name: "+1 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1011,7 +1011,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS2
   name: "+2 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1030,7 +1030,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS3
   name: "+3 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1049,7 +1049,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS4
   name: "+4 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1068,7 +1068,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS5
   name: "+5 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1087,7 +1087,7 @@
 - id: ORCUS_MAGIC_RESHAPING_FOCUS_PLUS6
   name: "+6 reshaping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1106,7 +1106,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS1
   name: "+1 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1122,7 +1122,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS2
   name: "+2 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1138,7 +1138,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS3
   name: "+3 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1154,7 +1154,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS4
   name: "+4 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1170,7 +1170,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS5
   name: "+5 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1186,7 +1186,7 @@
 - id: ORCUS_MAGIC_RUNIC_FOCUS_PLUS6
   name: "+6 runic focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1202,7 +1202,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS1
   name: "+1 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1217,7 +1217,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS2
   name: "+2 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1232,7 +1232,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS3
   name: "+3 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1247,7 +1247,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS4
   name: "+4 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1262,7 +1262,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS5
   name: "+5 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1277,7 +1277,7 @@
 - id: ORCUS_MAGIC_SAPPING_FOCUS_PLUS6
   name: "+6 sapping focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1292,7 +1292,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS1
   name: "+1 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1309,7 +1309,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS2
   name: "+2 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1326,7 +1326,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS3
   name: "+3 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1343,7 +1343,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS4
   name: "+4 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1360,7 +1360,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS5
   name: "+5 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1377,7 +1377,7 @@
 - id: ORCUS_MAGIC_VERSATILE_FOCUS_PLUS6
   name: "+6 versatile focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1394,7 +1394,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS1
   name: "+1 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1411,7 +1411,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS2
   name: "+2 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1428,7 +1428,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS3
   name: "+3 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1445,7 +1445,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS4
   name: "+4 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1462,7 +1462,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS5
   name: "+5 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1479,7 +1479,7 @@
 - id: ORCUS_MAGIC_WARLIKE_FOCUS_PLUS6
   name: "+6 warlike focus"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -1498,7 +1498,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS1
   name: "+1 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1517,7 +1517,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS2
   name: "+2 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1536,7 +1536,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS3
   name: "+3 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1555,7 +1555,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS4
   name: "+4 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1574,7 +1574,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS5
   name: "+5 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1593,7 +1593,7 @@
 - id: ORCUS_MAGIC_BLEEDING_WEAPON_PLUS6
   name: "+6 bleeding weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1612,7 +1612,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS1
   name: "+1 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1626,7 +1626,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS2
   name: "+2 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1640,7 +1640,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS3
   name: "+3 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1654,7 +1654,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS4
   name: "+4 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1668,7 +1668,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS5
   name: "+5 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1682,7 +1682,7 @@
 - id: ORCUS_MAGIC_DANCING_WEAPON_PLUS6
   name: "+6 dancing weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1696,7 +1696,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS1
   name: "+1 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1708,7 +1708,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS2
   name: "+2 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1720,7 +1720,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS3
   name: "+3 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1732,7 +1732,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS4
   name: "+4 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1744,7 +1744,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS5
   name: "+5 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1756,7 +1756,7 @@
 - id: ORCUS_MAGIC_DEFENDER_WEAPON_PLUS6
   name: "+6 defender weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1768,7 +1768,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS1
   name: "+1 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1785,7 +1785,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS2
   name: "+2 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1802,7 +1802,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS3
   name: "+3 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1819,7 +1819,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS4
   name: "+4 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1836,7 +1836,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS5
   name: "+5 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1853,7 +1853,7 @@
 - id: ORCUS_MAGIC_DISRUPTION_WEAPON_PLUS6
   name: "+6 disruption weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1870,7 +1870,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS1
   name: "+1 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1885,7 +1885,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS2
   name: "+2 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1900,7 +1900,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS3
   name: "+3 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1915,7 +1915,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS4
   name: "+4 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1930,7 +1930,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS5
   name: "+5 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1945,7 +1945,7 @@
 - id: ORCUS_MAGIC_DWARVEN_THROWER_WEAPON_PLUS6
   name: "+6 dwarven thrower weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1960,7 +1960,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS1
   name: "+1 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1976,7 +1976,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS2
   name: "+2 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -1992,7 +1992,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS3
   name: "+3 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2008,7 +2008,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS4
   name: "+4 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2024,7 +2024,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS5
   name: "+5 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2040,7 +2040,7 @@
 - id: ORCUS_MAGIC_FLAME_TONGUE_WEAPON_PLUS6
   name: "+6 flame tongue weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2056,7 +2056,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS1
   name: "+1 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2076,7 +2076,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS2
   name: "+2 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2096,7 +2096,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS3
   name: "+3 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2116,7 +2116,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS4
   name: "+4 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2136,7 +2136,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS5
   name: "+5 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2156,7 +2156,7 @@
 - id: ORCUS_MAGIC_FROST_BRAND_WEAPON_PLUS6
   name: "+6 frost brand weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2176,7 +2176,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS1
   name: "+1 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2194,7 +2194,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS2
   name: "+2 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2212,7 +2212,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS3
   name: "+3 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2230,7 +2230,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS4
   name: "+4 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2248,7 +2248,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS5
   name: "+5 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2266,7 +2266,7 @@
 - id: ORCUS_MAGIC_HAMMER_OF_THUNDERBOLTS_WEAPON_PLUS6
   name: "+6 hammer of thunderbolts weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2284,7 +2284,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS1
   name: "+1 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2299,7 +2299,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS2
   name: "+2 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2314,7 +2314,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS3
   name: "+3 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2329,7 +2329,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS4
   name: "+4 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2344,7 +2344,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS5
   name: "+5 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2359,7 +2359,7 @@
 - id: ORCUS_MAGIC_INFECTIOUS_MARK_WEAPON_PLUS6
   name: "+6 infectious mark weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2374,7 +2374,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS1
   name: "+1 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2390,7 +2390,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS2
   name: "+2 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2406,7 +2406,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS3
   name: "+3 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2422,7 +2422,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS4
   name: "+4 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2438,7 +2438,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS5
   name: "+5 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2454,7 +2454,7 @@
 - id: ORCUS_MAGIC_LIGHTNING_WEAPON_PLUS6
   name: "+6 lightning weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2470,7 +2470,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS1
   name: "+1 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2485,7 +2485,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS2
   name: "+2 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2500,7 +2500,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS3
   name: "+3 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2515,7 +2515,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS4
   name: "+4 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2530,7 +2530,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS5
   name: "+5 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2545,7 +2545,7 @@
 - id: ORCUS_MAGIC_LUCK_BLADE_WEAPON_PLUS6
   name: "+6 luck blade weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2560,7 +2560,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS1
   name: "+1 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2573,7 +2573,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS2
   name: "+2 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2586,7 +2586,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS3
   name: "+3 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2599,7 +2599,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS4
   name: "+4 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2612,7 +2612,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS5
   name: "+5 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2625,7 +2625,7 @@
 - id: ORCUS_MAGIC_RAVENING_WEAPON_PLUS6
   name: "+6 ravening weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2638,7 +2638,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS1
   name: "+1 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2657,7 +2657,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS2
   name: "+2 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2676,7 +2676,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS3
   name: "+3 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2695,7 +2695,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS4
   name: "+4 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2714,7 +2714,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS5
   name: "+5 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2733,7 +2733,7 @@
 - id: ORCUS_MAGIC_SLAYER_WEAPON_PLUS6
   name: "+6 slayer weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2752,7 +2752,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS1
   name: "+1 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2764,7 +2764,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS2
   name: "+2 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2776,7 +2776,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS3
   name: "+3 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2788,7 +2788,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS4
   name: "+4 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2800,7 +2800,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS5
   name: "+5 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2812,7 +2812,7 @@
 - id: ORCUS_MAGIC_SWIFT_WEAPON_PLUS6
   name: "+6 swift weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2824,7 +2824,7 @@
 - id: ORCUS_MAGIC_SWORN_VENGEANCE_WEAPON_PLUS4
   name: "+4 sworn vengeance weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2845,7 +2845,7 @@
 - id: ORCUS_MAGIC_SWORN_VENGEANCE_WEAPON_PLUS5
   name: "+5 sworn vengeance weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2866,7 +2866,7 @@
 - id: ORCUS_MAGIC_SWORN_VENGEANCE_WEAPON_PLUS6
   name: "+6 sworn vengeance weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2887,7 +2887,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS1
   name: "+1 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2903,7 +2903,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS2
   name: "+2 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2919,7 +2919,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS3
   name: "+3 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2935,7 +2935,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS4
   name: "+4 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2951,7 +2951,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS5
   name: "+5 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2967,7 +2967,7 @@
 - id: ORCUS_MAGIC_VENOM_WEAPON_PLUS6
   name: "+6 venom weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2983,7 +2983,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS1
   name: "+1 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -2997,7 +2997,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS2
   name: "+2 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -3011,7 +3011,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS3
   name: "+3 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -3025,7 +3025,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS4
   name: "+4 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -3039,7 +3039,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS5
   name: "+5 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -3053,7 +3053,7 @@
 - id: ORCUS_MAGIC_WARDED_WEAPON_PLUS6
   name: "+6 warded weapon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -3069,7 +3069,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS1
   name: "+1 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3088,7 +3088,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS2
   name: "+2 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3107,7 +3107,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS3
   name: "+3 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3126,7 +3126,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS4
   name: "+4 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3145,7 +3145,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS5
   name: "+5 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3164,7 +3164,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_PROOF_AGAINST_DETECTION_AND_LOCATION_NECK_PLUS6
   name: "+6 amulet of proof against detection and location"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3183,7 +3183,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_THE_PLANES_NECK_PLUS5
   name: "+5 amulet of the planes"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3206,7 +3206,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_THE_PLANES_NECK_PLUS6
   name: "+6 amulet of the planes"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3229,7 +3229,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS1
   name: "+1 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3248,7 +3248,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS2
   name: "+2 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3267,7 +3267,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS3
   name: "+3 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3286,7 +3286,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS4
   name: "+4 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3305,7 +3305,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS5
   name: "+5 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3324,7 +3324,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_RESCUE_NECK_PLUS6
   name: "+6 amulet of rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3343,7 +3343,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS1
   name: "+1 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3362,7 +3362,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS2
   name: "+2 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3381,7 +3381,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS3
   name: "+3 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3400,7 +3400,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS4
   name: "+4 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3419,7 +3419,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS5
   name: "+5 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3438,7 +3438,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_SHIELDING_NECK_PLUS6
   name: "+6 amulet of shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3457,7 +3457,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS1
   name: "+1 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3475,7 +3475,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS2
   name: "+2 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3493,7 +3493,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS3
   name: "+3 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3511,7 +3511,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS4
   name: "+4 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3529,7 +3529,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS5
   name: "+5 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3547,7 +3547,7 @@
 - id: ORCUS_MAGIC_AMULET_OF_UP_AND_DOWN_NECK_PLUS6
   name: "+6 amulet of up-and-down"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3565,7 +3565,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS1
   name: "+1 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3584,7 +3584,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS2
   name: "+2 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3603,7 +3603,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS3
   name: "+3 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3622,7 +3622,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS4
   name: "+4 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3641,7 +3641,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS5
   name: "+5 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3660,7 +3660,7 @@
 - id: ORCUS_MAGIC_CAPE_OF_THE_MOUNTEBANK_NECK_PLUS6
   name: "+6 cape of the mountebank"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3679,7 +3679,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS1
   name: "+1 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3701,7 +3701,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS2
   name: "+2 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3723,7 +3723,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS3
   name: "+3 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3745,7 +3745,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS4
   name: "+4 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3767,7 +3767,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS5
   name: "+5 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3789,7 +3789,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ARACHNIDA_NECK_PLUS6
   name: "+6 cloak of arachnida"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3811,7 +3811,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS1
   name: "+1 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3832,7 +3832,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS2
   name: "+2 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3853,7 +3853,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS3
   name: "+3 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3874,7 +3874,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS4
   name: "+4 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3895,7 +3895,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS5
   name: "+5 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3916,7 +3916,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_DISPLACEMENT_NECK_PLUS6
   name: "+6 cloak of displacement"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3937,7 +3937,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS1
   name: "+1 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3957,7 +3957,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS2
   name: "+2 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3977,7 +3977,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS3
   name: "+3 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -3997,7 +3997,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS4
   name: "+4 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4017,7 +4017,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS5
   name: "+5 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4037,7 +4037,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_ELVENKIND_NECK_PLUS6
   name: "+6 cloak of elvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4057,7 +4057,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS1
   name: "+1 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4075,7 +4075,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS2
   name: "+2 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4093,7 +4093,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS3
   name: "+3 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4111,7 +4111,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS4
   name: "+4 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4129,7 +4129,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS5
   name: "+5 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4147,7 +4147,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_ARTIST_NECK_PLUS6
   name: "+6 cloak of the artist"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4165,7 +4165,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_BAT_NECK_PLUS3
   name: "+3 cloak of the bat"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4187,7 +4187,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_BAT_NECK_PLUS4
   name: "+4 cloak of the bat"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4209,7 +4209,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_BAT_NECK_PLUS5
   name: "+5 cloak of the bat"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4231,7 +4231,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_BAT_NECK_PLUS6
   name: "+6 cloak of the bat"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4253,7 +4253,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS1
   name: "+1 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4269,7 +4269,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS2
   name: "+2 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4285,7 +4285,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS3
   name: "+3 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4301,7 +4301,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS4
   name: "+4 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4317,7 +4317,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS5
   name: "+5 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4333,7 +4333,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_EEL_NECK_PLUS6
   name: "+6 cloak of the eel"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4349,7 +4349,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS1
   name: "+1 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4368,7 +4368,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS2
   name: "+2 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4387,7 +4387,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS3
   name: "+3 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4406,7 +4406,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS4
   name: "+4 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4425,7 +4425,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS5
   name: "+5 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4444,7 +4444,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_MANTA_RAY_NECK_PLUS6
   name: "+6 cloak of the manta ray"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4463,7 +4463,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS1
   name: "+1 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4485,7 +4485,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS2
   name: "+2 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4507,7 +4507,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS3
   name: "+3 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4529,7 +4529,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS4
   name: "+4 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4551,7 +4551,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS5
   name: "+5 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4573,7 +4573,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_THE_SKILLFUL_NECK_PLUS6
   name: "+6 cloak of the skillful"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4595,7 +4595,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS1
   name: "+1 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4611,7 +4611,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS2
   name: "+2 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4627,7 +4627,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS3
   name: "+3 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4643,7 +4643,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS4
   name: "+4 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4659,7 +4659,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS5
   name: "+5 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4675,7 +4675,7 @@
 - id: ORCUS_MAGIC_CLOAK_OF_SHELTER_NECK_PLUS6
   name: "+6 cloak of shelter"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4691,7 +4691,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS1
   name: "+1 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4711,7 +4711,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS2
   name: "+2 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4731,7 +4731,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS3
   name: "+3 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4751,7 +4751,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS4
   name: "+4 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4771,7 +4771,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS5
   name: "+5 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4791,7 +4791,7 @@
 - id: ORCUS_MAGIC_MEDALLION_OF_THOUGHTS_NECK_PLUS6
   name: "+6 medallion of thoughts"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4811,7 +4811,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS1
   name: "+1 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4831,7 +4831,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS2
   name: "+2 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4851,7 +4851,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS3
   name: "+3 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4871,7 +4871,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS4
   name: "+4 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4891,7 +4891,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS5
   name: "+5 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4911,7 +4911,7 @@
 - id: ORCUS_MAGIC_NECKLACE_OF_ADAPTATION_NECK_PLUS6
   name: "+6 necklace of adaptation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4931,7 +4931,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS1
   name: "+1 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4948,7 +4948,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS2
   name: "+2 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4965,7 +4965,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS3
   name: "+3 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4982,7 +4982,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS4
   name: "+4 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -4999,7 +4999,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS5
   name: "+5 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -5016,7 +5016,7 @@
 - id: ORCUS_MAGIC_SOULKEEPER_AMULET_NECK_PLUS6
   name: "+6 soulkeeper amulet"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -5035,7 +5035,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS1
   name: "+1 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5051,7 +5051,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS2
   name: "+2 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5067,7 +5067,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS3
   name: "+3 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5083,7 +5083,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS4
   name: "+4 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5099,7 +5099,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS5
   name: "+5 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5115,7 +5115,7 @@
 - id: ORCUS_MAGIC_ADAMANTINE_ARMOR_PLUS6
   name: "+6 adamantine armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5131,7 +5131,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS1
   name: "+1 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5151,7 +5151,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS2
   name: "+2 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5171,7 +5171,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS3
   name: "+3 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5191,7 +5191,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS4
   name: "+4 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5211,7 +5211,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS5
   name: "+5 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5231,7 +5231,7 @@
 - id: ORCUS_MAGIC_ADAPTIVE_ARMOR_PLUS6
   name: "+6 adaptive armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5251,7 +5251,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS1
   name: "+1 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5267,7 +5267,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS2
   name: "+2 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5283,7 +5283,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS3
   name: "+3 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5299,7 +5299,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS4
   name: "+4 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5315,7 +5315,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS5
   name: "+5 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5331,7 +5331,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_ETHEREALNESS_ARMOR_PLUS6
   name: "+6 armor of etherealness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5347,7 +5347,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_INVULNERABILITY_ARMOR_PLUS4
   name: "+4 armor of invulnerability armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5365,7 +5365,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_INVULNERABILITY_ARMOR_PLUS5
   name: "+5 armor of invulnerability armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5383,7 +5383,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_INVULNERABILITY_ARMOR_PLUS6
   name: "+6 armor of invulnerability armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5401,7 +5401,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS1
   name: "+1 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5422,7 +5422,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS2
   name: "+2 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5443,7 +5443,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS3
   name: "+3 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5464,7 +5464,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS4
   name: "+4 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5485,7 +5485,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS5
   name: "+5 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5506,7 +5506,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_RESISTANCE_ARMOR_PLUS6
   name: "+6 armor of resistance armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5527,7 +5527,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS1
   name: "+1 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5549,7 +5549,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS2
   name: "+2 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5571,7 +5571,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS3
   name: "+3 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5593,7 +5593,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS4
   name: "+4 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5615,7 +5615,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS5
   name: "+5 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5637,7 +5637,7 @@
 - id: ORCUS_MAGIC_DEMON_ARMOR_PLUS6
   name: "+6 demon armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5659,7 +5659,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS1
   name: "+1 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5673,7 +5673,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS2
   name: "+2 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5687,7 +5687,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS3
   name: "+3 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5701,7 +5701,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS4
   name: "+4 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5715,7 +5715,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS5
   name: "+5 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5729,7 +5729,7 @@
 - id: ORCUS_MAGIC_ARMOR_OF_TOUGHNESS_ARMOR_PLUS6
   name: "+6 armor of toughness armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5743,7 +5743,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS1
   name: "+1 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5772,7 +5772,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS2
   name: "+2 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5801,7 +5801,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS3
   name: "+3 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5830,7 +5830,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS4
   name: "+4 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5859,7 +5859,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS5
   name: "+5 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5888,7 +5888,7 @@
 - id: ORCUS_MAGIC_DRAGON_SCALE_ARMOR_PLUS6
   name: "+6 dragon scale armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5917,7 +5917,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS1
   name: "+1 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5933,7 +5933,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS2
   name: "+2 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5949,7 +5949,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS3
   name: "+3 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5965,7 +5965,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS4
   name: "+4 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5981,7 +5981,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS5
   name: "+5 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -5997,7 +5997,7 @@
 - id: ORCUS_MAGIC_DWARF_WORKED_ARMOR_PLUS6
   name: "+6 dwarf worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6013,7 +6013,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS1
   name: "+1 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6029,7 +6029,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS2
   name: "+2 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6045,7 +6045,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS3
   name: "+3 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6061,7 +6061,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS4
   name: "+4 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6077,7 +6077,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS5
   name: "+5 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6093,7 +6093,7 @@
 - id: ORCUS_MAGIC_EMERGENCY_ARMOR_PLUS6
   name: "+6 emergency armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6109,7 +6109,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS1
   name: "+1 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6128,7 +6128,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS2
   name: "+2 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6147,7 +6147,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS3
   name: "+3 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6166,7 +6166,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS4
   name: "+4 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6185,7 +6185,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS5
   name: "+5 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6204,7 +6204,7 @@
 - id: ORCUS_MAGIC_GLAMORED_ARMOR_PLUS6
   name: "+6 glamored armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6223,7 +6223,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS1
   name: "+1 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6243,7 +6243,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS2
   name: "+2 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6263,7 +6263,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS3
   name: "+3 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6283,7 +6283,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS4
   name: "+4 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6303,7 +6303,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS5
   name: "+5 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6323,7 +6323,7 @@
 - id: ORCUS_MAGIC_GNOME_WORKED_ARMOR_PLUS6
   name: "+6 gnome worked armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6343,7 +6343,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS1
   name: "+1 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6360,7 +6360,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS2
   name: "+2 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6377,7 +6377,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS3
   name: "+3 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6394,7 +6394,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS4
   name: "+4 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6411,7 +6411,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS5
   name: "+5 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6428,7 +6428,7 @@
 - id: ORCUS_MAGIC_INDOMITABLE_ARMOR_PLUS6
   name: "+6 indomitable armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6445,7 +6445,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS1
   name: "+1 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6461,7 +6461,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS2
   name: "+2 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6477,7 +6477,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS3
   name: "+3 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6493,7 +6493,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS4
   name: "+4 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6509,7 +6509,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS5
   name: "+5 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6525,7 +6525,7 @@
 - id: ORCUS_MAGIC_LIFEGIVING_ARMOR_PLUS6
   name: "+6 lifegiving armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6541,7 +6541,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS1
   name: "+1 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6557,7 +6557,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS2
   name: "+2 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6573,7 +6573,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS3
   name: "+3 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6589,7 +6589,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS4
   name: "+4 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6605,7 +6605,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS5
   name: "+5 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6621,7 +6621,7 @@
 - id: ORCUS_MAGIC_OPHIDUAN_ARMOR_PLUS6
   name: "+6 ophiduan armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6637,7 +6637,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS1
   name: "+1 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6656,7 +6656,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS2
   name: "+2 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6675,7 +6675,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS3
   name: "+3 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6694,7 +6694,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS4
   name: "+4 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6713,7 +6713,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS5
   name: "+5 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6732,7 +6732,7 @@
 - id: ORCUS_MAGIC_SKILLFUL_ARMOR_PLUS6
   name: "+6 skillful armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6751,7 +6751,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS1
   name: "+1 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6767,7 +6767,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS2
   name: "+2 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6783,7 +6783,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS3
   name: "+3 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6799,7 +6799,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS4
   name: "+4 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6815,7 +6815,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS5
   name: "+5 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -6831,7 +6831,7 @@
 - id: ORCUS_MAGIC_STUBBORN_ARMOR_PLUS6
   name: "+6 stubborn armor"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor

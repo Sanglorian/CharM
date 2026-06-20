@@ -11,7 +11,7 @@
 - id: ORCUS_RACE_APEFOLK
   name: Apefolk
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -59,7 +59,7 @@
 - id: ORCUS_POWER_CULL_THE_WEAK
   name: Cull the Weak
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature, ORCUS_APEFOLK_POWER]
   fields:
     Level: "Feature"
@@ -71,7 +71,7 @@
 - id: ORCUS_POWER_RALLY_THE_TROOPS
   name: Rally the Troops
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature, ORCUS_APEFOLK_POWER]
   fields:
     "Power Usage": "Encounter"
@@ -88,7 +88,7 @@
 - id: ORCUS_RACE_AUTOMATON
   name: Automaton
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -136,7 +136,7 @@
 - id: ORCUS_RACE_AZER
   name: Azer
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -178,7 +178,7 @@
 - id: ORCUS_POWER_VENGEANCE_OF_THE_PIT
   name: Vengeance of the Pits
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -196,7 +196,7 @@
 - id: ORCUS_RACE_CATFOLK
   name: Catfolk
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -242,7 +242,7 @@
 - id: ORCUS_POWER_FARSTRIDER
   name: Farstrider
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -255,7 +255,7 @@
 - id: ORCUS_RACE_DEEPFOLK
   name: Deepfolk
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -293,7 +293,7 @@
 - id: ORCUS_POWER_BLINDING_MUCUS
   name: Blinding Mucus
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -308,7 +308,7 @@
 - id: ORCUS_RACE_DROMITE
   name: Dromite
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Small]
   fields:
     Size: Small
@@ -348,7 +348,7 @@
 - id: ORCUS_POWER_PSYCHIC_LEAP
   name: Psychic Leap
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -364,7 +364,7 @@
 - id: ORCUS_RACE_FROGFOLK
   name: Frogfolk
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Small]
   fields:
     Size: Small
@@ -408,7 +408,7 @@
 - id: ORCUS_POWER_LUCKY
   name: Lucky
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -422,7 +422,7 @@
 - id: ORCUS_RACE_GNOLL
   name: Gnoll
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -467,7 +467,7 @@
 - id: ORCUS_RACE_HALF_GIANT
   name: Half-Giant
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -515,7 +515,7 @@
 - id: ORCUS_POWER_STOMP
   name: Stomp
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -530,7 +530,7 @@
 - id: ORCUS_RACE_HOBGOBLIN
   name: Hobgoblin
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -571,7 +571,7 @@
 - id: ORCUS_POWER_CAREFUL_FOCUS
   name: Careful Focus
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -585,7 +585,7 @@
 - id: ORCUS_RACE_MEPHIT
   name: Mephit
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Small]
   fields:
     Size: Small
@@ -631,7 +631,7 @@
 - id: ORCUS_POWER_BREATH_WEAPON
   name: Breath Weapon
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -649,7 +649,7 @@
 - id: ORCUS_RACE_MINOTAUR
   name: Minotaur
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -694,7 +694,7 @@
 - id: ORCUS_POWER_MOMENTUM_BLOW
   name: Momentum Blow
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -709,7 +709,7 @@
 - id: ORCUS_RACE_SHADOW_ELF
   name: Shadow Elf
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -755,7 +755,7 @@
 - id: ORCUS_POWER_HIGHBLOOD_TELEPORT
   name: Highblood Teleport
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -769,7 +769,7 @@
 - id: ORCUS_RACE_VISHYA
   name: Vishya
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Size: Medium
@@ -813,7 +813,7 @@
 - id: ORCUS_POWER_POISONOUS_NIP
   name: Poisonous Nip
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"

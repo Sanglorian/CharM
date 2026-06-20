@@ -7,7 +7,7 @@
 - id: ORCUS_CLASS_SYLVAN
   name: Sylvan
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Striker, Spirit]
   fields:
     Role: Striker
@@ -163,7 +163,7 @@
 - id: ORCUS_TALENT_WATCHFUL
   name: Watchful
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Wisdom
@@ -178,7 +178,7 @@
 - id: ORCUS_TALENT_COMPANIONABLE
   name: Companionable
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Charisma
@@ -193,7 +193,7 @@
 - id: ORCUS_TALENT_SWIFT
   name: Swift
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_TALENT]
   fields:
     "Secondary Ability": Dexterity
@@ -209,7 +209,7 @@
 - id: ORCUS_POWER_FEARFUL_RAMPAGE
   name: Fearful Rampage
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -228,7 +228,7 @@
 - id: ORCUS_POWER_COMPANION_RAMPAGE
   name: Companion Rampage
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -247,7 +247,7 @@
 - id: ORCUS_POWER_SWIFT_RAMPAGE
   name: Swift Rampage
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -266,7 +266,7 @@
 - id: ORCUS_WILDGIFT_SKINCHANGER
   name: "Wild Gift: Skinchanger"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
 
@@ -282,7 +282,7 @@
 - id: ORCUS_WILDGIFT_HUNTER
   name: "Wild Gift: Hunter"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
 
@@ -295,7 +295,7 @@
 - id: ORCUS_WILDGIFT_ANIMAL_COMPANION
   name: "Wild Gift: Animal Companion"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_WILD_GIFT]
   fields:
     Description: >-
@@ -337,7 +337,7 @@
 - id: ORCUS_SYLVAN_TERRAIN_ARCTIC
   name: "Favored Terrain: Arctic"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
   fields:
     Description: "You gain the ice stride feature and a +2 bonus to Endure."
@@ -347,7 +347,7 @@
 - id: ORCUS_SYLVAN_TERRAIN_FOREST
   name: "Favored Terrain: Forest or Heath"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
   fields:
     Description: "You gain the woodland stride feature and a +2 bonus to Nature."
@@ -357,7 +357,7 @@
 - id: ORCUS_SYLVAN_TERRAIN_MARSHES
   name: "Favored Terrain: Marshes"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
   fields:
     Description: "You gain the swamp stride feature and a +2 bonus to Athletics."
@@ -367,7 +367,7 @@
 - id: ORCUS_SYLVAN_TERRAIN_UNDERGROUND
   name: "Favored Terrain: Underground or Mountains"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_SYLVAN_FAVORED_TERRAIN]
   fields:
     Description: "You gain the stone stride feature and a +2 bonus to Dungeoneering."

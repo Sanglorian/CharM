@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_GOLDEN_LION
   name: "Golden Lion"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Strength"
     "Secondary Ability": "Charisma"
@@ -17,7 +17,7 @@
 - id: ORCUS_POWER_PACK_POUNCE
   name: "Pack Pounce"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, at-will, ability-swap]
   fields:
     Level: "1"
@@ -39,7 +39,7 @@
 - id: ORCUS_POWER_TACTICAL_STRIKE
   name: "Tactical Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "1"
@@ -58,7 +58,7 @@
 - id: ORCUS_POWER_DEMORALIZING_ROAR
   name: "Demoralizing Roar"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "1"
@@ -77,7 +77,7 @@
 - id: ORCUS_POWER_HUNTING_PARTY
   name: "Hunting Party"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "2"
@@ -98,7 +98,7 @@
 - id: ORCUS_POWER_PRIDE_MOVEMENT
   name: "Pride Movement"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "2"
@@ -115,7 +115,7 @@
 - id: ORCUS_POWER_DISTRACTING_STRIKE
   name: "Distracting Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "3"
@@ -135,7 +135,7 @@
 - id: ORCUS_POWER_DEFENDING_THE_PRIDE
   name: "Defending the Pride"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "5"
@@ -156,7 +156,7 @@
 - id: ORCUS_POWER_CIRCLING_THE_PREY
   name: "Circling the Prey"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "6"
@@ -173,7 +173,7 @@
 - id: ORCUS_POWER_WARNING_ROAR
   name: "Warning Roar"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "6"
@@ -191,7 +191,7 @@
 - id: ORCUS_POWER_PYRITE_SWIPE
   name: "Pyrite Swipe"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "7"
@@ -215,7 +215,7 @@
 - id: ORCUS_POWER_KILL_THE_WOUNDED
   name: "Kill the Wounded"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "9"
@@ -236,7 +236,7 @@
 - id: ORCUS_POWER_DIRECT_THE_PRIDE
   name: "Direct the Pride"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "10"
@@ -256,7 +256,7 @@
 - id: ORCUS_POWER_GOLDEN_LION_CHARGER
   name: "Golden Lion Charger"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "10"
@@ -275,7 +275,7 @@
 - id: ORCUS_POWER_CHARGE_OF_THE_BATTLE_CAT
   name: "Charge of the Battle Cat"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "13"
@@ -295,7 +295,7 @@
 - id: ORCUS_POWER_GOLDEN_SWIPE
   name: "Golden Swipe"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "15"
@@ -316,7 +316,7 @@
 - id: ORCUS_POWER_HARRY_THE_PREY
   name: "Harry the Prey"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "15"
@@ -337,7 +337,7 @@
 - id: ORCUS_POWER_GUARD_THE_PRIDE
   name: "Guard the Pride"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "16"
@@ -357,7 +357,7 @@
 - id: ORCUS_POWER_ROAR_OF_BATTLE
   name: "Roar of Battle"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "17"
@@ -378,7 +378,7 @@
 - id: ORCUS_POWER_STRATEGIC_BLOW
   name: "Strategic Blow"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "19"
@@ -398,7 +398,7 @@
 - id: ORCUS_POWER_GOLDEN_GENERAL_S_STANCE
   name: "Golden General’s Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "22"
@@ -417,7 +417,7 @@
 - id: ORCUS_POWER_LORD_OF_THE_PRIDELANDS
   name: "Lord of the Pridelands"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, utility]
   fields:
     Level: "22"
@@ -437,7 +437,7 @@
 - id: ORCUS_POWER_WAR_LION_S_CHARGE
   name: "War Lion’s Charge"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "23"
@@ -460,7 +460,7 @@
 - id: ORCUS_POWER_LION_LORD_S_AGONY
   name: "Lion Lord’s Agony"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, encounter, ability-swap]
   fields:
     Level: "27"
@@ -478,7 +478,7 @@
 - id: ORCUS_POWER_TRIUMPHANT_LION_S_LEADERSHIP
   name: "Triumphant Lion’s Leadership"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_GOLDEN_LION, daily, ability-swap]
   fields:
     Level: "29"

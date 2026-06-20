@@ -165,7 +165,7 @@ public static class CompanionGen
         sb.AppendLine($"- id: ORCUS_COMPANION_{Slug(name)}");
         sb.AppendLine($"  name: {Q(name)}");
         sb.AppendLine($"  type: Companion");
-        sb.AppendLine($"  source: \"Orcus (Outlaw Kingdoms)\"");
+        sb.AppendLine($"  source: \"Orcus Original\"");
         sb.AppendLine($"  categories: [ORCUS_ANIMAL_COMPANION]");
         sb.AppendLine($"  fields:");
         if (type.Length > 0) sb.AppendLine($"    Type: {Q(type)}");

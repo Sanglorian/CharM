@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE
   name: "Spells of Ice and Fire"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Dexterity"
     "Secondary Ability": "Intelligence"
@@ -31,7 +31,7 @@
 - id: ORCUS_POWER_THERMAL_TOUCH
   name: "Thermal Touch"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, at-will, ability-swap]
   fields:
     Level: "1"
@@ -53,7 +53,7 @@
 - id: ORCUS_POWER_THERMODYNAMIC_BOLT
   name: "Thermodynamic Bolt"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, at-will, ability-swap]
   fields:
     Level: "1"
@@ -73,7 +73,7 @@
 - id: ORCUS_POWER_BOTTLED_THERMODYNAMIC_TRANSFER
   name: "Bottled Thermodynamic Transfer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
   fields:
     Level: "1"
@@ -99,7 +99,7 @@
 - id: ORCUS_POWER_ENTROPIC_BURST
   name: "Entropic Burst"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
   fields:
     Level: "1"
@@ -123,7 +123,7 @@
 - id: ORCUS_POWER_RESONANT_RAY
   name: "Resonant Ray"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
   fields:
     Level: "1"
@@ -149,7 +149,7 @@
 - id: ORCUS_POWER_THERMAL_ABSORPTION
   name: "Thermal Absorption"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "2"
@@ -169,7 +169,7 @@
 - id: ORCUS_POWER_ELEMENTAL_RESTRAINT
   name: "Elemental Restraint"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
   fields:
     Level: "3"
@@ -194,7 +194,7 @@
 - id: ORCUS_POWER_THERMAL_ISOLATION
   name: "Thermal Isolation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
   fields:
     Level: "3"
@@ -217,7 +217,7 @@
 - id: ORCUS_POWER_EXPANDING_PHASE_TRANSITION
   name: "Expanding Phase Transition"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
   fields:
     Level: "5"
@@ -249,7 +249,7 @@
 - id: ORCUS_POWER_FROZEN_CREATION
   name: "Frozen Creation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "6"
@@ -269,7 +269,7 @@
 - id: ORCUS_POWER_THERMAL_WALL
   name: "Thermal Wall"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "6"
@@ -294,7 +294,7 @@
 - id: ORCUS_POWER_BROKEN_EQUILIBRIUM
   name: "Broken Equilibrium"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, encounter, ability-swap]
   fields:
     Level: "7"
@@ -319,7 +319,7 @@
 - id: ORCUS_POWER_DYNAMIC_TEMPEST
   name: "Dynamic Tempest"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
   fields:
     Level: "9"
@@ -340,7 +340,7 @@
 - id: ORCUS_POWER_HALO_OF_FIRE
   name: "Halo of Fire"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
   fields:
     Level: "9"
@@ -363,7 +363,7 @@
 - id: ORCUS_POWER_THERMAL_SHIELD
   name: "Thermal Shield"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "10"
@@ -387,7 +387,7 @@
 - id: ORCUS_POWER_ROCKET_PROPULSION
   name: "Rocket Propulsion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "16"
@@ -410,7 +410,7 @@
 - id: ORCUS_POWER_BLOOD_TELL
   name: "Blood Tell"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, daily, ability-swap]
   fields:
     Level: "19"
@@ -432,7 +432,7 @@
 - id: ORCUS_POWER_ICE_CASTLE
   name: "Ice Castle"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_SPELLS_OF_ICE_AND_FIRE, utility]
   fields:
     Level: "22"

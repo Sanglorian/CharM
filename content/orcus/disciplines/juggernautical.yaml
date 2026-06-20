@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_JUGGERNAUTICAL
   name: "Juggernautical"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Strength"
     "Secondary Ability": "Constitution"
@@ -17,7 +17,7 @@
 - id: ORCUS_POWER_DEVASTATING_BODY_ATTACK
   name: "Devastating Body Attack"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, at-will, ability-swap]
   fields:
     Level: "1"
@@ -41,7 +41,7 @@
 - id: ORCUS_POWER_KNOCK_ABOUT_STRIKE
   name: "Knock-About Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "1"
@@ -58,7 +58,7 @@
 - id: ORCUS_POWER_INCONSEQUENTIAL_INJURY
   name: "Inconsequential Injury"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "1"
@@ -76,7 +76,7 @@
 - id: ORCUS_POWER_FOR_THE_COMMON_HONOR
   name: "For the Common Honor"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
@@ -95,7 +95,7 @@
 - id: ORCUS_POWER_I_M_THE_JUGGERNAUT
   name: "I’m the Juggernaut"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
@@ -116,7 +116,7 @@
 - id: ORCUS_POWER_THE_BEHEMOTH
   name: "The Behemoth"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "2"
@@ -138,7 +138,7 @@
 - id: ORCUS_POWER_OUT_OF_THE_FIRE
   name: "Out of the Fire"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "3"
@@ -159,7 +159,7 @@
 - id: ORCUS_POWER_WADE_IN
   name: "Wade In"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "5"
@@ -179,7 +179,7 @@
 - id: ORCUS_POWER_ONCE_MORE_INTO_THE_BREACH
   name: "Once More Into the Breach"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "6"
@@ -199,7 +199,7 @@
 - id: ORCUS_POWER_THE_BULLDOZER
   name: "The Bulldozer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "6"
@@ -218,7 +218,7 @@
 - id: ORCUS_POWER_IN_THE_FACE
   name: "In The Face"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "7"
@@ -238,7 +238,7 @@
 - id: ORCUS_POWER_HE_AIN_T_HEAVY
   name: "He Ain’t Heavy"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "9"
@@ -258,7 +258,7 @@
 - id: ORCUS_POWER_THE_RUNAWAY_BOULDER
   name: "The Runaway Boulder"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "10"
@@ -278,7 +278,7 @@
 - id: ORCUS_POWER_LIKE_AN_ELEPHANT
   name: "Like An Elephant"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "13"
@@ -301,7 +301,7 @@
 - id: ORCUS_POWER_DOWN_FIGHTING
   name: "Down Fighting"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "15"
@@ -330,7 +330,7 @@
 - id: ORCUS_POWER_THE_FORTRESS
   name: "The Fortress"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "16"
@@ -351,7 +351,7 @@
 - id: ORCUS_POWER_NOSEBLEED
   name: "Nosebleed"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "19"
@@ -375,7 +375,7 @@
 - id: ORCUS_POWER_JUST_GOT_THE_WIND_KNOCKED
   name: "Just Got the Wind Knocked"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, utility]
   fields:
     Level: "22"
@@ -393,7 +393,7 @@
 - id: ORCUS_POWER_JUST_WALK_IT_OFF
   name: "Just Walk It Off"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "23"
@@ -414,7 +414,7 @@
 - id: ORCUS_POWER_BLATANT_DISREGARD_FOR_PERSONAL_SAFETY
   name: "Blatant Disregard for Personal Safety"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, daily, ability-swap]
   fields:
     Level: "25"
@@ -435,7 +435,7 @@
 - id: ORCUS_POWER_BEHIND_ME
   name: "Behind Me!"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_JUGGERNAUTICAL, encounter, ability-swap]
   fields:
     Level: "27"

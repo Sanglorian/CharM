@@ -12,7 +12,7 @@
 - id: ORCUS_ARMOR_CLOTH
   name: Cloth armor
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Light
     "Item Slot": Body
@@ -24,7 +24,7 @@
 - id: ORCUS_ARMOR_LEATHER
   name: Leather armor
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Light
     "Item Slot": Body
@@ -37,7 +37,7 @@
 - id: ORCUS_ARMOR_HIDE
   name: Hide armor
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Light
     "Item Slot": Body
@@ -57,7 +57,7 @@
 - id: ORCUS_ARMOR_CHAINMAIL
   name: Chainmail
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Heavy
     "Item Slot": Body
@@ -78,7 +78,7 @@
 - id: ORCUS_ARMOR_SCALE
   name: Scale armor
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Heavy
     "Item Slot": Body
@@ -93,7 +93,7 @@
 - id: ORCUS_ARMOR_PLATE
   name: Plate armor
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Heavy
     "Item Slot": Body
@@ -115,7 +115,7 @@
 - id: ORCUS_ARMOR_LIGHT_SHIELD
   name: Light shield
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Shield
     "Item Slot": Off-hand
@@ -129,7 +129,7 @@
 - id: ORCUS_ARMOR_HEAVY_SHIELD
   name: Heavy shield
   type: Armor
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Armor Type": Shield
     "Item Slot": Off-hand

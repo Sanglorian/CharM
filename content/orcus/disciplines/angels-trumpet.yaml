@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_ANGELS_TRUMPET
   name: "Angel's Trumpet"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Charisma"
     "Secondary Ability": "Wisdom"
@@ -17,7 +17,7 @@
 - id: ORCUS_POWER_IDENTIFY_TARGET
   name: "Identify Target"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will, ability-swap]
   fields:
     Level: "1"
@@ -35,7 +35,7 @@
 - id: ORCUS_POWER_MAKE_ROOM
   name: "Make Room"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, at-will, ability-swap]
   fields:
     Level: "1"
@@ -55,7 +55,7 @@
 - id: ORCUS_POWER_QUICK_SAVE
   name: "Quick Save"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "1"
@@ -74,7 +74,7 @@
 - id: ORCUS_POWER_TARGETED_CALL
   name: "Targeted Call"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "1"
@@ -90,7 +90,7 @@
 - id: ORCUS_POWER_BREAK_WILL
   name: "Break Will"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
@@ -105,7 +105,7 @@
 - id: ORCUS_POWER_GEOMETRIC_STRATEGY
   name: "Geometric Strategy"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
@@ -123,7 +123,7 @@
 - id: ORCUS_POWER_NO_ONE_HITS_THE_CHIEF
   name: "No One Hits The Chief"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
@@ -140,7 +140,7 @@
 - id: ORCUS_POWER_RESCUING_ANGEL
   name: "Rescuing Angel"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "1"
@@ -160,7 +160,7 @@
 - id: ORCUS_POWER_HOLD_FAST
   name: "Hold Fast"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -182,7 +182,7 @@
 - id: ORCUS_POWER_AN_OUNCE_OF_PREVENTION
   name: "An Ounce of Prevention"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -199,7 +199,7 @@
 - id: ORCUS_POWER_ENCOURAGING_PEAL
   name: "Encouraging Peal"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -217,7 +217,7 @@
 - id: ORCUS_POWER_INSPIRE_THE_TROOPS
   name: "Inspire the Troops"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -235,7 +235,7 @@
 - id: ORCUS_POWER_PRIDE_LEADER_S_STANCE
   name: "Pride Leader’s Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -254,7 +254,7 @@
 - id: ORCUS_POWER_THE_STRENGTH_WITHIN
   name: "The Strength Within"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "2"
@@ -270,7 +270,7 @@
 - id: ORCUS_POWER_CALL_TO_ACTION
   name: "Call to Action"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "3"
@@ -289,7 +289,7 @@
 - id: ORCUS_POWER_RALLYING_INSTRUCTION
   name: "Rallying Instruction"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "5"
@@ -305,7 +305,7 @@
 - id: ORCUS_POWER_GOLDEN_COMMANDER_STANCE
   name: "Golden Commander Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "6"
@@ -324,7 +324,7 @@
 - id: ORCUS_POWER_NO_ONE_LEFT_BEHIND
   name: "No One Left Behind"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "6"
@@ -347,7 +347,7 @@
 - id: ORCUS_POWER_INHERIT_TOUGHNESS
   name: "Inherit Toughness"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "6"
@@ -364,7 +364,7 @@
 - id: ORCUS_POWER_WHEN_A_PLAN_COMES_TOGETHER
   name: "When A Plan Comes Together"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "6"
@@ -380,7 +380,7 @@
 - id: ORCUS_POWER_MILESTONE_FOE
   name: "Milestone Foe"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "7"
@@ -396,7 +396,7 @@
 - id: ORCUS_POWER_IDENTIFY_WEAK_POINT
   name: "Identify Weak Point"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "9"
@@ -413,7 +413,7 @@
 - id: ORCUS_POWER_BOLSTER_THE_LINE
   name: "Bolster the Line"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "10"
@@ -432,7 +432,7 @@
 - id: ORCUS_POWER_CONTROL_THE_BATTLE_THEATRE
   name: "Control The Battle Theatre"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "10"
@@ -447,7 +447,7 @@
 - id: ORCUS_POWER_GOLDEN_GENERAL_S_VICTORY
   name: "Golden General’s Victory"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "10"
@@ -467,7 +467,7 @@
 - id: ORCUS_POWER_NOW_WHAT_DID_WE_LEARN
   name: "Now What Did We Learn?"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "10"
@@ -490,7 +490,7 @@
 - id: ORCUS_POWER_RESTRAINT
   name: "Restraint"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "13"
@@ -505,7 +505,7 @@
 - id: ORCUS_POWER_LEAD_THE_GROUP
   name: "Lead the Group"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "15"
@@ -526,7 +526,7 @@
 - id: ORCUS_POWER_TO_ARMS
   name: "To Arms"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "15"
@@ -543,7 +543,7 @@
 - id: ORCUS_POWER_DISCIPLINE_OF_THE_HOLY_HOST
   name: "Discipline of the Holy Host"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "16"
@@ -564,7 +564,7 @@
 - id: ORCUS_POWER_LOOK_ALIVE
   name: "Look Alive!"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "16"
@@ -583,7 +583,7 @@
 - id: ORCUS_POWER_HANG_TOGETHER
   name: "Hang Together"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "16"
@@ -603,7 +603,7 @@
 - id: ORCUS_POWER_MARTYR
   name: "Martyr"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "17"
@@ -621,7 +621,7 @@
 - id: ORCUS_POWER_BLITZING_YELL
   name: "Blitzing Yell"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "19"
@@ -639,7 +639,7 @@
 - id: ORCUS_POWER_CRITICAL_MOMENT
   name: "Critical Moment"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "19"
@@ -657,7 +657,7 @@
 - id: ORCUS_POWER_PULL_IT_TOGETHER
   name: "Pull It Together"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "22"
@@ -681,7 +681,7 @@
 - id: ORCUS_POWER_PEAL_OF_HOPE
   name: "Peal of Hope"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "22"
@@ -702,7 +702,7 @@
 - id: ORCUS_POWER_ON_YOUR_FEET
   name: "On Your Feet"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "22"
@@ -720,7 +720,7 @@
 - id: ORCUS_POWER_JUST_STOP
   name: "Just Stop …"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "22"
@@ -739,7 +739,7 @@
 - id: ORCUS_POWER_BLESSED_FEAST
   name: "Blessed Feast"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, utility]
   fields:
     Level: "22"
@@ -759,7 +759,7 @@
 - id: ORCUS_POWER_TAKE_ME
   name: "Take Me"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "23"
@@ -775,7 +775,7 @@
 - id: ORCUS_POWER_ENCOURAGING_REACTION
   name: "Encouraging Reaction"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "25"
@@ -795,7 +795,7 @@
 - id: ORCUS_POWER_FULL_SUITE
   name: "Full Suite"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "25"
@@ -811,7 +811,7 @@
 - id: ORCUS_POWER_BOOST_PERFORMANCE
   name: "Boost Performance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "27"
@@ -826,7 +826,7 @@
 - id: ORCUS_POWER_GRIPPED_WITH_FEAR
   name: "Gripped with Fear"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, encounter, ability-swap]
   fields:
     Level: "27"
@@ -844,7 +844,7 @@
 - id: ORCUS_POWER_BATTLE_SYMPHONY
   name: "Battle Symphony"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "29"
@@ -866,7 +866,7 @@
 - id: ORCUS_POWER_REMEMBER_ME
   name: "Remember Me?"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ANGELS_TRUMPET, daily, ability-swap]
   fields:
     Level: "29"

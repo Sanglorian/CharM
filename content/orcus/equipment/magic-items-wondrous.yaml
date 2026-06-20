@@ -8,7 +8,7 @@
 - id: ORCUS_MAGIC_HEADBAND_OF_INTELLECT
   name: "Headband of Intellect"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Head"
     "Magic Item Type": "Head"
@@ -20,7 +20,7 @@
 - id: ORCUS_MAGIC_HELM_OF_BRILLIANCE
   name: "Helm of Brilliance"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Head"
     "Magic Item Type": "Head"
@@ -34,7 +34,7 @@
 - id: ORCUS_MAGIC_HELM_OF_COMPREHENDING_LANGUAGES
   name: "Helm of Comprehending Languages"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Head"
     "Magic Item Type": "Head"
@@ -46,7 +46,7 @@
 - id: ORCUS_MAGIC_HELM_OF_TELEPATHY
   name: "Helm of Telepathy"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Head"
     "Magic Item Type": "Head"
@@ -60,7 +60,7 @@
 - id: ORCUS_MAGIC_BELT_OF_DWARVENKIND
   name: "Belt of Dwarvenkind"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Waist"
     "Magic Item Type": "Waist"
@@ -74,7 +74,7 @@
 - id: ORCUS_MAGIC_BELT_OF_GIANT_STRENGTH
   name: "Belt of Giant Strength"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Waist"
     "Magic Item Type": "Waist"
@@ -86,7 +86,7 @@
 - id: ORCUS_MAGIC_BELT_OF_THE_ARCHER
   name: "Belt of the Archer"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Waist"
     "Magic Item Type": "Waist"
@@ -96,7 +96,7 @@
 - id: ORCUS_MAGIC_BELT_OF_THE_MAN_AT_ARMS
   name: "Belt of the Man-at-Arms"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Waist"
     "Magic Item Type": "Waist"
@@ -108,7 +108,7 @@
 - id: ORCUS_MAGIC_ARROW_CATCHING_SHIELD
   name: "Arrow-Catching Shield"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Arms"
     "Magic Item Type": "Arms"
@@ -123,7 +123,7 @@
 - id: ORCUS_MAGIC_GLOVES_OF_SWIMMING_AND_CLIMBING
   name: "Gloves of Swimming and Climbing"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Hands"
     "Magic Item Type": "Hands"
@@ -136,7 +136,7 @@
 - id: ORCUS_MAGIC_GAUNTLETS_OF_OGRE_POWER
   name: "Gauntlets of Ogre Power"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Hands"
     "Magic Item Type": "Hands"
@@ -148,7 +148,7 @@
 - id: ORCUS_MAGIC_RING_OF_EVASION
   name: "Ring of Evasion"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -160,7 +160,7 @@
 - id: ORCUS_MAGIC_RING_OF_FREE_ACTION
   name: "Ring of Free Action"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -170,7 +170,7 @@
 - id: ORCUS_MAGIC_RING_OF_INVISIBILITY
   name: "Ring of Invisibility"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -183,7 +183,7 @@
 - id: ORCUS_MAGIC_RING_OF_MIND_SHIELDING
   name: "Ring of Mind Shielding"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -204,7 +204,7 @@
 - id: ORCUS_MAGIC_RING_OF_REGENERATION
   name: "Ring of Regeneration"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -218,7 +218,7 @@
 - id: ORCUS_MAGIC_RING_OF_RESISTANCE
   name: "Ring of Resistance"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -232,7 +232,7 @@
 - id: ORCUS_MAGIC_RING_OF_WARMTH
   name: "Ring of Warmth"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -245,7 +245,7 @@
 - id: ORCUS_MAGIC_RING_OF_WATER_WALKING
   name: "Ring of Water Walking"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -257,7 +257,7 @@
 - id: ORCUS_MAGIC_RING_OF_X_RAY_VISION
   name: "Ring of X-ray Vision"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Ring"
     "Magic Item Type": "Ring"
@@ -276,7 +276,7 @@
 - id: ORCUS_MAGIC_BOOTS_OF_FEATHER_FALLING
   name: "Boots of Feather Falling"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -288,7 +288,7 @@
 - id: ORCUS_MAGIC_BOOTS_OF_JUMPING
   name: "Boots of Jumping"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -300,7 +300,7 @@
 - id: ORCUS_MAGIC_BOOTS_OF_LEVITATION
   name: "Boots of Levitation"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -312,7 +312,7 @@
 - id: ORCUS_MAGIC_BOOTS_OF_SPEED
   name: "Boots of Speed"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -322,7 +322,7 @@
 - id: ORCUS_MAGIC_BOOTS_OF_THE_WINTERLANDS
   name: "Boots of the Winterlands"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -336,7 +336,7 @@
 - id: ORCUS_MAGIC_WINGED_BOOTS
   name: "Winged Boots"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Feet"
     "Magic Item Type": "Feet"
@@ -352,7 +352,7 @@
 - id: ORCUS_MAGIC_BAG_OF_TRICKS
   name: "Bag of Tricks"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -370,7 +370,7 @@
 - id: ORCUS_MAGIC_BRACELET_OF_FRIENDS
   name: "Bracelet of Friends"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -390,7 +390,7 @@
 - id: ORCUS_MAGIC_DECANTER_OF_ENDLESS_WATER
   name: "Decanter of Endless Water"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -405,7 +405,7 @@
 - id: ORCUS_MAGIC_EFFICIENT_QUIVER
   name: "Efficient Quiver"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -422,7 +422,7 @@
 - id: ORCUS_MAGIC_EYES_OF_MINUTE_SEEING
   name: "Eyes of Minute Seeing"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -436,7 +436,7 @@
 - id: ORCUS_MAGIC_EYES_OF_THE_EAGLE
   name: "Eyes of the Eagle"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -450,7 +450,7 @@
 - id: ORCUS_MAGIC_EVERSMOKING_BOTTLE
   name: "Eversmoking Bottle"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -464,7 +464,7 @@
 - id: ORCUS_MAGIC_FOLDING_BOAT
   name: "Folding Boat"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -486,7 +486,7 @@
 - id: ORCUS_MAGIC_GOGGLES_OF_NIGHT
   name: "Goggles of Night"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -499,7 +499,7 @@
 - id: ORCUS_MAGIC_HAND_OF_THE_MAGE
   name: "Hand of the Mage"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -511,7 +511,7 @@
 - id: ORCUS_MAGIC_HORSESHOES_OF_A_ZEPHYR
   name: "Horseshoes of a Zephyr"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -525,7 +525,7 @@
 - id: ORCUS_MAGIC_HORSESHOES_OF_SPEED
   name: "Horseshoes of Speed"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -537,7 +537,7 @@
 - id: ORCUS_MAGIC_IMMOVABLE_ROD
   name: "Immovable Rod"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -554,7 +554,7 @@
 - id: ORCUS_MAGIC_INSTANT_FORTRESS
   name: "Instant Fortress"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -580,7 +580,7 @@
 - id: ORCUS_MAGIC_LANTERN_OF_REVEALING
   name: "Lantern of Revealing"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -595,7 +595,7 @@
 - id: ORCUS_MAGIC_MARVELOUS_PIGMENTS
   name: "Marvelous Pigments"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -621,7 +621,7 @@
 - id: ORCUS_MAGIC_NECROSIS_CUBE
   name: "Necrosis Cube"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -637,7 +637,7 @@
 - id: ORCUS_MAGIC_PIPES_OF_THE_SEWERS
   name: "Pipes of the Sewers"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -651,7 +651,7 @@
 - id: ORCUS_MAGIC_PORTABLE_HOLE
   name: "Portable Hole"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -684,7 +684,7 @@
 - id: ORCUS_MAGIC_ROBE_OF_EYES
   name: "Robe of Eyes"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -702,7 +702,7 @@
 - id: ORCUS_MAGIC_ROPE_OF_CLIMBING
   name: "Rope of Climbing"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -722,7 +722,7 @@
 - id: ORCUS_MAGIC_SATCHEL_OF_USEFUL_ITEMS
   name: "Satchel of Useful Items"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -752,7 +752,7 @@
 - id: ORCUS_MAGIC_SCRIPT_OF_FAITHFULNESS
   name: "Script of Faithfulness"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -768,7 +768,7 @@
 - id: ORCUS_MAGIC_SPIRITLINK_CHARM
   name: "Spiritlink Charm"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -782,7 +782,7 @@
 - id: ORCUS_MAGIC_STONE_OF_ALARM
   name: "Stone of Alarm"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"
@@ -797,7 +797,7 @@
 - id: ORCUS_MAGIC_SUSTAINING_SPOON
   name: "Sustaining Spoon"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Wondrous"
     "Magic Item Type": "Wondrous"

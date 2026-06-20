@@ -141,7 +141,7 @@ public static class Boosts
             sb.AppendLine($"- id: {id}");
             sb.AppendLine($"  name: {Q("+" + x + " " + display.ToLowerInvariant())}");
             sb.AppendLine($"  type: Magic Item");
-            sb.AppendLine($"  source: \"Orcus (Outlaw Kingdoms)\"");
+            sb.AppendLine($"  source: \"Orcus Original\"");
             sb.AppendLine($"  fields:");
             sb.AppendLine($"    \"Item Slot\": {cat.Slot}");
             sb.AppendLine($"    \"Magic Item Type\": {cat.Type}");

@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_STRONG_BIDDING
   name: "Strong Bidding"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Charisma"
     "Secondary Ability": "Wisdom"
@@ -21,7 +21,7 @@
 - id: ORCUS_POWER_COMPANION_STRIKE
   name: "Companion Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, at-will, ability-swap]
   fields:
     Level: "1"
@@ -36,7 +36,7 @@
 - id: ORCUS_POWER_SIDE_BY_SIDE
   name: "Side by Side"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, encounter, ability-swap]
   fields:
     Level: "1"
@@ -54,7 +54,7 @@
 - id: ORCUS_POWER_LIFELINK
   name: "Lifelink"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "2"
@@ -71,7 +71,7 @@
 - id: ORCUS_POWER_SHARE_SENSES
   name: "Share Senses"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "2"
@@ -91,7 +91,7 @@
 - id: ORCUS_POWER_FAMILIAR_GUIDANCE
   name: "Familiar Guidance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "6"
@@ -105,7 +105,7 @@
 - id: ORCUS_POWER_INTERFERING_COMPANION
   name: "Interfering Companion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "6"
@@ -123,7 +123,7 @@
 - id: ORCUS_POWER_LEAP_TO_COMPANION
   name: "Leap to Companion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "6"
@@ -142,7 +142,7 @@
 - id: ORCUS_POWER_LEAPING_INTERCEPT
   name: "Leaping Intercept"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "6"
@@ -158,7 +158,7 @@
 - id: ORCUS_POWER_SAFEGUARD_COMPANION
   name: "Safeguard Companion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, encounter, ability-swap]
   fields:
     Level: "7"
@@ -175,7 +175,7 @@
 - id: ORCUS_POWER_RECALL_FAMILIAR
   name: "Recall Familiar"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "10"
@@ -189,7 +189,7 @@
 - id: ORCUS_POWER_COMPANION_FORM
   name: "Companion Form"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "10"
@@ -209,7 +209,7 @@
 - id: ORCUS_POWER_MASTER_S_FORM
   name: "Master’s Form"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "10"
@@ -228,7 +228,7 @@
 - id: ORCUS_POWER_COMPANION_SWARM
   name: "Companion Swarm"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, daily, ability-swap]
   fields:
     Level: "19"
@@ -252,7 +252,7 @@
 - id: ORCUS_POWER_ENLARGE_COMPANION
   name: "Enlarge Companion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_STRONG_BIDDING, utility]
   fields:
     Level: "19"

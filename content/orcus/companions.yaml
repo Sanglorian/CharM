@@ -8,7 +8,7 @@
 - id: ORCUS_COMPANION_APE
   name: "Ape"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -36,7 +36,7 @@
 - id: ORCUS_COMPANION_ARBOREAL_SAPLING
   name: "Arboreal Sapling"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Small Natural Automaton (Unaligned)"
@@ -62,7 +62,7 @@
 - id: ORCUS_COMPANION_BEAR
   name: "Bear"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -90,7 +90,7 @@
 - id: ORCUS_COMPANION_BIG_CAT
   name: "Big Cat"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -118,7 +118,7 @@
 - id: ORCUS_COMPANION_BLINK_DOG
   name: "Blink Dog"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Fey Beast (Unaligned)"
@@ -145,7 +145,7 @@
 - id: ORCUS_COMPANION_BULL
   name: "Bull"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -172,7 +172,7 @@
 - id: ORCUS_COMPANION_GIANT_BAT
   name: "Giant Bat"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Small Natural Beast (Unaligned)"
@@ -195,7 +195,7 @@
 - id: ORCUS_COMPANION_GIANT_LIZARD
   name: "Giant Lizard"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -221,7 +221,7 @@
 - id: ORCUS_COMPANION_GIANT_RAPTOR
   name: "Giant Raptor"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Small Natural Beast (Unaligned)"
@@ -246,7 +246,7 @@
 - id: ORCUS_COMPANION_GIANT_SNAKE
   name: "Giant Snake"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -276,7 +276,7 @@
 - id: ORCUS_COMPANION_HORSE
   name: "Horse"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Large Natural Beast (Unaligned)"
@@ -300,7 +300,7 @@
 - id: ORCUS_COMPANION_HOUND
   name: "Hound"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"
@@ -328,7 +328,7 @@
 - id: ORCUS_COMPANION_HUNTING_SPIDER
   name: "Hunting Spider"
   type: Companion
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_ANIMAL_COMPANION]
   fields:
     Type: "Medium Natural Beast (Unaligned)"

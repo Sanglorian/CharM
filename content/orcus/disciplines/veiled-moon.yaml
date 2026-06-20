@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_VEILED_MOON
   name: "Veiled Moon"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Intelligence"
     "Secondary Ability": "Dexterity"
@@ -17,7 +17,7 @@
 - id: ORCUS_POWER_DIMENSIONAL_STRIKE
   name: "Dimensional Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, at-will, ability-swap]
   fields:
     Level: "1"
@@ -37,7 +37,7 @@
 - id: ORCUS_POWER_DISTURBING_BLOW
   name: "Disturbing Blow"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
   fields:
     Level: "1"
@@ -58,7 +58,7 @@
 - id: ORCUS_POWER_CURSED_FATE
   name: "Cursed Fate"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "1"
@@ -82,7 +82,7 @@
 - id: ORCUS_POWER_GHOST_HUNTING_BLOW
   name: "Ghost Hunting Blow"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "2"
@@ -102,7 +102,7 @@
 - id: ORCUS_POWER_INNER_SENSE
   name: "Inner Sense"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "2"
@@ -121,7 +121,7 @@
 - id: ORCUS_POWER_LEAPING_SPIRIT_DANCE
   name: "Leaping Spirit Dance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "2"
@@ -140,7 +140,7 @@
 - id: ORCUS_POWER_SPIRIT_SENSING_STANCE
   name: "Spirit Sensing Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "2"
@@ -160,7 +160,7 @@
 - id: ORCUS_POWER_RESONANCE_STRIKE
   name: "Resonance Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "5"
@@ -179,7 +179,7 @@
 - id: ORCUS_POWER_FADING_STRIKE
   name: "Fading Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "6"
@@ -197,7 +197,7 @@
 - id: ORCUS_POWER_HALF_GONE
   name: "Half-Gone"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "6"
@@ -217,7 +217,7 @@
 - id: ORCUS_POWER_ALTERED_PENUMBRA
   name: "Altered Penumbra"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "6"
@@ -244,7 +244,7 @@
 - id: ORCUS_POWER_BRILLIANT_MOON
   name: "Brilliant Moon"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
   fields:
     Level: "7"
@@ -262,7 +262,7 @@
 - id: ORCUS_POWER_BREATH_OF_THE_MOON
   name: "Breath of the Moon"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "9"
@@ -282,7 +282,7 @@
 - id: ORCUS_POWER_FADING_LEAP
   name: "Fading Leap"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "10"
@@ -300,7 +300,7 @@
 - id: ORCUS_POWER_FORMLESS_DANCE
   name: "Formless Dance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "10"
@@ -317,7 +317,7 @@
 - id: ORCUS_POWER_GHOSTWALK
   name: "Ghostwalk"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "10"
@@ -335,7 +335,7 @@
 - id: ORCUS_POWER_ETHEREAL_REMINISCENCE
   name: "Ethereal Reminiscence"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "10"
@@ -356,7 +356,7 @@
 - id: ORCUS_POWER_FLICKER_STRIKE
   name: "Flicker Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, encounter, ability-swap]
   fields:
     Level: "13"
@@ -376,7 +376,7 @@
 - id: ORCUS_POWER_ESSENCE_SHATTERING_STRIKE
   name: "Essence Shattering Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "15"
@@ -396,7 +396,7 @@
 - id: ORCUS_POWER_TWISTING_ETHER
   name: "Twisting Ether"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "16"
@@ -413,7 +413,7 @@
 - id: ORCUS_POWER_STANCE_OF_THE_ETHER_GATE
   name: "Stance of the Ether Gate"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "16"
@@ -431,7 +431,7 @@
 - id: ORCUS_POWER_ETHER_WAVE
   name: "Ether Wave"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "19"
@@ -453,7 +453,7 @@
 - id: ORCUS_POWER_WARP_WORM
   name: "Warp Worm"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "19"
@@ -482,7 +482,7 @@
 - id: ORCUS_POWER_ANCHORING_SPIRIT
   name: "Anchoring Spirit"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "22"
@@ -503,7 +503,7 @@
 - id: ORCUS_POWER_FADE_THROUGH
   name: "Fade Through"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "22"
@@ -522,7 +522,7 @@
 - id: ORCUS_POWER_LUNAR_PENUMBRA
   name: "Lunar Penumbra"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "22"
@@ -543,7 +543,7 @@
 - id: ORCUS_POWER_PHANTOM_PENUMBRA
   name: "Phantom Penumbra"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "22"
@@ -564,7 +564,7 @@
 - id: ORCUS_POWER_SPIRITUAL_WEAPON_STANCE
   name: "Spiritual Weapon Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, utility]
   fields:
     Level: "22"
@@ -582,7 +582,7 @@
 - id: ORCUS_POWER_DISPERSAL_STRIKE
   name: "Dispersal Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "25"
@@ -606,7 +606,7 @@
 - id: ORCUS_POWER_FLASHING_ETHER_TOUCH
   name: "Flashing Ether Touch"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "25"
@@ -629,7 +629,7 @@
 - id: ORCUS_POWER_BANISH_TO_THE_BEYOND
   name: "Banish to the Beyond"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "29"
@@ -653,7 +653,7 @@
 - id: ORCUS_POWER_ECLIPSING_MOON
   name: "Eclipsing Moon"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_VEILED_MOON, daily, ability-swap]
   fields:
     Level: "29"

@@ -292,7 +292,7 @@ public static class Phase2
         sb.AppendLine($"- id: {disciplineId}");
         sb.AppendLine($"  name: {Scalar(disc.Name)}");
         sb.AppendLine($"  type: Discipline");
-        sb.AppendLine($"  source: \"Orcus (Outlaw Kingdoms)\"");
+        sb.AppendLine($"  source: \"Orcus Original\"");
         sb.AppendLine($"  fields:");
         if (disc.KeyAbility.Length > 0) sb.AppendLine($"    \"Key Ability\": {Scalar(disc.KeyAbility)}");
         if (disc.SecondaryAbility.Length > 0) sb.AppendLine($"    \"Secondary Ability\": {Scalar(disc.SecondaryAbility)}");
@@ -313,7 +313,7 @@ public static class Phase2
             sb.AppendLine($"- id: {id}");
             sb.AppendLine($"  name: {Scalar(pw.Name)}");
             sb.AppendLine($"  type: Power");
-            sb.AppendLine($"  source: \"Orcus (Outlaw Kingdoms)\"");
+            sb.AppendLine($"  source: \"Orcus Original\"");
             sb.AppendLine($"  categories: [{string.Join(", ", cats)}]");
             sb.AppendLine($"  fields:");
             sb.AppendLine($"    Level: \"{pw.Level}\"");

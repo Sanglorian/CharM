@@ -12,7 +12,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS1
   name: "Enchanted Weapon +1"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -24,7 +24,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS1
   name: "Enchanted Focus +1"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -36,7 +36,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS1
   name: "Enchanted Armor +1"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -50,7 +50,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS1
   name: "Enchanted Cloak +1"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -66,7 +66,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS2
   name: "Enchanted Weapon +2"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -78,7 +78,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS2
   name: "Enchanted Focus +2"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -90,7 +90,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS2
   name: "Enchanted Armor +2"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -104,7 +104,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS2
   name: "Enchanted Cloak +2"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -120,7 +120,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS3
   name: "Enchanted Weapon +3"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -132,7 +132,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS3
   name: "Enchanted Focus +3"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -144,7 +144,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS3
   name: "Enchanted Armor +3"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -158,7 +158,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS3
   name: "Enchanted Cloak +3"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -174,7 +174,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS4
   name: "Enchanted Weapon +4"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -186,7 +186,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS4
   name: "Enchanted Focus +4"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -198,7 +198,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS4
   name: "Enchanted Armor +4"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -212,7 +212,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS4
   name: "Enchanted Cloak +4"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -228,7 +228,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS5
   name: "Enchanted Weapon +5"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -240,7 +240,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS5
   name: "Enchanted Focus +5"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -252,7 +252,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS5
   name: "Enchanted Armor +5"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -266,7 +266,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS5
   name: "Enchanted Cloak +5"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck
@@ -282,7 +282,7 @@
 - id: ORCUS_MAGIC_WEAPON_PLUS6
   name: "Enchanted Weapon +6"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Weapon
     "Magic Item Type": Weapon
@@ -294,7 +294,7 @@
 - id: ORCUS_MAGIC_FOCUS_PLUS6
   name: "Enchanted Focus +6"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Implement
     "Magic Item Type": Focus
@@ -306,7 +306,7 @@
 - id: ORCUS_MAGIC_ARMOR_PLUS6
   name: "Enchanted Armor +6"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Body
     "Magic Item Type": Armor
@@ -320,7 +320,7 @@
 - id: ORCUS_MAGIC_CLOAK_PLUS6
   name: "Enchanted Cloak +6"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": Neck
     "Magic Item Type": Neck

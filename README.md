@@ -25,7 +25,7 @@ The first time you run CharM you'll be prompted to point it at your "rules.db" f
 If you don't know where you left those things, I am sure there are people on the internet willing to help you. Once you've created your rules.db file, make sure to back it up somewhere safe so you don't need to do this again in the future. Creating the rules db can take a while, especially if you're pulling an index from the internet.
 
 ## The Orcus ruleset (homebrew, build from source)
-This repo also ships a complete transcription of the **Orcus (Outlaw Kingdoms)** ruleset as CharM YAML under `content/orcus/`, plus tooling under `tools/CharM.Orcus.Import/`. You don't need a WotC index for this — you build a standalone Orcus `rules.db` straight from the YAML and point CharM at it.
+This repo also ships a complete transcription of the **Orcus Original** ruleset as CharM YAML under `content/orcus/`, plus tooling under `tools/CharM.Orcus.Import/`. You don't need a WotC index for this — you build a standalone Orcus `rules.db` straight from the YAML and point CharM at it.
 
 **Prerequisites:** the [.NET 10 SDK](https://dotnet.microsoft.com/download) (`dotnet --version` should report `10.x`). For the desktop app only, also `dotnet workload install maui`.
 

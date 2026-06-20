@@ -10,7 +10,7 @@
 - id: ORCUS_CLASS_PRIEST
   name: Priest
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Leader, Divine]
   fields:
     Role: Leader
@@ -148,7 +148,7 @@
 - id: ORCUS_TALENT_GOD_OF_LIFE
   name: Worships the God of Life
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Charisma
@@ -162,7 +162,7 @@
 - id: ORCUS_TALENT_GOD_OF_PEACE
   name: Worships the God of Peace
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Charisma
@@ -174,7 +174,7 @@
 - id: ORCUS_TALENT_GOD_OF_TYRANNY
   name: Worships the God of Tyranny
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Strength
@@ -186,7 +186,7 @@
 - id: ORCUS_TALENT_GOD_OF_WAR
   name: Worships the God of War
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_PRIEST_TALENT]
   fields:
     "Secondary Ability": Strength

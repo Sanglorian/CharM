@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_LAST_LAUGH
   name: "Last Laugh"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Charisma"
     "Secondary Ability": "Dexterity"
@@ -16,7 +16,7 @@
 - id: ORCUS_POWER_BITING_TAUNT
   name: "Biting Taunt"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
   fields:
     Level: "1"
@@ -33,7 +33,7 @@
 - id: ORCUS_POWER_FAILURE_TO_COMMUNICATE
   name: "Failure to Communicate"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
   fields:
     Level: "1"
@@ -54,7 +54,7 @@
 - id: ORCUS_POWER_TRICKY_TAUNT
   name: "Tricky Taunt"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
   fields:
     Level: "1"
@@ -72,7 +72,7 @@
 - id: ORCUS_POWER_WHO_ME
   name: "Who, Me?"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, at-will, ability-swap]
   fields:
     Level: "1"
@@ -94,7 +94,7 @@
 - id: ORCUS_POWER_EXPLOIT_WEAKNESS
   name: "Exploit Weakness"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "1"
@@ -113,7 +113,7 @@
 - id: ORCUS_POWER_PERSONAL_BETRAYAL
   name: "Personal Betrayal"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "1"
@@ -136,7 +136,7 @@
 - id: ORCUS_POWER_FORKED_TONGUE
   name: "Forked Tongue"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "1"
@@ -164,7 +164,7 @@
 - id: ORCUS_POWER_PARLEY
   name: "Parley"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "1"
@@ -185,7 +185,7 @@
 - id: ORCUS_POWER_GRACE_UNDER_PRESSURE
   name: "Grace Under Pressure"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "2"
@@ -203,7 +203,7 @@
 - id: ORCUS_POWER_WINNING_SMILE
   name: "Winning Smile"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "2"
@@ -219,7 +219,7 @@
 - id: ORCUS_POWER_TALK_DOWN
   name: "Talk Down"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "3"
@@ -234,7 +234,7 @@
 - id: ORCUS_POWER_PERFECT_MASQUERADE
   name: "Perfect Masquerade"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "5"
@@ -262,7 +262,7 @@
 - id: ORCUS_POWER_SOW_DISTRUST
   name: "Sow Distrust"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "5"
@@ -283,7 +283,7 @@
 - id: ORCUS_POWER_SMOOTH_TALKER
   name: "Smooth Talker"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "6"
@@ -305,7 +305,7 @@
 - id: ORCUS_POWER_COOL_NERVES
   name: "Cool Nerves"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "6"
@@ -325,7 +325,7 @@
 - id: ORCUS_POWER_FAST_TALK
   name: "Fast-Talk"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "6"
@@ -345,7 +345,7 @@
 - id: ORCUS_POWER_EMPATHIC_RESPONSE
   name: "Empathic Response"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "7"
@@ -365,7 +365,7 @@
 - id: ORCUS_POWER_INSTANT_INFATUATION
   name: "Instant Infatuation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "9"
@@ -396,7 +396,7 @@
 - id: ORCUS_POWER_READ_BODY_LANGUAGE
   name: "Read Body Language"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "9"
@@ -421,7 +421,7 @@
 - id: ORCUS_POWER_I_KNOW_THIS_TRICK
   name: "I Know This Trick"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "10"
@@ -442,7 +442,7 @@
 - id: ORCUS_POWER_CENTER_OF_ATTENTION
   name: "Center of Attention"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "13"
@@ -459,7 +459,7 @@
 - id: ORCUS_POWER_GRUFF_AND_TOUGH
   name: "Gruff and Tough"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "13"
@@ -477,7 +477,7 @@
 - id: ORCUS_POWER_BACKUP_PLAN
   name: "Backup Plan"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "15"
@@ -497,7 +497,7 @@
 - id: ORCUS_POWER_STUNNING_GOOD_LOOKS
   name: "Stunning Good Looks"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "15"
@@ -529,7 +529,7 @@
 - id: ORCUS_POWER_METHOD_ACTING
   name: "Method Acting"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "16"
@@ -549,7 +549,7 @@
 - id: ORCUS_POWER_UNSHAKABLE_PERSONA
   name: "Unshakable Persona"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "16"
@@ -569,7 +569,7 @@
 - id: ORCUS_POWER_DAZZLING_PERSONALITY
   name: "Dazzling Personality"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "17"
@@ -587,7 +587,7 @@
 - id: ORCUS_POWER_INTIMATE_ASSASSIN
   name: "Intimate Assassin"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "19"
@@ -607,7 +607,7 @@
 - id: ORCUS_POWER_LEAD_THE_SHOT
   name: "Lead the Shot"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "19"
@@ -628,7 +628,7 @@
 - id: ORCUS_POWER_BUTT_IN
   name: "Butt In"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, utility]
   fields:
     Level: "22"
@@ -650,7 +650,7 @@
 - id: ORCUS_POWER_ALL_ATTENTION
   name: "All Attention"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "23"
@@ -674,7 +674,7 @@
 - id: ORCUS_POWER_FEIGN_MORTALITY
   name: "Feign Mortality"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "25"
@@ -700,7 +700,7 @@
 - id: ORCUS_POWER_TOUCHED_A_NERVE
   name: "Touched a Nerve"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "25"
@@ -718,7 +718,7 @@
 - id: ORCUS_POWER_DESTRUCTIVE_CRITICISM
   name: "Destructive Criticism"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, encounter, ability-swap]
   fields:
     Level: "27"
@@ -738,7 +738,7 @@
 - id: ORCUS_POWER_COMMANDING_PRESENCE
   name: "Commanding Presence"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_LAST_LAUGH, daily, ability-swap]
   fields:
     Level: "29"

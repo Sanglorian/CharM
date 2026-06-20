@@ -6,7 +6,7 @@
 - id: ORCUS_CLASS_HARLEQUIN
   name: Harlequin
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Controller, Martial]
   fields:
     Role: Controller
@@ -156,7 +156,7 @@
 - id: ORCUS_TALENT_FIXER
   name: Fixer
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Dexterity
@@ -170,7 +170,7 @@
 - id: ORCUS_TALENT_JESTER
   name: Jester
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Wisdom
@@ -186,7 +186,7 @@
 - id: ORCUS_TALENT_SABOTEUR
   name: Saboteur
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Intelligence
@@ -200,7 +200,7 @@
 - id: ORCUS_TALENT_SCOUT
   name: Scout
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_HARLEQUIN_TALENT]
   fields:
     "Secondary Ability": Constitution
@@ -215,7 +215,7 @@
 - id: ORCUS_POWER_GENERAL_CONFUSION
   name: General Confusion
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -230,7 +230,7 @@
 - id: ORCUS_POWER_HASTY_RETREAT
   name: Hasty Retreat
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"

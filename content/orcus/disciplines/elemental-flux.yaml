@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_ELEMENTAL_FLUX
   name: "Elemental Flux"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Intelligence"
     "Secondary Ability": "Constitution"
@@ -28,7 +28,7 @@
 - id: ORCUS_POWER_ENERGY_JOLT
   name: "Energy Jolt"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, at-will, ability-swap]
   fields:
     Level: "1"
@@ -51,7 +51,7 @@
 - id: ORCUS_POWER_SPARK_STRIKE
   name: "Spark Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "1"
@@ -70,7 +70,7 @@
 - id: ORCUS_POWER_VARIABLE_FLUX
   name: "Variable Flux"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "1"
@@ -94,7 +94,7 @@
 - id: ORCUS_POWER_ELDRITCH_SHIELD
   name: "Eldritch Shield"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -114,7 +114,7 @@
 - id: ORCUS_POWER_FLUCTUATION_MOVEMENT
   name: "Fluctuation Movement"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -138,7 +138,7 @@
 - id: ORCUS_POWER_ARCANE_SHIELD
   name: "Arcane Shield"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -155,7 +155,7 @@
 - id: ORCUS_POWER_DEGRADE_RESISTANCE
   name: "Degrade Resistance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -174,7 +174,7 @@
 - id: ORCUS_POWER_ELEMENTAL_NIMBUS
   name: "Elemental Nimbus"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -195,7 +195,7 @@
 - id: ORCUS_POWER_ELEMENTAL_REALIGNMENT
   name: "Elemental Realignment"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "2"
@@ -211,7 +211,7 @@
 - id: ORCUS_POWER_ELDRITCH_FANG
   name: "Eldritch Fang"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "3"
@@ -231,7 +231,7 @@
 - id: ORCUS_POWER_ELEMENTAL_STRIKE
   name: "Elemental Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "5"
@@ -255,7 +255,7 @@
 - id: ORCUS_POWER_ENERGY_SPARK
   name: "Energy Spark"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "5"
@@ -273,7 +273,7 @@
 - id: ORCUS_POWER_ELEMENTAL_FLUX_STANCE
   name: "Elemental Flux Stance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "6"
@@ -295,7 +295,7 @@
 - id: ORCUS_POWER_LANCE_OF_POWER
   name: "Lance of Power"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "7"
@@ -318,7 +318,7 @@
 - id: ORCUS_POWER_RAGING_FLUX
   name: "Raging Flux"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "9"
@@ -343,7 +343,7 @@
 - id: ORCUS_POWER_ASSAY_RESISTANCE
   name: "Assay Resistance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "10"
@@ -366,7 +366,7 @@
 - id: ORCUS_POWER_ARCANE_TORRENT
   name: "Arcane Torrent"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "13"
@@ -384,7 +384,7 @@
 - id: ORCUS_POWER_ENERGY_HAMMER
   name: "Energy Hammer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "15"
@@ -408,7 +408,7 @@
 - id: ORCUS_POWER_ELDRITCH_CONSUMPTION
   name: "Eldritch Consumption"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "16"
@@ -428,7 +428,7 @@
 - id: ORCUS_POWER_CHAOTIC_BLOW
   name: "Chaotic Blow"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "17"
@@ -443,7 +443,7 @@
 - id: ORCUS_POWER_ELEMENTAL_DRIVE
   name: "Elemental Drive"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "19"
@@ -463,7 +463,7 @@
 - id: ORCUS_POWER_REDIRECTING_FLUX
   name: "Redirecting Flux"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
@@ -484,7 +484,7 @@
 - id: ORCUS_POWER_ELEMENTAL_ABSORPTION
   name: "Elemental Absorption"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
@@ -505,7 +505,7 @@
 - id: ORCUS_POWER_NEXUS_OF_ELEMENTAL_RETRIBUTION
   name: "Nexus of Elemental Retribution"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, utility]
   fields:
     Level: "22"
@@ -526,7 +526,7 @@
 - id: ORCUS_POWER_ENTER_THE_VORTEX
   name: "Enter the Vortex"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "23"
@@ -551,7 +551,7 @@
 - id: ORCUS_POWER_CASCADE_OF_ELEMENTAL_WRATH
   name: "Cascade of Elemental Wrath"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "25"
@@ -571,7 +571,7 @@
 - id: ORCUS_POWER_ELEMENTAL_VORTEX
   name: "Elemental Vortex"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "25"
@@ -595,7 +595,7 @@
 - id: ORCUS_POWER_ZEPHYR_FLUX
   name: "Zephyr Flux"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "25"
@@ -617,7 +617,7 @@
 - id: ORCUS_POWER_ELDRITCH_ENERGY_HAMMER
   name: "Eldritch Energy Hammer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, encounter, ability-swap]
   fields:
     Level: "27"
@@ -640,7 +640,7 @@
 - id: ORCUS_POWER_ELEMENTAL_DESTRUCTION_RING
   name: "Elemental Destruction Ring"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "29"
@@ -668,7 +668,7 @@
 - id: ORCUS_POWER_STRIKE_OF_ELEMENTAL_DEVASTATION
   name: "Strike of Elemental Devastation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ELEMENTAL_FLUX, daily, ability-swap]
   fields:
     Level: "29"

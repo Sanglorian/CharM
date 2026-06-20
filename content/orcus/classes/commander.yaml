@@ -5,7 +5,7 @@
 - id: ORCUS_CLASS_COMMANDER
   name: Commander
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Leader, Martial]
   fields:
     Role: Leader
@@ -160,7 +160,7 @@
 - id: ORCUS_FEATURE_LIFT_SPIRITS
   name: Lift Spirits (Feature)
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You can use the lift spirits power two times each encounter. Level 16: three times."
   rules:
@@ -170,7 +170,7 @@
 - id: ORCUS_POWER_LIFT_SPIRITS
   name: Lift Spirits
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "1"
@@ -187,7 +187,7 @@
 - id: ORCUS_TALENT_STORMTROOPER_TACTICS
   name: Stormtrooper Tactics
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Dexterity
@@ -203,7 +203,7 @@
 - id: ORCUS_TALENT_SIEGE_TACTICS
   name: Siege Tactics
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Wisdom
@@ -218,7 +218,7 @@
 - id: ORCUS_TALENT_RESILIENCE_TACTICS
   name: Resilience Tactics
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Intelligence
@@ -233,7 +233,7 @@
 - id: ORCUS_TALENT_INSPIRING_TACTICS
   name: Inspiring Tactics
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_TALENT]
   fields:
     "Secondary Ability": Strength
@@ -249,7 +249,7 @@
 - id: ORCUS_ARMAMENT_RANGED
   name: "Armament: Martial Ranged"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_ARMAMENT]
   fields:
     Description: "Proficiency with martial ranged weapons. You may use Strength instead of Dexterity for attack and damage rolls on basic ranged attacks."
@@ -257,7 +257,7 @@
 - id: ORCUS_ARMAMENT_HEAVY
   name: "Armament: Heavy Armor"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_ARMAMENT]
   fields:
     Description: "Proficiency with heavy shields and plate armor."
@@ -265,7 +265,7 @@
 - id: ORCUS_ARMAMENT_EXOTIC
   name: "Armament: Exotic Weapons"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_COMMANDER_ARMAMENT]
   fields:
     Description: "Proficiency with two exotic melee weapons of your choice."

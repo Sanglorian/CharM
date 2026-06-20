@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_RAPIERS_POINT
   name: "Rapier's Point"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Dexterity"
     "Secondary Ability": "Charisma"
@@ -23,7 +23,7 @@
 - id: ORCUS_POWER_DANCE_OF_BLADES
   name: "Dance of Blades"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
   fields:
     Level: "1"
@@ -40,7 +40,7 @@
 - id: ORCUS_POWER_GENTLEFOLK_S_CHALLENGE
   name: "Gentlefolk’s Challenge"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, at-will, ability-swap]
   fields:
     Level: "1"
@@ -58,7 +58,7 @@
 - id: ORCUS_POWER_SURE_THING
   name: "Sure Thing"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "1"
@@ -73,7 +73,7 @@
 - id: ORCUS_POWER_ONLY_FOOLING
   name: "Only Fooling"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "1"
@@ -92,7 +92,7 @@
 - id: ORCUS_POWER_SCORNFUL_LAUGH
   name: "Scornful Laugh"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "2"
@@ -109,7 +109,7 @@
 - id: ORCUS_POWER_LUNGING_DRAW
   name: "Lunging Draw"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "3"
@@ -124,7 +124,7 @@
 - id: ORCUS_POWER_CALLING_CARD
   name: "Calling Card"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "5"
@@ -143,7 +143,7 @@
 - id: ORCUS_POWER_THROW_OFF
   name: "Throw Off"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "6"
@@ -158,7 +158,7 @@
 - id: ORCUS_POWER_THROUGH_THE_FOOT
   name: "Through the Foot"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "7"
@@ -175,7 +175,7 @@
 - id: ORCUS_POWER_CERTAIN_STRIKE
   name: "Certain Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "9"
@@ -193,7 +193,7 @@
 - id: ORCUS_POWER_BRAVADO
   name: "Bravado"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "10"
@@ -209,7 +209,7 @@
 - id: ORCUS_POWER_FEND_OFF_HORDE
   name: "Fend Off Horde"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "13"
@@ -229,7 +229,7 @@
 - id: ORCUS_POWER_BLUR_OF_CLOAKS
   name: "Blur of Cloaks"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "15"
@@ -247,7 +247,7 @@
 - id: ORCUS_POWER_HARMLESS_MISDIRECTION
   name: "Harmless Misdirection"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "16"
@@ -264,7 +264,7 @@
 - id: ORCUS_POWER_PRESS_THE_ADVANTAGE
   name: "Press the Advantage"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, encounter, ability-swap]
   fields:
     Level: "17"
@@ -285,7 +285,7 @@
 - id: ORCUS_POWER_CALL_BID
   name: "Call Bid"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "19"
@@ -310,7 +310,7 @@
 - id: ORCUS_POWER_RESCUING_INTERCEPT
   name: "Rescuing Intercept"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "19"
@@ -328,7 +328,7 @@
 - id: ORCUS_POWER_DODGE_WITH_PANACHE
   name: "Dodge with Panache"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "22"
@@ -345,7 +345,7 @@
 - id: ORCUS_POWER_SWIFT_RIPOSTE
   name: "Swift Riposte"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, utility]
   fields:
     Level: "22"
@@ -363,7 +363,7 @@
 - id: ORCUS_POWER_LETHAL_MISDIRECTION
   name: "Lethal Misdirection"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "25"
@@ -385,7 +385,7 @@
 - id: ORCUS_POWER_DEFLECT_ATTACK
   name: "Deflect Attack"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_RAPIERS_POINT, daily, ability-swap]
   fields:
     Level: "29"

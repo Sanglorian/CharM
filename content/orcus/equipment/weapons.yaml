@@ -11,7 +11,7 @@
 - id: ORCUS_WEAPON_DAGGER
   name: Dagger
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Melee, Simple"
@@ -26,7 +26,7 @@
 - id: ORCUS_WEAPON_MACE
   name: Mace
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Melee, Simple"
@@ -41,7 +41,7 @@
 - id: ORCUS_WEAPON_SHORTSPEAR
   name: Shortspear
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Melee, Simple"
@@ -56,7 +56,7 @@
 - id: ORCUS_WEAPON_QUARTERSTAFF
   name: Quarterstaff
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Simple]
   fields:
     "Weapon Category": "Melee, Simple"
@@ -72,7 +72,7 @@
 - id: ORCUS_WEAPON_LONGSWORD
   name: Longsword
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -87,7 +87,7 @@
 - id: ORCUS_WEAPON_GREATSWORD
   name: Greatsword
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -102,7 +102,7 @@
 - id: ORCUS_WEAPON_SCIMITAR
   name: Scimitar
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -117,7 +117,7 @@
 - id: ORCUS_WEAPON_BATTLEAXE
   name: Battleaxe
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -132,7 +132,7 @@
 - id: ORCUS_WEAPON_GREATAXE
   name: Greataxe
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -147,7 +147,7 @@
 - id: ORCUS_WEAPON_WARHAMMER
   name: Warhammer
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -162,7 +162,7 @@
 - id: ORCUS_WEAPON_HANDAXE
   name: Handaxe
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -177,7 +177,7 @@
 - id: ORCUS_WEAPON_HALBERD
   name: Halberd
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Martial]
   fields:
     "Weapon Category": "Melee, Martial"
@@ -193,7 +193,7 @@
 - id: ORCUS_WEAPON_SLING
   name: Sling
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Ranged, Simple"
@@ -208,7 +208,7 @@
 - id: ORCUS_WEAPON_LIGHT_CROSSBOW
   name: Light Crossbow
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Ranged, Simple"
@@ -223,7 +223,7 @@
 - id: ORCUS_WEAPON_HEAVY_CROSSBOW
   name: Heavy Crossbow
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Ranged, Simple]
   fields:
     "Weapon Category": "Ranged, Simple"
@@ -238,7 +238,7 @@
 - id: ORCUS_WEAPON_LONGBOW
   name: Longbow
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Ranged, Martial]
   fields:
     "Weapon Category": "Ranged, Martial"
@@ -253,7 +253,7 @@
 - id: ORCUS_WEAPON_SHORTBOW
   name: Shortbow
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Ranged, Martial]
   fields:
     "Weapon Category": "Ranged, Martial"
@@ -269,7 +269,7 @@
 - id: ORCUS_WEAPON_GARROTE
   name: Garrote
   type: Weapon
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Melee, Exotic]
   fields:
     "Weapon Category": "Melee, Exotic"

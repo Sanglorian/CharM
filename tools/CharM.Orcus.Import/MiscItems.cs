@@ -129,7 +129,7 @@ public static class MiscItems
             sb.AppendLine($"- id: {id}");
             sb.AppendLine($"  name: {Q(name)}");
             sb.AppendLine($"  type: Magic Item");
-            sb.AppendLine($"  source: \"Orcus (Outlaw Kingdoms)\"");
+            sb.AppendLine($"  source: \"Orcus Original\"");
             sb.AppendLine($"  fields:");
             sb.AppendLine($"    \"Item Slot\": {Q(slot)}");
             sb.AppendLine($"    \"Magic Item Type\": {Q(type)}");

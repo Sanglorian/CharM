@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_BLADES_IN_THE_DARK
   name: "Blades in the Dark"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Dexterity"
     "Secondary Ability": "Strength"
@@ -22,7 +22,7 @@
 - id: ORCUS_POWER_DEADLY_THRUST
   name: "Deadly Thrust"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
   fields:
     Level: "1"
@@ -40,7 +40,7 @@
 - id: ORCUS_POWER_EVASIVE_STRIKE
   name: "Evasive Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
   fields:
     Level: "1"
@@ -57,7 +57,7 @@
 - id: ORCUS_POWER_FLYING_BLADE
   name: "Flying Blade"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, at-will, ability-swap]
   fields:
     Level: "1"
@@ -74,7 +74,7 @@
 - id: ORCUS_POWER_SURE_CUT
   name: "Sure Cut"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "1"
@@ -92,7 +92,7 @@
 - id: ORCUS_POWER_RETORT
   name: "Retort"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
   fields:
     Level: "1"
@@ -112,7 +112,7 @@
 - id: ORCUS_POWER_POCKET_OF_SAND
   name: "Pocket of Sand"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "2"
@@ -130,7 +130,7 @@
 - id: ORCUS_POWER_ROLL_WITH_IT
   name: "Roll With It"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "2"
@@ -145,7 +145,7 @@
 - id: ORCUS_POWER_TUMBLING_STRIKE
   name: "Tumbling Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "3"
@@ -163,7 +163,7 @@
 - id: ORCUS_POWER_ATTACK_FROM_THE_BLUE
   name: "Attack from the Blue"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
   fields:
     Level: "5"
@@ -182,7 +182,7 @@
 - id: ORCUS_POWER_DOUBLE_DOWN
   name: "Double Down"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "6"
@@ -198,7 +198,7 @@
 - id: ORCUS_POWER_SLOPPY_STRIKE
   name: "Sloppy Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "7"
@@ -221,7 +221,7 @@
 - id: ORCUS_POWER_BLEEDING_STRIKE
   name: "Bleeding Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
   fields:
     Level: "9"
@@ -239,7 +239,7 @@
 - id: ORCUS_POWER_KIP_UP
   name: "Kip-Up"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "10"
@@ -253,7 +253,7 @@
 - id: ORCUS_POWER_DEFLECTION
   name: "Deflection"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "10"
@@ -271,7 +271,7 @@
 - id: ORCUS_POWER_SLICK_FEINT
   name: "Slick Feint"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "13"
@@ -291,7 +291,7 @@
 - id: ORCUS_POWER_THIEF_S_STRIKE
   name: "Thief’s Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "16"
@@ -308,7 +308,7 @@
 - id: ORCUS_POWER_ASSASSIN_S_GAMBIT
   name: "Assassin’s Gambit"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "17"
@@ -326,7 +326,7 @@
 - id: ORCUS_POWER_SPIKEY_BASTARD
   name: "Spikey Bastard"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
   fields:
     Level: "19"
@@ -346,7 +346,7 @@
 - id: ORCUS_POWER_I_LL_TAKE_IT
   name: "I’ll Take It"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "22"
@@ -361,7 +361,7 @@
 - id: ORCUS_POWER_TRUE_TARGETING
   name: "True Targeting"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, utility]
   fields:
     Level: "22"
@@ -377,7 +377,7 @@
 - id: ORCUS_POWER_DEATH_S_TWIN
   name: "Death’s Twin"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "23"
@@ -391,7 +391,7 @@
 - id: ORCUS_POWER_TWIRLING_TOWARDS_FREEDOM
   name: "Twirling Towards Freedom"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, encounter, ability-swap]
   fields:
     Level: "27"
@@ -409,7 +409,7 @@
 - id: ORCUS_POWER_END_OF_THE_BEGINNING
   name: "End of the Beginning"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_BLADES_IN_THE_DARK, daily, ability-swap]
   fields:
     Level: "29"

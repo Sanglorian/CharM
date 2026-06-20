@@ -7,7 +7,7 @@
 - id: ORCUS_CLASS_REAPER
   name: Reaper
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Controller, Spirit]
   fields:
     Role: Controller
@@ -160,7 +160,7 @@
 - id: ORCUS_FEATURE_SPROUTING_OVERWATCH
   name: Sprouting Overwatch (Feature)
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You have the sprouting overwatch power."
   rules:
@@ -170,7 +170,7 @@
 - id: ORCUS_FEATURE_SPIRIT_ENTREATY
   name: Spirit Entreaty
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You gain the ability to entreat the spirits for a favor. You start with
@@ -189,7 +189,7 @@
 - id: ORCUS_FEATURE_ACTION_RECHARGE
   name: Action Recharge
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -199,7 +199,7 @@
 - id: ORCUS_POWER_SPROUTING_OVERWATCH
   name: Sprouting Overwatch
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -218,7 +218,7 @@
 - id: ORCUS_POWER_GRASPING_VINES
   name: Grasping Vines
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -233,7 +233,7 @@
 - id: ORCUS_POWER_SPIRITS_PRANK
   name: Spirit's Prank
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     "Power Usage": Encounter
@@ -247,7 +247,7 @@
 - id: ORCUS_POWER_UNLEASHED_SPIRIT
   name: Unleashed Spirit
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -262,7 +262,7 @@
 - id: ORCUS_TALENT_PAVISER
   name: Paviser
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Constitution
@@ -280,7 +280,7 @@
 - id: ORCUS_TALENT_PELTAST
   name: Peltast
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Strength
@@ -298,7 +298,7 @@
 - id: ORCUS_TALENT_SHARPSHOOTER
   name: Sharpshooter
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_REAPER_TALENT]
   fields:
     "Secondary Ability": Intelligence

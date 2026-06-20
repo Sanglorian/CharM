@@ -7,7 +7,7 @@
 - id: ORCUS_MAGIC_INCANTATION_SCROLL
   name: "Incantation Scroll"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -20,7 +20,7 @@
 - id: ORCUS_MAGIC_OIL_OF_DULLNESS
   name: "Oil of Dullness"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -33,7 +33,7 @@
 - id: ORCUS_MAGIC_OIL_OF_SHARPNESS
   name: "Oil of Sharpness"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -46,7 +46,7 @@
 - id: ORCUS_MAGIC_POTION_OF_HEALING
   name: "Potion of Healing"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -58,7 +58,7 @@
 - id: ORCUS_MAGIC_POTION_OF_HEALING_AND_RESCUE
   name: "Potion of Healing and Rescue"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -71,7 +71,7 @@
 - id: ORCUS_MAGIC_POTION_OF_HEALING_AND_RESCUE_ADVANCED
   name: "Potion of Healing and Rescue (Advanced)"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -84,7 +84,7 @@
 - id: ORCUS_MAGIC_POTION_OF_HEROISM
   name: "Potion of Heroism"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -96,7 +96,7 @@
 - id: ORCUS_MAGIC_POTION_OF_VITALITY
   name: "Potion of Vitality"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -108,7 +108,7 @@
 - id: ORCUS_MAGIC_PRACTICE_MANUAL
   name: "Practice Manual"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -121,7 +121,7 @@
 - id: ORCUS_MAGIC_SALVE_OF_RESURRECTION
   name: "Salve of Resurrection"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -134,7 +134,7 @@
 - id: ORCUS_MAGIC_SKELETON_KEY
   name: "Skeleton Key"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -148,7 +148,7 @@
 - id: ORCUS_MAGIC_TONIC_OF_AGILITY
   name: "Tonic of Agility"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -164,7 +164,7 @@
 - id: ORCUS_MAGIC_TONIC_OF_ALERTNESS
   name: "Tonic of Alertness"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -177,7 +177,7 @@
 - id: ORCUS_MAGIC_TONIC_OF_ENDURANCE
   name: "Tonic of Endurance"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -192,7 +192,7 @@
 - id: ORCUS_MAGIC_TONIC_OF_REGENERATION
   name: "Tonic of Regeneration"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"
@@ -206,7 +206,7 @@
 - id: ORCUS_MAGIC_TONIC_OF_STRENGTH
   name: "Tonic of Strength"
   type: Magic Item
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Item Slot": "Consumable"
     "Magic Item Type": "Consumable"

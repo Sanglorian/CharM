@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_PUPPETEERS_STRING
   name: "Puppeteer's String"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Wisdom"
     "Secondary Ability": "Charisma"
@@ -15,7 +15,7 @@
 - id: ORCUS_POWER_BEFUDDLE
   name: "Befuddle"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, at-will, ability-swap]
   fields:
     Level: "1"
@@ -31,7 +31,7 @@
 - id: ORCUS_POWER_NEURAL_SPEAR
   name: "Neural Spear"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, at-will, ability-swap]
   fields:
     Level: "1"
@@ -49,7 +49,7 @@
 - id: ORCUS_POWER_INSTANT_FRIENDS
   name: "Instant Friends"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "1"
@@ -72,7 +72,7 @@
 - id: ORCUS_POWER_RECALL_PROBE
   name: "Recall Probe"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "1"
@@ -98,7 +98,7 @@
 - id: ORCUS_POWER_DREAMTRANCER
   name: "Dreamtrancer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "2"
@@ -129,7 +129,7 @@
 - id: ORCUS_POWER_IMPRINT
   name: "Imprint"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "2"
@@ -152,7 +152,7 @@
 - id: ORCUS_POWER_LONG_RANGE_COMMUNICATION
   name: "Long Range Communication"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "2"
@@ -169,7 +169,7 @@
 - id: ORCUS_POWER_INDIRECT_CAMOUFLAGE
   name: "Indirect Camouflage"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "2"
@@ -190,7 +190,7 @@
 - id: ORCUS_POWER_ALL_A_JUMBLE
   name: "All a Jumble"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "3"
@@ -211,7 +211,7 @@
 - id: ORCUS_POWER_CUT_THE_STRINGS
   name: "Cut the Strings"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "3"
@@ -234,7 +234,7 @@
 - id: ORCUS_POWER_REVERBERATION
   name: "Reverberation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "3"
@@ -252,7 +252,7 @@
 - id: ORCUS_POWER_DIRECT_MANIPULATION
   name: "Direct Manipulation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "5"
@@ -273,7 +273,7 @@
 - id: ORCUS_POWER_MAKING_MATTERS_WORSE
   name: "Making Matters Worse"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "5"
@@ -294,7 +294,7 @@
 - id: ORCUS_POWER_DEEP_SCAN
   name: "Deep Scan"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "6"
@@ -313,7 +313,7 @@
 - id: ORCUS_POWER_INSTILL_CONFIDENCE
   name: "Instill Confidence"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "6"
@@ -328,7 +328,7 @@
 - id: ORCUS_POWER_PSYCHIC_REFRESH
   name: "Psychic Refresh"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "6"
@@ -343,7 +343,7 @@
 - id: ORCUS_POWER_VISUAL_DELETION
   name: "Visual Deletion"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "7"
@@ -362,7 +362,7 @@
 - id: ORCUS_POWER_ACT_CASUAL
   name: "Act Casual"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "9"
@@ -381,7 +381,7 @@
 - id: ORCUS_POWER_NEURAL_SLICE
   name: "Neural Slice"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "9"
@@ -401,7 +401,7 @@
 - id: ORCUS_POWER_TELEPATHIC_BLOCKER
   name: "Telepathic Blocker"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, utility]
   fields:
     Level: "10"
@@ -418,7 +418,7 @@
 - id: ORCUS_POWER_BLACKOUT
   name: "Blackout"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "15"
@@ -438,7 +438,7 @@
 - id: ORCUS_POWER_TRANSPLANT_SENSES
   name: "Transplant Senses"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "17"
@@ -469,7 +469,7 @@
 - id: ORCUS_POWER_FIELD_CONTROL
   name: "Field Control"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "19"
@@ -486,7 +486,7 @@
 - id: ORCUS_POWER_PHRENIC_CASCADE
   name: "Phrenic Cascade"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, encounter, ability-swap]
   fields:
     Level: "23"
@@ -504,7 +504,7 @@
 - id: ORCUS_POWER_GODLY_STRING
   name: "Godly String"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "25"
@@ -521,7 +521,7 @@
 - id: ORCUS_POWER_PURE_PUPPETEER
   name: "Pure Puppeteer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "25"
@@ -548,7 +548,7 @@
 - id: ORCUS_POWER_PERSONALITY_MANIPULATION
   name: "Personality Manipulation"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_PUPPETEERS_STRING, daily, ability-swap]
   fields:
     Level: "29"

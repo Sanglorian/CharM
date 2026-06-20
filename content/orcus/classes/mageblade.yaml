@@ -6,7 +6,7 @@
 - id: ORCUS_CLASS_MAGEBLADE
   name: Mageblade
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Defender, Arcane]
   fields:
     Role: Defender
@@ -164,7 +164,7 @@
 - id: ORCUS_TALENT_ILLUSION_SPECIALIST
   name: Illusion Specialist
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Dexterity
@@ -179,7 +179,7 @@
 - id: ORCUS_TALENT_MARTYR_SPECIALIST
   name: Martyr Specialist
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Constitution
@@ -195,7 +195,7 @@
 - id: ORCUS_TALENT_PUNISHMENT_SPECIALIST
   name: Punishment Specialist
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Charisma
@@ -210,7 +210,7 @@
 - id: ORCUS_TALENT_RUSH_SPECIALIST
   name: Rush Specialist
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGEBLADE_TALENT]
   fields:
     "Secondary Ability": Strength
@@ -226,7 +226,7 @@
 - id: ORCUS_POWER_MAGEBLADES_SIGIL
   name: Mageblade's Sigil
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     "Power Usage": At-Will
@@ -239,7 +239,7 @@
 - id: ORCUS_POWER_BEACON_SIGIL
   name: Beacon Sigil
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -257,7 +257,7 @@
 - id: ORCUS_POWER_BLURRING_SIGIL
   name: Blurring Sigil
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -276,7 +276,7 @@
 - id: ORCUS_POWER_FIERY_SIGIL
   name: Fiery Sigil
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -295,7 +295,7 @@
 - id: ORCUS_POWER_VORTEX_SIGIL
   name: Vortex Sigil
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"

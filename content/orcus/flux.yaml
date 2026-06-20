@@ -10,39 +10,39 @@
 - id: ORCUS_MARKER_FLUX_ACCESS
   name: "Elemental Flux Access"
   type: Marker
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
 
 - id: ORCUS_FLUX_LIGHTNING
   name: "Flux Energy: Lightning"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_FLUX_ENERGY]
   fields: { "Flux Energy": Lightning }
 
 - id: ORCUS_FLUX_ACID
   name: "Flux Energy: Acid"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_FLUX_ENERGY]
   fields: { "Flux Energy": Acid }
 
 - id: ORCUS_FLUX_COLD
   name: "Flux Energy: Cold"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_FLUX_ENERGY]
   fields: { "Flux Energy": Cold }
 
 - id: ORCUS_FLUX_FIRE
   name: "Flux Energy: Fire"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_FLUX_ENERGY]
   fields: { "Flux Energy": Fire }
 
 - id: ORCUS_FLUX_THUNDER
   name: "Flux Energy: Thunder"
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_FLUX_ENERGY]
   fields: { "Flux Energy": Thunder }

@@ -7,7 +7,7 @@
 - id: ORCUS_DEITY_WAR
   name: God of War
   type: Deity
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Domain: War
     Kit: "Worships the God of War"
@@ -16,7 +16,7 @@
 - id: ORCUS_DEITY_PEACE
   name: God of Peace
   type: Deity
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Domain: Peace
     Kit: "Worships the God of Peace"
@@ -25,7 +25,7 @@
 - id: ORCUS_DEITY_LIFE
   name: God of Life
   type: Deity
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Domain: Life
     Kit: "Worships the God of Life"
@@ -34,7 +34,7 @@
 - id: ORCUS_DEITY_TYRANNY
   name: God of Tyranny
   type: Deity
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Domain: Tyranny
     Kit: "Worships the God of Tyranny"

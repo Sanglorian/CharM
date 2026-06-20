@@ -6,7 +6,7 @@
 - id: ORCUS_RACE_HUMANITY
   name: Humanity
   type: Race
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Medium]
   fields:
     Vision: Normal
@@ -57,7 +57,7 @@
 - id: ORCUS_CRUX_HERO
   name: Hero
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You risked your own life to defend something precious: perhaps a loved
@@ -76,7 +76,7 @@
 - id: ORCUS_CRUX_SAGE
   name: Sage
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       Through knowledge, practice and experience, you provided sage advice that
@@ -97,7 +97,7 @@
 - id: ORCUS_HERITAGE_ARISTOCRAT
   name: Aristocrat
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You are a patrician, and believe yourself to be one of a finer class of
@@ -113,7 +113,7 @@
 - id: ORCUS_HERITAGE_SEAFARER
   name: Seafarer
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You grew up on boats or ships. +2 Athletics"
   rules:
@@ -128,7 +128,7 @@
 - id: ORCUS_POWER_VIOLENT_RUSH
   name: Violent Rush
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -141,7 +141,7 @@
 - id: ORCUS_POWER_INGENUITY
   name: Ingenuity
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -161,7 +161,7 @@
 - id: ORCUS_CRUX_BETRAYER
   name: Betrayer
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You betrayed someone or something you once held dear, and it forever left
@@ -175,7 +175,7 @@
 - id: ORCUS_CRUX_CUT_OFF
   name: Cut Off
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "Someone destroyed everyone and everything you loved. +2 Heal"
     "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
@@ -186,7 +186,7 @@
 - id: ORCUS_CRUX_DESTINED
   name: Destined
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       Some great event or portent at your birth set your heroism in motion,
@@ -201,7 +201,7 @@
 - id: ORCUS_CRUX_ESCAPED
   name: Escaped
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You were imprisoned, trapped, in check or otherwise in a situation that
@@ -217,7 +217,7 @@
 - id: ORCUS_CRUX_HEIR
   name: Heir
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You discovered that perched in your family tree is a dragon, and its
@@ -230,7 +230,7 @@
 - id: ORCUS_CRUX_NINTH_LIFE
   name: Ninth Life
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       Through sheer chutzpah and unbelievable luck, you have survived ordeals
@@ -243,7 +243,7 @@
 - id: ORCUS_CRUX_OTHERWORLDLY
   name: Otherworldly
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You come from another place or time, or are destined to leave this one in
@@ -256,7 +256,7 @@
 - id: ORCUS_CRUX_RETURNED
   name: Returned
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You survived impossible peril, physical harm or terror, and came back of
@@ -272,7 +272,7 @@
 - id: ORCUS_CRUX_THIRD_EYED
   name: Third Eyed
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Shake Off Illusion": "+5 ancestry bonus on saving throws against powers and effects with the Illusion tag."
     Description: >-
@@ -290,7 +290,7 @@
 - id: ORCUS_CRUX_WILD_CHILD
   name: Wild Child
   type: Crux
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You were abandoned to the wilderness. +2 Nature"
     "Versatile Stride": "You ignore difficult terrain."
@@ -304,7 +304,7 @@
 - id: ORCUS_HERITAGE_HERETIC
   name: Heretic
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       Your family belonged to a forbidden religion, which exposed you to the
@@ -317,7 +317,7 @@
 - id: ORCUS_HERITAGE_MOUNTAINFOLK
   name: Mountainfolk
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You come from an isolated town in the mountains. +2 Dungeoneering"
   rules:
@@ -327,7 +327,7 @@
 - id: ORCUS_HERITAGE_TRAVELER
   name: Traveler
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       Your family moved about a lot, whether out of wanderlust or necessity. +2
@@ -339,7 +339,7 @@
 - id: ORCUS_HERITAGE_URCHIN
   name: Urchin
   type: Heritage
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You grew up on the streets, without parents – or without parents worth
@@ -353,7 +353,7 @@
 - id: ORCUS_POWER_DISAPPEARING_ACT
   name: Disappearing Act
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -368,7 +368,7 @@
 - id: ORCUS_POWER_TOUGH_AS_NAILS
   name: Tough as Nails
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -380,7 +380,7 @@
 - id: ORCUS_POWER_BARREL_ALONG
   name: Barrel Along
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -395,7 +395,7 @@
 - id: ORCUS_POWER_RELENTLESS_ENDURANCE
   name: Relentless Endurance
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"

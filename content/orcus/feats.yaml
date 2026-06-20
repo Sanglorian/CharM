@@ -12,7 +12,7 @@
 - id: ORCUS_FEAT_ALERTNESS
   name: Alertness
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You get a +2 bonus on all Perception checks and you cannot be caught
@@ -23,14 +23,14 @@
 - id: ORCUS_FEAT_ARMOR_FOCUS
   name: Armor Focus
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: "Armor does not inflict an armor check penalty on you."
 - id: ORCUS_FEAT_AVOIDANCE
   name: Avoidance
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -38,7 +38,7 @@
 - id: ORCUS_FEAT_BLIND_FIGHTING
   name: Blind-Fighting
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -47,7 +47,7 @@
 - id: ORCUS_FEAT_CROSSFIRE
   name: Crossfire
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -57,14 +57,14 @@
 - id: ORCUS_FEAT_DEFLECTING_SHOT
   name: Deflecting Shot
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: "Ignore attack penalties because your target is in cover."
 - id: ORCUS_FEAT_EASY_TARGET
   name: Easy Target
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -74,7 +74,7 @@
 - id: ORCUS_FEAT_ENERGY_RESISTANCE
   name: Energy Resistance
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -86,14 +86,14 @@
 - id: ORCUS_FEAT_FROM_THE_DECK
   name: From the Deck
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: "You do not suffer the penalty to attack rolls for being prone."
 - id: ORCUS_FEAT_GREAT_FORTITUDE
   name: Great Fortitude
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You get a +2 feat bonus to Fortitude defense. At level 11, this bonus
@@ -104,7 +104,7 @@
 - id: ORCUS_FEAT_HUNKER_DOWN
   name: Hunker Down
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -116,14 +116,14 @@
 - id: ORCUS_FEAT_IMPROVED_INITIATIVE
   name: Improved Initiative
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: "You get a +4 feat bonus on initiative checks."
 - id: ORCUS_FEAT_IRON_WILL
   name: Iron Will
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You get a +2 feat bonus to Will defense. At level 11, this bonus increases
@@ -134,7 +134,7 @@
 - id: ORCUS_FEAT_KEEN_DEFENSES
   name: Keen Defenses
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You get a +1 feat bonus to Fortitude, Reflex and Will defenses. At level
@@ -147,7 +147,7 @@
 - id: ORCUS_FEAT_LIGHTNING_REFLEXES
   name: Lightning Reflexes
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You get a +2 feat bonus to Reflex defense. At level 11, this bonus
@@ -158,7 +158,7 @@
 - id: ORCUS_FEAT_MELEE_FINESSE
   name: Melee Finesse
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -168,7 +168,7 @@
 - id: ORCUS_FEAT_RESILIENCE
   name: Resilience
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -177,7 +177,7 @@
 - id: ORCUS_FEAT_SHARP_OPPORTUNIST
   name: Sharp Opportunist
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -185,7 +185,7 @@
 - id: ORCUS_FEAT_TALENTED_HEALER
   name: Talented Healer
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: >-
       You can provide first aid as a swift action. You also get a +2 bonus on
@@ -196,7 +196,7 @@
 - id: ORCUS_FEAT_TOUGHNESS
   name: Toughness
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: "You gain additional hit points equal to your level."
   rules:
@@ -205,7 +205,7 @@
 - id: ORCUS_FEAT_TOUCH_OF_GRACE
   name: Touch of Grace
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Benefit: >-
@@ -215,6 +215,6 @@
 - id: ORCUS_FEAT_TWILIGHT_SIGHT
   name: Twilight Sight
   type: Feat
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Benefit: "You gain low-light vision."

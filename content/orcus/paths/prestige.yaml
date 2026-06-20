@@ -11,7 +11,7 @@
 - id: ORCUS_PRESTIGE_ASSASSIN
   name: Assassin
   type: Prestige Path
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Requirements: "Proficiency with simple melee and ranged weapons."
     Description: >-
@@ -30,23 +30,23 @@
 - id: ORCUS_FEATURE_TWICE_IN_THE_CHEST
   name: Twice in the Chest
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "Spend an action point to add your basic melee attack damage to your last hit with any one-handed melee weapon, instead of taking an extra action." }
 - id: ORCUS_FEATURE_ONCE_IN_THE_HEAD
   name: Once in the Head
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "You can score a critical hit with any one-handed weapon on a natural roll of 19 or 20." }
 - id: ORCUS_FEATURE_GETAWAY
   name: Getaway
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "16", Description: "Each time you stagger a target with a one-handed weapon, you may shift a number of squares equal to your Dexterity modifier as a free action." }
 
 - id: ORCUS_POWER_MAKE_SURE_THEYRE_DEAD
   name: Make Sure They're Dead
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "11"
@@ -62,7 +62,7 @@
 - id: ORCUS_POWER_THE_PROFESSIONAL
   name: The Professional
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "12"
@@ -81,7 +81,7 @@
 - id: ORCUS_POWER_LIKE_A_GHOST
   name: Like a Ghost
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "20"
@@ -99,7 +99,7 @@
 - id: ORCUS_PRESTIGE_BATTLEFIELD_HEALER
   name: Battlefield Healer
   type: Prestige Path
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Requirements: "Trained in Heal."
     Description: >-
@@ -117,23 +117,23 @@
 - id: ORCUS_FEATURE_A_TRUE_HEALER
   name: A True Healer
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "When you spend an action point to take an extra action, all allies in sight can make a saving throw." }
 - id: ORCUS_FEATURE_HEAL_THY_SELF
   name: Heal Thy Self
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "The Rally action only takes a swift action for you." }
 - id: ORCUS_FEATURE_PROFOUND_MEDICAL_ADVICE
   name: Profound Medical Advice
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "16", Description: "Once per round, you can take the Treat Ally action as a swift action." }
 
 - id: ORCUS_POWER_RACE_TO_THE_FALLEN
   name: Race to the Fallen
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "11"
@@ -154,7 +154,7 @@
 - id: ORCUS_POWER_IMPROMPTU_SURGERY
   name: Impromptu Surgery
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "12"
@@ -172,7 +172,7 @@
 - id: ORCUS_POWER_NO_LONGER_CIVILIZED
   name: No Longer Civilized
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "20"
@@ -198,7 +198,7 @@
 - id: ORCUS_PRESTIGE_BOUNTY_HUNTER
   name: Bounty Hunter
   type: Prestige Path
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You don’t analyze the patterns of combat but the actions and motivations
@@ -216,23 +216,23 @@
 - id: ORCUS_FEATURE_TARGET_FOCUS
   name: Target Focus
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "Once per encounter, you can mark a creature as a swift action. When you hit a creature you have marked, you do 1d6+3 damage (2d6+5 at level 21)." }
 - id: ORCUS_FEATURE_ALL_IN
   name: All In
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "11", Description: "When you spend an action point to make an attack against a creature you have marked, you gain a +2 power bonus to the attack roll and can score a critical hit on an 18, 19, or 20 with the attack." }
 - id: ORCUS_FEATURE_THREAT_COMPENSATION
   name: Threat Compensation
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields: { Level: "16", Description: "When a creature you have marked moves, you can shift 1 square as an immediate reaction." }
 
 - id: ORCUS_POWER_THOUGHT_PROCESS
   name: Thought Process
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "11"
@@ -249,7 +249,7 @@
 - id: ORCUS_POWER_MENTAL_PREDICTION
   name: Mental Prediction
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "12"
@@ -270,7 +270,7 @@
 - id: ORCUS_POWER_THIS_ONE_ESPECIALLY
   name: This One Especially
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "20"

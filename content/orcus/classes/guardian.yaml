@@ -6,7 +6,7 @@
 - id: ORCUS_CLASS_GUARDIAN
   name: Guardian
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Defender, Martial]
   fields:
     Role: Defender
@@ -167,7 +167,7 @@
 - id: ORCUS_FEATURE_COMBAT_DOMINANCE
   name: Combat Dominance
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -177,7 +177,7 @@
 - id: ORCUS_FEATURE_VETERAN_OPPORTUNIST
   name: Veteran Opportunist
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -186,7 +186,7 @@
 - id: ORCUS_FEATURE_SAVVY_COMBATANT
   name: Savvy Combatant
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: "You gain the punish cowardice and block retreat powers."
   rules:
@@ -199,7 +199,7 @@
 - id: ORCUS_TALENT_GREAT_WEAPON_STYLE
   name: Great Weapon Style
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_GUARDIAN_TALENT]
   fields:
     "Secondary Ability": Constitution
@@ -215,7 +215,7 @@
 - id: ORCUS_TALENT_PROTECTION
   name: Protection
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_GUARDIAN_TALENT]
   fields:
     "Secondary Ability": "Dexterity or Wisdom"
@@ -237,7 +237,7 @@
 - id: ORCUS_POWER_BLOCK_RETREAT
   name: Block Retreat
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"
@@ -254,7 +254,7 @@
 - id: ORCUS_POWER_PUNISH_COWARDICE
   name: Punish Cowardice
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [feature]
   fields:
     Level: "Feature"

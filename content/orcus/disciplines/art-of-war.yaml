@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_ART_OF_WAR
   name: "Art of War"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Strength"
     "Secondary Ability": "Dexterity"
@@ -17,7 +17,7 @@
 - id: ORCUS_POWER_PASSING_KILL
   name: "Passing Kill"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, ability-swap]
   fields:
     Level: "1"
@@ -36,7 +36,7 @@
 - id: ORCUS_POWER_SWIFT_STRIKE
   name: "Swift Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, at-will, ability-swap]
   fields:
     Level: "1"
@@ -56,7 +56,7 @@
 - id: ORCUS_POWER_IN_THEIR_FACE
   name: "In Their Face"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "1"
@@ -74,7 +74,7 @@
 - id: ORCUS_POWER_THE_FINISHER
   name: "The Finisher"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "1"
@@ -90,7 +90,7 @@
 - id: ORCUS_POWER_HERON_DEFENSE
   name: "Heron Defense"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "2"
@@ -106,7 +106,7 @@
 - id: ORCUS_POWER_COUNTER_SURGE
   name: "Counter-Surge"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "2"
@@ -126,7 +126,7 @@
 - id: ORCUS_POWER_FASTER_THAN_THE_HAMMER
   name: "Faster Than The Hammer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "3"
@@ -144,7 +144,7 @@
 - id: ORCUS_POWER_ALL_OR_NOTHING
   name: "All or Nothing"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "5"
@@ -167,7 +167,7 @@
 - id: ORCUS_POWER_FLOW_OR_CRASH
   name: "Flow or Crash"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "6"
@@ -183,7 +183,7 @@
 - id: ORCUS_POWER_FALSE_STRIKE
   name: "False Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "7"
@@ -204,7 +204,7 @@
 - id: ORCUS_POWER_IDLE_HANDS
   name: "Idle Hands"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "10"
@@ -221,7 +221,7 @@
 - id: ORCUS_POWER_REFLEX_SHOT
   name: "Reflex Shot"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "13"
@@ -243,7 +243,7 @@
 - id: ORCUS_POWER_SWELL_OF_DISCIPLINE
   name: "Swell of Discipline"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, utility]
   fields:
     Level: "16"
@@ -262,7 +262,7 @@
 - id: ORCUS_POWER_NERVE_CLUSTER
   name: "Nerve Cluster"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "17"
@@ -288,7 +288,7 @@
 - id: ORCUS_POWER_AN_UNWISE_ACTION
   name: "An Unwise Action"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "19"
@@ -311,7 +311,7 @@
 - id: ORCUS_POWER_STRIKE_AND_SLIP_AWAY
   name: "Strike and Slip Away"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, encounter, ability-swap]
   fields:
     Level: "23"
@@ -330,7 +330,7 @@
 - id: ORCUS_POWER_ATTACK_DEFLECTION
   name: "Attack Deflection"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "25"
@@ -351,7 +351,7 @@
 - id: ORCUS_POWER_DELAYED_DEATH_TOUCH
   name: "Delayed Death Touch"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_ART_OF_WAR, daily, ability-swap]
   fields:
     Level: "29"

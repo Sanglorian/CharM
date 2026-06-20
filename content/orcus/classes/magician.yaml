@@ -7,7 +7,7 @@
 - id: ORCUS_CLASS_MAGICIAN
   name: Magician
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Controller, Arcane]
   fields:
     Role: Controller
@@ -161,7 +161,7 @@
 - id: ORCUS_FEATURE_ARCANE_TRAINING
   name: Arcane Training
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     Description: >-
       You gain the Athame feat or a feat from the Art Feats section (your
@@ -169,7 +169,7 @@
 - id: ORCUS_FEATURE_CANTRIPS
   name: Cantrips
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: "You gain the Cantrip Master feat."
@@ -177,7 +177,7 @@
 - id: ORCUS_TALENT_CONJURER
   name: Conjurer
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Constitution
@@ -196,7 +196,7 @@
 - id: ORCUS_TALENT_ENCHANTER
   name: Enchanter
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Charisma
@@ -211,7 +211,7 @@
 - id: ORCUS_TALENT_EVOKER
   name: Evoker
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGICIAN_TALENT]
   fields:
     "Secondary Ability": Dexterity
@@ -229,7 +229,7 @@
 - id: ORCUS_FEATURE_ARCANE_OVERFLOW
   name: Arcane Overflow
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
   fields:
     Description: >-
@@ -244,7 +244,7 @@
 - id: ORCUS_FEATURE_ARCANE_SUSTENANCE
   name: Arcane Sustenance
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_MAGICIAN_ARCANE_STRENGTH]
   fields:
 

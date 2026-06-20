@@ -5,7 +5,7 @@
 - id: ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT
   name: "Mastermind's Gambit"
   type: Discipline
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
     "Key Ability": "Intelligence"
     "Secondary Ability": "Charisma"
@@ -15,7 +15,7 @@
 - id: ORCUS_POWER_INSTINCTUAL_REACTION
   name: "Instinctual Reaction"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
@@ -38,7 +38,7 @@
 - id: ORCUS_POWER_MARK_OF_THE_PUPPETEER
   name: "Mark of the Puppeteer"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
@@ -53,7 +53,7 @@
 - id: ORCUS_POWER_TACTICAL_ALTERATION
   name: "Tactical Alteration"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, at-will, ability-swap]
   fields:
     Level: "1"
@@ -74,7 +74,7 @@
 - id: ORCUS_POWER_DISTRACTING_ATTACK
   name: "Distracting Attack"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
@@ -97,7 +97,7 @@
 - id: ORCUS_POWER_INTO_THE_FIRE
   name: "Into the Fire"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
@@ -115,7 +115,7 @@
 - id: ORCUS_POWER_STICK_TO_THE_PLAN
   name: "Stick to the Plan"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "1"
@@ -133,7 +133,7 @@
 - id: ORCUS_POWER_FORCE_IT_BACK
   name: "Force It Back"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "1"
@@ -151,7 +151,7 @@
 - id: ORCUS_POWER_MAKE_IT_DANCE
   name: "Make It Dance"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "1"
@@ -171,7 +171,7 @@
 - id: ORCUS_POWER_BRING_ME_EVERYONE
   name: "Bring Me Everyone"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "2"
@@ -186,7 +186,7 @@
 - id: ORCUS_POWER_COVER_THE_ESCAPE
   name: "Cover The Escape"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "3"
@@ -206,7 +206,7 @@
 - id: ORCUS_POWER_ENCOURAGING_ADVICE
   name: "Encouraging Advice"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "3"
@@ -223,7 +223,7 @@
 - id: ORCUS_POWER_BACK_TO_BACK
   name: "Back-To-Back"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "5"
@@ -243,7 +243,7 @@
 - id: ORCUS_POWER_COVER_OPPORTUNITY
   name: "Cover Opportunity"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "5"
@@ -264,7 +264,7 @@
 - id: ORCUS_POWER_ATTRACT_ATTENTION
   name: "Attract Attention"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "6"
@@ -283,7 +283,7 @@
 - id: ORCUS_POWER_BLIND_SPOT
   name: "Blind Spot"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "7"
@@ -304,7 +304,7 @@
 - id: ORCUS_POWER_RIGHT_INTO_THE_TRAP
   name: "Right into the Trap"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "7"
@@ -323,7 +323,7 @@
 - id: ORCUS_POWER_TAKE_THE_LEAD
   name: "Take the Lead"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "7"
@@ -346,7 +346,7 @@
 - id: ORCUS_POWER_AGGRAVATE_THE_WOUND
   name: "Aggravate the Wound"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "9"
@@ -366,7 +366,7 @@
 - id: ORCUS_POWER_PROUD_TARGET
   name: "Proud Target"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "9"
@@ -390,7 +390,7 @@
 - id: ORCUS_POWER_BOAR_S_HEAD
   name: "Boar’s Head"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "10"
@@ -407,7 +407,7 @@
 - id: ORCUS_POWER_TAUNTING_MOCKERY
   name: "Taunting Mockery"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "10"
@@ -423,7 +423,7 @@
 - id: ORCUS_POWER_DIVERTING_ATTACK
   name: "Diverting Attack"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "13"
@@ -447,7 +447,7 @@
 - id: ORCUS_POWER_POSITIVE_REINFORCEMENT
   name: "Positive Reinforcement"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "13"
@@ -466,7 +466,7 @@
 - id: ORCUS_POWER_SUBTLE_ENCOURAGEMENT
   name: "Subtle Encouragement"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "13"
@@ -487,7 +487,7 @@
 - id: ORCUS_POWER_HEARTEN_THE_SQUAD
   name: "Hearten the Squad"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "15"
@@ -504,7 +504,7 @@
 - id: ORCUS_POWER_NO_TIME_TO_BLEED
   name: "No Time to Bleed"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "15"
@@ -523,7 +523,7 @@
 - id: ORCUS_POWER_DIRECT_STRIKE
   name: "Direct Strike"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "16"
@@ -541,7 +541,7 @@
 - id: ORCUS_POWER_PLAN_OF_ATTACK
   name: "Plan of Attack"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "16"
@@ -560,7 +560,7 @@
 - id: ORCUS_POWER_CENTER_PEEL
   name: "Center Peel"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "17"
@@ -580,7 +580,7 @@
 - id: ORCUS_POWER_DIRECT_THREAT
   name: "Direct Threat"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "17"
@@ -603,7 +603,7 @@
 - id: ORCUS_POWER_TARGET_PRIORITY
   name: "Target Priority"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "17"
@@ -625,7 +625,7 @@
 - id: ORCUS_POWER_SECURE_PERIMETER
   name: "Secure Perimeter"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "19"
@@ -648,7 +648,7 @@
 - id: ORCUS_POWER_FOCUS_TARGET
   name: "Focus Target"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, utility]
   fields:
     Level: "22"
@@ -665,7 +665,7 @@
 - id: ORCUS_POWER_SUDDEN_EXPOSURE
   name: "Sudden Exposure"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "23"
@@ -688,7 +688,7 @@
 - id: ORCUS_POWER_ON_A_PILE_OF_CORPSES
   name: "On A Pile of Corpses"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "23"
@@ -712,7 +712,7 @@
 - id: ORCUS_POWER_POINT_OF_NO_RETURN
   name: "Point Of No Return"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "25"
@@ -732,7 +732,7 @@
 - id: ORCUS_POWER_PINPOINT_OBJECTIVE
   name: "Pinpoint Objective"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "25"
@@ -755,7 +755,7 @@
 - id: ORCUS_POWER_BRILLIANT_OPPORTUNITY
   name: "Brilliant Opportunity"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "27"
@@ -777,7 +777,7 @@
 - id: ORCUS_POWER_PERFECT_TIMING
   name: "Perfect Timing"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, encounter, ability-swap]
   fields:
     Level: "27"
@@ -797,7 +797,7 @@
 - id: ORCUS_POWER_SHOCK_AND_AWE
   name: "Shock And Awe"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "29"
@@ -817,7 +817,7 @@
 - id: ORCUS_POWER_SHINING_EXAMPLE
   name: "Shining Example"
   type: Power
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_DISCIPLINE_MASTERMINDS_GAMBIT, daily, ability-swap]
   fields:
     Level: "29"

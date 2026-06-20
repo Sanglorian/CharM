@@ -8,7 +8,7 @@
 - id: ORCUS_CLASS_EXEMPLAR
   name: Exemplar
   type: Class
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [Striker, Martial]
   fields:
     Role: Striker
@@ -160,7 +160,7 @@
 - id: ORCUS_FEATURE_MOMENTUM
   name: Momentum
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -172,7 +172,7 @@
 - id: ORCUS_FEATURE_TRIUMPHANT_STRIKE
   name: Triumphant Strike
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -181,7 +181,7 @@
 - id: ORCUS_FEATURE_BIDE_YOUR_TIME
   name: Bide Your Time
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -191,7 +191,7 @@
 - id: ORCUS_FEATURE_NICK_OF_TIME
   name: Nick of Time
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   fields:
 
     Description: >-
@@ -201,7 +201,7 @@
 - id: ORCUS_TALENT_GLADIATOR
   name: Gladiator
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_EXEMPLAR_TALENT]
   fields:
     "Secondary Ability": Strength
@@ -215,7 +215,7 @@
 - id: ORCUS_TALENT_SWASHBUCKLER
   name: Swashbuckler
   type: Class Feature
-  source: "Orcus (Outlaw Kingdoms)"
+  source: "Orcus Original"
   categories: [ORCUS_EXEMPLAR_TALENT]
   fields:
     "Secondary Ability": Charisma
