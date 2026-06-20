@@ -186,6 +186,13 @@
     # bonuses (e.g. Improved Initiative) add on top.
     - { statadd: Initiative, value: { abilmod: Dexterity } }
     - { statadd: Initiative, value: { statref: HALF-LEVEL } }
+    # Passive Perception / Insight = 10 + the skill's total. The statref pulls
+    # the fully-computed skill value (ability mod + Level Bonus + training + any
+    # feat/item bonus), so these track the skill and scale with level.
+    - { statadd: Passive Perception, value: 10 }
+    - { statadd: Passive Perception, value: { statref: Perception } }
+    - { statadd: Passive Insight, value: 10 }
+    - { statadd: Passive Insight, value: { statref: Insight } }
 
 # Higher-level bootstraps. Each is added cumulatively (the engine processes
 # ID_INTERNAL_LEVEL_1..N), so they apply *increments*: Level rises by 1 each

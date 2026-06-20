@@ -149,9 +149,9 @@ Current state: **1845 elements, 33 types, 0 audit flags, 0 invented.**
   *targeted* feats (Skill Focus → +3 to a chosen skill, Weapon Focus /
   Specialization → +1 atk/dmg with a chosen weapon group), which need a way to
   apply a bonus to a selected element / weapon group.
-- Initiative is now modelled (Dex mod + Level Bonus, in `_internal/level.yaml`),
-  so Improved Initiative reads meaningfully. **Passive Perception and Passive
-  Insight are still unmodelled** (the UI shows them, but no content builds them).
+- Initiative (Dex mod + Level Bonus), Passive Perception and Passive Insight
+  (10 + the skill's total, via `statref`) are now modelled in
+  `_internal/level.yaml`, so Improved Initiative / Alertness read through to them.
 - Kit "associated discipline" is wired via `$$KITDISC` only for disciplines that
   exist in this content; others are descriptive.
 - The app's Theme-is-skippable ordering (see §5) is unaddressed by design.
