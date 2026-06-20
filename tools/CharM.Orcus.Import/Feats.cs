@@ -88,7 +88,9 @@ public static class Feats
         ["ORCUS_FEAT_SKILL_FOCUS"] = new[] { "{ select: { type: Skill Focus, number: 1, category: ORCUS_SKILL_FOCUS, name: Skill Focus } }" },
         ["ORCUS_FEAT_SKILL_TRAINING"] = new[] { "{ select: { type: Skill Training, number: 1, name: Skill Training } }" },
         ["ORCUS_FEAT_TALENTED_HEALER"] = new[] { "{ statadd: Heal, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_WEAPON_FOCUS"] = new[] { "{ select: { type: Weapon Focus, number: 1, category: ORCUS_WEAPON_FOCUS, name: Weapon Focus } }" },
         ["ORCUS_FEAT_WEAPON_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_WEAPON_PROFS, name: Weapon Proficiency } }" },
+        ["ORCUS_FEAT_WEAPON_SPECIALIZATION"] = new[] { "{ select: { type: Weapon Specialization, number: 1, category: ORCUS_WEAPON_SPEC, name: Weapon Specialization } }" },
         ["ORCUS_FEAT_TOUGHNESS"] = new[] { "{ statadd: Hit Points, value: { statref: Level }, bonusType: Feat }" },
     };
 

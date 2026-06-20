@@ -655,6 +655,8 @@
     Special: >-
       You can gain this feat multiple times. Its effects do not stack. Each time
       you take the feat, it applies to a new group of weapons.
+  rules:
+    - { select: { type: Weapon Focus, number: 1, category: ORCUS_WEAPON_FOCUS, name: Weapon Focus } }
 
 - id: ORCUS_FEAT_WEAPON_PROFICIENCY
   name: "Weapon Proficiency"
@@ -685,6 +687,8 @@
     Special: >-
       You can gain this feat multiple times. Its effects do not stack. Each time
       you take the feat, it applies to a new group of weapons.
+  rules:
+    - { select: { type: Weapon Specialization, number: 1, category: ORCUS_WEAPON_SPEC, name: Weapon Specialization } }
 
 # === Martial Training Feats ===
 - id: ORCUS_FEAT_BALANCE_AND_DIRECTION

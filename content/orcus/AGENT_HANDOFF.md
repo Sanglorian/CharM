@@ -124,7 +124,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **1845 elements, 33 types, 0 audit flags, 0 invented.**
+Current state: **1890 elements, 36 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 
@@ -138,17 +138,20 @@ Current state: **1845 elements, 33 types, 0 audit flags, 0 invented.**
 
 ## 9. Still open / possible follow-ups
 
-- Feat *mechanical* wiring now covers 9 feats via the curated `RulesOverlay` in
+- Feat *mechanical* wiring now covers 15 feats via the curated `RulesOverlay` in
   `Feats.cs` (text generation untouched): Alertness, Great Fortitude, Iron Will,
   Lightning Reflexes, Keen Defenses (each with 11th/21st scaling), Improved
-  Initiative, Skill Training (a category-less `Skill Training` select), Talented
-  Healer, Toughness. Still text-only and worth wiring next: the proficiency feats
-  (Weapon/Armor/Shield Proficiency) — these need a *scoped* `select` of
-  `Proficiency` elements, but `equipment/proficiencies.yaml` currently has no
-  weapon-only / armor-only / shield-only category to select against; and the
-  *targeted* feats (Skill Focus → +3 to a chosen skill, Weapon Focus /
-  Specialization → +1 atk/dmg with a chosen weapon group), which need a way to
-  apply a bonus to a selected element / weapon group.
+  Initiative, Talented Healer, Toughness; and six *choice* feats whose overlay is
+  just a scoped `select`: Skill Training, Skill Focus (→ `Skill Focus (X)` option
+  rows in `reference.yaml`, +3 to the chosen skill), Weapon/Armor/Shield
+  Proficiency (→ proficiency elements tagged `ORCUS_{WEAPON,ARMOR,SHIELD}_PROFS`
+  in `equipment/proficiencies.yaml`), and Weapon Focus / Weapon Specialization
+  (→ per-group `Weapon Focus (X)` / `Weapon Specialization (X)` rows in the
+  generated `equipment/weapon-focus.yaml`; the bonus is a `"<Group> group:attack"`
+  / `":damage"` stat the engine applies only when the power's weapon is of that
+  group, with 11th/21st scaling). Known minor gap: Weapon Focus's "provided you
+  are proficient" clause isn't enforced (the group predicate doesn't check
+  proficiency), consistent with Orcus treating requirements descriptively.
 - Initiative (Dex mod + Level Bonus), Passive Perception and Passive Insight
   (10 + the skill's total, via `statref`) are now modelled in
   `_internal/level.yaml`, so Improved Initiative / Alertness read through to them.
