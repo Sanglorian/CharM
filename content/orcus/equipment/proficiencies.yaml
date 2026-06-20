@@ -1,83 +1,137 @@
-# Weapon & armor proficiencies. The engine tracks weapon training by exact weapon
-# NAME: an active `Proficiency` element named "Weapon Proficiency (<weapon>)" puts
-# that weapon into StatBlock.TrainedWeapons, and PowerStatCalculator only adds a
-# weapon's "Proficiency Bonus" to the attack roll when the wielder is trained with
-# it. So each class's category proficiency (e.g. "martial melee") is expanded here
-# into per-weapon Proficiency elements, grouped into `Grants` bundles the classes
-# pull in. Armor proficiencies are also recorded (as Proficiency elements) for
-# fidelity and prerequisites; the engine has no armor non-proficiency penalty yet,
-# so those are declarative.
+# Weapon & armor proficiencies. Weapon part generated from Basic.html by
+# tools/weapons_from_basic.py; per-weapon Proficiency elements grouped into the
+# category bundles the classes grant. Armor proficiencies are hand-maintained.
 
 # === Weapon proficiency elements ==============================================
-- { id: ORCUS_WPROF_DAGGER,        name: "Weapon Proficiency (Dagger)",        type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_MACE,          name: "Weapon Proficiency (Mace)",          type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_SHORTSPEAR,    name: "Weapon Proficiency (Shortspear)",    type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_QUARTERSTAFF,  name: "Weapon Proficiency (Quarterstaff)",  type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_LONGSWORD,     name: "Weapon Proficiency (Longsword)",     type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_GREATSWORD,    name: "Weapon Proficiency (Greatsword)",    type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_SCIMITAR,      name: "Weapon Proficiency (Scimitar)",      type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_BATTLEAXE,     name: "Weapon Proficiency (Battleaxe)",     type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_GREATAXE,      name: "Weapon Proficiency (Greataxe)",      type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_WARHAMMER,     name: "Weapon Proficiency (Warhammer)",     type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_HANDAXE,       name: "Weapon Proficiency (Handaxe)",       type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_HALBERD,       name: "Weapon Proficiency (Halberd)",       type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_SLING,         name: "Weapon Proficiency (Sling)",         type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_LIGHT_CROSSBOW, name: "Weapon Proficiency (Light Crossbow)", type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_HEAVY_CROSSBOW, name: "Weapon Proficiency (Heavy Crossbow)", type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_LONGBOW,       name: "Weapon Proficiency (Longbow)",       type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_WPROF_SHORTBOW,      name: "Weapon Proficiency (Shortbow)",      type: Proficiency, source: "Orcus Original" }
-
-# === Armor proficiency elements (declarative) =================================
-- { id: ORCUS_APROF_CLOTH,         name: "Armor Proficiency (Cloth)",          type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_LEATHER,       name: "Armor Proficiency (Leather)",        type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_HIDE,          name: "Armor Proficiency (Hide)",           type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_CHAINMAIL,     name: "Armor Proficiency (Chainmail)",      type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_SCALE,         name: "Armor Proficiency (Scale)",          type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_PLATE,         name: "Armor Proficiency (Plate)",          type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_LIGHT_SHIELD,  name: "Armor Proficiency (Light Shield)",   type: Proficiency, source: "Orcus Original" }
-- { id: ORCUS_APROF_HEAVY_SHIELD,  name: "Armor Proficiency (Heavy Shield)",   type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_DART, name: "Weapon Proficiency (Dart)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_KNIFE, name: "Weapon Proficiency (Knife)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_CLUB, name: "Weapon Proficiency (Club)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SHORTSPEAR, name: "Weapon Proficiency (Shortspear)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SICKLE, name: "Weapon Proficiency (Sickle)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_GREATCLUB, name: "Weapon Proficiency (Greatclub)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_QUARTERSTAFF, name: "Weapon Proficiency (Quarterstaff)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SCYTHE, name: "Weapon Proficiency (Scythe)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_FORK, name: "Weapon Proficiency (Fork)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HANDAXE, name: "Weapon Proficiency (Handaxe)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_JUGGLING_CLUB, name: "Weapon Proficiency (Juggling club)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LIGHT_PICK, name: "Weapon Proficiency (Light pick)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SHORTSWORD, name: "Weapon Proficiency (Shortsword)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_BATTLEAXE, name: "Weapon Proficiency (Battleaxe)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LIGHT_FLAIL, name: "Weapon Proficiency (Light flail)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LIGHT_MACE, name: "Weapon Proficiency (Light mace)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LONGSWORD, name: "Weapon Proficiency (Longsword)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_RAPIER, name: "Weapon Proficiency (Rapier)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_WARHAMMER, name: "Weapon Proficiency (Warhammer)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_BO_STAFF, name: "Weapon Proficiency (Bo staff)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_GLAIVE, name: "Weapon Proficiency (Glaive)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_GREATAXE, name: "Weapon Proficiency (Greataxe)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_GREATSWORD, name: "Weapon Proficiency (Greatsword)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HALBERD, name: "Weapon Proficiency (Halberd)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HEAVY_FLAIL, name: "Weapon Proficiency (Heavy flail)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HEAVY_MACE, name: "Weapon Proficiency (Heavy mace)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LONGSPEAR, name: "Weapon Proficiency (Longspear)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_MAUL, name: "Weapon Proficiency (Maul)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_KUKRI, name: "Weapon Proficiency (Kukri)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_NUNCHAKU, name: "Weapon Proficiency (Nunchaku)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_DWARVEN_SPEAR_AXE, name: "Weapon Proficiency (Dwarven spear-axe)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HOOKED_HAMMER, name: "Weapon Proficiency (Hooked hammer)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_KHOPESH, name: "Weapon Proficiency (Khopesh)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SPIKED_CHAIN, name: "Weapon Proficiency (Spiked chain)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_TWO_BLADED_SWORD, name: "Weapon Proficiency (Two-bladed sword)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LIGHT_CROSSBOW, name: "Weapon Proficiency (Light crossbow)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_SLING, name: "Weapon Proficiency (Sling)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_HEAVY_CROSSBOW, name: "Weapon Proficiency (Heavy crossbow)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_LONGBOW, name: "Weapon Proficiency (Longbow)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_COMPOSITE_BOW, name: "Weapon Proficiency (Composite bow)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_WPROF_DIRE_CROSSBOW, name: "Weapon Proficiency (Dire crossbow)", type: Proficiency, source: "Orcus Original" }
 
 # === Category grant bundles ===================================================
 - id: ORCUS_PROFGRANT_SIMPLE_MELEE
-  name: Simple Melee Weapon Proficiency
+  name: "Simple Melee Weapon Proficiency"
   type: Grants
   source: "Orcus Original"
   rules:
-    - { grant: ORCUS_WPROF_DAGGER, type: Proficiency }
-    - { grant: ORCUS_WPROF_MACE, type: Proficiency }
+    - { grant: ORCUS_WPROF_DART, type: Proficiency }
+    - { grant: ORCUS_WPROF_KNIFE, type: Proficiency }
+    - { grant: ORCUS_WPROF_CLUB, type: Proficiency }
     - { grant: ORCUS_WPROF_SHORTSPEAR, type: Proficiency }
+    - { grant: ORCUS_WPROF_SICKLE, type: Proficiency }
+    - { grant: ORCUS_WPROF_GREATCLUB, type: Proficiency }
     - { grant: ORCUS_WPROF_QUARTERSTAFF, type: Proficiency }
+    - { grant: ORCUS_WPROF_SCYTHE, type: Proficiency }
 
 - id: ORCUS_PROFGRANT_MARTIAL_MELEE
-  name: Martial Melee Weapon Proficiency
+  name: "Martial Melee Weapon Proficiency"
   type: Grants
   source: "Orcus Original"
   rules:
-    - { grant: ORCUS_WPROF_LONGSWORD, type: Proficiency }
-    - { grant: ORCUS_WPROF_GREATSWORD, type: Proficiency }
-    - { grant: ORCUS_WPROF_SCIMITAR, type: Proficiency }
-    - { grant: ORCUS_WPROF_BATTLEAXE, type: Proficiency }
-    - { grant: ORCUS_WPROF_GREATAXE, type: Proficiency }
-    - { grant: ORCUS_WPROF_WARHAMMER, type: Proficiency }
+    - { grant: ORCUS_WPROF_FORK, type: Proficiency }
     - { grant: ORCUS_WPROF_HANDAXE, type: Proficiency }
+    - { grant: ORCUS_WPROF_JUGGLING_CLUB, type: Proficiency }
+    - { grant: ORCUS_WPROF_LIGHT_PICK, type: Proficiency }
+    - { grant: ORCUS_WPROF_SHORTSWORD, type: Proficiency }
+    - { grant: ORCUS_WPROF_BATTLEAXE, type: Proficiency }
+    - { grant: ORCUS_WPROF_LIGHT_FLAIL, type: Proficiency }
+    - { grant: ORCUS_WPROF_LIGHT_MACE, type: Proficiency }
+    - { grant: ORCUS_WPROF_LONGSWORD, type: Proficiency }
+    - { grant: ORCUS_WPROF_RAPIER, type: Proficiency }
+    - { grant: ORCUS_WPROF_WARHAMMER, type: Proficiency }
+    - { grant: ORCUS_WPROF_BO_STAFF, type: Proficiency }
+    - { grant: ORCUS_WPROF_GLAIVE, type: Proficiency }
+    - { grant: ORCUS_WPROF_GREATAXE, type: Proficiency }
+    - { grant: ORCUS_WPROF_GREATSWORD, type: Proficiency }
     - { grant: ORCUS_WPROF_HALBERD, type: Proficiency }
+    - { grant: ORCUS_WPROF_HEAVY_FLAIL, type: Proficiency }
+    - { grant: ORCUS_WPROF_HEAVY_MACE, type: Proficiency }
+    - { grant: ORCUS_WPROF_LONGSPEAR, type: Proficiency }
+    - { grant: ORCUS_WPROF_MAUL, type: Proficiency }
+
+- id: ORCUS_PROFGRANT_EXOTIC_MELEE
+  name: "Exotic Melee Weapon Proficiency"
+  type: Grants
+  source: "Orcus Original"
+  rules:
+    - { grant: ORCUS_WPROF_KUKRI, type: Proficiency }
+    - { grant: ORCUS_WPROF_NUNCHAKU, type: Proficiency }
+    - { grant: ORCUS_WPROF_DWARVEN_SPEAR_AXE, type: Proficiency }
+    - { grant: ORCUS_WPROF_HOOKED_HAMMER, type: Proficiency }
+    - { grant: ORCUS_WPROF_KHOPESH, type: Proficiency }
+    - { grant: ORCUS_WPROF_SPIKED_CHAIN, type: Proficiency }
+    - { grant: ORCUS_WPROF_TWO_BLADED_SWORD, type: Proficiency }
 
 - id: ORCUS_PROFGRANT_SIMPLE_RANGED
-  name: Simple Ranged Weapon Proficiency
+  name: "Simple Ranged Weapon Proficiency"
   type: Grants
   source: "Orcus Original"
   rules:
-    - { grant: ORCUS_WPROF_SLING, type: Proficiency }
     - { grant: ORCUS_WPROF_LIGHT_CROSSBOW, type: Proficiency }
+    - { grant: ORCUS_WPROF_SLING, type: Proficiency }
     - { grant: ORCUS_WPROF_HEAVY_CROSSBOW, type: Proficiency }
 
 - id: ORCUS_PROFGRANT_MARTIAL_RANGED
-  name: Martial Ranged Weapon Proficiency
+  name: "Martial Ranged Weapon Proficiency"
   type: Grants
   source: "Orcus Original"
   rules:
     - { grant: ORCUS_WPROF_LONGBOW, type: Proficiency }
-    - { grant: ORCUS_WPROF_SHORTBOW, type: Proficiency }
+
+- id: ORCUS_PROFGRANT_EXOTIC_RANGED
+  name: "Exotic Ranged Weapon Proficiency"
+  type: Grants
+  source: "Orcus Original"
+  rules:
+    - { grant: ORCUS_WPROF_COMPOSITE_BOW, type: Proficiency }
+    - { grant: ORCUS_WPROF_DIRE_CROSSBOW, type: Proficiency }
+
+# === Armor proficiency elements ===============================================
+- { id: ORCUS_APROF_CLOTH, name: "Armor Proficiency (Cloth)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_LEATHER, name: "Armor Proficiency (Leather)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_HIDE, name: "Armor Proficiency (Hide)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_CHAINMAIL, name: "Armor Proficiency (Chainmail)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_SCALE, name: "Armor Proficiency (Scale)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_PLATE, name: "Armor Proficiency (Plate)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_LIGHT_SHIELD, name: "Armor Proficiency (Light Shield)", type: Proficiency, source: "Orcus Original" }
+- { id: ORCUS_APROF_HEAVY_SHIELD, name: "Armor Proficiency (Heavy Shield)", type: Proficiency, source: "Orcus Original" }
 
 - id: ORCUS_PROFGRANT_ARMOR_LIGHT
   name: Light Armor Proficiency

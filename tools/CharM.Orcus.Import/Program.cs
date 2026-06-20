@@ -53,6 +53,7 @@ if (mode == "audit-all")
     string aRoot = args.Length > 1 ? args[1] : Directory.GetCurrentDirectory();
     var books = Directory.EnumerateFiles(aRoot, "Orcus*.md", SearchOption.TopDirectoryOnly)
         .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase)).ToList();
+    if (File.Exists(Path.Combine(aRoot, "Basic.html"))) books.Add(Path.Combine(aRoot, "Basic.html"));
     var blob2 = new System.Text.StringBuilder();
     foreach (var f in books) blob2.Append(' ').Append(File.ReadAllText(f));
     string src = Normalizer.Norm(blob2.ToString());
@@ -152,8 +153,9 @@ string reportPath = args.Length > 2 ? args[2] : Path.Combine(root, "tools/CharM.
 if (mode != "audit") { Console.Error.WriteLine("unknown mode; use 'audit', 'generate-discipline' or 'patch-class'"); return 1; }
 
 var sourceFiles = Directory.EnumerateFiles(root, "Orcus*.md", SearchOption.TopDirectoryOnly)
-    .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase))
-    .OrderBy(f => f).ToList();
+    .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase)).ToList();
+if (File.Exists(Path.Combine(root, "Basic.html"))) sourceFiles.Add(Path.Combine(root, "Basic.html"));
+sourceFiles = sourceFiles.OrderBy(f => f).ToList();
 if (sourceFiles.Count == 0) { Console.Error.WriteLine($"no Orcus*.md books found in {root}"); return 1; }
 
 string contentDir = Path.Combine(root, "content/orcus");
