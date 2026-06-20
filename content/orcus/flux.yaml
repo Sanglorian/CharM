@@ -1,0 +1,40 @@
+# Elemental Flux energy choice (Orcus Classes and Powers, Elemental Flux note:
+# "When you first gain a power with the Flux tag, choose an element: lightning,
+# acid, cold, fire or thunder."). Modeled as a 1-of-5 selectable Class Feature,
+# offered to characters with Elemental Flux access (the Mageblade). The chosen
+# energy is what a power's [flux] token resolves to.
+
+- id: ORCUS_FLUX_LIGHTNING
+  name: "Flux Energy: Lightning"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_FLUX_ENERGY]
+  fields: { "Flux Energy": Lightning }
+
+- id: ORCUS_FLUX_ACID
+  name: "Flux Energy: Acid"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_FLUX_ENERGY]
+  fields: { "Flux Energy": Acid }
+
+- id: ORCUS_FLUX_COLD
+  name: "Flux Energy: Cold"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_FLUX_ENERGY]
+  fields: { "Flux Energy": Cold }
+
+- id: ORCUS_FLUX_FIRE
+  name: "Flux Energy: Fire"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_FLUX_ENERGY]
+  fields: { "Flux Energy": Fire }
+
+- id: ORCUS_FLUX_THUNDER
+  name: "Flux Energy: Thunder"
+  type: Class Feature
+  source: "Orcus (Outlaw Kingdoms)"
+  categories: [ORCUS_FLUX_ENERGY]
+  fields: { "Flux Energy": Thunder }

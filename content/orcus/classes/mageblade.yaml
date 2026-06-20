@@ -60,6 +60,13 @@
         number: 1
         category: ORCUS_MAGEBLADE_TALENT
         name: Mageblade Talent
+    # Elemental Flux: choose your flux energy (lightning/acid/cold/fire/thunder).
+    # Powers with the Flux tag use this as their [flux] element.
+    - select:
+        type: Class Feature
+        number: 1
+        category: ORCUS_FLUX_ENERGY
+        name: Flux Energy
     # Default level-1 progression: 2 at-will, 1 encounter, 1 daily attack.
     - select:
         type: Power
