@@ -77,6 +77,14 @@ public static class RulesDbBuilder
             insertCategory?.Dispose();
             tx?.Dispose();
         }
+
+        // Fold the write-ahead log back into the main database file and switch the
+        // journal mode to DELETE, so the produced .db is a single, self-contained,
+        // portable file (no -wal/-shm sidecars carrying the actual data). Without
+        // this, connection pooling can leave the WAL un-checkpointed and the .db a
+        // ~4 KB stub with the real data stranded in the -wal file.
+        Execute(connection, "PRAGMA wal_checkpoint(TRUNCATE)");
+        Execute(connection, "PRAGMA journal_mode = DELETE");
     }
 
     private static SqliteCommand CreateInsertElementCommand(SqliteConnection connection, SqliteTransaction tx)
