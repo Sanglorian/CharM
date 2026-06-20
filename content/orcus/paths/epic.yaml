@@ -10,12 +10,14 @@
   type: Epic Path
   source: "Orcus (Outlaw Kingdoms)"
   fields:
-    Immortality: "Corner of the World's Eye: you fade from public view, but no one can ever confirm your death."
     Description: >-
       Elemental tyrants, the heralds of the gods, the voices between the planets
       – they all have peculiar needs, and the agents retriever cater to them.
       You travel across the planes, locating and acquiring whatever your patrons
       need.
+    Immortality: >-
+      When your adventuring days come to an end, a number of different fates may
+      await you. What follows is one possibility.
   rules:
     - { grant: ORCUS_FEATURE_APPROPRIATION, type: Class Feature }
     - { grant: ORCUS_FEATURE_INTERPLANAR_CONTINGENCIES, type: Class Feature, level: 24 }
@@ -108,7 +110,6 @@
     Special: >-
       Once you use this power, you cannot recover it except by taking a long
       rest.
-    Flavor: "You’re not tired. You’re just getting warmed up."
 # === Most Dangerous ===========================================================
 - id: ORCUS_EPIC_MOST_DANGEROUS
   name: Most Dangerous
@@ -158,7 +159,6 @@
     Keywords: "Martial"
     Target: "Self"
     Effect: "You gain two action points."
-    Flavor: "Your enemy will soon discover why your name is so feared."
 # === Respected ================================================================
 - id: ORCUS_EPIC_RESPECTED
   name: Respected
@@ -207,9 +207,6 @@
     Keywords: "Martial"
     Target: "Near burst 10, all allies"
     Effect: "The target regains one expended encounter power."
-    Flavor: >-
-      You make every ally in the battle know how you feel about defeat. You make
-      them fear you more than the enemy.
 # === Team =====================================================================
 - id: ORCUS_EPIC_TEAM
   name: Team
@@ -259,7 +256,6 @@
     Keywords: "Martial"
     Target: "Near burst 10, one ally"
     Effect: "The target takes one standard action."
-    Flavor: "You give an ally the precious time they need complete the task."
 # === Ultimate =================================================================
 - id: ORCUS_EPIC_ULTIMATE
   name: Ultimate

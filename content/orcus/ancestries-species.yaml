@@ -15,17 +15,21 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Normal
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Charisma"
-    Languages: "Common and one other"
-    "Heart of the Legion": "When adjacent to at least two allies, you receive a +1 power bonus to all defenses."
     Description: >-
       Medium natural humanoid Apefolk are humanoids reminiscent of humankind’s
       closest relatives: gorillas, orang utans and chimpanzees. Most apefolk
       take a particular pride in legacy and enduring might: memorizing their
       genealogy, celebrating the history of their centuries-old city-states and
       seeking personal glory.
+    Speed: "6 squares."
+    Languages: >-
+      You can speak, read, and write Common and one extra language of your
+      choice..
+    "Heart of the Legion": >-
+      When adjacent to at least two allies, you receive a +1 power bonus to all
+      defenses.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -78,8 +82,8 @@
       The target can take the rally action as a free action, if they are
       eligible to do so.
     Special: >-
-      This power does not affect the normal limitation that a character can only
-      take the rally action once per combat.
+      This does not count against the maximum number of times a character can
+      use the rally action in an encounter.
 # === Automaton ===============================================================
 - id: ORCUS_RACE_AUTOMATON
   name: Automaton
@@ -88,16 +92,23 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Normal
     "Ability Scores": "Pick two of +2 Constitution, +2 Intelligence and +2 Wisdom"
-    Languages: "Common and one other"
-    "Relentless Endurance": "The first time in an encounter that you are staggered, you gain temporary HP equal to your level."
-    "Made of Metal": "You do not make death saving throws. You still die if reduced to negative hit points equal to your maximum hit points. You do not sleep, breathe, eat or drink."
     Description: >-
       Medium natural automaton (construct) Created beings of brass, clockwork
       and a pinch of sorcery, the automatons are a relatively new people, one
       still finding their place in the world.
+    Speed: "6 squares."
+    Languages: >-
+      You can speak, read, and write Common and one extra language of your
+      choice..
+    "Relentless Endurance": >-
+      The first time in an encounter that you are staggered, you gain temporary
+      HP equal to your level.
+    "Made of Metal": >-
+      You do not make death saving throws. You still die if reduced to negative
+      hit points equal to your maximum hit points. You do not sleep, breathe,
+      eat or drink.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -129,16 +140,18 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: "5 squares (not reduced by heavy armor or a heavy load)"
     Vision: Low-light
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Wisdom"
-    Languages: "Common, Primordial"
-    "Resistance to Fire": "You gain resistance to fire equal to 5 + half your level."
-    "Minor Magics": "You know the fiery spirit power from the Cantrips discipline."
     Description: >-
       Medium elemental humanoid (fire) Stout beings who resemble dwarves with
       hair of fire, azer are often skilled artisans. Their clans are organized
       on quasi-military lines.
+    Speed: >-
+      5 squares, but your speed is not reduced by wearing heavy armor or
+      carrying a heavy load. squares.
+    Languages: "You can speak, read, and write Common, Primordial."
+    "Resistance to Fire": "You gain resistance to fire equal to 5 + half your level."
+    "Minor Magics": "You know the fiery spirit power from the Cantrips discipline."
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -187,17 +200,22 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Low-light
     "Ability Scores": "Pick two of +2 Dexterity, +2 Wisdom and +2 Charisma"
-    Languages: "Common and one other"
-    "Natural Weapon - Claws": "You are proficient with your claws: a martial side weapon in the light blades category (proficiency +3, 1d6 damage), though they cannot be thrown."
-    "Balance Guidance": "Allies within 10 receive a +1 ancestry bonus to Acrobatics."
-    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
     Description: >-
       Medium natural humanoid Catfolk are playful humanoids with short fur all
       over their lithe bodies. They have feline heads, with different clans
       tending to resemble different breeds of big cat.
+    Speed: "6 squares."
+    Languages: >-
+      You can speak, read, and write Common and one extra language of your
+      choice..
+    "Natural Weapon - Claws": >-
+      You are proficient with a martial weapon, your claws. Each claw is a
+      martial side weapon in the light blades category (proficiency +3, 1d6
+      damage), although it cannot be thrown.
+    "Balance Guidance": "Allies within 10 receive a +1 ancestry bonus to Acrobatics."
+    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -241,14 +259,14 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: "6 squares, swim 4 squares"
     Vision: Darkvision
     "Ability Scores": "Pick two of +2 Dexterity, +2 Wisdom and +2 Charisma"
-    Languages: "Common, Deep Speech"
     Description: >-
       Medium cosmic humanoid Deepfolk are amphibious humanoids with fish-like
       features, skilled in underwater combat and wielding weapons crafted from
       coral and obsidian.
+    Speed: "6 squares, swim 4 squares."
+    Languages: "You can speak, read, and write Common, Deep Speech."
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -294,16 +312,16 @@
   categories: [Small]
   fields:
     Size: Small
-    Speed: 5 squares
     Vision: Darkvision
     "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Charisma"
-    Languages: "Common, Deep Speech"
-    "Blast Shard": "You gain Blast Shard as a bonus feat."
     Description: >-
       Small cosmic humanoid Dromite are small insect-like humanoids that form
       cooperative colonies in gigantic mounds of heaped earth. Their powerful
       legs allow them to leap great distances, and they can shoot beams of
       energy from their multi-faceted eyes.
+    Speed: "5 squares."
+    Languages: "You can speak, read, and write Common, Deep Speech."
+    "Blast Shard": "You gain Blast Shard as a bonus feat."
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -350,16 +368,20 @@
   categories: [Small]
   fields:
     Size: Small
-    Speed: "5 squares, swim 5 squares"
     Vision: Normal
     "Ability Scores": "Pick two of +2 Constitution, +2 Dexterity and +2 Charisma"
-    Languages: "Common and one other"
-    "Hide in a Flash": "When you make an initiative check, if you are in cover or concealment, you can make a Stealth check to hide (no action)."
-    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
     Description: >-
       Small natural humanoid Frogfolk are amphibious humanoids, with webbed feet
       and hands and long, sticky tongues. Frogfolk tend to be cheery and
       adventurous, although their mood quickly turns if their skin dries out.
+    Speed: "5 squares, swim 5 squares."
+    Languages: >-
+      You can speak, read, and write Common and one extra language of your
+      choice..
+    "Hide in a Flash": >-
+      When you make an initiative check, if you are in cover or concealment, you
+      can make a Stealth check to hide (takes no action).
+    Nimbleness: "+2 ancestry bonus to AC against opportunity attacks."
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -404,17 +426,20 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Low-light
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Charisma"
-    Languages: "Common, Abyssal"
-    Vigor: "Add your Constitution modifier to your recovery value."
-    "Natural Weapon - Bite": "You are proficient with your bite: a martial one-handed weapon in the heavy blades category (proficiency +3, 1d8 damage), requiring no hands to use."
     Description: >-
       Medium natural humanoid Gnolls are humanoid hyenas with a reputation for
       wildness and cunning. Gnolls often exhibit a strong sense of loyalty to
       their pack (including their "chosen pack", which can include non-gnolls),
       valuing camaraderie but with little patience for fools and the naive.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Abyssal."
+    Vigor: "Add your Constitution modifier to your recovery value."
+    "Natural Weapon - Bite": >-
+      You are proficient with a martial weapon, your bite. Your bite is a
+      martial one-handed weapon in the heavy blades category (proficiency +3,
+      1d8 damage), although it requires no hands to use.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -446,17 +471,24 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Normal
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Wisdom"
-    Languages: "Common, Giant"
-    "Powerful Build": "+2 ancestry bonus to checks to escape a grapple. Against attacks that vary by target size, you may be treated as Large instead of Medium."
-    Unmoved: "Reduce any unwilling movement you are subject to by 1 square. When you would fall prone as the result of an attack, make a saving throw; on a success you do not fall."
     Description: >-
       Medium natural humanoid (giant) Half-giants typically stand from 7 feet to
       nearly 8 feet tall. Despite their name, they are their own people and not
       the product of relations between giants and other humanoids. Half-giants
       tend to be proud, and see themselves as natural leaders.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Giant."
+    "Powerful Build": >-
+      You have a +2 ancestry bonus to checks to escape a grapple. When you are
+      the target of any attack or power that has a different effect based on the
+      target’s size, you may choose to be treated as size Large instead of size
+      Medium for the purposes of that attack.
+    Unmoved: >-
+      You may reduce any unwilling movement you are subject to by 1 square. When
+      you would fall prone as the result of an attack, make a saving throw – on
+      a success, you do not fall.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -502,16 +534,17 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Normal
     "Ability Scores": "Pick two of +2 Strength, +2 Constitution and +2 Dexterity"
-    Languages: "Common, Goblin"
-    "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
-    "Heavy Blade Weapon Proficiency": "You have proficiency with martial weapons in the heavy blades category."
     Description: >-
       Medium natural humanoid (goblinoid) Hobgoblins are bright-skinned (often
       red or blue) humanoids with pointed ears and heavy brows. They are known
       for their discipline, honor and rigid hierarchical societies.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Goblin."
+    "Go for the Jugular": "+1 ancestry bonus on attacks against staggered enemies."
+    "Heavy Blade Weapon Proficiency": >-
+      You have proficiency with martial weapons in the heavy blades category.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -556,12 +589,8 @@
   categories: [Small]
   fields:
     Size: Small
-    Speed: 6 squares
     Vision: Darkvision
     "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Charisma"
-    Languages: "Common, Primordial"
-    "Under-Developed Wings": "You have a fly speed of 6, but you fall at the end of your turn and your maximum altitude is 1."
-    "Resistance to X": "Resistance 5 + half your level to your element's damage type. Air: lightning and thunder. Ice: cold. Earth: acid. Fire: fire."
     Description: >-
       Small elemental humanoid (air, cold, earth, fire) Mephits are small,
       winged imps from the elemental planes. They are mischevious and clever,
@@ -570,6 +599,12 @@
       mephits are resistant to lightning and thunder. Ice mephits are resistant
       to cold. Earth mephits are resistant to acid. Fire mephits are resistant
       to fire.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Primordial."
+    "Under-Developed Wings": >-
+      You have a fly speed of 6, but you fall at the end of your turn and your
+      maximum altitude is 1.
+    "Resistance to X": "Resistance to the specified damage type(s) 5 + half your level."
   rules:
     - grant: ORCUS_SIZE_SMALL
       type: Size
@@ -618,17 +653,21 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Darkvision
     "Ability Scores": "Pick two of +2 Strength, +2 Intelligence and +2 Wisdom"
-    Languages: "Common and one other"
-    "Maze Mind": "When you are the target of an attack with the Psychic tag, the attacker is rattled (save ends)."
-    "Wandering Charge": "When you charge, you do not need to move in a straight line."
     Description: >-
       Medium natural humanoid Strong and imposing half-bull, half-humans,
       minotaurs are often characterized by their courage, determination, and
       sometimes a struggle to reconcile their fierce instincts with their
       human-like emotions.
+    Speed: "6 squares."
+    Languages: >-
+      You can speak, read, and write Common and one extra language of your
+      choice..
+    "Maze Mind": >-
+      When you are the target of an attack with the Psychic tag, the attacker is
+      rattled (save ends).
+    "Wandering Charge": "When you charge, you do not need to move in a straight line."
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -674,17 +713,22 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Low-light
     "Ability Scores": "Pick two of +2 Dexterity, +2 Intelligence and +2 Wisdom"
-    Languages: "Common, Elven"
-    "Minor Magics": "You know the ghost sound power from the Cantrips discipline."
-    Trance: "You don't sleep; a 4-hour meditative trance has the same effect as a 6-hour long rest."
     Description: >-
       Medium shadow humanoid Shadow elves are enigmatic beings from the Plane of
       Shadow, the descendents of refugees from the Seelie–Unseelie wars on the
       Plane of Faerie. They are known for their haunting beauty and inclination
       towards secrecy and intrigue.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Elven."
+    "Minor Magics": "You know the ghost sound power from the Cantrips discipline."
+    Trance: >-
+      You don’t need to sleep. Instead, you meditate deeply, remaining
+      semiconscious, for 4 hours a day. While meditating, you can dream after a
+      fashion; such dreams are actually mental exercises that have become
+      reflexive through years of practice. Your 4-hour trance has the same
+      effect as a 6-hour long rest.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size
@@ -729,18 +773,20 @@
   categories: [Medium]
   fields:
     Size: Medium
-    Speed: 6 squares
     Vision: Low-light
     "Ability Scores": "Pick two of +2 Constitution, +2 Dexterity and +2 Charisma"
-    Languages: "Common, Draconic"
-    "Hold Breath": "+5 ancestry bonus to Endure checks to hold your breath."
-    "Swamp Stride": "Mud, marsh and shallows are not difficult terrain for you."
-    Whistle: "You can communicate using high-pitched whistles that adults cannot hear but dogs and children can."
     Description: >-
       Medium natural humanoid (reptile) Vishyas are graceful humanoids with
       venomous fangs and serpentine eyes. Their supple skin is covered with tiny
       scales, often of a light green, which are sometimes arrayed in patterns
       not unlike those of a serpent.
+    Speed: "6 squares."
+    Languages: "You can speak, read, and write Common, Draconic."
+    "Hold Breath": "+5 ancestry bonus to Endure checks to hold your breath."
+    "Swamp Stride": "Mud, marsh and shallows are not difficult terrain for you."
+    Whistle: >-
+      Vishya can communicate using high-pitch whistles that adults cannot hear
+      but dogs and children can.
   rules:
     - grant: ORCUS_SIZE_MEDIUM
       type: Size

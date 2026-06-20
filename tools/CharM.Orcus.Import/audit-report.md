@@ -2,8 +2,8 @@
 
 - Source books scanned: 4
 - YAML elements loaded: 1557
-- Prose fields scanned: 4048; flagged: 0
-- Flavor fields: 412 faithful, 0 INVENTED
+- Prose fields scanned: 4044; flagged: 0
+- Flavor fields: 408 faithful, 0 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any

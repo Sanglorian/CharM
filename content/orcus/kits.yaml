@@ -19,15 +19,11 @@
   name: Has Kit
   type: Marker
   source: "Orcus (Outlaw Kingdoms)"
-  fields:
-    Description: "Internal marker: present when the character has taken a kit. Suppresses the heroic-tier feat slots unless the Feats and Kits house rule is active."
 
 - id: ORCUS_HOUSERULE_FEATS_AND_KITS
   name: Feats and Kits
   type: House Rule
   source: "Orcus (Outlaw Kingdoms)"
-  fields:
-    Description: "House rule: a character may take a kit AND keep their six heroic-tier feats, instead of choosing one or the other."
 
 # A kit's "associated discipline" is modelled as a Discipline Access element it
 # grants; the engine folds the `_Discipline` id into the $$KITDISC select variable,

@@ -11,12 +11,12 @@ namespace CharM.Orcus.Import;
 public static class ClassPatcher
 {
     public static int Patch(string sourceFile, string classFile, string className) =>
-        PatchWith(ClassContent.Parse(sourceFile, className), classFile);
+        PatchWith(ClassContent.Parse(sourceFile, className), classFile, className);
 
     public static int PatchGlobal(string sourceFile, string classFile) =>
-        PatchWith(ClassContent.ParseAll(sourceFile), classFile);
+        PatchWith(ClassContent.ParseAll(sourceFile), classFile, null);
 
-    static int PatchWith(ClassContent content, string classFile)
+    static int PatchWith(ClassContent content, string classFile, string? scopeName)
     {
         var lines = File.ReadAllLines(classFile).ToList();
 
@@ -84,10 +84,33 @@ public static class ClassPatcher
             if (key != null)
             {
                 var text = content.FeatureText[key];
-                if (string.IsNullOrWhiteSpace(text)) continue;
-                string fld = TargetField(type);
-                SetField(block, fld, Phase2.EmitFieldLines(fld, StripLabel(fld, text), 4));
-                descsFixed++;
+                if (!string.IsNullOrWhiteSpace(text))
+                {
+                    string fld = TargetField(type);
+                    SetField(block, fld, Phase2.EmitFieldLines(fld, StripLabel(fld, text), 4));
+                    descsFixed++;
+                }
+            }
+
+            // Custom trait fields (e.g. a crux's "Web Stride", a species' "Natural
+            // Weapon - Claws") whose KEY matches a source feature -> set verbatim.
+            // Scoped to the element being patched, so shared field keys (e.g.
+            // "Languages") on other elements are never clobbered.
+            if (scopeName == null || !ClassContent.NormKey(name).Equals(ClassContent.NormKey(scopeName), StringComparison.OrdinalIgnoreCase))
+                continue;
+            var (tfs, tfe) = FieldsRegion(block);
+            if (tfs >= 0)
+            {
+                var keys = new List<string>();
+                for (int i = tfs; i < tfe && i < block.Count; i++)
+                { var kk = KeyOf(block[i]); if (kk != null) keys.Add(kk); }
+                foreach (var kk in keys)
+                {
+                    if (kk.Equals("Description", StringComparison.OrdinalIgnoreCase)) continue;
+                    var fk = content.ResolveFeatureKey(kk);
+                    if (fk != null && !string.IsNullOrWhiteSpace(content.FeatureText[fk]))
+                    { SetField(block, kk, Phase2.EmitFieldLines(kk, content.FeatureText[fk], 4)); descsFixed++; }
+                }
             }
         }
 

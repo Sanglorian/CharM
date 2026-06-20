@@ -46,7 +46,7 @@ public sealed class ClassContent
             var name = HttpUtility.HtmlDecode(m.Groups[2].Value).Trim();
             if (start < 0)
             {
-                if (level <= 2 && Same(name, className)) { start = i; foundLevel = level; }
+                if (level <= 3 && Same(name, className)) { start = i; foundLevel = level; }
             }
             else if (level <= foundLevel) { end = i; break; }
         }

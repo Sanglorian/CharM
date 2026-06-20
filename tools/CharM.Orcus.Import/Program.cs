@@ -47,6 +47,57 @@ if (mode == "generate-discipline")
     return 0;
 }
 
+if (mode == "audit-all")
+{
+    // Comprehensive scan: every field (and name) of every element, vs the source.
+    string aRoot = args.Length > 1 ? args[1] : Directory.GetCurrentDirectory();
+    var books = Directory.EnumerateFiles(aRoot, "Orcus*.md", SearchOption.TopDirectoryOnly)
+        .Where(f => !f.Contains("Open Game License", StringComparison.OrdinalIgnoreCase)).ToList();
+    var blob2 = new System.Text.StringBuilder();
+    foreach (var f in books) blob2.Append(' ').Append(File.ReadAllText(f));
+    string src = Normalizer.Norm(blob2.ToString());
+    var els = YamlLoader.LoadDir(Path.Combine(aRoot, "content/orcus"));
+
+    // Structural/enum/numeric fields that are not copied prose.
+    var skipKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "Power Usage","Power Type","Action Type","Level","Item Level","Boost","Enhancement",
+        "Cost","Key Ability","Secondary Ability","Role","Tradition","Magic Item Type","Item Slot",
+        "Focus Type","Domain","Kit","Channel Divinity","Size","Speed","Proficiency Bonus","Group",
+        "Armor Type","Shield Bonus","Damage","Price","Weight","_SupportsID","_Discipline","Sources",
+        "Strength","Constitution","Dexterity","Intelligence","Wisdom","Charisma","Armor Class",
+        "Fortitude Defense","Reflex Defense","Will Defense","HP","Senses",
+    };
+    bool FoundAll(string t) => src.Contains(Normalizer.Norm(t), StringComparison.Ordinal);
+    var byType = new SortedDictionary<string, List<string>>();
+    int scanned = 0, flagged = 0;
+    foreach (var el in els)
+    {
+        var fields = new List<(string k, string v)>();
+        if (el.Name != null) fields.Add(("name", el.Name));
+        foreach (var (k, v) in el.Fields) if (!skipKeys.Contains(k)) fields.Add((k, v));
+        foreach (var (k, v) in fields)
+        {
+            if (string.IsNullOrWhiteSpace(v)) continue;
+            scanned++;
+            if (FoundAll(v)) continue;
+            var bad = Normalizer.Chunks(v).Where(c => Normalizer.WordCount(Normalizer.Norm(c)) >= 4 && !FoundAll(c)).ToList();
+            if (bad.Count == 0) continue;
+            flagged++;
+            string t = el.Type ?? "(none)";
+            var list = byType.TryGetValue(t, out var l) ? l : byType[t] = new();
+            list.Add($"  [{el.File}] {el.Name} — {k}: " + string.Join(" / ", bad.Select(b => b.Length > 80 ? b[..80] + "…" : b)));
+        }
+    }
+    Console.WriteLine($"audit-all: scanned {scanned} fields; flagged {flagged}.");
+    foreach (var (t, l) in byType)
+    {
+        Console.WriteLine($"\n=== type: {t} ({l.Count}) ===");
+        foreach (var line in l.Take(60)) Console.WriteLine(line);
+    }
+    return 0;
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>
@@ -86,11 +137,12 @@ if (mode == "patch-global")
 
 if (mode == "patch-class")
 {
-    // patch-class <repo-root> <classFile.yaml> "<Class Name>"
+    // patch-class <repo-root> <classFile.yaml> "<Class Name>" [bookGlob]
     string pRoot = args[1];
     string classFile = args[2];
     string className = args[3];
-    string book = Directory.EnumerateFiles(pRoot, "Orcus Classes and Powers*.md").Single();
+    string glob = args.Length > 4 ? args[4] : "Orcus Classes and Powers*.md";
+    string book = Directory.EnumerateFiles(pRoot, glob).First();
     return ClassPatcher.Patch(book, classFile, className);
 }
 

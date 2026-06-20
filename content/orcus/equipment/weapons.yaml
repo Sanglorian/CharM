@@ -20,7 +20,6 @@
     "Proficiency Bonus": "2"
     Group: "Light Blades"
     Range: "5/10"
-    Properties: "Side Weapon, Thrown (Light)"
     Cost: "2 gp"
     Weight: "2 lb."
 
@@ -66,7 +65,6 @@
     "Proficiency Bonus": "2"
     Group: "Staffs"
     Range: "-"
-    Properties: "Two-Handed (also usable as an arcane focus)"
     Cost: "5 gp"
     Weight: "10 lb."
 
@@ -83,7 +81,6 @@
     "Proficiency Bonus": "3"
     Group: "Heavy Blades"
     Range: "-"
-    Properties: "Heavy Blade (proficiency +1)"
     Cost: "10 gp"
     Weight: "4 lb."
 
@@ -99,7 +96,6 @@
     "Proficiency Bonus": "3"
     Group: "Heavy Blades"
     Range: "-"
-    Properties: "Two-Handed, Heavy Blade (proficiency +1)"
     Cost: "25 gp"
     Weight: "8 lb."
 
@@ -115,7 +111,6 @@
     "Proficiency Bonus": "3"
     Group: "Light Blades"
     Range: "-"
-    Properties: "Light Blade (proficiency +1)"
     Cost: "10 gp"
     Weight: "4 lb."
 
@@ -131,7 +126,6 @@
     "Proficiency Bonus": "2"
     Group: "Axes"
     Range: "-"
-    Properties: "Axe (damage die +1 step)"
     Cost: "10 gp"
     Weight: "4 lb."
 
@@ -147,7 +141,6 @@
     "Proficiency Bonus": "2"
     Group: "Axes"
     Range: "-"
-    Properties: "Two-Handed, Axe (damage die +1 step)"
     Cost: "25 gp"
     Weight: "8 lb."
 
@@ -163,7 +156,6 @@
     "Proficiency Bonus": "2"
     Group: "Picks and Hammers"
     Range: "-"
-    Properties: "Improved Critical"
     Cost: "10 gp"
     Weight: "4 lb."
 
@@ -179,7 +171,6 @@
     "Proficiency Bonus": "2"
     Group: "Axes"
     Range: "5/10"
-    Properties: "Side Weapon, Thrown (Heavy), Axe (damage die +1 step)"
     Cost: "5 gp"
     Weight: "1 lb."
 
@@ -195,7 +186,6 @@
     "Proficiency Bonus": "2"
     Group: "Polearms"
     Range: "-"
-    Properties: "Two-Handed, Polearm (Reach)"
     Cost: "25 gp"
     Weight: "8 lb."
 
@@ -212,7 +202,6 @@
     "Proficiency Bonus": "2"
     Group: "Slings"
     Range: "10/20"
-    Properties: "Loading (Free)"
     Cost: "0 gp"
     Weight: "0 lb."
 
@@ -228,7 +217,6 @@
     "Proficiency Bonus": "2"
     Group: "Crossbows"
     Range: "10/20"
-    Properties: "Loading (Free)"
     Cost: "35 gp"
     Weight: "4 lb."
 
@@ -244,7 +232,6 @@
     "Proficiency Bonus": "2"
     Group: "Crossbows"
     Range: "15/30"
-    Properties: "Two-Handed, Loading (Swift)"
     Cost: "50 gp"
     Weight: "8 lb."
 
@@ -260,7 +247,6 @@
     "Proficiency Bonus": "2"
     Group: "Bows"
     Range: "20/40"
-    Properties: "Two-Handed, Loading (Free)"
     Cost: "50 gp"
     Weight: "4 lb."
 
@@ -276,7 +262,6 @@
     "Proficiency Bonus": "2"
     Group: "Bows"
     Range: "15/30"
-    Properties: "Two-Handed, Loading (Free), Small"
     Cost: "35 gp"
     Weight: "3 lb."
 
@@ -293,6 +278,5 @@
     "Proficiency Bonus": "3"
     Group: "Special"
     Range: "-"
-    Properties: "Special (Garrote): on a hit you grapple and daze the target (-2 to escape)."
     Cost: "1 gp"
     Weight: "0 lb."
