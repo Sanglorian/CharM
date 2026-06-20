@@ -65,6 +65,13 @@ public static class Phase2
     static readonly Regex HeaderNoLevel = new(
         @"^\*\*(?<usage>[^*]+?)\*\*\s+\*\*(?<type>[^*]+?)\*\*\s+\(\s*\*?\*?(?<action>[^*)]+?)\*?\*?\s*\)\s*(?:●\s*\*\*(?<kw>[^*]+?)\*\*)?\s*$",
         RegexOptions.Compiled);
+    // Fallback applied to the bold-stripped header line, so it tolerates any
+    // grouping of the bold spans (prestige paths variously write
+    // "**Encounter Utility** **12**", "**Daily** **Attack 20**", or split the
+    // action as "(**Free** **Action**)"). All collapse to one plain form.
+    static readonly Regex HeaderPlain = new(
+        @"^(?<usage>At-Will|Encounter|Daily)\s+(?<type>Attack|Utility)\s+(?<level>Feature|\d+)\s*\(\s*(?<action>[^)]+?)\s*\)\s*(?:●\s*(?<kw>.+?))?\s*$",
+        RegexOptions.Compiled);
 
     // ------------------------------------------------------------------ parsing
     public static ParsedDiscipline Parse(string sourceFile, string disciplineName)
@@ -183,6 +190,23 @@ public static class Phase2
                         continue;
                     }
                 }
+                // Fallback: strip all bold markers and match the plain stat header.
+                // Tried before HeaderNoLevel because the latter would mis-split a
+                // merged "type + level" span like "**Attack 20**" into type="Attack
+                // 20". HeaderPlain requires an explicit level token, so genuinely
+                // level-less racial/feature headers fall through to HeaderNoLevel.
+                string plain = CollapseSpaces(line.Replace("**", " "));
+                var mp = HeaderPlain.Match(plain);
+                if (mp.Success)
+                {
+                    pw.Usage = mp.Groups["usage"].Value.Trim();
+                    pw.Type = mp.Groups["type"].Value.Trim();
+                    pw.Level = mp.Groups["level"].Value.Trim();
+                    pw.Action = mp.Groups["action"].Value.Trim();
+                    pw.Keywords = mp.Groups["kw"].Success ? CollapseSpaces(mp.Groups["kw"].Value) : "";
+                    headerSeen = true;
+                    continue;
+                }
                 var mn = HeaderNoLevel.Match(line);
                 if (mn.Success && (mn.Groups["usage"].Value.Trim() is "At-Will" or "Encounter" or "Daily"))
                 {
@@ -197,6 +221,12 @@ public static class Phase2
                 // Pre-header italic line == flavor.
                 if (line.StartsWith("*") && !line.StartsWith("**") && line.EndsWith("*"))
                 { pw.Flavor = Unwrap(line); continue; }
+                // Some powers mislabel the flavor line, prefixing it with a bold
+                // label, e.g. "**Effect** *The point is to act…*". Capture the
+                // trailing italic as flavor (the bold label word is covered by the
+                // power's real field of that name in the round-trip gate).
+                var mbf = Regex.Match(line, @"^\*\*[^*]+\*\*\s+\*([^*].*?)\*\s*$");
+                if (mbf.Success) { pw.Flavor = Unwrap(mbf.Groups[1].Value); continue; }
                 // Unrecognized pre-header line: ignore (kept in RawBlock for the gate).
                 continue;
             }

@@ -40,6 +40,7 @@ dotnet run --project tools/CharM.Orcus.Import -- <command> [args]
 | `audit .` | Fidelity (prose verbatim?) + coverage (powers transcribed?) + orphans. Writes `audit-report.md`. **Target: 0 flagged, 0 invented.** |
 | `audit-all .` | Stricter: scans *every* field (incl. names) of every element vs the source blob. |
 | `generate-discipline . "<Name>" <DISC_ID> <SUFFIX> <out.yaml>` | Emit a discipline's powers verbatim with a round-trip gate. |
+| `generate-paths . <out.yaml>` | Emit **all** prestige (paragon-tier) paths verbatim → `content/orcus/paths/prestige.yaml`. Features + powers, level-gated, round-trip gated. |
 | `generate-feats .` | Emit **all** feats from Player Options → `content/orcus/feats.yaml`. |
 | `generate-boosts . <out>` / `generate-misc .` / `generate-companions .` | Magic-item boosts / wondrous+consumables / companions. |
 | `patch-class . <classFile> "<Name>" [bookGlob]` | Patch one class's fields from source. |

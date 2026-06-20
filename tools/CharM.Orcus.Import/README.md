@@ -47,6 +47,13 @@ semantic overlay, with the round-trip check as a CI gate.
 - `generate-discipline <repo-root> "<Name>" <DISCIPLINE_ID> <SUFFIX> <out.yaml>` —
   regenerate a whole discipline file verbatim from the book; runs the round-trip
   gate (forward: no fabricated/reworded text; backward: no dropped source word).
+- `generate-paths <repo-root> <out.yaml>` — regenerate the whole prestige
+  (paragon-tier) paths file verbatim from the `# Prestige Paths` section. Each
+  path emits a `Prestige Path` element granting its class features (gated with
+  `level:` past 11th) and powers (an 11th-level encounter, a 12th/16th-level
+  power, a 20th-level daily), plus the feature/power elements themselves. Reuses
+  the discipline power parser + round-trip gate; descriptions, requirements and
+  feature text are checked as verbatim subsequences of each path's own section.
 - `patch-class <repo-root> <classFile.yaml> "<Class Name>"` — rewrite only the
   verbatim-text fields of an existing class file (feature/talent Description prose
   and feature-power stat blocks) from the book, and delete invented `Flavor`.

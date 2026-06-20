@@ -99,6 +99,15 @@ if (mode == "audit-all")
     return 0;
 }
 
+if (mode == "generate-paths")
+{
+    // generate-paths <repo-root> <out.yaml>
+    string pRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(pRoot, "Orcus Classes and Powers*.md").Single();
+    return PathGen.Generate(book, outP, Path.Combine(pRoot, "content/orcus"));
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>

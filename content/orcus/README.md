@@ -43,7 +43,7 @@ for the format.
 | `disciplines/masterminds-gambit.yaml` | Mastermind's Gambit discipline (Harlequin) — battlefield manipulation; all 41 powers |
 | `disciplines/elemental-flux.yaml` | Elemental Flux discipline (Mageblade) — switchable [flux] energy weapon-arcana; all 31 powers |
 | `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers; all 32 powers |
-| `paths/prestige.yaml` | Sample prestige paths (Assassin, Battlefield Healer, Bounty Hunter): 11th/16th features + powers at 11/12/20 |
+| `paths/prestige.yaml` | All 20 prestige (paragon-tier) paths: 11th/16th class features + powers at 11/12/16/20. Generated verbatim by `generate-paths` |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
 | `equipment/armor.yaml` | Light & heavy armor + shields as `Armor` elements (AC / Reflex / speed / armor-check contributions) |
@@ -159,7 +159,8 @@ Each class's discipline power selects continue to 30 (encounter@7, daily@5/9,
 utility@6/10/16/22), each gated with `level:` and filtered by `…,<freq>,<max>`.
 The `+P`/`+E` powers in the progression table come from the paths, not the class:
 the **prestige path** (chosen at 11) grants 11th/16th features and powers at
-11/12/20; the **epic path** (chosen at 21) grants 21st/24th/30th features and a
+11/12/20 (a few paths' second power is 16th-level); the **epic path** (chosen at
+21) grants 21st/24th/30th features and a
 26th-level power. Later path benefits carry a `level:` gate, which the engine
 honours (future-level grants are deferred), so a level-11 character does not get
 its 16th/20th-level path benefits early. Feats are gained at level 1 and every
@@ -256,11 +257,11 @@ Frontline Fighting and Strong Bidding in full), both Harlequin
 disciplines (Last Laugh, Mastermind's Gambit), both Mageblade disciplines
 (Elemental Flux, Veiled Moon) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
-in full to level 29), 14 species ancestries, a sample of feats, a sample of
+in full to level 29), 14 species ancestries, a sample of feats, all 20
 prestige paths, all six epic paths, and a starter set of weapons, armor and gear.
 Remaining work: the remaining disciplines (High Cunning, Radiant Dawn, Third Mind,
 Born to Run, Deep Dark Truthful Mirror, …) and the rest of each existing
-discipline's power list, the rest of the species roster, prestige paths and
+discipline's power list, the rest of the species roster, and
 feats (including paragon/epic-tier and multi-take feats), the rest of the kits
 (incl. the "Dabbles in …" multiclass kits), and
 the rest of the equipment list. The

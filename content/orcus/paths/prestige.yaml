@@ -1,15 +1,18 @@
-# Prestige paths (Orcus Classes and Powers). At level 11 every character chooses
-# a prestige path on top of their class; it grants class features at 11th and 16th
-# level and three powers (an encounter attack at 11, a level-12 power, and a daily
-# attack at 20) that do not count against class power limits. The path is selected
-# via the Prestige Path slot opened by ID_INTERNAL_LEVEL_11; its later features and
-# powers are gated with `level:` so a character built below 16/12/20 doesn't get
-# them early. A representative sample of the 17 paths is transcribed here;
-# requirements are recorded descriptively (not enforced).
+# Prestige paths (Orcus Classes and Powers) — generated verbatim from the
+# source book by tools/CharM.Orcus.Import (do not hand-edit the text fields;
+# regenerate with `generate-paths`). Engine semantics (id/type/level gates)
+# are derived mechanically. At level 11 every character chooses a prestige
+# path on top of their class via the Prestige Path slot opened by
+# ID_INTERNAL_LEVEL_11; it grants class features and powers (an 11th-level
+# encounter, a 12th/16th-level power, a 20th-level daily) that do not count
+# against class power limits. Later-tier features/powers are gated with
+# `level:` so a character built below that level doesn't get them early.
+# Requirements are recorded descriptively (not enforced). All 20 published
+# paths are transcribed.
 
 # === Assassin =================================================================
 - id: ORCUS_PRESTIGE_ASSASSIN
-  name: Assassin
+  name: "Assassin"
   type: Prestige Path
   source: "Orcus Original"
   fields:
@@ -23,28 +26,40 @@
     - { grant: ORCUS_FEATURE_TWICE_IN_THE_CHEST, type: Class Feature }
     - { grant: ORCUS_FEATURE_ONCE_IN_THE_HEAD, type: Class Feature }
     - { grant: ORCUS_FEATURE_GETAWAY, type: Class Feature, level: 16 }
-    - { grant: ORCUS_POWER_MAKE_SURE_THEYRE_DEAD, type: Power }
+    - { grant: ORCUS_POWER_MAKE_SURE_THEY_RE_DEAD, type: Power }
     - { grant: ORCUS_POWER_THE_PROFESSIONAL, type: Power, level: 12 }
     - { grant: ORCUS_POWER_LIKE_A_GHOST, type: Power, level: 20 }
 
 - id: ORCUS_FEATURE_TWICE_IN_THE_CHEST
-  name: Twice in the Chest
+  name: "Twice in the Chest"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "Spend an action point to add your basic melee attack damage to your last hit with any one-handed melee weapon, instead of taking an extra action." }
+  fields:
+    Level: "11"
+    Description: >-
+      Spend an action point to add your basic melee attack damage to your last
+      hit with any one-handed melee weapon, instead of taking an extra action.
 - id: ORCUS_FEATURE_ONCE_IN_THE_HEAD
-  name: Once in the Head
+  name: "Once in the Head"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "You can score a critical hit with any one-handed weapon on a natural roll of 19 or 20." }
+  fields:
+    Level: "11"
+    Description: >-
+      You can score a critical hit with any one-handed weapon on a natural roll
+      of 19 or 20.
 - id: ORCUS_FEATURE_GETAWAY
-  name: Getaway
+  name: "Getaway"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "16", Description: "Each time you stagger a target with a one-handed weapon, you may shift a number of squares equal to your Dexterity modifier as a free action." }
+  fields:
+    Level: "16"
+    Description: >-
+      Each time you stagger a target with a one-handed weapon, you may shift a
+      number of squares equal to your Dexterity modifier as a free action.
 
-- id: ORCUS_POWER_MAKE_SURE_THEYRE_DEAD
-  name: Make Sure They're Dead
+- id: ORCUS_POWER_MAKE_SURE_THEY_RE_DEAD
+  name: "Make Sure They’re Dead"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -59,8 +74,9 @@
     Attack: "Strength or Dexterity (your choice) vs AC"
     Hit: "2dW + Strength or Dexterity (your choice) modifier damage."
     Flavor: "Otherwise you don’t get paid …"
+
 - id: ORCUS_POWER_THE_PROFESSIONAL
-  name: The Professional
+  name: "The Professional"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -78,8 +94,9 @@
       21: You do additional damage equal to your Dexterity modifier +5 if you
       hit.
     Flavor: "No emotions. No investments. No hesitation."
+
 - id: ORCUS_POWER_LIKE_A_GHOST
-  name: Like a Ghost
+  name: "Like a Ghost"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -95,9 +112,10 @@
     Miss: "Half damage."
     Effect: "Shift up to 10 squares."
     Flavor: "You move like the wind and strike like lightning."
+
 # === Battlefield Healer =======================================================
 - id: ORCUS_PRESTIGE_BATTLEFIELD_HEALER
-  name: Battlefield Healer
+  name: "Battlefield Healer"
   type: Prestige Path
   source: "Orcus Original"
   fields:
@@ -115,23 +133,32 @@
     - { grant: ORCUS_POWER_NO_LONGER_CIVILIZED, type: Power, level: 20 }
 
 - id: ORCUS_FEATURE_A_TRUE_HEALER
-  name: A True Healer
+  name: "A True Healer"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "When you spend an action point to take an extra action, all allies in sight can make a saving throw." }
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point to take an extra action, all allies in
+      sight can make a saving throw.
 - id: ORCUS_FEATURE_HEAL_THY_SELF
-  name: Heal Thy Self
+  name: "Heal Thy Self"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "The Rally action only takes a swift action for you." }
+  fields:
+    Level: "11"
+    Description: "The Rally action only takes a swift action for you."
 - id: ORCUS_FEATURE_PROFOUND_MEDICAL_ADVICE
-  name: Profound Medical Advice
+  name: "Profound Medical Advice"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "16", Description: "Once per round, you can take the Treat Ally action as a swift action." }
+  fields:
+    Level: "16"
+    Description: >-
+      Once per round, you can take the Treat Ally action as a swift action.
 
 - id: ORCUS_POWER_RACE_TO_THE_FALLEN
-  name: Race to the Fallen
+  name: "Race to the Fallen"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -151,8 +178,9 @@
     Flavor: >-
       An ally falls from a heavy blow. You race to their aid, attacking the
       enemy desperately in hopes it will back off.
+
 - id: ORCUS_POWER_IMPROMPTU_SURGERY
-  name: Impromptu Surgery
+  name: "Impromptu Surgery"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -169,8 +197,9 @@
     Flavor: >-
       A foreign implement is causing internal bleeding. You fish it out and try
       to close the wound.
+
 - id: ORCUS_POWER_NO_LONGER_CIVILIZED
-  name: No Longer Civilized
+  name: "No Longer Civilized"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -194,9 +223,10 @@
     Flavor: >-
       An ally succumbs to their injuries. You can no longer be a healer. You
       must be a protector.
+
 # === Bounty Hunter ============================================================
 - id: ORCUS_PRESTIGE_BOUNTY_HUNTER
-  name: Bounty Hunter
+  name: "Bounty Hunter"
   type: Prestige Path
   source: "Orcus Original"
   fields:
@@ -214,23 +244,36 @@
     - { grant: ORCUS_POWER_THIS_ONE_ESPECIALLY, type: Power, level: 20 }
 
 - id: ORCUS_FEATURE_TARGET_FOCUS
-  name: Target Focus
+  name: "Target Focus"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "Once per encounter, you can mark a creature as a swift action. When you hit a creature you have marked, you do 1d6+3 damage (2d6+5 at level 21)." }
+  fields:
+    Level: "11"
+    Description: >-
+      Once per encounter, you can mark a creature as a swift action. When you
+      hit a creature you have marked, you do 1d6+3 damage (2d6+5 at level 21).
 - id: ORCUS_FEATURE_ALL_IN
-  name: All In
+  name: "All In"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "11", Description: "When you spend an action point to make an attack against a creature you have marked, you gain a +2 power bonus to the attack roll and can score a critical hit on an 18, 19, or 20 with the attack." }
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point to make an attack against a creature you
+      have marked, you gain a +2 power bonus to the attack roll and can score a
+      critical hit on an 18, 19, or 20 with the attack.
 - id: ORCUS_FEATURE_THREAT_COMPENSATION
-  name: Threat Compensation
+  name: "Threat Compensation"
   type: Class Feature
   source: "Orcus Original"
-  fields: { Level: "16", Description: "When a creature you have marked moves, you can shift 1 square as an immediate reaction." }
+  fields:
+    Level: "16"
+    Description: >-
+      When a creature you have marked moves, you can shift 1 square as an
+      immediate reaction.
 
 - id: ORCUS_POWER_THOUGHT_PROCESS
-  name: Thought Process
+  name: "Thought Process"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -246,8 +289,9 @@
       The target is rattled and grants combat advantage to all allies in sight
       until the end of your next turn.
     Flavor: "You predict where the enemy will move."
+
 - id: ORCUS_POWER_MENTAL_PREDICTION
-  name: Mental Prediction
+  name: "Mental Prediction"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -267,8 +311,9 @@
     Flavor: >-
       Your knowledge of the enemy runs deep, beyond what your allies or even
       enemies know.
+
 - id: ORCUS_POWER_THIS_ONE_ESPECIALLY
-  name: This One Especially
+  name: "This One Especially"
   type: Power
   source: "Orcus Original"
   categories: [feature]
@@ -284,3 +329,1733 @@
       against that creature.
     Flavor: >-
       Of all the targets, this is the one that must be taken down immediately.
+
+# === Breathstealer ============================================================
+- id: ORCUS_PRESTIGE_BREATHSTEALER
+  name: "Breathstealer"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Proficiency with garrote."
+    Description: >-
+      You are a silent, cold, calculating assassin. Your skills involve intimate
+      kills, forcing to be close to your enemy. You rise from nowhere and
+      eliminate opponents before others can notice or respond. Crossbows and
+      knives, even when they’re most quiet, still make a noise you would prefer
+      to avoid.
+  rules:
+    - { grant: ORCUS_FEATURE_OUT_OF_NOWHERE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_COMPLETE_CONTROL, type: Class Feature }
+    - { grant: ORCUS_FEATURE_SPECIAL_TECHNIQUE, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_TORQUE_TWIST, type: Power }
+    - { grant: ORCUS_POWER_COMPLIANT_TARGET, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_GO_TO_SLEEP, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_OUT_OF_NOWHERE
+  name: "Out of Nowhere"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You can spend an action point on a surprise round if you are granted one.
+      If you spend an action point on your first turn in an encounter, you gain
+      one standard action and one move action (in either order).
+- id: ORCUS_FEATURE_COMPLETE_CONTROL
+  name: "Complete Control"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      If you have grappled a target with a garrote, you can shunt the target 1
+      square or render the target prone without having to roll to sustain the
+      grapple.
+- id: ORCUS_FEATURE_SPECIAL_TECHNIQUE
+  name: "Special Technique"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      Your proficiency bonus with the garrote increases by +2. The damage die
+      increases by two steps (from 1d4 to 1d8).
+
+- id: ORCUS_POWER_TORQUE_TWIST
+  name: "Torque Twist"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit a creature with a garrote."
+    Effect: >-
+      The target takes 1dW extra damage from the triggering attack, and is
+      stunned until the start of your next turn.
+    Flavor: >-
+      You wind the cord and draw it tight employing a technique few others know.
+
+- id: ORCUS_POWER_COMPLIANT_TARGET
+  name: "Compliant Target"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Requirements: "You are grappling a creature using a garrote."
+    Effect: >-
+      Shift your speed and pull the creature you are grappling with you. You
+      gain a +2 bonus to sustain the grapple until the grapple ends.
+    Flavor: >-
+      Your opponent doesn’t appear capable of struggling when you have a cord
+      wrapped tight around their neck.
+
+- id: ORCUS_POWER_GO_TO_SLEEP
+  name: "Go to Sleep"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee weapon, one creature you are grappling with a garotte"
+    Effect: >-
+      The target is helpless against your attacks until the start of your next
+      turn or until you score a hit (whichever comes first). On a hit, the
+      target falls unconscious. If the target suffers any further damage, it is
+      no longer unconscious.
+    Flavor: "You feel the breath leave the target as you apply pressure."
+
+# === Darkwood Archer ==========================================================
+- id: ORCUS_PRESTIGE_DARKWOOD_ARCHER
+  name: "Darkwood Archer"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Proficiency with military ranged weapons."
+  rules:
+    - { grant: ORCUS_FEATURE_AUTOMATIC_REFLEXES, type: Class Feature }
+    - { grant: ORCUS_FEATURE_WASTE_OF_SKILL, type: Class Feature }
+    - { grant: ORCUS_FEATURE_THEY_THOUGHT_YOU_MISSED, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_SPLINTERING_SHOT, type: Power }
+    - { grant: ORCUS_POWER_STALKING_HORSE, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_PERFECT_SHOT_PLACEMENT, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_AUTOMATIC_REFLEXES
+  name: "Automatic Reflexes"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you use an action point, you can use two at-will attack powers with
+      the extra action.
+- id: ORCUS_FEATURE_WASTE_OF_SKILL
+  name: "Waste of Skill"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      If you score a critical hit with a daily attack power, and the creature
+      you hit was the only target, the power is not expended.
+- id: ORCUS_FEATURE_THEY_THOUGHT_YOU_MISSED
+  name: "They Thought You Missed"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      When you make an attack with a ranged weapon that misses, you still
+      inflict damage equal to your Dexterity modifier.
+
+- id: ORCUS_POWER_SPLINTERING_SHOT
+  name: "Splintering Shot"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You reduce a creature to 0 HP or below."
+    Effect: >-
+      Each creature in a burst 2 around the target takes damage equal to 2 +
+      your Dexterity modifier. Level 21: Each creature in a burst 2 around the
+      target takes damage equal to 5 + your Dexterity modifier.
+    Flavor: "The arrow shatters, damaging targets around."
+
+- id: ORCUS_POWER_STALKING_HORSE
+  name: "Stalking Horse"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Teleportation"
+    Target: >-
+      Near burst 10, an unoccupied space you can see that grants three-quarters
+      cover or total concealment
+    Effect: "You teleport to the target space."
+    Flavor: "Your enemy is certain of your location. They’re wrong."
+
+- id: ORCUS_POWER_PERFECT_SHOT_PLACEMENT
+  name: "Perfect Shot Placement"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Consistent, Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      4dW + Dexterity modifier damage and make a secondary attack against all
+      enemies within burst 3 of the target. Secondary Attack: Dexterity vs AC;
+      2dW + Dexterity modifier damage.
+    Flavor: >-
+      Once you get the measure of one enemy, their allies are easy pickings.
+
+# === Deadeye Arbalester =======================================================
+- id: ORCUS_PRESTIGE_DEADEYE_ARBALESTER
+  name: "Deadeye Arbalester"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Proficiency with light and heavy crossbows."
+    Description: >-
+      You keep your weapon down until the last second. You prefer to stare down
+      opponents than use your crossbow. However, when you fire, you make it
+      quick and final – single shots, single kills.
+  rules:
+    - { grant: ORCUS_FEATURE_PRECISE_SHOT, type: Class Feature }
+    - { grant: ORCUS_FEATURE_IMPROVED_REACTION_TIME, type: Class Feature }
+    - { grant: ORCUS_FEATURE_12_O_CLOCK, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_STRAFING_ATTACK, type: Power }
+    - { grant: ORCUS_POWER_THROUGH_THE_HAT, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_BOLT_WALTZ, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_PRECISE_SHOT
+  name: "Precise Shot"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Spend an action point to add your basic ranged attack damage to your last
+      hit with any one-handed ranged weapon, instead of taking an extra action.
+- id: ORCUS_FEATURE_IMPROVED_REACTION_TIME
+  name: "Improved Reaction Time"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: "You gain a +2 bonus to initiative."
+- id: ORCUS_FEATURE_12_O_CLOCK
+  name: "12 O’Clock"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      If you ready an action with an attack power, you gain a +2 power bonus to
+      your next attack roll. p
+
+- id: ORCUS_POWER_STRAFING_ATTACK
+  name: "Strafing Attack"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      2dW + Dexterity modifier damage, and the target is pushed a number of
+      squares equal to your Wisdom modifier.
+    Miss: "Half damage, and the target is pushed 1 square."
+    Effect: >-
+      Before your attack, shift your speed. You can attack at any point during
+      the move.
+    Flavor: >-
+      You bolt across the battlefield, hardly taking a moment to aim. The
+      crossbow remains steady as you run.
+
+- id: ORCUS_POWER_THROUGH_THE_HAT
+  name: "Through the Hat"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Trigger: "You are hit with a ranged attack."
+    Effect: "The attack misses."
+    Flavor: >-
+      That last shot had you for certain. You pass your fingers nonchalantly
+      through your hair and reenter the fight.
+
+- id: ORCUS_POWER_BOLT_WALTZ
+  name: "Bolt Waltz"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Ranged weapon, one creature"
+    Attack: "Dexterity vs AC"
+    Hit: "1dW + Dexterity modifier damage."
+    Effect: >-
+      Repeat the attack three times, shifting 4 squares before each attack.
+    Flavor: >-
+      Like a ballet, you sashay and sidestep, firing at opponents and avoiding
+      every counterattack.
+
+# === Devotee ==================================================================
+- id: ORCUS_PRESTIGE_DEVOTEE
+  name: "Devotee"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      You specialize in deepening your specialization, rather than expanding
+      your range.
+  rules:
+    - { grant: ORCUS_FEATURE_NEW_AT_WILL_POWER, type: Class Feature }
+    - { grant: ORCUS_FEATURE_DEVOTED_ACTION, type: Class Feature }
+    - { grant: ORCUS_FEATURE_NEW_ENCOUNTER_POWER, type: Class Feature }
+    - { grant: ORCUS_FEATURE_NEW_UTILITY_POWER, type: Class Feature, level: 12 }
+    - { grant: ORCUS_FEATURE_NEW_DAILY_POWER, type: Class Feature, level: 20 }
+
+- id: ORCUS_FEATURE_NEW_AT_WILL_POWER
+  name: "New At-Will Power"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Choose an at-will attack power from a discipline you have access to. You
+      gain that power.
+- id: ORCUS_FEATURE_DEVOTED_ACTION
+  name: "Devoted Action"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point to use an at-will or encounter attack
+      power, you get a +2 bonus to the attack roll and do an additional +2
+      damage if you hit.
+- id: ORCUS_FEATURE_NEW_ENCOUNTER_POWER
+  name: "New Encounter Power"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Choose an encounter attack power (level 7 or lower) from a discipline you
+      have access to. You gain that power.
+- id: ORCUS_FEATURE_NEW_UTILITY_POWER
+  name: "New Utility Power"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "12"
+    Description: >-
+      Choose a utility power (level 10 or lower) from a discipline you have
+      access to. You gain that power.
+- id: ORCUS_FEATURE_NEW_DAILY_POWER
+  name: "New Daily Power"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "20"
+    Description: >-
+      Choose a daily attack power (level 19 or lower) from a discipline you have
+      access to. You gain that power.
+
+# === Elocater =================================================================
+- id: ORCUS_PRESTIGE_ELOCATER
+  name: "Elocater"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Psi focus."
+    Description: >-
+      You specialize in the cracks in reality, the passages between worlds. With
+      the right leverage, you can pass from anywhere to anywhere.
+  rules:
+    - { grant: ORCUS_FEATURE_ACCELERATED_ECHO, type: Class Feature }
+    - { grant: ORCUS_FEATURE_TURN_SIDEREAL, type: Class Feature }
+    - { grant: ORCUS_FEATURE_FLIGHT, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_SIDESTEP_CHARGE, type: Power }
+    - { grant: ORCUS_POWER_FLANKING_ECHO, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_ACCELERATED_ACTION, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_ACCELERATED_ECHO
+  name: "Accelerated Echo"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point, you may expend your psi focus. If you do
+      so, roll 1d6. On a 4, 5 or 6, you get a bonus action point.
+- id: ORCUS_FEATURE_TURN_SIDEREAL
+  name: "Turn Sidereal"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You gain the compress Tiny movement mode, allowing you to pass through
+      gaps as if you were Tiny size.
+- id: ORCUS_FEATURE_FLIGHT
+  name: "Flight"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      You gain a fly speed equal to your walk speed (maximum altitude 1).
+
+- id: ORCUS_POWER_SIDESTEP_CHARGE
+  name: "Sidestep Charge"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Phrenic, Weapon"
+    Target: "Self"
+    Trigger: >-
+      An enemy that has already moved this turn makes an attack against you that
+      misses.
+    Effect: "Make a basic attack against the triggering creature."
+
+- id: ORCUS_POWER_FLANKING_ECHO
+  name: "Flanking Echo"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Phrenic, Summons, Teleportation"
+    Target: "Near burst 5, one unoccupied square"
+    Effect: >-
+      You summon a dimensional echo in the target square. When you take a move
+      action, you can move the dimensional echo up to 6 squares. The echo
+      assists your allies with flanks. The echo remains until the end of the
+      encounter, or until you dismiss it with a swift action. When you dismiss
+      it, you may teleport to the square it occupied if you wish.
+
+- id: ORCUS_POWER_ACCELERATED_ACTION
+  name: "Accelerated Action"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Phrenic"
+    Target: "Self"
+    Effect: "Make a basic attack or take a move action."
+    Maintain: "Swift Repeat the effect."
+
+# === Invested =================================================================
+- id: ORCUS_PRESTIGE_INVESTED
+  name: "Invested"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Channel Divinity."
+    Description: >-
+      By candlelight in the temple, you were sworn to take the word of your god
+      to the world, to challenge non-believers and bring enemies of the faith to
+      their knees.
+  rules:
+    - { grant: ORCUS_FEATURE_DIVINE_REACH, type: Class Feature }
+    - { grant: ORCUS_FEATURE_GIFT_OF_THE_DIVINE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_IN_GOD_S_HANDS, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_BLAST_INFIDELS, type: Power }
+    - { grant: ORCUS_POWER_FAITH_HEALING, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_PROSELYTIZE, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_DIVINE_REACH
+  name: "Divine Reach"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point to use a divine power, and that power is a
+      melee or ranger power, you may choose one additional target. If the power
+      is a near or far power, you may increase the area of the power by 1.
+- id: ORCUS_FEATURE_GIFT_OF_THE_DIVINE
+  name: "Gift of the Divine"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      During a short rest, choose an ally. Until your next short rest, that ally
+      can use Channel Divinity once, choosing from the powers available to you.
+- id: ORCUS_FEATURE_IN_GOD_S_HANDS
+  name: "In God’s Hands"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      Once per encounter, you can reroll an attack roll that missed. If you
+      still miss, you are dazed until the end of your next turn.
+
+- id: ORCUS_POWER_BLAST_INFIDELS
+  name: "Blast Infidels"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Divine, Focus, Radiant"
+    Target: "Near burst 3, all creatures of the alignment of your choice"
+    Attack: "Wisdom vs Fortitude"
+    Hit: "2d10 + Wisdom modifier radiant damage."
+
+- id: ORCUS_POWER_FAITH_HEALING
+  name: "Faith Healing"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Divine, Healing"
+    Target: "Near burst 5, you and all allies"
+    Effect: >-
+      The target may spend a recovery to heal hit points equal to their recovery
+      value.
+
+- id: ORCUS_POWER_PROSELYTIZE
+  name: "Proselytize"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Charm, Divine, Focus, Radiant"
+    Target: "Ranged 10, one enemy"
+    Attack: "Wisdom vs Will"
+    Hit: "The target is controlled until the end of your next turn."
+    Miss: "2d12 + Wisdom modifier radiant damage."
+
+# === Ironsides ================================================================
+- id: ORCUS_PRESTIGE_IRONSIDES
+  name: "Ironsides"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      You’re the one they're going to make statues of. As the hero, you draw the
+      admiration of your comrades and the weapons of your foes. You’re proud,
+      determined, and the anchor for your cause or country.
+  rules:
+    - { grant: ORCUS_FEATURE_PICK_YOUR_FOE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_UNEXPECTED_RESPONSE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_THE_WAR_SHOUT, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_REMEMBER_ME_IRONSIDES, type: Power }
+    - { grant: ORCUS_POWER_ENCOURAGING_STANCE, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_ONSLAUGHT, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_PICK_YOUR_FOE
+  name: "Pick Your Foe"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Once per encounter, you can mark one enemy in line of sight as a swift
+      action. This mark lasts until the end of the encounter. Against creatures
+      you have marked, you gain a +2 bonus to damage rolls. This bonus increases
+      to +4 at 21st level.
+- id: ORCUS_FEATURE_UNEXPECTED_RESPONSE
+  name: "Unexpected Response"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point to take an extra action, you can also spend
+      a recovery to heal your recovery value.
+- id: ORCUS_FEATURE_THE_WAR_SHOUT
+  name: "The War Shout"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      When you spend an action point, you mark all enemies in a Near burst 10
+      until the end of your next turn.
+
+- id: ORCUS_POWER_REMEMBER_ME_IRONSIDES
+  name: "Remember Me?"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, the triggering enemy"
+    Trigger: "An enemy you have marked attacks an ally."
+    Attack: "Strength vs AC"
+    Hit: "3dW + Strength modifier damage."
+    Miss: "Half damage."
+    Effect: "The target’s attack misses."
+    Flavor: >-
+      A few well-placed shots brings an enemy’s attention back around to you.
+
+- id: ORCUS_POWER_ENCOURAGING_STANCE
+  name: "Encouraging Stance"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, up to three allies"
+    Trigger: "You score a critical hit on an enemy."
+    Effect: >-
+      The target can spend a recovery and heal their recovery value plus your
+      Constitution modifier.
+    Flavor: "You may not be the leader, but you do set the example."
+
+- id: ORCUS_POWER_ONSLAUGHT
+  name: "Onslaught"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard and Move Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near arc 6, all enemies"
+    Attack: "Strength vs AC"
+    Hit: "2dW + Strength modifier damage, and the target is knocked prone."
+    Maintain: >-
+      Standard Shift three squares and repeat the attack. You cannot attack
+      prone targets and you cannot maintain if you have no targets.
+    Flavor: >-
+      The enemy forces are close enough to see your eyes. They expect you to
+      run; you don’t. They realize too late your unshakable will.
+
+# === Martial Arts Champion ====================================================
+- id: ORCUS_PRESTIGE_MARTIAL_ARTS_CHAMPION
+  name: "Martial Arts Champion"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      Surrounded on all sides, armed with little more than your iron will,
+      you’ve stood your ground and defeated whatever lies ahead. They can have
+      knives, crossbows, or broadswords; it’s all meaningless to you.
+  rules:
+    - { grant: ORCUS_FEATURE_CARRY_THROUGH, type: Class Feature }
+    - { grant: ORCUS_FEATURE_BAD_IDEA, type: Class Feature }
+    - { grant: ORCUS_FEATURE_UNSTOPPABLE_MOMENTUM, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_PRESSURE_POINT, type: Power }
+    - { grant: ORCUS_POWER_BATTLEFIELD_DANCE, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_TECHNICAL_ATTACK, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_CARRY_THROUGH
+  name: "Carry Through"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Once per round, after one of your melee attacks does one of the following:
+      Scores a critical hit; or Staggers a target; or Drops a target You
+      immediately deal damage equal to your Strength or Dexterity modifier
+      (whichever is higher) to one target in reach.
+- id: ORCUS_FEATURE_BAD_IDEA
+  name: "Bad Idea"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You can spend an action point to make a melee basic attack against each
+      adjacent target, instead of taking an extra action.
+- id: ORCUS_FEATURE_UNSTOPPABLE_MOMENTUM
+  name: "Unstoppable Momentum"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      If you inflict any of the following conditions on a target – dazed,
+      slowed, stunned, or weakened – one creature in an adjacent square to the
+      initial target suffers the same condition until the start of your next
+      turn.
+
+- id: ORCUS_POWER_PRESSURE_POINT
+  name: "Pressure Point"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "You hit a creature."
+    Effect: "The triggering creature takes persistent 10 damage (save ends)."
+    Flavor: "Your strike causes the touch of death."
+
+- id: ORCUS_POWER_BATTLEFIELD_DANCE
+  name: "Battlefield Dance"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: "Shift up to 10 squares, ignoring difficult terrain."
+    Flavor: "You flip, jump, and dance your way past your enemies."
+
+- id: ORCUS_POWER_TECHNICAL_ATTACK
+  name: "Technical Attack"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial, Stance"
+    Target: "Self"
+    Effect: >-
+      While in this stance, each time you hit a creature with a melee attack,
+      you push it 4 squares and knock it prone. If the creature cannot be pushed
+      4 squares, it takes additional damage equal to twice your Dexterity
+      modifier and is dazed until the end of your next turn. If the target is
+      pushed, you can immediately shift into an adjacent square.
+    Flavor: "Your attack carries amazing power from a short distance."
+
+# === Pyromancer ===============================================================
+- id: ORCUS_PRESTIGE_PYROMANCER
+  name: "Pyromancer"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "A power with the Fire tag."
+    Description: >-
+      Since a child you have been obsessed with fire: its destructive potential,
+      but also its capacity to inspire and transform. But let’s be honest,
+      mostly its destructive potential.
+  rules:
+    - { grant: ORCUS_FEATURE_SIROCCO, type: Class Feature }
+    - { grant: ORCUS_FEATURE_FAERIE_FIRE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_BURNT_OVER, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_FIRE_LASH, type: Power }
+    - { grant: ORCUS_POWER_FAST_BURN, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_HEAT_DEATH, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_SIROCCO
+  name: "Sirocco"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point, in addition to the normal benefit you also
+      gain a fly speed equal to your walking speed until the end of the turn.
+- id: ORCUS_FEATURE_FAERIE_FIRE
+  name: "Faerie Fire"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Enemies you are adjacent to do not benefit from concealment or
+      invisibility.
+- id: ORCUS_FEATURE_BURNT_OVER
+  name: "Burnt Over"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      You gain resistance to fire 10 and a +2 bonus to saving throws against all
+      persistent damage.
+
+- id: ORCUS_POWER_FIRE_LASH
+  name: "Fire Lash"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Fire, Focus"
+    Target: "Melee 5, one creature"
+    Attack: "Intelligence vs Reflex"
+    Hit: >-
+      3d10 + Intelligence fire damage and the target is pulled 4 squares.
+
+- id: ORCUS_POWER_FAST_BURN
+  name: "Fast Burn"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Fire, Focus"
+    Target: "Near burst 5, all enemies suffering any persistent damage"
+    Attack: "Intelligence vs Fortitude"
+    Hit: >-
+      The target takes damage equal to the amount of persistent damage they are
+      suffering. This damage is of the same type they are already suffering.
+
+- id: ORCUS_POWER_HEAT_DEATH
+  name: "Heat Death"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Fire, Focus"
+    Target: "Near burst 5, one creature"
+    Attack: "Intelligence vs Will"
+    Hit: >-
+      2d10 + Intelligence modifier fire damage and the target suffers from
+      persistent 10 fire damage (save ends).
+    Effect: >-
+      Until the end of the encounter, if the target takes fire damage they
+      suffer from persistent 10 fire damage (save ends). If they are already
+      suffering from persistent fire damage, only the higher persistent fire
+      damage applies.
+
+# === Ring Fighter =============================================================
+- id: ORCUS_PRESTIGE_RING_FIGHTER
+  name: "Ring Fighter"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Unarmed Combat feat."
+    Description: >-
+      You have the belt, claimed the trophy. Few others boast the record you
+      have. You fought hard and trained hard for the respect and it is well
+      earned. In the realm of physical training, there is no better.
+  rules:
+    - { grant: ORCUS_FEATURE_GUARD_CONTROL, type: Class Feature }
+    - { grant: ORCUS_FEATURE_CHANGE_YOUR_GUARD, type: Class Feature }
+    - { grant: ORCUS_FEATURE_CHOKE_LOCK, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_SIDE_CONTROL, type: Power }
+    - { grant: ORCUS_POWER_TOLERANCE_THRESHOLD, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_MOUNTED_ATTACK, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_GUARD_CONTROL
+  name: "Guard Control"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You gain a +2 bonus to all saving throws against being dazed, stunned, or
+      weakened.
+- id: ORCUS_FEATURE_CHANGE_YOUR_GUARD
+  name: "Change Your Guard"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You can spend an action point while grappling an opponent to make any
+      at-will attack or basic attack against that enemy, instead of taking an
+      extra action. The attack automatically hits and doubles any damage
+      inflicted.
+- id: ORCUS_FEATURE_CHOKE_LOCK
+  name: "Choke/Lock"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      Each turn you sustain a grapple, you deal damage equal to your Strength or
+      Dexterity modifier to the grabbed creature.
+
+- id: ORCUS_POWER_SIDE_CONTROL
+  name: "Side Control"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Melee touch, one creature you are grappling"
+    Effect: >-
+      Strength modifier + Dexterity modifier damage, and the target is dazed
+      until they escape.
+    Flavor: "You gain the edge and lock your opponent on the ground."
+
+- id: ORCUS_POWER_TOLERANCE_THRESHOLD
+  name: "Tolerance Threshold"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "No Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Recover from any of the following conditions at the start of your turn:
+      dazed, slowed, stunned, and weakened. You also end any persistent damage
+      conditions you currently suffer from, and gain a +5 bonus to escape from
+      any grapple you are currently in until you succeed.
+    Flavor: >-
+      The enemy puts on the pressure. You grit your teeth and hold back the
+      pain.
+
+- id: ORCUS_POWER_MOUNTED_ATTACK
+  name: "Mounted Attack"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Melee touch, one creature you are grappling"
+    Effect: >-
+      Strength modifier + Dexterity modifier damage, and the target is stunned
+      (save ends).
+    Maintain: >-
+      Move The target takes Strength modifier + Dexterity modifier damage. You
+      cannot maintain if the target escapes your grapple.
+    Flavor: "You have complete control. Your enemy is done for the day."
+
+# === Ruler of Shadows =========================================================
+- id: ORCUS_PRESTIGE_RULER_OF_SHADOWS
+  name: "Ruler of Shadows"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      You are recognized by every brigand and cutpurse, every sneakthief and
+      bandit. Cat burglars are your courtiers; extortionists your earls. The
+      darkness is your cloak and crown.
+  rules:
+    - { grant: ORCUS_FEATURE_TRUSTY_ACTION, type: Class Feature }
+    - { grant: ORCUS_FEATURE_DO_AS_I_DO, type: Class Feature }
+    - { grant: ORCUS_FEATURE_THE_CLOAK_IS_MY_SHADOW, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_JUST_DESSERTS, type: Power }
+    - { grant: ORCUS_POWER_OUT_OF_MIND, type: Power, level: 16 }
+    - { grant: ORCUS_POWER_CLOAK_ABDUCTION, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_TRUSTY_ACTION
+  name: "Trusty Action"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you use an action point to take an extra action, the action always
+      succeeds (you pass your skill check or at least one attack roll in an
+      attack no matter your roll, for example). If you would fail, you succeed
+      but there’s a side-effect or “sting in the tail” – like a tremendous
+      success drawing unwanted attention or a desperate lunge slaying your enemy
+      but leaving you open to their allies.
+- id: ORCUS_FEATURE_DO_AS_I_DO
+  name: "Do As I Do"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you make a skill check, allies gain a +2 power bonus to the same
+      skill until the beginning of your next turn.
+- id: ORCUS_FEATURE_THE_CLOAK_IS_MY_SHADOW
+  name: "The Cloak is My Shadow"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: "You do not grant combat advantage from being flanked."
+
+- id: ORCUS_POWER_JUST_DESSERTS
+  name: "Just Desserts"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Reaction Action"
+    Keywords: "Shadow, Weapon"
+    Target: "Melee or Ranged weapon, one target in weapon range"
+    Trigger: >-
+      The target imposes a condition or persistent damage on you or an ally.
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      2dW + Dexterity modifier and the target suffers the condition or
+      persistent damage that they imposed.
+    Flavor: "You show a foe that two can play at that game."
+
+- id: ORCUS_POWER_OUT_OF_MIND
+  name: "Out of Mind"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "16"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Shadow, Teleport"
+    Target: "Self"
+    Effect: >-
+      You teleport 20 squares, but must choose an unoccupied space that either
+      no creature can see or that no creature other than you can see. You are
+      incorporeal and have phasing until the end of your next turn.
+    Flavor: "You slip out of view and appear somewhere totally different."
+
+- id: ORCUS_POWER_CLOAK_ABDUCTION
+  name: "Cloak Abduction"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Shadow, Teleport"
+    Target: "Near burst 1, one target"
+    Attack: "Dexterity vs AC"
+    Hit: >-
+      The creature is transported to an extradimensional space and cannot act
+      (save ends). On a successful save, it appears in an unoccupied space
+      adjacent to you. If you wish, the creature takes 2dW + Dexterity modifier
+      damage at the start of each turn it spends in the extradimensional space.
+    Miss: >-
+      The creature is transported to the extradimensional space only till the
+      end of your next turn, and it takes no damage.
+    Flavor: "You sweep someone up in your cloak."
+
+# === Selfless Protector =======================================================
+- id: ORCUS_PRESTIGE_SELFLESS_PROTECTOR
+  name: "Selfless Protector"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      You possess a natural instinct to protect whoever is assigned to you. You
+      may never have taken an arrow but likely neither has your target. You can
+      spot threats from miles away and can act to move your ward to a better
+      position if that threat gets too close.
+  rules:
+    - { grant: ORCUS_FEATURE_TAKE_A_HIT, type: Class Feature }
+    - { grant: ORCUS_FEATURE_TOTAL_COVER, type: Class Feature }
+    - { grant: ORCUS_FEATURE_KEEP_IT_TOGETHER, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_PROTECTIVE_INSTINCTS, type: Power }
+    - { grant: ORCUS_POWER_EVASIVE_TECHNIQUES, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_AGGRESSIVE_RESPONSE, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_TAKE_A_HIT
+  name: "Take a Hit"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      As a swift action, select one adjacent creature to be your focus. You can
+      only have one focus at a time. Until the end of the encounter or until you
+      change focus, as long as your focus does not attack and remains adjacent
+      to you, they can use your AC and Reflex defense if it is higher than
+      theirs. If your focus is hit by an attack against AC or Reflex, you take
+      the damage instead. When you move, you shunt your focus with you.
+- id: ORCUS_FEATURE_TOTAL_COVER
+  name: "Total Cover"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you spend an action point, both you and your focus gain a +4 bonus to
+      AC and Reflex defense until the end of your next turn and you can shift
+      together 4 squares, instead of taking an extra action.
+- id: ORCUS_FEATURE_KEEP_IT_TOGETHER
+  name: "Keep it Together"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      Each time you regain hit points, you can give your focus any or all of the
+      hit points instead.
+
+- id: ORCUS_POWER_PROTECTIVE_INSTINCTS
+  name: "Protective Instincts"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Self"
+    Trigger: "A creature attacks you or your focus."
+    Effect: >-
+      Make a basic attack, and you and your focus shift together 4 squares.
+    Flavor: >-
+      Someone takes a shot at you or your assignment. Your reflexes kick in.
+
+- id: ORCUS_POWER_EVASIVE_TECHNIQUES
+  name: "Evasive Techniques"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Martial"
+    Target: "Melee touch, your focus"
+    Trigger: "Your focus is hit by an attack."
+    Effect: >-
+      Swap places with your focus and you are the target of the attack. You and
+      your focus shift together 5 squares. You gain a +2 power bonus to AC and
+      Reflex defense until the end of your next turn.
+    Flavor: "You throw your client out of the way of imminent death."
+
+- id: ORCUS_POWER_AGGRESSIVE_RESPONSE
+  name: "Aggressive Response"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Counter Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one creature"
+    Trigger: "An enemy moves within range of your weapon."
+    Effect: >-
+      Make a basic attack against the triggering enemy: on a hit, the enemy’s
+      turn ends. Nominate a creature within 4 squares as your focus and pull
+      them to an adjacent square.
+    Flavor: "The point is to act before your enemy even intends to strike."
+
+# === Shadowsneak ==============================================================
+- id: ORCUS_PRESTIGE_SHADOWSNEAK
+  name: "Shadowsneak"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Trained in Stealth."
+    Description: >-
+      You move in darkness behind enemy lines. You sneak under heavy cover into
+      prohibited areas. You know how to avoid cameras, dogs, and roaming guards.
+      You sneak through the shadows or stroll in broad daylight, given the
+      proper circumstances.
+  rules:
+    - { grant: ORCUS_FEATURE_IMPOSSIBLE_MANEUVER, type: Class Feature }
+    - { grant: ORCUS_FEATURE_UNDER_ANY_SHADOW, type: Class Feature, level: 16 }
+    - { grant: ORCUS_FEATURE_ATTACK_FROM_AMBUSH, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_COMPLETE_COVERTNESS, type: Power }
+    - { grant: ORCUS_POWER_BACK_OF_YOUR_HEAD, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_LOOKING_NONCHALANT, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_IMPOSSIBLE_MANEUVER
+  name: "Impossible Maneuver"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      As a move action, you can spend a recovery to shift your speed. You can
+      move vertically up to two squares during this shift.
+- id: ORCUS_FEATURE_UNDER_ANY_SHADOW
+  name: "Under any Shadow"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      While in three-quarters cover or total concealment, you can spend an
+      action point; instead of taking an extra action, you can maintain
+      three-quarters cover or total concealment until the end of your next turn,
+      regardless of where you move.
+- id: ORCUS_FEATURE_ATTACK_FROM_AMBUSH
+  name: "Attack from Ambush"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      When you attack from three-quarters cover or total concealment, you do
+      additional damage on a hit equal to your Dexterity modifier.
+
+- id: ORCUS_POWER_COMPLETE_COVERTNESS
+  name: "Complete Covertness"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Ranged 10, one creature granting you combat advantage"
+    Attack: "Dexterity +2 vs Will"
+    Hit: >-
+      Until the end of your next turn, you are invisible to the target, you can
+      pass through its square, and you can make Stealth checks against it with
+      no penalties for movement and without requiring any cover or concealment.
+    Flavor: >-
+      You could be standing in front of the enemy, and they still wouldn’t see
+      you.
+
+- id: ORCUS_POWER_BACK_OF_YOUR_HEAD
+  name: "Back of Your Head"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Until the end of the encounter, you don’t grant combat advantage and you
+      cannot be distracted. You can walk or run without suffering penalties to
+      Stealth checks.
+    Flavor: "Nothing gets past you."
+
+- id: ORCUS_POWER_LOOKING_NONCHALANT
+  name: "Looking Nonchalant"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, all enemies you can see"
+    Attack: "Dexterity +2 vs Will"
+    Hit: >-
+      Until the end of your next turn, you are invisible to the target, you can
+      pass through its square, and you can make Stealth checks against it with
+      no penalties for movement and without requiring any cover or concealment.
+    Miss: "You may reroll a missed attack roll once against each target."
+    Effect: "You do +2dW damage on your next weapon attack that hits."
+    Flavor: "You slip by your enemies even with them looking straight at you."
+
+# === Silver Tongue ============================================================
+- id: ORCUS_PRESTIGE_SILVER_TONGUE
+  name: "Silver Tongue"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Trained in Diplomacy."
+    Description: >-
+      You’re the one brought in when weapons cannot be used, when even the
+      brandishing of blades is considered a total failure. You cannot give the
+      appearance of aggression, not even when the situation goes out of control.
+      You’re the wave of the future, where words will solve disputes, not
+      weapons.
+  rules:
+    - { grant: ORCUS_FEATURE_THE_ART_OF_COMPROMISE, type: Class Feature }
+    - { grant: ORCUS_FEATURE_I_THINK_WE_GOT_OFF_ON_THE_WRONG_FOOT, type: Class Feature }
+    - { grant: ORCUS_FEATURE_CONFIDENCE_COMES_WITH_THE_POSITION, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_VOLUME_AND_PRESENCE, type: Power }
+    - { grant: ORCUS_POWER_MAKING_IT_UP, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_EVERYTHING_YOU_GOT, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_THE_ART_OF_COMPROMISE
+  name: "The Art of Compromise"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: "Gain a +2 bonus to Diplomacy."
+- id: ORCUS_FEATURE_I_THINK_WE_GOT_OFF_ON_THE_WRONG_FOOT
+  name: "I Think We Got Off On The Wrong Foot"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you fail a Diplomacy or Intimidate check, you can spend an action
+      point to add a +10 bonus to your check and reassess the outcome with this
+      new total. You do not gain an extra action when you use an action point
+      this way.
+- id: ORCUS_FEATURE_CONFIDENCE_COMES_WITH_THE_POSITION
+  name: "Confidence Comes with the Position"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: "Gain a +2 bonus to Will defense."
+
+- id: ORCUS_POWER_VOLUME_AND_PRESENCE
+  name: "Volume and Presence"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Fear, Martial, Psychic, Consistent"
+    Target: "Near burst 5, one creature"
+    Attack: "Charisma +2 vs Will"
+    Hit: >-
+      The target is immobile and dazed until the start of your next turn. You
+      gain a +2 power bonus to Intimidate and Diplomacy checks against the
+      target until the end of your next turn.
+    Maintain: >-
+      Swift You gain a +2 power bonus to Intimidate and Diplomacy checks against
+      the target until the end of your next turn.
+    Flavor: >-
+      Your opponent’s argument is invalid and ridiculous and your tolerance for
+      their ignorance is over.
+
+- id: ORCUS_POWER_MAKING_IT_UP
+  name: "Making It Up"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      You treat your next Bluff, History or Streetsmarts check before the end of
+      your next turn as if you had rolled a 20.
+    Flavor: >-
+      Unable to find the right set of truths to make your point, you just take a
+      guess.
+
+- id: ORCUS_POWER_EVERYTHING_YOU_GOT
+  name: "Everything You Got"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial, Psychic, Consistent"
+    Target: "Near burst 5, one creature"
+    Attack: "Charisma +2 vs Will"
+    Hit: >-
+      The target is stunned until the start of your next turn. The target
+      suffers a -4 penalty against any opposed Diplomacy or Intimidate checks
+      and suffers a -4 penalty to Will defense until the end of the encounter.
+    Effect: "The target has vulnerability to your attacks 5 (save ends)."
+    Flavor: >-
+      Your arguments are so compelling, your opponent is having a difficult time
+      concentrating.
+
+# === Spellwright ==============================================================
+- id: ORCUS_PRESTIGE_SPELLWRIGHT
+  name: "Spellwright"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "Arcane class."
+    Description: >-
+      You have dedicated yourself to mastering the arcane arts through dedicated
+      study and intense theory.
+  rules:
+    - { grant: ORCUS_FEATURE_DARK_ACADEMIA, type: Class Feature }
+    - { grant: ORCUS_FEATURE_PRACTICED_CASTING, type: Class Feature }
+    - { grant: ORCUS_FEATURE_INSTINCTIVE_COUNTERSPELL, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_METAMAGICAL_VIOLENCE, type: Power }
+    - { grant: ORCUS_POWER_METAMAGICAL_THEORUMS, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_ARCANE_EXPULSION, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_DARK_ACADEMIA
+  name: "Dark Academia"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      You have an intuitive sense of magic. The sense magic and detect magical
+      things uses of Arcana are swift actions for you.
+- id: ORCUS_FEATURE_PRACTICED_CASTING
+  name: "Practiced Casting"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      When you use an arcane encounter attack power with the action you gain
+      from spending an action point, roll 1d6. On a 6, the power is not
+      expended.
+- id: ORCUS_FEATURE_INSTINCTIVE_COUNTERSPELL
+  name: "Instinctive Counterspell"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      Choose one tag from Acid, Charm, Cold, Fear, Fire, Illusion, Lightning,
+      Psychic and Thunder. You gain a permanent +2 bonus to defenses against
+      powers with that tag. Your allies also benefit from this bonus whenever
+      they are within 10 squares of you.
+
+- id: ORCUS_POWER_METAMAGICAL_VIOLENCE
+  name: "Metamagical Violence"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Free Action"
+    Keywords: "Arcane"
+    Target: "Self"
+    Trigger: "You use an arcane at-will attack power."
+    Effect: >-
+      The attack’s damage type changes to your choice of acid, cold, fire,
+      lightning, psychic or thunder. You can also add one target to a melee or
+      ranged attack, or increase the area of effect of a near or far power by 1.
+      If the attack hits, you do an additional +2d8 damage.
+
+- id: ORCUS_POWER_METAMAGICAL_THEORUMS
+  name: "Metamagical Theorums"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Free Action"
+    Keywords: "Arcane"
+    Target: "Self"
+    Trigger: "You use an arcane power."
+    Effect: >-
+      You can alter one property of the power for this use. ● From a range of
+      Self to Near burst 5, one ally ● From a range of Near to Far or vice versa
+      ● From a range of Melee to Ranged or vice versa ● From Maintain Standard
+      or Maintain Move to Maintain Swift
+
+- id: ORCUS_POWER_ARCANE_EXPULSION
+  name: "Arcane Expulsion"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Focus"
+    Target: "Near burst 5, one creature"
+    Attack: "Intelligence vs Will"
+    Hit: "4d10 + Intelligence modifier psychic damage."
+    Effect: >-
+      Make a secondary attack centered on the target. Secondary Attack: Near
+      burst 2, all creatures; Intelligence vs Will; on a hit, 2d10 +
+      Intelligence modifier psychic damage.
+    Flavor: >-
+      You suddenly and painfully unleash the unrealized magical potential of
+      your target.
+
+# === Tactician ================================================================
+- id: ORCUS_PRESTIGE_TACTICIAN
+  name: "Tactician"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      You have probably graduated from a command school or officer college. You
+      emerged as a trained, disciplined leader, ready to rally the uncontrolled
+      masses. You are not some scholar trained from books. You possess natural,
+      applicable talents, earning the respect that goes along with them.
+  rules:
+    - { grant: ORCUS_FEATURE_COORDINATION, type: Class Feature }
+    - { grant: ORCUS_FEATURE_TIDE_OF_WAR, type: Class Feature }
+    - { grant: ORCUS_FEATURE_TAKE_THE_OPPORTUNITY, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_EYES_ALL_AROUND, type: Power }
+    - { grant: ORCUS_POWER_REEVALUATE_STRATEGY, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_SUPERIOR_STRATEGIC_ENDEAVOR, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_COORDINATION
+  name: "Coordination"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Anytime an ally in sight rolls a natural 1, 2, or 3 on an attack roll, you
+      and one other ally in sight can shift 2 squares.
+- id: ORCUS_FEATURE_TIDE_OF_WAR
+  name: "Tide of War"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      The first time each encounter that an ally in sight is staggered, you gain
+      an action point. You can spend a swift action to transfer an action point
+      from you to any ally in sight.
+- id: ORCUS_FEATURE_TAKE_THE_OPPORTUNITY
+  name: "Take the Opportunity"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      The first time each encounter that you are staggered by an attack, an ally
+      in sight can make a basic attack as an immediate (react) action.
+
+- id: ORCUS_POWER_EYES_ALL_AROUND
+  name: "Eyes All Around"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, one ally"
+    Effect: "The target makes a basic attack."
+    Flavor: >-
+      You relay enemy weaknesses to an ally, giving them an opportunity to
+      attack.
+
+- id: ORCUS_POWER_REEVALUATE_STRATEGY
+  name: "Reevaluate Strategy"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, up to two allies"
+    Effect: "The target shifts 1 square."
+    Flavor: >-
+      Battles are unpredictable and you make a quick alteration in the plan to
+      adjust to enemy maneuvers.
+
+- id: ORCUS_POWER_SUPERIOR_STRATEGIC_ENDEAVOR
+  name: "Superior Strategic Endeavor"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial"
+    Target: "Near burst 10, up to two allies"
+    Effect: >-
+      The target uses one encounter power. The chosen power is not expended.
+    Flavor: >-
+      You shout out a particularly complicated plan which will work flawlessly
+      if everyone does what they’re supposed to do.
+
+# === Weapon Master ============================================================
+- id: ORCUS_PRESTIGE_WEAPON_MASTER
+  name: "Weapon Master"
+  type: Prestige Path
+  source: "Orcus Original"
+  fields:
+    Requirements: "At least one Martial power."
+  rules:
+    - { grant: ORCUS_FEATURE_QUICK_CHANGE_ARTIST, type: Class Feature }
+    - { grant: ORCUS_FEATURE_PINCER_ATTACK, type: Class Feature }
+    - { grant: ORCUS_FEATURE_CAREFUL_OPPORTUNIST, type: Class Feature, level: 16 }
+    - { grant: ORCUS_POWER_ONE_TWO_STRIKE, type: Power }
+    - { grant: ORCUS_POWER_FAST_LEARNER, type: Power, level: 12 }
+    - { grant: ORCUS_POWER_FIRST_BLOOD, type: Power, level: 20 }
+
+- id: ORCUS_FEATURE_QUICK_CHANGE_ARTIST
+  name: "Quick Change Artist"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: "As a swift action, you can sheathe a weapon and draw a weapon."
+- id: ORCUS_FEATURE_PINCER_ATTACK
+  name: "Pincer Attack"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "11"
+    Description: >-
+      Instead of spending an action point to take an additional action, you can
+      spend it to use two at-will attack powers that require a standard action,
+      one after the other. They do not have to have the same target.
+- id: ORCUS_FEATURE_CAREFUL_OPPORTUNIST
+  name: "Careful Opportunist"
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Level: "16"
+    Description: >-
+      When a creature provokes an opportunity attack, you can use an at-will
+      attack power instead of making a basic attack. You must make a melee
+      attack.
+
+- id: ORCUS_POWER_ONE_TWO_STRIKE
+  name: "One-Two Strike"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "11"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Melee or Ranged weapon, one target"
+    Attack: "Strength vs AC, two attacks"
+    Hit: >-
+      1dW + Strength modifier damage and the target is dazed until the end of
+      your next turn. If both attacks hit, the target is stunned until the end
+      of your next turn.
+
+- id: ORCUS_POWER_FAST_LEARNER
+  name: "Fast Learner"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "12"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Martial"
+    Target: "Self"
+    Effect: >-
+      Select a feat you meet the prerequisites for. You gain that feat until
+      your next long rest.
+
+- id: ORCUS_POWER_FIRST_BLOOD
+  name: "First Blood"
+  type: Power
+  source: "Orcus Original"
+  categories: [feature]
+  fields:
+    Level: "20"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    Target: "Near burst 1, all enemies"
+    Attack: "Strength vs AC"
+    Hit: >-
+      3dW + Strength modifier damage if the target is below maximum HP. 5dW +
+      Strength modifier damage if the target is at or above maximum HP.
+    Miss: "Half damage."
+
