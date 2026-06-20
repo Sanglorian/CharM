@@ -1605,7 +1605,12 @@ else
     private static IEnumerable<PendingChoice> OrderPendingChoices(IReadOnlyList<PendingChoice> choices)
         => choices
             .Select((choice, index) => new { choice, index })
-            .OrderBy(item => IsSkippableChoice(item.choice) ? 1 : 0)
+            // Present in wizard-step order (Race, Class, …, Feats, Powers) so a
+            // kit/theme (Class step) and feats come BEFORE powers — taking a kit
+            // can open new disciplines that expand the power options. Within a
+            // step, required choices precede skippable/optional ones.
+            .OrderBy(item => (int)item.choice.Step)
+            .ThenBy(item => IsSkippableChoice(item.choice) ? 1 : 0)
             .ThenBy(item => item.index)
             .Select(item => item.choice);
 
