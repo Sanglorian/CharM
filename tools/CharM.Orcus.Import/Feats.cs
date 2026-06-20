@@ -85,6 +85,7 @@ public static class Feats
             "{ statadd: Reflex Defense, value: 4, bonusType: Feat, level: 21 }",
         },
         ["ORCUS_FEAT_SHIELD_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_SHIELD_PROFS, name: Shield Proficiency } }" },
+        ["ORCUS_FEAT_SKILL_FOCUS"] = new[] { "{ select: { type: Skill Focus, number: 1, category: ORCUS_SKILL_FOCUS, name: Skill Focus } }" },
         ["ORCUS_FEAT_SKILL_TRAINING"] = new[] { "{ select: { type: Skill Training, number: 1, name: Skill Training } }" },
         ["ORCUS_FEAT_TALENTED_HEALER"] = new[] { "{ statadd: Heal, value: 2, bonusType: Feat }" },
         ["ORCUS_FEAT_WEAPON_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_WEAPON_PROFS, name: Weapon Proficiency } }" },
