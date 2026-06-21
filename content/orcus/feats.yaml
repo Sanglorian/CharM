@@ -148,6 +148,8 @@
     Special: >-
       You can gain Cantrip Master multiple times. Each time you take the feat,
       you learn three new powers from the Cantrips discipline.
+  rules:
+    - { select: { type: Power, number: 3, category: ORCUS_DISCIPLINE_CANTRIPS, name: Cantrip Master } }
 
 - id: ORCUS_FEAT_CROSSFIRE
   name: "Crossfire"

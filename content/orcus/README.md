@@ -273,9 +273,10 @@ kits (each wired to its associated discipline — so the kit-only disciplines Hi
 Cunning, Third Mind and Deep Dark Truthful Mirror are now reachable in play), plus
 a starter set of weapons, armor and gear. **All 24 disciplines, all 25 species and
 all 25 kits in the source books are now transcribed**, with 13 animal companions
-(Sylvan wild gift) and 24 familiars (Binds Familiar kit) modelled. Remaining work:
-Cantrips access-wiring (Heir crux / Magician / Cantrip Master); and the rest of
-the equipment / magic-item list. (Red in Tooth and Claw's "your companion uses
+(Sylvan wild gift) and 24 familiars (Binds Familiar kit) modelled, and Cantrips
+reachable from all three of its sources (Heir crux, Magician class, Cantrip Master
+feat). Remaining work: the rest of the equipment / magic-item list. (Red in Tooth
+and Claw's "your companion uses
 your power in its place" stays descriptive play guidance — a runtime action, not
 a build-time stat.) The
 power-replacement swaps are declared on the classes and demonstrated via

@@ -171,8 +171,9 @@
   type: Class Feature
   source: "Orcus Original"
   fields:
-
     Description: "You gain the Cantrip Master feat."
+  rules:
+    - { grant: ORCUS_FEAT_CANTRIP_MASTER, type: Feat }
 # --- Talents (schools of magic) -----------------------------------------------
 - id: ORCUS_TALENT_CONJURER
   name: Conjurer

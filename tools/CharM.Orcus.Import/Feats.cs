@@ -52,6 +52,7 @@ public static class Feats
     static readonly Dictionary<string, string[]> RulesOverlay = new()
     {
         ["ORCUS_FEAT_ALERTNESS"] = new[] { "{ statadd: Perception, value: 2, bonusType: Feat }" },
+        ["ORCUS_FEAT_CANTRIP_MASTER"] = new[] { "{ select: { type: Power, number: 3, category: ORCUS_DISCIPLINE_CANTRIPS, name: Cantrip Master } }" },
         ["ORCUS_FEAT_ARMOR_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_ARMOR_PROFS, name: Armor Proficiency } }" },
         ["ORCUS_FEAT_GREAT_FORTITUDE"] = new[]
         {

@@ -225,6 +225,7 @@
     "Minor Magics": "You know one power from the Cantrips discipline."
   rules:
     - { statadd: Insight, value: +2, bonusType: Ancestry }
+    - { select: { type: Power, number: 1, category: ORCUS_DISCIPLINE_CANTRIPS, name: Minor Magics } }
     - { grant: ORCUS_POWER_BREATH_WEAPON, type: Power }
 
 - id: ORCUS_CRUX_NINTH_LIFE
