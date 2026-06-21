@@ -124,7 +124,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **1946 elements, 36 types, 0 audit flags, 0 invented.**
+Current state: **2000 elements, 36 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 

@@ -1,0 +1,250 @@
+# Deep, Dark, Truthful Mirror discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
+
+- id: ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR
+  name: "Deep, Dark, Truthful Mirror"
+  type: Discipline
+  source: "Orcus Original"
+  fields:
+    "Key Ability": "Constitution"
+    "Secondary Ability": "Charisma"
+    Sources: "Sculpts Their Body (kit)"
+    Description: >-
+      You’re able to modify your body in ways not reflective of any animal. This
+      includes the manipulation of your bone structure, your muscles, even
+      altering your size and the position of your limbs.
+
+- id: ORCUS_POWER_BRIEF_MIMICRY
+  name: "Brief Mimicry"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Focus, Transmutation"
+    Target: "Near burst 5, one enemy"
+    Attack: "Constitution vs Will"
+    Hit: >-
+      Until the end of your next turn, the target must make a saving throw each
+      time they target you with an attack. If the save fails, they must target
+      the attack so it does not affect you, or the attack fails.
+    Effect: >-
+      Until the end of your next turn, you take the form of a particular
+      creature that is an ally of the target.
+    Flavor: >-
+      You change your shape to look like another, throwing off those who see
+      you.
+
+- id: ORCUS_POWER_CLAY
+  name: "Clay"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Effect: "Your reach increases by 1 until the start of your next turn."
+    Flavor: >-
+      It’s like you’re made out of plastic, rubber, or some other kind of other
+      flexible material.
+
+- id: ORCUS_POWER_SQUEEEEZE
+  name: "Squeeeeze"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Effect: >-
+      Until the start of your next turn, you can squeeze without a reduction in
+      speed. You suffer no penalties to attack, and do not grant combat
+      advantage while squeezing. You are treated as a Small creature for
+      purposes of squeezing into Tiny spaces.
+    Flavor: >-
+      Your muscles can extend; your bones can slip from their sockets. You find
+      yourself moving through places even a rodent would find difficult.
+
+- id: ORCUS_POWER_BONE_BLADE
+  name: "Bone Blade"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Transmutation, Focus"
+    Target: "Self"
+    Effect: >-
+      You create a weapon of your choice. It can remain attached to your body or
+      be detached so it can be thrown. The weapon is an enchanted weapon of the
+      same bonus as the focus used for this power (if any).
+    Flavor: >-
+      From beneath your skin, you extend a sharpened piece of bone which you can
+      immediately employ as a weapon.
+
+- id: ORCUS_POWER_BEHEMOTH
+  name: "Behemoth"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Effect: >-
+      Add double your Constitution modifier to your level. You gain that number
+      of temporary hit points. Until you lose all these temporary hit points,
+      your weight is doubled and you reduce any unwilling movement you are
+      subject to by 1 square.
+    Flavor: >-
+      You are able to change your basic biological makeup to make yourself
+      extremely resistant to damage.
+
+- id: ORCUS_POWER_BONE_SHIELD
+  name: "Bone Shield"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Transmutation, Focus"
+    Target: "Self"
+    Effect: >-
+      You create a light or heavy shield attached to your arm. You can dismiss
+      the shield as a swift action. The shield is an enchanted shield of the
+      same bonus as the focus used for this power (if any).
+    Flavor: >-
+      You expand one of your arm’s bones to emerge as a shield to defend against
+      attack. It doesn’t look pretty. It only has to work.
+
+- id: ORCUS_POWER_THERIOPHILY
+  name: "Theriophily"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Transmutation, Stance"
+    Target: "Self"
+    Effect: >-
+      You can alter your physical form to take on the appearance of another
+      humanoid creature of your size, including unique individuals. You retain
+      your statistics in your new form, and your clothing, armor, and
+      possessions do not change. Other creatures can attempt an Insight check
+      (opposed by your Bluff check) to pierce the disguise. You must have seen
+      the individual being imitated (as well as hear the individual if you wish
+      to simulate the voice as well).
+    Flavor: >-
+      You are no monster, and unlike others like you, fitting in has never been
+      a real issue, especially when you can look like anyone.
+
+- id: ORCUS_POWER_PERFECT_HARMONY
+  name: "Perfect Harmony"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Effect: >-
+      Your next melee or ranged attack roll with any weapon you create with a
+      Transmutation power automatically hits (but cannot inflict critical hits).
+    Flavor: >-
+      There is an old saying about making your weapon part of you. In this case,
+      that’s easy.
+
+- id: ORCUS_POWER_METALFORM
+  name: "Metalform"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Move Action"
+    Keywords: "Arcane, Transmutation, Stance"
+    Target: "Self"
+    Effect: "You gain resistance 5 to all damage."
+    Flavor: "You crystallize your skin to be resistant to any damage."
+
+- id: ORCUS_POWER_ENLARGE
+  name: "Enlarge"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Transmutation, Stance"
+    Target: "Self"
+    Effect: >-
+      You become a Large creature until you leave this stance. You get a +2
+      bonus on attack rolls.
+    Flavor: "You increase in size."
+
+- id: ORCUS_POWER_INSTINCTIVE_SHIFT
+  name: "Instinctive Shift"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Effect: >-
+      You can use a power with the Transmutation tag that normally takes a
+      swift, move or standard action. This still counts as a use of the power
+      for those that are limited in how often they can be used.
+    Flavor: "You change form without conscious thought."
+
+- id: ORCUS_POWER_REDUCE
+  name: "Reduce"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_DEEP_DARK_TRUTHFUL_MIRROR, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Transmutation, Stance"
+    Target: "Self"
+    Effect: >-
+      You become a Small creature until you leave this stance. You get a +2
+      bonus to AC and Reflex defense.
+    Flavor: "You shrink in size."
+

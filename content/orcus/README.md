@@ -45,6 +45,10 @@ for the format.
 | `disciplines/veiled-moon.yaml` | Veiled Moon discipline (Mageblade) — teleport/shadow gish powers; all 32 powers |
 | `disciplines/born-to-run.yaml` | Born to Run discipline (Embodies Speed kit) — speed/acrobatics; all 18 powers |
 | `disciplines/radiant-dawn.yaml` | Radiant Dawn discipline (Worships the God of Life kit) — divine radiant/healing; all 33 powers |
+| `disciplines/high-cunning.yaml` | High Cunning discipline (kit) — martial tactics; all 16 powers |
+| `disciplines/third-mind.yaml` | Third Mind discipline (kit) — phrenic/psionic; all 11 powers |
+| `disciplines/deep-dark-truthful-mirror.yaml` | Deep, Dark, Truthful Mirror discipline (kit) — arcane body-sculpting; all 12 powers |
+| `disciplines/cantrips.yaml` | Cantrips (Heir crux / Magician / Cantrip Master) — minor at-will magics; all 11 powers |
 | `paths/prestige.yaml` | All 20 prestige (paragon-tier) paths: 11th/16th class features + powers at 11/12/16/20. Generated verbatim by `generate-paths` |
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
@@ -263,11 +267,13 @@ both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcri
 in full to level 29), the two kit disciplines (Born to Run, Radiant Dawn), 14
 species ancestries, all 133 feats, all 20 prestige paths, all six epic paths, the
 six kits (each wired to its discipline), and a starter set of weapons, armor and
-gear. Remaining work: the last source disciplines (High Cunning, Third Mind,
-Deep Dark Truthful Mirror, and the shared Cantrips list); the rest of the species
-roster (~11 of ~25, e.g. Baldanar, Cervitaur, Fetchling, Quickling, Rook,
-Spriggan); the "Dabbles in …" multiclass kits; the animal-companion mechanics on
-Red in Tooth and Claw; and the rest of the equipment / magic-item list. The
+gear. **All 24 disciplines in the source books are now transcribed.** Remaining
+work: the rest of the kit roster (~25 source kits, 6 transcribed) — which is also
+what makes the four kit-only disciplines (High Cunning, Third Mind, Deep Dark
+Truthful Mirror) and Cantrips reachable in-app; the rest of the species roster
+(~11 of ~25, e.g. Baldanar, Cervitaur, Fetchling, Quickling, Rook, Spriggan); the
+animal-companion mechanics on Red in Tooth and Claw; and the rest of the
+equipment / magic-item list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

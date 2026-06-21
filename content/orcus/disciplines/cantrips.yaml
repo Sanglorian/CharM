@@ -1,0 +1,235 @@
+# Cantrips discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
+
+- id: ORCUS_DISCIPLINE_CANTRIPS
+  name: "Cantrips"
+  type: Discipline
+  source: "Orcus Original"
+  fields:
+    Sources: "Heir (crux), Magician (class), Cantrip Master (feat)"
+    Description: "You have mastered minor magics."
+    Note: >-
+      The Cantrips “discipline” is a collection of powers that can be selected
+      by characters with the Cantrips feat. As such, it does not have a key or
+      secondary ability.
+
+- id: ORCUS_POWER_CHILL_SPIRIT
+  name: "Chill Spirit"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Cold"
+    Target: "Self"
+    Effect: >-
+      Use this power to accomplish one of the effects given below, or an
+      equivalent with the GM’s approval. Continuing effects persist until the
+      end of your next turn. ● Extinguish a flame no larger than one square or
+      cool up to one square of a hot surface so that it can be safely touched. ●
+      Freeze a gallon of water (other liquids may be affected at different
+      volumes, at the GM’s discretion). This effect can be maintained on
+      successive turns to affect larger bodies of water: it requires two turns
+      to freeze one full square, and each subsequent turn increases the size of
+      the affected area by burst 1. ● Create an ice cube in your hand (size
+      dependent on ambient moisture), or give an enemy an uncomfortable and
+      distracting freezer burn if used in combat. ● Chill food to a desired
+      temperature.
+    Maintain: >-
+      Swift The effect persists until the end of your next turn. After you stop
+      maintaining this power, things warm and ice melts out over time according
+      to ambient conditions.
+
+- id: ORCUS_POWER_FIERY_SPIRIT
+  name: "Fiery Spirit"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Fire"
+    Target: "Self"
+    Effect: >-
+      Use this power to accomplish one of the effects given below, or an
+      equivalent with the GM’s approval. Continuing effects persist until the
+      end of your next turn. ● You can cajole, bully and bribe fire as if it
+      were a person. ● You can heat things by concentrating on them. ● You can
+      start a fire by clicking your fingers. ● You can burn small objects to
+      provide yourself with sustenance. ● Light something easily flammable, such
+      as gasoline, paper, or gunpowder. ● Boil a gallon of water (other liquids
+      may be affected at different volumes, at the GM’s discretion). This effect
+      can be maintained on successive turns to affect larger bodies of water: it
+      requires two turns to boil one full square, and each subsequent turn
+      increases the size of the affected area by burst 1. ● Create a flame in
+      your hand. It can produce uncomfortable and distracting burns if used in
+      combat but does not inflict any damage. ● Cook food to a desired
+      temperature.
+    Maintain: >-
+      Swift The effect persists until the end of your next turn. After you stop
+      maintaining this power, heat dissipates and fires burn out over time
+      according to ambient conditions.
+
+- id: ORCUS_POWER_FRIENDLY_ZEPHYR
+  name: "Friendly Zephyr"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Air"
+    Target: "Ranged 20"
+    Effect: >-
+      You may do to one target in the area one of the following: ● Shunt a Tiny
+      object 10 squares, a Small object 5 squares, a Medium object 2 squares or
+      a Large object 1. ● Hear what a creature says this round as if you were
+      standing right beside them. ● Moisten a creature, giving it resistance to
+      fire 5 until the end of your next turn.
+    Maintain: "Swift Repeat the effect."
+
+- id: ORCUS_POWER_GHOST_SOUND
+  name: "Ghost Sound"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "At-Will"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Illusion"
+    Target: "Ranged 10, one object or empty square"
+    Effect: >-
+      Create a sound that rises, recedes, approaches, or remains at a fixed
+      place. You choose what type of sound when spending the standard action to
+      create it. You must use another standard action to change the sound’s
+      basic character. You can produce as much noise as a person. The noise can
+      be virtually any type of sound within the volume limit. The noise persists
+      until the end of your next turn.
+    Maintain: "Swift The effect persists until the end of your next turn."
+
+- id: ORCUS_POWER_CREATE_ITEM
+  name: "Create Item"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane, Conjuration"
+    Target: "Self"
+    Effect: >-
+      Create an item that costs 5 gp or less. It disappears after 24 hours.
+
+- id: ORCUS_POWER_GLOWING_MOSS
+  name: "Glowing Moss"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane, Zone"
+    Effect: >-
+      You and any zones you have created emit bright light in a burst X where X
+      is your Intelligence modifier.
+
+- id: ORCUS_POWER_TELEPATHY
+  name: "Telepathy"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Encounter"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane"
+    Target: "Self"
+    Effect: "You have telepathy 10 until the end of your next turn."
+
+- id: ORCUS_POWER_BUOYANCY
+  name: "Buoyancy"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane"
+    Target: "Melee touch, one creature"
+    Effect: "Target ignores encumbrance until your next long rest."
+
+- id: ORCUS_POWER_DOUBLE_DIMENSION
+  name: "Double Dimension"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Arcane"
+    Target: "Melee touch, one item"
+    Effect: >-
+      You make an item two times longer, two times wider and two times deeper on
+      the inside than it is on the outside, until your next long rest. At that
+      point, if the contents of the item are too large to be contained by it,
+      all the contents are emptied out of the item just beside it.
+
+- id: ORCUS_POWER_SHELTERING_LAMP
+  name: "Sheltering Lamp"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Counter Action"
+    Keywords: "Arcane, Transmutation"
+    Target: "Self"
+    Requirements: "You are hit by an attack, or as a standard action at any time."
+    Effect: >-
+      Spend a recovery. You take the form of a lamp, bottle or other small
+      container. In this form you have your defenses, but cannot take any
+      actions other than a swift action to end this power. The bottle has HP
+      equal to your recovery value - minus whatever damage is done by the
+      triggering attack, if any. If the bottle is destroyed, you take any excess
+      damage yourself and appear in the space the bottle occupied.
+    Special: "You can take a long rest while in lamp form."
+
+- id: ORCUS_POWER_STOW
+  name: "Stow"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_CANTRIPS, utility]
+  fields:
+    Level: "Feature"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Arcane"
+    Target: "Melee touch, one item of your size or smaller"
+    Effect: >-
+      An item you are holding disappears. It reappears in your hands the next
+      time that you take a long rest. If you are reduced to 0 HP or below, it
+      appears immediately in an unoccupied square adjacent to you. The item does
+      not weigh anything while stowed.
+

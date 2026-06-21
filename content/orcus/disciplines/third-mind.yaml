@@ -1,0 +1,268 @@
+# Third Mind discipline — generated verbatim from the source book by
+# tools/CharM.Orcus.Import (do not hand-edit the text fields). Engine
+# semantics (id/type/categories/level) are derived mechanically.
+
+- id: ORCUS_DISCIPLINE_THIRD_MIND
+  name: "Third Mind"
+  type: Discipline
+  source: "Orcus Original"
+  fields:
+    "Key Ability": "Wisdom"
+    "Secondary Ability": "Charisma"
+    Sources: "Channels Godmind (kit)"
+    Description: >-
+      Your psychic powers allow you to waylay your enemies and clear the minds
+      of your allies.
+
+- id: ORCUS_POWER_BLAZING_MANTLE
+  name: "Blazing Mantle"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Focus, Psychic"
+    Target: "Near burst 1, all enemies"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      1d6 + Wisdom modifier psychic damage. Level 21: Increase damage to 2d6
+      damage + Wisdom modifier. Special—Augment: Push each target a number of
+      squares equal to 1 + Charisma modifier.
+    Flavor: >-
+      Your channel the awesome energies of your Godmind and you literally come
+      ablaze with phrenic power.
+
+- id: ORCUS_POWER_GAZE_OF_AEONS
+  name: "Gaze of Aeons"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, at-will, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Focus, Radiant"
+    Target: "Ranged 5, one creature"
+    Attack: "Wisdom vs Fortitude"
+    Hit: >-
+      The target grants combat advantage until the end of your next turn.
+      Whenever an ally hits the target with an attack before the end of your
+      next turn, they also deal radiant damage equal to your Charisma modifier.
+      Special—Augment: As part of the initial attack, also deal 1d6 + Wisdom
+      modifier radiant damage.
+    Flavor: >-
+      You allow yourself to become the outlet of your Godmind’s phrenic power,
+      reflecting in your eyes that burn with divine energy, jarring an enemy.
+
+- id: ORCUS_POWER_UNERRING_GUIDANCE
+  name: "Unerring Guidance"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, encounter, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Weapon"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom +2 vs AC"
+    Hit: >-
+      2dW and the next ally that attacks the target before the end of your next
+      turn gains a +2 power bonus to their attack roll. Special—Augment: Add
+      your Charisma modifier to the damage and give all allies +2 to their
+      attack rolls against the target until your next turn, instead of just the
+      next ally.
+    Flavor: >-
+      You ask your Godmind to guide your attacks against an enemy and your blows
+      ring true.
+
+- id: ORCUS_POWER_AURA_OF_PAINFUL_CLARITY
+  name: "Aura of Painful Clarity"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, daily, ability-swap]
+  fields:
+    Level: "1"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Aura, Phrenic, Focus, Psychic"
+    Target: "Near burst 1, all creatures"
+    Effect: >-
+      Allies that begin their turn inside the aura gain a +2 power bonus to
+      their next attack roll. Enemies inside the aura have vulnerability to all
+      damage 2. Special—Augment: As a standard action, make a Wisdom vs Will
+      attack against each enemy inside the aura. Hit: 1d6 + your Charisma
+      modifier psychic damage.
+    Flavor: >-
+      Your connection to your Godmind extends into a shining aura, empowering
+      all with greater clarity and focus as they attack their enemies. While
+      enemies are within the aura, their vulnerabilities become clear to your
+      allies and your intense focus might burn their minds.
+
+- id: ORCUS_POWER_SURGING_MEDITATION
+  name: "Surging Meditation"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, utility]
+  fields:
+    Level: "2"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Healing"
+    Target: "Near burst 10, you or one ally"
+    Effect: >-
+      The target may spend one recovery and one focus surge. Special—Augment:
+      This power is not expended when used.
+    Flavor: >-
+      You meditate, entering a state of mental clarity that allows you to heal
+      yourself or an ally, while at the same time refreshing their mind.
+
+- id: ORCUS_POWER_STRIKE_THE_WEAKENED_MIND
+  name: "Strike the Weakened Mind"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, encounter, ability-swap]
+  fields:
+    Level: "3"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Weapon"
+    Target: "Melee weapon, one creature"
+    Attack: "Wisdom vs AC"
+    Hit: >-
+      2dW + Wisdom modifier damage. The target also loses any psi focus they had
+      (refresh as if spent on a daily) and takes a -2 penalty to their Will
+      defense until the end of their next turn. Special—Augment: Before making
+      the attack roll, this power gains the Consistent tag.
+    Flavor: >-
+      You wield your weapon in a blazing arc and as you hit, you shatter both
+      their physical and mental selves.
+
+- id: ORCUS_POWER_SIPHON_THE_SOUL
+  name: "Siphon the Soul"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, daily, ability-swap]
+  fields:
+    Level: "5"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Healing, Focus, Psychic"
+    Target: "Ranged 10, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: >-
+      2d10 + Wisdom modifier psychic damage and the target is dazed (save ends).
+    Effect: >-
+      One ally within 10 may spend a recovery. Special—Augment: Give the target
+      a penalty on saves against the dazed condition equal to your Charisma
+      modifier.
+    Flavor: >-
+      You intertwine the souls and minds of one enemy and an ally of yours,
+      siphoning away the energy of one to heal the other.
+
+- id: ORCUS_POWER_AURA_OF_MENDING
+  name: "Aura of Mending"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, utility]
+  fields:
+    Level: "6"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Swift Action"
+    Keywords: "Augmentable, Aura, Phrenic, Healing"
+    Target: "Near burst 2, all allies"
+    Effect: >-
+      Every ally inside the aura at the start of their turn gains regeneration
+      1. While this aura is in place, you may, as a standard action, spend your
+      psi focus to enable an ally within the aura to spend a recovery. Expending
+      your psi focus in this fashion makes it refresh as after having used an
+      encounter power. Special—Augment: Add your Charisma modifier to the number
+      of hit points regained each time yourself or an ally within the aura
+      spends a recovery.
+    Flavor: >-
+      Your aura shines forth, powered by the connection to your godmind. Allies
+      nearby regain their health and you can guide them into drawing upon inner
+      resources.
+
+- id: ORCUS_POWER_UNVEILING_THE_GODMIND
+  name: "Unveiling the Godmind"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, encounter, ability-swap]
+  fields:
+    Level: "7"
+    "Power Usage": "Encounter"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Phrenic, Fear, Focus, Psychic"
+    Target: "Melee touch, one creature"
+    Attack: "Wisdom vs Fortitude"
+    Hit: >-
+      3d6 + your Wisdom modifier psychic damage, push the target 1 square and
+      the target is restrained until the end of your next turn. Special—Augment:
+      Add your Charisma as a power bonus to both the attack and the damage roll.
+    Flavor: >-
+      You stretch out your hand, creating a bridge between your godmind’s
+      unbridled energy and the mind of a lesser creature, burning their mind and
+      body to cinders.
+
+- id: ORCUS_POWER_CONSUMPTION_OF_THE_SINFUL
+  name: "Consumption of the Sinful"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, daily, ability-swap]
+  fields:
+    Level: "9"
+    "Power Usage": "Daily"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Conjuration, Phrenic, Focus, Psychic"
+    Target: "Ranged 10, one creature"
+    Attack: "Wisdom vs Will"
+    Hit: "2d10 + Wisdom modifier psychic damage."
+    Effect: >-
+      You conjure a vile manifestation of your enemy’s darkest sins in a square
+      adjacent to the target. The manifestation exists until the end of your
+      next turn. You can move the manifestation as a move action, using the same
+      speed as the target. If the manifestation is adjacent to the target, the
+      target grants combat advantage and gains vulnerability to all damage 5.
+      Special—Augment: The target receives a penalty equal to your Charisma
+      modifier to attack rolls (save ends).
+    Maintain: "Swift The manifestation exists until the end of your next turn."
+    Flavor: >-
+      Reaching forth into the mind of your enemy, you unleash their darkest sins
+      and give them form, haunting your enemy while aiding your allies in
+      combat.
+
+- id: ORCUS_POWER_AURA_OF_PSYCHIC_VENGEANCE
+  name: "Aura of Psychic Vengeance"
+  type: Power
+  source: "Orcus Original"
+  categories: [ORCUS_DISCIPLINE_THIRD_MIND, utility]
+  fields:
+    Level: "10"
+    "Power Usage": "Daily"
+    "Power Type": "Utility"
+    "Action Type": "Standard Action"
+    Keywords: "Augmentable, Aura, Phrenic"
+    Target: "Near burst 2, all allies"
+    Effect: >-
+      Each ally who starts their turn inside the aura gains a power bonus equal
+      to your Charisma modifier to their attack rolls until the end of their
+      turn. Special—Augment: Each ally heals hit points equal to your Charisma
+      modifier each time they begin their turn within the aura.
+    Flavor: >-
+      You meditate for a short while before your aura blooms out around you,
+      allowing your mind to become as one with your allies, aiding their
+      attacks.
+
