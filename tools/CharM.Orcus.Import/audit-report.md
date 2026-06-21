@@ -1,9 +1,9 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 5
-- YAML elements loaded: 2023
-- Prose fields scanned: 5138; flagged: 0
-- Flavor fields: 578 faithful, 0 INVENTED
+- YAML elements loaded: 2121
+- Prose fields scanned: 5224; flagged: 0
+- Flavor fields: 579 faithful, 0 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,
 bullets, punctuation, case and whitespace) is **not found verbatim** in any

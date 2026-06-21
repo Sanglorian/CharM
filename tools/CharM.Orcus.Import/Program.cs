@@ -117,6 +117,15 @@ if (mode == "generate-species")
     return SpeciesGen.Generate(book, outP, Path.Combine(sRoot, "content/orcus"));
 }
 
+if (mode == "generate-kits")
+{
+    // generate-kits <repo-root> <out.yaml>
+    string kRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(kRoot, "Orcus Classes and Powers*.md").Single();
+    return KitGen.Generate(book, outP, Path.Combine(kRoot, "content/orcus"));
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>
