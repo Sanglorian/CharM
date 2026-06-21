@@ -23,7 +23,8 @@ for the format.
 | `classes/magician.yaml` | Magician (Controller, Arcane, Intelligence): schools (Conjurer/Enchanter/Evoker), Arcane Strength choice, auto-trained Arcana + 3, selects to 30 |
 | `classes/reaper.yaml` | Reaper (Controller, Spirit, Dexterity): Sprouting Overwatch / Spirit Entreaty features, Paviser/Peltast/Sharpshooter talents, auto-trained Nature + 3, selects to 30 |
 | `classes/sylvan.yaml` | Sylvan (Striker, Spirit, Constitution): Watchful/Companionable/Swift talents, Skinchanger/Hunter/**Animal Companion** wild gifts, Favored Terrain, selects to 30 — the Animal Companion gift opens a `Companion` slot |
-| `companions.yaml` | 13 animal companions (`Companion` type) selectable via the Sylvan's Animal Companion wild gift |
+| `companions.yaml` | 13 animal companions (`Companion` type, with their own stat block) selectable via the Sylvan's Animal Companion wild gift |
+| `familiars.yaml` | 24 familiars (`"Familiar: X"` Powers, `ORCUS_FAMILIAR`) — no own stat block (they use *your* defenses; max HP = your recovery value), selected by the Binds Familiar kit. Mechanically distinct from animal companions |
 | `classes/harlequin.yaml` | Harlequin (Controller, Martial, Charisma): Fixer/Jester/Saboteur/Scout aura talents, Clever Fellow feature powers, Impudent Flourish, selects to 30 |
 | `classes/mageblade.yaml` | Mageblade (Defender, Arcane, Intelligence): Mageblade's Sigil, Illusion/Martyr/Punishment/Rush sigil talents, Shimmering Shield (+2 AC), selects to 30 |
 | `disciplines/art-of-war.yaml` | Art of War discipline (Guardian) — all 18 powers |
@@ -271,10 +272,12 @@ species, all 133 feats, all 20 prestige paths, all six epic paths, and all 25
 kits (each wired to its associated discipline — so the kit-only disciplines High
 Cunning, Third Mind and Deep Dark Truthful Mirror are now reachable in play), plus
 a starter set of weapons, armor and gear. **All 24 disciplines, all 25 species and
-all 25 kits in the source books are now transcribed.** Remaining work: the
-animal-companion mechanics on Red in Tooth and Claw and the Binds Familiar kit's
-familiar table; Cantrips access-wiring (Heir crux / Magician / Cantrip Master);
-and the rest of the equipment / magic-item list. The
+all 25 kits in the source books are now transcribed**, with 13 animal companions
+(Sylvan wild gift) and 24 familiars (Binds Familiar kit) modelled. Remaining work:
+Cantrips access-wiring (Heir crux / Magician / Cantrip Master); and the rest of
+the equipment / magic-item list. (Red in Tooth and Claw's "your companion uses
+your power in its place" stays descriptive play guidance — a runtime action, not
+a build-time stat.) The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

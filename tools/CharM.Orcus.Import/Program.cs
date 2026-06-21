@@ -126,6 +126,15 @@ if (mode == "generate-kits")
     return KitGen.Generate(book, outP, Path.Combine(kRoot, "content/orcus"));
 }
 
+if (mode == "generate-familiars")
+{
+    // generate-familiars <repo-root> <out.yaml>
+    string fRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(fRoot, "Orcus Classes and Powers*.md").Single();
+    return FamiliarGen.Generate(book, outP);
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>
@@ -283,7 +292,11 @@ foreach (var el in elements.Where(e => e.Type == "Power"))
 }
 
 // Powers present in YAML whose name is in NO source book (possible fabrication / rename).
+// Familiars (ORCUS_FAMILIAR) are table-derived companion data carried on a
+// "Familiar: <creature>" Power (the engine's familiar shape), not transcribed
+// powers — their constructed names are expected not to appear verbatim.
 var yamlPowersNotInSource = elements.Where(e => e.Type == "Power" && e.Name != null)
+    .Where(e => !e.Categories.Contains("ORCUS_FAMILIAR"))
     .Where(e => !sourceNameSet.Contains(Normalizer.Norm(e.Name!)))
     .Select(e => $"{e.File} :: {e.Name}").Distinct().OrderBy(s => s).ToList();
 

@@ -258,6 +258,10 @@ public static class KitGen
             }
             sb.AppendLine($"  rules:");
             sb.AppendLine($"    - {{ grant: ORCUS_MARKER_HAS_KIT, type: Marker }}");
+            // Binds Familiar: the Spirit Friend feature picks one familiar from the
+            // table (generated into familiars.yaml as ORCUS_FAMILIAR Powers).
+            if (kit.Name.Equals("Binds Familiar", StringComparison.OrdinalIgnoreCase))
+                sb.AppendLine($"    - {{ select: {{ type: Power, number: 1, category: ORCUS_FAMILIAR, name: Familiar }} }}");
             if (kit.DiscChoice && resolved.Count > 1)
                 sb.AppendLine($"    - {{ select: {{ type: Discipline Access, number: 1, category: {choiceCat}, name: {kit.Name} Discipline }} }}");
             else if (resolved.Count >= 1)

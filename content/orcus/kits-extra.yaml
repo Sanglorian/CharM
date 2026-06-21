@@ -28,6 +28,7 @@
       aids you and provides companionship.
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { select: { type: Power, number: 1, category: ORCUS_FAMILIAR, name: Familiar } }
     - { grant: ORCUS_DISCACCESS_STRONG_BIDDING, type: Discipline Access }
     - { grant: ORCUS_KITF_SPIRIT_FRIEND, type: Class Feature }
     - { grant: ORCUS_KITF_COMBAT_ASSISTANT, type: Class Feature, level: 5 }
