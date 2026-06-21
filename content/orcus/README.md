@@ -260,14 +260,14 @@ Frontline Fighting and Strong Bidding in full), both Harlequin
 disciplines (Last Laugh, Mastermind's Gambit), both Mageblade disciplines
 (Elemental Flux, Veiled Moon) and
 both Commander disciplines (Angel's Trumpet, Golden Lion — the latter transcribed
-in full to level 29), 14 species ancestries, a sample of feats, all 20
-prestige paths, all six epic paths, and a starter set of weapons, armor and gear.
-Remaining work: the remaining disciplines (High Cunning, Radiant Dawn, Third Mind,
-Born to Run, Deep Dark Truthful Mirror, …) and the rest of each existing
-discipline's power list, the rest of the species roster, and
-feats (including paragon/epic-tier and multi-take feats), the rest of the kits
-(incl. the "Dabbles in …" multiclass kits), and
-the rest of the equipment list. The
+in full to level 29), the two kit disciplines (Born to Run, Radiant Dawn), 14
+species ancestries, all 133 feats, all 20 prestige paths, all six epic paths, the
+six kits (each wired to its discipline), and a starter set of weapons, armor and
+gear. Remaining work: the last source disciplines (High Cunning, Third Mind,
+Deep Dark Truthful Mirror, and the shared Cantrips list); the rest of the species
+roster (~11 of ~25, e.g. Baldanar, Cervitaur, Fetchling, Quickling, Rook,
+Spriggan); the "Dabbles in …" multiclass kits; the animal-companion mechanics on
+Red in Tooth and Claw; and the rest of the equipment / magic-item list. The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.
