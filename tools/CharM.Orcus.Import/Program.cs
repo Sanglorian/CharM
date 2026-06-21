@@ -108,6 +108,15 @@ if (mode == "generate-paths")
     return PathGen.Generate(book, outP, Path.Combine(pRoot, "content/orcus"));
 }
 
+if (mode == "generate-species")
+{
+    // generate-species <repo-root> <out.yaml>
+    string sRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(sRoot, "Orcus Advanced Options*.md").Single();
+    return SpeciesGen.Generate(book, outP, Path.Combine(sRoot, "content/orcus"));
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>

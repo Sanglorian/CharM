@@ -1,8 +1,8 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 5
-- YAML elements loaded: 2000
-- Prose fields scanned: 5090; flagged: 0
+- YAML elements loaded: 2023
+- Prose fields scanned: 5138; flagged: 0
 - Flavor fields: 578 faithful, 0 INVENTED
 
 A field is flagged when its text (after stripping markdown, smart quotes,

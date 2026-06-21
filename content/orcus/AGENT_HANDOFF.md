@@ -41,6 +41,7 @@ dotnet run --project tools/CharM.Orcus.Import -- <command> [args]
 | `audit-all .` | Stricter: scans *every* field (incl. names) of every element vs the source blob. |
 | `generate-discipline . "<Name>" <DISC_ID> <SUFFIX> <out.yaml>` | Emit a discipline's powers verbatim with a round-trip gate. |
 | `generate-paths . <out.yaml>` | Emit **all** prestige (paragon-tier) paths verbatim → `content/orcus/paths/prestige.yaml`. Features + powers, level-gated, round-trip gated. |
+| `generate-species . <out.yaml>` | Emit Advanced-Options species **not already** in `ancestries-species.yaml` → e.g. `species-extra.yaml`. Verbatim prose gated; size/vision/speed/language/skill/ability-trio/power scaffolding derived. Reports any new `ORCUS_ABILTRIO_*` / `ORCUS_ABILANY` categories to register in `reference.yaml`. |
 | `generate-feats .` | Emit **all** feats from Player Options → `content/orcus/feats.yaml`. |
 | `generate-boosts . <out>` / `generate-misc .` / `generate-companions .` | Magic-item boosts / wondrous+consumables / companions. |
 | `patch-class . <classFile> "<Name>" [bookGlob]` | Patch one class's fields from source. |
@@ -124,7 +125,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2000 elements, 36 types, 0 audit flags, 0 invented.**
+Current state: **2023 elements, 36 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 
