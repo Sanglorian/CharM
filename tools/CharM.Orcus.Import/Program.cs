@@ -144,6 +144,24 @@ if (mode == "generate-vehicles")
     return VehicleGen.Generate(book, outP);
 }
 
+if (mode == "generate-deities")
+{
+    // generate-deities <repo-root> <out.yaml>
+    string dRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(dRoot, "Orcus Player Options*.md").Single();
+    return DeityGen.Generate(book, outP);
+}
+
+if (mode == "generate-backgrounds")
+{
+    // generate-backgrounds <repo-root> <out.yaml>
+    string bRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(bRoot, "Orcus Advanced Options*.md").Single();
+    return BackgroundGen.Generate(book, outP);
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>
