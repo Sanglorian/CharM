@@ -1,28 +1,41 @@
 # Adventuring gear & focuses (Orcus Rulebook). Mundane gear is recorded as `Gear`
 # elements (cost/weight, no rules) — inventory items that don't change stats.
 # Focuses are `Focus` elements: like implements, they channel powers with the
-# Focus tag when you're proficient. A representative selection.
+# Focus tag when you're proficient. The full Adventuring Gear table is here, plus
+# the Mounts and Other Animals table.
 
 # === Adventuring gear =========================================================
 - { id: ORCUS_GEAR_BACKPACK,        name: Backpack,                 type: Gear, source: "Orcus Original", fields: { Cost: "2 gp",  Weight: "2 lb." } }
 - { id: ORCUS_GEAR_BEDROLL,         name: Bedroll,                  type: Gear, source: "Orcus Original", fields: { Cost: "1 sp",  Weight: "5 lb." } }
 - { id: ORCUS_GEAR_CANDLE,          name: Candle,                   type: Gear, source: "Orcus Original", fields: { Cost: "1 cp",  Weight: "-" } }
 - { id: ORCUS_GEAR_CHAIN,           name: "Chain (10 feet)",        type: Gear, source: "Orcus Original", fields: { Cost: "30 gp", Weight: "2 lb." } }
+- { id: ORCUS_GEAR_CHEST,           name: Chest,                    type: Gear, source: "Orcus Original", fields: { Cost: "2 gp",  Weight: "25 lb." } }
 - { id: ORCUS_GEAR_CLIMBERS_KIT,    name: "Climber's kit",          type: Gear, source: "Orcus Original", fields: { Cost: "2 gp",  Weight: "11 lb." } }
 - { id: ORCUS_GEAR_EVERBURNING_TORCH, name: "Everburning torch",    type: Gear, source: "Orcus Original", fields: { Cost: "50 gp", Weight: "1 lb." } }
+- { id: ORCUS_GEAR_FLASK,           name: Flask,                    type: Gear, source: "Orcus Original", fields: { Cost: "3 cp",  Weight: "1 lb." } }
 - { id: ORCUS_GEAR_FLINT_AND_STEEL, name: "Flint and steel",        type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "-" } }
+- { id: ORCUS_GEAR_GOOD_CLOTHES,    name: "Good clothes",           type: Gear, source: "Orcus Original", fields: { Cost: "30 gp", Weight: "6 lb." } }
 - { id: ORCUS_GEAR_GRAPPLING_HOOK,  name: "Grappling hook",         type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "4 lb." } }
+- { id: ORCUS_GEAR_HAMMER,          name: Hammer,                   type: Gear, source: "Orcus Original", fields: { Cost: "5 sp",  Weight: "2 lb." } }
 - { id: ORCUS_GEAR_LANTERN,         name: Lantern,                  type: Gear, source: "Orcus Original", fields: { Cost: "10 gp", Weight: "2 lb." } }
+- { id: ORCUS_GEAR_OIL_FLASK,       name: "Oil (flask)",            type: Gear, source: "Orcus Original", fields: { Cost: "1 sp",  Weight: "1 lb." } }
+- { id: ORCUS_GEAR_PITON,           name: Piton,                    type: Gear, source: "Orcus Original", fields: { Cost: "1 sp",  Weight: "0.5 lb." } }
+- { id: ORCUS_GEAR_POLE,            name: "Pole (10-foot)",         type: Gear, source: "Orcus Original", fields: { Cost: "5 cp",  Weight: "7 lb." } }
 - { id: ORCUS_GEAR_POUCH,           name: Pouch,                    type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "0.5 lb." } }
 - { id: ORCUS_GEAR_RATIONS,         name: "Rations (10 days)",      type: Gear, source: "Orcus Original", fields: { Cost: "5 gp",  Weight: "10 lb." } }
 - { id: ORCUS_GEAR_ROPE_HEMP,       name: "Rope, hempen (50 feet)", type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "10 lb." } }
 - { id: ORCUS_GEAR_ROPE_SILK,       name: "Rope, silk (50 feet)",   type: Gear, source: "Orcus Original", fields: { Cost: "10 gp", Weight: "5 lb." } }
 - { id: ORCUS_GEAR_SPELLBOOK,       name: Spellbook,                type: Gear, source: "Orcus Original", fields: { Cost: "50 gp", Weight: "3 lb." } }
 - { id: ORCUS_GEAR_SUNROD,          name: Sunrod,                   type: Gear, source: "Orcus Original", fields: { Cost: "4 gp",  Weight: "2 lb." } }
+- { id: ORCUS_GEAR_TENT,            name: "Tent, two-person",       type: Gear, source: "Orcus Original", fields: { Cost: "10 gp", Weight: "20 lb." } }
 - { id: ORCUS_GEAR_THIEVES_TOOLS,   name: "Thieves' tools",         type: Gear, source: "Orcus Original", fields: { Cost: "20 gp", Weight: "1 lb." } }
 - { id: ORCUS_GEAR_TORCH,           name: Torch,                    type: Gear, source: "Orcus Original", fields: { Cost: "1 cp",  Weight: "1 lb." } }
-- { id: ORCUS_GEAR_WATERSKIN,       name: Waterskin,                type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "4 lb." } }
+- { id: ORCUS_GEAR_WATERSKIN,       name: Waterskin,                type: Gear, source: "Orcus Original", fields: { Cost: "1 gp",  Weight: "4 lb. (full)" } }
 - { id: ORCUS_GEAR_WAYBREAD,        name: "Waybread (10 days)",     type: Gear, source: "Orcus Original", fields: { Cost: "50 gp", Weight: "1 lb." } }
+
+# === Mounts and other animals =================================================
+- { id: ORCUS_GEAR_RIDING_HORSE,    name: "Riding horse",           type: Gear, source: "Orcus Original", fields: { Cost: "360 gp" } }
+- { id: ORCUS_GEAR_WAR_HORSE,       name: "War horse",              type: Gear, source: "Orcus Original", fields: { Cost: "520 gp" } }
 
 # === Focuses ==================================================================
 - id: ORCUS_FOCUS_HOLY_SYMBOL

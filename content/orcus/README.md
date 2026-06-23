@@ -55,7 +55,8 @@ for the format.
 | `paths/epic.yaml` | All six epic paths (Agent Retriever, Master, Most Dangerous, Respected, Team, Ultimate): 21st/24th/30th features + a 26th-level power |
 | `equipment/weapons.yaml` | 19 weapons (simple/martial/exotic, melee & ranged) as `Weapon` elements — supply the `[W]` die, proficiency and group |
 | `equipment/armor.yaml` | Light & heavy armor + shields as `Armor` elements (AC / Reflex / speed / armor-check contributions) |
-| `equipment/gear.yaml` | Adventuring gear (`Gear`) and focuses (`Focus`) |
+| `equipment/gear.yaml` | The full Adventuring Gear table + Mounts and Other Animals (`Gear`) and focuses (`Focus`) |
+| `equipment/vehicles.yaml` | The nine vehicles (`Vehicle`) from Advanced Options — stats + verbatim Speed/Driver Skill/Description/Careen |
 | `equipment/proficiencies.yaml` | Weapon/armor/shield `Proficiency` elements (tagged `ORCUS_{WEAPON,ARMOR,SHIELD}_PROFS` for the proficiency-feat selects) + per-category `Grants` bundles the classes pull in |
 | `equipment/weapon-focus.yaml` | Per-weapon-group `Weapon Focus (X)` / `Weapon Specialization (X)` options (generated) — the matching feats select one; +1/+2/+3 atk or dmg with that group |
 | `equipment/magic-items.yaml` | The four generic enchanted-item families (Weapon, Focus, Armor, Cloak) at +1…+6 as `Magic Item` elements |
@@ -271,14 +272,16 @@ in full to level 29), the two kit disciplines (Born to Run, Radiant Dawn), all 2
 species, all 133 feats, all 20 prestige paths, all six epic paths, and all 25
 kits (each wired to its associated discipline — so the kit-only disciplines High
 Cunning, Third Mind and Deep Dark Truthful Mirror are now reachable in play), plus
-a starter set of weapons, armor and gear. **All 24 disciplines, all 25 species and
+the full equipment and magic-item list. **All 24 disciplines, all 25 species and
 all 25 kits in the source books are now transcribed**, with 13 animal companions
-(Sylvan wild gift) and 24 familiars (Binds Familiar kit) modelled, and Cantrips
+(Sylvan wild gift) and 24 familiars (Binds Familiar kit) modelled, Cantrips
 reachable from all three of its sources (Heir crux, Magician class, Cantrip Master
-feat). Remaining work: the rest of the equipment / magic-item list. (Red in Tooth
-and Claw's "your companion uses
-your power in its place" stays descriptive play guidance — a runtime action, not
-a build-time stat.) The
+feat), and the equipment shelf complete: the full adventuring-gear table, mounts,
+weapons, armor, all magic items (boosts, slot/wondrous, consumables incl. poisons,
+the generic enchant families) and the nine vehicles. The Orcus ruleset is
+content-complete against the source books. (Red in Tooth and Claw's "your
+companion uses your power in its place" stays descriptive play guidance — a
+runtime action, not a build-time stat.) The
 power-replacement swaps are declared on the classes and demonstrated via
 `--swaps`; wiring a `replace` directive's `PowerSwap` into auto-generated wizard
 candidates is an engine-side follow-up.

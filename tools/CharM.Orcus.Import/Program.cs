@@ -135,6 +135,15 @@ if (mode == "generate-familiars")
     return FamiliarGen.Generate(book, outP);
 }
 
+if (mode == "generate-vehicles")
+{
+    // generate-vehicles <repo-root> <out.yaml>
+    string vRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(vRoot, "Orcus Advanced Options*.md").Single();
+    return VehicleGen.Generate(book, outP);
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>

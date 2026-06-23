@@ -216,3 +216,352 @@
       creature within reach. Its effect lasts for five minutes. Gain the listed
       item bonus to melee damage rolls, Athletics checks and Strength ability
       checks.
+# === Poisons (masterwork consumables — double the consumable price) ===
+- id: ORCUS_MAGIC_ASSASSIN_S_BLOOD
+  name: "Assassin’s Blood"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "1"
+    Cost: "28 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until your next short rest, any target you hit with a weapon takes
+      2 persistent poison damage (save ends). If they fail their first save,
+      they instead take 5 persistent poison damage (save ends). Special If
+      Assassin’s Blood is ingested, for 12 hours the target gains vulnerability
+      to poison 5 and loses any poison resistances or immunities it had.
+- id: ORCUS_MAGIC_PALE_TINCTURE
+  name: "Pale Tincture"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "1"
+    Cost: "28 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon takes 1d10 poison damage and
+      cannot heal by any means (save ends). Special If the Pale Tincture is
+      ingested, the target suffers a -4 penalty to all saves and cannot heal for
+      12 hours.
+- id: ORCUS_MAGIC_SPEAR_FROG_POISON
+  name: "Spear Frog Poison"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "1"
+    Cost: "28 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon takes 1d6 poison damage and
+      is dazed (save ends). Special If Spear Frog Poison is ingested, the target
+      takes 2d6 poison damage.
+- id: ORCUS_MAGIC_OIL_OF_TAGGIT
+  name: "Oil of Taggit"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "5"
+    Cost: "80 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until your next short rest, any target you hit with a weapon takes
+      1d8 poison damage and is slowed until the end of their next turn. Special
+      If a creature is in prolonged contact with Oil of Taggit (e.g. it wears
+      clothes on which it has been placed), the creature remains immobilised.
+- id: ORCUS_MAGIC_PHASE_SPIDER_VENOM
+  name: "Phase Spider Venom"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "5"
+    Cost: "80 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon takes 5 persistent poison
+      damage and is slowed (save ends both). Special If a creature is in
+      prolonged contact with Phase Spider Venom (e.g. it wears clothes on which
+      it has been placed), it is weakened and gains incorporeal (both for 4
+      hours).
+- id: ORCUS_MAGIC_TORPOR
+  name: "Torpor"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "5"
+    Cost: "80 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon takes 2d6 poison damage and
+      is dazed (save ends). Special If Torpor is ingested, the target is dazed
+      for 12 hours.
+- id: ORCUS_MAGIC_LETHARGY_POISON
+  name: "Lethargy Poison"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "9"
+    Cost: "336 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon is dazed (save ends).
+      Aftereffect: The target falls asleep until disturbed. Special If Lethargy
+      Poison is ingested, the target falls into a coma for 24 hours.
+- id: ORCUS_MAGIC_MALICE
+  name: "Malice"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "9"
+    Cost: "336 gp"
+    Keywords: "Poison"
+    Property: >-
+      Ranged 5 Attack Dexterity vs Reflex Hit 2d10 + Dexterity modifier poison
+      damage and 5 persistent psychic damage (save ends). Each time the target
+      fails a saving throw, it makes a basic attack against the nearest ally
+      (this does not count against its actions). Miss Target takes half damage
+      and 5 persistent psychic damage (save ends). Special If a creature is in
+      prolonged contact with Malice (e.g. it wears clothes on which it has been
+      placed), it hallucinates a terrible waking nightmare.
+- id: ORCUS_MAGIC_TOADSKIN_SALVE
+  name: "Toadskin Salve"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "9"
+    Cost: "336 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until the end of the encounter, if you are hit by a melee attack,
+      you can make the following attack against your attacker. Secondary Attack:
+      Dexterity vs Fortitude; the target takes 5 persistent poison damage.
+      Special If a creature is in prolonged contact with Toadskin Salve (e.g. it
+      wears clothes on which it has been placed), its skin hardens and the
+      creature is slowed for 3 hours.
+- id: ORCUS_MAGIC_TRUTH_SERUM
+  name: "Truth Serum"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "9"
+    Cost: "336 gp"
+    Keywords: "Poison"
+    Property: >-
+      Ranged 5 Attack Dexterity vs Will Hit Target is controlled (save ends).
+      Special If the Truth Serum is ingested, the target is controlled (save
+      ends) and cannot knowingly tell a lie for 1 hour.
+- id: ORCUS_MAGIC_HUNTING_SPIDER_VENOM
+  name: "Hunting Spider Venom"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "2,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until your next short rest, any target you hit with a weapon takes
+      5 persistent poison damage (save ends), and grants combat advantage until
+      the end of your next turn. Special If Hunting Spider Venom is ingested,
+      the target takes 4d6 poison damage.
+- id: ORCUS_MAGIC_MALYASS_ROOT_PASTE
+  name: "Malyass Root Paste"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "2,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon is slowed (save ends).
+      Aftereffect: The target is restrained (save ends). Special If Malyass Root
+      Paste is ingested, the target is paralyzed for 3 hours.
+- id: ORCUS_MAGIC_MINDFOG_MIST
+  name: "Mindfog Mist"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "2,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Far burst 1 within range 5, all creatures Attack Dexterity vs Fortitude
+      Hit 2d6 + Dexterity modifier poison damage, and the target cannot use
+      encounter, refresh or daily powers (save ends). Special Mindfog Mist can
+      be stored in a tight container for up to 24 hours. When the container is
+      opened, the attack is targeted on the container.
+- id: ORCUS_MAGIC_NIGHTMARE_SALT
+  name: "Nightmare Salt"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "15"
+    Cost: "2,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      The victim experiences waking nightmares. Effect The next target you hit
+      with a weapon takes 3d6 poison damage and is dazed (save ends). While the
+      target remains dazed, at the start of each of their turns, you can shunt
+      them 2. Special If Nightmare Salt is ingested, for 12 hours the target has
+      a -4 penalty on defenses against effects with the Fear or Psychic tags.
+- id: ORCUS_MAGIC_BLACK_SMEAR_POISON
+  name: "Black Smear Poison"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "19"
+    Cost: "8,400 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until your next short rest, any target you hit with a weapon takes
+      5 persistent poison damage (save ends), and is rattled until the end of
+      your next turn. Special If Black Smear Poison is ingested, the target
+      takes 6d6 poison damage.
+- id: ORCUS_MAGIC_CERULEAN_SCOURGE
+  name: "Cerulean Scourge"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "19"
+    Cost: "8,400 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect The next target you hit with a weapon casts light with the
+      brightness of a sunrod (save ends). Aftereffect: The target takes 4d6 +
+      Dexterity modifier poison damage. Special If Cerulean Scourge is ingested,
+      the target casts light like a sunrod for 24 hours, and then takes 6d6
+      poison damage.
+- id: ORCUS_MAGIC_BRIMSTONE_FUMES
+  name: "Brimstone Fumes"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "25"
+    Cost: "50,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Far burst 1 within range 5, all creatures Attack Dexterity vs Fortitude
+      Hit 3d6 + Dexterity modifier poison damage, and the target is weakened
+      (save ends). Miss The target is weakened until the end of your next turn.
+      Special Brimstone Fumes can be stored in a tight container for up to 24
+      hours. When the container is opened, the attack is targeted on the
+      container.
+- id: ORCUS_MAGIC_FRENZY_OIL
+  name: "Frenzy Oil"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "25"
+    Cost: "50,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Ranged 5 Attack Dexterity vs Will Hit 4d6 + Dexterity modifier psychic
+      damage, and the target attacks the nearest creature (chosen randomly if
+      multiple creatures are equally near) (save ends). Miss The target attacks
+      the nearest creature (chosen randomly if multiple creatures are equally
+      near) (save ends). Special If a creature is in prolonged contact with
+      Frenzy Oil (e.g. it wears clothes on which it has been placed), it is
+      thrown into an uncontrollable rage and hatred of all living creatures for
+      15 minutes.
+- id: ORCUS_MAGIC_WEEPING_MIDNIGHT
+  name: "Weeping Midnight"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "25"
+    Cost: "50,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Hit 5d6 + Dexterity modifier poison damage, and the target is dazed (save
+      ends). Aftereffect: The target is blinded until the end of your next turn.
+      Miss The target is blinded until the end of your next turn. Special If
+      Weeping Midnight is ingested, the target is blinded for 1 day.
+- id: ORCUS_MAGIC_GORGON_S_BREATH
+  name: "Gorgon’s Breath"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "29"
+    Cost: "210,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Far burst 1 within range 5, all creatures Attack Dexterity vs Fortitude
+      Hit 3d6 + Dexterity modifier poison damage, and the target is slowed (save
+      ends). Aftereffect: The target is petrified (save ends). Special Gorgon’s
+      Breath can be stored in a tight container for up to 24 hours. When the
+      container is opened, the attack is targeted on the container.
+- id: ORCUS_MAGIC_OBLIVION_ESSENCE
+  name: "Oblivion Essence"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "29"
+    Cost: "210,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Effect Until your next short rest, any target you hit with a weapon takes
+      10 persistent poison damage (save ends), and is dazed until the end of
+      your next turn. Special If Oblivion Essence is ingested, the target ages
+      2d6 years.
+- id: ORCUS_MAGIC_REPULSION_RESIN
+  name: "Repulsion Resin"
+  type: Magic Item
+  source: "Orcus Original"
+  fields:
+    "Item Slot": "Consumable"
+    "Magic Item Type": "Consumable"
+    "Item Level": "29"
+    Cost: "210,000 gp"
+    Keywords: "Poison"
+    Property: >-
+      Ranged 5 Attack Dexterity vs Fortitude Effect The next target you hit with
+      a weapon takes 2d6 poison damage, and is dazed (save ends). While the
+      target is dazed, make an attack against any creature that moves into a
+      square adjacent to the target Attack: Dexterity vs Fortitude; the target
+      is pushed 1 and their move ends. Special If Repulsion Resin is consumed,
+      the target has the following aura for 1 hour. Repulsion aura 1: If a
+      creature moves into an adjacent square, as an opportunity action the
+      subject of the aura makes an attack: Dexterity vs Fortitude; the target is
+      pushed 1 and their move ends.
+

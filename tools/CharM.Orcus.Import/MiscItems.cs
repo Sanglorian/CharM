@@ -58,6 +58,8 @@ public static class MiscItems
         var csb = Header("consumables (oils, potions, tonics, scrolls, …)");
         var usedC = new HashSet<string>();
         EmitSection(lines, book, "Consumable Items", "Consumable", "Consumable", Consumable, csb, usedC, ref fails, failMsgs);
+        csb.AppendLine("# === Poisons (masterwork consumables — double the consumable price) ===");
+        EmitPoisons(lines, csb, usedC, ref fails, failMsgs);
         File.WriteAllText(consumablesOut, csb.ToString());
 
         Console.WriteLine($"Wrote {wondrousOut} ({usedW.Count} items) and {consumablesOut} ({usedC.Count} items).");
@@ -144,13 +146,81 @@ public static class MiscItems
         }
     }
 
+    static readonly Regex H4 = new(@"^<h4 class=""Heading-4---[^""]*"">(.*?)</h4>\s*$", RegexOptions.Compiled);
+    // Poison stat line: "**Consumable** **Attack** **5** (**Swift Action**) ● **Poison**"
+    static readonly Regex PoisonHeader = new(@"^>?\s*\*\*Consumable\*\*\s+\*\*(?:Attack|Utility)\*\*\s+\*\*(\d+)\*\*", RegexOptions.Compiled);
+
+    /// <summary>The "## Poisons" section: each <h4> block is a Consumable magic
+    /// item used as a power. Level comes from the stat line; cost is double the
+    /// consumable price (poisons are "masterwork consumables"). The effect/special
+    /// prose is copied verbatim into Property; the stat line itself is dropped.</summary>
+    static void EmitPoisons(string[] lines, StringBuilder sb, HashSet<string> usedIds,
+                            ref int fails, List<string> failMsgs)
+    {
+        int start = -1, end = lines.Length;
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var m = H2.Match(lines[i]);
+            if (m.Success && m.Groups[1].Value.Trim().Equals("Poisons", StringComparison.OrdinalIgnoreCase)) start = i;
+            else if (start >= 0 && (H2.IsMatch(lines[i]) || H1.IsMatch(lines[i]))) { end = i; break; }
+        }
+        if (start < 0) { Console.Error.WriteLine("section 'Poisons' not found"); return; }
+
+        int p = start + 1;
+        while (p < end)
+        {
+            var mh = H4.Match(lines[p]);
+            if (!mh.Success) { p++; continue; }
+            int q = p + 1;
+            while (q < end && !H4.IsMatch(lines[q])) q++;
+            var body = lines.Skip(p + 1).Take(q - (p + 1)).Where(l => !l.TrimStart().StartsWith("<figure")).ToList();
+            string name = HttpUtility.HtmlDecode(mh.Groups[1].Value.Replace("*", "")).Trim();
+
+            int level = 0;
+            var kept = new List<string>();
+            foreach (var l in body)
+            {
+                var hm = PoisonHeader.Match(l.Trim());
+                if (hm.Success && level == 0) { level = int.Parse(hm.Groups[1].Value); continue; }
+                kept.Add(l);
+            }
+
+            string property = CleanBody(kept);
+            string srcNorm = Normalizer.Norm(string.Join(" ", body));
+            if (property.Length > 0 && !Phase2.TextIsFaithful(property, srcNorm))
+            { fails++; failMsgs.Add($"{name} (Poisons): \"{Trunc(property)}\""); p = q; continue; }
+
+            string id = "ORCUS_MAGIC_" + Slug(name);
+            string baseId = id; int n = 2; while (!usedIds.Add(id)) id = $"{baseId}_{n++}";
+
+            sb.AppendLine($"- id: {id}");
+            sb.AppendLine($"  name: {Q(name)}");
+            sb.AppendLine($"  type: Magic Item");
+            sb.AppendLine($"  source: \"Orcus Original\"");
+            sb.AppendLine($"  fields:");
+            sb.AppendLine($"    \"Item Slot\": \"Consumable\"");
+            sb.AppendLine($"    \"Magic Item Type\": \"Consumable\"");
+            if (level >= 1 && level <= 30)
+            {
+                sb.AppendLine($"    \"Item Level\": \"{level}\"");
+                sb.AppendLine($"    Cost: {Q($"{Consumable[level] * 2:n0} gp")}");
+            }
+            sb.AppendLine($"    Keywords: \"Poison\"");
+            if (property.Length > 0)
+                foreach (var ln in Phase2.EmitFieldLines("Property", property, 4)) sb.AppendLine(ln);
+            p = q;
+        }
+        sb.AppendLine();
+    }
+
     static string CleanBody(List<string> lines)
     {
         var parts = new List<string>();
         foreach (var raw in lines)
         {
             var l = raw.Trim();
-            if (l.StartsWith("> ")) l = l.Substring(2).Trim();
+            if (l == ">") continue;                       // lone blockquote marker
+            if (l.StartsWith(">")) l = l.Substring(1).Trim();
             l = l.Replace("**", "").Replace("*", "").Replace("●", "").Replace("`", "")
                  .Replace("|", " ").Replace("#", "");
             l = l.TrimStart('-', ' ').Trim();

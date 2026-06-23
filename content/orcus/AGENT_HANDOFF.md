@@ -45,7 +45,8 @@ dotnet run --project tools/CharM.Orcus.Import -- <command> [args]
 | `generate-kits . <out.yaml>` | Emit "# Kits" chapter kits **not already** in `kits.yaml` → e.g. `kits-extra.yaml`. Theme + Has-Kit marker + associated-discipline access (grant, or a select for "one of the following") + L1/5/10 Class Features + embedded powers. Creates any missing shared `Discipline Access` elements. Companion tables (familiars) are skipped & flagged. Excludes its own output from the skip-existing scan. |
 | `generate-familiars . <out.yaml>` | Emit the Binds Familiar kit's familiar table → `content/orcus/familiars.yaml`. Each is a `"Familiar: X"` Power (engine familiar shape — no own stat block) tagged `ORCUS_FAMILIAR`; the Binds Familiar kit selects one. Distinct from the stat-block animal `Companion`s in `companions.yaml`. |
 | `generate-feats .` | Emit **all** feats from Player Options → `content/orcus/feats.yaml`. |
-| `generate-boosts . <out>` / `generate-misc .` / `generate-companions .` | Magic-item boosts / wondrous+consumables / companions. |
+| `generate-boosts . <out>` / `generate-misc .` / `generate-companions .` | Magic-item boosts / wondrous+slot+consumables (incl. **Poisons** as double-priced consumables) / companions. |
+| `generate-vehicles . <out.yaml>` | Emit the Advanced Options "# Vehicles" → `content/orcus/equipment/vehicles.yaml`. `Vehicle` elements: stats + verbatim Speed/Driver Skill/Description/Careen. |
 | `patch-class . <classFile> "<Name>" [bookGlob]` | Patch one class's fields from source. |
 | `patch-global . <file> <bookGlob>` | Patch fields across a file from a source book. |
 
@@ -127,7 +128,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2145 elements, 36 types, 0 audit flags, 0 invented.**
+Current state: **2186 elements, 37 types, 0 audit flags, 0 invented.**
 
 ## 8. Working agreement with the user
 
