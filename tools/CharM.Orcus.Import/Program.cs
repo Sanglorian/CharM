@@ -162,6 +162,15 @@ if (mode == "generate-backgrounds")
     return BackgroundGen.Generate(book, outP);
 }
 
+if (mode == "generate-arts")
+{
+    // generate-arts <repo-root> <out.yaml>
+    string aRoot = args[1];
+    string outP = args[2];
+    string book = Directory.EnumerateFiles(aRoot, "Orcus Advanced Options*.md").Single();
+    return ArtsGen.Generate(book, outP);
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>

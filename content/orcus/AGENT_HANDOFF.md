@@ -49,6 +49,7 @@ dotnet run --project tools/CharM.Orcus.Import -- <command> [args]
 | `generate-vehicles . <out.yaml>` | Emit the Advanced Options "# Vehicles" → `content/orcus/equipment/vehicles.yaml`. `Vehicle` elements: stats + verbatim Speed/Driver Skill/Description/Careen. |
 | `generate-deities . <out.yaml>` | Emit the Player Options "# Deities" (13 named setting gods) → `content/orcus/deities-named.yaml`. `Deity` elements: Title/Symbol/Portfolio/Favored Weapon + verbatim lore Description, round-trip gated. (The 4 mechanical "God of …" domain deities for the Worships kits stay in `deities.yaml`.) |
 | `generate-backgrounds . <out.yaml>` | Emit the Advanced Options "# Backgrounds" table (46 rows) → `content/orcus/backgrounds.yaml`. `Background` elements: verbatim Associated Skills + a shared Benefit note (the 3-way creation choice — related language / add a class skill / +2 to a skill — captured, not auto-applied). |
+| `generate-arts . <out.yaml>` | Emit the Advanced Options "# Arts" detail entries (80: practices + incantations) → `content/orcus/arts.yaml`. Each is a `Ritual` element so it plugs into the engine's rituals/practices machinery (listed as a learnable/purchasable art via `FindByType("Ritual")`; grouped on the sheet under "Rituals, Alchemy & Martial Practices"). Level/Skill/Category/Art Type/Market Price (Cost to Learn)/Component Cost/Time/Duration parsed; rules body is the verbatim Description, round-trip gated. |
 | `patch-class . <classFile> "<Name>" [bookGlob]` | Patch one class's fields from source. |
 | `patch-global . <file> <bookGlob>` | Patch fields across a file from a source book. |
 
@@ -130,16 +131,20 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2245 elements, 38 types, 0 audit flags, 0 invented.**
+Current state: **2325 elements, 39 types, 0 audit flags, 0 invented.**
 
 Character-creation content scan (latest pass): the clear gaps were **named
 deities** (`deities-named.yaml`, 13 setting gods) and **backgrounds**
 (`backgrounds.yaml`, 46 rows), both now generated. **Alignment** is already
 covered by the app's built-in dropdown (its 5 options match Orcus's five
-alignments exactly), so no content element is needed. **Combat Maneuvers**
-(8 universally-available powers) and **Arts** (the practices/incantations
-learn-system) are play subsystems rather than creation choices — left as
-future work, not part of character creation.
+alignments exactly), so no content element is needed. **Arts** (the 80
+practices + incantations) are now in `arts.yaml` as `Ritual` elements, plugging
+into the engine's existing rituals/practices machinery — they appear as
+learnable/purchasable arts and on the sheet's "Rituals, Alchemy & Martial
+Practices" panel; acquisition gating (skill training; the Gated Arts feats) is
+recorded via the Skill field, not auto-enforced. **Combat Maneuvers** (8
+universally-available powers) remain a play subsystem rather than a creation
+choice — left as future work.
 
 ## 8. Working agreement with the user
 
