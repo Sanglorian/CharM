@@ -50,6 +50,7 @@ dotnet run --project tools/CharM.Orcus.Import -- <command> [args]
 | `generate-deities . <out.yaml>` | Emit the Player Options "# Deities" (13 named setting gods) → `content/orcus/deities-named.yaml`. `Deity` elements: Title/Symbol/Portfolio/Favored Weapon + verbatim lore Description, round-trip gated. (The 4 mechanical "God of …" domain deities for the Worships kits stay in `deities.yaml`.) |
 | `generate-backgrounds . <out.yaml>` | Emit the Advanced Options "# Backgrounds" table (46 rows) → `content/orcus/backgrounds.yaml`. `Background` elements: verbatim Associated Skills + a shared Benefit note (the 3-way creation choice — related language / add a class skill / +2 to a skill — captured, not auto-applied). |
 | `generate-arts . <out.yaml>` | Emit the Advanced Options "# Arts" detail entries (80: practices + incantations) → `content/orcus/arts.yaml`. Each is a `Ritual` element so it plugs into the engine's rituals/practices machinery (listed as a learnable/purchasable art via `FindByType("Ritual")`; grouped on the sheet under "Rituals, Alchemy & Martial Practices"). Level/Skill/Category/Art Type/Market Price (Cost to Learn)/Component Cost/Time/Duration parsed; rules body is the verbatim Description, round-trip gated. |
+| `generate-variants . <out.yaml>` | Emit the curated player-facing optional rules ("Variant: …" sections across the books) → `content/orcus/variants.yaml` as toggleable `Variant` elements (verbatim intro Description, round-trip gated). The app's Campaign Settings panel lists every `House Rule`/`Variant` as an on/off toggle; enabling one applies its own `rules` and satisfies `requires`. Bonus Feats carries build rules (grant Keen Defenses + a Weapon Focus / Focused Caster pick at L11, via the `ORCUS_BONUS_FEAT_CHOICE` category set in Feats.cs). |
 | `patch-class . <classFile> "<Name>" [bookGlob]` | Patch one class's fields from source. |
 | `patch-global . <file> <bookGlob>` | Patch fields across a file from a source book. |
 
@@ -131,7 +132,18 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2325 elements, 39 types, 0 audit flags, 0 invented.**
+Current state: **2333 elements, 40 types, 0 audit flags, 0 invented.**
+
+House rules / variants are **toggleable**: the Web UI Campaign Settings panel
+(`Details.razor`) is data-driven — `SessionService.GetToggleableHouseRulesAndVariants()`
+lists every `House Rule` and `Variant` element as an on/off toggle alongside the
+built-in WotC ones. Toggling on adds the element as a campaign-setting free
+grant, so the engine runs its own `rules` (e.g. Bonus Feats' L11 grants) and any
+`requires: "<name>"` elsewhere evaluates true (the existing "Feats and Kits"
+house rule now surfaces here too, not just via the CLI `--feats-and-kits` flag).
+`variants.yaml` holds the 8 player-facing optional rules; descriptive-only ones
+(Nine-Point Alignment, No Negative HP, One Free Action, etc.) record the choice
+and show their verbatim rule text but have no auto-enforced mechanics.
 
 Character-creation content scan (latest pass): the clear gaps were **named
 deities** (`deities-named.yaml`, 13 setting gods) and **backgrounds**

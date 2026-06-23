@@ -49,6 +49,15 @@ public static class Feats
     // at 21") emit one statadd per tier, level-gated; because same-type ("Feat")
     // bonuses don't stack (highest wins), the higher tier simply supersedes the
     // lower once the character reaches that level.
+    // Element-level categories added to specific feats (beyond the per-feat
+    // "Feat Category" field). ORCUS_BONUS_FEAT_CHOICE tags the two feats the
+    // "Bonus Feats" variant (variants.yaml) lets a character pick between.
+    static readonly Dictionary<string, string[]> CategoryOverlay = new()
+    {
+        ["ORCUS_FEAT_WEAPON_FOCUS"] = new[] { "ORCUS_BONUS_FEAT_CHOICE" },
+        ["ORCUS_FEAT_FOCUSED_CASTER"] = new[] { "ORCUS_BONUS_FEAT_CHOICE" },
+    };
+
     static readonly Dictionary<string, string[]> RulesOverlay = new()
     {
         ["ORCUS_FEAT_ALERTNESS"] = new[] { "{ statadd: Perception, value: 2, bonusType: Feat }" },
@@ -289,6 +298,8 @@ public static class Feats
         sb.AppendLine($"  source: \"Orcus Original\"");
         if (PrereqOverlay.TryGetValue(id, out var prereq))
             sb.AppendLine($"  prereqs: {Q(prereq)}");
+        if (CategoryOverlay.TryGetValue(id, out var cats))
+            sb.AppendLine($"  categories: [{string.Join(", ", cats)}]");
         sb.AppendLine($"  fields:");
         if (category.Length > 0) sb.AppendLine($"    \"Feat Category\": {Q(category)}");
         foreach (var (key, val) in emit)

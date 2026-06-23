@@ -171,6 +171,14 @@ if (mode == "generate-arts")
     return ArtsGen.Generate(book, outP);
 }
 
+if (mode == "generate-variants")
+{
+    // generate-variants <repo-root> <out.yaml>
+    string vRoot = args[1];
+    string outP = args[2];
+    return VariantGen.Generate(vRoot, outP);
+}
+
 if (mode == "generate-companions")
 {
     // generate-companions <repo-root>

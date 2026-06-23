@@ -187,6 +187,25 @@ else
                                        @onchange="args => ToggleCampaignSetting(toggle.InternalId, args)" />
                             </label>
                         }
+                        @foreach (var rule in HouseRuleAndVariantToggles)
+                        {
+                            var enabled = SessionService.IsCampaignToggleEnabled(rule.InternalId!);
+                            var desc = rule.Fields.GetValueOrDefault("Description");
+                            <label class="flex items-start justify-between gap-4 rounded border border-outline-variant/20 bg-surface-container-lowest p-3">
+                                <span>
+                                    <span class="block font-headline text-sm font-bold text-on-surface">@rule.Name</span>
+                                    <span class="block text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/70">@rule.Type</span>
+                                    @if (!string.IsNullOrWhiteSpace(desc))
+                                    {
+                                        <span class="block text-xs text-on-surface-variant mt-0.5">@desc</span>
+                                    }
+                                </span>
+                                <input type="checkbox"
+                                       class="mt-1 h-4 w-4 accent-primary"
+                                       checked="@enabled"
+                                       @onchange="args => ToggleCampaignSetting(rule.InternalId!, args)" />
+                            </label>
+                        }
                     </div>
                 </DetailsSection>
 
@@ -267,6 +286,16 @@ else
         new("ID_FMP_PSEUDO_CLASS_216", "Spellscarred", "Enable the Forgotten Realms spellscarred pseudo-class option."),
         new("ID_INTERNAL_INTERNAL_HOUSE_VADALIS", "House Vadalis", "Mark the character as a member of House Vadalis."),
     ];
+
+    // House-rule / variant elements the active rules database exposes as toggles
+    // (e.g. Orcus's "Feats and Kits" house rule and the optional "Variant: …"
+    // rules), rendered after the built-in toggles above. Deduped against the
+    // hardcoded list so an element is never offered twice.
+    private IReadOnlyList<RulesElement> HouseRuleAndVariantToggles
+        => SessionService.GetToggleableHouseRulesAndVariants()
+            .Where(e => !CampaignToggles.Any(t =>
+                string.Equals(t.InternalId, e.InternalId, StringComparison.OrdinalIgnoreCase)))
+            .ToList();
 
     private static readonly FreeformDefinition[] DetailFields =
     [

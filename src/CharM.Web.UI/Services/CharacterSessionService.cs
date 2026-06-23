@@ -162,6 +162,23 @@ public sealed class CharacterSessionService : IDisposable
     public RulesElement? GetElementDetails(string internalId)
         => _db.FindByInternalId(internalId);
 
+    /// <summary>
+    /// House-rule / variant elements the current rules database exposes as
+    /// campaign toggles (e.g. the Orcus "Feats and Kits" house rule and the
+    /// optional "Variant: …" rules). The Campaign Settings panel renders these
+    /// alongside its built-in toggles; enabling one applies its own rules and
+    /// lets other content gate on it via <c>requires</c>.
+    /// </summary>
+    public IReadOnlyList<RulesElement> GetToggleableHouseRulesAndVariants()
+        => _db.FindByType("House Rule")
+            .Concat(_db.FindByType("Variant"))
+            .Where(e => !string.IsNullOrWhiteSpace(e.InternalId))
+            .GroupBy(e => e.InternalId, StringComparer.OrdinalIgnoreCase)
+            .Select(g => g.First())
+            .OrderBy(e => e.Type, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
     public bool IsCampaignToggleEnabled(string internalId)
         => _session?.HasCampaignSettingGrant(internalId) == true;
 

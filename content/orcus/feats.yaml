@@ -224,6 +224,7 @@
   type: Feat
   source: "Orcus Original"
   prereqs: "2nd level"
+  categories: [ORCUS_BONUS_FEAT_CHOICE]
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Level 2"
@@ -655,6 +656,7 @@
   type: Feat
   source: "Orcus Original"
   prereqs: "2nd level"
+  categories: [ORCUS_BONUS_FEAT_CHOICE]
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Level 2"
