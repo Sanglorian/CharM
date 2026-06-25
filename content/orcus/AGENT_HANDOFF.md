@@ -141,9 +141,13 @@ built-in WotC ones. Toggling on adds the element as a campaign-setting free
 grant, so the engine runs its own `rules` (e.g. Bonus Feats' L11 grants) and any
 `requires: "<name>"` elsewhere evaluates true (the existing "Feats and Kits"
 house rule now surfaces here too, not just via the CLI `--feats-and-kits` flag).
-`variants.yaml` holds the 8 player-facing optional rules; descriptive-only ones
-(Nine-Point Alignment, No Negative HP, One Free Action, etc.) record the choice
-and show their verbatim rule text but have no auto-enforced mechanics.
+`variants.yaml` holds the 8 player-facing optional rules. **Nine-Point
+Alignment** is wired into the UI: while it is toggled on, the Home page's
+Alignment dropdown offers the nine-alignment set instead of the default five
+(`Home.razor`, keyed on the `ORCUS_VARIANT_NINE_POINT_ALIGNMENT` toggle).
+Bonus Feats grants its L11 feats. The remaining descriptive-only variants
+(No Negative HP, One Free Action, No Small-Weapon Limits, etc.) record the
+choice and show their verbatim rule text but have no auto-enforced mechanics.
 
 Character-creation content scan (latest pass): the clear gaps were **named
 deities** (`deities-named.yaml`, 13 setting gods) and **backgrounds**

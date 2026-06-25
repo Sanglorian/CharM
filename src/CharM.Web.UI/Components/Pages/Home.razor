@@ -1272,9 +1272,19 @@ else
     // Gameplay resource tracking
     private int _actionPoints = 1;
 
-    // Alignment editing
+    // Alignment editing. The default five-alignment set; when the Orcus
+    // "Nine-Point Alignment" variant (variants.yaml) is toggled on in Campaign
+    // Settings, the dropdown offers the nine-alignment set instead. For WotC and
+    // any ruleset without that variant the toggle is never enabled, so the
+    // five-alignment list shows as before.
     private bool _editingAlignment;
-    private static readonly string[] _alignments = ["Lawful Good", "Good", "Unaligned", "Evil", "Chaotic Evil"];
+    private static readonly string[] _fiveAlignments = ["Lawful Good", "Good", "Unaligned", "Evil", "Chaotic Evil"];
+    private static readonly string[] _nineAlignments =
+        ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"];
+    private string[] _alignments
+        => SessionService.IsCampaignToggleEnabled("ORCUS_VARIANT_NINE_POINT_ALIGNMENT")
+            ? _nineAlignments
+            : _fiveAlignments;
 
     // Equipment browser state
     private bool _showEquipmentModal;
