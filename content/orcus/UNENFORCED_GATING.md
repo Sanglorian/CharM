@@ -38,6 +38,21 @@ low-light species).
   - **focus surge / the Meditate action** both come from the existing **Focused**
     feature (no new element needed): Mind and Body and Phrenic Meditation now
     AND-in `Focused`.
+- **Choice-dependent proficiency/skill feats** (Skill Focus, Armor Proficiency,
+  Shield Proficiency) are now enforced by moving the prereq onto each *option*
+  the feat selects (the requirement depends on *which* skill/armor/shield you
+  pick, which a feat-level prereq can't see). The key engine fact: **`select`
+  candidates are prereq-filtered, but `grant`s are not** — so a per-option prereq
+  gates the feat's pick without affecting a class's grant of the same element.
+  - **Skill Focus** — each `Skill Focus (X)` option carries `prereqs: "X"`, so
+    only trained skills are offered.
+  - **Armor Proficiency** — each armor's `Proficiency` element carries its prereq
+    (Hide → `Str 13, Con 13, Armor Proficiency (Leather)`; Chainmail →
+    `… Leather or … Hide`; Scale → `… Chainmail`; Plate →
+    `Str 15, Con 15, Armor Proficiency (Scale)`). The lower-armor chain resolves
+    naturally; class-granted armor is unaffected.
+  - **Shield Proficiency** — Light → `Str 13`; Heavy →
+    `Str 15, Armor Proficiency (Light Shield)`.
 
 ---
 
@@ -46,11 +61,8 @@ low-light species).
 | Feat | Prerequisite (source) | Why it isn't enforced |
 |---|---|---|
 | Athame | Proficiency with one or more focuses | Focus/implement proficiency is a descriptive field on the class, not a grantable element (the engine applies no non-proficiency penalty) |
-| Skill Focus | At least one rank in the chosen skill | "the chosen skill" is this feat's own per-instance pick, invisible to prereq evaluation |
-| Armor Proficiency | Str/Con + proficiency with a lower armor (varies by armor chosen) | Choice-dependent: the requirement differs per armor the feat grants |
-| Shield Proficiency | Str + proficient with light shields (varies) | Choice-dependent (light vs heavy) |
-| Versatile Shifting | You know at least one shape of the *X* power | Templated ("X") + references the chosen power instance |
-| Dualclass Recruit | You cannot already have a secondary class | "has a secondary class" is build-state, not a named element |
+| Versatile Shifting | You know at least one shape of the *X* power | The "shape of the X" power family isn't tagged with a category yet (fixable: tag the 20 `Shape of the …` powers + `category:` prereq) |
+| Dualclass Recruit | You cannot already have a secondary class | No element represents "has a secondary class" yet (fixable: a shared `Secondary Class` marker granted by the dualclass feat + Dabbles-in kits, gated `!Secondary Class`) |
 
 ## 2. Prestige path entry requirements
 

@@ -126,12 +126,12 @@
 # === Armor proficiency elements ===============================================
 - { id: ORCUS_APROF_CLOTH, name: "Armor Proficiency (Cloth)", type: Proficiency, source: "Orcus Original" }
 - { id: ORCUS_APROF_LEATHER, name: "Armor Proficiency (Leather)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_ARMOR_PROFS] }
-- { id: ORCUS_APROF_HIDE, name: "Armor Proficiency (Hide)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_ARMOR_PROFS] }
-- { id: ORCUS_APROF_CHAINMAIL, name: "Armor Proficiency (Chainmail)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_ARMOR_PROFS] }
-- { id: ORCUS_APROF_SCALE, name: "Armor Proficiency (Scale)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_ARMOR_PROFS] }
-- { id: ORCUS_APROF_PLATE, name: "Armor Proficiency (Plate)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_ARMOR_PROFS] }
-- { id: ORCUS_APROF_LIGHT_SHIELD, name: "Armor Proficiency (Light Shield)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_SHIELD_PROFS] }
-- { id: ORCUS_APROF_HEAVY_SHIELD, name: "Armor Proficiency (Heavy Shield)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_SHIELD_PROFS] }
+- { id: ORCUS_APROF_HIDE, name: "Armor Proficiency (Hide)", type: Proficiency, source: "Orcus Original", prereqs: "Str 13, Con 13, Armor Proficiency (Leather)", categories: [ORCUS_ARMOR_PROFS] }
+- { id: ORCUS_APROF_CHAINMAIL, name: "Armor Proficiency (Chainmail)", type: Proficiency, source: "Orcus Original", prereqs: "Str 13, Con 13, Armor Proficiency (Leather) or Armor Proficiency (Hide)", categories: [ORCUS_ARMOR_PROFS] }
+- { id: ORCUS_APROF_SCALE, name: "Armor Proficiency (Scale)", type: Proficiency, source: "Orcus Original", prereqs: "Str 13, Con 13, Armor Proficiency (Chainmail)", categories: [ORCUS_ARMOR_PROFS] }
+- { id: ORCUS_APROF_PLATE, name: "Armor Proficiency (Plate)", type: Proficiency, source: "Orcus Original", prereqs: "Str 15, Con 15, Armor Proficiency (Scale)", categories: [ORCUS_ARMOR_PROFS] }
+- { id: ORCUS_APROF_LIGHT_SHIELD, name: "Armor Proficiency (Light Shield)", type: Proficiency, source: "Orcus Original", prereqs: "Str 13", categories: [ORCUS_SHIELD_PROFS] }
+- { id: ORCUS_APROF_HEAVY_SHIELD, name: "Armor Proficiency (Heavy Shield)", type: Proficiency, source: "Orcus Original", prereqs: "Str 15, Armor Proficiency (Light Shield)", categories: [ORCUS_SHIELD_PROFS] }
 
 - id: ORCUS_PROFGRANT_ARMOR_LIGHT
   name: Light Armor Proficiency

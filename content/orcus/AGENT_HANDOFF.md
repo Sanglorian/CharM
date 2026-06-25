@@ -223,12 +223,18 @@ choice — left as future work.
   Breathstealer), the **Dabbler** feature (`ORCUS_FEATURE_DABBLER`, granted by the
   Destined crux; Phrenic Reservoir), and **focus surge / Meditate** which both map
   to the existing **Focused** feature (Mind and Body, Phrenic Meditation).
-- Still **not** enforced (see `UNENFORCED_GATING.md`), all inherently
-  choice-dependent / descriptive: focus/implement proficiency (a descriptive
-  field, no penalty — Athame), Skill Focus's "rank in the chosen skill", the
-  choice-dependent armor/shield ability minimums (Armor/Shield Proficiency
-  feats), Versatile Shifting's templated power, and Dualclass Recruit's "already
-  have a secondary class" (build-state). Two-Weapon Defense enforces only `Dex 13`.
+- **Choice-dependent feats are enforced per-option**: Skill Focus, Armor
+  Proficiency and Shield Proficiency now carry the prereq on each *option* they
+  select (e.g. `Skill Focus (Athletics)` → `prereqs: "Athletics"`; per-armor
+  Str/Con + lower-armor chain on the `Armor Proficiency (…)` elements). This works
+  because `select` candidates are prereq-filtered while `grant`s are not, so the
+  feat's menu is gated without affecting class grants of the same element.
+  Runtime-verified.
+- Still **not** enforced (see `UNENFORCED_GATING.md`): focus/implement
+  proficiency (a descriptive field, no penalty — Athame), Versatile Shifting's
+  "shape of the X" power family (needs a category tag), and Dualclass Recruit's
+  "already have a secondary class" (needs a Secondary Class marker). Two-Weapon
+  Defense enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

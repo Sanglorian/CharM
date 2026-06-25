@@ -309,21 +309,21 @@
 # The Skill Focus feat picks one of these (category ORCUS_SKILL_FOCUS): a +3 feat
 # bonus to that skill. bonusType Feat → it does not stack with itself or with
 # another feat bonus to the same skill (matches the feat's "effects do not stack").
-- { id: ORCUS_SKILLFOCUS_ACROBATICS, name: "Skill Focus (Acrobatics)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Acrobatics, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_ARCANA, name: "Skill Focus (Arcana)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Arcana, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_ATHLETICS, name: "Skill Focus (Athletics)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Athletics, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_BLUFF, name: "Skill Focus (Bluff)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Bluff, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_DIPLOMACY, name: "Skill Focus (Diplomacy)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Diplomacy, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_DUNGEONEERING, name: "Skill Focus (Dungeoneering)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Dungeoneering, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_ENDURE, name: "Skill Focus (Endure)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Endure, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_HEAL, name: "Skill Focus (Heal)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Heal, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_HISTORY, name: "Skill Focus (History)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: History, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_INSIGHT, name: "Skill Focus (Insight)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Insight, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_INTIMIDATE, name: "Skill Focus (Intimidate)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Intimidate, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_NATURE, name: "Skill Focus (Nature)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Nature, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_PERCEPTION, name: "Skill Focus (Perception)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Perception, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_RELIGION, name: "Skill Focus (Religion)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Religion, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_SLEIGHT_OF_HAND, name: "Skill Focus (Sleight of Hand)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Sleight of Hand, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_STEALTH, name: "Skill Focus (Stealth)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Stealth, value: 3, bonusType: Feat }] }
-- { id: ORCUS_SKILLFOCUS_STREETSMARTS, name: "Skill Focus (Streetsmarts)", type: Skill Focus, source: "Orcus Original", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Streetsmarts, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_ACROBATICS, name: "Skill Focus (Acrobatics)", type: Skill Focus, source: "Orcus Original", prereqs: "Acrobatics", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Acrobatics, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_ARCANA, name: "Skill Focus (Arcana)", type: Skill Focus, source: "Orcus Original", prereqs: "Arcana", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Arcana, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_ATHLETICS, name: "Skill Focus (Athletics)", type: Skill Focus, source: "Orcus Original", prereqs: "Athletics", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Athletics, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_BLUFF, name: "Skill Focus (Bluff)", type: Skill Focus, source: "Orcus Original", prereqs: "Bluff", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Bluff, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_DIPLOMACY, name: "Skill Focus (Diplomacy)", type: Skill Focus, source: "Orcus Original", prereqs: "Diplomacy", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Diplomacy, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_DUNGEONEERING, name: "Skill Focus (Dungeoneering)", type: Skill Focus, source: "Orcus Original", prereqs: "Dungeoneering", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Dungeoneering, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_ENDURE, name: "Skill Focus (Endure)", type: Skill Focus, source: "Orcus Original", prereqs: "Endure", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Endure, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_HEAL, name: "Skill Focus (Heal)", type: Skill Focus, source: "Orcus Original", prereqs: "Heal", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Heal, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_HISTORY, name: "Skill Focus (History)", type: Skill Focus, source: "Orcus Original", prereqs: "History", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: History, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_INSIGHT, name: "Skill Focus (Insight)", type: Skill Focus, source: "Orcus Original", prereqs: "Insight", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Insight, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_INTIMIDATE, name: "Skill Focus (Intimidate)", type: Skill Focus, source: "Orcus Original", prereqs: "Intimidate", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Intimidate, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_NATURE, name: "Skill Focus (Nature)", type: Skill Focus, source: "Orcus Original", prereqs: "Nature", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Nature, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_PERCEPTION, name: "Skill Focus (Perception)", type: Skill Focus, source: "Orcus Original", prereqs: "Perception", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Perception, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_RELIGION, name: "Skill Focus (Religion)", type: Skill Focus, source: "Orcus Original", prereqs: "Religion", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Religion, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_SLEIGHT_OF_HAND, name: "Skill Focus (Sleight of Hand)", type: Skill Focus, source: "Orcus Original", prereqs: "Sleight of Hand", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Sleight of Hand, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_STEALTH, name: "Skill Focus (Stealth)", type: Skill Focus, source: "Orcus Original", prereqs: "Stealth", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Stealth, value: 3, bonusType: Feat }] }
+- { id: ORCUS_SKILLFOCUS_STREETSMARTS, name: "Skill Focus (Streetsmarts)", type: Skill Focus, source: "Orcus Original", prereqs: "Streetsmarts", categories: [ORCUS_SKILL_FOCUS], rules: [{ statadd: Streetsmarts, value: 3, bonusType: Feat }] }
 
