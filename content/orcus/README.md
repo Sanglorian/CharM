@@ -71,7 +71,7 @@ for the format.
 | `equipment/magic-items-consumables.yaml` | Consumables — oils, tonics (six +1…+6 versions) and potions (healing, heroism, vitality, resurrection, …) |
 | `equipment/magic-items-wondrous.yaml` | The specific slot items (head/waist/arms/hands/ring/feet/wondrous) — Helm of Brilliance, Belt of Giant Strength, Ring of Regeneration, Boots of Speed, Portable Hole, … |
 
-Compiles to **2333 elements across 40 types**, no warnings.
+Compiles to **2336 elements across 40 types**, no warnings.
 
 > **Discipline content is machine-generated.** Every `disciplines/*.yaml` file is
 > produced verbatim from the source rulebooks by `tools/CharM.Orcus.Import` and

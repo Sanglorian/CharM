@@ -192,11 +192,20 @@
       Some great event or portent at your birth set your heroism in motion,
       through no choice of your own. +2 History
     "Face the Elements": "Resistance to fire and cold damage 5 + half your level."
-    Dabbler: >-
-      Choose a level 1 at-will attack power from any class. It is an encounter
-      power for you.
   rules:
     - { statadd: History, value: +2, bonusType: Ancestry }
+    # Dabbler is modelled as a discrete feature element so prereqs can require it
+    # (e.g. the Phrenic Reservoir feat — "Dabbler ancestry feature").
+    - { grant: ORCUS_FEATURE_DABBLER, type: Class Feature }
+
+- id: ORCUS_FEATURE_DABBLER
+  name: Dabbler
+  type: Class Feature
+  source: "Orcus Original"
+  fields:
+    Description: >-
+      Choose a level 1 at-will attack power from any class. It is an encounter
+      power for you.
 
 - id: ORCUS_CRUX_ESCAPED
   name: Escaped

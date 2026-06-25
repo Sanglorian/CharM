@@ -131,17 +131,17 @@ public static class Feats
         ["ORCUS_FEAT_TOUGHENED_SHIELD"] = "Armor Proficiency (Heavy Shield)",
         // "Psi focus power" — the psi focus power is granted by the Wild Talent
         // feat (and the Channels Godmind kit's "Psi Focus" feature), so that's the
-        // gate. Where a secondary ancestry power is also required and modelled, it
-        // is AND-ed in. Still unmodelled (gate-only): focus surge, the Meditate
-        // action, and the Dabbler feature (none exist as discrete elements).
+        // gate. Secondary requirements are AND-ed in: ancestry powers; "focus
+        // surge" and "the Meditate action" both come from the "Focused" feature;
+        // "Dabbler ancestry feature" is the Dabbler feature (granted by Destined).
         ["ORCUS_FEAT_ADAPTATION"] = "Wild Talent or Psi Focus",
         ["ORCUS_FEAT_IMMOVABLE_DOMINION"] = "Wild Talent or Psi Focus",
-        ["ORCUS_FEAT_MIND_AND_BODY"] = "Wild Talent or Psi Focus",                       // + focus surge (unmodelled)
+        ["ORCUS_FEAT_MIND_AND_BODY"] = "Wild Talent or Psi Focus, Focused",              // focus surge ← Focused feature
         ["ORCUS_FEAT_MIND_EYE_ACCURACY"] = "Wild Talent or Psi Focus, Careful Focus",
         ["ORCUS_FEAT_PHRENIC_BREATH"] = "Wild Talent or Psi Focus, Breath Weapon",
         ["ORCUS_FEAT_PHRENIC_DODGE"] = "Wild Talent or Psi Focus, Lucky",
-        ["ORCUS_FEAT_PHRENIC_MEDITATION"] = "Wild Talent or Psi Focus",                  // + Meditate action (unmodelled)
-        ["ORCUS_FEAT_PHRENIC_RESERVOIR"] = "Wild Talent or Psi Focus",                   // + Dabbler feature (unmodelled)
+        ["ORCUS_FEAT_PHRENIC_MEDITATION"] = "Wild Talent or Psi Focus, Focused",         // Meditate action ← Focused feature
+        ["ORCUS_FEAT_PHRENIC_RESERVOIR"] = "Wild Talent or Psi Focus, Dabbler",
         ["ORCUS_FEAT_PHRENIC_TALENT"] = "Wild Talent or Psi Focus",
         ["ORCUS_FEAT_PHRENIC_TELEPORT"] = "Wild Talent or Psi Focus, Highblood Teleport",
         ["ORCUS_FEAT_PHRENIC_WRATH"] = "Wild Talent or Psi Focus, Vengeance of the Pits",

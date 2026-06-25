@@ -1,0 +1,26 @@
+# The garrote (Orcus Rulebook, "Special Weapons") — an exotic special weapon that
+# "does not follow the normal weapon creation rules". Hand-authored (it isn't in
+# the Basic weapon table): the Flavor / Requirements / Property are verbatim from
+# the source and pass the audit gate. The matching "Weapon Proficiency (Garrote)"
+# element is tagged ORCUS_WEAPON_PROFS so the Weapon Proficiency feat can grant it
+# (and so the Breathstealer prestige path's "Proficiency with garrote" entry
+# requirement is satisfiable / enforceable).
+
+- id: ORCUS_WEAPON_GARROTE
+  name: "Garrote"
+  type: Weapon
+  source: "Orcus Original"
+  categories: [Melee, Exotic]
+  fields:
+    Flavor: "A simple wire, when used properly, can disable or kill an opponent in seconds."
+    Damage: "1d4"
+    Requirements: >-
+      You can only use a garrote against a target granting you combat advantage
+      which is not aware of you. You can only use the garrote with a melee basic
+      attack or specific powers which utilize the garrote.
+    Property: >-
+      When you hit with a garrote, you grapple the target. The target cannot
+      speak while grappled. The target is dazed while the grapple is in effect.
+      The target also suffers a -2 penalty to escape attempts.
+
+- { id: ORCUS_WPROF_GARROTE, name: "Weapon Proficiency (Garrote)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_WEAPON_PROFS] }

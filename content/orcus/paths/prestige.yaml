@@ -338,6 +338,7 @@
   name: "Breathstealer"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Weapon Proficiency (Garrote)"
   fields:
     Requirements: "Proficiency with garrote."
     Description: >-

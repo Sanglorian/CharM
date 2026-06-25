@@ -132,7 +132,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2333 elements, 40 types, 0 audit flags, 0 invented.**
+Current state: **2336 elements, 40 types, 0 audit flags, 0 invented.**
 
 House rules / variants are **toggleable**: the Web UI Campaign Settings panel
 (`Details.razor`) is data-driven — `SessionService.GetToggleableHouseRulesAndVariants()`
@@ -218,13 +218,17 @@ choice — left as future work.
   crossbow `Weapon Proficiency (…)` elements, Bashing/Toughened Shield → the
   shield `Armor Proficiency (…)`). Runtime-verified via `GetCandidatesForSlot(
   skipPrereqs:false)`.
-- Still **not** enforced (see `UNENFORCED_GATING.md`): focus/implement
-  proficiency (a descriptive field, no penalty), the *focus surge* power / the
-  *Meditate* action / the *Dabbler* feature (not discrete elements — psi-focus
-  gate still applies), Skill Focus's "rank in the chosen skill", the
-  choice-dependent armor/shield ability minimums, Versatile Shifting's templated
-  power, Dualclass Recruit's "already have a secondary class", and Breathstealer's
-  garrote (the weapon isn't transcribed). Two-Weapon Defense enforces only `Dex 13`.
+- The three formerly-missing elements were transcribed and wired: the **Garrote**
+  exotic weapon + `Weapon Proficiency (Garrote)` (`equipment/garrote.yaml`;
+  Breathstealer), the **Dabbler** feature (`ORCUS_FEATURE_DABBLER`, granted by the
+  Destined crux; Phrenic Reservoir), and **focus surge / Meditate** which both map
+  to the existing **Focused** feature (Mind and Body, Phrenic Meditation).
+- Still **not** enforced (see `UNENFORCED_GATING.md`), all inherently
+  choice-dependent / descriptive: focus/implement proficiency (a descriptive
+  field, no penalty — Athame), Skill Focus's "rank in the chosen skill", the
+  choice-dependent armor/shield ability minimums (Armor/Shield Proficiency
+  feats), Versatile Shifting's templated power, and Dualclass Recruit's "already
+  have a secondary class" (build-state). Two-Weapon Defense enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

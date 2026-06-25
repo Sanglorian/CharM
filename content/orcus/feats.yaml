@@ -1086,7 +1086,7 @@
   name: "Mind and Body"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Focused"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, focus surge"
@@ -1137,7 +1137,7 @@
   name: "Phrenic Meditation"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Focused"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, you can perform the Meditate action"
@@ -1148,7 +1148,7 @@
   name: "Phrenic Reservoir"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Dabbler"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, Dabbler ancestry feature"

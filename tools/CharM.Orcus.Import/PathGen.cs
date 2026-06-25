@@ -63,6 +63,7 @@ public static class PathGen
         ["ORCUS_PRESTIGE_ASSASSIN"] = "Simple Melee Weapon Proficiency, Simple Ranged Weapon Proficiency",
         ["ORCUS_PRESTIGE_DARKWOOD_ARCHER"] = "Martial Ranged Weapon Proficiency",   // "military ranged"
         ["ORCUS_PRESTIGE_DEADEYE_ARBALESTER"] = "Weapon Proficiency (Light crossbow), Weapon Proficiency (Heavy crossbow)",
+        ["ORCUS_PRESTIGE_BREATHSTEALER"] = "Weapon Proficiency (Garrote)",   // garrote is a transcribed exotic weapon (equipment/garrote.yaml)
     };
 
     public static int Generate(string sourceFile, string outPath, string contentDir)

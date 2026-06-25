@@ -29,6 +29,15 @@ low-light species).
   Teleport, Vengeance of the Pits all exist as elements and are now AND-ed into
   the relevant Phrenic feats. (Spellwright/Weapon Master/Fling Familiar/Hardy
   Shift/Hybrid Form and the psi-focus gate were wired in the previous pass.)
+- **Transcribed the last three missing elements** and wired them:
+  - **Garrote** (`equipment/garrote.yaml`) — the exotic special weapon + a
+    `Weapon Proficiency (Garrote)` element (tagged `ORCUS_WEAPON_PROFS`, so the
+    Weapon Proficiency feat can grant it). Breathstealer → that proficiency.
+  - **Dabbler** (`ORCUS_FEATURE_DABBLER`, granted by the Destined crux) — Phrenic
+    Reservoir's "Dabbler ancestry feature" clause.
+  - **focus surge / the Meditate action** both come from the existing **Focused**
+    feature (no new element needed): Mind and Body and Phrenic Meditation now
+    AND-in `Focused`.
 
 ---
 
@@ -37,27 +46,19 @@ low-light species).
 | Feat | Prerequisite (source) | Why it isn't enforced |
 |---|---|---|
 | Athame | Proficiency with one or more focuses | Focus/implement proficiency is a descriptive field on the class, not a grantable element (the engine applies no non-proficiency penalty) |
-| Mind and Body | Psi focus power, **focus surge** | The *focus surge* power isn't modelled as a discrete element (it's embedded in the psi-focus mechanic text); the psi-focus gate IS enforced |
-| Phrenic Meditation | Psi focus power, **can perform the Meditate action** | An action capability, not an element; psi-focus gate enforced |
-| Phrenic Reservoir | Psi focus power, **Dabbler ancestry feature** | "Dabbler" isn't a discrete element (it's the Humanity default feature, recorded descriptively); psi-focus gate enforced |
 | Skill Focus | At least one rank in the chosen skill | "the chosen skill" is this feat's own per-instance pick, invisible to prereq evaluation |
 | Armor Proficiency | Str/Con + proficiency with a lower armor (varies by armor chosen) | Choice-dependent: the requirement differs per armor the feat grants |
 | Shield Proficiency | Str + proficient with light shields (varies) | Choice-dependent (light vs heavy) |
 | Versatile Shifting | You know at least one shape of the *X* power | Templated ("X") + references the chosen power instance |
 | Dualclass Recruit | You cannot already have a secondary class | "has a secondary class" is build-state, not a named element |
 
-## 2. Prestige path entry requirements still unenforced
+## 2. Prestige path entry requirements
 
-Enforced: Battlefield Healer, Shadowsneak, Silver Tongue, Ring Fighter,
-Spellwright, Weapon Master, **Assassin**, **Darkwood Archer**, **Deadeye
-Arbalester**. Still open:
-
-| Path | Requirement | Why it isn't enforced |
-|---|---|---|
-| Breathstealer | Proficiency with garrote | The garrote weapon (and its proficiency element) isn't transcribed in the equipment content, so there's nothing to require — fixable by adding the weapon |
-
-Blank-requirement paths have none; **epic** path requirements are narrative
-roleplay gates by design.
+**All stated prestige-path requirements are now enforced**: Battlefield Healer,
+Shadowsneak, Silver Tongue, Ring Fighter, Spellwright, Weapon Master, Assassin,
+Darkwood Archer, Deadeye Arbalester, and Breathstealer (garrote). Blank-
+requirement paths have none; **epic** path requirements are narrative roleplay
+gates by design.
 
 ## 3. Conditional / always-on effects not applied
 
