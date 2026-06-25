@@ -25,6 +25,7 @@
   name: "Arcane Archer"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Athame"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Athame (ranged or thrown weapon)."
@@ -118,6 +119,7 @@
   name: "Bashing Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Armor Proficiency (Light Shield)"
   fields:
     "Feat Category": "General Feats"
     Flavor: "You can push back enemies when the situation becomes dire."
@@ -385,6 +387,7 @@
   name: "Night Sight"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Low-light"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Low-light vision."
@@ -596,6 +599,7 @@
   name: "Toughened Shield"
   type: Feat
   source: "Orcus Original"
+  prereqs: "Armor Proficiency (Heavy Shield)"
   fields:
     "Feat Category": "General Feats"
     Flavor: >-
@@ -1094,7 +1098,7 @@
   name: "Mind-Eye Accuracy"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Careful Focus"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, careful focus power"
@@ -1107,7 +1111,7 @@
   name: "Phrenic Breath"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Breath Weapon"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, breath weapon power"
@@ -1120,7 +1124,7 @@
   name: "Phrenic Dodge"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Lucky"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, lucky power"
@@ -1173,7 +1177,7 @@
   name: "Phrenic Teleport"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Highblood Teleport"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, highblood teleport power"
@@ -1186,7 +1190,7 @@
   name: "Phrenic Wrath"
   type: Feat
   source: "Orcus Original"
-  prereqs: "Wild Talent or Psi Focus"
+  prereqs: "Wild Talent or Psi Focus, Vengeance of the Pits"
   fields:
     "Feat Category": "Psi Focus Feats"
     Prerequisite: "Psi focus power, vengeance of the pits power"

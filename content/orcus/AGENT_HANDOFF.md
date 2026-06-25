@@ -206,17 +206,25 @@ choice — left as future work.
   has **any** active element in a category or with a Keywords-field tag. It wired:
   Fling Familiar (`category:ORCUS_FAMILIAR`), Hardy Shift / Hybrid Form
   (`keyword:Form`), Spellwright (`category:Arcane` — only the two arcane classes
-  carry it), Weapon Master (`keyword:Martial`). The 12 Psi/Phrenic feats use the
+  carry it), Weapon Master (`keyword:Martial`). The Psi/Phrenic feats use the
   existing `or` form (`Wild Talent or Psi Focus`, since the *psi focus* power
-  lives inside the Wild Talent feat / Channels Godmind's Psi Focus feature).
-- Still **not** enforced (see `UNENFORCED_GATING.md` for the full table with
-  reasons): proficiency-with-a-specific-weapon/shield/focus and weapon-**group**
-  requirements (Orcus proficiency elements are per-weapon, and "Proficiency
-  with…" phrasing ≠ the parser's `proficient with X`), low-light vision, Skill
-  Focus's "rank in the chosen skill", the choice-dependent armor/shield ability
-  minimums, Dualclass Recruit's "already have a secondary class", and the
-  secondary named-power clauses on some Psi feats (focus surge, careful focus, …
-  aren't modelled as elements). Two-Weapon Defense enforces only `Dex 13`.
+  lives inside the Wild Talent feat / Channels Godmind's Psi Focus feature),
+  AND-ing in the secondary ancestry power where modelled (Careful Focus, Breath
+  Weapon, Lucky, Highblood Teleport, Vengeance of the Pits).
+- **Vision, weapon groups, and ancestry powers ARE modelled** and now enforced:
+  `Vision` elements (Night Sight → `Low-light`); per-category proficiency `Grants`
+  bundles a class grants (Assassin → `Simple Melee/Ranged Weapon Proficiency`,
+  Darkwood Archer → `Martial Ranged Weapon Proficiency`, Deadeye → the two
+  crossbow `Weapon Proficiency (…)` elements, Bashing/Toughened Shield → the
+  shield `Armor Proficiency (…)`). Runtime-verified via `GetCandidatesForSlot(
+  skipPrereqs:false)`.
+- Still **not** enforced (see `UNENFORCED_GATING.md`): focus/implement
+  proficiency (a descriptive field, no penalty), the *focus surge* power / the
+  *Meditate* action / the *Dabbler* feature (not discrete elements — psi-focus
+  gate still applies), Skill Focus's "rank in the chosen skill", the
+  choice-dependent armor/shield ability minimums, Versatile Shifting's templated
+  power, Dualclass Recruit's "already have a secondary class", and Breathstealer's
+  garrote (the weapon isn't transcribed). Two-Weapon Defense enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

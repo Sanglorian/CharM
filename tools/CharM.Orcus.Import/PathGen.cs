@@ -58,6 +58,11 @@ public static class PathGen
         ["ORCUS_PRESTIGE_RING_FIGHTER"] = "Unarmed Combat",      // Unarmed Combat feat
         ["ORCUS_PRESTIGE_SPELLWRIGHT"] = "category:Arcane",      // Arcane class (Mageblade/Magician carry the Arcane category)
         ["ORCUS_PRESTIGE_WEAPON_MASTER"] = "keyword:Martial",    // One or more of your powers has the Martial tag
+        // Weapon-group / single-weapon proficiency via the per-category Grants
+        // bundle elements a class grants (or the per-weapon Proficiency element).
+        ["ORCUS_PRESTIGE_ASSASSIN"] = "Simple Melee Weapon Proficiency, Simple Ranged Weapon Proficiency",
+        ["ORCUS_PRESTIGE_DARKWOOD_ARCHER"] = "Martial Ranged Weapon Proficiency",   // "military ranged"
+        ["ORCUS_PRESTIGE_DEADEYE_ARBALESTER"] = "Weapon Proficiency (Light crossbow), Weapon Proficiency (Heavy crossbow)",
     };
 
     public static int Generate(string sourceFile, string outPath, string contentDir)

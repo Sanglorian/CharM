@@ -16,6 +16,7 @@
   name: "Assassin"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Simple Melee Weapon Proficiency, Simple Ranged Weapon Proficiency"
   fields:
     Requirements: "Proficiency with simple melee and ranged weapons."
     Description: >-
@@ -446,6 +447,7 @@
   name: "Darkwood Archer"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Martial Ranged Weapon Proficiency"
   fields:
     Requirements: "Proficiency with military ranged weapons."
   rules:
@@ -545,6 +547,7 @@
   name: "Deadeye Arbalester"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "Weapon Proficiency (Light crossbow), Weapon Proficiency (Heavy crossbow)"
   fields:
     Requirements: "Proficiency with light and heavy crossbows."
     Description: >-
