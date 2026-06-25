@@ -132,7 +132,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2336 elements, 40 types, 0 audit flags, 0 invented.**
+Current state: **2337 elements, 40 types, 0 audit flags, 0 invented.**
 
 House rules / variants are **toggleable**: the Web UI Campaign Settings panel
 (`Details.razor`) is data-driven — `SessionService.GetToggleableHouseRulesAndVariants()`
@@ -230,11 +230,16 @@ choice — left as future work.
   because `select` candidates are prereq-filtered while `grant`s are not, so the
   feat's menu is gated without affecting class grants of the same element.
   Runtime-verified.
-- Still **not** enforced (see `UNENFORCED_GATING.md`): focus/implement
-  proficiency (a descriptive field, no penalty — Athame), Versatile Shifting's
-  "shape of the X" power family (needs a category tag), and Dualclass Recruit's
-  "already have a secondary class" (needs a Secondary Class marker). Two-Weapon
-  Defense enforces only `Dex 13`.
+- **Versatile Shifting** → `category:ORCUS_SHAPE_POWER` (the 20 `Shape of the …`
+  powers are tagged by name prefix in `Phase2`). **Dualclass Recruit** + the
+  Dabbles-in multiclass kits share a `Secondary Class` marker (granted by each,
+  gated `!Secondary Class`) so you can't take two — Theme/kit selects honour
+  prereqs (runtime-verified).
+- Still **not** enforced (see `UNENFORCED_GATING.md`): only Athame's
+  "proficiency with one or more focuses" — focus/implement proficiency is a
+  descriptive field (no element, no penalty); fix is to model it like weapon
+  proficiency. The Dabbles kits' "belong to the X class" half is also still
+  descriptive. Two-Weapon Defense enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

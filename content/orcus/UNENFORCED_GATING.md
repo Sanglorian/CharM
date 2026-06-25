@@ -53,6 +53,13 @@ low-light species).
     naturally; class-granted armor is unaffected.
   - **Shield Proficiency** — Light → `Str 13`; Heavy →
     `Str 15, Armor Proficiency (Light Shield)`.
+- **Versatile Shifting** → `category:ORCUS_SHAPE_POWER`. The 20 `Shape of the …`
+  shapeshift powers are tagged with that category in the discipline generator
+  (`Phase2`, by name prefix).
+- **Dualclass Recruit** (and the Dabbles-in multiclass kits) → a shared
+  `Secondary Class` marker is granted by each secondary-class source, and each
+  requires `!Secondary Class`, so a character can have at most one secondary
+  class. (Theme/kit selects honour prereqs, verified at runtime.)
 
 ---
 
@@ -60,9 +67,11 @@ low-light species).
 
 | Feat | Prerequisite (source) | Why it isn't enforced |
 |---|---|---|
-| Athame | Proficiency with one or more focuses | Focus/implement proficiency is a descriptive field on the class, not a grantable element (the engine applies no non-proficiency penalty) |
-| Versatile Shifting | You know at least one shape of the *X* power | The "shape of the X" power family isn't tagged with a category yet (fixable: tag the 20 `Shape of the …` powers + `category:` prereq) |
-| Dualclass Recruit | You cannot already have a secondary class | No element represents "has a secondary class" yet (fixable: a shared `Secondary Class` marker granted by the dualclass feat + Dabbles-in kits, gated `!Secondary Class`) |
+| Athame | Proficiency with one or more focuses | Focus/implement proficiency is a descriptive field on the class, not a grantable element (the engine applies no non-proficiency penalty). Fix (the remaining item): model `Implement Proficiency (Orb/Staff/Wand/Rod/Book)` elements in an `ORCUS_FOCUS_PROFS` category, grant them from each focus-using class, then `category:ORCUS_FOCUS_PROFS` |
+
+The Dabbles-in kits also say "you cannot take this if you **belong to the X
+class**" — the secondary-class half is now enforced; the class-identity half is
+still descriptive (would need a per-kit `& !<Class>` gate).
 
 ## 2. Prestige path entry requirements
 

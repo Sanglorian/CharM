@@ -246,10 +246,16 @@ public static class KitGen
             string choiceCat = "ORCUS_KITDISC_" + Slug(kit.Name);
 
             sb.AppendLine(Banner(kit.Name));
+            // Multiclass ("Dabbles in …") kits give a secondary class; a character
+            // may have only one, so they require the absence of the Secondary Class
+            // marker (and grant it below).
+            bool isMulticlass = kit.Requirements.Contains("secondary class", StringComparison.OrdinalIgnoreCase);
+
             sb.AppendLine($"- id: {kitId}");
             sb.AppendLine($"  name: {Scalar(kit.Name)}");
             sb.AppendLine($"  type: Theme");
             sb.AppendLine($"  source: \"Orcus Original\"");
+            if (isMulticlass) sb.AppendLine($"  prereqs: \"!Secondary Class\"");
             if (kit.Requirements.Length > 0 || kit.Description.Length > 0)
             {
                 sb.AppendLine($"  fields:");
@@ -258,6 +264,7 @@ public static class KitGen
             }
             sb.AppendLine($"  rules:");
             sb.AppendLine($"    - {{ grant: ORCUS_MARKER_HAS_KIT, type: Marker }}");
+            if (isMulticlass) sb.AppendLine($"    - {{ grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }}");
             // Binds Familiar: the Spirit Friend feature picks one familiar from the
             // table (generated into familiars.yaml as ORCUS_FAMILIAR Powers).
             if (kit.Name.Equals("Binds Familiar", StringComparison.OrdinalIgnoreCase))

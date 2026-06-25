@@ -291,6 +291,7 @@
   name: "Dabbles in Commanding"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Commander class, or if you
@@ -298,6 +299,7 @@
     Description: "Commander multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_COMMANDING, name: Dabbles in Commanding Discipline } }
     - { grant: ORCUS_KITF_CALLED_TO_SERVICE, type: Class Feature }
     - { grant: ORCUS_KITF_COMMANDER_SKILLS, type: Class Feature, level: 5 }
@@ -341,6 +343,7 @@
   name: "Dabbles in Exemplary Combat"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Exemplar class, or if you
@@ -348,6 +351,7 @@
     Description: "Exemplar multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_EXEMPLARY_COMBAT, name: Dabbles in Exemplary Combat Discipline } }
     - { grant: ORCUS_KITF_BUCKLE_YOUR_SWASHES, type: Class Feature }
     - { grant: ORCUS_KITF_EXEMPLARY_SKILLS, type: Class Feature, level: 5 }
@@ -393,6 +397,7 @@
   name: "Dabbles in Guarding"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Guardian class, or if you
@@ -400,6 +405,7 @@
     Description: "Guardian multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_GUARDING, name: Dabbles in Guarding Discipline } }
     - { grant: ORCUS_KITF_PROTECTIVE, type: Class Feature }
     - { grant: ORCUS_KITF_GUARDIAN_SKILLS, type: Class Feature, level: 5 }
@@ -442,6 +448,7 @@
   name: "Dabbles in Harlequinry"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Harlequin class, or if you
@@ -449,6 +456,7 @@
     Description: "Harlequin multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { grant: ORCUS_DISCACCESS_LAST_LAUGH, type: Discipline Access }
     - { grant: ORCUS_KITF_THE_COMEDIAN, type: Class Feature }
     - { grant: ORCUS_KITF_HARLEQUIN_SKILLS, type: Class Feature, level: 5 }
@@ -489,6 +497,7 @@
   name: "Dabbles in Mageblading"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Mageblade class, or if you
@@ -496,6 +505,7 @@
     Description: "Mageblade multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_MAGEBLADING, name: Dabbles in Mageblading Discipline } }
     - { grant: ORCUS_KITF_ENSORCELLED_WEAPON, type: Class Feature }
     - { grant: ORCUS_KITF_MAGEBLADE_SKILLS, type: Class Feature, level: 5 }
@@ -540,6 +550,7 @@
   name: "Dabbles in Priesthood"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Priest class, or if you
@@ -547,6 +558,7 @@
     Description: "Priest multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { grant: ORCUS_DISCACCESS_ANGELS_TRUMPET, type: Discipline Access }
     - { grant: ORCUS_KITF_PART_TIME_MEDIC, type: Class Feature }
     - { grant: ORCUS_KITF_PRIEST_SKILLS, type: Class Feature, level: 5 }
@@ -585,6 +597,7 @@
   name: "Dabbles in Reaping"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Reaper class, or if you
@@ -592,6 +605,7 @@
     Description: "Reaper multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { grant: ORCUS_DISCACCESS_STARFALL, type: Discipline Access }
     - { grant: ORCUS_KITF_SPIRIT_S_MANTLE, type: Class Feature }
     - { grant: ORCUS_KITF_REAPER_SKILLS, type: Class Feature, level: 5 }
@@ -630,6 +644,7 @@
   name: "Dabbles in Sylvanry"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Sylvan class, or if you
@@ -637,6 +652,7 @@
     Description: "Sylvan multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_SYLVANRY, name: Dabbles in Sylvanry Discipline } }
     - { grant: ORCUS_KITF_SPIRIT_S_MANTLE_2, type: Class Feature }
     - { grant: ORCUS_KITF_SYLVAN_SKILLS, type: Class Feature, level: 5 }
@@ -682,6 +698,7 @@
   name: "Dabbles in Wizardry"
   type: Theme
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Magician class, or if you
@@ -689,6 +706,7 @@
     Description: "Magician multiclass."
   rules:
     - { grant: ORCUS_MARKER_HAS_KIT, type: Marker }
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
     - { select: { type: Discipline Access, number: 1, category: ORCUS_KITDISC_DABBLES_IN_WIZARDRY, name: Dabbles in Wizardry Discipline } }
     - { grant: ORCUS_KITF_MAGICIAN_S_APPRENTICE, type: Class Feature }
     - { grant: ORCUS_KITF_MAGICAL_SKILLS, type: Class Feature, level: 5 }

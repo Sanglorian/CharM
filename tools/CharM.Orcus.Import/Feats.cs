@@ -61,6 +61,9 @@ public static class Feats
     static readonly Dictionary<string, string[]> RulesOverlay = new()
     {
         ["ORCUS_FEAT_ALERTNESS"] = new[] { "{ statadd: Perception, value: 2, bonusType: Feat }" },
+        // Taking the dualclass feat establishes a secondary class (marker), so a
+        // second dualclass/Dabbles-in kit is blocked (they require !Secondary Class).
+        ["ORCUS_FEAT_DUALCLASS_RECRUIT_DUALCLASS"] = new[] { "{ grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }" },
         ["ORCUS_FEAT_CANTRIP_MASTER"] = new[] { "{ select: { type: Power, number: 3, category: ORCUS_DISCIPLINE_CANTRIPS, name: Cantrip Master } }" },
         ["ORCUS_FEAT_ARMOR_PROFICIENCY"] = new[] { "{ select: { type: Proficiency, number: 1, category: ORCUS_ARMOR_PROFS, name: Armor Proficiency } }" },
         ["ORCUS_FEAT_GREAT_FORTITUDE"] = new[]
@@ -121,6 +124,13 @@ public static class Feats
         // "You know a (power with the) Form (keyword)".
         ["ORCUS_FEAT_HARDY_SHIFT"] = "keyword:Form",
         ["ORCUS_FEAT_HYBRID_FORM"] = "keyword:Form",
+        // "You know at least one shape of the X power" — the Shape-of-the-X
+        // shapeshift family, tagged ORCUS_SHAPE_POWER in the discipline generator.
+        ["ORCUS_FEAT_VERSATILE_SHIFTING"] = "category:ORCUS_SHAPE_POWER",
+        // Dualclassing: you can't take a second secondary class. Taking this feat
+        // grants the "Secondary Class" marker (RulesOverlay); it (and the Dabbles-
+        // in multiclass kits) require its absence.
+        ["ORCUS_FEAT_DUALCLASS_RECRUIT_DUALCLASS"] = "!Secondary Class",
         // "Low-light vision" — the Vision element granted by low-light species.
         ["ORCUS_FEAT_NIGHT_SIGHT"] = "Low-light",
         // "Athame (ranged or thrown weapon)" — the Athame feat (the parenthetical

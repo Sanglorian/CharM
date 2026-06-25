@@ -58,6 +58,14 @@
   type: Marker
   source: "Orcus Original"
 
+# Granted by every source of a secondary class (the Dualclass Recruit feat and
+# the Dabbles-in multiclass kits). Those sources require its absence, so a
+# character can have at most one secondary class.
+- id: ORCUS_MARKER_SECONDARY_CLASS
+  name: Secondary Class
+  type: Marker
+  source: "Orcus Original"
+
 - id: ORCUS_HOUSERULE_FEATS_AND_KITS
   name: Feats and Kits
   type: House Rule

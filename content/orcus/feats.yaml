@@ -1917,6 +1917,7 @@
   name: "Versatile Shifting"
   type: Feat
   source: "Orcus Original"
+  prereqs: "category:ORCUS_SHAPE_POWER"
   fields:
     "Feat Category": "Wild Shape Feats"
     Prerequisite: "You know at least one shape of the X power."
@@ -1929,6 +1930,7 @@
   name: "Dualclass Recruit (Dualclass)"
   type: Feat
   source: "Orcus Original"
+  prereqs: "!Secondary Class"
   fields:
     "Feat Category": "Dualclassing"
     Flavor: >-
@@ -1939,6 +1941,8 @@
       You count as the chosen class (sometimes called your “secondary class”) in
       addition to any classes of which you are already a member. In addition,
       you gain the benefits described in the chosen class's “Dualclass” section.
+  rules:
+    - { grant: ORCUS_MARKER_SECONDARY_CLASS, type: Marker }
 
 - id: ORCUS_FEAT_BATTLE_ADAPTATION_DUALCLASS
   name: "Battle Adaptation (Dualclass)"

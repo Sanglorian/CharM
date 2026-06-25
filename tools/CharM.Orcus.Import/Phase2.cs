@@ -339,6 +339,9 @@ public static class Phase2
                 ? "utility" : pw.Usage.ToLowerInvariant();
             var cats = new List<string> { disciplineId, tag };
             if (pw.Type.Equals("Attack", StringComparison.OrdinalIgnoreCase)) cats.Add("ability-swap");
+            // The "Shape of the X" shapeshift powers form a family the Versatile
+            // Shifting feat gates on ("you know at least one shape of the X power").
+            if (pw.Name.StartsWith("Shape of the", StringComparison.OrdinalIgnoreCase)) cats.Add("ORCUS_SHAPE_POWER");
 
             sb.AppendLine($"- id: {id}");
             sb.AppendLine($"  name: {Scalar(pw.Name)}");
