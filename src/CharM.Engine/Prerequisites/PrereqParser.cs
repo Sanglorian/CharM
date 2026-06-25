@@ -33,6 +33,14 @@ public abstract record PrereqNode
 
     /// <summary>Check if character has a matching weapon/implement/armor/shield proficiency.</summary>
     public sealed record ProficiencyCheck(string Target) : PrereqNode;
+
+    /// <summary>Check if character has any active element tagged with a category
+    /// (syntax: <c>category:ID</c>).</summary>
+    public sealed record HasCategory(string Category, bool Negate = false) : PrereqNode;
+
+    /// <summary>Check if character has any active element whose Keywords field
+    /// lists a keyword (syntax: <c>keyword:Form</c>).</summary>
+    public sealed record HasKeyword(string Keyword, bool Negate = false) : PrereqNode;
 }
 
 public static partial class PrereqParser
@@ -213,6 +221,29 @@ public static partial class PrereqParser
                 return result;
             }
             return new PrereqNode.AnyClassCheck(keyword);
+        }
+
+        // Category / keyword membership, optionally negated: "category:ID",
+        // "keyword:Form", "!category:ID". These check whether the character has
+        // *any* active element in a category / with a Keywords-field keyword,
+        // which plain element-name presence can't express.
+        {
+            string body = text;
+            bool negate = false;
+            if (body[0] is '~' or '!') { negate = true; body = body[1..].Trim(); }
+
+            if (body.StartsWith("category:", StringComparison.OrdinalIgnoreCase))
+            {
+                string cat = body["category:".Length..].Trim();
+                if (!string.IsNullOrEmpty(cat))
+                    return new PrereqNode.HasCategory(cat, negate);
+            }
+            if (body.StartsWith("keyword:", StringComparison.OrdinalIgnoreCase))
+            {
+                string kw = body["keyword:".Length..].Trim();
+                if (!string.IsNullOrEmpty(kw))
+                    return new PrereqNode.HasKeyword(kw, negate);
+            }
         }
 
         // Negation with ~ or !

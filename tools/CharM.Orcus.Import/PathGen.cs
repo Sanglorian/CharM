@@ -56,6 +56,8 @@ public static class PathGen
         ["ORCUS_PRESTIGE_SHADOWSNEAK"] = "Stealth",              // Trained in Stealth
         ["ORCUS_PRESTIGE_SILVER_TONGUE"] = "Diplomacy",          // Trained in Diplomacy
         ["ORCUS_PRESTIGE_RING_FIGHTER"] = "Unarmed Combat",      // Unarmed Combat feat
+        ["ORCUS_PRESTIGE_SPELLWRIGHT"] = "category:Arcane",      // Arcane class (Mageblade/Magician carry the Arcane category)
+        ["ORCUS_PRESTIGE_WEAPON_MASTER"] = "keyword:Martial",    // One or more of your powers has the Martial tag
     };
 
     public static int Generate(string sourceFile, string outPath, string contentDir)

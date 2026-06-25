@@ -95,6 +95,10 @@ public sealed partial class CharacterCreationWizard : ICharacterState
     bool ICharacterState.HasElement(string name) => _tree.HasElement(name);
     bool ICharacterState.HasElementOfTypeAndCategory(string type, string category)
         => _tree.HasElementOfTypeAndCategory(type, category);
+    bool ICharacterState.HasElementInCategory(string category)
+        => _tree.HasElementInCategory(category);
+    bool ICharacterState.HasElementWithKeyword(string keyword)
+        => _tree.HasElementWithKeyword(keyword);
 
     int ICharacterState.GetAbilityScore(string abilityName)
     {

@@ -115,6 +115,28 @@ public static class Feats
     // intentionally omitted and stay descriptive in the Prerequisite text.
     static readonly Dictionary<string, string> PrereqOverlay = new()
     {
+        // Category / keyword prereqs (engine grammar: category:ID / keyword:Tag).
+        // "You have a familiar" → any ORCUS_FAMILIAR power.
+        ["ORCUS_FEAT_FLING_FAMILIAR"] = "category:ORCUS_FAMILIAR",
+        // "You know a (power with the) Form (keyword)".
+        ["ORCUS_FEAT_HARDY_SHIFT"] = "keyword:Form",
+        ["ORCUS_FEAT_HYBRID_FORM"] = "keyword:Form",
+        // "Psi focus power" — the psi focus power is granted by the Wild Talent
+        // feat (and the Channels Godmind kit's "Psi Focus" feature). Secondary
+        // named-power requirements (focus surge, careful focus, …) reference
+        // powers not modelled as elements, so only the psi-focus gate is enforced.
+        ["ORCUS_FEAT_ADAPTATION"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_IMMOVABLE_DOMINION"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_MIND_AND_BODY"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_MIND_EYE_ACCURACY"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_BREATH"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_DODGE"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_MEDITATION"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_RESERVOIR"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_TALENT"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_TELEPORT"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_PHRENIC_WRATH"] = "Wild Talent or Psi Focus",
+        ["ORCUS_FEAT_SURGING_MIND"] = "Wild Talent or Psi Focus",
         ["ORCUS_FEAT_ARMOR_GRACE"] = "Armor Focus",
         ["ORCUS_FEAT_CROSSFIRE_IMPROVED"] = "21st level, Crossfire",
         ["ORCUS_FEAT_FOCUSED_CASTER"] = "2nd level",

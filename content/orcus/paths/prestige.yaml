@@ -1765,6 +1765,7 @@
   name: "Spellwright"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "category:Arcane"
   fields:
     Requirements: "Arcane class."
     Description: >-
@@ -1974,6 +1975,7 @@
   name: "Weapon Master"
   type: Prestige Path
   source: "Orcus Original"
+  prereqs: "keyword:Martial"
   fields:
     Requirements: "At least one Martial power."
   rules:

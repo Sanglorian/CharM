@@ -36,6 +36,14 @@ public static class PrereqEvaluator
             PrereqNode.ProficiencyCheck proficiency =>
                 HasRequiredProficiency(state, proficiency.Target),
 
+            PrereqNode.HasCategory category =>
+                category.Negate ? !state.HasElementInCategory(category.Category)
+                                : state.HasElementInCategory(category.Category),
+
+            PrereqNode.HasKeyword keyword =>
+                keyword.Negate ? !state.HasElementWithKeyword(keyword.Keyword)
+                               : state.HasElementWithKeyword(keyword.Keyword),
+
             PrereqNode.Compound compound =>
                 compound.IsAnd
                     ? Evaluate(compound.Left, state) && Evaluate(compound.Right, state)

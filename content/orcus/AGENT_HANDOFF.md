@@ -192,22 +192,31 @@ choice — left as future work.
   (10 + the skill's total, via `statref`) are now modelled in
   `_internal/level.yaml`, so Improved Initiative / Alertness read through to them.
 - **Prerequisites are enforced** where expressible in the engine's PrereqParser
-  grammar (ability score, `<n>th level`, named-element presence), via a curated
-  `prereqs:` overlay: 62 feats (`Feats.cs` `PrereqOverlay`) and 4 prestige paths
+  grammar (ability score, `<n>th level`, named-element presence, `or`, and the
+  added `category:<ID>` / `keyword:<Tag>` membership forms), via a curated
+  `prereqs:` overlay: feats (`Feats.cs` `PrereqOverlay`) and prestige paths
   (`PathGen.cs` `PrereqOverlay`: Battlefield Healer→Heal, Shadowsneak→Stealth,
-  Silver Tongue→Diplomacy, Ring Fighter→Unarmed Combat). The verbatim
+  Silver Tongue→Diplomacy, Ring Fighter→Unarmed Combat, **Spellwright→
+  `category:Arcane`**, **Weapon Master→`keyword:Martial`**). The verbatim
   Prerequisite/Requirements text is left untouched; the `prereqs:` field gates
-  selection legality (verified: e.g. Evolution of Pankration needs Unarmed
-  Combat; The Presence needs 11th level + Cha 16). Still **not** enforced (kept
-  descriptive — not expressible / no matching element): proficiency-with-a-
-  specific-weapon/shield/focus (Orcus proficiency element names don't match the
-  parser's `proficient with X` lookup — singular/cased), "psi focus power" and
-  the psionic-power chains, "you have a familiar", low-light vision, "Channel
-  Divinity feature", "arcane class" / "a power with the Fire|Martial tag"
-  (Orcus classes/powers aren't tagged by power source), Skill Focus's "rank in
-  the chosen skill", and the choice-dependent armor/shield-proficiency ability
-  minimums. Two-Weapon Defense enforces only `Dex 13` (no Two-Weapon Fighting
-  feat exists in Orcus).
+  selection legality.
+- **`category:`/`keyword:` prereq grammar** (added to `PrereqParser` +
+  `PrereqEvaluator`; backed by `ICharacterState.HasElementInCategory` /
+  `HasElementWithKeyword` on `CharacterElementTree`) checks whether the character
+  has **any** active element in a category or with a Keywords-field tag. It wired:
+  Fling Familiar (`category:ORCUS_FAMILIAR`), Hardy Shift / Hybrid Form
+  (`keyword:Form`), Spellwright (`category:Arcane` — only the two arcane classes
+  carry it), Weapon Master (`keyword:Martial`). The 12 Psi/Phrenic feats use the
+  existing `or` form (`Wild Talent or Psi Focus`, since the *psi focus* power
+  lives inside the Wild Talent feat / Channels Godmind's Psi Focus feature).
+- Still **not** enforced (see `UNENFORCED_GATING.md` for the full table with
+  reasons): proficiency-with-a-specific-weapon/shield/focus and weapon-**group**
+  requirements (Orcus proficiency elements are per-weapon, and "Proficiency
+  with…" phrasing ≠ the parser's `proficient with X`), low-light vision, Skill
+  Focus's "rank in the chosen skill", the choice-dependent armor/shield ability
+  minimums, Dualclass Recruit's "already have a secondary class", and the
+  secondary named-power clauses on some Psi feats (focus surge, careful focus, …
+  aren't modelled as elements). Two-Weapon Defense enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

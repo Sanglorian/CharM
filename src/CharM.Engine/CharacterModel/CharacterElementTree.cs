@@ -112,6 +112,33 @@ public sealed class CharacterElementTree
         }
     }
 
+    /// <summary>Does the character have any active element tagged with the given category?</summary>
+    public bool HasElementInCategory(string category)
+    {
+        if (string.IsNullOrWhiteSpace(category)) return false;
+        foreach (var element in GetActiveElements())
+            foreach (var c in element.Categories)
+                if (string.Equals(c, category, StringComparison.OrdinalIgnoreCase))
+                    return true;
+        return false;
+    }
+
+    /// <summary>Does the character have any active element whose "Keywords" field
+    /// lists the given keyword (comma-separated, token match)?</summary>
+    public bool HasElementWithKeyword(string keyword)
+    {
+        if (string.IsNullOrWhiteSpace(keyword)) return false;
+        foreach (var element in GetActiveElements())
+        {
+            if (!element.Fields.TryGetValue("Keywords", out var kw) || string.IsNullOrWhiteSpace(kw))
+                continue;
+            foreach (var token in kw.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                if (string.Equals(token, keyword, StringComparison.OrdinalIgnoreCase))
+                    return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Process a GrantDirective: resolve the target element, create a child,
     /// check level gating and requires conditions.
