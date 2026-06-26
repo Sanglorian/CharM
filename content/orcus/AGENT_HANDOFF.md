@@ -244,6 +244,15 @@ choice — left as future work.
   the non-proficiency *penalties* (-2 etc.), species conditional traits, power-use
   `Requirements`, and Arts gating — see `UNENFORCED_GATING.md`. Two-Weapon Defense
   enforces only `Dex 13`.
+- **Non-proficiency penalties are applied.** Weapon: the engine already withholds
+  a weapon's proficiency bonus unless the character is trained with it (Orcus
+  `Weapon Proficiency (X)` elements feed `Stats.TrainedWeapons`). Armor/shield:
+  `_internal/level.yaml` (`ID_INTERNAL_LEVEL1RULES`) carries conditional statadds —
+  `-2` to `Reflex Defense` and to the global `"attack rolls"` stat while
+  `wearing: "armor:<category>"` AND `requires: "!Armor Proficiency (<Name>)"`.
+  Armor and shield penalties stack (per 4e). Runtime-verified. Only the **focus**
+  non-proficiency penalty (no benefit from a non-proficient focus) is unapplied —
+  it needs an engine change and is low value.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

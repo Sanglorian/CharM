@@ -88,7 +88,7 @@ gates by design.
 
 | Where | Condition / trait | Why it isn't applied |
 |---|---|---|
-| All classes | The **non-proficiency penalties** (-2 to attack/Reflex for the wrong armor/shield; no proficiency bonus for a non-proficient weapon; no benefit from a non-proficient focus) | Proficiency is now *tracked* (weapon/armor/shield/focus elements), but the engine doesn't apply the penalty for using gear you lack proficiency with — that stays GM-adjudicated, same as the base ruleset |
+| All classes | **Non-proficiency penalty for a focus** ("no benefit from a focus unless proficient") | The armor/shield (-2 Reflex + attack) and weapon (lose the proficiency bonus) penalties are now applied; the focus one isn't — it would mean withholding the focus's enhancement bonus from Focus powers, which needs an engine change (focus proficiency isn't indexed like weapon/implement proficiency). Low value — casters are proficient with their own focuses |
 | Species (`ancestries-species.yaml`) | Conditional resistances, natural weapons, extra fly/swim speeds | These don't map to a single stat the engine applies; recorded as descriptive fields |
 | Cruxes / heritages (`ancestry.yaml`) | Always-on narrative traits | No stat hook; descriptive |
 | Powers (many) | `Requirements:` line (situational, e.g. "you have something the target finds hard to resist") | 4e power-use requirements are fiction-based; the engine never gates power **use** — player-adjudicated |

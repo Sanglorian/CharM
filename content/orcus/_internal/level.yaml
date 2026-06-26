@@ -129,6 +129,33 @@
       value: { abilmod: Charisma }
       bonusType: Ability
 
+    # --- Non-proficiency penalties ------------------------------------------
+    # "A character suffers a -2 penalty to Reflex defense and attack rolls if
+    # they wear armor or use a shield they are not proficient with." (Orcus
+    # Rulebook.) Each equipped armor/shield registers an `armor:<category>`
+    # wearing-category; the penalty fires while that category is worn AND the
+    # matching `Armor Proficiency (X)` element is absent. "attack rolls" is the
+    # global attack-bonus stat every attack power reads. Armor and shield
+    # penalties are separate (they stack), per 4e. (Weapon non-proficiency —
+    # losing the weapon's proficiency bonus — is handled by the engine, which
+    # only adds the bonus for a trained weapon.)
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:cloth", requires: "!Armor Proficiency (Cloth)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:cloth", requires: "!Armor Proficiency (Cloth)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:leather", requires: "!Armor Proficiency (Leather)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:leather", requires: "!Armor Proficiency (Leather)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:hide", requires: "!Armor Proficiency (Hide)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:hide", requires: "!Armor Proficiency (Hide)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:chainmail", requires: "!Armor Proficiency (Chainmail)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:chainmail", requires: "!Armor Proficiency (Chainmail)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:scale", requires: "!Armor Proficiency (Scale)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:scale", requires: "!Armor Proficiency (Scale)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:plate", requires: "!Armor Proficiency (Plate)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:plate", requires: "!Armor Proficiency (Plate)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:light shield", requires: "!Armor Proficiency (Light Shield)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:light shield", requires: "!Armor Proficiency (Light Shield)" }
+    - { statadd: Reflex Defense, value: -2, wearing: "armor:heavy shield", requires: "!Armor Proficiency (Heavy Shield)" }
+    - { statadd: "attack rolls", value: -2, wearing: "armor:heavy shield", requires: "!Armor Proficiency (Heavy Shield)" }
+
     # --- Skills: key-ability mod + half level + trained (+5). All 17 Orcus
     #     skills, so any class's class-skill list can be trained. ---
     - { statadd: Acrobatics, value: { abilmod: Dexterity } }
