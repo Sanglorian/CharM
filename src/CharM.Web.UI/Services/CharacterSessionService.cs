@@ -19,6 +19,7 @@ public sealed class CharacterSessionService : IDisposable
     private CharacterSession? _session;
     private IReadOnlyList<PowerStatEntry>? _displayPowerStatsCache;
     private long _sessionVersion;
+    private long _contentVersion;
 
     public event Action? Changed;
 
@@ -35,6 +36,9 @@ public sealed class CharacterSessionService : IDisposable
 
     /// <summary>Increments only when the active character session is replaced or cleared.</summary>
     public long SessionVersion => _sessionVersion;
+
+    /// <summary>Increments on every content change (choices, stat edits) within the active session, as well as on session replacement.</summary>
+    public long ContentVersion => _contentVersion;
 
     /// <summary>Whether the rules database is ready for character creation and imports.</summary>
     public bool IsRulesDatabaseReady => _db.IsLoaded;
@@ -69,6 +73,7 @@ public sealed class CharacterSessionService : IDisposable
         _session = null;
         _displayPowerStatsCache = null;
         _sessionVersion++;
+        _contentVersion++;
         Changed?.Invoke();
     }
 
@@ -932,6 +937,7 @@ public sealed class CharacterSessionService : IDisposable
         _session = session;
         _displayPowerStatsCache = null;
         _sessionVersion++;
+        _contentVersion++;
         _session.Changed += OnSessionChanged;
         Changed?.Invoke();
     }
@@ -939,6 +945,7 @@ public sealed class CharacterSessionService : IDisposable
     private void OnSessionChanged()
     {
         _displayPowerStatsCache = null;
+        _contentVersion++;
         Changed?.Invoke();
     }
 }

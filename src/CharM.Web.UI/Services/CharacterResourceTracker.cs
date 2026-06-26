@@ -5,6 +5,7 @@ namespace CharM.Web.Services;
 public sealed class CharacterResourceTracker
 {
     private long _sessionVersion = -1;
+    private long _contentVersion = -1;
     private CharacterResourceState _state = new();
 
     public event Action? Changed;
@@ -113,25 +114,46 @@ public sealed class CharacterResourceTracker
 
     private void EnsureSession(CharacterSessionService sessionService)
     {
-        if (_sessionVersion == sessionService.SessionVersion)
+        bool newSession = _sessionVersion != sessionService.SessionVersion;
+        bool contentChanged = _contentVersion != sessionService.ContentVersion;
+
+        if (!newSession && !contentChanged)
             return;
 
         _sessionVersion = sessionService.SessionVersion;
+        _contentVersion = sessionService.ContentVersion;
+
         var session = sessionService.Session;
         var snapshot = session?.GetPartialSnapshot();
         int maxHp = Math.Max(0, snapshot?.GetStat("Hit Points") ?? 0);
         int maxSurges = Math.Max(0, snapshot?.GetStat("Healing Surges") ?? 0);
         int maxPowerPoints = Math.Max(0, snapshot?.GetStat("Power Points") ?? 0);
 
-        _state = new CharacterResourceState(
-            MaxHp: maxHp,
-            CurrentHp: maxHp,
-            TempHp: 0,
-            MaxSurges: maxSurges,
-            SpentSurges: 0,
-            MaxPowerPoints: maxPowerPoints,
-            SpentPowerPoints: 0,
-            FailedDeathSaves: 0);
+        if (newSession)
+        {
+            _state = new CharacterResourceState(
+                MaxHp: maxHp,
+                CurrentHp: maxHp,
+                TempHp: 0,
+                MaxSurges: maxSurges,
+                SpentSurges: 0,
+                MaxPowerPoints: maxPowerPoints,
+                SpentPowerPoints: 0,
+                FailedDeathSaves: 0);
+        }
+        else
+        {
+            // Content changed within the same session — update ceilings but preserve current state.
+            _state = _state with
+            {
+                MaxHp = maxHp,
+                CurrentHp = Math.Min(_state.CurrentHp, maxHp),
+                MaxSurges = maxSurges,
+                SpentSurges = Math.Min(_state.SpentSurges, maxSurges),
+                MaxPowerPoints = maxPowerPoints,
+                SpentPowerPoints = Math.Min(_state.SpentPowerPoints, maxPowerPoints),
+            };
+        }
     }
 
     private void NotifyChanged() => Changed?.Invoke();

@@ -212,14 +212,40 @@ public static partial class PowerStatCalculator
         return bestAbility;
     }
 
+    private static readonly (string Abbrev, string Full)[] AbilityAbbreviations =
+    [
+        ("Str", "Strength"),
+        ("Con", "Constitution"),
+        ("Dex", "Dexterity"),
+        ("Int", "Intelligence"),
+        ("Wis", "Wisdom"),
+        ("Cha", "Charisma"),
+    ];
+
     private static List<(string Name, int Index)> FindAbilityNameMatches(string text)
     {
         var matches = new List<(string Name, int Index)>(AbilityNameOrder.Length);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        // Full names first.
         foreach (var name in AbilityNameOrder)
         {
             int index = text.IndexOf(name, StringComparison.OrdinalIgnoreCase);
-            if (index >= 0)
+            if (index >= 0 && seen.Add(name))
                 matches.Add((name, index));
+        }
+
+        // Abbreviations — only when the match is a whole word (next char is not a letter,
+        // preventing "Str" from matching the "Str" inside "Strength").
+        foreach (var (abbrev, full) in AbilityAbbreviations)
+        {
+            if (seen.Contains(full)) continue;
+            int index = text.IndexOf(abbrev, StringComparison.OrdinalIgnoreCase);
+            if (index < 0) continue;
+            int after = index + abbrev.Length;
+            if (after < text.Length && char.IsLetter(text[after])) continue;
+            if (seen.Add(full))
+                matches.Add((full, index));
         }
 
         matches.Sort(static (left, right) => left.Index.CompareTo(right.Index));
