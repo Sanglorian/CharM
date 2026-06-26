@@ -138,9 +138,8 @@
     # global attack-bonus stat every attack power reads. Armor and shield
     # penalties are separate (they stack), per 4e. (Weapon non-proficiency —
     # losing the weapon's proficiency bonus — is handled by the engine, which
-    # only adds the bonus for a trained weapon.)
-    - { statadd: Reflex Defense, value: -2, wearing: "armor:cloth", requires: "!Armor Proficiency (Cloth)" }
-    - { statadd: "attack rolls", value: -2, wearing: "armor:cloth", requires: "!Armor Proficiency (Cloth)" }
+    # only adds the bonus for a trained weapon.) Cloth ("regular clothes or a
+    # robe") and no armor need no proficiency, so they are never penalised.
     - { statadd: Reflex Defense, value: -2, wearing: "armor:leather", requires: "!Armor Proficiency (Leather)" }
     - { statadd: "attack rolls", value: -2, wearing: "armor:leather", requires: "!Armor Proficiency (Leather)" }
     - { statadd: Reflex Defense, value: -2, wearing: "armor:hide", requires: "!Armor Proficiency (Hide)" }
