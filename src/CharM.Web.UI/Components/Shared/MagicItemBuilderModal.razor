@@ -113,7 +113,7 @@
                             @foreach (var item in FilteredCandidates)
                             {
                                 bool isSel = item.InternalId == _selectedDetail?.InternalId;
-                                <tr @onclick="() => SelectCandidate(item)"
+                                <tr @onclick="() => ClickCandidate(item)"
                                     class="@(isSel ? "bg-primary/5 font-semibold" : "hover:bg-surface-container-low") cursor-pointer transition-colors">
                                     <td class="px-3 py-1.5 @(MagicItemClassifier.IsArtifact(item) ? "text-orange-500 font-medium" : "text-on-surface")">
                                         @item.Name
@@ -474,6 +474,16 @@
     private void SelectCandidate(RulesElement item)
     {
         _selectedDetail = item;
+    }
+
+    private void ClickCandidate(RulesElement item)
+    {
+        _selectedDetail = item;
+        // In the Base stage, a single click directly advances to enchantment
+        // (or stays for standalone). For other stages the user still clicks the
+        // action button in the detail pane to confirm their choice.
+        if (_currentStage == Stage.Base)
+            SelectForStage();
     }
 
     private void SelectForStage()
