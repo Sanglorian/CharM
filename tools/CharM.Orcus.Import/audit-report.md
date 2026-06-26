@@ -1,7 +1,7 @@
 # Orcus content audit (machine-generated)
 
 - Source books scanned: 5
-- YAML elements loaded: 2337
+- YAML elements loaded: 2345
 - Prose fields scanned: 5428; flagged: 0
 - Flavor fields: 580 faithful, 0 INVENTED
 

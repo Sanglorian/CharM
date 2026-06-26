@@ -133,6 +133,19 @@
 - { id: ORCUS_APROF_LIGHT_SHIELD, name: "Armor Proficiency (Light Shield)", type: Proficiency, source: "Orcus Original", prereqs: "Str 13", categories: [ORCUS_SHIELD_PROFS] }
 - { id: ORCUS_APROF_HEAVY_SHIELD, name: "Armor Proficiency (Heavy Shield)", type: Proficiency, source: "Orcus Original", prereqs: "Str 15, Armor Proficiency (Light Shield)", categories: [ORCUS_SHIELD_PROFS] }
 
+# === Focus (implement) proficiency elements ===================================
+# Granted by the casters' "Focus Proficiencies" field (a focus gives no benefit
+# unless you are proficient with it). Tagged ORCUS_FOCUS_PROFS so the Athame feat
+# ("proficiency with one or more focuses") can require any of them.
+- { id: ORCUS_FPROF_ORB, name: "Focus Proficiency (Orb)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_STAFF, name: "Focus Proficiency (Staff)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_WAND, name: "Focus Proficiency (Wand)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_ROD, name: "Focus Proficiency (Rod)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_BOOK, name: "Focus Proficiency (Book)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_HOLY_SYMBOL, name: "Focus Proficiency (Holy Symbol)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_MARTIAL, name: "Focus Proficiency (Martial)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+- { id: ORCUS_FPROF_DRUIDIC, name: "Focus Proficiency (Druidic)", type: Proficiency, source: "Orcus Original", categories: [ORCUS_FOCUS_PROFS] }
+
 - id: ORCUS_PROFGRANT_ARMOR_LIGHT
   name: Light Armor Proficiency
   type: Grants

@@ -149,6 +149,7 @@
     # Proficiencies: simple melee & ranged weapons; cloth, leather (no hide).
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_FPROF_MARTIAL, type: Proficiency }      # Focus Proficiencies: Martial focus
     - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
     - { grant: ORCUS_APROF_LEATHER, type: Proficiency }
 

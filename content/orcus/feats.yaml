@@ -78,6 +78,7 @@
   name: "Athame"
   type: Feat
   source: "Orcus Original"
+  prereqs: "category:ORCUS_FOCUS_PROFS"
   fields:
     "Feat Category": "General Feats"
     Prerequisite: "Proficiency with one or more focuses."

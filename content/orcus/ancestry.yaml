@@ -323,6 +323,10 @@
       · You have proficiency with the following focuses: orbs, staffs and wands.
   rules:
     - { statadd: Religion, value: +2, bonusType: Ancestry }
+    # Focus Proficiency: orbs, staffs and wands.
+    - { grant: ORCUS_FPROF_ORB, type: Proficiency }
+    - { grant: ORCUS_FPROF_STAFF, type: Proficiency }
+    - { grant: ORCUS_FPROF_WAND, type: Proficiency }
 
 - id: ORCUS_HERITAGE_MOUNTAINFOLK
   name: Mountainfolk

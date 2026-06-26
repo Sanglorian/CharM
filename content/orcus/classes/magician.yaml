@@ -156,6 +156,12 @@
     # penalty in the engine, so it is descriptive.)
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_APROF_CLOTH, type: Proficiency }
+    # Focus Proficiencies: Orb, staff, wand, rod, book.
+    - { grant: ORCUS_FPROF_ORB, type: Proficiency }
+    - { grant: ORCUS_FPROF_STAFF, type: Proficiency }
+    - { grant: ORCUS_FPROF_WAND, type: Proficiency }
+    - { grant: ORCUS_FPROF_ROD, type: Proficiency }
+    - { grant: ORCUS_FPROF_BOOK, type: Proficiency }
 
 # --- Always-on class features -------------------------------------------------
 - id: ORCUS_FEATURE_ARCANE_TRAINING

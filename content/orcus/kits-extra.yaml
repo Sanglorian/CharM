@@ -291,7 +291,7 @@
   name: "Dabbles in Commanding"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Commander"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Commander class, or if you
@@ -343,7 +343,7 @@
   name: "Dabbles in Exemplary Combat"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Exemplar"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Exemplar class, or if you
@@ -397,7 +397,7 @@
   name: "Dabbles in Guarding"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Guardian"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Guardian class, or if you
@@ -448,7 +448,7 @@
   name: "Dabbles in Harlequinry"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Harlequin"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Harlequin class, or if you
@@ -497,7 +497,7 @@
   name: "Dabbles in Mageblading"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Mageblade"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Mageblade class, or if you
@@ -550,7 +550,7 @@
   name: "Dabbles in Priesthood"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Priest"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Priest class, or if you
@@ -597,7 +597,7 @@
   name: "Dabbles in Reaping"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Reaper"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Reaper class, or if you
@@ -644,7 +644,7 @@
   name: "Dabbles in Sylvanry"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Sylvan"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Sylvan class, or if you
@@ -698,7 +698,7 @@
   name: "Dabbles in Wizardry"
   type: Theme
   source: "Orcus Original"
-  prereqs: "!Secondary Class"
+  prereqs: "!Secondary Class, !Magician"
   fields:
     Requirements: >-
       You cannot take this kit if you belong to the Magician class, or if you

@@ -132,7 +132,7 @@ dotnet run --project src/CharM.Authoring.Cli -- playtest orcus-rules.db --class 
 # Fidelity/coverage
 dotnet run --project tools/CharM.Orcus.Import -- audit .
 ```
-Current state: **2337 elements, 40 types, 0 audit flags, 0 invented.**
+Current state: **2345 elements, 40 types, 0 audit flags, 0 invented.**
 
 House rules / variants are **toggleable**: the Web UI Campaign Settings panel
 (`Details.razor`) is data-driven — `SessionService.GetToggleableHouseRulesAndVariants()`
@@ -235,11 +235,15 @@ choice — left as future work.
   Dabbles-in multiclass kits share a `Secondary Class` marker (granted by each,
   gated `!Secondary Class`) so you can't take two — Theme/kit selects honour
   prereqs (runtime-verified).
-- Still **not** enforced (see `UNENFORCED_GATING.md`): only Athame's
-  "proficiency with one or more focuses" — focus/implement proficiency is a
-  descriptive field (no element, no penalty); fix is to model it like weapon
-  proficiency. The Dabbles kits' "belong to the X class" half is also still
-  descriptive. Two-Weapon Defense enforces only `Dex 13`.
+- **Athame** → `category:ORCUS_FOCUS_PROFS`: focus/implement proficiency is now
+  modelled as `Focus Proficiency (Orb/Staff/Wand/Rod/Book/Holy Symbol/Martial/
+  Druidic)` elements, granted from each caster's Focus Proficiencies + the Heretic
+  heritage. The Dabbles kits also gate on class identity now (`!<Class>` extracted
+  from their Requirements by KitGen). **Every feat/path prerequisite from the
+  original audit is enforced.** What's left is non-prereq and has no engine hook:
+  the non-proficiency *penalties* (-2 etc.), species conditional traits, power-use
+  `Requirements`, and Arts gating — see `UNENFORCED_GATING.md`. Two-Weapon Defense
+  enforces only `Dex 13`.
 - Kit "associated discipline" wiring is **complete**: all six kits grant a
   `Discipline Access` element that folds into `$$KITDISC` (Embodies Strength→
   Juggernautical, Embodies Speed→Born to Run, Worships War→Art of War, Peace→

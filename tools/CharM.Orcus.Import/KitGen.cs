@@ -248,14 +248,23 @@ public static class KitGen
             sb.AppendLine(Banner(kit.Name));
             // Multiclass ("Dabbles in …") kits give a secondary class; a character
             // may have only one, so they require the absence of the Secondary Class
-            // marker (and grant it below).
+            // marker (and grant it below). They also can't be taken by a member of
+            // the class they multiclass into ("you cannot take this kit if you
+            // belong to the X class") — extract X from the Requirements and gate on
+            // its absence too.
             bool isMulticlass = kit.Requirements.Contains("secondary class", StringComparison.OrdinalIgnoreCase);
+            string mcPrereq = "!Secondary Class";
+            if (isMulticlass)
+            {
+                var cm = Regex.Match(kit.Requirements, @"belong to the (?<cls>.+?) class", RegexOptions.IgnoreCase);
+                if (cm.Success) mcPrereq += ", !" + cm.Groups["cls"].Value.Trim();
+            }
 
             sb.AppendLine($"- id: {kitId}");
             sb.AppendLine($"  name: {Scalar(kit.Name)}");
             sb.AppendLine($"  type: Theme");
             sb.AppendLine($"  source: \"Orcus Original\"");
-            if (isMulticlass) sb.AppendLine($"  prereqs: \"!Secondary Class\"");
+            if (isMulticlass) sb.AppendLine($"  prereqs: \"{mcPrereq}\"");
             if (kit.Requirements.Length > 0 || kit.Description.Length > 0)
             {
                 sb.AppendLine($"  fields:");

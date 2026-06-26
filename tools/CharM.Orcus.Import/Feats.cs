@@ -136,6 +136,9 @@ public static class Feats
         // "Athame (ranged or thrown weapon)" — the Athame feat (the parenthetical
         // qualifier is descriptive).
         ["ORCUS_FEAT_ARCANE_ARCHER"] = "Athame",
+        // "Proficiency with one or more focuses" — any Focus Proficiency element
+        // (granted by the casters' Focus Proficiencies, tagged ORCUS_FOCUS_PROFS).
+        ["ORCUS_FEAT_ATHAME"] = "category:ORCUS_FOCUS_PROFS",
         // Single-shield proficiency → the per-shield Proficiency element.
         ["ORCUS_FEAT_BASHING_SHIELD"] = "Armor Proficiency (Light Shield)",
         ["ORCUS_FEAT_TOUGHENED_SHIELD"] = "Armor Proficiency (Heavy Shield)",

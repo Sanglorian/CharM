@@ -157,6 +157,10 @@
     - { grant: ORCUS_PROFGRANT_MARTIAL_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
     - { grant: ORCUS_PROFGRANT_MARTIAL_RANGED, type: Grants }
+    # Focus Proficiencies: Staff, druidic focus, martial focus.
+    - { grant: ORCUS_FPROF_STAFF, type: Proficiency }
+    - { grant: ORCUS_FPROF_DRUIDIC, type: Proficiency }
+    - { grant: ORCUS_FPROF_MARTIAL, type: Proficiency }
     - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
 
 # --- Talents (each grants a rampage feature power) ----------------------------

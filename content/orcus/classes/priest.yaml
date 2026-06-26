@@ -33,6 +33,7 @@
     # chainmail armor (no shields).
     - { grant: ORCUS_PROFGRANT_SIMPLE_MELEE, type: Grants }
     - { grant: ORCUS_PROFGRANT_SIMPLE_RANGED, type: Grants }
+    - { grant: ORCUS_FPROF_HOLY_SYMBOL, type: Proficiency }  # Focus Proficiencies: Holy symbol
     - { grant: ORCUS_PROFGRANT_ARMOR_LIGHT, type: Grants }
     - { grant: ORCUS_APROF_CHAINMAIL, type: Proficiency }
     # Trained in Religion (auto) + 3 others from the class skills.

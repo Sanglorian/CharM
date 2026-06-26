@@ -60,18 +60,21 @@ low-light species).
   `Secondary Class` marker is granted by each secondary-class source, and each
   requires `!Secondary Class`, so a character can have at most one secondary
   class. (Theme/kit selects honour prereqs, verified at runtime.)
+- **Athame** → `category:ORCUS_FOCUS_PROFS`. Focus/implement proficiency is now
+  modelled: `Focus Proficiency (Orb/Staff/Wand/Rod/Book/Holy Symbol/Martial/
+  Druidic)` elements (`ORCUS_FOCUS_PROFS`), granted from each caster's "Focus
+  Proficiencies" (Magician, Priest, Commander, Harlequin, Sylvan) and the Heretic
+  heritage.
+- **Dabbles-in kits' class-identity gate** ("you cannot take this if you belong
+  to the X class") — KitGen extracts X from the Requirements and adds `, !<Class>`
+  to the kit's prereq (so a Commander can't take Dabbles in Commanding, etc.).
 
 ---
 
-## 1. Feat prerequisites still unenforced
+## 1. Feat prerequisites
 
-| Feat | Prerequisite (source) | Why it isn't enforced |
-|---|---|---|
-| Athame | Proficiency with one or more focuses | Focus/implement proficiency is a descriptive field on the class, not a grantable element (the engine applies no non-proficiency penalty). Fix (the remaining item): model `Implement Proficiency (Orb/Staff/Wand/Rod/Book)` elements in an `ORCUS_FOCUS_PROFS` category, grant them from each focus-using class, then `category:ORCUS_FOCUS_PROFS` |
-
-The Dabbles-in kits also say "you cannot take this if you **belong to the X
-class**" — the secondary-class half is now enforced; the class-identity half is
-still descriptive (would need a per-kit `& !<Class>` gate).
+**Every feat/path prerequisite from the original audit is now enforced.** What
+remains below is not prerequisite gating but effects the engine has no hook for.
 
 ## 2. Prestige path entry requirements
 
@@ -85,7 +88,7 @@ gates by design.
 
 | Where | Condition / trait | Why it isn't applied |
 |---|---|---|
-| Focus classes (Magician, etc.) | Focus/implement proficiency (orb/staff/wand/rod/book) | The engine applies no penalty for a non-proficient implement, so it's a descriptive field |
+| All classes | The **non-proficiency penalties** (-2 to attack/Reflex for the wrong armor/shield; no proficiency bonus for a non-proficient weapon; no benefit from a non-proficient focus) | Proficiency is now *tracked* (weapon/armor/shield/focus elements), but the engine doesn't apply the penalty for using gear you lack proficiency with — that stays GM-adjudicated, same as the base ruleset |
 | Species (`ancestries-species.yaml`) | Conditional resistances, natural weapons, extra fly/swim speeds | These don't map to a single stat the engine applies; recorded as descriptive fields |
 | Cruxes / heritages (`ancestry.yaml`) | Always-on narrative traits | No stat hook; descriptive |
 | Powers (many) | `Requirements:` line (situational, e.g. "you have something the target finds hard to resist") | 4e power-use requirements are fiction-based; the engine never gates power **use** — player-adjudicated |
