@@ -19,7 +19,7 @@ namespace CharM.ImportExport;
 /// blocks. Without this composition the export emits the raw enchant name
 /// (e.g. "Subtle Weapon +3") which doesn't match what OCB would write.
 /// </summary>
-internal static class LootNaming
+public static class LootNaming
 {
     /// <summary>
     /// Compose the display name for a loot item, mirroring OCB's
@@ -37,7 +37,7 @@ internal static class LootNaming
     ///     <c>+N</c> or <c>(...)</c> suffix in the enchantment name.</item>
     /// </list>
     /// </summary>
-    internal static string Compose(LootItem loot)
+    public static string Compose(LootItem loot)
     {
         if (!string.IsNullOrEmpty(loot.CompositeName))
             return loot.CompositeName!;
@@ -52,7 +52,7 @@ internal static class LootNaming
     /// <summary>
     /// Core composition routine. Public for unit-test access.
     /// </summary>
-    internal static string Compose(
+    public static string Compose(
         string baseName,
         string enchantName,
         RulesElement enchant,

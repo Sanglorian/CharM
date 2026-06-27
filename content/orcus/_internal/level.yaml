@@ -68,6 +68,11 @@
     - { select: { type: Feat, number: 1, name: "Feat (Lv 26)", level: 26 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 28)", level: 28 } }
     - { select: { type: Feat, number: 1, name: "Feat (Lv 30)", level: 30 } }
+    # All characters get both basic attacks automatically.
+    - grant: ID_INTERNAL_POWER_MELEE_BASIC_ATTACK
+      type: Power
+    - grant: ID_INTERNAL_POWER_RANGED_BASIC_ATTACK
+      type: Power
 
 - id: ID_INTERNAL_LEVEL1RULES
   name: Level 1 Rules
@@ -462,3 +467,40 @@
   rules:
     - { statadd: Level, value: 1 }
     - { statadd: HALF-LEVEL, value: 1 }
+
+# --- Universal basic attack powers ---
+# Every character gets these two powers automatically via ID_INTERNAL_LEVEL_1
+# grant directives above. The engine's PowerStatCalculator recognises them by
+# name to compute attack/damage from the equipped weapon.
+
+- id: ID_INTERNAL_POWER_MELEE_BASIC_ATTACK
+  name: "Melee Basic Attack"
+  type: Power
+  source: "Orcus Original"
+  categories: [at-will]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    "Attack Type": "Melee Weapon"
+    Target: "One creature"
+    Attack: "Strength vs. AC"
+    Hit: "1[W] + Strength modifier damage."
+
+- id: ID_INTERNAL_POWER_RANGED_BASIC_ATTACK
+  name: "Ranged Basic Attack"
+  type: Power
+  source: "Orcus Original"
+  categories: [at-will]
+  fields:
+    Level: "1"
+    "Power Usage": "At-Will"
+    "Power Type": "Attack"
+    "Action Type": "Standard Action"
+    Keywords: "Martial, Weapon"
+    "Attack Type": "Ranged Weapon"
+    Target: "One creature"
+    Attack: "Dexterity vs. AC"
+    Hit: "1[W] + Dexterity modifier damage."

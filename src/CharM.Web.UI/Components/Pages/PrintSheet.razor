@@ -1463,6 +1463,8 @@ else
         // Has user-facing prose? Show it.
         if (detail.Fields.TryGetValue("Short Description", out var sd) && !string.IsNullOrWhiteSpace(sd))
             return false;
+        if (detail.Fields.TryGetValue("Description", out var desc) && !string.IsNullOrWhiteSpace(desc))
+            return false;
 
         if (detail.Rules.Count == 0)
         {
@@ -1538,13 +1540,9 @@ else
             : null) ?? element;
 
         if (detail.Fields.TryGetValue("Short Description", out var sd) && !string.IsNullOrWhiteSpace(sd))
-        {
-            // One-line clamp is enforced by CSS (white-space: nowrap +
-            // text-overflow: ellipsis), so we don't truncate here —
-            // the layout will trim with an ellipsis to whatever width
-            // the column has.
             return sd;
-        }
+        if (detail.Fields.TryGetValue("Description", out var desc) && !string.IsNullOrWhiteSpace(desc))
+            return desc;
         return null;
     }
 

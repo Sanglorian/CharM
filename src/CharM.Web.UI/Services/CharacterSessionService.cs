@@ -4,6 +4,7 @@ using CharM.Engine.Economy;
 using CharM.Engine.Export;
 using CharM.Engine.Orchestration;
 using CharM.Engine.Rules;
+using CharM.ImportExport;
 using CharM.RulesDb.Storage;
 using CharM.Serialization;
 
@@ -522,12 +523,17 @@ public sealed class CharacterSessionService : IDisposable
     /// <see cref="MagicItemClassifier.IsCompatibleAugment"/> first.
     /// </summary>
     public static LootItem BuildComposite(RulesElement baseItem, RulesElement? enchantment = null, RulesElement? augment = null)
-        => new()
+    {
+        var loot = new LootItem { Base = baseItem, Enchantment = enchantment, Augment = augment };
+        var compositeName = LootNaming.Compose(loot);
+        return new LootItem
         {
             Base = baseItem,
             Enchantment = enchantment,
             Augment = augment,
+            CompositeName = compositeName,
         };
+    }
 
     public IReadOnlyList<RulesElement> GetAvailableRitualPracticeAlchemyItems()
     {
