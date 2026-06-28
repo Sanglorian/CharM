@@ -488,6 +488,7 @@
     Target: "One creature"
     Attack: "Strength vs. AC"
     Hit: "1[W] + Strength modifier damage."
+    "Level 21": "2[W] + Strength modifier damage."
 
 - id: ID_INTERNAL_POWER_RANGED_BASIC_ATTACK
   name: "Ranged Basic Attack"
@@ -504,3 +505,4 @@
     Target: "One creature"
     Attack: "Dexterity vs. AC"
     Hit: "1[W] + Dexterity modifier damage."
+    "Level 21": "2[W] + Dexterity modifier damage."
